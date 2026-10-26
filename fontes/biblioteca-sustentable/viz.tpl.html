@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Biblioteca Sustentable — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="{{N}} libros para entender a crise ecosocial e pensar saídas: clásicos, postcrecemento, clima, biodiversidade e mundo rural.">
+<meta property="og:title" content="Biblioteca Sustentable">
+<meta property="og:description" content="{{N}} libros sobre sustentabilidade que paga a pena ler, ordenados por eixo temático.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Andel de libros: grella de portadas, filtros por eixo, ficha baixo cada capa */
+:root{
+  --line:var(--gs-gris-20); --muted:var(--gs-gris-50); --head:var(--gs-verde-nato);
+  --c-fund:var(--gs-verde-nato); --c-eco:var(--gs-terra); --c-clima:var(--gs-azul);
+  --c-bio:var(--gs-verde-claro); --c-rural:var(--gs-oliva); --c-etica:var(--gs-viola);
+}
+main.inner{padding-block:40px 64px}
+h1{font-family:var(--gs-font-display);font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1.1;color:var(--head);margin:0;text-wrap:balance}
+.lede{max-width:64ch;margin:14px 0 0;font-size:1.05rem}
+.meta{font-size:.82rem;color:var(--muted);margin-top:8px}
+
+.controls{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;
+  border-block:1px solid var(--line);padding-block:14px;margin:28px 0 32px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--gs-gris-05);z-index:5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:700 12px/1 var(--gs-font-corpo);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);
+  background:transparent;color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.chip[aria-pressed="true"]{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato);border-color:transparent}
+.right{display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.right select{font:inherit;color:var(--gs-gris-80);background:var(--gs-branco);border:1px solid var(--line);border-radius:4px;padding:5px 8px}
+.toggle{display:flex;gap:6px;align-items:center;cursor:pointer}
+.count{font-variant-numeric:tabular-nums}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:40px 28px}
+.book{display:flex;flex-direction:column;gap:12px;min-width:0}
+.cover{position:relative;aspect-ratio:2/3;max-width:100%;border-radius:2px 6px 6px 2px;background:var(--c);
+  color:#fff;padding:18px 16px 16px 26px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+  box-shadow:0 1px 0 rgba(0,0,0,.08),0 10px 24px -14px rgba(0,0,0,.5);transition:transform .25s ease}
+.cover::before{content:"";position:absolute;inset:0 auto 0 0;width:10px;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 70%,rgba(255,255,255,.18))}
+.cover::after{content:"";position:absolute;right:-30%;bottom:-18%;width:90%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.22)}
+.book:hover .cover{transform:translateY(-4px) rotate(-.6deg)}
+.cover .ct{font-family:var(--gs-font-display);font-weight:700;font-size:19px;line-height:1.15;text-wrap:balance;position:relative;z-index:1}
+.cover .ca{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.9;position:relative;z-index:1}
+.cover .cy{font-family:var(--gs-font-display);font-style:italic;font-size:30px;opacity:.35;position:relative;z-index:1;line-height:1}
+.cover.img{padding:0;background:var(--line)}
+.cover.img::after{display:none}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.star{position:absolute;top:10px;right:10px;z-index:2;background:#fff;color:var(--gs-verde-nato);font:900 10px/1 var(--gs-font-corpo);
+  letter-spacing:.1em;text-transform:uppercase;padding:5px 7px;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.info h2{font-family:var(--gs-font-display);font-weight:700;font-size:17px;line-height:1.25;color:var(--head);margin:0}
+.info .by{font-size:13px;color:var(--muted);margin:2px 0 6px}
+.info p{font-size:14px;line-height:1.55;margin:0}
+.tag{display:inline-block;margin-top:8px;font:700 11px/1 var(--gs-font-corpo);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tag i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:6px}
+.nota{margin-top:48px;font-size:.82rem;color:var(--muted)}
+@media (max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.cover .ct{font-size:15px}.cover{padding:14px 10px 12px 18px}}
+@media (prefers-reduced-motion:reduce){.book:hover .cover{transform:none}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true">{{SIMBOLO}}</svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+
+<main class="inner">
+  <h1>Biblioteca Sustentable</h1>
+  <p class="lede">{{N}} libros para entender a crise ecosocial e pensar saídas: dos clásicos que abriron o debate ao postcrecemento, o clima, a biodiversidade e o mundo rural. Os marcados como <strong>Comezar aquí</strong> son unha boa primeira lectura.</p>
+  <p class="meta">Selección da Fundación Galicia Sustentable · Actualizada o {{ACTUALIZADA}}</p>
+
+  <div class="controls">
+    <div class="chips" id="chips" role="group" aria-label="Filtrar por eixo"></div>
+    <div class="right">
+      <label class="toggle"><input type="checkbox" id="soloStart"> Só «Comezar aquí»</label>
+      <label>Ordenar <select id="sort"><option value="ano">por ano</option><option value="titulo">por título</option><option value="eixo">por eixo</option><option value="novos">últimos engadidos</option></select></label>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <p class="nota">Títulos na edición orixinal; moitos están traducidos ao castelán ou ao galego. Portadas: Open Library.</p>
+</main>
+
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+
+<script>
+const EIXOS = {
+  fund:{n:"Fundamentos", c:"var(--c-fund)"},
+  eco:{n:"Economía e postcrecemento", c:"var(--c-eco)"},
+  clima:{n:"Clima e enerxía", c:"var(--c-clima)"},
+  bio:{n:"Biodiversidade e natureza", c:"var(--c-bio)"},
+  rural:{n:"Alimentación e rural", c:"var(--c-rural)"},
+  etica:{n:"Ética e pensamento", c:"var(--c-etica)"}
+};
+// Xerado por fontes/biblioteca-sustentable/render.py desde libros.json
+const LIBROS = {{LIBROS}};
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const grid = document.getElementById('grid'), chips = document.getElementById('chips');
+let filtro = 'todos';
+const mk = (k,n,c) => { const b=document.createElement('button'); b.type='button'; b.className='chip'; b.dataset.k=k;
+  b.innerHTML=(c?`<i style="background:${c}"></i>`:'')+n; b.setAttribute('aria-pressed',k===filtro);
+  b.onclick=()=>{filtro=k; [...chips.children].forEach(x=>x.setAttribute('aria-pressed',x.dataset.k===k)); render()}; chips.append(b); };
+mk('todos','Todos');
+Object.entries(EIXOS).forEach(([k,v])=>mk(k,v.n,v.c));
+
+function render(){
+  const s = document.getElementById('sort').value, only = document.getElementById('soloStart').checked;
+  const ord = Object.keys(EIXOS);
+  const items = LIBROS.map((b,i)=>({...b,i})).filter(b=>(filtro==='todos'||b.eixo===filtro)&&(!only||b.comezar))
+   .sort((a,b)=> s==='titulo'? a.titulo.localeCompare(b.titulo,'gl')
+               : s==='eixo'? (ord.indexOf(a.eixo)-ord.indexOf(b.eixo)||a.ano-b.ano)
+               : s==='novos'? (b.engadido.localeCompare(a.engadido)||b.i-a.i)
+               : a.ano-b.ano);
+  grid.innerHTML = items.map(b=>{
+    const e = EIXOS[b.eixo], star = b.comezar?'<span class="star">Comezar aquí</span>':'';
+    const cover = b.capa
+      ? `<div class="cover img">${star}<img src="capas/${b.capa}" alt="Portada de ${esc(b.titulo)}" loading="lazy"></div>`
+      : `<div class="cover" aria-hidden="true">${star}<div class="ct">${esc(b.titulo)}</div><div><div class="cy">${b.ano}</div><div class="ca">${esc(b.autoria)}</div></div></div>`;
+    return `<article class="book" style="--c:${e.c}">${cover}
+     <div class="info"><h2>${esc(b.titulo)}</h2><div class="by">${esc(b.autoria)} · ${b.ano}</div><p>${esc(b.descricion)}</p>
+       <span class="tag"><i></i>${e.n}</span></div></article>`;
+  }).join('');
+  document.getElementById('count').textContent = items.length+' libros';
+}
+document.getElementById('sort').onchange=render;
+document.getElementById('soloStart').onchange=render;
+render();
+</script>
+</body>
+</html>

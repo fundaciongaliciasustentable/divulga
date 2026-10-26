@@ -1,0 +1,412 @@
+[
+ {
+  "titulo": "A Sand County Almanac",
+  "autoria": "Aldo Leopold",
+  "ano": 1949,
+  "eixo": "fund",
+  "comezar": false,
+  "descricion": "Ensaios sobre unha granxa de Wisconsin que formulan a «ética da terra»: as persoas como membros dunha comunidade biótica, non como donas dela.",
+  "capa": "a-sand-county-almanac.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Silent Spring",
+  "autoria": "Rachel Carson",
+  "ano": 1962,
+  "eixo": "fund",
+  "comezar": true,
+  "descricion": "A denuncia dos pesticidas que deu orixe ao ecoloxismo moderno e á prohibición do DDT. Ciencia escrita para que a entenda calquera.",
+  "capa": "silent-spring.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The Limits to Growth",
+  "autoria": "Meadows, Meadows, Randers e Behrens",
+  "ano": 1972,
+  "eixo": "fund",
+  "comezar": true,
+  "descricion": "O informe ao Club de Roma que modelou por primeira vez as interaccións entre poboación, recursos e contaminación. Os seus escenarios seguen vixentes.",
+  "capa": "the-limits-to-growth.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Small Is Beautiful",
+  "autoria": "E. F. Schumacher",
+  "ano": 1973,
+  "eixo": "eco",
+  "comezar": false,
+  "descricion": "Unha economía «como se a xente importase»: escala humana, tecnoloxías apropiadas e crítica ao xigantismo industrial.",
+  "capa": "small-is-beautiful.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The Entropy Law and the Economic Process",
+  "autoria": "Nicholas Georgescu-Roegen",
+  "ano": 1971,
+  "eixo": "eco",
+  "comezar": false,
+  "descricion": "A base da economía ecolóxica: a actividade económica degrada materia e enerxía e non pode escapar á termodinámica. Lectura esixente.",
+  "capa": "the-entropy-law-and-the-economic-process.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Tools for Conviviality",
+  "autoria": "Ivan Illich",
+  "ano": 1973,
+  "eixo": "etica",
+  "comezar": false,
+  "descricion": "Cando as ferramentas pasan certo limiar, dominan a quen as usa. Unha reflexión sobre autonomía, técnica e suficiencia.",
+  "capa": "tools-for-conviviality.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The Unsettling of America",
+  "autoria": "Wendell Berry",
+  "ano": 1977,
+  "eixo": "rural",
+  "comezar": false,
+  "descricion": "Un labrego e poeta de Kentucky defende a agricultura como cultura e critica a industrialización do campo e o despoboamento.",
+  "capa": "the-unsettling-of-america.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The One-Straw Revolution",
+  "autoria": "Masanobu Fukuoka",
+  "ano": 1975,
+  "eixo": "rural",
+  "comezar": false,
+  "descricion": "A agricultura natural dun cultivador xaponés que deixou de arar. Breve, filosófico e práctico ao mesmo tempo.",
+  "capa": "the-one-straw-revolution.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Das Prinzip Verantwortung",
+  "autoria": "Hans Jonas",
+  "ano": 1979,
+  "eixo": "etica",
+  "comezar": false,
+  "descricion": "Unha ética para a civilización tecnolóxica: actuar de modo que os efectos sexan compatibles coa permanencia da vida humana futura.",
+  "capa": "das-prinzip-verantwortung.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Governing the Commons",
+  "autoria": "Elinor Ostrom",
+  "ano": 1990,
+  "eixo": "eco",
+  "comezar": true,
+  "descricion": "Nobel de Economía 2009. Demostra con casos reais que as comunidades poden xestionar bens comúns sen privatizalos nin estatalizalos. Moi útil para pensar os montes veciñais.",
+  "capa": "governing-the-commons.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Beyond Growth",
+  "autoria": "Herman Daly",
+  "ano": 1996,
+  "eixo": "eco",
+  "comezar": false,
+  "descricion": "A proposta da economía de estado estacionario: mellorar sen medrar en escala física.",
+  "capa": "beyond-growth.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Cradle to Cradle",
+  "autoria": "William McDonough e Michael Braungart",
+  "ano": 2002,
+  "eixo": "fund",
+  "comezar": false,
+  "descricion": "Deseñar produtos para que os seus materiais volvan á natureza ou á industria sen perda. Un dos textos de referencia da economía circular.",
+  "capa": "cradle-to-cradle.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "El ecologismo de los pobres",
+  "autoria": "Joan Martínez Alier",
+  "ano": 2004,
+  "eixo": "eco",
+  "comezar": false,
+  "descricion": "Os conflitos ambientais vistos desde as comunidades que perden a súa terra e a súa auga. A ecoloxía política desde o Sur.",
+  "capa": "el-ecologismo-de-los-pobres.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Collapse",
+  "autoria": "Jared Diamond",
+  "ano": 2005,
+  "eixo": "fund",
+  "comezar": false,
+  "descricion": "Por que algunhas sociedades colapsaron e outras non: da illa de Pascua aos viquingos de Groenlandia. Discutido, pero un bo punto de partida.",
+  "capa": "collapse.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The Omnivore's Dilemma",
+  "autoria": "Michael Pollan",
+  "ano": 2006,
+  "eixo": "rural",
+  "comezar": true,
+  "descricion": "Segue catro comidas desde a súa orixe ata o prato. Explica o sistema alimentario industrial mellor ca ningún manual.",
+  "capa": "the-omnivore-s-dilemma.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Petit traité de la décroissance sereine",
+  "autoria": "Serge Latouche",
+  "ano": 2007,
+  "eixo": "eco",
+  "comezar": false,
+  "descricion": "Introdución curta e clara ao decrecemento e ao seu programa das «oito R».",
+  "capa": "petit-traite-de-la-decroissance-sereine.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Thinking in Systems",
+  "autoria": "Donella Meadows",
+  "ano": 2008,
+  "eixo": "fund",
+  "comezar": true,
+  "descricion": "Como funcionan os sistemas complexos e onde están os puntos de panca para cambialos. Imprescindible para calquera que deseñe políticas.",
+  "capa": "thinking-in-systems.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The New Peasantries",
+  "autoria": "Jan Douwe van der Ploeg",
+  "ano": 2008,
+  "eixo": "rural",
+  "comezar": false,
+  "descricion": "A campesiñidade como estratexia de autonomía fronte aos imperios agroalimentarios. Inclúe traballo de campo en Europa e América Latina.",
+  "capa": "the-new-peasantries.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Soil Not Oil",
+  "autoria": "Vandana Shiva",
+  "ano": 2008,
+  "eixo": "rural",
+  "comezar": false,
+  "descricion": "Relaciona crise climática, alimentaria e enerxética, e defende a agroecoloxía e a soberanía das sementes.",
+  "capa": "soil-not-oil.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Prosperity without Growth",
+  "autoria": "Tim Jackson",
+  "ano": 2009,
+  "eixo": "eco",
+  "comezar": true,
+  "descricion": "Escrito para a comisión de desenvolvemento sustentable do Reino Unido. Pode haber benestar sen crecemento do PIB? Argumento rigoroso e accesible.",
+  "capa": "prosperity-without-growth.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Eaarth",
+  "autoria": "Bill McKibben",
+  "ano": 2010,
+  "eixo": "clima",
+  "comezar": false,
+  "descricion": "O planeta xa cambiou: como adaptarse a un mundo máis quente con economías máis locais e resilientes.",
+  "capa": "eaarth.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The Story of Stuff",
+  "autoria": "Annie Leonard",
+  "ano": 2010,
+  "eixo": "fund",
+  "comezar": false,
+  "descricion": "O ciclo das cousas que compramos, da extracción ao vertedoiro. Ideal para educación e divulgación.",
+  "capa": "the-story-of-stuff.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Braiding Sweetgrass",
+  "autoria": "Robin Wall Kimmerer",
+  "ano": 2013,
+  "eixo": "bio",
+  "comezar": true,
+  "descricion": "Botánica e coñecemento indíxena potawatomi. Unha ética da reciprocidade coas plantas escrita con enorme beleza.",
+  "capa": "braiding-sweetgrass.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "This Changes Everything",
+  "autoria": "Naomi Klein",
+  "ano": 2014,
+  "eixo": "clima",
+  "comezar": false,
+  "descricion": "O conflito entre o capitalismo desregulado e a estabilidade climática, e os movementos que o enfrontan.",
+  "capa": "this-changes-everything.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The Sixth Extinction",
+  "autoria": "Elizabeth Kolbert",
+  "ano": 2014,
+  "eixo": "bio",
+  "comezar": true,
+  "descricion": "Premio Pulitzer. Unha viaxe xornalística pola perda de especies que estamos a provocar.",
+  "capa": "the-sixth-extinction.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Laudato si'",
+  "autoria": "Papa Francisco",
+  "ano": 2015,
+  "eixo": "etica",
+  "comezar": false,
+  "descricion": "A encíclica sobre o «coidado da casa común». Une ecoloxía e xustiza social e chegou a un público moi amplo.",
+  "capa": "laudato-si.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The Great Derangement",
+  "autoria": "Amitav Ghosh",
+  "ano": 2016,
+  "eixo": "clima",
+  "comezar": false,
+  "descricion": "Por que a literatura e a cultura contemporáneas apenas falan da crise climática. Un ensaio sobre imaxinación e colonialismo.",
+  "capa": "the-great-derangement.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Colapso",
+  "autoria": "Carlos Taibo",
+  "ano": 2016,
+  "eixo": "eco",
+  "comezar": false,
+  "descricion": "Capitalismo terminal, transición ecosocial e ecofascismo. Unha introdución breve en castelán ao debate do colapso.",
+  "capa": "colapso.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Doughnut Economics",
+  "autoria": "Kate Raworth",
+  "ano": 2017,
+  "eixo": "eco",
+  "comezar": true,
+  "descricion": "O modelo da rosquilla: un espazo seguro e xusto entre un teito ecolóxico e un chan social. Sete formas de pensar a economía do século XXI.",
+  "capa": "doughnut-economics.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Drawdown",
+  "autoria": "Paul Hawken (ed.)",
+  "ano": 2017,
+  "eixo": "clima",
+  "comezar": false,
+  "descricion": "As cen solucións que máis reducirían as emisións, cuantificadas e ordenadas. Un catálogo práctico.",
+  "capa": "drawdown.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Où atterrir?",
+  "autoria": "Bruno Latour",
+  "ano": 2017,
+  "eixo": "etica",
+  "comezar": false,
+  "descricion": "Ensaio político breve: nin globalización nin regreso ao local pechado, senón aterrar no «terrestre».",
+  "capa": "ou-atterrir.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Wilding",
+  "autoria": "Isabella Tree",
+  "ano": 2018,
+  "eixo": "bio",
+  "comezar": false,
+  "descricion": "Como unha finca agrícola de Sussex deixou paso á renaturalización e recuperou especies desaparecidas.",
+  "capa": "wilding.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The Uninhabitable Earth",
+  "autoria": "David Wallace-Wells",
+  "ano": 2019,
+  "eixo": "clima",
+  "comezar": false,
+  "descricion": "Os impactos do quecemento global sen suavizar. Duro, mais ben documentado.",
+  "capa": "the-uninhabitable-earth.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Less Is More",
+  "autoria": "Jason Hickel",
+  "ano": 2020,
+  "eixo": "eco",
+  "comezar": true,
+  "descricion": "Como o decrecemento pode salvar o mundo. A introdución máis lexible ao postcrecemento, con datos e historia.",
+  "capa": "less-is-more.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "The Case for Degrowth",
+  "autoria": "Kallis, Paulson, D'Alisa e Demaria",
+  "ano": 2020,
+  "eixo": "eco",
+  "comezar": false,
+  "descricion": "Cen páxinas que resumen os argumentos e as propostas políticas do decrecemento.",
+  "capa": "the-case-for-degrowth.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Entangled Life",
+  "autoria": "Merlin Sheldrake",
+  "ano": 2020,
+  "eixo": "bio",
+  "comezar": false,
+  "descricion": "O mundo dos fungos e das redes micorrícicas que sosteñen os ecosistemas. Divulgación científica fascinante.",
+  "capa": "entangled-life.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Petrocalipsis",
+  "autoria": "Antonio Turiel",
+  "ano": 2020,
+  "eixo": "clima",
+  "comezar": false,
+  "descricion": "O pico do petróleo e os límites enerxéticos explicados para o público xeral.",
+  "capa": "petrocalipsis.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Hitoshinsei no «Shihonron»",
+  "autoria": "Kohei Saito",
+  "ano": 2020,
+  "eixo": "eco",
+  "comezar": false,
+  "descricion": "Superventas en Xapón que relé a Marx desde o decrecemento. Publicado en castelán como «El capital en la era del Antropoceno».",
+  "capa": "hitoshinsei-no-shihonron.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "How the World Really Works",
+  "autoria": "Vaclav Smil",
+  "ano": 2022,
+  "eixo": "clima",
+  "comezar": false,
+  "descricion": "Cemento, aceiro, plásticos, amoníaco: os piares materiais da civilización e por que a descarbonización é difícil.",
+  "capa": "how-the-world-really-works.jpg",
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Contra el mito del colapso ecológico",
+  "autoria": "Emilio Santiago Muíño",
+  "ano": 2023,
+  "eixo": "etica",
+  "comezar": false,
+  "descricion": "Unha crítica ao colapsismo desde a esquerda ecoloxista, a favor dunha transición posible e desexable.",
+  "capa": null,
+  "engadido": "2026-10-26"
+ },
+ {
+  "titulo": "Not the End of the World",
+  "autoria": "Hannah Ritchie",
+  "ano": 2024,
+  "eixo": "clima",
+  "comezar": false,
+  "descricion": "Unha científica de datos que contrarresta o fatalismo con evidencia e propón prioridades para unha xeración sustentable.",
+  "capa": "not-the-end-of-the-world.jpg",
+  "engadido": "2026-10-26"
+ }
+]

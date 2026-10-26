@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Biblioteca Sustentable — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="41 libros para entender a crise ecosocial e pensar saídas: clásicos, postcrecemento, clima, biodiversidade e mundo rural.">
+<meta property="og:title" content="Biblioteca Sustentable">
+<meta property="og:description" content="41 libros sobre sustentabilidade que paga a pena ler, ordenados por eixo temático.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Andel de libros: grella de portadas, filtros por eixo, ficha baixo cada capa */
+:root{
+  --line:var(--gs-gris-20); --muted:var(--gs-gris-50); --head:var(--gs-verde-nato);
+  --c-fund:var(--gs-verde-nato); --c-eco:var(--gs-terra); --c-clima:var(--gs-azul);
+  --c-bio:var(--gs-verde-claro); --c-rural:var(--gs-oliva); --c-etica:var(--gs-viola);
+}
+main.inner{padding-block:40px 64px}
+h1{font-family:var(--gs-font-display);font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1.1;color:var(--head);margin:0;text-wrap:balance}
+.lede{max-width:64ch;margin:14px 0 0;font-size:1.05rem}
+.meta{font-size:.82rem;color:var(--muted);margin-top:8px}
+
+.controls{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;
+  border-block:1px solid var(--line);padding-block:14px;margin:28px 0 32px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--gs-gris-05);z-index:5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:700 12px/1 var(--gs-font-corpo);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);
+  background:transparent;color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.chip[aria-pressed="true"]{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato);border-color:transparent}
+.right{display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.right select{font:inherit;color:var(--gs-gris-80);background:var(--gs-branco);border:1px solid var(--line);border-radius:4px;padding:5px 8px}
+.toggle{display:flex;gap:6px;align-items:center;cursor:pointer}
+.count{font-variant-numeric:tabular-nums}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:40px 28px}
+.book{display:flex;flex-direction:column;gap:12px;min-width:0}
+.cover{position:relative;aspect-ratio:2/3;max-width:100%;border-radius:2px 6px 6px 2px;background:var(--c);
+  color:#fff;padding:18px 16px 16px 26px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+  box-shadow:0 1px 0 rgba(0,0,0,.08),0 10px 24px -14px rgba(0,0,0,.5);transition:transform .25s ease}
+.cover::before{content:"";position:absolute;inset:0 auto 0 0;width:10px;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 70%,rgba(255,255,255,.18))}
+.cover::after{content:"";position:absolute;right:-30%;bottom:-18%;width:90%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.22)}
+.book:hover .cover{transform:translateY(-4px) rotate(-.6deg)}
+.cover .ct{font-family:var(--gs-font-display);font-weight:700;font-size:19px;line-height:1.15;text-wrap:balance;position:relative;z-index:1}
+.cover .ca{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.9;position:relative;z-index:1}
+.cover .cy{font-family:var(--gs-font-display);font-style:italic;font-size:30px;opacity:.35;position:relative;z-index:1;line-height:1}
+.cover.img{padding:0;background:var(--line)}
+.cover.img::after{display:none}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.star{position:absolute;top:10px;right:10px;z-index:2;background:#fff;color:var(--gs-verde-nato);font:900 10px/1 var(--gs-font-corpo);
+  letter-spacing:.1em;text-transform:uppercase;padding:5px 7px;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.info h2{font-family:var(--gs-font-display);font-weight:700;font-size:17px;line-height:1.25;color:var(--head);margin:0}
+.info .by{font-size:13px;color:var(--muted);margin:2px 0 6px}
+.info p{font-size:14px;line-height:1.55;margin:0}
+.tag{display:inline-block;margin-top:8px;font:700 11px/1 var(--gs-font-corpo);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tag i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:6px}
+.nota{margin-top:48px;font-size:.82rem;color:var(--muted)}
+@media (max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.cover .ct{font-size:15px}.cover{padding:14px 10px 12px 18px}}
+@media (prefers-reduced-motion:reduce){.book:hover .cover{transform:none}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+
+<main class="inner">
+  <h1>Biblioteca Sustentable</h1>
+  <p class="lede">41 libros para entender a crise ecosocial e pensar saídas: dos clásicos que abriron o debate ao postcrecemento, o clima, a biodiversidade e o mundo rural. Os marcados como <strong>Comezar aquí</strong> son unha boa primeira lectura.</p>
+  <p class="meta">Selección da Fundación Galicia Sustentable · Actualizada o 26 de outubro de 2026</p>
+
+  <div class="controls">
+    <div class="chips" id="chips" role="group" aria-label="Filtrar por eixo"></div>
+    <div class="right">
+      <label class="toggle"><input type="checkbox" id="soloStart"> Só «Comezar aquí»</label>
+      <label>Ordenar <select id="sort"><option value="ano">por ano</option><option value="titulo">por título</option><option value="eixo">por eixo</option><option value="novos">últimos engadidos</option></select></label>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <p class="nota">Títulos na edición orixinal; moitos están traducidos ao castelán ou ao galego. Portadas: Open Library.</p>
+</main>
+
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+
+<script>
+const EIXOS = {
+  fund:{n:"Fundamentos", c:"var(--c-fund)"},
+  eco:{n:"Economía e postcrecemento", c:"var(--c-eco)"},
+  clima:{n:"Clima e enerxía", c:"var(--c-clima)"},
+  bio:{n:"Biodiversidade e natureza", c:"var(--c-bio)"},
+  rural:{n:"Alimentación e rural", c:"var(--c-rural)"},
+  etica:{n:"Ética e pensamento", c:"var(--c-etica)"}
+};
+// Xerado por fontes/biblioteca-sustentable/render.py desde libros.json
+const LIBROS = [
+{
+"titulo": "A Sand County Almanac",
+"autoria": "Aldo Leopold",
+"ano": 1949,
+"eixo": "fund",
+"comezar": false,
+"descricion": "Ensaios sobre unha granxa de Wisconsin que formulan a «ética da terra»: as persoas como membros dunha comunidade biótica, non como donas dela.",
+"capa": "a-sand-county-almanac.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Silent Spring",
+"autoria": "Rachel Carson",
+"ano": 1962,
+"eixo": "fund",
+"comezar": true,
+"descricion": "A denuncia dos pesticidas que deu orixe ao ecoloxismo moderno e á prohibición do DDT. Ciencia escrita para que a entenda calquera.",
+"capa": "silent-spring.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The Limits to Growth",
+"autoria": "Meadows, Meadows, Randers e Behrens",
+"ano": 1972,
+"eixo": "fund",
+"comezar": true,
+"descricion": "O informe ao Club de Roma que modelou por primeira vez as interaccións entre poboación, recursos e contaminación. Os seus escenarios seguen vixentes.",
+"capa": "the-limits-to-growth.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Small Is Beautiful",
+"autoria": "E. F. Schumacher",
+"ano": 1973,
+"eixo": "eco",
+"comezar": false,
+"descricion": "Unha economía «como se a xente importase»: escala humana, tecnoloxías apropiadas e crítica ao xigantismo industrial.",
+"capa": "small-is-beautiful.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The Entropy Law and the Economic Process",
+"autoria": "Nicholas Georgescu-Roegen",
+"ano": 1971,
+"eixo": "eco",
+"comezar": false,
+"descricion": "A base da economía ecolóxica: a actividade económica degrada materia e enerxía e non pode escapar á termodinámica. Lectura esixente.",
+"capa": "the-entropy-law-and-the-economic-process.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Tools for Conviviality",
+"autoria": "Ivan Illich",
+"ano": 1973,
+"eixo": "etica",
+"comezar": false,
+"descricion": "Cando as ferramentas pasan certo limiar, dominan a quen as usa. Unha reflexión sobre autonomía, técnica e suficiencia.",
+"capa": "tools-for-conviviality.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The Unsettling of America",
+"autoria": "Wendell Berry",
+"ano": 1977,
+"eixo": "rural",
+"comezar": false,
+"descricion": "Un labrego e poeta de Kentucky defende a agricultura como cultura e critica a industrialización do campo e o despoboamento.",
+"capa": "the-unsettling-of-america.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The One-Straw Revolution",
+"autoria": "Masanobu Fukuoka",
+"ano": 1975,
+"eixo": "rural",
+"comezar": false,
+"descricion": "A agricultura natural dun cultivador xaponés que deixou de arar. Breve, filosófico e práctico ao mesmo tempo.",
+"capa": "the-one-straw-revolution.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Das Prinzip Verantwortung",
+"autoria": "Hans Jonas",
+"ano": 1979,
+"eixo": "etica",
+"comezar": false,
+"descricion": "Unha ética para a civilización tecnolóxica: actuar de modo que os efectos sexan compatibles coa permanencia da vida humana futura.",
+"capa": "das-prinzip-verantwortung.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Governing the Commons",
+"autoria": "Elinor Ostrom",
+"ano": 1990,
+"eixo": "eco",
+"comezar": true,
+"descricion": "Nobel de Economía 2009. Demostra con casos reais que as comunidades poden xestionar bens comúns sen privatizalos nin estatalizalos. Moi útil para pensar os montes veciñais.",
+"capa": "governing-the-commons.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Beyond Growth",
+"autoria": "Herman Daly",
+"ano": 1996,
+"eixo": "eco",
+"comezar": false,
+"descricion": "A proposta da economía de estado estacionario: mellorar sen medrar en escala física.",
+"capa": "beyond-growth.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Cradle to Cradle",
+"autoria": "William McDonough e Michael Braungart",
+"ano": 2002,
+"eixo": "fund",
+"comezar": false,
+"descricion": "Deseñar produtos para que os seus materiais volvan á natureza ou á industria sen perda. Un dos textos de referencia da economía circular.",
+"capa": "cradle-to-cradle.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "El ecologismo de los pobres",
+"autoria": "Joan Martínez Alier",
+"ano": 2004,
+"eixo": "eco",
+"comezar": false,
+"descricion": "Os conflitos ambientais vistos desde as comunidades que perden a súa terra e a súa auga. A ecoloxía política desde o Sur.",
+"capa": "el-ecologismo-de-los-pobres.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Collapse",
+"autoria": "Jared Diamond",
+"ano": 2005,
+"eixo": "fund",
+"comezar": false,
+"descricion": "Por que algunhas sociedades colapsaron e outras non: da illa de Pascua aos viquingos de Groenlandia. Discutido, pero un bo punto de partida.",
+"capa": "collapse.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The Omnivore's Dilemma",
+"autoria": "Michael Pollan",
+"ano": 2006,
+"eixo": "rural",
+"comezar": true,
+"descricion": "Segue catro comidas desde a súa orixe ata o prato. Explica o sistema alimentario industrial mellor ca ningún manual.",
+"capa": "the-omnivore-s-dilemma.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Petit traité de la décroissance sereine",
+"autoria": "Serge Latouche",
+"ano": 2007,
+"eixo": "eco",
+"comezar": false,
+"descricion": "Introdución curta e clara ao decrecemento e ao seu programa das «oito R».",
+"capa": "petit-traite-de-la-decroissance-sereine.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Thinking in Systems",
+"autoria": "Donella Meadows",
+"ano": 2008,
+"eixo": "fund",
+"comezar": true,
+"descricion": "Como funcionan os sistemas complexos e onde están os puntos de panca para cambialos. Imprescindible para calquera que deseñe políticas.",
+"capa": "thinking-in-systems.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The New Peasantries",
+"autoria": "Jan Douwe van der Ploeg",
+"ano": 2008,
+"eixo": "rural",
+"comezar": false,
+"descricion": "A campesiñidade como estratexia de autonomía fronte aos imperios agroalimentarios. Inclúe traballo de campo en Europa e América Latina.",
+"capa": "the-new-peasantries.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Soil Not Oil",
+"autoria": "Vandana Shiva",
+"ano": 2008,
+"eixo": "rural",
+"comezar": false,
+"descricion": "Relaciona crise climática, alimentaria e enerxética, e defende a agroecoloxía e a soberanía das sementes.",
+"capa": "soil-not-oil.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Prosperity without Growth",
+"autoria": "Tim Jackson",
+"ano": 2009,
+"eixo": "eco",
+"comezar": true,
+"descricion": "Escrito para a comisión de desenvolvemento sustentable do Reino Unido. Pode haber benestar sen crecemento do PIB? Argumento rigoroso e accesible.",
+"capa": "prosperity-without-growth.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Eaarth",
+"autoria": "Bill McKibben",
+"ano": 2010,
+"eixo": "clima",
+"comezar": false,
+"descricion": "O planeta xa cambiou: como adaptarse a un mundo máis quente con economías máis locais e resilientes.",
+"capa": "eaarth.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The Story of Stuff",
+"autoria": "Annie Leonard",
+"ano": 2010,
+"eixo": "fund",
+"comezar": false,
+"descricion": "O ciclo das cousas que compramos, da extracción ao vertedoiro. Ideal para educación e divulgación.",
+"capa": "the-story-of-stuff.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Braiding Sweetgrass",
+"autoria": "Robin Wall Kimmerer",
+"ano": 2013,
+"eixo": "bio",
+"comezar": true,
+"descricion": "Botánica e coñecemento indíxena potawatomi. Unha ética da reciprocidade coas plantas escrita con enorme beleza.",
+"capa": "braiding-sweetgrass.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "This Changes Everything",
+"autoria": "Naomi Klein",
+"ano": 2014,
+"eixo": "clima",
+"comezar": false,
+"descricion": "O conflito entre o capitalismo desregulado e a estabilidade climática, e os movementos que o enfrontan.",
+"capa": "this-changes-everything.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The Sixth Extinction",
+"autoria": "Elizabeth Kolbert",
+"ano": 2014,
+"eixo": "bio",
+"comezar": true,
+"descricion": "Premio Pulitzer. Unha viaxe xornalística pola perda de especies que estamos a provocar.",
+"capa": "the-sixth-extinction.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Laudato si'",
+"autoria": "Papa Francisco",
+"ano": 2015,
+"eixo": "etica",
+"comezar": false,
+"descricion": "A encíclica sobre o «coidado da casa común». Une ecoloxía e xustiza social e chegou a un público moi amplo.",
+"capa": "laudato-si.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The Great Derangement",
+"autoria": "Amitav Ghosh",
+"ano": 2016,
+"eixo": "clima",
+"comezar": false,
+"descricion": "Por que a literatura e a cultura contemporáneas apenas falan da crise climática. Un ensaio sobre imaxinación e colonialismo.",
+"capa": "the-great-derangement.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Colapso",
+"autoria": "Carlos Taibo",
+"ano": 2016,
+"eixo": "eco",
+"comezar": false,
+"descricion": "Capitalismo terminal, transición ecosocial e ecofascismo. Unha introdución breve en castelán ao debate do colapso.",
+"capa": "colapso.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Doughnut Economics",
+"autoria": "Kate Raworth",
+"ano": 2017,
+"eixo": "eco",
+"comezar": true,
+"descricion": "O modelo da rosquilla: un espazo seguro e xusto entre un teito ecolóxico e un chan social. Sete formas de pensar a economía do século XXI.",
+"capa": "doughnut-economics.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Drawdown",
+"autoria": "Paul Hawken (ed.)",
+"ano": 2017,
+"eixo": "clima",
+"comezar": false,
+"descricion": "As cen solucións que máis reducirían as emisións, cuantificadas e ordenadas. Un catálogo práctico.",
+"capa": "drawdown.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Où atterrir?",
+"autoria": "Bruno Latour",
+"ano": 2017,
+"eixo": "etica",
+"comezar": false,
+"descricion": "Ensaio político breve: nin globalización nin regreso ao local pechado, senón aterrar no «terrestre».",
+"capa": "ou-atterrir.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Wilding",
+"autoria": "Isabella Tree",
+"ano": 2018,
+"eixo": "bio",
+"comezar": false,
+"descricion": "Como unha finca agrícola de Sussex deixou paso á renaturalización e recuperou especies desaparecidas.",
+"capa": "wilding.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The Uninhabitable Earth",
+"autoria": "David Wallace-Wells",
+"ano": 2019,
+"eixo": "clima",
+"comezar": false,
+"descricion": "Os impactos do quecemento global sen suavizar. Duro, mais ben documentado.",
+"capa": "the-uninhabitable-earth.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Less Is More",
+"autoria": "Jason Hickel",
+"ano": 2020,
+"eixo": "eco",
+"comezar": true,
+"descricion": "Como o decrecemento pode salvar o mundo. A introdución máis lexible ao postcrecemento, con datos e historia.",
+"capa": "less-is-more.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "The Case for Degrowth",
+"autoria": "Kallis, Paulson, D'Alisa e Demaria",
+"ano": 2020,
+"eixo": "eco",
+"comezar": false,
+"descricion": "Cen páxinas que resumen os argumentos e as propostas políticas do decrecemento.",
+"capa": "the-case-for-degrowth.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Entangled Life",
+"autoria": "Merlin Sheldrake",
+"ano": 2020,
+"eixo": "bio",
+"comezar": false,
+"descricion": "O mundo dos fungos e das redes micorrícicas que sosteñen os ecosistemas. Divulgación científica fascinante.",
+"capa": "entangled-life.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Petrocalipsis",
+"autoria": "Antonio Turiel",
+"ano": 2020,
+"eixo": "clima",
+"comezar": false,
+"descricion": "O pico do petróleo e os límites enerxéticos explicados para o público xeral.",
+"capa": "petrocalipsis.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Hitoshinsei no «Shihonron»",
+"autoria": "Kohei Saito",
+"ano": 2020,
+"eixo": "eco",
+"comezar": false,
+"descricion": "Superventas en Xapón que relé a Marx desde o decrecemento. Publicado en castelán como «El capital en la era del Antropoceno».",
+"capa": "hitoshinsei-no-shihonron.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "How the World Really Works",
+"autoria": "Vaclav Smil",
+"ano": 2022,
+"eixo": "clima",
+"comezar": false,
+"descricion": "Cemento, aceiro, plásticos, amoníaco: os piares materiais da civilización e por que a descarbonización é difícil.",
+"capa": "how-the-world-really-works.jpg",
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Contra el mito del colapso ecológico",
+"autoria": "Emilio Santiago Muíño",
+"ano": 2023,
+"eixo": "etica",
+"comezar": false,
+"descricion": "Unha crítica ao colapsismo desde a esquerda ecoloxista, a favor dunha transición posible e desexable.",
+"capa": null,
+"engadido": "2026-10-26"
+},
+{
+"titulo": "Not the End of the World",
+"autoria": "Hannah Ritchie",
+"ano": 2024,
+"eixo": "clima",
+"comezar": false,
+"descricion": "Unha científica de datos que contrarresta o fatalismo con evidencia e propón prioridades para unha xeración sustentable.",
+"capa": "not-the-end-of-the-world.jpg",
+"engadido": "2026-10-26"
+}
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const grid = document.getElementById('grid'), chips = document.getElementById('chips');
+let filtro = 'todos';
+const mk = (k,n,c) => { const b=document.createElement('button'); b.type='button'; b.className='chip'; b.dataset.k=k;
+  b.innerHTML=(c?`<i style="background:${c}"></i>`:'')+n; b.setAttribute('aria-pressed',k===filtro);
+  b.onclick=()=>{filtro=k; [...chips.children].forEach(x=>x.setAttribute('aria-pressed',x.dataset.k===k)); render()}; chips.append(b); };
+mk('todos','Todos');
+Object.entries(EIXOS).forEach(([k,v])=>mk(k,v.n,v.c));
+
+function render(){
+  const s = document.getElementById('sort').value, only = document.getElementById('soloStart').checked;
+  const ord = Object.keys(EIXOS);
+  const items = LIBROS.map((b,i)=>({...b,i})).filter(b=>(filtro==='todos'||b.eixo===filtro)&&(!only||b.comezar))
+   .sort((a,b)=> s==='titulo'? a.titulo.localeCompare(b.titulo,'gl')
+               : s==='eixo'? (ord.indexOf(a.eixo)-ord.indexOf(b.eixo)||a.ano-b.ano)
+               : s==='novos'? (b.engadido.localeCompare(a.engadido)||b.i-a.i)
+               : a.ano-b.ano);
+  grid.innerHTML = items.map(b=>{
+    const e = EIXOS[b.eixo], star = b.comezar?'<span class="star">Comezar aquí</span>':'';
+    const cover = b.capa
+      ? `<div class="cover img">${star}<img src="capas/${b.capa}" alt="Portada de ${esc(b.titulo)}" loading="lazy"></div>`
+      : `<div class="cover" aria-hidden="true">${star}<div class="ct">${esc(b.titulo)}</div><div><div class="cy">${b.ano}</div><div class="ca">${esc(b.autoria)}</div></div></div>`;
+    return `<article class="book" style="--c:${e.c}">${cover}
+     <div class="info"><h2>${esc(b.titulo)}</h2><div class="by">${esc(b.autoria)} · ${b.ano}</div><p>${esc(b.descricion)}</p>
+       <span class="tag"><i></i>${e.n}</span></div></article>`;
+  }).join('');
+  document.getElementById('count').textContent = items.length+' libros';
+}
+document.getElementById('sort').onchange=render;
+document.getElementById('soloStart').onchange=render;
+render();
+</script>
+</body>
+</html>

@@ -4,8 +4,23 @@
     "titulo": "A Galicia de fóra xa é a terceira provincia",
     "entradilla": "Os 313 concellos e os 563.303 galegos e galegas que viven no exterior, cada un do tamaño da súa poboación. Só A Coruña e Pontevedra suman máis xente ca a diáspora.",
     "data": "2026-10-26",
-    "temas": ["Poboación", "Emigración"],
+    "temas": [
+      "Poboación",
+      "Emigración"
+    ],
     "formato": "Diagrama de Voronoi",
     "fontes": "INE: Padrón municipal 2025 e PERE 2026"
+  },
+  {
+    "slug": "biblioteca-sustentable",
+    "titulo": "Biblioteca Sustentable",
+    "entradilla": "41 libros para entender a crise ecosocial e pensar saídas, dos clásicos de Carson e Meadows ao postcrecemento, o clima e o mundo rural. Unha lista viva que medra co tempo.",
+    "data": "2026-10-26",
+    "temas": [
+      "Lecturas",
+      "Sustentabilidade"
+    ],
+    "formato": "Biblioteca",
+    "fontes": "Selección FGS · portadas de Open Library"
   }
 ]

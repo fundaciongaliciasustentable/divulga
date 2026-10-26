@@ -8,18 +8,29 @@
 <meta property="og:title" content="Divulga — Fundación Galicia Sustentable">
 <meta property="og:description" content="Visualizacións de datos para entender Galicia.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://divulga.galiciasustentable.org/">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="assets/img/heroe-1200.jpg" imagesrcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" imagesizes="100vw">
 <link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap">
 <link rel="stylesheet" href="assets/css/divulga.css">
 <style>
-.heroe{padding-block:clamp(40px,8vw,88px) clamp(28px,5vw,48px);border-bottom:1px solid var(--gs-gris-20)}
-.heroe .inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
-.heroe h1{font-family:var(--gs-font-display);font-weight:700;color:var(--gs-verde-nato);font-size:clamp(3.2rem,11vw,7.5rem);line-height:.9;margin:0;letter-spacing:-.02em}
-.heroe h1 em{font-weight:400;color:var(--gs-verde-claro)}
-.heroe .lead{font-size:clamp(1.05rem,2vw,1.25rem);max-width:46ch;margin:18px 0 0;color:var(--gs-gris-80);font-weight:300}
-.heroe .conta{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gs-gris-50);margin:0;white-space:nowrap}
+/* Heroe: mesma foto e tratamento que a portada de fundaciongaliciasustentable.gal */
+.heroe{position:relative;isolation:isolate;color:var(--gs-branco);min-height:clamp(440px,68vh,680px);display:flex;flex-direction:column;background:var(--gs-negro)}
+.heroe>picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 55%;z-index:-2}
+.heroe::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(26,26,23,.45) 0%,rgba(26,26,23,.05) 28%,rgba(26,26,23,.55) 68%,rgba(26,26,23,.82) 100%)}
+.heroe .dv-bar{background:transparent}
+.heroe .corpo{margin-top:auto;padding-block:40px clamp(36px,6vw,64px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+.heroe .eyebrow{margin:0 0 14px;padding-left:12px;border-left:2px solid var(--gs-verde-moi-claro);font-size:.9rem;color:var(--gs-verde-moi-claro)}
+.heroe h1{font-family:var(--gs-font-display);font-weight:400;font-size:clamp(3.6rem,12vw,8.5rem);line-height:.95;margin:0;letter-spacing:-.01em}
+.heroe .lead{font-size:clamp(1.05rem,2vw,1.25rem);max-width:44ch;margin:18px 0 0;font-weight:400;color:rgba(255,255,255,.92)}
+.heroe .conta{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gs-verde-moi-claro);margin:0;white-space:nowrap}
+.heroe nav{color:var(--gs-verde-moi-claro);font-size:.875rem}
 main{padding-block:40px 72px}
 .ficha{display:grid;gap:16px}
 .ficha .img{display:block;border-radius:var(--gs-radius-card);overflow:hidden;background:#242228;aspect-ratio:1/1;max-width:100%}
@@ -47,26 +58,27 @@ main{padding-block:40px 72px}
 .sobre h2{font-family:var(--gs-font-display);font-weight:700;color:var(--gs-verde-nato);font-size:1.4rem;margin:0}
 .sobre p{margin:0 0 10px;max-width:62ch}
 @media (max-width:760px){
-  .heroe .inner{grid-template-columns:1fr}
+  .heroe .corpo{grid-template-columns:1fr}
   .destacada,.sobre{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-<header class="dv-bar">
-  <div class="inner">
-    <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="113" height="48"></a>
-    <nav aria-label="Ligazóns"><a href="https://galiciasustentable.org">Revista Galicia Sustentable</a></nav>
-  </div>
-</header>
-
 <section class="heroe">
-  <div class="inner">
-    <div>
-      <h1>Divulga<em>.</em></h1>
-      <p class="lead">Visualizacións de datos para entender Galicia: quen somos, onde vivimos e como cambia o territorio.</p>
+  <picture><img src="assets/img/heroe-1200.jpg" srcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" sizes="100vw" alt="" width="2400" height="1430" fetchpriority="high"></picture>
+  <header class="dv-bar">
+    <div class="inner">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <nav aria-label="Ligazóns"><a href="https://fundaciongaliciasustentable.gal">A Fundación</a> · <a href="https://galiciasustentable.org">Revista Galicia Sustentable</a></nav>
     </div>
-    <p class="conta">1 visualización</p>
+  </header>
+  <div class="inner corpo">
+    <div>
+      <p class="eyebrow">Visualizacións de datos</p>
+      <h1>Divulga</h1>
+      <p class="lead">Datos públicos para entender Galicia: quen somos, onde vivimos e como cambia o territorio.</p>
+    </div>
+    <p class="conta">2 visualizacións</p>
   </div>
 </section>
 
@@ -83,7 +95,18 @@ main{padding-block:40px 72px}
         <a class="ver" href="v/poboacion-galicia/">Ver a visualización →</a>
       </div>
     </article>
-
+<section class="arquivo" aria-labelledby="h-arq"><h2 id="h-arq">Arquivo</h2><div class="grella">
+    <article class="ficha">
+      <a class="img" href="v/biblioteca-sustentable/" tabindex="-1" aria-hidden="true"><img src="v/biblioteca-sustentable/thumb.svg" alt="" loading="lazy" width="600" height="600"></a>
+      <div class="txt">
+        <p class="meta"><time datetime="2026-10-26">26 de outubro de 2026</time> · Biblioteca</p>
+        <h3><a href="v/biblioteca-sustentable/">Biblioteca Sustentable</a></h3>
+        <p class="entradilla">41 libros para entender a crise ecosocial e pensar saídas, dos clásicos de Carson e Meadows ao postcrecemento, o clima e o mundo rural. Unha lista viva que medra co tempo.</p>
+        <ul class="temas"><li>Lecturas</li><li>Sustentabilidade</li></ul>
+        <p class="fontes">Fontes: Selección FGS · portadas de Open Library</p>
+        
+      </div>
+    </article></div></section>
   <section class="sobre" aria-labelledby="h-sobre">
     <h2 id="h-sobre">Sobre Divulga</h2>
     <div>

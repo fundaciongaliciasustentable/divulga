@@ -35,8 +35,20 @@ python3 -m http.server 8780
 
 ## Publicar
 
-Sube por FTP todo menos `fontes/`, `templates/`, `build.py`, `README.md` e
-`.claude/` ao cartafol do subdominio en Dinahosting.
+```bash
+./scripts/empaquetar.sh
+```
+
+Rexenera a portada e deixa en `dist/` (e en `divulga-web.zip`) só os ficheiros
+públicos. Sube o contido de `dist/` á raíz do subdominio en Dinahosting, ou
+sube o zip e descomprímeo alí.
+
+## Imaxe de marca
+
+A cabeceira usa a mesma foto (Unsplash) e o mesmo degradado que a portada de
+fundaciongaliciasustentable.gal. `assets/img/og-divulga.jpg` é a imaxe para
+compartir en redes; xérase con `fontes/_marca/og.py` (Pillow + Playfair
+Display e Lato).
 
 ## Visualizacións
 
