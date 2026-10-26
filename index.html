@@ -13,101 +13,139 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" href="assets/img/heroe-1200.jpg" imagesrcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" imagesizes="100vw">
 <link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap">
 <link rel="stylesheet" href="assets/css/divulga.css">
 <style>
-/* Heroe: mesma foto e tratamento que a portada de fundaciongaliciasustentable.gal */
-.heroe{position:relative;isolation:isolate;color:var(--gs-branco);min-height:clamp(440px,68vh,680px);display:flex;flex-direction:column;background:var(--gs-negro)}
-.heroe>picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 55%;z-index:-2}
-.heroe::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(26,26,23,.45) 0%,rgba(26,26,23,.05) 28%,rgba(26,26,23,.55) 68%,rgba(26,26,23,.82) 100%)}
-.heroe .dv-bar{background:transparent}
-.heroe .corpo{margin-top:auto;padding-block:40px clamp(36px,6vw,64px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
-.heroe .eyebrow{margin:0 0 14px;padding-left:12px;border-left:2px solid var(--gs-verde-moi-claro);font-size:.9rem;color:var(--gs-verde-moi-claro)}
-.heroe h1{font-family:var(--gs-font-display);font-weight:400;font-size:clamp(3.6rem,12vw,8.5rem);line-height:.95;margin:0;letter-spacing:-.01em}
-.heroe .lead{font-size:clamp(1.05rem,2vw,1.25rem);max-width:44ch;margin:18px 0 0;font-weight:400;color:rgba(255,255,255,.92)}
-.heroe .conta{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gs-verde-moi-claro);margin:0;white-space:nowrap}
-.heroe nav{color:var(--gs-verde-moi-claro);font-size:.875rem}
-main{padding-block:40px 72px}
-.ficha{display:grid;gap:16px}
-.ficha .img{display:block;border-radius:var(--gs-radius-card);overflow:hidden;background:#242228;aspect-ratio:1/1;max-width:100%}
-.ficha .img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.ficha:hover .img img{transform:scale(1.03)}
+/* Portada ao xeito de informationisbeautiful.net: barra branca, frase-manifesto
+   centrada, banda a todo o ancho (aquí a foto da FGS), filtro de temas fixo
+   e grella de tarxetas. Identidade e tokens da FGS. */
+body{background:var(--gs-gris-10)}
+
+.topo{background:var(--gs-branco);border-bottom:1px solid var(--gs-gris-20)}
+.topo .inner{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:10px;flex-wrap:wrap}
+.marca{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--gs-verde-nato)}
+.marca img{height:44px;width:auto}
+.marca .sep{width:1px;height:30px;background:var(--gs-gris-20)}
+.marca b{font-family:var(--gs-font-display);font-weight:700;font-size:1.35rem;letter-spacing:.01em}
+.topo nav{display:flex;gap:4px 20px;flex-wrap:wrap;font-size:.92rem}
+.topo nav a{color:var(--gs-gris-80);text-decoration:none}
+.topo nav a:hover{color:var(--gs-verde-claro);text-decoration:underline}
+
+.manifesto{text-align:center;padding-block:clamp(28px,5vw,48px) clamp(24px,4vw,40px)}
+.manifesto h1{font-family:var(--gs-font-display);font-weight:400;color:var(--gs-gris-80);font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.25;margin:0 auto;max-width:30ch;text-wrap:balance}
+.manifesto p{margin:14px auto 0;max-width:52ch;font-size:clamp(1rem,1.6vw,1.15rem);color:var(--gs-gris-80);text-wrap:balance}
+.k1{color:var(--gs-verde-claro)} .k2{color:var(--gs-terra)} .k3{color:var(--gs-azul)} .k4{color:var(--gs-viola)}
+.manifesto p b{font-weight:700}
+
+.banda{position:relative;isolation:isolate;color:var(--gs-branco);text-align:center;background:var(--gs-negro);overflow:hidden}
+.banda img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 58%;z-index:-2}
+.banda::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,26,23,.62),rgba(74,88,70,.45) 50%,rgba(26,26,23,.62))}
+.banda .inner{padding-block:clamp(36px,6vw,64px)}
+.banda h2{font-family:var(--gs-font-display);font-weight:400;font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.15;margin:0;text-wrap:balance}
+.banda p{margin:10px 0 18px;font-size:clamp(1rem,1.8vw,1.2rem);color:var(--gs-verde-moi-claro)}
+.selos{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;list-style:none;margin:0;padding:0}
+.selos li{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato);font-weight:700;font-size:.82rem;padding:5px 10px;border-radius:var(--gs-radius)}
+
+.filtro{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(245,245,240,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--gs-gris-20)}
+.filtro .inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;padding-block:12px}
+.filtro .rot{font-weight:700;font-size:.85rem;margin-right:4px}
+.tema{font:400 .85rem var(--gs-font-corpo);background:var(--gs-gris-20);color:var(--gs-gris-80);border:0;border-radius:var(--gs-radius);padding:6px 10px;cursor:pointer}
+.tema:hover{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato)}
+.tema[aria-pressed="true"]{background:var(--gs-verde-nato);color:var(--gs-branco)}
+
+main{padding-block:28px 64px}
+.grella{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:22px}
+.tarxeta{background:var(--gs-branco);border-radius:3px;box-shadow:0 1px 3px rgba(26,26,23,.08);transition:box-shadow .2s,transform .2s}
+.tarxeta:hover{box-shadow:0 8px 24px rgba(26,26,23,.14);transform:translateY(-2px)}
+.tarxeta a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
+.tarxeta .img{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--gs-gris-20);border-radius:3px 3px 0 0}
+.tarxeta .img img{width:100%;height:100%;object-fit:cover}
 .sen-img{width:100%;height:100%;background:var(--gs-verde-moi-claro)}
-.ficha .meta{margin:0;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gs-gris-50)}
-.ficha h2,.ficha h3{font-family:var(--gs-font-display);font-weight:700;line-height:1.15;margin:6px 0 10px;text-wrap:balance}
-.ficha h2{font-size:clamp(1.8rem,3.6vw,2.75rem)}
-.ficha h3{font-size:1.35rem}
-.ficha h2 a,.ficha h3 a{color:var(--gs-verde-nato);text-decoration:none}
-.ficha h2 a:hover,.ficha h3 a:hover{text-decoration:underline;color:var(--gs-verde-nato)}
-.ficha .entradilla{margin:0 0 14px;max-width:60ch}
-.temas{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;gap:6px}
-.temas li{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 8px;border-radius:var(--gs-radius)}
-.fontes{margin:0;font-size:.8rem;color:var(--gs-gris-50)}
-.destacada{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
-.destacada .txt{min-width:0}
-.destacada .entradilla{font-size:1.1rem}
-.ver{display:inline-block;margin-top:20px;font-weight:700;font-size:.95rem}
-.arquivo{margin-top:72px;border-top:1px solid var(--gs-gris-20);padding-top:32px}
-.arquivo h2{font-family:var(--gs-font-display);font-weight:700;color:var(--gs-verde-nato);font-size:1.75rem;margin:0 0 24px}
-.grella{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:40px 28px}
-.sobre{margin-top:72px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;border-top:1px solid var(--gs-gris-20);padding-top:32px}
+.tarxeta .txt{display:flex;flex-direction:column;gap:6px;padding:14px 16px 18px}
+.tarxeta .titulo{font-family:var(--gs-font-display);font-weight:700;font-size:1.15rem;line-height:1.25;color:var(--gs-gris-80);text-wrap:balance}
+.tarxeta a:hover .titulo{color:var(--gs-verde-nato);text-decoration:underline;text-underline-offset:.2em}
+.tarxeta .sub{font-size:.85rem;color:var(--gs-gris-50)}
+.tarxeta[hidden]{display:none}
+.baleiro{text-align:center;color:var(--gs-gris-50)}
+
+.sobre{margin-top:64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;border-top:1px solid var(--gs-gris-20);padding-top:32px}
 .sobre h2{font-family:var(--gs-font-display);font-weight:700;color:var(--gs-verde-nato);font-size:1.4rem;margin:0}
 .sobre p{margin:0 0 10px;max-width:62ch}
-@media (max-width:760px){
-  .heroe .corpo{grid-template-columns:1fr}
-  .destacada,.sobre{grid-template-columns:1fr}
-}
+@media (max-width:760px){.sobre{grid-template-columns:1fr}.marca img{height:38px}}
 </style>
 </head>
 <body>
-<section class="heroe">
-  <picture><img src="assets/img/heroe-1200.jpg" srcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" sizes="100vw" alt="" width="2400" height="1430" fetchpriority="high"></picture>
-  <header class="dv-bar">
-    <div class="inner">
-      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
-      <nav aria-label="Ligazóns"><a href="https://fundaciongaliciasustentable.gal">A Fundación</a> · <a href="https://galiciasustentable.org">Revista Galicia Sustentable</a></nav>
-    </div>
-  </header>
-  <div class="inner corpo">
-    <div>
-      <p class="eyebrow">Visualizacións de datos</p>
-      <h1>Divulga</h1>
-      <p class="lead">Datos públicos para entender Galicia: quen somos, onde vivimos e como cambia o territorio.</p>
-    </div>
-    <p class="conta">2 visualizacións</p>
+<header class="topo">
+  <div class="inner">
+    <a class="marca" href="./" aria-label="Divulga, Fundación Galicia Sustentable">
+      <img src="assets/logos/logo-fgs-horizontal.png" alt="" width="103" height="44">
+      <span class="sep" aria-hidden="true"></span>
+      <b>Divulga</b>
+    </a>
+    <nav aria-label="Ligazóns">
+      <a href="#sobre">Sobre</a>
+      <a href="https://fundaciongaliciasustentable.gal">A Fundación</a>
+      <a href="https://galiciasustentable.org">Revista</a>
+    </nav>
+  </div>
+</header>
+
+<section class="manifesto">
+  <div class="inner">
+    <h1>Divulga é o espazo da Fundación Galicia Sustentable para entender Galicia con datos</h1>
+    <p><b>convertemos</b> <span class="k1">datos públicos</span> en <span class="k2">visualizacións interactivas</span>, <span class="k3">historias</span> e <span class="k4">listas de lectura</span> sobre o territorio</p>
   </div>
 </section>
 
-<main class="inner">
+<section class="banda">
+  <img src="assets/img/heroe-1200.jpg" srcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" sizes="100vw" alt="" width="2400" height="1430">
+  <div class="inner">
+    <h2>Transformar Galicia nunha sociedade sustentable</h2>
+    <p>tamén é contala ben, con datos e sen ruído</p>
+    <ul class="selos">
+      <li>2 visualizacións</li>
+      <li>Fontes abertas</li>
+      <li>CC BY-NC-SA 4.0</li>
+    </ul>
+  </div>
+</section>
 
-    <article class="ficha destacada">
-      <a class="img" href="v/poboacion-galicia/" tabindex="-1" aria-hidden="true"><img src="v/poboacion-galicia/thumb.svg" alt="" loading="lazy" width="600" height="600"></a>
-      <div class="txt">
-        <p class="meta"><time datetime="2026-10-26">26 de outubro de 2026</time> · Diagrama de Voronoi</p>
-        <h2><a href="v/poboacion-galicia/">A Galicia de fóra xa é a terceira provincia</a></h2>
-        <p class="entradilla">Os 313 concellos e os 563.303 galegos e galegas que viven no exterior, cada un do tamaño da súa poboación. Só A Coruña e Pontevedra suman máis xente ca a diáspora.</p>
-        <ul class="temas"><li>Poboación</li><li>Emigración</li></ul>
-        <p class="fontes">Fontes: INE: Padrón municipal 2025 e PERE 2026</p>
-        <a class="ver" href="v/poboacion-galicia/">Ver a visualización →</a>
-      </div>
+<nav class="filtro" aria-label="Filtrar por tema">
+  <div class="inner">
+    <span class="rot">Temas</span>
+    <button type="button" class="tema" data-tema="" aria-pressed="true">todos</button>
+    <button type="button" class="tema" data-tema="Emigración" aria-pressed="false">emigración</button><button type="button" class="tema" data-tema="Lecturas" aria-pressed="false">lecturas</button><button type="button" class="tema" data-tema="Poboación" aria-pressed="false">poboación</button><button type="button" class="tema" data-tema="Sustentabilidade" aria-pressed="false">sustentabilidade</button>
+  </div>
+</nav>
+
+<main class="inner">
+  <div class="grella" id="grella">
+
+    <article class="tarxeta" data-temas="Poboación|Emigración">
+      <a href="v/poboacion-galicia/">
+        <span class="img"><img src="v/poboacion-galicia/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
+        <span class="txt">
+          <span class="titulo">A Galicia de fóra xa é a terceira provincia</span>
+          <span class="sub">Diagrama de Voronoi · <time datetime="2026-10-26">26 de outubro de 2026</time></span>
+        </span>
+      </a>
     </article>
-<section class="arquivo" aria-labelledby="h-arq"><h2 id="h-arq">Arquivo</h2><div class="grella">
-    <article class="ficha">
-      <a class="img" href="v/biblioteca-sustentable/" tabindex="-1" aria-hidden="true"><img src="v/biblioteca-sustentable/thumb.svg" alt="" loading="lazy" width="600" height="600"></a>
-      <div class="txt">
-        <p class="meta"><time datetime="2026-10-26">26 de outubro de 2026</time> · Biblioteca</p>
-        <h3><a href="v/biblioteca-sustentable/">Biblioteca Sustentable</a></h3>
-        <p class="entradilla">41 libros para entender a crise ecosocial e pensar saídas, dos clásicos de Carson e Meadows ao postcrecemento, o clima e o mundo rural. Unha lista viva que medra co tempo.</p>
-        <ul class="temas"><li>Lecturas</li><li>Sustentabilidade</li></ul>
-        <p class="fontes">Fontes: Selección FGS · portadas de Open Library</p>
-        
-      </div>
-    </article></div></section>
-  <section class="sobre" aria-labelledby="h-sobre">
+    <article class="tarxeta" data-temas="Lecturas|Sustentabilidade">
+      <a href="v/biblioteca-sustentable/">
+        <span class="img"><img src="v/biblioteca-sustentable/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
+        <span class="txt">
+          <span class="titulo">Biblioteca Sustentable</span>
+          <span class="sub">Biblioteca · <time datetime="2026-10-26">26 de outubro de 2026</time></span>
+        </span>
+      </a>
+    </article>
+  </div>
+  <p class="baleiro" id="baleiro" hidden>Aínda non hai visualizacións con este tema.</p>
+
+  <section class="sobre" id="sobre" aria-labelledby="h-sobre">
     <h2 id="h-sobre">Sobre Divulga</h2>
     <div>
       <p>Pezas puntuais da Fundación Galicia Sustentable feitas con datos públicos. Cada visualización indica as súas fontes e a data dos datos.</p>
@@ -122,5 +160,23 @@ main{padding-block:40px 72px}
     <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
   </div>
 </footer>
+
+<script>
+(() => {
+  const botons = [...document.querySelectorAll('.tema')];
+  const tarxetas = [...document.querySelectorAll('.tarxeta')];
+  const baleiro = document.getElementById('baleiro');
+  function filtrar(tema) {
+    botons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tema === tema)));
+    let n = 0;
+    tarxetas.forEach(t => {
+      const ok = !tema || t.dataset.temas.split('|').includes(tema);
+      t.hidden = !ok; if (ok) n++;
+    });
+    baleiro.hidden = n > 0;
+  }
+  botons.forEach(b => b.addEventListener('click', () => filtrar(b.dataset.tema)));
+})();
+</script>
 </body>
 </html>

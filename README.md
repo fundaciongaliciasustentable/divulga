@@ -23,8 +23,9 @@ fontes/<slug>/           datos e scripts que xeran v/<slug>/ (non se suben)
 2. Engade unha miniatura cadrada `v/<slug>/thumb.svg` (ou `.png`, 600×600).
 3. Engade a entrada en `visualizacions.json` (`slug`, `titulo`, `entradilla`,
    `data` AAAA-MM-DD, `temas`, `formato`, `fontes`).
-4. `python3 build.py` rexenera a portada. A máis recente sae destacada; o resto
-   pasa a «Arquivo».
+4. `python3 build.py` rexenera a portada: unha grella de tarxetas da máis
+   recente á máis antiga, ao xeito de informationisbeautiful.net. Os `temas`
+   do manifesto convértense en botóns de filtro.
 5. Garda os datos e scripts en `fontes/<slug>/` para poder reproducila.
 
 ## Vista previa local
