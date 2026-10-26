@@ -44,6 +44,17 @@ Rexenera a portada e deixa en `dist/` (e en `divulga-web.zip`) só os ficheiros
 públicos. Sube o contido de `dist/` á raíz do subdominio en Dinahosting, ou
 sube o zip e descomprímeo alí.
 
+Non borres `api/datos/` no servidor ao subir: aí viven os votos de
+`habelos-hainos`, que non van no paquete.
+
+## Votación (api/)
+
+`api/votos.php` garda os votos «Críaste este mito?» de `v/habelos-hainos/`
+nun JSON dentro de `api/datos/` (bloqueado por `.htaccess`). Precisa PHP 7.4
+ou superior e permiso de escritura en `api/datos/`. Os identificadores dos
+mitos de `votos.php` teñen que coincidir cos `IDS` da páxina. Sen PHP (por
+exemplo, coa vista previa local) a páxina funciona e oculta a votación.
+
 ## Imaxe de marca
 
 A cabeceira usa a mesma foto (Unsplash) e o mesmo degradado que a portada de
@@ -58,6 +69,7 @@ Display e Lato).
 | poboacion-galicia | INE Padrón municipal 2025 (táboas 2868, 2880, 2885, 2890) e PERE 2026 (táboa 71117) | `cd fontes/poboacion-galicia && npm i && python3 prep.py && node layout.js s51 && python3 render.py` |
 
 | biblioteca-sustentable | `fontes/biblioteca-sustentable/libros.json` (selección FGS) e portadas de Open Library | `python3 fontes/biblioteca-sustentable/render.py` |
+| habelos-hainos | AEMET, MeteoGalicia, IGE, INEGA, Xunta, ICCT e outras (fonte enlazada en cada mito) | editar o array `MITOS` de `v/habelos-hainos/index.html` a man; votos en `api/votos.php` |
 
 ### Engadir libros á Biblioteca Sustentable
 

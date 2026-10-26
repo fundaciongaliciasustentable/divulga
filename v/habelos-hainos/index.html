@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Habelos, hainos — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="17 ideas sobre Galicia e a sustentabilidade que repetimos sen comprobar, contrastadas con datos oficiais. Vota se as crías e compara coa demais xente.">
+<meta property="og:title" content="Habelos, hainos: mitos sobre Galicia e a sustentabilidade">
+<meta property="og:description" content="17 mitos contrastados con datos de AEMET, IGE, INEGA, Xunta e outras fontes. Críaslos?">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Mosaico de mitos ao xeito de Common MythConceptions: cor por tema, interruptor mito/dato, ficha con votación */
+:root{
+  --line:var(--gs-gris-20); --muted:var(--gs-gris-50); --head:var(--gs-verde-nato);
+  --c-clima:var(--gs-azul); --c-monte:var(--gs-terra); --c-enerxia:var(--gs-oliva);
+  --c-mar:#4A7C59; --c-rural:var(--gs-viola); --c-consumo:var(--gs-verde-nato);
+  --falso:#A64040; --medias:#B5761F; --tint:9%;
+}
+main.inner{padding-block:40px 64px}
+.hero{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:32px;align-items:end}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+h1{font-family:var(--gs-font-display);font-weight:900;font-size:clamp(44px,8vw,88px);line-height:.95;color:var(--head);margin:0;letter-spacing:-.01em}
+h1 em{font-weight:400}
+.lede{max-width:62ch;margin:18px 0 0;font-size:1.1rem}
+.saying{font-family:var(--gs-font-display);font-style:italic;font-size:17px;color:var(--head);border-left:2px solid var(--gs-verde-claro);padding-left:16px;margin:0}
+.saying span{display:block;font-style:normal;font-family:var(--gs-font-corpo);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-top:6px;color:var(--muted)}
+
+.controls{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;
+  border-block:1px solid var(--line);padding-block:14px;margin:32px 0 14px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--gs-gris-05);z-index:5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:700 12px/1 var(--gs-font-corpo);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);
+  background:transparent;color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block;background:var(--c)}
+.chip .n{font-weight:400;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato);border-color:transparent}
+.switch{display:inline-flex;border:1.5px solid var(--gs-verde-nato);border-radius:999px;padding:3px;background:var(--gs-branco)}
+.switch button{font:700 12px/1 var(--gs-font-corpo);letter-spacing:.06em;text-transform:uppercase;border:0;background:transparent;color:var(--gs-verde-nato);padding:8px 14px;border-radius:999px;cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--gs-verde-nato);color:var(--gs-branco)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);margin-bottom:22px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.total{font-variant-numeric:tabular-nums;font-weight:700;color:var(--gs-verde-nato)}
+
+.stamp{font:900 11px/1 var(--gs-font-corpo);letter-spacing:.14em;text-transform:uppercase;padding:5px 7px 4px;border:2px solid currentColor;border-radius:3px;display:inline-block;white-space:nowrap;font-style:normal}
+.stamp.falso{color:var(--falso)}
+.stamp.medias{color:var(--medias)}
+
+.mosaic{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));grid-auto-flow:dense;gap:10px}
+.tile{--c:var(--c-consumo);position:relative;text-align:left;border:0;cursor:pointer;color:var(--gs-negro);
+  background:color-mix(in srgb,var(--c) var(--tint),var(--gs-branco));border-top:5px solid var(--c);border-radius:2px;
+  padding:16px 18px 18px;min-height:210px;display:flex;flex-direction:column;gap:12px;font:inherit;transition:transform .18s ease,box-shadow .18s ease}
+.tile:hover{transform:translateY(-2px);box-shadow:0 6px 18px -10px color-mix(in srgb,var(--c) 60%,transparent)}
+.tile.big{grid-column:span 2}
+@media (max-width:520px){.tile.big{grid-column:span 1}}
+.tile .cat{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--c);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.tile .myth{font-family:var(--gs-font-display);font-weight:700;font-size:21px;line-height:1.2;text-wrap:balance}
+.tile.big .myth{font-size:clamp(24px,2.6vw,30px)}
+.tile .myth q{quotes:"«" "»"}
+.tile .truth{display:none;flex-direction:column;gap:6px}
+.tile .fig{font-family:var(--gs-font-display);font-weight:900;font-size:40px;line-height:1;color:var(--c);font-variant-numeric:lining-nums tabular-nums}
+.tile.big .fig{font-size:56px}
+.tile .figl{font-size:13px;color:var(--muted);line-height:1.35}
+.tile .short{font-size:15px;line-height:1.45;color:var(--gs-gris-80)}
+.tile .pollmini{display:grid;gap:4px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tile .pollmini .bar{height:5px;background:color-mix(in srgb,var(--c) 18%,transparent);border-radius:3px;overflow:hidden}
+.tile .pollmini .bar i{display:block;height:100%;background:var(--c)}
+.tile .more{margin-top:auto;font-size:12px;font-weight:700;color:var(--c);letter-spacing:.04em;display:flex;justify-content:space-between;gap:8px}
+.mosaic.reality .tile .myth{font-size:15px;font-family:var(--gs-font-corpo);font-weight:400;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--falso);text-decoration-thickness:1.5px}
+.mosaic.reality .tile .truth{display:flex}
+.tile[data-cat="clima"]{--c:var(--c-clima)} .tile[data-cat="monte"]{--c:var(--c-monte)} .tile[data-cat="enerxia"]{--c:var(--c-enerxia)}
+.tile[data-cat="mar"]{--c:var(--c-mar)} .tile[data-cat="rural"]{--c:var(--c-rural)} .tile[data-cat="consumo"]{--c:var(--c-consumo)}
+
+dialog{border:0;padding:0;border-radius:var(--gs-radius-card);max-width:min(680px,calc(100vw - 32px));width:100%;background:var(--gs-branco);color:var(--gs-gris-80);box-shadow:0 30px 80px -20px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(20,22,18,.55)}
+.d-head{--c:var(--c-consumo);border-top:6px solid var(--c);background:color-mix(in srgb,var(--c) var(--tint),var(--gs-branco));padding:22px 26px 20px;display:grid;gap:12px}
+.d-head .cat{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--c)}
+.d-head h2{font-family:var(--gs-font-display);font-weight:700;font-size:clamp(22px,3.4vw,28px);line-height:1.15;color:var(--gs-negro);margin:0;text-wrap:balance;padding-right:30px}
+.d-body{padding:22px 26px 26px;display:grid;gap:18px}
+.d-fig{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.d-fig b{font-family:var(--gs-font-display);font-weight:900;font-size:52px;line-height:1;color:var(--c)}
+.d-fig span{color:var(--muted);font-size:14px;max-width:34ch}
+.d-body p{margin:0}
+.d-q{font-family:var(--gs-font-display);font-style:italic;font-size:18px;color:var(--gs-verde-nato);border-left:3px solid var(--gs-verde-claro);padding-left:14px}
+.d-src{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.d-src ul{margin:6px 0 0;padding-left:18px}
+.d-close{position:absolute;top:10px;right:10px;border:0;background:var(--gs-branco);color:var(--gs-gris-80);width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer}
+.d-nav{display:flex;justify-content:space-between;gap:8px}
+.d-nav button{font:700 13px/1 var(--gs-font-corpo);border:1.5px solid var(--line);background:var(--gs-branco);color:var(--gs-gris-80);padding:10px 14px;border-radius:var(--gs-radius);cursor:pointer}
+
+.poll{background:var(--gs-gris-10);border:1px solid var(--line);border-radius:var(--gs-radius-card);padding:16px 18px;display:grid;gap:12px}
+.poll-q{font-family:var(--gs-font-display);font-weight:700;font-size:20px;color:var(--gs-negro)}
+.poll-btns{display:flex;flex-wrap:wrap;gap:8px}
+.poll-btns button{font:700 14px/1 var(--gs-font-corpo);padding:11px 18px;border-radius:999px;border:1.5px solid var(--c);background:var(--gs-branco);color:var(--gs-negro);cursor:pointer}
+.poll-btns button[aria-pressed="true"]{background:var(--c);color:var(--gs-branco)}
+.poll-btns button:disabled{opacity:.5;cursor:wait}
+.poll-res{display:grid;gap:6px;font-size:13.5px;font-variant-numeric:tabular-nums}
+.poll-res .bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--line)}
+.poll-res .bar .si{background:var(--c)}
+.poll-res .bar .non{background:color-mix(in srgb,var(--c) 28%,var(--gs-branco))}
+.poll-res .lbl{display:flex;justify-content:space-between;gap:8px}
+.poll-note{margin:0;font-size:13px;color:var(--muted)}
+
+.about{margin-top:56px;border-top:1px solid var(--line);padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.about h2{font-family:var(--gs-font-display);font-weight:700;font-size:22px;color:var(--head);margin:0 0 8px}
+.about p{margin:0 0 10px;font-size:15px}
+@media (prefers-reduced-motion:reduce){.tile{transition:none}.tile:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+
+<main class="inner">
+  <div class="hero">
+    <div>
+      <h1>Habelos,<br><em>hainos.</em></h1>
+      <p class="lede"><strong>Dezasete ideas sobre Galicia e a sustentabilidade</strong> que repetimos sen comprobar. Cada unha, contrastada con datos oficiais e coa súa fonte á vista. Antes de ler os datos, di se o criches.</p>
+    </div>
+    <p class="saying">«Eu non creo nas meigas, mais habelas, hainas.»<span>Dito popular · cos mitos pasa igual</span></p>
+  </div>
+
+  <div class="controls">
+    <div class="chips" id="chips" role="group" aria-label="Filtrar por tema"></div>
+    <div class="switch" role="group" aria-label="Que mostrar">
+      <button type="button" id="btn-mito" aria-pressed="true">O mito</button>
+      <button type="button" id="btn-real" aria-pressed="false">O dato</button>
+    </div>
+  </div>
+  <div class="legend">
+    <span><i class="stamp falso">Falso</i> os datos contradín a crenza</span>
+    <span><i class="stamp medias">A medias</i> ten parte de verdade, pero engana</span>
+    <span>Preme nun cadro, di se o criches e mira datos e fontes</span>
+    <span class="total" id="total" hidden></span>
+  </div>
+  <div class="mosaic" id="mosaic"></div>
+
+  <section class="about" aria-label="Sobre esta peza">
+    <div>
+      <h2>Como se fixo</h2>
+      <p>Cada cifra procede dunha fonte primaria (AEMET, MeteoGalicia, IGE, INEGA, Xunta de Galicia, ministerios ou estudos científicos) e leva o seu ano. Cando as fontes discrepan, mostramos as dúas. O veredicto é <em>falso</em> cando os datos contradín a crenza e <em>a medias</em> cando ten parte de verdade pero leva a unha conclusión errada.</p>
+    </div>
+    <div>
+      <h2>De onde vén a idea</h2>
+      <p>O formato inspírase en <a href="https://informationisbeautiful.net/visualizations/common-mythconceptions/" target="_blank" rel="noopener">Common MythConceptions</a>, de David McCandless (Information is Beautiful): un mosaico de mitos, cor por tema e unha fonte detrás de cada corrección.</p>
+    </div>
+    <div>
+      <h2>Propón un mito</h2>
+      <p>Coñeces outra crenza sobre Galicia que mereza comprobarse? Escríbenos a <strong>contacto@fundaciongaliciasustentable.gal</strong>. Os votos son anónimos: só gardamos un identificador aleatorio do navegador.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537 · CC BY-NC-SA 4.0</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+
+<dialog id="detail" aria-labelledby="d-title">
+  <button class="d-close" type="button" aria-label="Pechar" id="d-close">×</button>
+  <div class="d-head" id="d-head">
+    <div class="cat" id="d-cat"></div>
+    <h2 id="d-title"></h2>
+    <div id="d-stamp"></div>
+  </div>
+  <div class="d-body">
+    <div class="poll" id="d-poll" hidden>
+      <div class="poll-q">Críaste este mito?</div>
+      <div class="poll-btns">
+        <button type="button" id="v-si" aria-pressed="false">Si, críao</button>
+        <button type="button" id="v-non" aria-pressed="false">Non</button>
+      </div>
+      <div class="poll-res" id="d-res" hidden></div>
+      <p class="poll-note" id="d-note"></p>
+    </div>
+    <div class="d-fig"><b id="d-fig"></b><span id="d-figl"></span></div>
+    <div id="d-text" style="display:grid;gap:12px"></div>
+    <p class="d-q" id="d-q"></p>
+    <div class="d-src"><strong>Fontes</strong><ul id="d-src"></ul></div>
+    <div class="d-nav"><button type="button" id="d-prev">← Anterior</button><button type="button" id="d-next">Seguinte →</button></div>
+  </div>
+</dialog>
+
+<script>
+const CATS = {
+  clima:   {n:"Clima e auga", v:"--c-clima"},
+  monte:   {n:"Monte e lume", v:"--c-monte"},
+  enerxia: {n:"Enerxía", v:"--c-enerxia"},
+  mar:     {n:"Mar e alimentación", v:"--c-mar"},
+  rural:   {n:"Rural e territorio", v:"--c-rural"},
+  consumo: {n:"Hábitos", v:"--c-consumo"}
+};
+const MITOS = [
+ {cat:"clima", v:"falso", big:true,
+  mito:"En Galicia chove sempre.",
+  fig:"811 mm", figl:"de choiva ao ano en Ourense, menos da metade que en Santiago (1.787 mm)",
+  short:"Galicia ten varios climas. Ourense suma 2.054 horas de sol e máximas medias de 30 °C en xullo e agosto.",
+  txt:["Nas normais climatolóxicas de AEMET (1981–2010), Santiago de Compostela rexistra 1.787 mm anuais e 140 días de choiva. Ourense queda en 811 mm e 97 días, con 2.054 horas de sol ao ano.",
+       "Entre a fachada atlántica e os vales do interior hai diferenzas maiores ca entre moitas rexións europeas. Tratar Galicia como un bloque chuvioso esconde secas estivais e calores intensas no interior."],
+  q:"Como cambiaría a planificación do rego, dos incendios ou do turismo se pensásemos en «as Galicias» climáticas?",
+  src:[["AEMET, valores normais Santiago Aeroporto 1981–2010","https://www.aemet.es/gl/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=1428"],["AEMET, valores normais Ourense 1981–2010","https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=1690A"]]},
+ {cat:"clima", v:"falso",
+  mito:"Aquí sobra auga: en Galicia non hai secas.",
+  fig:"−48 %", figl:"caudal dos ríos de Galicia-Costa en abril de 2022 respecto do normal",
+  short:"En 2022 toda a demarcación Galicia-Costa estivo en prealerta por seca, e Vigo, Baiona e Nigrán pasaron a medidas de alerta.",
+  txt:["En abril de 2022 a Xunta estendeu a prealerta por seca a toda a demarcación Galicia-Costa. Os caudais dese mes estiveron un 48 % por debaixo do habitual, e en setembro os sistemas Zamáns e Baíña, que abastecen Nigrán, Baiona e parte de Vigo, pasaron a medidas de alerta.",
+       "Houbo novas prealertas en 2023, 2024 e 2025. Chover moito no ano non garante auga no verán, cando a demanda sobe e os ríos baixan."],
+  q:"Están os concellos galegos preparados para veráns máis secos con máis demanda turística?",
+  src:[["Xunta: prealerta por seca en toda Galicia-Costa (2022)","https://www.xunta.gal/gl/hemeroteca/-/nova/145370/xunta-amplia-declaracion-prealerta-por-seca-toda-conca-galicia-costa-como-medida"],["Xunta: alerta nos sistemas Zamáns e Baíña (2022)","https://www.xunta.gal/hemeroteca/-/nova/156644/oficina-tecnica-seca-eleva-situacion-alerta-por-escaseza-sistemas-zamans-baina"]]},
+ {cat:"clima", v:"falso",
+  mito:"O cambio climático notarase aquí dentro de moitos anos.",
+  fig:"+0,2 °C", figl:"por década: ritmo de quecemento en Galicia segundo MeteoGalicia",
+  short:"2022, 2023 e 2024 foron os tres anos máis cálidos en Galicia desde que hai rexistros, en 1961.",
+  txt:["MeteoGalicia estima unha tendencia de quecemento de 0,2 °C por década, algo inferior á media estatal de 0,25 °C. O ano 2024, cunha media de 14,7 °C, foi o terceiro máis cálido desde 1961, só por detrás de 2022 e 2023.",
+       "O cambio xa se mide en temperaturas, avisos meteorolóxicos e episodios de seca."],
+  q:"Que sectores galegos dependen máis de que o clima siga como era: o viño, o marisqueo, o leite?",
+  src:[["Xunta / MeteoGalicia: 2024, terceiro ano máis cálido","https://www.xunta.gal/es/notas-de-prensa/-/nova/008938/galicia-registro-2024-tercer-ano-mas-calido-las-ultimas-seis-decadas"],["elDiario.es: balance meteorolóxico 2025 (declaracións de MeteoGalicia)","https://www.eldiario.es/galicia/galicia-paso-mitad-dias-2025-aviso-meteorologico-activo_1_12921596.html"]]},
+ {cat:"monte", v:"falso", big:true,
+  mito:"Os incendios son cousa de pirómanos.",
+  fig:"6,5 %", figl:"dos lumes en Galicia atribuíbles a pirómanos, segundo investigación da Universidade de Vigo",
+  short:"A maioría dos lumes son intencionados, pero obra de incendiarios con motivos ligados ao uso do territorio, sen trastorno psiquiátrico.",
+  txt:["A Unidade de Investigación de Incendios Forestais calcula que entre o 60 % e o 70 % dos lumes son provocados, e preto do 80 % en épocas de risco. A investigadora María Calviño (UVigo) estima que os pirómanos, persoas cun trastorno, explican arredor do 6,5 %.",
+       "Os motivos máis comúns son conflitos veciñais, queimas agrícolas ou disputas sobre o uso da terra. Falar de pirómanos desvía a atención da xestión do monte e dos conflitos rurais."],
+  q:"Se o lume ten causas sociais, que parte da prevención debería ser mediación e ordenación do territorio?",
+  src:[["Ecoticias: incendios provocados en Galicia (declaracións da UIFO)","https://www.ecoticias.com/?p=235872"],["El Salto: datos de M. Calviño (UVigo) sobre pirómanos","https://www.elsaltodiario.com/incendios/pp-agita-mito-pirómano-territorios-arden-gobierna-derecha"]]},
+ {cat:"monte", v:"falso",
+  mito:"O monte galego é público.",
+  fig:"98 %", figl:"da propiedade forestal galega é privada",
+  short:"Arredor de 3.000 comunidades de montes veciñais xestionan máis de 700.000 ha; o resto pertence a máis de 675.000 familias.",
+  txt:["Segundo o Decreto 52/2014 da Xunta, o 98 % do monte galego é de propiedade privada. Inclúe uns 3.000 montes veciñais en man común, unha forma colectiva singular en Europa con máis de 700.000 hectáreas, e 1,3 millóns de hectáreas repartidas entre máis de 675.000 familias.",
+       "Calquera política forestal pasa por convencer miles de propietarios, non por ordenar unha administración."],
+  q:"Como se coordina a xestión dun monte repartido entre centos de miles de persoas propietarias?",
+  src:[["Decreto 52/2014, Xunta de Galicia","https://ovmediorural.xunta.gal/sites/default/files/auxiliar/decreto_52_2014.pdf"]]},
+ {cat:"monte", v:"falso",
+  mito:"O eucalipto sempre formou parte da paisaxe galega.",
+  fig:"×3", figl:"superficie con eucalipto: de 131.181 ha (1972–73) a 419.051 ha (2023)",
+  short:"Chegou de Australia no século XIX e triplicou a súa superficie en medio século.",
+  txt:["O eucalipto é unha especie exótica introducida en Galicia no século XIX. O Inventario Forestal Nacional de 1972–73 situábao en 131.181 ha; o Inventario Forestal Continuo de Galicia de 2023 recolle 419.051 ha.",
+       "A súa expansión explica boa parte da renda forestal galega e tamén da perda de bosque autóctono, polo que a Xunta mantén unha moratoria a novas plantacións."],
+  q:"Que modelo forestal queremos para 2050, e quen o decide?",
+  src:[["elDiario.es: evolución da superficie de eucalipto","https://www.eldiario.es/galicia/superficie-eucalipto-disparado-galicia-comienzos_1_3316310.html"],["Greenpeace: declaración pola moratoria do eucalipto (2025), con datos do IFCG 2023","https://es.greenpeace.org/es/wp-content/uploads/sites/3/2025/04/Declaracion-por-la-prolongacion-de-la-moratoria-al-eucalipto-Galicia-23abril2025.docx.pdf"]]},
+ {cat:"monte", v:"medias",
+  mito:"Galicia é tan verde que está ben protexida.",
+  fig:"≈12 %", figl:"do territorio galego en Rede Natura, fronte ao 27 % de media en España",
+  short:"Verde non equivale a protexido: Galicia está entre as comunidades con menos superficie en Rede Natura 2000.",
+  txt:["Os lugares de importancia comunitaria (LIC) da Rede Natura ocupan o 11,7 % da superficie terrestre de Galicia. En España, a Rede Natura terrestre cubre arredor do 27 %. Xa en 2008 o Anuario Forestal sinalaba Galicia como a única comunidade con menos dun 20 % de superficie protexida.",
+       "Unha paisaxe verde pode ser unha plantación, unha pradaría intensiva ou un bosque maduro. A cor non mide a biodiversidade."],
+  q:"Que espazos valiosos de Galicia quedan fóra de calquera figura de protección?",
+  src:[["DOG 2012: Rede Natura en Galicia","https://www.xunta.gal/dog/Publicados/2012/20121005/AnuncioCA02-011012-0008_gl.html"],["MAPA, Anuario de Estatística 2017: Rede Natura por comunidade","https://www.mapa.gob.es/estadistica/pags/anuario/2017/CAPITULOSPDF/CAPITULO12/pdfc12_6.1.1.pdf"],["MITECO, Anuario Forestal 2008","https://www.miteco.gob.es/content/dam/miteco/es/biodiversidad/estadisticas/4_2008_tcm30-132250.pdf"]]},
+ {cat:"monte", v:"falso",
+  mito:"A herba da pampa é só unha planta decorativa.",
+  fig:"800.000", figl:"sementes pode producir unha soa planta femia",
+  short:"Está no Catálogo Español de Especies Exóticas Invasoras desde 2013 e esténdese por cunetas, polígonos e beiras de ríos.",
+  txt:["Todas as especies do xénero Cortaderia figuran no Catálogo Español de Especies Exóticas Invasoras (Real Decreto 630/2013), o que prohibe a súa venda e plantación. A Cornixa Cantábrica e Galicia están entre as zonas máis afectadas.",
+       "O vento dispersa as sementes a longa distancia, así que cada plumacho de xardín pode orixinar focos novos a quilómetros."],
+  q:"Cantas plantas invasoras seguimos plantando por descoñecemento?",
+  src:[["MITECO: ficha de Cortaderia spp.","https://www.miteco.gob.es/es/biodiversidad/temas/conservacion-de-especies/mtjcortaderiaactualizada_tcm30-498069.pdf"],["EPPO Global Database: Cortaderia selloana","https://gd.eppo.int/taxon/CDTSE/distribution/ES"]]},
+ {cat:"enerxia", v:"medias", big:true,
+  mito:"Galicia é unha potencia renovable: vive de enerxía limpa.",
+  fig:"85 % / 26 %", figl:"renovable na electricidade xerada (2024) fronte ao conxunto da enerxía primaria",
+  short:"A electricidade é case toda renovable, pero o transporte, a industria e a calefacción seguen dependendo de combustibles fósiles importados.",
+  txt:["Segundo o INEGA, o 85,2 % da electricidade xerada en Galicia en 2024 foi renovable, sobre todo hidráulica e eólica. Mais a electricidade é só unha parte da enerxía que usamos.",
+       "O informe de Greenpeace e o Observatorio Galego de Acción Climática (2023) calcula que só o 25,8 % da enerxía primaria empregada en Galicia é renovable, e que arredor de tres cuartas partes dos recursos enerxéticos son importados."],
+  q:"Se a electricidade xa é limpa, como electrificamos o transporte e a calor?",
+  src:[["INEGA: evolución da xeración de electricidade (2026)","https://www.inega.gal/sites/default/files/publicacions/20260331_evolucion_xeracion_electricidade.pdf"],["Energías Renovables: informe Greenpeace e OGACLI (2023)","https://www.energias-renovables.com/panorama/greenpeace-desmonta-el-bulo-de-la-20231212"]]},
+ {cat:"enerxia", v:"falso",
+  mito:"Aquí non compensan as placas solares: non hai sol.",
+  fig:"> Alemaña", figl:"radiación solar en Galicia segundo o Atlas de Radiación Solar de MeteoGalicia",
+  short:"Galicia recibe máis radiación ca Alemaña, un dos países europeos con máis fotovoltaica instalada.",
+  txt:["O Atlas de Radiación Solar elaborado por MeteoGalicia, con 23 anos de datos de satélite e 75 estacións, conclúe que Galicia ten un índice de radiación maior que o de Alemaña. As Rías Baixas e o interior de Ourense son as zonas con máis potencial.",
+       "O autoconsumo en tellados, naves e explotacións agrarias aproveita ese recurso sen ocupar solo."],
+  q:"Cantos tellados públicos dos 313 concellos galegos teñen xa placas?",
+  src:[["Energías Renovables: Galicia ten sol para ser unha potencia","https://www.energias-renovables.com/fotovoltaica/galicia-tiene-sol-para-ser-una-potencia"],["AEMET: horas de sol en Ourense","https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=1690A"]]},
+ {cat:"enerxia", v:"falso",
+  mito:"Contando a batería, o coche eléctrico contamina máis.",
+  fig:"−66 %", figl:"emisións no ciclo de vida dun eléctrico medio en Europa fronte a un de gasolina (mínimo da estimación)",
+  short:"Incluída a fabricación da batería, o eléctrico emite entre un 66 % e un 69 % menos ao longo da súa vida útil.",
+  txt:["O estudo do ICCT (2021) compara o ciclo de vida completo, desde a fabricación ata o uso. Un eléctrico medio matriculado en Europa emite entre un 66 % e un 69 % menos gases de efecto invernadoiro ca un de gasolina equivalente.",
+       "Cunha rede tan renovable como a galega, a vantaxe aquí é aínda maior. O coche máis sustentable segue sendo o que non fai falta usar."],
+  q:"Que alternativas ao coche privado existen hoxe no rural galego?",
+  src:[["ICCT: comparación global do ciclo de vida de coches (2021)","https://theicct.org/publication/a-global-comparison-of-the-life-cycle-greenhouse-gas-emissions-of-combustion-engine-and-electric-passenger-cars/"]]},
+ {cat:"mar", v:"medias",
+  mito:"A acuicultura sempre contamina o mar.",
+  fig:"> 95 %", figl:"da acuicultura mariña galega (191.219 t en 2024) é mexillón en batea",
+  short:"O mexillón de batea non leva pensos: aliméntase filtrando a auga da ría. A súa sorte depende da calidade do mar.",
+  txt:["En 2024 a acuicultura mariña galega produciu 191.219 toneladas, e o mexillón supuxo máis do 95 %. Cultívase en arredor de 3.300 bateas e non necesita pensos nin fármacos, porque se alimenta do fitoplancto da ría.",
+       "Outras acuiculturas, como a de peixe en gaiola, teñen impactos diferentes. E o mexillón é moi sensible á contaminación e ás mareas vermellas: depende dunha ría sa."],
+  q:"Que relación hai entre o saneamento dos concellos costeiros e o futuro do mexillón?",
+  src:[["Mercasa: alimentación en Galicia, datos IGE 2024","https://www.mercasa.es/wp-content/uploads/2026/02/galicia.pdf"],["Consumer: entrevista a Uxío Labarta (IIM-CSIC)","https://www.consumer.es/seguridad-alimentaria/uxio-labarta-instituto-de-investigaciones-marinas-de-vigo.html"]]},
+ {cat:"mar", v:"falso",
+  mito:"A gandaría de leite galega é residual.",
+  fig:"41 %", figl:"do leite de vaca producido en España sae de Galicia (2024)",
+  short:"Galicia produciu en 2024 máis de 3 millóns de toneladas de leite, a primeira comunidade de España con moita diferenza.",
+  txt:["O informe de EY sobre o sector lácteo galego sitúa a produción en 3,07 millóns de toneladas en 2024, o 41 % do total español, fronte ao 39 % de 2015.",
+       "Producir máis con menos granxas tamén concentra impactos: xurros, dependencia de pensos importados e presión sobre as terras. O reto é que o sector siga sendo viable e sustentable no territorio."],
+  q:"Como se reparte o valor do leite entre granxas, industria e distribución?",
+  src:[["EY: informe do sector lácteo en Galicia (2026)","https://www.ey.com/content/dam/ey-unified-site/ey-com/es-es/insights/government-public-sector/documents/ey-informe-sector-lacteo-galicia2026.pdf"],["Xunta: importancia da produción láctea","https://www.xunta.gal/notas-de-prensa/-/nova/015063/medio-rural-salienta-importancia-producion-industria-lactea-sector-primario-galego"]]},
+ {cat:"consumo", v:"medias",
+  mito:"Comer local é o que máis reduce a pegada da dieta.",
+  fig:"5–6 %", figl:"das emisións dos alimentos débense ao transporte, segundo Our World in Data",
+  short:"O que comemos pesa máis ca de onde vén. O consumo local ten outras vantaxes: renda no rural e circuítos curtos.",
+  txt:["Our World in Data, a partir de Poore e Nemecek (2018), estima que o transporte supón un 5–6 % das emisións dos alimentos; a maior parte xérase no cambio de uso do solo e na granxa. Un estudo de 2022 en Nature Food eleva esa cifra ao 19 % ao contar toda a cadea loxística.",
+       "Comprar local segue tendo sentido para a economía rural, pero para o clima conta máis o tipo de alimento e o desperdicio."],
+  q:"Como se comunica o valor do produto local sen prometer un beneficio climático que non sempre ten?",
+  src:[["Our World in Data: transporte de alimentos","https://ourworldindata.org/food-transport-by-mode"],["Scimex: estudo da Universidade de Sydney en Nature Food (2022)","https://www.scimex.org/newsfeed/eat-local-food-miles-account-for-almost-20-of-all-food-emissions"]]},
+ {cat:"rural", v:"falso", big:true,
+  mito:"De Galicia só se marcha: aquí xa non vén ninguén.",
+  fig:"25.738", figl:"persoas de saldo migratorio positivo en 2023, o segundo máis alto da serie do IGE",
+  short:"Galicia recibe máis poboación da que perde, aínda que iso non compensa o baixo número de nacementos.",
+  txt:["Segundo o IGE, o saldo migratorio galego de 2023 foi de 25.738 persoas, o segundo máis alto da serie. A poboación estranxeira residente acadou o 5,7 % a comezos de 2024. Chegan persoas doutros países e tamén de Madrid, Cataluña ou o País Vasco.",
+       "A chegada concéntrase nas cidades e na costa. O rural interior segue envellecendo, e o saldo natural continúa sendo negativo."],
+  q:"Que precisa un concello do interior para que a xente que chega a Galicia queira instalarse nel?",
+  src:[["IGE: Indicadores migratorios 2025","https://www.ige.gal/estatico/html/gl/OperacionsEstruturais/PDF/Indicadores_Migratorios_2025.pdf"],["Xunta: balance migratorio 2024","https://www.xunta.gal/es/notas-de-prensa/-/nova/019759/xunta-destaca-que-galicia-conseguido-mejor-balance-migratorio-historia-con-saldo"]]},
+ {cat:"rural", v:"falso",
+  mito:"O minifundio é cousa do pasado.",
+  fig:"0,26 ha", figl:"tamaño medio dunha parcela rústica galega, fronte a 1,21 ha en España",
+  short:"Galicia ten case 11 millóns de parcelas rústicas, arredor do 28 % das de España, con só o 6 % da superficie.",
+  txt:["En 2024 a superficie rústica galega era de 2,8 millóns de hectáreas repartidas en 10.892.783 parcelas (IGE). A media é dunha cuarta parte de hectárea, e cada titular ten de media 7,7 parcelas.",
+       "A fragmentación encarece a xestión, favorece o abandono e complica a prevención de incendios. Os polígonos agroforestais e as agrupacións de xestión conxunta intentan respostar a iso."],
+  q:"Como se poden xestionar xuntas terras que seguen tendo donos distintos?",
+  src:[["IGE: Datos básicos, Territorio","https://www.ige.gal/estatico/html/gl/DatosBasicos/PDF/Territorio.pdf"],["Revista Española de Estudios Agrosociales y Pesqueros, n.º 246","https://www.mapa.gob.es/ministerio/pags/biblioteca/revistas/pdf_REEAP/Pdf_REEAP_r246_61_84.pdf"]]},
+ {cat:"rural", v:"falso",
+  mito:"O lobo é un perigo para as persoas.",
+  fig:"93", figl:"mandas reprodutoras en Galicia (censo 2021–22), unha poboación estable",
+  short:"Non constan ataques a persoas en Galicia en décadas. O conflito real é cos danos ao gando.",
+  txt:["O censo da Xunta de 2021–2022 estima 93 mandas reprodutoras, fronte a 90 en 2013–2015: a poboación está estable. Cazadores e persoas expertas coinciden en que non hai ataques a persoas rexistrados e en que o lobo evita o contacto humano.",
+       "Os ataques ao gando si son un problema real para moitas explotacións, e a súa prevención e compensación é onde se xoga a convivencia."],
+  q:"Que medidas de prevención funcionan mellor para protexer o gando sen eliminar o lobo?",
+  src:[["Xunta: censo do lobo 2021–2022","https://www.xunta.gal/hemeroteca/-/nova/162906/censo-lobo-realizado-pola-xunta-estima-93-mandas-reprodutoras-galicia-confirma"],["Xataka: convivencia co lobo nunha aldea galega","https://www.xataka.com/magnet/pueblo-gallego-esta-empezando-a-convivir-lobos-como-fueran-perros-callejeros-eso-problema"]]}
+];
+// Identificadores estables: os votos gárdanse con eles. Deben coincidir cos de api/votos.php
+const IDS = ["chove","seca","quecemento","piromanos","monte-publico","eucalipto","proteccion","pampa","renovable","solar","electrico","acuicultura","leite","local","migracion","minifundio","lobo"];
+MITOS.forEach((m, i) => m.id = IDS[i]);
+
+const mosaic = document.getElementById('mosaic');
+const chips = document.getElementById('chips');
+const dlg = document.getElementById('detail');
+let filter = 'todos', reality = false, visible = [], cur = 0;
+
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const stamp = v => `<span class="stamp ${v}">${v === 'falso' ? 'Falso' : 'A medias'}</span>`;
+
+// Votación «Críaste este mito?»: os totais viven en api/votos.php; o voto propio, tamén no navegador
+const API = '../../api/votos.php';
+let pollOn = false, tally = {}, persoas = 0, busy = false, pollErr = '';
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v){ try { localStorage.setItem(k, v); } catch {} }
+};
+const votante = store.get('hh-votante') || (() => {
+  const id = (crypto.randomUUID ? crypto.randomUUID() : Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(16).padStart(2, '0')).join(''));
+  store.set('hh-votante', id); return id;
+})();
+let myVotes = {};
+try { myVotes = JSON.parse(store.get('hh-votos') || '{}') || {}; } catch { myVotes = {}; }
+
+const plural = n => n === 1 ? '1 voto' : `${n.toLocaleString('gl')} votos`;
+function result(id){
+  const t = tally[id]; const n = t ? t.si + t.non : 0;
+  return n ? {n, si: Math.round(100 * t.si / n)} : null;
+}
+function pollMini(id){
+  const r = pollOn && result(id); if (!r) return '';
+  return `<span class="pollmini"><span>${r.si} % críao · ${plural(r.n)}</span><span class="bar"><i style="width:${r.si}%"></i></span></span>`;
+}
+function applyTotals(j){
+  if (!j || typeof j.totais !== 'object') throw new Error('resposta');
+  tally = j.totais; persoas = j.persoas || 0;
+  const tot = document.getElementById('total');
+  tot.hidden = !persoas;
+  tot.textContent = persoas === 1 ? '1 persoa votou' : `${persoas.toLocaleString('gl')} persoas votaron`;
+}
+function loadTotals(){
+  return fetch(API, {cache: 'no-store'})
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(j => { applyTotals(j); pollOn = true; render(); if (dlg.open) refreshPoll(); })
+    .catch(() => { if (!pollOn) document.getElementById('d-poll').hidden = true; });
+}
+function refreshPoll(){
+  const box = document.getElementById('d-poll');
+  box.hidden = !pollOn; if (!pollOn) return;
+  const id = MITOS[cur].id, mine = myVotes[id], r = result(id);
+  const si = document.getElementById('v-si'), non = document.getElementById('v-non');
+  si.setAttribute('aria-pressed', mine === 'si'); non.setAttribute('aria-pressed', mine === 'non');
+  si.disabled = non.disabled = busy;
+  const res = document.getElementById('d-res');
+  res.hidden = !(mine && r);
+  if (r) res.innerHTML = `<div class="bar"><span class="si" style="width:${r.si}%"></span><span class="non" style="width:${100 - r.si}%"></span></div>
+    <div class="lbl"><span><b>${r.si} %</b> críao</span><span>${plural(r.n)}</span><span><b>${100 - r.si} %</b> non</span></div>`;
+  document.getElementById('d-note').textContent =
+    pollErr ? pollErr :
+    !mine ? 'Vota antes de ler os datos. Despois verás que respondeu o resto da xente.' :
+    'Podes cambiar o voto cando queiras.';
+}
+function vote(val){
+  const id = MITOS[cur].id;
+  if (busy || myVotes[id] === val) return;
+  busy = true; pollErr = ''; refreshPoll();
+  fetch(API, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({votante, mito: id, voto: val})})
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(j => {
+      applyTotals(j);
+      myVotes = {...myVotes, [id]: val}; store.set('hh-votos', JSON.stringify(myVotes));
+    })
+    .catch(e => { pollErr = e === 429 ? 'Demasiados votos desde esta conexión. Proba de novo máis tarde.' : 'Non se puido gardar o voto. Proba de novo máis tarde.'; })
+    .finally(() => { busy = false; refreshPoll(); render(); });
+}
+document.getElementById('v-si').onclick = () => vote('si');
+document.getElementById('v-non').onclick = () => vote('non');
+
+function renderChips(){
+  const counts = {};
+  MITOS.forEach(m => counts[m.cat] = (counts[m.cat] || 0) + 1);
+  const all = [['todos', 'Todos', MITOS.length, '--gs-verde-nato'], ...Object.entries(CATS).map(([k, c]) => [k, c.n, counts[k] || 0, c.v])];
+  chips.innerHTML = all.map(([k, n, c, v]) =>
+    `<button type="button" class="chip" style="--c:var(${v})" data-k="${k}" aria-pressed="${k === filter}">${k === 'todos' ? '' : '<i></i>'}${n} <span class="n">${c}</span></button>`).join('');
+}
+
+function render(){
+  visible = MITOS.map((m, i) => i).filter(i => filter === 'todos' || MITOS[i].cat === filter);
+  mosaic.classList.toggle('reality', reality);
+  mosaic.innerHTML = visible.map(i => {
+    const m = MITOS[i];
+    return `<button type="button" class="tile${m.big && filter === 'todos' ? ' big' : ''}" data-cat="${m.cat}" data-i="${i}" aria-label="${esc(m.mito)}. Ver ficha">
+      <span class="cat"><span>${CATS[m.cat].n}</span>${stamp(m.v)}</span>
+      <span class="myth"><q>${esc(m.mito)}</q></span>
+      <span class="truth"><span class="fig">${esc(m.fig)}</span><span class="figl">${esc(m.figl)}</span><span class="short">${esc(m.short)}</span></span>
+      ${pollMini(m.id)}
+      <span class="more"><span>Ver datos e fontes →</span>${pollOn && myVotes[m.id] ? '<span>✓ Votaches</span>' : ''}</span>
+    </button>`;
+  }).join('');
+}
+
+chips.addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  filter = b.dataset.k; renderChips(); render();
+});
+function setReality(r){
+  reality = r;
+  document.getElementById('btn-mito').setAttribute('aria-pressed', !r);
+  document.getElementById('btn-real').setAttribute('aria-pressed', r);
+  render();
+}
+document.getElementById('btn-mito').onclick = () => setReality(false);
+document.getElementById('btn-real').onclick = () => setReality(true);
+
+function openDetail(i){
+  cur = i; const m = MITOS[i];
+  document.getElementById('d-head').style.setProperty('--c', `var(${CATS[m.cat].v})`);
+  dlg.querySelector('.d-body').style.setProperty('--c', `var(${CATS[m.cat].v})`);
+  document.getElementById('d-cat').textContent = CATS[m.cat].n;
+  document.getElementById('d-title').textContent = '«' + m.mito + '»';
+  document.getElementById('d-stamp').innerHTML = stamp(m.v);
+  document.getElementById('d-fig').textContent = m.fig;
+  document.getElementById('d-figl').textContent = m.figl;
+  document.getElementById('d-text').innerHTML = m.txt.map(t => `<p>${esc(t)}</p>`).join('');
+  document.getElementById('d-q').textContent = m.q;
+  document.getElementById('d-src').innerHTML = m.src.map(([t, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('');
+  pollErr = '';
+  refreshPoll();
+  if (!dlg.open) { dlg.showModal(); loadTotals(); }
+  dlg.scrollTop = 0;
+}
+mosaic.addEventListener('click', e => { const t = e.target.closest('.tile'); if (t) openDetail(+t.dataset.i); });
+document.getElementById('d-close').onclick = () => dlg.close();
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+function step(d){ const p = visible.indexOf(cur); openDetail(visible[(p + d + visible.length) % visible.length]); }
+document.getElementById('d-prev').onclick = () => step(-1);
+document.getElementById('d-next').onclick = () => step(1);
+dlg.addEventListener('keydown', e => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); });
+
+renderChips(); render(); loadTotals();
+</script>
+</body>
+</html>
