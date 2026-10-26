@@ -21,10 +21,15 @@ a:hover{color:var(--gs-verde-claro)}
 :focus-visible{outline:2px solid var(--gs-verde-claro);outline-offset:3px}
 .inner{max-width:1120px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
 
-/* Barra superior común */
-.dv-bar{background:var(--gs-verde-nato);color:var(--gs-branco)}
-.dv-bar .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+/* Cabeceira común (criterios FGS): fondo verde nato, logo extendido branco
+   a 55 px como na navegación da web, un só logo por páxina. */
+.dv-bar{background:var(--gs-verde-nato);color:var(--gs-branco);font-family:var(--gs-font-corpo)}
+.dv-bar .inner{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:16px;flex-wrap:wrap}
 .dv-bar .logo img{height:55px;width:auto}
+.dv-bar .ident{display:flex;align-items:center;gap:18px}
+.dv-bar .sep{width:1px;height:36px;background:rgba(232,239,227,.45)}
+.dv-bar .seccion{font-family:var(--gs-font-display);font-weight:700;font-size:1.375rem;color:var(--gs-branco);text-decoration:none;letter-spacing:.01em}
+.dv-bar .seccion:hover{color:var(--gs-verde-moi-claro);text-decoration:underline;text-underline-offset:.2em}
 .dv-bar .marca{display:flex;align-items:center;gap:12px;color:var(--gs-branco);text-decoration:none}
 .dv-bar .marca svg{width:30px;height:30px}
 .dv-bar .marca svg path{fill:var(--gs-branco)}
@@ -32,9 +37,16 @@ a:hover{color:var(--gs-verde-claro)}
 .dv-bar nav a{color:var(--gs-verde-moi-claro);font-size:.875rem;text-decoration:none}
 .dv-bar nav a:hover{color:var(--gs-branco);text-decoration:underline}
 
-/* Pé común */
-.dv-foot{background:var(--gs-verde-nato);color:var(--gs-verde-moi-claro);font-size:.8rem}
-.dv-foot .inner{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;padding-block:22px}
+/* Pé común (criterios FGS): nome + CIF + web institucional, sen segundo logo */
+.dv-foot{background:var(--gs-verde-nato);color:var(--gs-verde-moi-claro);font-family:var(--gs-font-corpo);font-size:.75rem;line-height:1.5}
+.dv-foot .inner{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;padding-block:20px}
 .dv-foot a{color:var(--gs-verde-moi-claro)}
+.dv-foot a:hover{color:var(--gs-branco)}
+@media (max-width:560px){
+  .dv-bar .logo img{height:44px}
+  .dv-bar .ident{gap:12px}
+  .dv-bar .sep{height:28px}
+  .dv-bar .seccion{font-size:1.15rem}
+}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
