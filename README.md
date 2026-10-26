@@ -70,6 +70,7 @@ Display e Lato).
 
 | biblioteca-sustentable | `fontes/biblioteca-sustentable/libros.json` (selección FGS) e portadas de Open Library | `python3 fontes/biblioteca-sustentable/render.py` |
 | habelos-hainos | AEMET, MeteoGalicia, IGE, INEGA, Xunta, ICCT e outras (fonte enlazada en cada mito) | editar o array `MITOS` de `v/habelos-hainos/index.html` a man; votos en `api/votos.php` |
+| galicia-cero-neto | Ogacli/MITECO (emisións 2024), INEGA, REE, DGT, Lei 1/2026 do clima; método en `fontes/galicia-cero-neto/README.md` | editar `SECTORS`, `SINK` e `ROADMAP` en `v/galicia-cero-neto/index.html` a man |
 
 ### Engadir libros á Biblioteca Sustentable
 
