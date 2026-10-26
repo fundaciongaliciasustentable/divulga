@@ -1,0 +1,2299 @@
+[{"COD":"DPOP6403", "Nombre":"Coruña, A. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":16, "T3_Variable":"Provincias", "Nombre":"Coruña, A", "Codigo":"15"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1135612.0}
+]
+}
+,{"COD":"DPOP6404", "Nombre":"Coruña, A. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":16, "T3_Variable":"Provincias", "Nombre":"Coruña, A", "Codigo":"15"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":544538.0}
+]
+}
+,{"COD":"DPOP6405", "Nombre":"Coruña, A. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":16, "T3_Variable":"Provincias", "Nombre":"Coruña, A", "Codigo":"15"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":591074.0}
+]
+}
+,{"COD":"DPOP6406", "Nombre":"Abegondo. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4757, "T3_Variable":"Municipios", "Nombre":"Abegondo", "Codigo":"15001"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5631.0}
+]
+}
+,{"COD":"DPOP6407", "Nombre":"Abegondo. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4757, "T3_Variable":"Municipios", "Nombre":"Abegondo", "Codigo":"15001"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2799.0}
+]
+}
+,{"COD":"DPOP6408", "Nombre":"Abegondo. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4757, "T3_Variable":"Municipios", "Nombre":"Abegondo", "Codigo":"15001"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2832.0}
+]
+}
+,{"COD":"DPOP6409", "Nombre":"Ames. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4758, "T3_Variable":"Municipios", "Nombre":"Ames", "Codigo":"15002"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":33276.0}
+]
+}
+,{"COD":"DPOP6410", "Nombre":"Ames. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4758, "T3_Variable":"Municipios", "Nombre":"Ames", "Codigo":"15002"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":15968.0}
+]
+}
+,{"COD":"DPOP6411", "Nombre":"Ames. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4758, "T3_Variable":"Municipios", "Nombre":"Ames", "Codigo":"15002"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":17308.0}
+]
+}
+,{"COD":"DPOP6412", "Nombre":"Aranga. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4759, "T3_Variable":"Municipios", "Nombre":"Aranga", "Codigo":"15003"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1793.0}
+]
+}
+,{"COD":"DPOP6413", "Nombre":"Aranga. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4759, "T3_Variable":"Municipios", "Nombre":"Aranga", "Codigo":"15003"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":917.0}
+]
+}
+,{"COD":"DPOP6414", "Nombre":"Aranga. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4759, "T3_Variable":"Municipios", "Nombre":"Aranga", "Codigo":"15003"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":876.0}
+]
+}
+,{"COD":"DPOP6415", "Nombre":"Ares. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4508, "T3_Variable":"Municipios", "Nombre":"Ares", "Codigo":"15004"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6275.0}
+]
+}
+,{"COD":"DPOP6416", "Nombre":"Ares. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4508, "T3_Variable":"Municipios", "Nombre":"Ares", "Codigo":"15004"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3086.0}
+]
+}
+,{"COD":"DPOP6417", "Nombre":"Ares. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4508, "T3_Variable":"Municipios", "Nombre":"Ares", "Codigo":"15004"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3189.0}
+]
+}
+,{"COD":"DPOP6418", "Nombre":"Arteixo. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4509, "T3_Variable":"Municipios", "Nombre":"Arteixo", "Codigo":"15005"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":34403.0}
+]
+}
+,{"COD":"DPOP6419", "Nombre":"Arteixo. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4509, "T3_Variable":"Municipios", "Nombre":"Arteixo", "Codigo":"15005"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":16968.0}
+]
+}
+,{"COD":"DPOP6420", "Nombre":"Arteixo. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4509, "T3_Variable":"Municipios", "Nombre":"Arteixo", "Codigo":"15005"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":17435.0}
+]
+}
+,{"COD":"DPOP6421", "Nombre":"Arzúa. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4510, "T3_Variable":"Municipios", "Nombre":"Arzúa", "Codigo":"15006"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5916.0}
+]
+}
+,{"COD":"DPOP6422", "Nombre":"Arzúa. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4510, "T3_Variable":"Municipios", "Nombre":"Arzúa", "Codigo":"15006"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2908.0}
+]
+}
+,{"COD":"DPOP6423", "Nombre":"Arzúa. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4510, "T3_Variable":"Municipios", "Nombre":"Arzúa", "Codigo":"15006"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3008.0}
+]
+}
+,{"COD":"DPOP6424", "Nombre":"Baña, A. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4511, "T3_Variable":"Municipios", "Nombre":"Baña, A", "Codigo":"15007"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3239.0}
+]
+}
+,{"COD":"DPOP6425", "Nombre":"Baña, A. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4511, "T3_Variable":"Municipios", "Nombre":"Baña, A", "Codigo":"15007"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1548.0}
+]
+}
+,{"COD":"DPOP6426", "Nombre":"Baña, A. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4511, "T3_Variable":"Municipios", "Nombre":"Baña, A", "Codigo":"15007"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1691.0}
+]
+}
+,{"COD":"DPOP6427", "Nombre":"Bergondo. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4512, "T3_Variable":"Municipios", "Nombre":"Bergondo", "Codigo":"15008"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":7135.0}
+]
+}
+,{"COD":"DPOP6428", "Nombre":"Bergondo. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4512, "T3_Variable":"Municipios", "Nombre":"Bergondo", "Codigo":"15008"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3493.0}
+]
+}
+,{"COD":"DPOP6429", "Nombre":"Bergondo. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4512, "T3_Variable":"Municipios", "Nombre":"Bergondo", "Codigo":"15008"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3642.0}
+]
+}
+,{"COD":"DPOP6430", "Nombre":"Betanzos. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4513, "T3_Variable":"Municipios", "Nombre":"Betanzos", "Codigo":"15009"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":13533.0}
+]
+}
+,{"COD":"DPOP6431", "Nombre":"Betanzos. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4513, "T3_Variable":"Municipios", "Nombre":"Betanzos", "Codigo":"15009"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6456.0}
+]
+}
+,{"COD":"DPOP6432", "Nombre":"Betanzos. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4513, "T3_Variable":"Municipios", "Nombre":"Betanzos", "Codigo":"15009"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":7077.0}
+]
+}
+,{"COD":"DPOP6433", "Nombre":"Boimorto. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4514, "T3_Variable":"Municipios", "Nombre":"Boimorto", "Codigo":"15010"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1803.0}
+]
+}
+,{"COD":"DPOP6434", "Nombre":"Boimorto. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4514, "T3_Variable":"Municipios", "Nombre":"Boimorto", "Codigo":"15010"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":911.0}
+]
+}
+,{"COD":"DPOP6435", "Nombre":"Boimorto. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4514, "T3_Variable":"Municipios", "Nombre":"Boimorto", "Codigo":"15010"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":892.0}
+]
+}
+,{"COD":"DPOP6436", "Nombre":"Boiro. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4515, "T3_Variable":"Municipios", "Nombre":"Boiro", "Codigo":"15011"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":18967.0}
+]
+}
+,{"COD":"DPOP6437", "Nombre":"Boiro. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4515, "T3_Variable":"Municipios", "Nombre":"Boiro", "Codigo":"15011"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":9214.0}
+]
+}
+,{"COD":"DPOP6438", "Nombre":"Boiro. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4515, "T3_Variable":"Municipios", "Nombre":"Boiro", "Codigo":"15011"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":9753.0}
+]
+}
+,{"COD":"DPOP6439", "Nombre":"Boqueixón. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4516, "T3_Variable":"Municipios", "Nombre":"Boqueixón", "Codigo":"15012"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4219.0}
+]
+}
+,{"COD":"DPOP6440", "Nombre":"Boqueixón. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4516, "T3_Variable":"Municipios", "Nombre":"Boqueixón", "Codigo":"15012"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2072.0}
+]
+}
+,{"COD":"DPOP6441", "Nombre":"Boqueixón. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4516, "T3_Variable":"Municipios", "Nombre":"Boqueixón", "Codigo":"15012"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2147.0}
+]
+}
+,{"COD":"DPOP6442", "Nombre":"Brión. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4517, "T3_Variable":"Municipios", "Nombre":"Brión", "Codigo":"15013"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":8192.0}
+]
+}
+,{"COD":"DPOP6443", "Nombre":"Brión. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4517, "T3_Variable":"Municipios", "Nombre":"Brión", "Codigo":"15013"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3966.0}
+]
+}
+,{"COD":"DPOP6444", "Nombre":"Brión. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4517, "T3_Variable":"Municipios", "Nombre":"Brión", "Codigo":"15013"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4226.0}
+]
+}
+,{"COD":"DPOP6445", "Nombre":"Cabana de Bergantiños. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4518, "T3_Variable":"Municipios", "Nombre":"Cabana de Bergantiños", "Codigo":"15014"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4067.0}
+]
+}
+,{"COD":"DPOP6446", "Nombre":"Cabana de Bergantiños. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4518, "T3_Variable":"Municipios", "Nombre":"Cabana de Bergantiños", "Codigo":"15014"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1970.0}
+]
+}
+,{"COD":"DPOP6447", "Nombre":"Cabana de Bergantiños. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4518, "T3_Variable":"Municipios", "Nombre":"Cabana de Bergantiños", "Codigo":"15014"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2097.0}
+]
+}
+,{"COD":"DPOP6448", "Nombre":"Cabanas. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4519, "T3_Variable":"Municipios", "Nombre":"Cabanas", "Codigo":"15015"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3287.0}
+]
+}
+,{"COD":"DPOP6449", "Nombre":"Cabanas. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4519, "T3_Variable":"Municipios", "Nombre":"Cabanas", "Codigo":"15015"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1599.0}
+]
+}
+,{"COD":"DPOP6450", "Nombre":"Cabanas. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4519, "T3_Variable":"Municipios", "Nombre":"Cabanas", "Codigo":"15015"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1688.0}
+]
+}
+,{"COD":"DPOP6451", "Nombre":"Camariñas. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4520, "T3_Variable":"Municipios", "Nombre":"Camariñas", "Codigo":"15016"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5075.0}
+]
+}
+,{"COD":"DPOP6452", "Nombre":"Camariñas. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4520, "T3_Variable":"Municipios", "Nombre":"Camariñas", "Codigo":"15016"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2501.0}
+]
+}
+,{"COD":"DPOP6453", "Nombre":"Camariñas. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4520, "T3_Variable":"Municipios", "Nombre":"Camariñas", "Codigo":"15016"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2574.0}
+]
+}
+,{"COD":"DPOP6454", "Nombre":"Cambre. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4521, "T3_Variable":"Municipios", "Nombre":"Cambre", "Codigo":"15017"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":24765.0}
+]
+}
+,{"COD":"DPOP6455", "Nombre":"Cambre. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4521, "T3_Variable":"Municipios", "Nombre":"Cambre", "Codigo":"15017"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":12020.0}
+]
+}
+,{"COD":"DPOP6456", "Nombre":"Cambre. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4521, "T3_Variable":"Municipios", "Nombre":"Cambre", "Codigo":"15017"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":12745.0}
+]
+}
+,{"COD":"DPOP6457", "Nombre":"Capela, A. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4522, "T3_Variable":"Municipios", "Nombre":"Capela, A", "Codigo":"15018"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1165.0}
+]
+}
+,{"COD":"DPOP6458", "Nombre":"Capela, A. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4522, "T3_Variable":"Municipios", "Nombre":"Capela, A", "Codigo":"15018"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":576.0}
+]
+}
+,{"COD":"DPOP6459", "Nombre":"Capela, A. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4522, "T3_Variable":"Municipios", "Nombre":"Capela, A", "Codigo":"15018"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":589.0}
+]
+}
+,{"COD":"DPOP6460", "Nombre":"Carballo. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4523, "T3_Variable":"Municipios", "Nombre":"Carballo", "Codigo":"15019"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":32120.0}
+]
+}
+,{"COD":"DPOP6461", "Nombre":"Carballo. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4523, "T3_Variable":"Municipios", "Nombre":"Carballo", "Codigo":"15019"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":15660.0}
+]
+}
+,{"COD":"DPOP6462", "Nombre":"Carballo. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4523, "T3_Variable":"Municipios", "Nombre":"Carballo", "Codigo":"15019"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":16460.0}
+]
+}
+,{"COD":"DPOP6685", "Nombre":"Cariño. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4593, "T3_Variable":"Municipios", "Nombre":"Cariño", "Codigo":"15901"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3661.0}
+]
+}
+,{"COD":"DPOP6686", "Nombre":"Cariño. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4593, "T3_Variable":"Municipios", "Nombre":"Cariño", "Codigo":"15901"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1796.0}
+]
+}
+,{"COD":"DPOP6687", "Nombre":"Cariño. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4593, "T3_Variable":"Municipios", "Nombre":"Cariño", "Codigo":"15901"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1865.0}
+]
+}
+,{"COD":"DPOP6463", "Nombre":"Carnota. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4524, "T3_Variable":"Municipios", "Nombre":"Carnota", "Codigo":"15020"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3780.0}
+]
+}
+,{"COD":"DPOP6464", "Nombre":"Carnota. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4524, "T3_Variable":"Municipios", "Nombre":"Carnota", "Codigo":"15020"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1817.0}
+]
+}
+,{"COD":"DPOP6465", "Nombre":"Carnota. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4524, "T3_Variable":"Municipios", "Nombre":"Carnota", "Codigo":"15020"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1963.0}
+]
+}
+,{"COD":"DPOP6466", "Nombre":"Carral. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4525, "T3_Variable":"Municipios", "Nombre":"Carral", "Codigo":"15021"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6840.0}
+]
+}
+,{"COD":"DPOP6467", "Nombre":"Carral. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4525, "T3_Variable":"Municipios", "Nombre":"Carral", "Codigo":"15021"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3359.0}
+]
+}
+,{"COD":"DPOP6468", "Nombre":"Carral. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4525, "T3_Variable":"Municipios", "Nombre":"Carral", "Codigo":"15021"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3481.0}
+]
+}
+,{"COD":"DPOP6469", "Nombre":"Cedeira. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4526, "T3_Variable":"Municipios", "Nombre":"Cedeira", "Codigo":"15022"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6547.0}
+]
+}
+,{"COD":"DPOP6470", "Nombre":"Cedeira. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4526, "T3_Variable":"Municipios", "Nombre":"Cedeira", "Codigo":"15022"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3229.0}
+]
+}
+,{"COD":"DPOP6471", "Nombre":"Cedeira. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4526, "T3_Variable":"Municipios", "Nombre":"Cedeira", "Codigo":"15022"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3318.0}
+]
+}
+,{"COD":"DPOP6472", "Nombre":"Cee. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4527, "T3_Variable":"Municipios", "Nombre":"Cee", "Codigo":"15023"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":7731.0}
+]
+}
+,{"COD":"DPOP6473", "Nombre":"Cee. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4527, "T3_Variable":"Municipios", "Nombre":"Cee", "Codigo":"15023"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3700.0}
+]
+}
+,{"COD":"DPOP6474", "Nombre":"Cee. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4527, "T3_Variable":"Municipios", "Nombre":"Cee", "Codigo":"15023"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4031.0}
+]
+}
+,{"COD":"DPOP6475", "Nombre":"Cerceda. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4528, "T3_Variable":"Municipios", "Nombre":"Cerceda", "Codigo":"15024"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5116.0}
+]
+}
+,{"COD":"DPOP6476", "Nombre":"Cerceda. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4528, "T3_Variable":"Municipios", "Nombre":"Cerceda", "Codigo":"15024"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2534.0}
+]
+}
+,{"COD":"DPOP6477", "Nombre":"Cerceda. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4528, "T3_Variable":"Municipios", "Nombre":"Cerceda", "Codigo":"15024"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2582.0}
+]
+}
+,{"COD":"DPOP6478", "Nombre":"Cerdido. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4529, "T3_Variable":"Municipios", "Nombre":"Cerdido", "Codigo":"15025"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1006.0}
+]
+}
+,{"COD":"DPOP6479", "Nombre":"Cerdido. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4529, "T3_Variable":"Municipios", "Nombre":"Cerdido", "Codigo":"15025"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":496.0}
+]
+}
+,{"COD":"DPOP6480", "Nombre":"Cerdido. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4529, "T3_Variable":"Municipios", "Nombre":"Cerdido", "Codigo":"15025"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":510.0}
+]
+}
+,{"COD":"DPOP6481", "Nombre":"Cesuras. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4530, "T3_Variable":"Municipios", "Nombre":"Cesuras", "Codigo":"15026"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"DPOP6482", "Nombre":"Cesuras. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4530, "T3_Variable":"Municipios", "Nombre":"Cesuras", "Codigo":"15026"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"DPOP6483", "Nombre":"Cesuras. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4530, "T3_Variable":"Municipios", "Nombre":"Cesuras", "Codigo":"15026"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"DPOP6484", "Nombre":"Coirós. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4531, "T3_Variable":"Municipios", "Nombre":"Coirós", "Codigo":"15027"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1945.0}
+]
+}
+,{"COD":"DPOP6485", "Nombre":"Coirós. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4531, "T3_Variable":"Municipios", "Nombre":"Coirós", "Codigo":"15027"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":956.0}
+]
+}
+,{"COD":"DPOP6486", "Nombre":"Coirós. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4531, "T3_Variable":"Municipios", "Nombre":"Coirós", "Codigo":"15027"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":989.0}
+]
+}
+,{"COD":"DPOP6487", "Nombre":"Corcubión. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4532, "T3_Variable":"Municipios", "Nombre":"Corcubión", "Codigo":"15028"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1659.0}
+]
+}
+,{"COD":"DPOP6488", "Nombre":"Corcubión. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4532, "T3_Variable":"Municipios", "Nombre":"Corcubión", "Codigo":"15028"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":821.0}
+]
+}
+,{"COD":"DPOP6489", "Nombre":"Corcubión. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4532, "T3_Variable":"Municipios", "Nombre":"Corcubión", "Codigo":"15028"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":838.0}
+]
+}
+,{"COD":"DPOP6490", "Nombre":"Coristanco. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4533, "T3_Variable":"Municipios", "Nombre":"Coristanco", "Codigo":"15029"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5710.0}
+]
+}
+,{"COD":"DPOP6491", "Nombre":"Coristanco. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4533, "T3_Variable":"Municipios", "Nombre":"Coristanco", "Codigo":"15029"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2757.0}
+]
+}
+,{"COD":"DPOP6492", "Nombre":"Coristanco. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4533, "T3_Variable":"Municipios", "Nombre":"Coristanco", "Codigo":"15029"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2953.0}
+]
+}
+,{"COD":"DPOP6493", "Nombre":"Coruña, A. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4534, "T3_Variable":"Municipios", "Nombre":"Coruña, A", "Codigo":"15030"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":251543.0}
+]
+}
+,{"COD":"DPOP6494", "Nombre":"Coruña, A. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4534, "T3_Variable":"Municipios", "Nombre":"Coruña, A", "Codigo":"15030"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":116606.0}
+]
+}
+,{"COD":"DPOP6495", "Nombre":"Coruña, A. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4534, "T3_Variable":"Municipios", "Nombre":"Coruña, A", "Codigo":"15030"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":134937.0}
+]
+}
+,{"COD":"DPOP6496", "Nombre":"Culleredo. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4535, "T3_Variable":"Municipios", "Nombre":"Culleredo", "Codigo":"15031"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":31254.0}
+]
+}
+,{"COD":"DPOP6497", "Nombre":"Culleredo. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4535, "T3_Variable":"Municipios", "Nombre":"Culleredo", "Codigo":"15031"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":15040.0}
+]
+}
+,{"COD":"DPOP6498", "Nombre":"Culleredo. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4535, "T3_Variable":"Municipios", "Nombre":"Culleredo", "Codigo":"15031"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":16214.0}
+]
+}
+,{"COD":"DPOP6499", "Nombre":"Curtis. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4536, "T3_Variable":"Municipios", "Nombre":"Curtis", "Codigo":"15032"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4242.0}
+]
+}
+,{"COD":"DPOP6500", "Nombre":"Curtis. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4536, "T3_Variable":"Municipios", "Nombre":"Curtis", "Codigo":"15032"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2134.0}
+]
+}
+,{"COD":"DPOP6501", "Nombre":"Curtis. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4536, "T3_Variable":"Municipios", "Nombre":"Curtis", "Codigo":"15032"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2108.0}
+]
+}
+,{"COD":"DPOP6502", "Nombre":"Dodro. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4537, "T3_Variable":"Municipios", "Nombre":"Dodro", "Codigo":"15033"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2589.0}
+]
+}
+,{"COD":"DPOP6503", "Nombre":"Dodro. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4537, "T3_Variable":"Municipios", "Nombre":"Dodro", "Codigo":"15033"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1236.0}
+]
+}
+,{"COD":"DPOP6504", "Nombre":"Dodro. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4537, "T3_Variable":"Municipios", "Nombre":"Dodro", "Codigo":"15033"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1353.0}
+]
+}
+,{"COD":"DPOP6505", "Nombre":"Dumbría. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4538, "T3_Variable":"Municipios", "Nombre":"Dumbría", "Codigo":"15034"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2716.0}
+]
+}
+,{"COD":"DPOP6506", "Nombre":"Dumbría. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4538, "T3_Variable":"Municipios", "Nombre":"Dumbría", "Codigo":"15034"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1296.0}
+]
+}
+,{"COD":"DPOP6507", "Nombre":"Dumbría. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4538, "T3_Variable":"Municipios", "Nombre":"Dumbría", "Codigo":"15034"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1420.0}
+]
+}
+,{"COD":"DPOP6508", "Nombre":"Fene. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4539, "T3_Variable":"Municipios", "Nombre":"Fene", "Codigo":"15035"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":12467.0}
+]
+}
+,{"COD":"DPOP6509", "Nombre":"Fene. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4539, "T3_Variable":"Municipios", "Nombre":"Fene", "Codigo":"15035"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5918.0}
+]
+}
+,{"COD":"DPOP6510", "Nombre":"Fene. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4539, "T3_Variable":"Municipios", "Nombre":"Fene", "Codigo":"15035"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6549.0}
+]
+}
+,{"COD":"DPOP6511", "Nombre":"Ferrol. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4540, "T3_Variable":"Municipios", "Nombre":"Ferrol", "Codigo":"15036"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":64367.0}
+]
+}
+,{"COD":"DPOP6512", "Nombre":"Ferrol. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4540, "T3_Variable":"Municipios", "Nombre":"Ferrol", "Codigo":"15036"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":30494.0}
+]
+}
+,{"COD":"DPOP6513", "Nombre":"Ferrol. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4540, "T3_Variable":"Municipios", "Nombre":"Ferrol", "Codigo":"15036"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":33873.0}
+]
+}
+,{"COD":"DPOP6514", "Nombre":"Fisterra. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4541, "T3_Variable":"Municipios", "Nombre":"Fisterra", "Codigo":"15037"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4666.0}
+]
+}
+,{"COD":"DPOP6515", "Nombre":"Fisterra. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4541, "T3_Variable":"Municipios", "Nombre":"Fisterra", "Codigo":"15037"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2369.0}
+]
+}
+,{"COD":"DPOP6516", "Nombre":"Fisterra. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4541, "T3_Variable":"Municipios", "Nombre":"Fisterra", "Codigo":"15037"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2297.0}
+]
+}
+,{"COD":"DPOP6517", "Nombre":"Frades. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4542, "T3_Variable":"Municipios", "Nombre":"Frades", "Codigo":"15038"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2117.0}
+]
+}
+,{"COD":"DPOP6518", "Nombre":"Frades. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4542, "T3_Variable":"Municipios", "Nombre":"Frades", "Codigo":"15038"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1050.0}
+]
+}
+,{"COD":"DPOP6519", "Nombre":"Frades. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4542, "T3_Variable":"Municipios", "Nombre":"Frades", "Codigo":"15038"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1067.0}
+]
+}
+,{"COD":"DPOP6520", "Nombre":"Irixoa. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4543, "T3_Variable":"Municipios", "Nombre":"Irixoa", "Codigo":"15039"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1343.0}
+]
+}
+,{"COD":"DPOP6521", "Nombre":"Irixoa. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4543, "T3_Variable":"Municipios", "Nombre":"Irixoa", "Codigo":"15039"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":682.0}
+]
+}
+,{"COD":"DPOP6522", "Nombre":"Irixoa. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4543, "T3_Variable":"Municipios", "Nombre":"Irixoa", "Codigo":"15039"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":661.0}
+]
+}
+,{"COD":"DPOP6526", "Nombre":"Laracha, A. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4545, "T3_Variable":"Municipios", "Nombre":"Laracha, A", "Codigo":"15041"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":11781.0}
+]
+}
+,{"COD":"DPOP6527", "Nombre":"Laracha, A. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4545, "T3_Variable":"Municipios", "Nombre":"Laracha, A", "Codigo":"15041"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5802.0}
+]
+}
+,{"COD":"DPOP6528", "Nombre":"Laracha, A. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4545, "T3_Variable":"Municipios", "Nombre":"Laracha, A", "Codigo":"15041"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5979.0}
+]
+}
+,{"COD":"DPOP6523", "Nombre":"Laxe. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4544, "T3_Variable":"Municipios", "Nombre":"Laxe", "Codigo":"15040"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2883.0}
+]
+}
+,{"COD":"DPOP6524", "Nombre":"Laxe. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4544, "T3_Variable":"Municipios", "Nombre":"Laxe", "Codigo":"15040"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1436.0}
+]
+}
+,{"COD":"DPOP6525", "Nombre":"Laxe. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4544, "T3_Variable":"Municipios", "Nombre":"Laxe", "Codigo":"15040"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1447.0}
+]
+}
+,{"COD":"DPOP6529", "Nombre":"Lousame. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4546, "T3_Variable":"Municipios", "Nombre":"Lousame", "Codigo":"15042"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3056.0}
+]
+}
+,{"COD":"DPOP6530", "Nombre":"Lousame. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4546, "T3_Variable":"Municipios", "Nombre":"Lousame", "Codigo":"15042"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1537.0}
+]
+}
+,{"COD":"DPOP6531", "Nombre":"Lousame. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4546, "T3_Variable":"Municipios", "Nombre":"Lousame", "Codigo":"15042"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1519.0}
+]
+}
+,{"COD":"DPOP6532", "Nombre":"Malpica de Bergantiños. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4547, "T3_Variable":"Municipios", "Nombre":"Malpica de Bergantiños", "Codigo":"15043"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5232.0}
+]
+}
+,{"COD":"DPOP6533", "Nombre":"Malpica de Bergantiños. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4547, "T3_Variable":"Municipios", "Nombre":"Malpica de Bergantiños", "Codigo":"15043"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2559.0}
+]
+}
+,{"COD":"DPOP6534", "Nombre":"Malpica de Bergantiños. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4547, "T3_Variable":"Municipios", "Nombre":"Malpica de Bergantiños", "Codigo":"15043"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2673.0}
+]
+}
+,{"COD":"DPOP6535", "Nombre":"Mañón. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4548, "T3_Variable":"Municipios", "Nombre":"Mañón", "Codigo":"15044"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1218.0}
+]
+}
+,{"COD":"DPOP6536", "Nombre":"Mañón. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4548, "T3_Variable":"Municipios", "Nombre":"Mañón", "Codigo":"15044"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":615.0}
+]
+}
+,{"COD":"DPOP6537", "Nombre":"Mañón. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4548, "T3_Variable":"Municipios", "Nombre":"Mañón", "Codigo":"15044"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":603.0}
+]
+}
+,{"COD":"DPOP6538", "Nombre":"Mazaricos. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4549, "T3_Variable":"Municipios", "Nombre":"Mazaricos", "Codigo":"15045"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3721.0}
+]
+}
+,{"COD":"DPOP6539", "Nombre":"Mazaricos. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4549, "T3_Variable":"Municipios", "Nombre":"Mazaricos", "Codigo":"15045"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1774.0}
+]
+}
+,{"COD":"DPOP6540", "Nombre":"Mazaricos. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4549, "T3_Variable":"Municipios", "Nombre":"Mazaricos", "Codigo":"15045"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1947.0}
+]
+}
+,{"COD":"DPOP6541", "Nombre":"Melide. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4550, "T3_Variable":"Municipios", "Nombre":"Melide", "Codigo":"15046"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":7817.0}
+]
+}
+,{"COD":"DPOP6542", "Nombre":"Melide. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4550, "T3_Variable":"Municipios", "Nombre":"Melide", "Codigo":"15046"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3807.0}
+]
+}
+,{"COD":"DPOP6543", "Nombre":"Melide. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4550, "T3_Variable":"Municipios", "Nombre":"Melide", "Codigo":"15046"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4010.0}
+]
+}
+,{"COD":"DPOP6544", "Nombre":"Mesía. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4551, "T3_Variable":"Municipios", "Nombre":"Mesía", "Codigo":"15047"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2367.0}
+]
+}
+,{"COD":"DPOP6545", "Nombre":"Mesía. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4551, "T3_Variable":"Municipios", "Nombre":"Mesía", "Codigo":"15047"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1183.0}
+]
+}
+,{"COD":"DPOP6546", "Nombre":"Mesía. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4551, "T3_Variable":"Municipios", "Nombre":"Mesía", "Codigo":"15047"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1184.0}
+]
+}
+,{"COD":"DPOP6547", "Nombre":"Miño. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4552, "T3_Variable":"Municipios", "Nombre":"Miño", "Codigo":"15048"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":7108.0}
+]
+}
+,{"COD":"DPOP6548", "Nombre":"Miño. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4552, "T3_Variable":"Municipios", "Nombre":"Miño", "Codigo":"15048"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3531.0}
+]
+}
+,{"COD":"DPOP6549", "Nombre":"Miño. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4552, "T3_Variable":"Municipios", "Nombre":"Miño", "Codigo":"15048"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3577.0}
+]
+}
+,{"COD":"DPOP6550", "Nombre":"Moeche. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4553, "T3_Variable":"Municipios", "Nombre":"Moeche", "Codigo":"15049"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1194.0}
+]
+}
+,{"COD":"DPOP6551", "Nombre":"Moeche. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4553, "T3_Variable":"Municipios", "Nombre":"Moeche", "Codigo":"15049"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":580.0}
+]
+}
+,{"COD":"DPOP6552", "Nombre":"Moeche. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4553, "T3_Variable":"Municipios", "Nombre":"Moeche", "Codigo":"15049"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":614.0}
+]
+}
+,{"COD":"DPOP6553", "Nombre":"Monfero. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4554, "T3_Variable":"Municipios", "Nombre":"Monfero", "Codigo":"15050"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1816.0}
+]
+}
+,{"COD":"DPOP6554", "Nombre":"Monfero. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4554, "T3_Variable":"Municipios", "Nombre":"Monfero", "Codigo":"15050"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":918.0}
+]
+}
+,{"COD":"DPOP6555", "Nombre":"Monfero. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4554, "T3_Variable":"Municipios", "Nombre":"Monfero", "Codigo":"15050"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":898.0}
+]
+}
+,{"COD":"DPOP6556", "Nombre":"Mugardos. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4555, "T3_Variable":"Municipios", "Nombre":"Mugardos", "Codigo":"15051"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5203.0}
+]
+}
+,{"COD":"DPOP6557", "Nombre":"Mugardos. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4555, "T3_Variable":"Municipios", "Nombre":"Mugardos", "Codigo":"15051"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2520.0}
+]
+}
+,{"COD":"DPOP6558", "Nombre":"Mugardos. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4555, "T3_Variable":"Municipios", "Nombre":"Mugardos", "Codigo":"15051"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2683.0}
+]
+}
+,{"COD":"DPOP6562", "Nombre":"Muros. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4557, "T3_Variable":"Municipios", "Nombre":"Muros", "Codigo":"15053"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":8173.0}
+]
+}
+,{"COD":"DPOP6563", "Nombre":"Muros. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4557, "T3_Variable":"Municipios", "Nombre":"Muros", "Codigo":"15053"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3932.0}
+]
+}
+,{"COD":"DPOP6564", "Nombre":"Muros. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4557, "T3_Variable":"Municipios", "Nombre":"Muros", "Codigo":"15053"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4241.0}
+]
+}
+,{"COD":"DPOP6559", "Nombre":"Muxía. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4556, "T3_Variable":"Municipios", "Nombre":"Muxía", "Codigo":"15052"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4326.0}
+]
+}
+,{"COD":"DPOP6560", "Nombre":"Muxía. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4556, "T3_Variable":"Municipios", "Nombre":"Muxía", "Codigo":"15052"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2097.0}
+]
+}
+,{"COD":"DPOP6561", "Nombre":"Muxía. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4556, "T3_Variable":"Municipios", "Nombre":"Muxía", "Codigo":"15052"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2229.0}
+]
+}
+,{"COD":"DPOP6565", "Nombre":"Narón. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4558, "T3_Variable":"Municipios", "Nombre":"Narón", "Codigo":"15054"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":39953.0}
+]
+}
+,{"COD":"DPOP6566", "Nombre":"Narón. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4558, "T3_Variable":"Municipios", "Nombre":"Narón", "Codigo":"15054"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":19307.0}
+]
+}
+,{"COD":"DPOP6567", "Nombre":"Narón. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4558, "T3_Variable":"Municipios", "Nombre":"Narón", "Codigo":"15054"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":20646.0}
+]
+}
+,{"COD":"DPOP6568", "Nombre":"Neda. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4559, "T3_Variable":"Municipios", "Nombre":"Neda", "Codigo":"15055"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4925.0}
+]
+}
+,{"COD":"DPOP6569", "Nombre":"Neda. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4559, "T3_Variable":"Municipios", "Nombre":"Neda", "Codigo":"15055"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2385.0}
+]
+}
+,{"COD":"DPOP6570", "Nombre":"Neda. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4559, "T3_Variable":"Municipios", "Nombre":"Neda", "Codigo":"15055"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2540.0}
+]
+}
+,{"COD":"DPOP6571", "Nombre":"Negreira. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4560, "T3_Variable":"Municipios", "Nombre":"Negreira", "Codigo":"15056"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6969.0}
+]
+}
+,{"COD":"DPOP6572", "Nombre":"Negreira. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4560, "T3_Variable":"Municipios", "Nombre":"Negreira", "Codigo":"15056"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3352.0}
+]
+}
+,{"COD":"DPOP6573", "Nombre":"Negreira. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4560, "T3_Variable":"Municipios", "Nombre":"Negreira", "Codigo":"15056"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3617.0}
+]
+}
+,{"COD":"DPOP6574", "Nombre":"Noia. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4561, "T3_Variable":"Municipios", "Nombre":"Noia", "Codigo":"15057"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":14123.0}
+]
+}
+,{"COD":"DPOP6575", "Nombre":"Noia. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4561, "T3_Variable":"Municipios", "Nombre":"Noia", "Codigo":"15057"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6729.0}
+]
+}
+,{"COD":"DPOP6576", "Nombre":"Noia. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4561, "T3_Variable":"Municipios", "Nombre":"Noia", "Codigo":"15057"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":7394.0}
+]
+}
+,{"COD":"DPOP6577", "Nombre":"Oleiros. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4562, "T3_Variable":"Municipios", "Nombre":"Oleiros", "Codigo":"15058"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":38793.0}
+]
+}
+,{"COD":"DPOP6578", "Nombre":"Oleiros. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4562, "T3_Variable":"Municipios", "Nombre":"Oleiros", "Codigo":"15058"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":18588.0}
+]
+}
+,{"COD":"DPOP6579", "Nombre":"Oleiros. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4562, "T3_Variable":"Municipios", "Nombre":"Oleiros", "Codigo":"15058"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":20205.0}
+]
+}
+,{"COD":"DPOP6580", "Nombre":"Ordes. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4563, "T3_Variable":"Municipios", "Nombre":"Ordes", "Codigo":"15059"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":12990.0}
+]
+}
+,{"COD":"DPOP6581", "Nombre":"Ordes. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4563, "T3_Variable":"Municipios", "Nombre":"Ordes", "Codigo":"15059"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6353.0}
+]
+}
+,{"COD":"DPOP6582", "Nombre":"Ordes. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4563, "T3_Variable":"Municipios", "Nombre":"Ordes", "Codigo":"15059"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6637.0}
+]
+}
+,{"COD":"DPOP6583", "Nombre":"Oroso. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4564, "T3_Variable":"Municipios", "Nombre":"Oroso", "Codigo":"15060"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":7776.0}
+]
+}
+,{"COD":"DPOP6584", "Nombre":"Oroso. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4564, "T3_Variable":"Municipios", "Nombre":"Oroso", "Codigo":"15060"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3829.0}
+]
+}
+,{"COD":"DPOP6585", "Nombre":"Oroso. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4564, "T3_Variable":"Municipios", "Nombre":"Oroso", "Codigo":"15060"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3947.0}
+]
+}
+,{"COD":"DPOP6586", "Nombre":"Ortigueira. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4565, "T3_Variable":"Municipios", "Nombre":"Ortigueira", "Codigo":"15061"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5384.0}
+]
+}
+,{"COD":"DPOP6587", "Nombre":"Ortigueira. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4565, "T3_Variable":"Municipios", "Nombre":"Ortigueira", "Codigo":"15061"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2556.0}
+]
+}
+,{"COD":"DPOP6588", "Nombre":"Ortigueira. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4565, "T3_Variable":"Municipios", "Nombre":"Ortigueira", "Codigo":"15061"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2828.0}
+]
+}
+,{"COD":"DPOP6589", "Nombre":"Outes. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4566, "T3_Variable":"Municipios", "Nombre":"Outes", "Codigo":"15062"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5998.0}
+]
+}
+,{"COD":"DPOP6590", "Nombre":"Outes. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4566, "T3_Variable":"Municipios", "Nombre":"Outes", "Codigo":"15062"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2899.0}
+]
+}
+,{"COD":"DPOP6591", "Nombre":"Outes. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4566, "T3_Variable":"Municipios", "Nombre":"Outes", "Codigo":"15062"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3099.0}
+]
+}
+,{"COD":"DPOP6592", "Nombre":"Oza dos Ríos. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4567, "T3_Variable":"Municipios", "Nombre":"Oza dos Ríos", "Codigo":"15063"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"DPOP6593", "Nombre":"Oza dos Ríos. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4567, "T3_Variable":"Municipios", "Nombre":"Oza dos Ríos", "Codigo":"15063"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"DPOP6594", "Nombre":"Oza dos Ríos. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4567, "T3_Variable":"Municipios", "Nombre":"Oza dos Ríos", "Codigo":"15063"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"DPOP37196", "Nombre":"Oza-Cesuras. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":292661, "T3_Variable":"Municipios", "Nombre":"Oza-Cesuras", "Codigo":"15902"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5159.0}
+]
+}
+,{"COD":"DPOP37195", "Nombre":"Oza-Cesuras. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":292661, "T3_Variable":"Municipios", "Nombre":"Oza-Cesuras", "Codigo":"15902"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2622.0}
+]
+}
+,{"COD":"DPOP37194", "Nombre":"Oza-Cesuras. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":292661, "T3_Variable":"Municipios", "Nombre":"Oza-Cesuras", "Codigo":"15902"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2537.0}
+]
+}
+,{"COD":"DPOP6595", "Nombre":"Paderne. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4568, "T3_Variable":"Municipios", "Nombre":"Paderne", "Codigo":"15064"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2450.0}
+]
+}
+,{"COD":"DPOP6596", "Nombre":"Paderne. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4568, "T3_Variable":"Municipios", "Nombre":"Paderne", "Codigo":"15064"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1194.0}
+]
+}
+,{"COD":"DPOP6597", "Nombre":"Paderne. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4568, "T3_Variable":"Municipios", "Nombre":"Paderne", "Codigo":"15064"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1256.0}
+]
+}
+,{"COD":"DPOP6598", "Nombre":"Padrón. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4569, "T3_Variable":"Municipios", "Nombre":"Padrón", "Codigo":"15065"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":8334.0}
+]
+}
+,{"COD":"DPOP6599", "Nombre":"Padrón. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4569, "T3_Variable":"Municipios", "Nombre":"Padrón", "Codigo":"15065"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4079.0}
+]
+}
+,{"COD":"DPOP6600", "Nombre":"Padrón. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4569, "T3_Variable":"Municipios", "Nombre":"Padrón", "Codigo":"15065"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4255.0}
+]
+}
+,{"COD":"DPOP6601", "Nombre":"Pino, O. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4570, "T3_Variable":"Municipios", "Nombre":"Pino, O", "Codigo":"15066"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4589.0}
+]
+}
+,{"COD":"DPOP6602", "Nombre":"Pino, O. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4570, "T3_Variable":"Municipios", "Nombre":"Pino, O", "Codigo":"15066"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2303.0}
+]
+}
+,{"COD":"DPOP6603", "Nombre":"Pino, O. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4570, "T3_Variable":"Municipios", "Nombre":"Pino, O", "Codigo":"15066"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2286.0}
+]
+}
+,{"COD":"DPOP6604", "Nombre":"Pobra do Caramiñal, A. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4571, "T3_Variable":"Municipios", "Nombre":"Pobra do Caramiñal, A", "Codigo":"15067"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":9126.0}
+]
+}
+,{"COD":"DPOP6605", "Nombre":"Pobra do Caramiñal, A. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4571, "T3_Variable":"Municipios", "Nombre":"Pobra do Caramiñal, A", "Codigo":"15067"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4497.0}
+]
+}
+,{"COD":"DPOP6606", "Nombre":"Pobra do Caramiñal, A. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4571, "T3_Variable":"Municipios", "Nombre":"Pobra do Caramiñal, A", "Codigo":"15067"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4629.0}
+]
+}
+,{"COD":"DPOP6607", "Nombre":"Ponteceso. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4572, "T3_Variable":"Municipios", "Nombre":"Ponteceso", "Codigo":"15068"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5268.0}
+]
+}
+,{"COD":"DPOP6608", "Nombre":"Ponteceso. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4572, "T3_Variable":"Municipios", "Nombre":"Ponteceso", "Codigo":"15068"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2642.0}
+]
+}
+,{"COD":"DPOP6609", "Nombre":"Ponteceso. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4572, "T3_Variable":"Municipios", "Nombre":"Ponteceso", "Codigo":"15068"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2626.0}
+]
+}
+,{"COD":"DPOP6610", "Nombre":"Pontedeume. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4573, "T3_Variable":"Municipios", "Nombre":"Pontedeume", "Codigo":"15069"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":7431.0}
+]
+}
+,{"COD":"DPOP6611", "Nombre":"Pontedeume. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4573, "T3_Variable":"Municipios", "Nombre":"Pontedeume", "Codigo":"15069"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3557.0}
+]
+}
+,{"COD":"DPOP6612", "Nombre":"Pontedeume. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4573, "T3_Variable":"Municipios", "Nombre":"Pontedeume", "Codigo":"15069"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3874.0}
+]
+}
+,{"COD":"DPOP6613", "Nombre":"Pontes de García Rodríguez, As. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4574, "T3_Variable":"Municipios", "Nombre":"Pontes de García Rodríguez, As", "Codigo":"15070"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":9796.0}
+]
+}
+,{"COD":"DPOP6614", "Nombre":"Pontes de García Rodríguez, As. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4574, "T3_Variable":"Municipios", "Nombre":"Pontes de García Rodríguez, As", "Codigo":"15070"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4776.0}
+]
+}
+,{"COD":"DPOP6615", "Nombre":"Pontes de García Rodríguez, As. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4574, "T3_Variable":"Municipios", "Nombre":"Pontes de García Rodríguez, As", "Codigo":"15070"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5020.0}
+]
+}
+,{"COD":"DPOP6616", "Nombre":"Porto do Son. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4575, "T3_Variable":"Municipios", "Nombre":"Porto do Son", "Codigo":"15071"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":9060.0}
+]
+}
+,{"COD":"DPOP6617", "Nombre":"Porto do Son. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4575, "T3_Variable":"Municipios", "Nombre":"Porto do Son", "Codigo":"15071"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4521.0}
+]
+}
+,{"COD":"DPOP6618", "Nombre":"Porto do Son. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4575, "T3_Variable":"Municipios", "Nombre":"Porto do Son", "Codigo":"15071"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4539.0}
+]
+}
+,{"COD":"DPOP6619", "Nombre":"Rianxo. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4576, "T3_Variable":"Municipios", "Nombre":"Rianxo", "Codigo":"15072"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":10758.0}
+]
+}
+,{"COD":"DPOP6620", "Nombre":"Rianxo. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4576, "T3_Variable":"Municipios", "Nombre":"Rianxo", "Codigo":"15072"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5261.0}
+]
+}
+,{"COD":"DPOP6621", "Nombre":"Rianxo. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4576, "T3_Variable":"Municipios", "Nombre":"Rianxo", "Codigo":"15072"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":5497.0}
+]
+}
+,{"COD":"DPOP6622", "Nombre":"Ribeira. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4577, "T3_Variable":"Municipios", "Nombre":"Ribeira", "Codigo":"15073"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":27102.0}
+]
+}
+,{"COD":"DPOP6623", "Nombre":"Ribeira. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4577, "T3_Variable":"Municipios", "Nombre":"Ribeira", "Codigo":"15073"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":13408.0}
+]
+}
+,{"COD":"DPOP6624", "Nombre":"Ribeira. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4577, "T3_Variable":"Municipios", "Nombre":"Ribeira", "Codigo":"15073"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":13694.0}
+]
+}
+,{"COD":"DPOP6625", "Nombre":"Rois. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4578, "T3_Variable":"Municipios", "Nombre":"Rois", "Codigo":"15074"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4358.0}
+]
+}
+,{"COD":"DPOP6626", "Nombre":"Rois. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4578, "T3_Variable":"Municipios", "Nombre":"Rois", "Codigo":"15074"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2101.0}
+]
+}
+,{"COD":"DPOP6627", "Nombre":"Rois. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4578, "T3_Variable":"Municipios", "Nombre":"Rois", "Codigo":"15074"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2257.0}
+]
+}
+,{"COD":"DPOP6628", "Nombre":"Sada. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4579, "T3_Variable":"Municipios", "Nombre":"Sada", "Codigo":"15075"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":17421.0}
+]
+}
+,{"COD":"DPOP6629", "Nombre":"Sada. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4579, "T3_Variable":"Municipios", "Nombre":"Sada", "Codigo":"15075"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":8485.0}
+]
+}
+,{"COD":"DPOP6630", "Nombre":"Sada. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4579, "T3_Variable":"Municipios", "Nombre":"Sada", "Codigo":"15075"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":8936.0}
+]
+}
+,{"COD":"DPOP6631", "Nombre":"San Sadurniño. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8536, "T3_Variable":"Municipios", "Nombre":"San Sadurniño", "Codigo":"15076"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2738.0}
+]
+}
+,{"COD":"DPOP6632", "Nombre":"San Sadurniño. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8536, "T3_Variable":"Municipios", "Nombre":"San Sadurniño", "Codigo":"15076"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1357.0}
+]
+}
+,{"COD":"DPOP6633", "Nombre":"San Sadurniño. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8536, "T3_Variable":"Municipios", "Nombre":"San Sadurniño", "Codigo":"15076"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1381.0}
+]
+}
+,{"COD":"DPOP6634", "Nombre":"Santa Comba. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4580, "T3_Variable":"Municipios", "Nombre":"Santa Comba", "Codigo":"15077"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":9442.0}
+]
+}
+,{"COD":"DPOP6635", "Nombre":"Santa Comba. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4580, "T3_Variable":"Municipios", "Nombre":"Santa Comba", "Codigo":"15077"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4616.0}
+]
+}
+,{"COD":"DPOP6636", "Nombre":"Santa Comba. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4580, "T3_Variable":"Municipios", "Nombre":"Santa Comba", "Codigo":"15077"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4826.0}
+]
+}
+,{"COD":"DPOP6637", "Nombre":"Santiago de Compostela. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4581, "T3_Variable":"Municipios", "Nombre":"Santiago de Compostela", "Codigo":"15078"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":100965.0}
+]
+}
+,{"COD":"DPOP6638", "Nombre":"Santiago de Compostela. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4581, "T3_Variable":"Municipios", "Nombre":"Santiago de Compostela", "Codigo":"15078"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":47049.0}
+]
+}
+,{"COD":"DPOP6639", "Nombre":"Santiago de Compostela. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4581, "T3_Variable":"Municipios", "Nombre":"Santiago de Compostela", "Codigo":"15078"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":53916.0}
+]
+}
+,{"COD":"DPOP6640", "Nombre":"Santiso. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4582, "T3_Variable":"Municipios", "Nombre":"Santiso", "Codigo":"15079"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1430.0}
+]
+}
+,{"COD":"DPOP6641", "Nombre":"Santiso. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4582, "T3_Variable":"Municipios", "Nombre":"Santiso", "Codigo":"15079"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":745.0}
+]
+}
+,{"COD":"DPOP6642", "Nombre":"Santiso. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4582, "T3_Variable":"Municipios", "Nombre":"Santiso", "Codigo":"15079"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":685.0}
+]
+}
+,{"COD":"DPOP6643", "Nombre":"Sobrado. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":3403, "T3_Variable":"Municipios", "Nombre":"Sobrado", "Codigo":"15080"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1830.0}
+]
+}
+,{"COD":"DPOP6644", "Nombre":"Sobrado. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":3403, "T3_Variable":"Municipios", "Nombre":"Sobrado", "Codigo":"15080"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":995.0}
+]
+}
+,{"COD":"DPOP6645", "Nombre":"Sobrado. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":3403, "T3_Variable":"Municipios", "Nombre":"Sobrado", "Codigo":"15080"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":835.0}
+]
+}
+,{"COD":"DPOP6646", "Nombre":"Somozas, As. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4583, "T3_Variable":"Municipios", "Nombre":"Somozas, As", "Codigo":"15081"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1042.0}
+]
+}
+,{"COD":"DPOP6647", "Nombre":"Somozas, As. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4583, "T3_Variable":"Municipios", "Nombre":"Somozas, As", "Codigo":"15081"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":528.0}
+]
+}
+,{"COD":"DPOP6648", "Nombre":"Somozas, As. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4583, "T3_Variable":"Municipios", "Nombre":"Somozas, As", "Codigo":"15081"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":514.0}
+]
+}
+,{"COD":"DPOP6649", "Nombre":"Teo. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4584, "T3_Variable":"Municipios", "Nombre":"Teo", "Codigo":"15082"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":18968.0}
+]
+}
+,{"COD":"DPOP6650", "Nombre":"Teo. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4584, "T3_Variable":"Municipios", "Nombre":"Teo", "Codigo":"15082"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":9292.0}
+]
+}
+,{"COD":"DPOP6651", "Nombre":"Teo. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4584, "T3_Variable":"Municipios", "Nombre":"Teo", "Codigo":"15082"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":9676.0}
+]
+}
+,{"COD":"DPOP6652", "Nombre":"Toques. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4585, "T3_Variable":"Municipios", "Nombre":"Toques", "Codigo":"15083"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1056.0}
+]
+}
+,{"COD":"DPOP6653", "Nombre":"Toques. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4585, "T3_Variable":"Municipios", "Nombre":"Toques", "Codigo":"15083"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":545.0}
+]
+}
+,{"COD":"DPOP6654", "Nombre":"Toques. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4585, "T3_Variable":"Municipios", "Nombre":"Toques", "Codigo":"15083"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":511.0}
+]
+}
+,{"COD":"DPOP6655", "Nombre":"Tordoia. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8537, "T3_Variable":"Municipios", "Nombre":"Tordoia", "Codigo":"15084"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3152.0}
+]
+}
+,{"COD":"DPOP6656", "Nombre":"Tordoia. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8537, "T3_Variable":"Municipios", "Nombre":"Tordoia", "Codigo":"15084"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1503.0}
+]
+}
+,{"COD":"DPOP6657", "Nombre":"Tordoia. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8537, "T3_Variable":"Municipios", "Nombre":"Tordoia", "Codigo":"15084"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1649.0}
+]
+}
+,{"COD":"DPOP6658", "Nombre":"Touro. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4586, "T3_Variable":"Municipios", "Nombre":"Touro", "Codigo":"15085"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3342.0}
+]
+}
+,{"COD":"DPOP6659", "Nombre":"Touro. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4586, "T3_Variable":"Municipios", "Nombre":"Touro", "Codigo":"15085"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1663.0}
+]
+}
+,{"COD":"DPOP6660", "Nombre":"Touro. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4586, "T3_Variable":"Municipios", "Nombre":"Touro", "Codigo":"15085"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1679.0}
+]
+}
+,{"COD":"DPOP6661", "Nombre":"Trazo. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4587, "T3_Variable":"Municipios", "Nombre":"Trazo", "Codigo":"15086"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2986.0}
+]
+}
+,{"COD":"DPOP6662", "Nombre":"Trazo. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4587, "T3_Variable":"Municipios", "Nombre":"Trazo", "Codigo":"15086"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1464.0}
+]
+}
+,{"COD":"DPOP6663", "Nombre":"Trazo. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4587, "T3_Variable":"Municipios", "Nombre":"Trazo", "Codigo":"15086"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1522.0}
+]
+}
+,{"COD":"DPOP6667", "Nombre":"Val do Dubra. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4589, "T3_Variable":"Municipios", "Nombre":"Val do Dubra", "Codigo":"15088"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3680.0}
+]
+}
+,{"COD":"DPOP6668", "Nombre":"Val do Dubra. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4589, "T3_Variable":"Municipios", "Nombre":"Val do Dubra", "Codigo":"15088"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1790.0}
+]
+}
+,{"COD":"DPOP6669", "Nombre":"Val do Dubra. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4589, "T3_Variable":"Municipios", "Nombre":"Val do Dubra", "Codigo":"15088"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1890.0}
+]
+}
+,{"COD":"DPOP6664", "Nombre":"Valdoviño. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4588, "T3_Variable":"Municipios", "Nombre":"Valdoviño", "Codigo":"15087"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6818.0}
+]
+}
+,{"COD":"DPOP6665", "Nombre":"Valdoviño. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4588, "T3_Variable":"Municipios", "Nombre":"Valdoviño", "Codigo":"15087"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3346.0}
+]
+}
+,{"COD":"DPOP6666", "Nombre":"Valdoviño. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4588, "T3_Variable":"Municipios", "Nombre":"Valdoviño", "Codigo":"15087"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3472.0}
+]
+}
+,{"COD":"DPOP6670", "Nombre":"Vedra. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8538, "T3_Variable":"Municipios", "Nombre":"Vedra", "Codigo":"15089"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4903.0}
+]
+}
+,{"COD":"DPOP6671", "Nombre":"Vedra. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8538, "T3_Variable":"Municipios", "Nombre":"Vedra", "Codigo":"15089"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2403.0}
+]
+}
+,{"COD":"DPOP6672", "Nombre":"Vedra. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8538, "T3_Variable":"Municipios", "Nombre":"Vedra", "Codigo":"15089"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2500.0}
+]
+}
+,{"COD":"DPOP6676", "Nombre":"Vilarmaior. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4591, "T3_Variable":"Municipios", "Nombre":"Vilarmaior", "Codigo":"15091"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1242.0}
+]
+}
+,{"COD":"DPOP6677", "Nombre":"Vilarmaior. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4591, "T3_Variable":"Municipios", "Nombre":"Vilarmaior", "Codigo":"15091"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":633.0}
+]
+}
+,{"COD":"DPOP6678", "Nombre":"Vilarmaior. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4591, "T3_Variable":"Municipios", "Nombre":"Vilarmaior", "Codigo":"15091"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":609.0}
+]
+}
+,{"COD":"DPOP6673", "Nombre":"Vilasantar. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4590, "T3_Variable":"Municipios", "Nombre":"Vilasantar", "Codigo":"15090"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":1233.0}
+]
+}
+,{"COD":"DPOP6674", "Nombre":"Vilasantar. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4590, "T3_Variable":"Municipios", "Nombre":"Vilasantar", "Codigo":"15090"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":658.0}
+]
+}
+,{"COD":"DPOP6675", "Nombre":"Vilasantar. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4590, "T3_Variable":"Municipios", "Nombre":"Vilasantar", "Codigo":"15090"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":575.0}
+]
+}
+,{"COD":"DPOP6679", "Nombre":"Vimianzo. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4592, "T3_Variable":"Municipios", "Nombre":"Vimianzo", "Codigo":"15092"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":6768.0}
+]
+}
+,{"COD":"DPOP6680", "Nombre":"Vimianzo. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4592, "T3_Variable":"Municipios", "Nombre":"Vimianzo", "Codigo":"15092"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3269.0}
+]
+}
+,{"COD":"DPOP6681", "Nombre":"Vimianzo. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":4592, "T3_Variable":"Municipios", "Nombre":"Vimianzo", "Codigo":"15092"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":3499.0}
+]
+}
+,{"COD":"DPOP6682", "Nombre":"Zas. Total. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8539, "T3_Variable":"Municipios", "Nombre":"Zas", "Codigo":"15093"}
+,{"Id":451, "T3_Variable":"Sexo", "Nombre":"Total", "Codigo":"0"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":4199.0}
+]
+}
+,{"COD":"DPOP6683", "Nombre":"Zas. Hombres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8539, "T3_Variable":"Municipios", "Nombre":"Zas", "Codigo":"15093"}
+,{"Id":452, "T3_Variable":"Sexo", "Nombre":"Hombres", "Codigo":"1"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2025.0}
+]
+}
+,{"COD":"DPOP6684", "Nombre":"Zas. Mujeres. Total habitantes. Personas. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":8539, "T3_Variable":"Municipios", "Nombre":"Zas", "Codigo":"15093"}
+,{"Id":453, "T3_Variable":"Sexo", "Nombre":"Mujeres", "Codigo":"2"}
+,{"Id":8677, "T3_Variable":"Tamaño de los municipios", "Nombre":"Total habitantes", "Codigo":"0"}
+,{"Id":20258, "T3_Variable":"Tipo de dato", "Nombre":"Personas", "Codigo":""}
+]
+, "Data":[{"Fecha":"2025-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2025, "Valor":2174.0}
+]
+}
+]

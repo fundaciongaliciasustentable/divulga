@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Divulga — Fundación Galicia Sustentable</title>
+<meta name="description" content="Visualizacións de datos da Fundación Galicia Sustentable para entender Galicia: poboación, territorio, rural e sustentabilidade.">
+<meta property="og:title" content="Divulga — Fundación Galicia Sustentable">
+<meta property="og:description" content="Visualizacións de datos para entender Galicia.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/divulga.css">
+<style>
+.heroe{padding-block:clamp(40px,8vw,88px) clamp(28px,5vw,48px);border-bottom:1px solid var(--gs-gris-20)}
+.heroe .inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+.heroe h1{font-family:var(--gs-font-display);font-weight:700;color:var(--gs-verde-nato);font-size:clamp(3.2rem,11vw,7.5rem);line-height:.9;margin:0;letter-spacing:-.02em}
+.heroe h1 em{font-weight:400;color:var(--gs-verde-claro)}
+.heroe .lead{font-size:clamp(1.05rem,2vw,1.25rem);max-width:46ch;margin:18px 0 0;color:var(--gs-gris-80);font-weight:300}
+.heroe .conta{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gs-gris-50);margin:0;white-space:nowrap}
+main{padding-block:40px 72px}
+.ficha{display:grid;gap:16px}
+.ficha .img{display:block;border-radius:var(--gs-radius-card);overflow:hidden;background:#242228;aspect-ratio:1/1;max-width:100%}
+.ficha .img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.ficha:hover .img img{transform:scale(1.03)}
+.sen-img{width:100%;height:100%;background:var(--gs-verde-moi-claro)}
+.ficha .meta{margin:0;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gs-gris-50)}
+.ficha h2,.ficha h3{font-family:var(--gs-font-display);font-weight:700;line-height:1.15;margin:6px 0 10px;text-wrap:balance}
+.ficha h2{font-size:clamp(1.8rem,3.6vw,2.75rem)}
+.ficha h3{font-size:1.35rem}
+.ficha h2 a,.ficha h3 a{color:var(--gs-verde-nato);text-decoration:none}
+.ficha h2 a:hover,.ficha h3 a:hover{text-decoration:underline;color:var(--gs-verde-nato)}
+.ficha .entradilla{margin:0 0 14px;max-width:60ch}
+.temas{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;gap:6px}
+.temas li{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 8px;border-radius:var(--gs-radius)}
+.fontes{margin:0;font-size:.8rem;color:var(--gs-gris-50)}
+.destacada{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.destacada .txt{min-width:0}
+.destacada .entradilla{font-size:1.1rem}
+.ver{display:inline-block;margin-top:20px;font-weight:700;font-size:.95rem}
+.arquivo{margin-top:72px;border-top:1px solid var(--gs-gris-20);padding-top:32px}
+.arquivo h2{font-family:var(--gs-font-display);font-weight:700;color:var(--gs-verde-nato);font-size:1.75rem;margin:0 0 24px}
+.grella{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:40px 28px}
+.sobre{margin-top:72px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;border-top:1px solid var(--gs-gris-20);padding-top:32px}
+.sobre h2{font-family:var(--gs-font-display);font-weight:700;color:var(--gs-verde-nato);font-size:1.4rem;margin:0}
+.sobre p{margin:0 0 10px;max-width:62ch}
+@media (max-width:760px){
+  .heroe .inner{grid-template-columns:1fr}
+  .destacada,.sobre{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="113" height="48"></a>
+    <nav aria-label="Ligazóns"><a href="https://galiciasustentable.org">Revista Galicia Sustentable</a></nav>
+  </div>
+</header>
+
+<section class="heroe">
+  <div class="inner">
+    <div>
+      <h1>Divulga<em>.</em></h1>
+      <p class="lead">Visualizacións de datos para entender Galicia: quen somos, onde vivimos e como cambia o territorio.</p>
+    </div>
+    <p class="conta">{{CONTA}}</p>
+  </div>
+</section>
+
+<main class="inner">
+{{DESTACADA}}
+{{ARQUIVO}}
+  <section class="sobre" aria-labelledby="h-sobre">
+    <h2 id="h-sobre">Sobre Divulga</h2>
+    <div>
+      <p>Pezas puntuais da Fundación Galicia Sustentable feitas con datos públicos. Cada visualización indica as súas fontes e a data dos datos.</p>
+      <p>Os contidos publícanse baixo licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.gl">CC BY-NC-SA 4.0</a>. Podes reutilizalos citando a fonte.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+</body>
+</html>

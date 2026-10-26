@@ -1,0 +1,40 @@
+/* Divulga · FGS
+   Tokens copiados de fundaciongaliciasustentable.gal/assets/css/tokens.css
+   (gris-50 corrixido a #6C6C64 por contraste WCAG AA). */
+:root {
+  --gs-verde-nato:#4a5846; --gs-verde-claro:#6B8F47; --gs-verde-moi-claro:#E8EFE3;
+  --gs-branco:#FFFFFF; --gs-gris-05:#FAFAF7; --gs-gris-10:#F5F5F0; --gs-gris-20:#E8E8E2;
+  --gs-gris-50:#6C6C64; --gs-gris-80:#3E3E38; --gs-negro:#1A1A17;
+  --gs-terra:#8B5E3C; --gs-azul:#2E6B8A; --gs-viola:#6B4C8A; --gs-oliva:#7A7A2E;
+  --gs-font-display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --gs-font-corpo:'Lato',system-ui,-apple-system,sans-serif;
+  --gs-radius:4px; --gs-radius-card:8px;
+  --gutter:max(20px,env(safe-area-inset-left,0px));
+  --gutter-r:max(20px,env(safe-area-inset-right,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--gs-font-corpo);font-size:16px;line-height:1.65;color:var(--gs-gris-80);background:var(--gs-gris-05)}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--gs-verde-nato);text-underline-offset:.2em}
+a:hover{color:var(--gs-verde-claro)}
+:focus-visible{outline:2px solid var(--gs-verde-claro);outline-offset:3px}
+.inner{max-width:1120px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+
+/* Barra superior común */
+.dv-bar{background:var(--gs-verde-nato);color:var(--gs-branco)}
+.dv-bar .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.dv-bar .logo img{height:55px;width:auto}
+.dv-bar .marca{display:flex;align-items:center;gap:12px;color:var(--gs-branco);text-decoration:none}
+.dv-bar .marca svg{width:30px;height:30px}
+.dv-bar .marca svg path{fill:var(--gs-branco)}
+.dv-bar .marca span{font-family:var(--gs-font-display);font-weight:700;font-size:1.25rem;letter-spacing:.01em}
+.dv-bar nav a{color:var(--gs-verde-moi-claro);font-size:.875rem;text-decoration:none}
+.dv-bar nav a:hover{color:var(--gs-branco);text-decoration:underline}
+
+/* Pé común */
+.dv-foot{background:var(--gs-verde-nato);color:var(--gs-verde-moi-claro);font-size:.8rem}
+.dv-foot .inner{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;padding-block:22px}
+.dv-foot a{color:var(--gs-verde-moi-claro)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

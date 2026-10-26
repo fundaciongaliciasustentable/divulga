@@ -1,0 +1,1950 @@
+[{"COD":"PERE129969", "Nombre":"1. TOTAL PAÍSES (TODOS LOS CONTINENTES). Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":16420, "T3_Variable":"Países", "Nombre":"1. TOTAL PAÍSES (TODOS LOS CONTINENTES)", "Codigo":""}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":563303.0}
+]
+}
+,{"COD":"PERE129681", "Nombre":"2 TOTAL EUROPA. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":303836, "T3_Variable":"Países", "Nombre":"2 TOTAL EUROPA", "Codigo":""}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":116947.0}
+]
+}
+,{"COD":"PERE129393", "Nombre":"Albania. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23267, "T3_Variable":"Países", "Nombre":"Albania", "Codigo":"101"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE129105", "Nombre":"Alemania. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9978, "T3_Variable":"Países", "Nombre":"Alemania", "Codigo":"126"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":18035.0}
+]
+}
+,{"COD":"PERE128817", "Nombre":"Andorra. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23272, "T3_Variable":"Países", "Nombre":"Andorra", "Codigo":"124"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":2147.0}
+]
+}
+,{"COD":"PERE128529", "Nombre":"Armenia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23427, "T3_Variable":"Países", "Nombre":"Armenia", "Codigo":"148"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE128241", "Nombre":"Austria. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9979, "T3_Variable":"Países", "Nombre":"Austria", "Codigo":"102"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":442.0}
+]
+}
+,{"COD":"PERE127953", "Nombre":"Belarús. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23278, "T3_Variable":"Países", "Nombre":"Belarús", "Codigo":"138"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE127665", "Nombre":"Bélgica. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9980, "T3_Variable":"Países", "Nombre":"Bélgica", "Codigo":"103"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":3232.0}
+]
+}
+,{"COD":"PERE127377", "Nombre":"Bosnia y Herzegovina. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23279, "T3_Variable":"Países", "Nombre":"Bosnia y Herzegovina", "Codigo":"145"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE127089", "Nombre":"Bulgaria. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23242, "T3_Variable":"Países", "Nombre":"Bulgaria", "Codigo":"104"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE126801", "Nombre":"Chipre. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23243, "T3_Variable":"Países", "Nombre":"Chipre", "Codigo":"106"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE126513", "Nombre":"Croacia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23280, "T3_Variable":"Países", "Nombre":"Croacia", "Codigo":"146"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE126225", "Nombre":"Dinamarca. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9981, "T3_Variable":"Países", "Nombre":"Dinamarca", "Codigo":"107"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":473.0}
+]
+}
+,{"COD":"PERE125937", "Nombre":"Eslovenia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23266, "T3_Variable":"Países", "Nombre":"Eslovenia", "Codigo":"147"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE125649", "Nombre":"Estonia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23262, "T3_Variable":"Países", "Nombre":"Estonia", "Codigo":"141"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE125361", "Nombre":"Francia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9983, "T3_Variable":"Países", "Nombre":"Francia", "Codigo":"110"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":20136.0}
+]
+}
+,{"COD":"PERE125073", "Nombre":"Finlandia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9982, "T3_Variable":"Países", "Nombre":"Finlandia", "Codigo":"109"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":163.0}
+]
+}
+,{"COD":"PERE124785", "Nombre":"Georgia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23426, "T3_Variable":"Países", "Nombre":"Georgia", "Codigo":"139"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE124497", "Nombre":"Gibraltar. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":292727, "T3_Variable":"Países", "Nombre":"Gibraltar", "Codigo":"174"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE124209", "Nombre":"Grecia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9984, "T3_Variable":"Países", "Nombre":"Grecia", "Codigo":"111"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":86.0}
+]
+}
+,{"COD":"PERE123921", "Nombre":"Hungría. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9993, "T3_Variable":"Países", "Nombre":"Hungría", "Codigo":"112"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE123633", "Nombre":"Irlanda. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9986, "T3_Variable":"Países", "Nombre":"Irlanda", "Codigo":"113"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":1095.0}
+]
+}
+,{"COD":"PERE123345", "Nombre":"Islandia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9994, "T3_Variable":"Países", "Nombre":"Islandia", "Codigo":"114"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE123057", "Nombre":"Italia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9987, "T3_Variable":"Países", "Nombre":"Italia", "Codigo":"115"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":1894.0}
+]
+}
+,{"COD":"PERE122769", "Nombre":"Letonia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23261, "T3_Variable":"Países", "Nombre":"Letonia", "Codigo":"136"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE122481", "Nombre":"Liechtenstein. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23269, "T3_Variable":"Países", "Nombre":"Liechtenstein", "Codigo":"116"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE122193", "Nombre":"Lituania. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23263, "T3_Variable":"Países", "Nombre":"Lituania", "Codigo":"142"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE121905", "Nombre":"Luxemburgo. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9988, "T3_Variable":"Países", "Nombre":"Luxemburgo", "Codigo":"117"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":813.0}
+]
+}
+,{"COD":"PERE121617", "Nombre":"Macedonia del Norte. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23282, "T3_Variable":"Países", "Nombre":"Macedonia del Norte", "Codigo":"156"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE121329", "Nombre":"Malta. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23253, "T3_Variable":"Países", "Nombre":"Malta", "Codigo":"118"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":100.0}
+]
+}
+,{"COD":"PERE121041", "Nombre":"Moldavia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23277, "T3_Variable":"Países", "Nombre":"Moldavia", "Codigo":"137"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE120753", "Nombre":"Mónaco. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23270, "T3_Variable":"Países", "Nombre":"Mónaco", "Codigo":"119"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE120465", "Nombre":"Montenegro. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23284, "T3_Variable":"Países", "Nombre":"Montenegro", "Codigo":"158"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE120177", "Nombre":"Noruega. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9995, "T3_Variable":"Países", "Nombre":"Noruega", "Codigo":"120"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":437.0}
+]
+}
+,{"COD":"PERE119889", "Nombre":"Países Bajos. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9985, "T3_Variable":"Países", "Nombre":"Países Bajos", "Codigo":"121"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":3433.0}
+]
+}
+,{"COD":"PERE119601", "Nombre":"Polonia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9996, "T3_Variable":"Países", "Nombre":"Polonia", "Codigo":"122"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":249.0}
+]
+}
+,{"COD":"PERE119313", "Nombre":"Portugal. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9989, "T3_Variable":"Países", "Nombre":"Portugal", "Codigo":"123"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":5268.0}
+]
+}
+,{"COD":"PERE119025", "Nombre":"Reino Unido. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9990, "T3_Variable":"Países", "Nombre":"Reino Unido", "Codigo":"125"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":16505.0}
+]
+}
+,{"COD":"PERE118737", "Nombre":"República Checa. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9997, "T3_Variable":"Países", "Nombre":"República Checa", "Codigo":"143"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":163.0}
+]
+}
+,{"COD":"PERE118449", "Nombre":"República Eslovaca. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23265, "T3_Variable":"Países", "Nombre":"República Eslovaca", "Codigo":"144"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE118161", "Nombre":"Rumanía. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23259, "T3_Variable":"Países", "Nombre":"Rumanía", "Codigo":"128"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":45.0}
+]
+}
+,{"COD":"PERE117873", "Nombre":"Rusia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":10000, "T3_Variable":"Países", "Nombre":"Rusia", "Codigo":"154"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":106.0}
+]
+}
+,{"COD":"PERE117585", "Nombre":"San Marino. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23273, "T3_Variable":"Países", "Nombre":"San Marino", "Codigo":"129"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE117297", "Nombre":"Santa Sede. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23274, "T3_Variable":"Países", "Nombre":"Santa Sede", "Codigo":"130"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE117009", "Nombre":"Serbia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23283, "T3_Variable":"Países", "Nombre":"Serbia", "Codigo":"157"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE116721", "Nombre":"Suecia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9991, "T3_Variable":"Países", "Nombre":"Suecia", "Codigo":"131"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":613.0}
+]
+}
+,{"COD":"PERE116433", "Nombre":"Suiza. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9998, "T3_Variable":"Países", "Nombre":"Suiza", "Codigo":"132"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":40825.0}
+]
+}
+,{"COD":"PERE116145", "Nombre":"Turquía. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9999, "T3_Variable":"Países", "Nombre":"Turquía", "Codigo":"436"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":36.0}
+]
+}
+,{"COD":"PERE115857", "Nombre":"Ucrania. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23276, "T3_Variable":"Países", "Nombre":"Ucrania", "Codigo":"135"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE115569", "Nombre":"Resto de Países Europeos. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":370081, "T3_Variable":"Países", "Nombre":"Resto de Países Europeos", "Codigo":""}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":651.0}
+]
+}
+,{"COD":"PERE115281", "Nombre":"3. TOTAL ÁFRICA. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9947, "T3_Variable":"Países", "Nombre":"3. TOTAL ÁFRICA", "Codigo":"02"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":1017.0}
+]
+}
+,{"COD":"PERE114993", "Nombre":"Angola. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23286, "T3_Variable":"Países", "Nombre":"Angola", "Codigo":"202"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE114705", "Nombre":"Argelia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23287, "T3_Variable":"Países", "Nombre":"Argelia", "Codigo":"203"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":32.0}
+]
+}
+,{"COD":"PERE114417", "Nombre":"Benin. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23288, "T3_Variable":"Países", "Nombre":"Benin", "Codigo":"204"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE114129", "Nombre":"Botswana. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23289, "T3_Variable":"Países", "Nombre":"Botswana", "Codigo":"205"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE113841", "Nombre":"Burkina Faso. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23285, "T3_Variable":"Países", "Nombre":"Burkina Faso", "Codigo":"201"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE113553", "Nombre":"Burundi. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23290, "T3_Variable":"Países", "Nombre":"Burundi", "Codigo":"206"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE113265", "Nombre":"Cabo Verde. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23291, "T3_Variable":"Países", "Nombre":"Cabo Verde", "Codigo":"207"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE112977", "Nombre":"Camerún. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23292, "T3_Variable":"Países", "Nombre":"Camerún", "Codigo":"208"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE112689", "Nombre":"Chad. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23330, "T3_Variable":"Países", "Nombre":"Chad", "Codigo":"246"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE112401", "Nombre":"Comores. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23293, "T3_Variable":"Países", "Nombre":"Comores", "Codigo":"209"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE112113", "Nombre":"Congo. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23294, "T3_Variable":"Países", "Nombre":"Congo", "Codigo":"210"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE111825", "Nombre":"Costa de Marfil. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23295, "T3_Variable":"Países", "Nombre":"Costa de Marfil", "Codigo":"211"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE111537", "Nombre":"Djibouti. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23296, "T3_Variable":"Países", "Nombre":"Djibouti", "Codigo":"212"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE111249", "Nombre":"Egipto. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23297, "T3_Variable":"Países", "Nombre":"Egipto", "Codigo":"213"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE110961", "Nombre":"Eritrea. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23337, "T3_Variable":"Países", "Nombre":"Eritrea", "Codigo":"253"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE110673", "Nombre":"Etiopía. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23298, "T3_Variable":"Países", "Nombre":"Etiopía", "Codigo":"214"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE110385", "Nombre":"Gabón. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23299, "T3_Variable":"Países", "Nombre":"Gabón", "Codigo":"215"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE110097", "Nombre":"Gambia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23300, "T3_Variable":"Países", "Nombre":"Gambia", "Codigo":"216"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":1.0}
+]
+}
+,{"COD":"PERE109809", "Nombre":"Ghana. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23301, "T3_Variable":"Países", "Nombre":"Ghana", "Codigo":"217"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":23.0}
+]
+}
+,{"COD":"PERE109521", "Nombre":"Guinea. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23302, "T3_Variable":"Países", "Nombre":"Guinea", "Codigo":"218"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE109233", "Nombre":"Guinea-Bissau. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23303, "T3_Variable":"Países", "Nombre":"Guinea-Bissau", "Codigo":"219"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE108945", "Nombre":"Guinea Ecuatorial. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23304, "T3_Variable":"Países", "Nombre":"Guinea Ecuatorial", "Codigo":"220"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":36.0}
+]
+}
+,{"COD":"PERE108657", "Nombre":"Kenia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23305, "T3_Variable":"Países", "Nombre":"Kenia", "Codigo":"221"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE108369", "Nombre":"Lesotho. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23306, "T3_Variable":"Países", "Nombre":"Lesotho", "Codigo":"222"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE108081", "Nombre":"Liberia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23307, "T3_Variable":"Países", "Nombre":"Liberia", "Codigo":"223"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE107793", "Nombre":"Libia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23308, "T3_Variable":"Países", "Nombre":"Libia", "Codigo":"224"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE107505", "Nombre":"Madagascar. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23309, "T3_Variable":"Países", "Nombre":"Madagascar", "Codigo":"225"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE107217", "Nombre":"Malawi. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23310, "T3_Variable":"Países", "Nombre":"Malawi", "Codigo":"226"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE106929", "Nombre":"Mali. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23311, "T3_Variable":"Países", "Nombre":"Mali", "Codigo":"227"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE106641", "Nombre":"Marruecos. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23312, "T3_Variable":"Países", "Nombre":"Marruecos", "Codigo":"228"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":227.0}
+]
+}
+,{"COD":"PERE106353", "Nombre":"Mauricio. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23313, "T3_Variable":"Países", "Nombre":"Mauricio", "Codigo":"229"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE106065", "Nombre":"Mauritania. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23314, "T3_Variable":"Países", "Nombre":"Mauritania", "Codigo":"230"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":28.0}
+]
+}
+,{"COD":"PERE105777", "Nombre":"Mozambique. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23315, "T3_Variable":"Países", "Nombre":"Mozambique", "Codigo":"231"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE105489", "Nombre":"Namibia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23316, "T3_Variable":"Países", "Nombre":"Namibia", "Codigo":"232"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE105201", "Nombre":"Níger. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23317, "T3_Variable":"Países", "Nombre":"Níger", "Codigo":"233"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE104913", "Nombre":"Nigeria. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23318, "T3_Variable":"Países", "Nombre":"Nigeria", "Codigo":"234"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE104625", "Nombre":"República Centroafricana. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23319, "T3_Variable":"Países", "Nombre":"República Centroafricana", "Codigo":"235"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE104337", "Nombre":"República Democrática del Congo. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23334, "T3_Variable":"Países", "Nombre":"República Democrática del Congo", "Codigo":"250"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE104049", "Nombre":"Ruanda. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23321, "T3_Variable":"Países", "Nombre":"Ruanda", "Codigo":"237"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE103761", "Nombre":"Santo Tomé y Príncipe. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23322, "T3_Variable":"Países", "Nombre":"Santo Tomé y Príncipe", "Codigo":"238"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE103473", "Nombre":"Senegal. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23323, "T3_Variable":"Países", "Nombre":"Senegal", "Codigo":"239"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":108.0}
+]
+}
+,{"COD":"PERE103185", "Nombre":"Seychelles. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23324, "T3_Variable":"Países", "Nombre":"Seychelles", "Codigo":"240"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE102897", "Nombre":"Sierra Leona. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23325, "T3_Variable":"Países", "Nombre":"Sierra Leona", "Codigo":"241"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE102609", "Nombre":"Somalia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23326, "T3_Variable":"Países", "Nombre":"Somalia", "Codigo":"242"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE102321", "Nombre":"Sudáfrica. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23320, "T3_Variable":"Países", "Nombre":"Sudáfrica", "Codigo":"236"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":166.0}
+]
+}
+,{"COD":"PERE102033", "Nombre":"Sudán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23327, "T3_Variable":"Países", "Nombre":"Sudán", "Codigo":"243"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE101745", "Nombre":"Sudán del Sur. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":274517, "T3_Variable":"Países", "Nombre":"Sudán del Sur", "Codigo":"254"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE101457", "Nombre":"Swazilandia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23328, "T3_Variable":"Países", "Nombre":"Swazilandia", "Codigo":"244"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE101169", "Nombre":"Tanzania. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23329, "T3_Variable":"Países", "Nombre":"Tanzania", "Codigo":"245"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE100881", "Nombre":"Togo. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23331, "T3_Variable":"Países", "Nombre":"Togo", "Codigo":"247"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE100593", "Nombre":"Túnez. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23332, "T3_Variable":"Países", "Nombre":"Túnez", "Codigo":"248"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE100305", "Nombre":"Uganda. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23333, "T3_Variable":"Países", "Nombre":"Uganda", "Codigo":"249"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE100017", "Nombre":"Zambia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23335, "T3_Variable":"Países", "Nombre":"Zambia", "Codigo":"251"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE99729", "Nombre":"Zimbabwe. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23336, "T3_Variable":"Países", "Nombre":"Zimbabwe", "Codigo":"252"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE99441", "Nombre":"Resto de Países Africanos. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":370082, "T3_Variable":"Países", "Nombre":"Resto de Países Africanos", "Codigo":""}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":396.0}
+]
+}
+,{"COD":"PERE99153", "Nombre":"4. TOTAL AMÉRICA. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9965, "T3_Variable":"Países", "Nombre":"4. TOTAL AMÉRICA", "Codigo":"03"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":441346.0}
+]
+}
+,{"COD":"PERE98865", "Nombre":"Antigua y Barbuda. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23341, "T3_Variable":"Países", "Nombre":"Antigua y Barbuda", "Codigo":"310"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE96326", "Nombre":"Argentina. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":10003, "T3_Variable":"Países", "Nombre":"Argentina", "Codigo":"340"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":191552.0}
+]
+}
+,{"COD":"PERE95462", "Nombre":"Bahamas. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23342, "T3_Variable":"Países", "Nombre":"Bahamas", "Codigo":"311"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE94598", "Nombre":"Barbados. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23343, "T3_Variable":"Países", "Nombre":"Barbados", "Codigo":"312"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE93734", "Nombre":"Belice. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23344, "T3_Variable":"Países", "Nombre":"Belice", "Codigo":"313"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE92870", "Nombre":"Bolivia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23362, "T3_Variable":"Países", "Nombre":"Bolivia", "Codigo":"341"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":532.0}
+]
+}
+,{"COD":"PERE92006", "Nombre":"Brasil. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":10004, "T3_Variable":"Países", "Nombre":"Brasil", "Codigo":"342"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":53542.0}
+]
+}
+,{"COD":"PERE91142", "Nombre":"Canadá. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9961, "T3_Variable":"Países", "Nombre":"Canadá", "Codigo":"301"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":2824.0}
+]
+}
+,{"COD":"PERE90278", "Nombre":"Chile. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23365, "T3_Variable":"Países", "Nombre":"Chile", "Codigo":"344"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":4867.0}
+]
+}
+,{"COD":"PERE89414", "Nombre":"Colombia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23364, "T3_Variable":"Países", "Nombre":"Colombia", "Codigo":"343"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":1725.0}
+]
+}
+,{"COD":"PERE88550", "Nombre":"Costa Rica. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23345, "T3_Variable":"Países", "Nombre":"Costa Rica", "Codigo":"314"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":1465.0}
+]
+}
+,{"COD":"PERE87686", "Nombre":"Cuba. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23346, "T3_Variable":"Países", "Nombre":"Cuba", "Codigo":"315"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":51326.0}
+]
+}
+,{"COD":"PERE86822", "Nombre":"Dominica. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23347, "T3_Variable":"Países", "Nombre":"Dominica", "Codigo":"316"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE85958", "Nombre":"Ecuador. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23366, "T3_Variable":"Países", "Nombre":"Ecuador", "Codigo":"345"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":906.0}
+]
+}
+,{"COD":"PERE85094", "Nombre":"El Salvador. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23348, "T3_Variable":"Países", "Nombre":"El Salvador", "Codigo":"317"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":100.0}
+]
+}
+,{"COD":"PERE84230", "Nombre":"Estados Unidos de América. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":10005, "T3_Variable":"Países", "Nombre":"Estados Unidos de América", "Codigo":"302"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":29774.0}
+]
+}
+,{"COD":"PERE83366", "Nombre":"Granada. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23349, "T3_Variable":"Países", "Nombre":"Granada", "Codigo":"318"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE82502", "Nombre":"Guatemala. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23350, "T3_Variable":"Países", "Nombre":"Guatemala", "Codigo":"319"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":540.0}
+]
+}
+,{"COD":"PERE81638", "Nombre":"Guyana. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23367, "T3_Variable":"Países", "Nombre":"Guyana", "Codigo":"346"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE80774", "Nombre":"Haití. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23351, "T3_Variable":"Países", "Nombre":"Haití", "Codigo":"320"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE79910", "Nombre":"Honduras. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23352, "T3_Variable":"Países", "Nombre":"Honduras", "Codigo":"321"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":666.0}
+]
+}
+,{"COD":"PERE79046", "Nombre":"Jamaica. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23353, "T3_Variable":"Países", "Nombre":"Jamaica", "Codigo":"322"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE78182", "Nombre":"México. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9960, "T3_Variable":"Países", "Nombre":"México", "Codigo":"303"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":16211.0}
+]
+}
+,{"COD":"PERE77318", "Nombre":"Nicaragua. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23354, "T3_Variable":"Países", "Nombre":"Nicaragua", "Codigo":"323"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":149.0}
+]
+}
+,{"COD":"PERE76454", "Nombre":"Panamá. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23355, "T3_Variable":"Países", "Nombre":"Panamá", "Codigo":"324"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":4224.0}
+]
+}
+,{"COD":"PERE75590", "Nombre":"Paraguay. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23368, "T3_Variable":"Países", "Nombre":"Paraguay", "Codigo":"347"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":491.0}
+]
+}
+,{"COD":"PERE74726", "Nombre":"Perú. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23369, "T3_Variable":"Países", "Nombre":"Perú", "Codigo":"348"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":1762.0}
+]
+}
+,{"COD":"PERE73862", "Nombre":"República Dominicana. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23357, "T3_Variable":"Países", "Nombre":"República Dominicana", "Codigo":"326"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":3143.0}
+]
+}
+,{"COD":"PERE72998", "Nombre":"San Cristóbal y Nieves. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23360, "T3_Variable":"Países", "Nombre":"San Cristóbal y Nieves", "Codigo":"329"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE72134", "Nombre":"San Vicente y las Granadinas. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23356, "T3_Variable":"Países", "Nombre":"San Vicente y las Granadinas", "Codigo":"325"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE71270", "Nombre":"Santa Lucía. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23359, "T3_Variable":"Países", "Nombre":"Santa Lucía", "Codigo":"328"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE70406", "Nombre":"Surinam. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23370, "T3_Variable":"Países", "Nombre":"Surinam", "Codigo":"349"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE69542", "Nombre":"Trinidad y Tobago. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23358, "T3_Variable":"Países", "Nombre":"Trinidad y Tobago", "Codigo":"327"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE68678", "Nombre":"Uruguay. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23371, "T3_Variable":"Países", "Nombre":"Uruguay", "Codigo":"350"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":45176.0}
+]
+}
+,{"COD":"PERE67814", "Nombre":"Venezuela. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9962, "T3_Variable":"Países", "Nombre":"Venezuela", "Codigo":"351"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":30329.0}
+]
+}
+,{"COD":"PERE66950", "Nombre":"Resto de Países de América. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":382437, "T3_Variable":"Países", "Nombre":"Resto de Países de América", "Codigo":""}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":42.0}
+]
+}
+,{"COD":"PERE66086", "Nombre":"5. TOTAL ASIA. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9966, "T3_Variable":"Países", "Nombre":"5. TOTAL ASIA", "Codigo":"04"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":1750.0}
+]
+}
+,{"COD":"PERE65222", "Nombre":"Afganistán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23373, "T3_Variable":"Países", "Nombre":"Afganistán", "Codigo":"401"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE64358", "Nombre":"Arabia Saudí. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23374, "T3_Variable":"Países", "Nombre":"Arabia Saudí", "Codigo":"402"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":121.0}
+]
+}
+,{"COD":"PERE63494", "Nombre":"Azerbaiyán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23428, "T3_Variable":"Países", "Nombre":"Azerbaiyán", "Codigo":"442"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE62630", "Nombre":"Bahréin. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23375, "T3_Variable":"Países", "Nombre":"Bahréin", "Codigo":"403"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE61766", "Nombre":"Bangladesh. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23376, "T3_Variable":"Países", "Nombre":"Bangladesh", "Codigo":"404"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE60902", "Nombre":"Bhután. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":274515, "T3_Variable":"Países", "Nombre":"Bhután", "Codigo":"448"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE60038", "Nombre":"Brunei. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23406, "T3_Variable":"Países", "Nombre":"Brunei", "Codigo":"439"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE59174", "Nombre":"Camboya. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23388, "T3_Variable":"Países", "Nombre":"Camboya", "Codigo":"417"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE58310", "Nombre":"China. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23378, "T3_Variable":"Países", "Nombre":"China", "Codigo":"407"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":197.0}
+]
+}
+,{"COD":"PERE57446", "Nombre":"Corea. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23399, "T3_Variable":"Países", "Nombre":"Corea", "Codigo":"430"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE56582", "Nombre":"Corea del Norte. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23400, "T3_Variable":"Países", "Nombre":"Corea del Norte", "Codigo":"431"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE55718", "Nombre":"Emiratos Árabes Unidos. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23379, "T3_Variable":"Países", "Nombre":"Emiratos Árabes Unidos", "Codigo":"408"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":426.0}
+]
+}
+,{"COD":"PERE54854", "Nombre":"Filipinas. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23380, "T3_Variable":"Países", "Nombre":"Filipinas", "Codigo":"409"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":123.0}
+]
+}
+,{"COD":"PERE53990", "Nombre":"India. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23381, "T3_Variable":"Países", "Nombre":"India", "Codigo":"410"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":24.0}
+]
+}
+,{"COD":"PERE53126", "Nombre":"Indonesia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23382, "T3_Variable":"Países", "Nombre":"Indonesia", "Codigo":"411"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE52262", "Nombre":"Irán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23384, "T3_Variable":"Países", "Nombre":"Irán", "Codigo":"413"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE51398", "Nombre":"Iraq. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23383, "T3_Variable":"Países", "Nombre":"Iraq", "Codigo":"412"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE50534", "Nombre":"Islas Marshall. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23430, "T3_Variable":"Países", "Nombre":"Islas Marshall", "Codigo":"440"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE49670", "Nombre":"Israel. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23385, "T3_Variable":"Países", "Nombre":"Israel", "Codigo":"414"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":43.0}
+]
+}
+,{"COD":"PERE48806", "Nombre":"Japón. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":10007, "T3_Variable":"Países", "Nombre":"Japón", "Codigo":"415"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":196.0}
+]
+}
+,{"COD":"PERE47942", "Nombre":"Jordania. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23387, "T3_Variable":"Países", "Nombre":"Jordania", "Codigo":"416"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":46.0}
+]
+}
+,{"COD":"PERE47078", "Nombre":"Kazajstán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23408, "T3_Variable":"Países", "Nombre":"Kazajstán", "Codigo":"443"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE46214", "Nombre":"Kirguistán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23409, "T3_Variable":"Países", "Nombre":"Kirguistán", "Codigo":"444"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE45350", "Nombre":"Kuwait. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23389, "T3_Variable":"Países", "Nombre":"Kuwait", "Codigo":"418"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE44486", "Nombre":"Laos. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23390, "T3_Variable":"Países", "Nombre":"Laos", "Codigo":"419"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE43622", "Nombre":"Líbano. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23391, "T3_Variable":"Países", "Nombre":"Líbano", "Codigo":"420"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE42758", "Nombre":"Malasia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23392, "T3_Variable":"Países", "Nombre":"Malasia", "Codigo":"421"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE41894", "Nombre":"Maldivas. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23393, "T3_Variable":"Países", "Nombre":"Maldivas", "Codigo":"422"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE41030", "Nombre":"Mongolia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23394, "T3_Variable":"Países", "Nombre":"Mongolia", "Codigo":"423"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE40166", "Nombre":"Myanmar. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23377, "T3_Variable":"Países", "Nombre":"Myanmar", "Codigo":"405"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE39302", "Nombre":"Nepal. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23395, "T3_Variable":"Países", "Nombre":"Nepal", "Codigo":"424"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE38438", "Nombre":"Omán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23396, "T3_Variable":"Países", "Nombre":"Omán", "Codigo":"425"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE37574", "Nombre":"Pakistán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23397, "T3_Variable":"Países", "Nombre":"Pakistán", "Codigo":"426"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":42.0}
+]
+}
+,{"COD":"PERE36710", "Nombre":"Palestina. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":292758, "T3_Variable":"Países", "Nombre":"Palestina", "Codigo":"449"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE35846", "Nombre":"Qatar. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23398, "T3_Variable":"Países", "Nombre":"Qatar", "Codigo":"427"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":91.0}
+]
+}
+,{"COD":"PERE34982", "Nombre":"Singapur. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23401, "T3_Variable":"Países", "Nombre":"Singapur", "Codigo":"432"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":79.0}
+]
+}
+,{"COD":"PERE34118", "Nombre":"Siria. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23402, "T3_Variable":"Países", "Nombre":"Siria", "Codigo":"433"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE33254", "Nombre":"Sri Lanka. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23403, "T3_Variable":"Países", "Nombre":"Sri Lanka", "Codigo":"434"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE32390", "Nombre":"Tailandia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23404, "T3_Variable":"Países", "Nombre":"Tailandia", "Codigo":"435"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":77.0}
+]
+}
+,{"COD":"PERE31526", "Nombre":"Tayikistán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23410, "T3_Variable":"Países", "Nombre":"Tayikistán", "Codigo":"445"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE30662", "Nombre":"Turkmenistán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23411, "T3_Variable":"Países", "Nombre":"Turkmenistán", "Codigo":"446"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE29798", "Nombre":"Uzbekistán. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23412, "T3_Variable":"Países", "Nombre":"Uzbekistán", "Codigo":"447"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE28934", "Nombre":"Vietnam. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23405, "T3_Variable":"Países", "Nombre":"Vietnam", "Codigo":"437"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE28070", "Nombre":"Yemen. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23407, "T3_Variable":"Países", "Nombre":"Yemen", "Codigo":"441"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE1209176", "Nombre":"Otros países de Asia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":292914, "T3_Variable":"Países", "Nombre":"Otros países de Asia", "Codigo":"2.04.O"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE27206", "Nombre":"Resto de Países Asiáticos. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":370083, "T3_Variable":"Países", "Nombre":"Resto de Países Asiáticos", "Codigo":""}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":285.0}
+]
+}
+,{"COD":"PERE26342", "Nombre":"6. TOTAL OCEANÍA. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":16438, "T3_Variable":"Países", "Nombre":"6. TOTAL OCEANÍA", "Codigo":"05"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":2243.0}
+]
+}
+,{"COD":"PERE25478", "Nombre":"Australia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":10008, "T3_Variable":"Países", "Nombre":"Australia", "Codigo":"501"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":2109.0}
+]
+}
+,{"COD":"PERE24614", "Nombre":"Fiji. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23414, "T3_Variable":"Países", "Nombre":"Fiji", "Codigo":"502"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE23750", "Nombre":"Islas Cook. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23423, "T3_Variable":"Países", "Nombre":"Islas Cook", "Codigo":"513"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE22886", "Nombre":"Islas Salomón. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23417, "T3_Variable":"Países", "Nombre":"Islas Salomón", "Codigo":"506"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE22022", "Nombre":"Kiribati. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":274516, "T3_Variable":"Países", "Nombre":"Kiribati", "Codigo":"514"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE21158", "Nombre":"Micronesia. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23421, "T3_Variable":"Países", "Nombre":"Micronesia", "Codigo":"511"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE20294", "Nombre":"Nauru. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23424, "T3_Variable":"Países", "Nombre":"Nauru", "Codigo":"515"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE19430", "Nombre":"Nueva Zelanda. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":9964, "T3_Variable":"Países", "Nombre":"Nueva Zelanda", "Codigo":"504"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":132.0}
+]
+}
+,{"COD":"PERE18566", "Nombre":"Palaos. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23425, "T3_Variable":"Países", "Nombre":"Palaos", "Codigo":"516"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE17702", "Nombre":"Papúa Nueva Guinea. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23416, "T3_Variable":"Países", "Nombre":"Papúa Nueva Guinea", "Codigo":"505"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE16838", "Nombre":"Samoa. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23418, "T3_Variable":"Países", "Nombre":"Samoa", "Codigo":"507"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE15974", "Nombre":"Timor Oriental. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23429, "T3_Variable":"Países", "Nombre":"Timor Oriental", "Codigo":"517"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE15110", "Nombre":"Tonga. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23419, "T3_Variable":"Países", "Nombre":"Tonga", "Codigo":"508"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE14246", "Nombre":"Tuvalu. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23422, "T3_Variable":"Países", "Nombre":"Tuvalu", "Codigo":"512"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE13382", "Nombre":"Vanuatu. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":23420, "T3_Variable":"Países", "Nombre":"Vanuatu", "Codigo":"509"}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[]
+}
+,{"COD":"PERE12518", "Nombre":"Resto de Países de Oceanía. Galicia. Ambos sexos. Dato base. Total grupos de edad. Población española residente en el extranjero. ", "T3_Unidad":"Personas", "T3_Escala":" ", "MetaData":[{"Id":370085, "T3_Variable":"Países", "Nombre":"Resto de Países de Oceanía", "Codigo":""}
+,{"Id":9008, "T3_Variable":"Comunidades y Ciudades Autónomas", "Nombre":"Galicia", "Codigo":"12"}
+,{"Id":454, "T3_Variable":"Sexo", "Nombre":"Ambos sexos", "Codigo":""}
+,{"Id":72, "T3_Variable":"Tipo de dato", "Nombre":"Dato base", "Codigo":""}
+,{"Id":15668, "T3_Variable":"Totales de edad", "Nombre":"Total grupos de edad", "Codigo":""}
+,{"Id":418045, "T3_Variable":"Conceptos demógraficos", "Nombre":"Población española residente en el extranjero", "Codigo":""}
+]
+, "Data":[{"Fecha":"2026-01-01T00:00:00.000+01:00", "T3_TipoDato":"Definitivo", "T3_Periodo":"A", "Anyo":2026, "Valor":2.0}
+]
+}
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "poboacion-galicia",
+    "titulo": "A Galicia de fóra xa é a terceira provincia",
+    "entradilla": "Os 313 concellos e os 563.303 galegos e galegas que viven no exterior, cada un do tamaño da súa poboación. Só A Coruña e Pontevedra suman máis xente ca a diáspora.",
+    "data": "2026-10-26",
+    "temas": ["Poboación", "Emigración"],
+    "formato": "Diagrama de Voronoi",
+    "fontes": "INE: Padrón municipal 2025 e PERE 2026"
+  }
+]
