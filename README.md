@@ -56,6 +56,21 @@ Display e Lato).
 |---|---|---|
 | poboacion-galicia | INE Padrón municipal 2025 (táboas 2868, 2880, 2885, 2890) e PERE 2026 (táboa 71117) | `cd fontes/poboacion-galicia && npm i && python3 prep.py && node layout.js s51 && python3 render.py` |
 
+| biblioteca-sustentable | `fontes/biblioteca-sustentable/libros.json` (selección FGS) e portadas de Open Library | `python3 fontes/biblioteca-sustentable/render.py` |
+
+### Engadir libros á Biblioteca Sustentable
+
+```bash
+python3 fontes/biblioteca-sustentable/engadir.py --titulo "Overshoot" \
+  --autoria "William R. Catton" --ano 1980 --eixo fund --descricion "..." [--comezar] [--isbn ...]
+```
+
+Engade o libro a `libros.json`, busca e descarga a portada en
+`v/biblioteca-sustentable/capas/`, e rexenera a páxina, a miniatura e a
+portada de Divulga. Eixos: `fund`, `eco`, `clima`, `bio`, `rural`, `etica`.
+Revisa a portada descargada: se é outra edición ou unha tapa de biblioteca,
+cámbiaa con `--so-capa --titulo "..." --isbn ...` (ou `--capa-id`).
+
 `prep.py` toma os nomes galegos dos concellos de
 `~/Proxectos/galicia-agora/data-out/perfil-concellos/data.geojson`.
 
