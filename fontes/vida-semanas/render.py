@@ -21,7 +21,7 @@ dek = (f"Unha vida galega cabe en arredor de <b>{mil(sem(gM['ex'][0]))} semanas<
        f"dos galegos, {round(gH['lx'][90] / 1000)}.")
 page = (HERE / "viz.tpl.html").read_text(encoding="utf-8")
 page = (page.replace("__DATA__", json.dumps(d, ensure_ascii=False, separators=(",", ":"))).replace("__DEK__", dek)
-        .replace("__ANO__", str(d["ano"])).replace("__MATY__", str(d["mat"][0])).replace("__MAT__", c(d["mat"][1])))
+        .replace("__ANO__", str(d["ano"])).replace("__MATY__", str(d["mat"][0])).replace("__MAT__", c(d["mat"][1])).replace("__NETF__", d["net"]["f"]))
 OUT.mkdir(parents=True, exist_ok=True)
 (OUT / "index.html").write_text(page, encoding="utf-8")
 

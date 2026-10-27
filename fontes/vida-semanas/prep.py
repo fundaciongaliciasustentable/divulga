@@ -10,6 +10,12 @@ O INE dá as provincias en grupos (0, 1-4, 5-9 … 95 e máis). Para ter cada id
 superviventes interpólanse en escala logarítmica dentro de cada grupo e a esperanza de vida, en
 liña recta; despois dos 95, os superviventes caen de xeito exponencial coa esperanza aos 95.
 Tamén a idade media á maternidade de Galicia (IGE, da peza fenda-rural) para un dos fitos.
+
+Uso do tempo: Eurostat, HETUS (tus_00age), España 2010, que é a Enquisa de emprego do tempo
+2009-2010 do INE harmonizada; tempo medio ao día de toda a poboación de cada grupo de idade (15-19,
+20-24, 25-44, 45-64, 65 e máis). Non hai datos galegos por idade nin unha edición máis nova
+publicada (a 2024-2025 do INE está en curso).
+  https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tus_00age?geo=ES&sex=T
 """
 import json
 import math
@@ -69,6 +75,43 @@ for (area, sx), f in bruto.items():
         ex.append(exg[a] * (1 - w) + exg[b] * w)
     out["t"][f"{area}|{sx}"] = {"lx": [round(v, 1) for v in lx], "ex": [round(v, 2) for v in ex]}
     print(f"{area:10} {sx}  e0 {ex[0]:.2f}  e40 {ex[40]:.2f}  l90/l0 {lx[90] / lx[0]:.1%}")
+
+# Uso do tempo por idade (minutos ao día)
+TUS = RAW / "eurostat_tus_00age.json"
+if not TUS.exists():
+    TUS.write_bytes(urlopen("https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tus_00age?geo=ES&sex=T&lang=EN",
+                            timeout=120).read())
+tus = json.loads(TUS.read_text(encoding="utf-8"))
+ids, size, dim = tus["id"], tus["size"], tus["dimension"]
+
+
+def tus_min(idade, act):
+    pos = 0
+    for k, n in zip(ids, size):
+        v = {"freq": "A", "unit": "TIME_SP", "sex": "T", "age": idade, "acl00": act, "geo": "ES", "time": "2010"}[k]
+        pos = pos * n + dim[k]["category"]["index"][v]
+    h, m = tus["value"][str(pos)].split(":")
+    return int(h) * 60 + int(m)
+
+
+CATS = [("durmir", "Durmir", ["AC01"]), ("traballar", "Traballar (co camiño ao traballo)", ["AC1A", "AC1B"]),
+        ("casa", "Casa e familia (cociñar, limpar, coidar…)", ["AC3"]), ("tele", "Ver a tele e vídeos", ["AC82"]),
+        ("comer", "Comer", ["AC02"]), ("viaxar", "Desprazarse (agás ao traballo)", ["AC9A"]),
+        ("social", "Vida social, festas e espectáculos", ["AC51A", "AC51B", "AC52"]), ("estudar", "Estudar", ["AC2"]),
+        ("coidarse", "Asearse e vestirse", ["AC03"]), ("deporte", "Deporte e paseos", ["AC6A", "AC611"]),
+        ("ordenador", "Ordenador e videoxogos", ["AC7A", "AC733"]), ("ler", "Ler", ["AC811", "AC812"])]
+GRUPOS = [(15, 20, "Y15-20"), (20, 25, "Y20-24"), (25, 45, "Y25-44"), (45, 65, "Y45-64"), (65, 200, "Y_GE65")]
+uso = []
+for a0, a1, g in GRUPOS:
+    m = {k: sum(tus_min(g, c) for c in cs) for k, _, cs in CATS}
+    m["resto"] = 1440 - sum(m.values())
+    uso.append([a0, a1, m])
+    print(g, m)
+# Internet hoxe: só unha estimación comercial (enquisa de GWI recollida por DataReportal) e en boa
+# parte á vez que outras cousas, así que non entra na suma do día
+out["net"] = {"min": 5 * 60 + 40, "f": "DataReportal / GWI, 3.º trimestre de 2024, usuarios de 16 a 64 anos",
+              "url": "https://datareportal.com/reports/digital-2025-spain"}
+out["uso"] = {"grupos": uso, "cats": [[k, n] for k, n, _ in CATS] + [["resto", "Descansar, música, afeccións e o resto"]]}
 
 # Idade media á maternidade en Galicia (IGE), da peza fenda-rural
 fr = json.loads((HERE.parent / "fenda-rural" / "data" / "datos.json").read_text(encoding="utf-8"))

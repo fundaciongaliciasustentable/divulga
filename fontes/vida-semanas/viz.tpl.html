@@ -59,6 +59,18 @@ input:focus-visible,select:focus-visible,.tog button:focus-visible{outline:2px s
 .agora{animation:latexo 1.6s ease-in-out infinite}
 @keyframes latexo{50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){.agora{animation:none}}
+.uso{width:100%;max-width:820px;display:flex;flex-direction:column;gap:10px;align-items:center}
+.uso h2{font:800 1.05rem var(--display);margin:0;text-align:center}
+.uso .sub{margin:0;font-size:.82rem;color:var(--muted);text-align:center;max-width:64ch}
+.filas{width:100%;display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr) auto;gap:5px 10px;align-items:center;font-size:.84rem}
+.filas .bar{height:14px;background:var(--soft);border-radius:2px;overflow:hidden}
+.filas .bar i{display:block;height:100%;border-radius:2px}
+.filas .n{font:700 1rem var(--num);text-align:right;white-space:nowrap}
+.filas .n span{font-weight:500;color:var(--muted);font-size:.85rem}
+.fila{display:contents}
+@media (max-width:560px){.filas{display:flex;flex-direction:column;gap:8px;align-items:stretch}.fila{width:100%;text-align:left;display:grid;grid-template-columns:1fr auto;gap:3px 8px;align-items:baseline}.fila .bar{grid-column:1 / -1;grid-row:2}}
+.net{font-size:.84rem;color:var(--muted);text-align:center;max-width:64ch;margin:0;border-top:1px solid var(--line);padding-top:8px}
+.net b{color:var(--ink)}
 .tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:7px 10px;border-radius:3px;font-size:.78rem;line-height:1.4;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 12px));z-index:2;max-width:240px}
 .tip b{display:block}
 details{width:100%;max-width:820px;font-size:.85rem;color:var(--muted)}
@@ -93,13 +105,20 @@ th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:70
   </form>
   <div class="cifras" id="cifras"></div>
   <p class="frase" id="frase"></p>
+  <section class="uso" aria-label="Uso do tempo">
+    <h2>En que se foron as túas semanas</h2>
+    <div class="tog" role="group" aria-label="Que semanas"><button type="button" data-u="v" aria-pressed="true">As que levas vividas</button><button type="button" data-u="f" aria-pressed="false">As que che quedan</button></div>
+    <p class="sub" id="usoTxt"></p>
+    <div class="filas" id="filas"></div>
+    <p class="net" id="net"></p>
+  </section>
   <div class="legend" id="legend"></div>
   <div class="grella"><svg id="g" role="img"></svg></div>
   <details>
     <summary>Ver os datos</summary>
     <div class="tw"><table id="tbl"></table></div>
   </details>
-  <p class="note">INE, <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=1254736177004" target="_blank" rel="noopener">Táboas de mortalidade</a> de __ANO__ para Galicia e cada provincia, por sexo (táboas 27154 e 27155). O INE dáas por grupos de cinco anos: aquí interpólanse a cada idade. É unha táboa «do momento»: conta como se ao longo da túa vida a mortalidade fose a de __ANO__, cando o máis probable é que siga baixando, así que é unha estimación prudente. A cor das semanas que veñen é a probabilidade de chegar vivo a elas dende a idade que tes hoxe. Fitos: escola obrigatoria (6–16 anos), idade media das nais ao ter un fillo en Galicia (IGE, __MATY__: __MAT__ anos) e idade ordinaria de xubilación dende 2027 (67 anos; antes, con longas carreiras de cotización). Nada do que escribes sae do teu navegador. Fundación Galicia Sustentable · inspirado en <a href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank" rel="noopener">Your Life in Weeks</a> de Tim Urban. Licenza CC BY-NC-SA 4.0.</p>
+  <p class="note">INE, <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=1254736177004" target="_blank" rel="noopener">Táboas de mortalidade</a> de __ANO__ para Galicia e cada provincia, por sexo (táboas 27154 e 27155). O INE dáas por grupos de cinco anos: aquí interpólanse a cada idade. É unha táboa «do momento»: conta como se ao longo da túa vida a mortalidade fose a de __ANO__, cando o máis probable é que siga baixando, así que é unha estimación prudente. A cor das semanas que veñen é a probabilidade de chegar vivo a elas dende a idade que tes hoxe. Fitos: escola obrigatoria (6–16 anos), idade media das nais ao ter un fillo en Galicia (IGE, __MATY__: __MAT__ anos) e idade ordinaria de xubilación dende 2027 (67 anos; antes, con longas carreiras de cotización). Uso do tempo: <a href="https://ec.europa.eu/eurostat/databrowser/view/tus_00age/default/table" target="_blank" rel="noopener">Eurostat, HETUS</a> (Enquisa de emprego do tempo 2009-2010 do INE), España, tempo medio ao día de toda a poboación de cada grupo de idade (15–19, 20–24, 25–44, 45–64 e 65 ou máis): non hai datos galegos por idade nin unha edición máis recente publicada, e por baixo dos 15 anos non se pregunta. É a media de todos, traballen ou non, así que «traballar» é menos do que traballa quen ten emprego. O ordenador é o de 2010, antes do móbil intelixente; para internet hoxe dáse aparte unha estimación de __NETF__, que se solapa con outras actividades. Nada do que escribes sae do teu navegador. Fundación Galicia Sustentable · inspirado en <a href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank" rel="noopener">Your Life in Weeks</a> de Tim Urban. Licenza CC BY-NC-SA 4.0.</p>
 </div>
 </main>
 <footer class="dv-foot">
@@ -192,7 +211,29 @@ function debuxa(){
 for(const b of document.querySelectorAll('[data-s]'))b.addEventListener('click',()=>{sexo=b.dataset.s;for(const x of document.querySelectorAll('[data-s]'))x.setAttribute('aria-pressed',x===b);debuxa()});
 nac.addEventListener('input',debuxa);area.addEventListener('change',debuxa);
 addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(debuxa,150)});
-lenda();debuxa();
+// Uso do tempo: semanas de cada actividade entre dúas idades, segundo os minutos ao día de cada grupo
+let usoVista='v';
+const semanasEntre=(cat,x0,x1)=>D.uso.grupos.reduce((s,[a0,a1,m])=>{const o=Math.max(0,Math.min(x1,a1)-Math.max(x0,a0));return s+o*m[cat]/1440*365.2425/7},0);
+function uso(){
+  const x=idadeHoxe(),t=T(),fin=x+en(t.ex,x);
+  const [x0,x1]=usoVista==='v'?[15,x]:[Math.max(15,x),fin];
+  const txt=document.getElementById('usoTxt'),filas=document.getElementById('filas');
+  if(x1<=x0){txt.textContent='Os datos de uso do tempo empezan aos 15 anos.';filas.innerHTML='';}
+  else{
+    const v=D.uso.cats.map(([k,n])=>[k,n,semanasEntre(k,x0,x1)]).sort((a,b)=>k(a)-k(b));
+    function k(a){return a[0]==='resto'?1e9:-a[2]}
+    const mx=Math.max(...v.map(a=>a[2])),tot=v.reduce((s,a)=>s+a[2],0);
+    txt.innerHTML=usoVista==='v'?`Dende os 15 anos levas vividas unhas <b>${miles(tot)}</b> semanas. Á media española da túa idade, repartiríanse así:`:`Das ${miles(tot)} semanas que, en media, che quedan dende hoxe${x<15?' (contando dende os 15)':''}, á media española de cada idade:`;
+    const col=usoVista==='v'?'var(--vivida)':'#5089c2';
+    filas.innerHTML=v.map(([k_,n,w])=>`<div class="fila"><span>${n}</span><div class="bar"><i style="width:${(w/mx*100).toFixed(1)}%;background:${col};opacity:${k_==='resto'?.45:1}"></i></div><span class="n">${miles(w)} <span>sem. · ${d1(w*7/365.2425)} anos</span></span></div>`).join('');
+  }
+  const semAno=D.net.min/1440*365.2425/7;
+  document.getElementById('net').innerHTML=`E internet? En 2010 o ordenador levaba poucos minutos. Hoxe, segundo ${D.net.f}, pasamos conectados <b>${Math.floor(D.net.min/60)} h ${D.net.min%60} min ao día</b>: unhas <b>${d1(semAno)} semanas ao ano</b>, moitas delas mentres facemos outra cousa.`;
+}
+for(const b of document.querySelectorAll('[data-u]'))b.addEventListener('click',()=>{usoVista=b.dataset.u;for(const x of document.querySelectorAll('[data-u]'))x.setAttribute('aria-pressed',x===b);uso()});
+nac.addEventListener('input',uso);area.addEventListener('change',uso);
+for(const b of document.querySelectorAll('[data-s]'))b.addEventListener('click',uso);
+lenda();debuxa();uso();
 </script>
 </body>
 </html>

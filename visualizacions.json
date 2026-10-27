@@ -38,14 +38,14 @@
   {
     "slug": "vida-semanas",
     "titulo": "A túa vida en semanas",
-    "entradilla": "Unha vida galega cabe en arredor de 4.500 semanas. Pon a túa data de nacemento e verás as que levas vividas e as que, en media, che quedan segundo as táboas de mortalidade da túa provincia.",
+    "entradilla": "Unha vida galega cabe en arredor de 4.500 semanas. Pon a túa data de nacemento e verás as que levas vividas, as que che quedan en media e en que se foron: durmindo, traballando, vendo a tele, lendo…",
     "data": "2026-10-28",
     "temas": [
       "Poboación",
       "Saúde"
     ],
     "formato": "Grella interactiva",
-    "fontes": "INE (táboas de mortalidade 2024) e IGE"
+    "fontes": "INE (táboas de mortalidade 2024), Eurostat (uso do tempo) e IGE"
   },
   {
     "slug": "nomes-galicia",
