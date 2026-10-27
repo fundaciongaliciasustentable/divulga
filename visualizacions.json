@@ -1,5 +1,17 @@
 [
   {
+    "slug": "espiral-lumes",
+    "titulo": "A espiral dos lumes",
+    "entradilla": "Cada volta é un ano dende 1983 e cada brasa, un día de lume. En 44 anos ardeu o equivalente a case a metade de Galicia, e 2025 xa é o segundo peor ano da serie.",
+    "data": "2026-10-26",
+    "temas": [
+      "Lumes",
+      "Monte"
+    ],
+    "formato": "Espiral",
+    "fontes": "MITECO (EGIF, vía FIRESPAIN-025) e Copernicus EFFIS"
+  },
+  {
     "slug": "galicia-cero-neto",
     "titulo": "Que precisaría Galicia para chegar ao carbono neto cero?",
     "entradilla": "Emitimos 16,6 millóns de toneladas de CO₂ e o monte absorbe 9,6. Folla de ruta por sectores para cumprir a Lei do clima en 2040, adaptada de Information is Beautiful.",
