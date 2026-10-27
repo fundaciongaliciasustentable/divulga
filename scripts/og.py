@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """Xera assets/img/og-divulga.jpg (1200×630), a imaxe para compartir en redes.
 
-Mesma foto e mesmo tratamento que a portada de fundaciongaliciasustentable.gal.
-A foto de orixe (fontes/_marca/heroe-2400.jpg) xa non se usa en ningunha
-páxina publicada — só aquí, como entrada do build — por iso vive en fontes/
-e non en assets/img/.
+Mesma foto (assets/img/heroe-2400.jpg, tamén usada na banda da portada) e
+mesmo tratamento que a portada de fundaciongaliciasustentable.gal.
 Precisa Pillow e as fontes Playfair Display e Lato (Google Fonts, OFL):
   python3 scripts/og.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf>
 """
@@ -17,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 playfair, lato = sys.argv[1], sys.argv[2]
 W, H = 1200, 630
 
-foto = Image.open(ROOT / "fontes/_marca/heroe-2400.jpg").convert("RGB")
+foto = Image.open(ROOT / "assets/img/heroe-2400.jpg").convert("RGB")
 s = max(W / foto.width, H / foto.height)
 foto = foto.resize((round(foto.width * s), round(foto.height * s)), Image.LANCZOS)
 x0 = (foto.width - W) // 2

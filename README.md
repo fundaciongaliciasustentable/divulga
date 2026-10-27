@@ -5,9 +5,14 @@ pensado para `divulga.galiciasustentable.org`. Sen build de framework: o que
 hai na raíz é o que se publica.
 
 A portada (`index.html`) é deliberadamente **allea á estética institucional**
-da web da FGS: lenzo crema, tipografía editorial, sen barra verde nin foto de
-cabeceira — un escaparate que deixa falar as propias pezas. A marca FGS queda
-só como sutileza (símbolo pequeno + liña legal no pé). Cada peza en `v/<slug>/`
+da web da FGS: lenzo crema, tipografía editorial, sen barra verde nin botóns
+de cor — un escaparate que deixa falar as propias pezas (si leva unha banda
+con foto, `assets/img/heroe-1200/2400.jpg`, por riba do filtro). A marca FGS
+queda como sutileza no corpo (símbolo pequeno na cabeceira) pero é ben visible
+no pé, co logotipo estendido. A portada non amosa datas de publicación: a
+`data` do manifesto só ordena as tarxetas, para non confundir esa data coa
+temporalidade propia de cada peza (que pode cubrir anos ou décadas distintos).
+Cada peza en `v/<slug>/`
 segue si os criterios FGS (cabeceira `.dv-bar`, pé `.dv-foot`) por tratarse de
 documentos propios da fundación — pero `.dv-bar`/`.dv-foot` van **transparentes
 e integrados no tema de cada peza** (len o fondo/cor que a propia peza xa
@@ -25,10 +30,10 @@ assets/css/divulga.css     tokens FGS, barra superior e pé comúns (.dv-bar/.dv
 assets/css/viz-base.css    tipografía de gráfica compartida (--gs-font-chart-*) e
                             compoñentes para pezas novas (.dv-stat/.dv-badge/.dv-tooltip/.dv-legend)
 assets/logos/               logos FGS (de fundaciongaliciasustentable.gal)
+assets/img/                 foto da banda (heroe-1200/2400.jpg) e og-divulga.jpg
 v/<slug>/index.html         cada visualización, páxina autónoma
 v/<slug>/thumb.svg|png      miniatura cadrada para a portada
 fontes/<slug>/               datos e scripts que xeran v/<slug>/ (non se suben)
-fontes/_marca/               foto de orixe do OG e utilidades de marca (non se suben)
 scripts/                     empaquetado (`empaquetar.sh`) e xeración do OG (`og.py`)
 ```
 
@@ -88,10 +93,11 @@ exemplo, coa vista previa local) a páxina funciona e oculta a votación.
 
 ## Imaxe de marca
 
-`assets/img/og-divulga.jpg` é a imaxe para compartir en redes (a portada xa
-non leva foto de cabeceira). Xérase con `scripts/og.py` (Pillow + Playfair
-Display e Lato) a partir de `fontes/_marca/heroe-2400.jpg`, co mesmo
-tratamento que a portada de fundaciongaliciasustentable.gal:
+`assets/img/heroe-1200.jpg`/`heroe-2400.jpg` son a foto da banda da portada
+(srcset responsive). `assets/img/og-divulga.jpg` é a imaxe para compartir en
+redes, xerada con `scripts/og.py` (Pillow + Playfair Display e Lato) a partir
+de `heroe-2400.jpg`, co mesmo tratamento que a portada de
+fundaciongaliciasustentable.gal:
 
 ```bash
 python3 scripts/og.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf>
@@ -99,7 +105,8 @@ python3 scripts/og.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf>
 
 > **Pendente**: `heroe-2400.jpg` é unha foto de stock de Quiraing (Illa de
 > Skye, Escocia), non de Galicia. Mentres non se substitúa por unha foto real
-> de Galicia con licenza, `og-divulga.jpg` segue usándoa.
+> de Galicia con licenza, tanto a banda da portada como `og-divulga.jpg`
+> seguen usándoa.
 
 ## Visualizacións
 

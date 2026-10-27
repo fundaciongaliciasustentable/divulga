@@ -3,7 +3,9 @@
 
 Cada visualización vive en v/<slug>/index.html e ten unha miniatura en
 v/<slug>/thumb.svg (ou thumb.png). As pezas van da máis recente á máis
-antiga e os temas do manifesto fan de filtro. Uso: python3 build.py
+antiga (a `data` do manifesto só ordena: a portada non amosa datas de
+publicación, para non confundilas coa temporalidade propia dos datos de
+cada peza) e os temas do manifesto fan de filtro. Uso: python3 build.py
 """
 import html
 import json
@@ -11,15 +13,6 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-MESES = ["xaneiro", "febreiro", "marzo", "abril", "maio", "xuño", "xullo",
-         "agosto", "setembro", "outubro", "novembro", "decembro"]
-MESES_CURTOS = ["xan", "feb", "mar", "abr", "mai", "xuñ", "xul",
-                "ago", "set", "out", "nov", "dec"]
-
-
-def data_curta(iso):
-    d = date.fromisoformat(iso)
-    return f"{d.day} {MESES_CURTOS[d.month - 1]} '{str(d.year)[2:]}"
 
 
 def miniatura(slug):
@@ -42,7 +35,6 @@ def peza(v, i):
       <div class="cap">
         <h2>{e(v['titulo'])}</h2>
         <p class="entradilla">{e(v['entradilla'])}</p>
-        <time class="data" datetime="{v['data']}">{data_curta(v['data'])}</time>
       </div>
     </a>"""
 
@@ -61,7 +53,6 @@ def main():
     out = (tpl.replace("{{PEZAS}}", "\n".join(peza(v, i + 1) for i, v in enumerate(vs)))
               .replace("{{FILTROS}}", filtros)
               .replace("{{CONTA}}", f"{n} {'visualización' if n == 1 else 'visualizacións'}")
-              .replace("{{ULTIMA}}", data_curta(vs[0]["data"]))
               .replace("{{ANO}}", str(date.today().year)))
     (ROOT / "index.html").write_text(out, encoding="utf-8")
     print(f"index.html xerado con {n} visualización(s)")
