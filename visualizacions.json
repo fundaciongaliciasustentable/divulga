@@ -1,5 +1,17 @@
 [
   {
+    "slug": "fenda-rural",
+    "titulo": "A fenda rural",
+    "entradilla": "No rural declárase un 31 % menos de renda ca nas cidades, pero o risco de pobreza é o máis baixo e a esperanza de vida, case a mesma. 26 indicadores do IGE para as zonas densamente poboadas, intermedias e pouco poboadas.",
+    "data": "2026-10-27",
+    "temas": [
+      "Rural",
+      "Poboación"
+    ],
+    "formato": "Gráfico de pesas",
+    "fontes": "IGE: Panorama rural-urbano (grao de urbanización)"
+  },
+  {
     "slug": "migracions",
     "titulo": "Quen chega e quen marcha",
     "entradilla": "Por cada persoa que marcha de Galicia ao estranxeiro chegan case tres, sobre todo de Venezuela e Colombia. Os fluxos de 2024 país a país e comunidade a comunidade, e o saldo dende 2002.",

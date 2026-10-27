@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A fenda rural — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="25 indicadores do IGE comparados entre as zonas densamente poboadas, intermedias e pouco poboadas de Galicia: idade, saúde, traballo, renda e servizos.">
+<meta property="og:title" content="A fenda rural: en que se parecen e en que non as tres Galicias">
+<meta property="og:description" content="Urbana, intermedia e rural, indicador a indicador, ao xeito de Gender Pay Gap de Information is Beautiful.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Gráfico de pesas ao xeito de Gender Pay Gap (Information is Beautiful): unha fila por indicador,
+   agrupadas por temas, cos tres graos de urbanización como marcas unidas por unha liña. O eixo é
+   común a todas as filas: o valor de cada zona respecto do total de Galicia (Galicia = 100), en
+   escala logarítmica para que «a metade» e «o dobre» queden á mesma distancia. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --zdp:#6a3d9a; --zip:#1f78b4; --zpp:#33a02c;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.08;text-align:center;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1 .a{color:var(--zdp)} h1 .b{color:var(--zip)} h1 .c{color:var(--zpp)}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:68ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.zonas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;max-width:900px}
+@media (max-width:640px){.zonas{grid-template-columns:1fr}}
+.zona{background:var(--card);border:1px solid var(--line);border-top:4px solid;border-radius:4px;padding:10px 12px}
+.zona h3{font:800 .95rem var(--display);margin:0 0 4px;display:flex;align-items:center;gap:8px}
+.zona p{margin:0;font-size:.8rem;color:var(--muted);line-height:1.45}
+.zona b{color:var(--ink);font-family:var(--num);font-size:1rem}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+.tog{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--card)}
+.tog button{font:600 .8rem var(--display);background:transparent;color:var(--muted);border:0;padding:7px 12px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tog button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.chart{width:100%;max-width:1080px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.th{font:800 12px var(--display);text-transform:uppercase;letter-spacing:.1em;fill:var(--muted)}
+.rl{font:600 13px var(--display);fill:var(--ink)}
+.ru{font:500 11px var(--display);fill:var(--muted)}
+.gap{font:700 13px var(--num);text-anchor:end}
+.ax{font:600 12px var(--num);fill:var(--muted);text-anchor:middle}
+.row{cursor:pointer}
+.row:hover .bg{fill:#f1efe9}
+.bg{fill:transparent}
+.ghost{fill:none;stroke-width:1.5;opacity:.7}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:9px 12px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:320px}
+.tip b{display:block;font-size:.92rem;margin-bottom:2px}
+.tip .k{display:grid;grid-template-columns:auto 1fr auto;gap:1px 8px;align-items:center;margin-top:4px}
+.tip .k i{display:inline-block;width:9px;height:9px}
+.tip .nt{display:block;color:#c9ccd2;font-size:.74rem;margin-top:5px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 10px;text-align:right}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.82rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:639px){.rl{font-size:15px}.ru{font-size:13px}.gap{font-size:15px}.ax{font-size:14px}.th{font-size:14px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>A fenda rural: en que se parecen e en que non as tres Galicias</h1>
+  <p class="dek">__DEK__</p>
+  <div class="zonas" id="zonas"></div>
+  <div class="tools">
+    <span>Ordenar</span>
+    <div class="tog" role="group" aria-label="Orde"><button data-o="tema" aria-pressed="true">por tema</button><button data-o="fenda" aria-pressed="false">pola fenda rural-urbana</button></div>
+    <div class="tog" role="group" aria-label="Comparar co pasado"><button data-g="0" aria-pressed="true">Último dato</button><button data-g="1" aria-pressed="false">E hai uns anos</button></div>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Gráfico de pesas: para cada indicador, o valor das zonas densamente poboada, intermedia e pouco poboada respecto do total de Galicia. A táboa de datos que hai debaixo ten os valores."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">IGE, <a href="https://www.ige.gal/web/mostrar_seccion.jsp?codigo=0701" target="_blank" rel="noopener">Panorama rural-urbano</a>: indicadores demográficos, sociolaborais e económicos de Galicia segundo o grao de urbanización (GU 2016, baseado nun estándar europeo). A ZDP (zona densamente poboada) son as cidades e as súas áreas urbanas, a ZIP (zona intermedia) as vilas e os arredores, e a ZPP (zona pouco poboada) o rural. Cada indicador está no seu último ano dispoñible, que vai de 2022 a 2024. A posición indica canto se afasta cada zona do total de Galicia: 50 é a metade e 200 o dobre. A cifra da dereita compara a zona pouco poboada coa densamente poboada. Con «E hai uns anos», as marcas baleiras amosan o primeiro ano que publica o IGE para ese indicador, comparado co total de Galicia dese ano. Por 1.000 habitantes quere dicir sobre toda a poboación, e por iso o paro rexistrado é máis baixo nas zonas con máis xubilados. A renda por persoa calcúlase coa parte da renda dispoñible bruta e da poboación de cada zona. Fundación Galicia Sustentable · inspirado en <a href="https://informationisbeautiful.net/visualizations/gender-pay-gap/" target="_blank" rel="noopener">Gender Pay Gap</a> de Information is Beautiful. Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const ZN={ZDP:'Densamente poboada',ZIP:'Intermedia',ZPP:'Pouco poboada'},ZC={ZDP:'var(--zdp)',ZIP:'var(--zip)',ZPP:'var(--zpp)'};
+const TEMAS=['Poboación','Saúde','Traballo','Diñeiro','Servizos e vivenda'];
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(170,Math.min(innerWidth-170,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>tip.hidden=true;
+const fv=(v,u)=>{const d=Math.abs(v)>=1000?0:Math.abs(v)<3?2:1;return v.toLocaleString('gl-ES',{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:'always'})+(u==='%'?' %':'')};
+// marca de cada zona: cadrado, rombo e círculo, ademais da cor
+const shape=(z,x,y,r,fill,stroke,cls='')=>{const e=document.createElementNS(NS,z==='ZPP'?'circle':'path');
+  if(z==='ZPP'){e.setAttribute('cx',x);e.setAttribute('cy',y);e.setAttribute('r',r)}
+  else if(z==='ZDP')e.setAttribute('d',`M${x-r*.9},${y-r*.9}h${r*1.8}v${r*1.8}h${-r*1.8}Z`);
+  else e.setAttribute('d',`M${x},${y-r*1.2}L${x+r*1.2},${y}L${x},${y+r*1.2}L${x-r*1.2},${y}Z`);
+  e.setAttribute('fill',fill);if(stroke)e.setAttribute('stroke',stroke);if(cls)e.setAttribute('class',cls);return e};
+
+// --- as tres zonas ---
+const P=D.pob,C=D.concellos,DE=D.dens;
+document.getElementById('zonas').innerHTML=['ZDP','ZIP','ZPP'].map(z=>{const s=document.createElementNS(NS,'svg');s.setAttribute('width',14);s.setAttribute('height',14);s.appendChild(shape(z,7,7,5.5,ZC[z]));
+  return `<div class="zona" style="border-top-color:${ZC[z]}"><h3>${s.outerHTML}${z} · ${ZN[z]}</h3><p><b>${C[z]}</b> concellos · <b>${Math.round(P[z]/P.T*100)} %</b> da poboación · <b>${Math.round(DE[z]).toLocaleString('gl-ES',{useGrouping:'always'})}</b> hab./km²</p></div>`}).join('');
+document.getElementById('legend').innerHTML=['ZDP','ZIP','ZPP'].map(z=>{const s=document.createElementNS(NS,'svg');s.setAttribute('width',14);s.setAttribute('height',14);s.appendChild(shape(z,7,7,5.5,ZC[z]));return `<span>${s.outerHTML}${ZN[z]}</span>`}).join('')+
+  '<span><svg width="14" height="14"><line x1="7" y1="0" x2="7" y2="14" stroke="#1f2328" stroke-width="1.5"/></svg>Galicia = 100</span>';
+
+// --- gráfico ---
+const sv=document.getElementById('ch');
+const NARROW=sv.parentElement.clientWidth<640;
+const W=NARROW?620:1080,LBL=NARROW?0:300,GAPW=NARROW?70:90,RH=NARROW?56:36,TH=NARROW?44:40;
+const X0=LBL+10,X1=W-GAPW-10,LMIN=Math.log(18),LMAX=Math.log(280);
+const sx=v=>X0+(Math.log(Math.max(18,Math.min(280,v)))-LMIN)/(LMAX-LMIN)*(X1-X0);
+let orde='tema',ghost=false;
+const IND=D.orde.map(k=>({k,...D.ind[k]})).map(o=>{const ys=Object.keys(o.d).sort();o.y1=ys[ys.length-1];o.y0=ys.length>1?ys[0]:null;
+  const v=o.d[o.y1];o.idx={ZDP:v.ZDP/v.T*100,ZIP:v.ZIP/v.T*100,ZPP:v.ZPP/v.T*100};o.gap=(v.ZPP-v.ZDP)/v.ZDP*100;
+  if(o.y0){const w=o.d[o.y0];o.idx0={ZDP:w.ZDP/w.T*100,ZIP:w.ZIP/w.T*100,ZPP:w.ZPP/w.T*100}}return o});
+function draw(){sv.replaceChildren();const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);(p||sv).appendChild(e);return e};
+  let groups;if(orde==='tema')groups=TEMAS.map(t=>[t,IND.filter(o=>o.tema===t)]);
+  else groups=[['Da maior á menor fenda',IND.slice().sort((a,b)=>Math.abs(Math.log(b.idx.ZPP/b.idx.ZDP))-Math.abs(Math.log(a.idx.ZPP/a.idx.ZDP)))]];
+  let y=28;const rowsY=[];
+  // eixo superior
+  const ticks=[25,50,75,100,150,200];
+  const yTop=y;
+  groups.forEach(([t,rs])=>{const h=el('text',{class:'th',x:NARROW?8:LBL,y:y+22,'text-anchor':NARROW?'start':'end'});h.textContent=t;y+=TH+(NARROW?14:10);
+    rs.forEach(o=>{rowsY.push([o,y]);y+=RH})});
+  const H=y+30;sv.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  ticks.forEach(v=>{el('line',{x1:sx(v),x2:sx(v),y1:yTop,y2:H-24,stroke:v===100?'#1f2328':'var(--grid)','stroke-width':v===100?1.5:1});
+    [yTop-8,H-6].forEach(yy=>{const t=el('text',{class:'ax',x:sx(v),y:yy});t.textContent=v===100?'Galicia = 100':v})});
+  {const t=el('text',{class:'ax',x:X1+GAPW-4,y:yTop-8,'text-anchor':'end'});t.textContent=NARROW?'rural vs urbano':'ZPP fronte a ZDP';t.style.textAnchor='end'}
+  rowsY.forEach(([o,yy])=>{const g=el('g',{class:'row'});const cy=NARROW?yy+16:yy;
+    el('rect',{class:'bg',x:0,y:yy-RH/2+(NARROW?6:0),width:W,height:RH},g);
+    const lx=NARROW?8:LBL,an=NARROW?'start':'end';
+    const t1=el('text',{class:'rl',x:lx,y:NARROW?yy-4:yy-1,'text-anchor':an},g);t1.textContent=o.n;
+    if(!NARROW){const t2=el('text',{class:'ru',x:lx,y:yy+12,'text-anchor':an},g);t2.textContent=`${o.u} · ${o.y1}`}
+    const xs=['ZDP','ZIP','ZPP'].map(z=>sx(o.idx[z]));
+    if(ghost&&o.idx0){['ZDP','ZIP','ZPP'].forEach(z=>g.appendChild(shape(z,sx(o.idx0[z]),cy,5,'none',ZC[z],'ghost')))}
+    el('line',{x1:Math.min(...xs),x2:Math.max(...xs),y1:cy,y2:cy,stroke:'#b8b4aa','stroke-width':2},g);
+    ['ZIP','ZDP','ZPP'].forEach(z=>g.appendChild(shape(z,sx(o.idx[z]),cy,NARROW?7:6,ZC[z],'#fff')));
+    const gp=el('text',{class:'gap',x:W-6,y:cy+5,fill:Math.abs(o.gap)<5?'var(--muted)':'var(--ink)'},g);gp.textContent=(o.gap>0?'+':o.gap<0?'−':'±')+Math.abs(Math.round(o.gap))+' %';
+    g.addEventListener('pointermove',ev=>{const v=o.d[o.y1],w=o.y0&&o.d[o.y0];
+      show(ev,`<b>${o.n}</b><span>${o.u}, ${o.y1}</span><div class="k">${['ZDP','ZIP','ZPP'].map(z=>`<i style="background:${ZC[z]}"></i><span>${ZN[z]}</span><span>${fv(v[z],o.u)}${w?` <span style="color:#9aa0a8">(${o.y0}: ${fv(w[z],o.u)})</span>`:''}</span>`).join('')}<i style="background:#fff"></i><span>Galicia</span><span>${fv(v.T,o.u)}</span></div>${o.nota?`<span class="nt">${o.nota}</span>`:''}`)});
+    g.addEventListener('pointerleave',hide)})}
+document.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>{orde=b.dataset.o;document.querySelectorAll('[data-o]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()});
+document.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{ghost=b.dataset.g==='1';document.querySelectorAll('[data-g]').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()});
+
+// --- táboa ---
+document.getElementById('tbl').innerHTML='<thead><tr><th>Indicador</th><th>Ano</th><th>Galicia</th><th>ZDP</th><th>ZIP</th><th>ZPP</th></tr></thead><tbody>'+
+  IND.map(o=>Object.keys(o.d).sort().reverse().map(a=>{const v=o.d[a];return `<tr><td>${o.n} (${o.u})</td><td>${a}</td><td>${fv(v.T,o.u)}</td><td>${fv(v.ZDP,o.u)}</td><td>${fv(v.ZIP,o.u)}</td><td>${fv(v.ZPP,o.u)}</td></tr>`}).join('')).join('')+'</tbody>';
+draw();
+</script>
+</body>
+</html>
