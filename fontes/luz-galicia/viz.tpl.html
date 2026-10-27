@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>De onde vén a luz — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="A electricidade que se xera en Galicia, de onde sae e a onde vai, ano a ano dende 2011. O carbón desapareceu e aínda sobra un terzo.">
+<meta property="og:title" content="__TITULO__">
+<meta property="og:description" content="Da auga, o vento e o gas ao enchufe: a electricidade de Galicia ano a ano, dende 2011.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Diagrama de fluxos dun ano: tecnoloxías á esquerda (alto proporcional aos GWh, coa mesma
+   escala todos os anos), Galicia no medio e, á dereita, o que se consome aquí e o que sae.
+   Debaixo, a serie 2011-hoxe apilada coa liña da demanda. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f646d; --line:#e2dfd7; --flow:#c9ccd3;
+  --hid:#2a78d6; --eol:#1baf7a; --ren:#c98500; --cog:#6250d6; --cc:#eb6834; --car:#8a4a1c;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.08;text-align:center;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center}
+.btn{font:700 .82rem var(--display);background:var(--ink);color:var(--paper);border:0;border-radius:3px;padding:8px 14px;cursor:pointer;min-width:100px}
+#ano{width:min(320px,60vw);accent-color:var(--ink)}
+#anoL{font:700 1.8rem/1 var(--num);min-width:3ch}
+.btn:focus-visible,#ano:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.sk{width:100%;max-width:1000px}
+.sk svg,.ar svg{display:block;width:100%;height:auto;overflow:visible}
+.rib{mix-blend-mode:multiply;opacity:.55;transition:opacity .2s}
+.rib:hover{opacity:.8}
+.node{shape-rendering:crispEdges}
+.nl{font:700 15px var(--display);fill:var(--ink)}
+.nv{font:600 14px var(--num);fill:var(--muted)}
+.big{font:700 34px/1 var(--num);fill:var(--ink)}
+.cap{font:600 13px var(--display);fill:var(--muted)}
+@media (max-width:639px){.nl{font-size:21px}.nv{font-size:19px}.big{font-size:44px}.cap{font-size:18px}}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;width:100%;max-width:1000px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+.fact .v{font:700 2.2rem/1 var(--num)}
+.fact .l{font-size:.82rem;color:var(--muted);line-height:1.4;margin-top:4px}
+.ar{width:100%;max-width:1000px}
+.ar h3{font:800 .76rem var(--display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:10px 0 0;text-align:center}
+.gl line{stroke:var(--line)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.dl{font:700 12.5px var(--display)}
+.dem{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-dasharray:6 4}
+.cur{stroke:var(--ink);stroke-width:1}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.4;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;white-space:nowrap}
+.tip b{display:block;font-size:.92rem}
+details{width:100%;max-width:860px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 9px;text-align:right}
+th{font-family:var(--display);font-size:.7rem;color:var(--muted);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:78ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>__TITULO__</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <button class="btn" id="play">▶ 2011 → __A1__</button>
+    <input id="ano" type="range" min="2011" max="__A1__" value="__A1__" step="1" aria-label="Ano">
+    <span id="anoL" aria-live="polite">__A1__</span>
+  </div>
+  <div class="sk"><svg id="sk" viewBox="0 0 1000 560" role="img" aria-label="Diagrama de fluxos da electricidade de Galicia no ano escollido: tecnoloxías que a xeran, o que se consome en Galicia e o que sae a outras comunidades. A táboa de datos que hai debaixo ten as cifras de cada ano."></svg></div>
+  <div class="facts" id="facts"></div>
+  <div class="ar">
+    <h3>Electricidade xerada en Galicia cada ano, por tecnoloxía, e o que se consome</h3>
+    <svg id="ar" viewBox="0 0 1000 330" role="img" aria-label="Áreas apiladas coa xeración por tecnoloxía de 2011 a __A1__ e unha liña coa demanda de Galicia"></svg>
+    <div class="legend" id="legend"></div>
+  </div>
+  <details>
+    <summary>Ver os datos por ano (GWh)</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Red Eléctrica, <a href="https://www.ree.es/es/datos/apidatos" target="_blank" rel="noopener">REData</a>: estrutura da xeración e demanda do sistema eléctrico de Galicia, en GWh por ano (1 TWh = 1.000 GWh). «Outras renovables» suma a solar fotovoltaica, as outras renovables (sobre todo biomasa) e a metade renovable dos residuos. «Cogeneración e residuos» suma a cogeneración, a metade non renovable dos residuos e o fuel-gas. «Sae a outras comunidades» é a diferenza anual entre o que se xera e o que se demanda en Galicia. Hai horas nas que Galicia tamén importa electricidade, e unha parte pérdese no transporte, polo que esta cifra é un saldo aproximado. As Pontes deixou de queimar carbón en 2019 e Meirama pechou en 2020. A caída da demanda de 2022 coincide coa parada das cubas de electrólise de Alcoa San Cibrao. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const T=[['hid','Hidráulica'],['eol','Eólica'],['ren','Outras renovables'],['cog','Cogeneración e residuos'],['cc','Ciclo combinado (gas)'],['car','Carbón']];
+const fmt=n=>Math.round(n).toLocaleString('gl-ES',{useGrouping:'always'});
+const twh=n=>(n/1000).toLocaleString('gl-ES',{minimumFractionDigits:1,maximumFractionDigits:1});
+const pc=(a,b)=>Math.round(a/b*100);
+const tip=document.getElementById('tip');
+const mk=(sv)=>(t,a,p)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);(p||sv).appendChild(e);return e};
+const showTip=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(110,Math.min(innerWidth-110,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+let yi=D.length-1;
+
+// --- diagrama de fluxos ---
+const sk=document.getElementById('sk'),es=mk(sk);
+// en pantallas estreitas: lenzo máis estreito, letra maior e nomes curtos
+const NARROW=sk.parentElement.clientWidth<640;
+if(NARROW)sk.setAttribute('viewBox','0 0 600 620');
+const SHORT={hid:'Hidráulica',eol:'Eólica',ren:'Outras ren.',cog:'Cogeneración',cc:'Gas',car:'Carbón'};
+const MAX=Math.max(...D.map(d=>d.tot)),H=NARROW?470:440,TOP=60,GAP=10,K=(H-GAP*5)/MAX;
+const XL=NARROW?160:290,WL=16,XM=NARROW?300:540,WM=22,XR=NARROW?420:770,WR=16;
+const ribbon=(x0,y0a,y0b,x1,y1a,y1b)=>{const c=(x0+x1)/2;return `M${x0},${y0a}C${c},${y0a} ${c},${y1a} ${x1},${y1a}L${x1},${y1b}C${c},${y1b} ${c},${y0b} ${x0},${y0b}Z`};
+const gR=es('g',{}),gN=es('g',{}),gL=es('g',{});
+function sankey(){const d=D[yi];[gR,gN,gL].forEach(g=>g.replaceChildren());
+  const tot=d.tot,hM=tot*K,yM=TOP+(H-hM)/2;
+  let yL=TOP+(H-(hM+GAP*(T.filter(([k])=>d[k]>0).length-1)))/2,yMi=yM;
+  T.forEach(([k,lf])=>{const v=d[k];if(v<=0)return;const h=v*K,l=NARROW?SHORT[k]:lf;
+    const r=es('path',{class:'rib',d:ribbon(XL+WL,yL,yL+h,XM,yMi,yMi+h),fill:`var(--${k})`},gR);
+    r.addEventListener('pointermove',ev=>showTip(ev,`<b>${l} · ${d.y}</b>${fmt(v)} GWh · ${pc(v,tot)} % do xerado`));r.addEventListener('pointerleave',()=>tip.hidden=true);
+    es('rect',{class:'node',x:XL,y:yL,width:WL,height:Math.max(1,h),fill:`var(--${k})`},gN);
+    const ty=yL+h/2,MINH=NARROW?40:22;const t=es('text',{class:'nl',x:XL-10,y:ty+(h<MINH?6:-2),'text-anchor':'end'},gL);t.textContent=l;
+    if(h>=MINH){const t2=es('text',{class:'nv',x:XL-10,y:ty+(NARROW?20:15),'text-anchor':'end'},gL);t2.textContent=`${twh(v)} TWh · ${pc(v,tot)} %`}
+    else if(!NARROW)t.textContent=`${l} · ${twh(v)} TWh`;
+    yL+=h+GAP;yMi+=h});
+  es('rect',{class:'node',x:XM,y:yM,width:WM,height:hM,fill:'var(--ink)'},gN);
+  const cen=es('text',{class:'big',x:XM+WM/2,y:yM-(NARROW?38:30),'text-anchor':'middle'},gL);cen.textContent=`${twh(tot)} TWh`;
+  const c2=es('text',{class:'cap',x:XM+WM/2,y:yM-12,'text-anchor':'middle'},gL);c2.textContent=`xerados en Galicia en ${d.y}`;
+  // saída: consumo e saldo
+  const dem=Math.min(d.dem,tot),sob=tot-dem,hD=dem*K,hS=sob*K;
+  const yD=TOP+(H-(hD+hS+GAP*2))/2,yS=yD+hD+GAP*2;
+  const out=[[dem,yD,hD,NARROW?'Consúmese aquí':'Consúmese en Galicia','#8f96a3'],[sob,yS,hS,NARROW?'Sae fóra':'Sae a outras comunidades','#c9ccd3']];
+  let yo=yM;
+  out.forEach(([v,y,h,l,c])=>{if(v<=0)return;
+    const r=es('path',{class:'rib',d:ribbon(XM+WM,yo,yo+h,XR,y,y+h),fill:c},gR);
+    r.addEventListener('pointermove',ev=>showTip(ev,`<b>${l} · ${d.y}</b>${fmt(v)} GWh · ${pc(v,tot)} %`));r.addEventListener('pointerleave',()=>tip.hidden=true);
+    es('rect',{class:'node',x:XR,y,width:WR,height:h,fill:c==='#8f96a3'?'#5f646d':'#9aa0ab'},gN);
+    const t=es('text',{class:'nl',x:XR+WR+10,y:y+h/2-4},gL);t.textContent=l;
+    const t2=es('text',{class:'nv',x:XR+WR+10,y:y+h/2+(NARROW?20:14)},gL);t2.textContent=`${twh(v)} TWh · ${pc(v,tot)} %`;
+    yo+=h});
+  const ren=d.hid+d.eol+d.ren;
+  const t3=es('text',{class:'cap',x:XL+WL,y:yL+14,'text-anchor':'end'},gL);t3.textContent=`${pc(ren,tot)} % renovable`;
+}
+
+// --- cifras ---
+function facts(){const d=D[yi],d0=D[0],mx=D.reduce((a,b)=>b.car>a.car?b:a);
+  const f=[[`${pc(d.tot-d.dem,d.tot)} %`,`da electricidade xerada en Galicia en ${d.y} non se consumiu aquí: saíu cara a outras comunidades.`],
+    [`${pc(d.hid+d.eol+d.ren,d.tot)} %`,`foi renovable en ${d.y}: auga, vento e, en moita menor medida, biomasa e sol. En ${d0.y} era o ${pc(d0.hid+d0.eol+d0.ren,d0.tot)} %.`],
+    [d.car?`${twh(d.car)} TWh`:'0 TWh',`de carbón en ${d.y}. En ${mx.y} as térmicas das Pontes e Meirama xeraron ${twh(mx.car)} TWh, o ${pc(mx.car,mx.tot)} % de todo.`],
+    [`${twh(d.dem)} TWh`,`consumiu Galicia en ${d.y}. En ${d0.y} eran ${twh(d0.dem)} TWh: unha baixada do ${pc(d0.dem-d.dem,d0.dem)} %.`]];
+  document.getElementById('facts').innerHTML=f.map(([v,l])=>`<div class="fact"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('')}
+
+// --- áreas apiladas ---
+const ar=document.getElementById('ar'),ea=mk(ar);
+const L=50,R=860,TT=12,B=290,YM=Math.ceil(MAX/5000)*5000;
+const sx=i=>L+i*(R-L)/(D.length-1),sy=v=>B-v/YM*(B-TT);
+const gg=ea('g',{class:'gl'});for(let v=0;v<=YM;v+=5000){ea('line',{x1:L,x2:R,y1:sy(v),y2:sy(v)},gg);const t=ea('text',{class:'ax',x:L-6,y:sy(v)+4,'text-anchor':'end'});t.textContent=v/1000+' TWh'}
+D.forEach((d,i)=>{if(d.y%2&&i!==D.length-1)return;const t=ea('text',{class:'ax',x:sx(i),y:B+18,'text-anchor':'middle'});t.textContent=d.y});
+let base=D.map(()=>0);const labs=[];
+T.forEach(([k,l])=>{const top=D.map((d,i)=>base[i]+d[k]);
+  const p=D.map((d,i)=>`${i?'L':'M'}${sx(i)},${sy(top[i])}`).join('')+D.map((d,i)=>`L${sx(D.length-1-i)},${sy(base[D.length-1-i])}`).join('')+'Z';
+  ea('path',{d:p,fill:`var(--${k})`,'fill-opacity':.85});
+  const mid=(top[D.length-1]+base[D.length-1])/2;
+  if(top[D.length-1]-base[D.length-1]>900)labs.push([sy(mid)+4,l])
+  base=top});
+ea('path',{class:'dem',d:D.map((d,i)=>`${i?'L':'M'}${sx(i)},${sy(d.dem)}`).join('')});
+labs.push([sy(D[D.length-1].dem)+4,'– – consumo en Galicia']);
+// etiquetas da dereita sen pisarse
+labs.sort((a,b)=>a[0]-b[0]);for(let i=1;i<labs.length;i++)labs[i][0]=Math.max(labs[i][0],labs[i-1][0]+15);
+labs.forEach(([y,l])=>{const t=ea('text',{class:'dl',x:R+8,y,fill:'var(--ink)'});t.textContent=l});
+{const i=D.findIndex(d=>d.y===2022);if(i>0){const t=ea('text',{class:'dl',x:sx(i),y:sy(D[i].dem)+22,'text-anchor':'middle',fill:'var(--ink)'});t.textContent='2022: paran as cubas de Alcoa'}}
+const cur=ea('line',{class:'cur',y1:TT,y2:B});
+const hit=ea('rect',{x:L-10,y:0,width:R-L+20,height:B+24,fill:'transparent',style:'cursor:ew-resize'});
+const fromX=e=>{const p=ar.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(ar.getScreenCTM().inverse());return Math.max(0,Math.min(D.length-1,Math.round((q.x-L)/(R-L)*(D.length-1))))};
+hit.addEventListener('pointermove',e=>{if(playing)return;const i=fromX(e);setYear(i);const d=D[i];
+  showTip(e,`<b>${d.y}</b>Xerado: ${fmt(d.tot)} GWh<br>Consumido: ${fmt(d.dem)} GWh<br>${T.map(([k,l])=>d[k]?`${l}: ${fmt(d[k])}`:'').filter(Boolean).join('<br>')}`)});
+hit.addEventListener('pointerleave',()=>tip.hidden=true);
+document.getElementById('legend').innerHTML=T.map(([k,l])=>`<span><i style="background:var(--${k})"></i>${l}</span>`).join('')+'<span><i style="background:none;border-top:2.5px dashed var(--ink);height:0;width:20px;border-radius:0"></i>Consumo en Galicia</span>';
+
+// --- táboa ---
+document.getElementById('tbl').innerHTML='<thead><tr><th>Ano</th>'+T.map(([,l])=>`<th>${l}</th>`).join('')+'<th>Total xerado</th><th>Demanda</th><th>Diferenza</th></tr></thead><tbody>'+
+  D.map(d=>`<tr><td>${d.y}</td>${T.map(([k])=>`<td>${fmt(d[k])}</td>`).join('')}<td>${fmt(d.tot)}</td><td>${fmt(d.dem)}</td><td>${fmt(d.tot-d.dem)}</td></tr>`).join('')+'</tbody>';
+
+// --- ano e animación ---
+const ano=document.getElementById('ano'),anoL=document.getElementById('anoL'),play=document.getElementById('play');
+function setYear(i){yi=i;ano.value=D[i].y;anoL.textContent=D[i].y;cur.setAttribute('x1',sx(i));cur.setAttribute('x2',sx(i));sankey();facts()}
+ano.addEventListener('input',()=>{stop();setYear(D.findIndex(d=>d.y===+ano.value))});
+let playing=false,tm=0;
+function stop(){playing=false;clearTimeout(tm);play.textContent='▶ 2011 → '+D[D.length-1].y}
+play.onclick=()=>{if(playing){stop();return}
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){setYear(D.length-1);return}
+  playing=true;play.textContent='■ Parar';let i=0;const st=()=>{setYear(i);i++;if(i<D.length)tm=setTimeout(st,900);else stop()};st()};
+setYear(D.length-1);
+</script>
+</body>
+</html>

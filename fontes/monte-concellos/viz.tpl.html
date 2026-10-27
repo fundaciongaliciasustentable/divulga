@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O monte de cada concello — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="O monte arborado de Galicia árbore a árbore: eucalipto, piñeiro e frondosas en cada concello, 2022-__A1__.">
+<meta property="og:title" content="__TITULO__">
+<meta property="og:description" content="Cada árbore do mapa son __U__ hectáreas de monte. Eucalipto, piñeiro ou frondosas, concello a concello.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Lámina botánica: papel claro, unha árbore por cada __U__ ha de monte arborado, coa forma
+   da súa especie (eucalipto alongado, piñeiro triangular, frondosa redonda). Ao lado, o
+   concello escollido; debaixo, os 313 concellos ordenados pola parte de eucalipto. */
+:root{
+  --paper:#f6f1e6; --paper-2:#ede6d6; --ink:#2b2a26; --muted:#6b675c; --line:#d9d0bc;
+  --euc:#1b8fa6; --pin:#2e6b3a; --fro:#b5762a;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font:700 clamp(1.6rem,3.8vw,2.6rem)/1.08 var(--serif);text-align:center;margin:0;text-wrap:balance}
+h1 em{color:var(--euc)}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:64ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center}
+.tog{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:#fffdf8}
+.tog button{font:600 .8rem var(--display);background:transparent;color:var(--muted);border:0;padding:7px 12px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tog svg{width:12px;height:14px}
+#q{font:500 .85rem var(--display);background:#fffdf8;color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:7px 10px;width:200px;max-width:100%}
+.tog button:focus-visible,#q:focus-visible,.rk:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.main{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;width:100%;align-items:start}
+@media (min-width:960px){.main{grid-template-columns:minmax(0,1fr) 300px}}
+.stage{position:relative;width:100%;max-width:800px;margin:0 auto}
+canvas{display:block;width:100%;height:auto;cursor:pointer;touch-action:manipulation}
+.load{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:.9rem}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.35;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;white-space:nowrap}
+.tip b{display:block;font-size:.92rem}
+aside{display:flex;flex-direction:column;gap:14px}
+.card{background:#fffdf8;border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.card h2{font:700 1.25rem/1.15 var(--serif);margin:0}
+.card .pr{font-size:.78rem;color:var(--muted)}
+.card .hint{font-size:.8rem;color:var(--muted);margin:6px 0 0}
+.stk{display:flex;height:14px;border-radius:2px;overflow:hidden;margin:10px 0 8px;gap:2px}
+.stk span{display:block;height:100%}
+.rows{display:grid;grid-template-columns:auto 1fr auto auto;gap:4px 10px;align-items:center;font-size:.84rem}
+.rows .v{font:700 1.05rem var(--num);text-align:right}
+.rows .d{font:600 .85rem var(--num);text-align:right;color:var(--muted);min-width:4ch}
+.rows svg{width:12px;height:14px}
+aside h3{font:800 .76rem var(--display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:2px 0 0}
+.rks{display:flex;flex-direction:column;gap:2px}
+.rk{display:grid;grid-template-columns:1fr auto;gap:2px 8px;background:transparent;border:0;border-radius:3px;padding:3px 6px;font:500 .84rem var(--display);color:var(--ink);text-align:left;cursor:pointer}
+.rk:hover,.rk.on{background:var(--paper-2)}
+.rk span:nth-child(2){font:700 .98rem var(--num);color:var(--euc)}
+.rk i{grid-column:1/-1;height:3px;background:var(--euc);border-radius:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;align-items:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend svg{width:12px;height:15px}
+.swarm{width:100%;max-width:1000px}
+.swarm h3{font:800 .76rem var(--display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:10px 0 0;text-align:center}
+.swarm svg{display:block;width:100%;height:auto;overflow:visible}
+.sw{cursor:pointer;stroke:var(--paper);stroke-width:1.2}
+.sw.on{stroke:var(--ink);stroke-width:2}
+.sax{font:600 12px var(--num);fill:var(--muted)}
+.sgl{stroke:var(--line)}
+.sml{font:600 12px var(--display);fill:var(--ink)}
+details{width:100%;max-width:760px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{max-height:420px;overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 10px;text-align:right}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.82rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:78ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>__H1__</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <div class="tog" role="group" aria-label="Ano" id="tAno"></div>
+    <div class="tog" role="group" aria-label="Que árbores destacar" id="tEsp"></div>
+    <input id="q" type="search" placeholder="Buscar concello…" aria-label="Buscar concello" list="ql" autocomplete="off">
+    <datalist id="ql"></datalist>
+  </div>
+  <div class="main">
+    <div class="stage" id="stage">
+      <canvas id="map" role="img" aria-label="Mapa de Galicia cheo de pequenas árbores: cada unha son __U__ hectáreas de monte arborado do concello, coa forma e a cor do seu grupo (eucalipto, piñeiro ou frondosas). A táboa de datos que hai debaixo ten as cifras de cada concello."></canvas>
+      <div class="load" id="load">Plantando árbores…</div>
+    </div>
+    <aside>
+      <div class="card" id="card"></div>
+      <h3 id="rkT">Concellos con máis eucalipto</h3>
+      <div class="rks" id="rks"></div>
+    </aside>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="swarm">
+    <h3>Os 313 concellos segundo a parte do seu monte arborado que é eucalipto</h3>
+    <svg id="sw" viewBox="0 0 1000 330" role="img" aria-label="Cada círculo é un concello, situado segundo a porcentaxe de eucalipto no seu monte arborado e coa área proporcional ás hectáreas de monte"></svg>
+  </div>
+  <details>
+    <summary>Ver os datos por concello</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Inventario Forestal Continuo de Galicia (<a href="https://invega.xunta.gal/invega/" target="_blank" rel="noopener">INVEGA</a>, Xunta de Galicia e universidades de Vigo e Santiago), capa de recintos SIGPAC con coberturas a 1 de xaneiro de cada ano, de 2022 a __A1__. Cada grupo inclúe, como nas cifras oficiais do inventario, as cortas, a rexeneración e as áreas queimadas que proveñen del. Queda fóra a rexeneración de especie aínda sen identificar (__S05__ ha en __A1__). Esta capa traballa por recintos SIGPAC en resolución media, e as súas sumas quedan algo por baixo das cifras oficiais do inventario para 2024 (438.156 ha de eucalipto, 446.897 de coníferas e 631.012 de frondosas), que se calculan coa capa de alta resolución. A comparación entre concellos e entre anos é coherente porque todo sae da mesma capa. «Piñeiro» son todas as coníferas. «Frondosas» son o resto de árbores de folla ancha: carballos, castiñeiros, bidueiros, ameneiros, acacias e outras, porque o inventario non as separa por especie. No mapa, cada árbore son __U__ ha e colócase ao chou dentro do seu concello: as cantidades son reais, pero a posición exacta dentro do concello non. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(async()=>{
+const D=await (await fetch('datos.json')).json();
+const ANOS=D.anos.map(String),U=D.unidade,C=D.concellos,NS='http://www.w3.org/2000/svg';
+const ESP=[['e','Eucalipto','--euc'],['c','Piñeiro','--pin'],['f','Frondosas','--fro']];
+const COL={e:'#1b8fa6',c:'#2e6b3a',f:'#b5762a'};
+const fmt=n=>Math.round(n).toLocaleString('gl-ES',{useGrouping:'always'});
+const pc=(a,b)=>b?Math.round(a/b*100):0;
+const arb=(c,y)=>c.ha[y].e+c.ha[y].c+c.ha[y].f;
+// iconas en SVG (lenda, botóns, panel) co mesmo debuxo que o canvas
+const ICO={e:'<path d="M6 1 C8.6 4 8.6 9 6 13 C3.4 9 3.4 4 6 1Z"/>',c:'<path d="M6 1 L10.5 13 H1.5Z"/>',f:'<circle cx="6" cy="7.5" r="5"/>'};
+const ico=(k)=>`<svg viewBox="0 0 12 14" aria-hidden="true" fill="${COL[k]}">${ICO[k]}</svg>`;
+let yi=ANOS.length-1,foco='',sel=-1;
+const Y=()=>ANOS[yi];
+
+// --- mapa ---
+const cv=document.getElementById('map'),ctx=cv.getContext('2d'),stage=document.getElementById('stage'),tip=document.getElementById('tip');
+let W,H,dpr,sc,X0=1e9,X1=-1e9,Y0=1e9,Y1=-1e9,paths=[];
+for(const c of C)for(const r of c.pol)for(const [x,y] of r){X0=Math.min(X0,x);X1=Math.max(X1,x);Y0=Math.min(Y0,y);Y1=Math.max(Y1,y)}
+function layout(){W=stage.clientWidth;sc=(W-8)/(X1-X0);H=Math.round((Y1-Y0)*sc)+8;dpr=Math.min(2,devicePixelRatio||1);
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';
+  const P=(x,y)=>[4+(x-X0)*sc,4+(y-Y0)*sc];
+  paths=C.map(c=>{const p=new Path2D();for(const r of c.pol){r.forEach(([x,y],i)=>{const [a,b]=P(x,y);i?p.lineTo(a,b):p.moveTo(a,b)});p.closePath()}return p});
+  for(const c of C)c.px=c.pt.map(([x,y])=>P(x,y))}
+function tree(k,x,y,s){ctx.beginPath();
+  if(k==='e'){ctx.moveTo(x,y-1.6*s);ctx.bezierCurveTo(x+.75*s,y-.6*s,x+.75*s,y+.6*s,x,y+1.6*s);ctx.bezierCurveTo(x-.75*s,y+.6*s,x-.75*s,y-.6*s,x,y-1.6*s)}
+  else if(k==='c'){ctx.moveTo(x,y-1.45*s);ctx.lineTo(x+1.05*s,y+1.3*s);ctx.lineTo(x-1.05*s,y+1.3*s)}
+  else ctx.arc(x,y,1.05*s,0,6.283);
+  ctx.fill()}
+function draw(){const s=Math.max(1.05,W/380),y=Y();ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#efe8d8';C.forEach((c,i)=>ctx.fill(paths[i]));
+  ctx.strokeStyle='#d9d0bc';ctx.lineWidth=.7;C.forEach((c,i)=>ctx.stroke(paths[i]));
+  C.forEach((c,i)=>{const h=c.ha[y],n={e:Math.round(h.e/U),c:Math.round(h.c/U),f:Math.round(h.f/U)};let k=0;
+    const dim=sel>=0&&sel!==i;
+    for(const e of ['e','c','f']){ctx.fillStyle=COL[e];ctx.globalAlpha=(foco&&foco!==e?.13:1)*(dim?.35:1);
+      for(let j=0;j<n[e]&&k<c.px.length;j++,k++)tree(e,c.px[k][0],c.px[k][1],s)}});
+  ctx.globalAlpha=1;
+  if(sel>=0){ctx.strokeStyle='#2b2a26';ctx.lineWidth=2;ctx.stroke(paths[sel])}}
+function hit(ev){const b=cv.getBoundingClientRect(),x=ev.clientX-b.left,y=ev.clientY-b.top;
+  for(let i=0;i<C.length;i++)if(ctx.isPointInPath(paths[i],x*dpr,y*dpr))return i;return -1}
+cv.addEventListener('pointermove',ev=>{const i=hit(ev);if(i<0){tip.hidden=true;return}const c=C[i],y=Y(),a=arb(c,y);
+  tip.innerHTML=`<b>${c.n}</b>${fmt(a)} ha de monte arborado · ${pc(c.ha[y].e,a)} % eucalipto`;tip.hidden=false;
+  tip.style.left=Math.max(110,Math.min(innerWidth-110,ev.clientX))+'px';tip.style.top=ev.clientY+'px'});
+cv.addEventListener('pointerleave',()=>tip.hidden=true);
+cv.addEventListener('click',ev=>{const i=hit(ev);setSel(i===sel?-1:i)});
+
+// --- panel ---
+const card=document.getElementById('card'),rks=document.getElementById('rks'),rkT=document.getElementById('rkT');
+function panel(){const y=Y(),y0=ANOS[0];let h,h0,tit,sub;
+  if(sel<0){h=D.total[y];h0=D.total[y0];tit='Galicia';sub='Todo o monte arborado'}
+  else{const c=C[sel];h=c.ha[y];h0=c.ha[y0];tit=c.n;sub=`${c.pr} · ${fmt(c.sup)} ha de superficie inventariada`}
+  const a=h.e+h.c+h.f;
+  card.innerHTML=`<h2>${tit}</h2><div class="pr">${sub}</div>
+   <div class="stk">${ESP.map(([k])=>`<span style="width:${h[k]/a*100}%;background:${COL[k]}"></span>`).join('')}</div>
+   <div class="rows">${ESP.map(([k,l])=>`${ico(k)}<span>${l}</span><span class="v">${fmt(h[k])} ha</span><span class="d">${pc(h[k],a)} %</span>`).join('')}
+   <span></span><span><b>Total arborado</b></span><span class="v">${fmt(a)} ha</span><span></span></div>
+   ${y!==y0?`<p class="hint">Dende ${y0}: eucalipto ${sg(h.e-h0.e)} ha · piñeiro ${sg(h.c-h0.c)} ha · frondosas ${sg(h.f-h0.f)} ha</p>`:''}
+   ${sel<0?'<p class="hint">Toca un concello no mapa para ver o seu monte.</p>':''}`;
+  const top=C.map((c,i)=>[i,arb(c,y)?c.ha[y].e/arb(c,y):0]).filter(([i])=>arb(C[i],y)>=300).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  rkT.textContent=`Concellos onde máis do monte é eucalipto (${y})`;
+  rks.innerHTML=top.map(([i,p])=>`<button class="rk${i===sel?' on':''}" data-i="${i}"><span>${C[i].n}</span><span>${Math.round(p*100)} %</span><i style="width:${p*100}%"></i></button>`).join('');
+  rks.querySelectorAll('.rk').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;setSel(i===sel?-1:i)})}
+const sg=n=>(n>0?'+':n<0?'−':'')+fmt(Math.abs(n));
+
+// --- enxame de concellos ---
+const sv=document.getElementById('sw'),el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);(p||sv).appendChild(e);return e};
+const L=30,R=970,MID=160,PRV=['A Coruña','Lugo','Ourense','Pontevedra'];
+const sx=p=>L+p*(R-L);
+for(let p=0;p<=1.0001;p+=.1){el('line',{class:'sgl',x1:sx(p),x2:sx(p),y1:12,y2:308});const t=el('text',{class:'sax',x:sx(p),y:324,'text-anchor':'middle'});t.textContent=Math.round(p*100)+' %'}
+let dots=[];
+function swarm(){const y=Y();dots.forEach(d=>d.remove());
+  const amax=Math.max(...C.map(c=>arb(c,y)));
+  const it=C.map((c,i)=>{const a=arb(c,y);return {i,x:sx(a?c.ha[y].e/a:0),r:Math.max(1.6,6.5*Math.sqrt(a/amax))}}).sort((a,b)=>b.r-a.r);
+  const placed=[];
+  for(const d of it){let yy=MID;for(let k=0;k<400;k++){const cand=MID+(k%2?1:-1)*Math.ceil(k/2)*1;if(Math.abs(cand-MID)>140)continue;if(placed.every(p=>Math.hypot(p.x-d.x,p.y-cand)>=p.r+d.r+.6)){yy=cand;break}}d.y=yy;placed.push(d)}
+  dots=it.map(d=>{const c=el('circle',{class:'sw'+(d.i===sel?' on':''),cx:d.x.toFixed(1),cy:d.y.toFixed(1),r:d.r.toFixed(1),fill:COL.e,'fill-opacity':.25+.75*((d.x-L)/(R-L))});
+    c.addEventListener('pointerenter',ev=>{const cc=C[d.i],a=arb(cc,y);tip.innerHTML=`<b>${cc.n}</b>${pc(cc.ha[y].e,a)} % eucalipto · ${fmt(a)} ha arboradas`;tip.hidden=false;tip.style.left=ev.clientX+'px';tip.style.top=ev.clientY+'px'});
+    c.addEventListener('pointerleave',()=>tip.hidden=true);c.addEventListener('click',()=>setSel(d.i===sel?-1:d.i));return c});
+  const half=C.filter(c=>{const a=arb(c,y);return a&&c.ha[y].e/a>.5}).length;
+  dots.push(el('line',{x1:sx(.5),x2:sx(.5),y1:4,y2:308,stroke:'#2b2a26','stroke-dasharray':'3 3'}));
+  const t=el('text',{class:'sml',x:sx(.5)+6,y:14});t.textContent=`${half} concellos con máis da metade de eucalipto →`;dots.push(t)}
+
+// --- táboa ---
+function table(){const y=Y();document.getElementById('tbl').innerHTML=`<thead><tr><th>Concello</th><th>Eucalipto (ha)</th><th>Piñeiro (ha)</th><th>Frondosas (ha)</th><th>% eucalipto</th></tr></thead><tbody>`+
+  C.map(c=>{const h=c.ha[y],a=arb(c,y);return `<tr><td>${c.n}</td><td>${fmt(h.e)}</td><td>${fmt(h.c)}</td><td>${fmt(h.f)}</td><td>${pc(h.e,a)}</td></tr>`}).join('')+'</tbody>'}
+
+// --- controis ---
+const tA=document.getElementById('tAno'),tE=document.getElementById('tEsp');
+tA.innerHTML=ANOS.map((a,i)=>`<button aria-pressed="${i===yi}" data-i="${i}">${a}</button>`).join('');
+tA.querySelectorAll('button').forEach(b=>b.onclick=()=>{yi=+b.dataset.i;tA.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));update()});
+tE.innerHTML=`<button aria-pressed="true" data-k="">Todas</button>`+ESP.map(([k,l])=>`<button aria-pressed="false" data-k="${k}">${ico(k)}${l}</button>`).join('');
+tE.querySelectorAll('button').forEach(b=>b.onclick=()=>{foco=b.dataset.k;tE.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()});
+document.getElementById('legend').innerHTML=ESP.map(([k,l])=>`<span>${ico(k)}${l}</span>`).join('')+`<span>Cada árbore = ${U} ha de monte</span>`;
+const q=document.getElementById('q'),ql=document.getElementById('ql');
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+C.forEach(c=>{const o=document.createElement('option');o.value=c.n;ql.appendChild(o)});
+q.addEventListener('input',()=>{const s=norm(q.value.trim());if(!s){setSel(-1);return}const i=C.findIndex(c=>norm(c.n)===s);if(i>=0)setSel(i)});
+function setSel(i){sel=i;if(i<0&&q.value)q.value='';draw();panel();dots.forEach(d=>d.tagName==='circle'&&d.classList.remove('on'));swarm()}
+function update(){draw();panel();swarm();table()}
+
+layout();update();document.getElementById('load').remove();
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{layout();draw()},120)});
+})();
+</script>
+</body>
+</html>

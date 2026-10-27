@@ -1,5 +1,28 @@
 [
   {
+    "slug": "monte-concellos",
+    "titulo": "O monte de cada concello",
+    "entradilla": "O monte galego árbore a árbore: eucalipto, piñeiro ou frondosas, concello a concello. En 78 concellos o eucalipto xa é máis da metade do monte arborado.",
+    "data": "2026-10-27",
+    "temas": [
+      "Monte",
+      "Sustentabilidade"
+    ],
+    "formato": "Mapa de árbores",
+    "fontes": "Inventario Forestal Continuo de Galicia (INVEGA, Xunta)"
+  },
+  {
+    "slug": "luz-galicia",
+    "titulo": "De onde vén a luz",
+    "entradilla": "Galicia xera un terzo máis de electricidade da que consome e xa non queima carbón: o 82 % vén da auga e do vento. Os fluxos, ano a ano dende 2011.",
+    "data": "2026-10-27",
+    "temas": [
+      "Enerxía"
+    ],
+    "formato": "Diagrama de fluxos",
+    "fontes": "Red Eléctrica (REData)"
+  },
+  {
     "slug": "vacas-persoas",
     "titulo": "Hai máis vacas ca persoas?",
     "entradilla": "En 68 concellos galegos, si, e son cada vez máis porque marcha a xente. Se contamos tamén porcos, galiñas e ovellas en unidades gandeiras, son 128.",
