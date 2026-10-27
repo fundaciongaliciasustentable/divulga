@@ -5,3 +5,5 @@ divulga-web.zip
 api/datos/*.json
 api/datos/.ht-*
 fontes/galicia-apagandose/data/ige/
+fontes/raias-clima/data/SPE*.csv
+fontes/monte-concellos/data/raw/

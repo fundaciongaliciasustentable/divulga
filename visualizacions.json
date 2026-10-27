@@ -1,5 +1,16 @@
 [
   {
+    "slug": "raias-clima",
+    "titulo": "As raias da calor e da choiva",
+    "entradilla": "Cada raia é un ano en seis observatorios galegos, dende 1931. Na Coruña, os catro anos máis quentes da serie son os catro últimos. Descarga a raia da túa cidade.",
+    "data": "2026-10-27",
+    "temas": [
+      "Clima"
+    ],
+    "formato": "Raias climáticas",
+    "fontes": "AEMET vía NOAA GHCN-Daily (ECA&D)"
+  },
+  {
     "slug": "galicia-apagandose",
     "titulo": "Galicia apágase",
     "entradilla": "As 30.518 aldeas e lugares de Galicia como puntos de luz, de 1999 a 2025. 1.070 quedaron sen ninguén e outras 5.039 teñen menos de cinco veciños.",

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>As raias da calor e da choiva — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="A temperatura e a choiva de cada ano en seis cidades galegas, en raias de cor. Na Coruña os catro anos máis quentes en 95 anos son os catro últimos.">
+<meta property="og:title" content="As raias da calor e da choiva en Galicia">
+<meta property="og:description" content="Cada raia é un ano. Na Coruña, os catro máis quentes dende 1931 son os catro últimos.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Raias ao xeito de #ShowYourStripes (Ed Hawkins): unha raia por ano e cidade nun eixo común
+   de 1931 a hoxe; arriba a calor, e a choiva co mesmo eixo nun segundo modo. Debaixo, a raia
+   da túa cidade lista para descargar. */
+:root{
+  --ink:#16181d; --ink-2:#22252c; --paper:#f3f1ec; --muted:#a3a6ad; --gap:#2c2f36;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:dark;
+}
+html,body{background:var(--ink);color:var(--paper)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+h1{font-weight:800;font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.08;text-align:center;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--paper)}
+.tog{display:flex;border:1px solid #3a3e47;border-radius:3px;overflow:hidden}
+.tog button{font:700 .85rem var(--display);background:transparent;color:var(--muted);border:0;padding:8px 16px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+.tog button:focus-visible,select:focus-visible,.btn:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
+.board{position:relative;width:100%}
+.board svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:700 15px var(--display);fill:var(--paper)}
+.halo{paint-order:stroke;stroke:#16181d;stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+@media (max-width:639px){.rl{font-size:19px}.rs{font-size:15px}.ax{font-size:16px}}
+.rs{font:600 12px var(--num);fill:var(--muted)}
+.ax{font:600 13px var(--num);fill:var(--muted)}
+.hov{fill:none;stroke:var(--paper);stroke-width:2;pointer-events:none}
+.tip{position:fixed;pointer-events:none;background:var(--paper);color:var(--ink);padding:9px 12px;border-radius:3px;font-size:.82rem;line-height:1.35;box-shadow:0 6px 24px rgba(0,0,0,.5);transform:translate(-50%,calc(-100% - 16px));z-index:2;min-width:160px}
+.tip b{display:block;font-size:.95rem}
+.tip .big{display:block;font:700 1.4rem/1.15 var(--num)}
+.tip .sub{display:block;color:#5d6068;font-size:.76rem}
+.scale{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.78rem;color:var(--muted)}
+.scale .bar{display:flex;height:12px;width:min(420px,86vw);border-radius:2px;overflow:hidden}
+.scale .bar span{flex:1}
+.scale .tk{display:flex;justify-content:space-between;width:min(420px,86vw);font:600 .8rem var(--num)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;width:100%;max-width:1000px}
+.fact{background:var(--ink-2);border-radius:4px;padding:12px 14px}
+.fact .v{font:700 2.2rem/1 var(--num)}
+.fact .l{font-size:.82rem;color:var(--muted);line-height:1.4;margin-top:4px}
+.mine{width:100%;max-width:1000px;display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:10px}
+.mine h2{font:800 1.15rem var(--display);margin:0}
+.mine .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+select{font:600 .9rem var(--display);background:var(--ink-2);color:var(--paper);border:1px solid #3a3e47;border-radius:3px;padding:7px 10px}
+.btn{font:700 .85rem var(--display);background:var(--paper);color:var(--ink);border:0;border-radius:3px;padding:8px 14px;cursor:pointer}
+#poster{width:100%;max-width:900px;height:auto;border-radius:3px;display:block}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{max-height:420px;overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.92rem;color:var(--paper)}
+th,td{padding:2px 9px;text-align:right}
+th{font-family:var(--display);font-size:.7rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--ink)}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:78ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Na Coruña, os catro anos máis quentes dende 1931 son os catro últimos</h1>
+  <p class="dek">Cada raia é un ano, e a súa cor indica se foi máis quente (vermello) ou máis frío (azul) que a media de 1991–2020. Hai seis observatorios galegos, cada un dende o primeiro ano con datos completos. Co botón de arriba podes cambiar ás raias da choiva.</p>
+  <div class="tog" role="group" aria-label="Variable">
+    <button id="bT" aria-pressed="true">Calor</button>
+    <button id="bP" aria-pressed="false">Choiva</button>
+  </div>
+  <div class="board" id="board"><svg id="st" viewBox="0 0 1180 470" role="img" aria-label="Raias de temperatura anual en seis cidades galegas"></svg></div>
+  <div class="scale" id="scale"></div>
+  <div class="facts" id="facts"></div>
+  <section class="mine">
+    <h2>A raia da túa cidade</h2>
+    <div class="row">
+      <select id="cid" aria-label="Cidade"></select>
+      <div class="tog" role="group" aria-label="Variable da imaxe"><button id="pT" aria-pressed="true">Calor</button><button id="pP" aria-pressed="false">Choiva</button></div>
+      <button class="btn" id="dl">Descargar imaxe</button>
+    </div>
+    <canvas id="poster" width="1200" height="630" role="img" aria-label="Imaxe para compartir coas raias da cidade escollida"></canvas>
+  </section>
+  <details>
+    <summary>Ver os datos por ano</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Series diarias de temperatura máxima e mínima e de choiva dos observatorios de AEMET, a través de NOAA <a href="https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily" target="_blank" rel="noopener">GHCN-Daily</a> (que as recolle de ECA&amp;D). A temperatura media é a media da máxima e a mínima. Un ano só se pinta se ten os doce meses completos: polo menos 25 días con temperatura e 20 con choiva. A choiva de cada mes estímase coa media dos días con dato. Os anos sen datos completos quedan en gris. As anomalías calcúlanse respecto da normal 1991–2020 de cada observatorio. Lugo (Rozas) e Pontevedra só teñen temperatura dende 1986, e Ourense dende 1973. Os observatorios cambiaron de contorno co tempo: os aeroportos de Lavacolla e Peinador non son o centro de Santiago nin o de Vigo. Inspirado en <a href="https://showyourstripes.info" target="_blank" rel="noopener">#ShowYourStripes</a> de Ed Hawkins. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__;
+const NS='http://www.w3.org/2000/svg',E=D.est;
+// RdBu e BrBG de ColorBrewer (11 clases): azul/marrón = frío/seco, vermello/verde-azulado = quente/húmido
+const RDBU=['#053061','#2166ac','#4393c3','#92c5de','#d1e5f0','#f7f7f7','#fddbc7','#f4a582','#d6604d','#b2182b','#67001f'];
+const BRBG=['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#f5f5f5','#c7eae5','#80cdc1','#35978f','#01665e','#003c30'];
+const V={t:{pal:RDBU,lim:2,u:' °C',lab:'Diferenza coa media 1991–2020',fmt:v=>(v>0?'+':v<0?'−':'±')+Math.abs(v).toLocaleString('gl-ES',{minimumFractionDigits:1,maximumFractionDigits:1})+' °C'},
+         p:{pal:BRBG,lim:50,u:' %',lab:'Choiva respecto da media 1991–2020',fmt:v=>(v>0?'+':v<0?'−':'±')+Math.round(Math.abs(v))+' %'}};
+const col=(k,v)=>{if(v==null)return null;const s=V[k];const i=Math.round((Math.max(-s.lim,Math.min(s.lim,v))/s.lim)*5)+5;return s.pal[i]};
+const fmt1=n=>n.toLocaleString('gl-ES',{minimumFractionDigits:1,maximumFractionDigits:1});
+const fmt0=n=>Math.round(n).toLocaleString('gl-ES',{useGrouping:'always'});
+let k='t';
+const A0=Math.min(...E.map(e=>e.s[0].y)),A1=Math.max(...E.map(e=>e.s[e.s.length-1].y)),N=A1-A0+1;
+const sv=document.getElementById('st'),tip=document.getElementById('tip');
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);(p||sv).appendChild(e);return e};
+// en pantallas estreitas as etiquetas van enriba das propias raias
+const NARROW=document.getElementById('board').clientWidth<640,VW=NARROW?600:1180;
+const L=NARROW?0:190,R=VW-(NARROW?0:10),T=10,RH=NARROW?58:66,G=6,bw=(R-L)/N;
+sv.setAttribute('viewBox',`0 0 ${VW} ${T+E.length*(RH+G)+30}`);
+const x=y=>L+(y-A0)*bw;
+const cells=[];
+E.forEach((e,r)=>{const y0=T+r*(RH+G);
+  el('rect',{x:L,y:y0,width:R-L,height:RH,fill:'var(--gap)'});
+  e.s.forEach(s=>{const c=el('rect',{x:x(s.y).toFixed(2),y:y0,width:(bw+.6).toFixed(2),height:RH});cells.push({c,e,s,r})});
+  const lx=NARROW?8:L-12,an=NARROW?'start':'end',cl=NARROW?' halo':'';
+  const t1=el('text',{class:'rl'+cl,x:lx,y:y0+(NARROW?22:RH/2-2),'text-anchor':an});t1.textContent=e.n;
+  e.lab=el('text',{class:'rs'+cl,x:lx,y:y0+(NARROW?40:RH/2+16),'text-anchor':an})});
+const yb=T+E.length*(RH+G);
+for(let y=Math.ceil(A0/10)*10;y<=A1;y+=10){el('line',{x1:x(y),x2:x(y),y1:yb-2,y2:yb+4,stroke:'#6b6f78'});const t=el('text',{class:'ax',x:x(y),y:yb+20,'text-anchor':'middle'});t.textContent=y}
+{const t=el('text',{class:'ax',x:R,y:yb+20,'text-anchor':'end'});t.textContent=A1}
+const hov=el('rect',{class:'hov',x:0,y:T-3,width:bw,height:E.length*(RH+G)-G+6,visibility:'hidden'});
+function paint(){cells.forEach(o=>{const v=o.s[k],c=col(k,v);o.c.setAttribute('fill',c||'var(--gap)')});
+  E.forEach(e=>{const ys=e.s.filter(s=>s[k]!=null).map(s=>s.y);e.lab.textContent=ys.length?`${ys[0]}–${ys[ys.length-1]}`:''});
+  sv.setAttribute('aria-label',k==='t'?'Raias de temperatura anual en seis cidades galegas':'Raias de choiva anual en seis cidades galegas');
+  const s=V[k];document.getElementById('scale').innerHTML=`<div>${s.lab}</div><div class="bar">${s.pal.map(c=>`<span style="background:${c}"></span>`).join('')}</div><div class="tk"><span>${s.fmt(-s.lim)} ou menos</span><span>${s.fmt(0)}</span><span>${s.fmt(s.lim)} ou máis</span></div>`;
+  facts()}
+sv.addEventListener('pointermove',ev=>{const p=sv.createSVGPoint();p.x=ev.clientX;p.y=ev.clientY;const q=p.matrixTransform(sv.getScreenCTM().inverse());
+  const y=A0+Math.floor((q.x-L)/bw),r=Math.floor((q.y-T)/(RH+G));
+  if(q.x<L||q.x>R||r<0||r>=E.length){hov.setAttribute('visibility','hidden');tip.hidden=true;return}
+  hov.setAttribute('x',x(y));hov.setAttribute('visibility','visible');
+  const e=E[r],s=e.s.find(z=>z.y===y);
+  if(!s||s[k]==null){tip.innerHTML=`<b>${e.n} · ${y}</b><span class="sub">sen datos completos</span>`}
+  else if(k==='t'){const v=e.T[y];const rk=Object.values(e.T).filter(z=>z>v).length+1;
+    tip.innerHTML=`<b>${e.n} · ${y}</b><span class="big">${fmt1(v)} °C</span><span class="sub">${V.t.fmt(s.t)} sobre 1991–2020<br>${rk}.º ano máis quente de ${Object.keys(e.T).length}</span>`}
+  else{tip.innerHTML=`<b>${e.n} · ${y}</b><span class="big">${fmt0(e.P[y])} mm</span><span class="sub">${V.p.fmt(s.p)} respecto de 1991–2020</span>`}
+  tip.hidden=false;tip.style.left=Math.max(100,Math.min(innerWidth-100,ev.clientX))+'px';tip.style.top=ev.clientY+'px'});
+sv.addEventListener('pointerleave',()=>{hov.setAttribute('visibility','hidden');tip.hidden=true});
+
+// cifras clave, calculadas dos datos
+function facts(){const f=document.getElementById('facts');const m=(D,a,b)=>{const v=[];for(let y=a;y<=b;y++)if(D[y]!=null)v.push(D[y]);return v.length?v.reduce((s,x)=>s+x,0)/v.length:null};
+  if(k==='t'){f.innerHTML=E.filter(e=>m(e.T,1961,1990)!=null&&Object.keys(e.T).filter(y=>y>=1961&&y<=1990).length>=25).map(e=>{const d=m(e.T,2016,A1)-m(e.T,1961,1990);
+      const top=Object.entries(e.T).sort((a,b)=>b[1]-a[1]).slice(0,3).map(z=>z[0]).sort();
+      return `<div class="fact"><div class="v">+${fmt1(d)} °C</div><div class="l"><b>${e.n}</b>: 2016–${A1} fronte a 1961–1990. Os seus tres anos máis quentes: ${top.join(', ')}.</div></div>`}).join('')}
+  else{f.innerHTML=E.map(e=>{const ys=Object.entries(e.P).sort((a,b)=>a[1]-b[1]);const sec=ys[0],hum=ys[ys.length-1];
+      return `<div class="fact"><div class="v">${fmt0(e.nP)} mm</div><div class="l"><b>${e.n}</b>: choiva media 1991–2020. O ano máis seco foi ${sec[0]} (${fmt0(sec[1])} mm) e o máis chuvioso ${hum[0]} (${fmt0(hum[1])} mm).</div></div>`}).join('')}}
+const bT=document.getElementById('bT'),bP=document.getElementById('bP');
+const setK=v=>{k=v;bT.setAttribute('aria-pressed',v==='t');bP.setAttribute('aria-pressed',v==='p');paint()};
+bT.onclick=()=>setK('t');bP.onclick=()=>setK('p');
+
+// imaxe para compartir
+const cid=document.getElementById('cid'),pc=document.getElementById('poster'),g=pc.getContext('2d');let pk='t';
+E.forEach((e,i)=>{const o=document.createElement('option');o.value=i;o.textContent=e.n;cid.appendChild(o)});
+async function poster(){await document.fonts.ready;const e=E[+cid.value],ss=e.s.filter(s=>s[pk]!=null);const a=ss[0].y,b=ss[ss.length-1].y,n=b-a+1,w=1200/n;
+  g.fillStyle='#16181d';g.fillRect(0,0,1200,630);
+  e.s.forEach(s=>{if(s.y<a)return;g.fillStyle=col(pk,s[pk])||'#2c2f36';g.fillRect(Math.floor((s.y-a)*w),0,Math.ceil(w)+1,630)});
+  g.fillStyle='rgba(22,24,29,.78)';g.fillRect(0,520,1200,110);
+  g.fillStyle='#f3f1ec';g.font='800 40px Raleway, sans-serif';g.fillText(`${e.n} ${a}–${b}`,36,572);
+  g.font='600 22px Raleway, sans-serif';g.fillStyle='#c9cbd0';g.fillText(pk==='t'?'Temperatura media anual · cada raia é un ano':'Choiva anual · cada raia é un ano',36,606);
+  g.textAlign='right';g.font='700 20px Raleway, sans-serif';g.fillText('Divulga · Fundación Galicia Sustentable',1164,606);g.textAlign='left'}
+cid.onchange=poster;
+const pT=document.getElementById('pT'),pP=document.getElementById('pP');
+const setPK=v=>{pk=v;pT.setAttribute('aria-pressed',v==='t');pP.setAttribute('aria-pressed',v==='p');poster()};
+pT.onclick=()=>setPK('t');pP.onclick=()=>setPK('p');
+document.getElementById('dl').onclick=()=>{const e=E[+cid.value];const a=document.createElement('a');a.download=`raias-${pk==='t'?'calor':'choiva'}-${e.n.split(' ')[0].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}.png`;a.href=pc.toDataURL('image/png');a.click()};
+
+// táboa
+document.getElementById('tbl').innerHTML='<thead><tr><th>Ano</th>'+E.map(e=>`<th>${e.n.split(' ')[0]} °C</th><th>mm</th>`).join('')+'</tr></thead><tbody>'+
+  Array.from({length:N},(_,i)=>A1-i).map(y=>`<tr><td>${y}</td>`+E.map(e=>`<td>${e.T[y]!=null?fmt1(e.T[y]):'–'}</td><td>${e.P[y]!=null?fmt0(e.P[y]):'–'}</td>`).join('')+'</tr>').join('')+'</tbody>';
+
+paint();poster();
+</script>
+</body>
+</html>

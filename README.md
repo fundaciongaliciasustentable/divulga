@@ -71,6 +71,7 @@ Display e Lato).
 | biblioteca-sustentable | `fontes/biblioteca-sustentable/libros.json` (selección FGS) e portadas de Open Library | `python3 fontes/biblioteca-sustentable/render.py` |
 | espiral-lumes | FIRESPAIN-025 (EGIF diaria en grella, 1983-2016, Zenodo 14644902) e Copernicus EFFIS `modis.ba.poly` (WFS, 2017-) | `cd fontes/espiral-lumes && pip install netCDF4 numpy shapely && python3 prep.py && python3 render.py` (para actualizar, descarga de novo `data/effis_galicia.gml` co URL de `prep.py`) |
 | galicia-apagandose | IGE, Nomenclátor 1999-2025 (API `igeapi/csv/nomenc`), puntos de entidades de poboación do IET e concellos/parroquias de `galicia-agora` | `cd fontes/galicia-apagandose && pip install shapely pillow && python3 prep.py && python3 render.py` (prep.py descarga os CSV do IGE en `data/ige/` se faltan) |
+| raias-clima | Observatorios de AEMET (A Coruña, Santiago, Vigo, Pontevedra, Ourense, Lugo) vía NOAA GHCN-Daily | `cd fontes/raias-clima && python3 prep.py && python3 render.py` (prep.py descarga os CSV das estacións se faltan) |
 | habelos-hainos | AEMET, MeteoGalicia, IGE, INEGA, Xunta, ICCT e outras (fonte enlazada en cada mito) | editar o array `MITOS` de `v/habelos-hainos/index.html` a man; votos en `api/votos.php` |
 | galicia-cero-neto | Ogacli/MITECO (emisións 2024), INEGA, REE, DGT, Lei 1/2026 do clima; método en `fontes/galicia-cero-neto/README.md` | editar `SECTORS`, `SINK` e `ROADMAP` en `v/galicia-cero-neto/index.html` a man |
 
