@@ -1,5 +1,17 @@
 [
   {
+    "slug": "galicia-minuto",
+    "titulo": "Galicia nun minuto",
+    "entradilla": "Cada minuto, en media, un peregrino recolle a Compostela, saen das granxas 5.690 litros de leite e Galicia produce 164.342 euros. Quince contadores que empezan a sumar cando abres a páxina.",
+    "data": "2026-10-27",
+    "temas": [
+      "Poboación",
+      "Economía"
+    ],
+    "formato": "Contadores en directo",
+    "fontes": "IGE, INE, Aena, Oficina do Peregrino, FEGA, Pesca de Galicia, REE, EFFIS e AEMET"
+  },
+  {
     "slug": "fenda-rural",
     "titulo": "A fenda rural",
     "entradilla": "No rural declárase un 31 % menos de renda ca nas cidades, pero o risco de pobreza é o máis baixo e a esperanza de vida, case a mesma. 26 indicadores do IGE para as zonas densamente poboadas, intermedias e pouco poboadas.",

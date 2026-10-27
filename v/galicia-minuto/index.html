@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Galicia nun minuto — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Nacementos, peregrinos, leite, peixe, electricidade, choiva: o que pasa en Galicia mentres les esta páxina, contado en directo.">
+<meta property="og:title" content="Galicia nun minuto">
+<meta property="og:description" content="Contadores en directo: o que pasa en Galicia mentres les esta páxina.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Contadores en directo: cada total anual repártese por igual polos segundos do ano e a páxina
+   vaino sumando dende que se abre. As cousas que se contan unha a unha (persoas, vodas) levan
+   ademais un campo de puntos; as que pasan menos dunha vez por minuto, unha barra cara á seguinte. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7;
+  --persoas:#6a3d9a; --viaxes:#d95f02; --economia:#1f78b4; --campo:#33a02c; --enerxia:#e7298a;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+h1{font-weight:800;font-size:clamp(1.7rem,4.2vw,2.8rem);line-height:1.05;text-align:center;margin:0;letter-spacing:-.01em}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:64ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.hero{display:flex;align-items:center;gap:18px;margin-top:6px}
+.reloxo{position:relative;width:118px;height:118px;flex:none}
+.reloxo svg{width:100%;height:100%;display:block;transform:rotate(-90deg)}
+.reloxo .fondo{fill:none;stroke:var(--soft);stroke-width:8}
+.reloxo .arco{fill:none;stroke:var(--ink);stroke-width:8;stroke-linecap:butt}
+.reloxo .tempo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.reloxo .tempo b{font:700 2rem var(--num);font-variant-numeric:tabular-nums}
+.reloxo .tempo span{font-size:.66rem;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.08em}
+.hero p{margin:0;max-width:30ch;font-size:.92rem;color:var(--muted);line-height:1.45}
+.hero p b{color:var(--ink)}
+.tog{display:flex;flex-wrap:wrap;justify-content:center;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--card)}
+.tog button{font:600 .82rem var(--display);background:transparent;color:var(--muted);border:0;padding:8px 13px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tog button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.tema{width:100%;display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.tema h2{font:800 .8rem var(--display);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0;display:flex;align-items:center;gap:8px}
+.tema h2 i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.grella{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:4px;padding:12px 14px 13px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.card .cab{display:flex;align-items:center;gap:8px;font-size:.84rem;font-weight:700;line-height:1.25}
+.card .cab svg{width:26px;height:26px;flex:none;color:var(--c)}
+.card .v{font:700 2.3rem var(--num);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px}
+.card .u{font-size:.8rem;color:var(--muted);font-weight:600}
+.card .cada{font-size:.78rem;color:var(--ink);font-weight:600}
+.card .sub{font-size:.76rem;color:var(--muted);line-height:1.4}
+.card .ano{font:600 .72rem var(--num);color:var(--muted);letter-spacing:.03em;margin-top:auto;padding-top:4px}
+.barra{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;margin-top:2px}
+.barra i{display:block;height:100%;background:var(--c);width:0}
+.puntos{display:flex;flex-wrap:wrap;gap:3px;min-height:0;margin-top:2px}
+.puntos i{width:7px;height:7px;border-radius:50%;background:var(--c)}
+.puntos i.nova{animation:pop .5s ease-out}
+@keyframes pop{from{transform:scale(2.4);opacity:.2}to{transform:scale(1);opacity:1}}
+.pnota{font-size:.7rem;color:var(--muted)}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted);margin-top:10px}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-size:.82rem;color:var(--ink)}
+th,td{padding:3px 10px;text-align:left;vertical-align:top}
+td.n{text-align:right;font-family:var(--num);font-size:.95rem;white-space:nowrap}
+th{font-size:.72rem;color:var(--muted);font-weight:700}
+td a{color:var(--muted)}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:520px){.hero{flex-direction:column;text-align:center}.hero p{max-width:none}.card .v{font-size:2.6rem}}
+@media (prefers-reduced-motion:reduce){.puntos i.nova{animation:none}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Galicia nun minuto</h1>
+  <p class="dek">Cada minuto, en media, un peregrino recolle a Compostela, saen das granxas <b>5.690 litros de leite</b> e Galicia produce 164.342 euros de riqueza. Un bebé nace cada 39 minutos. Os contadores empezan a sumar cando abres a páxina.</p>
+  <div class="hero">
+    <div class="reloxo" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><circle class="fondo" cx="50" cy="50" r="44"/><circle class="arco" id="arco" cx="50" cy="50" r="44"/></svg>
+      <div class="tempo"><b id="tempo">0:00</b><span id="tlab">nesta páxina</span></div>
+    </div>
+    <p id="htxt"></p>
+  </div>
+  <div class="tog" role="group" aria-label="Período">
+    <button data-p="0" aria-pressed="true">Dende que chegaches</button><button data-p="60" aria-pressed="false">Nun minuto</button><button data-p="3600" aria-pressed="false">Nunha hora</button><button data-p="86400" aria-pressed="false">Nun día</button><button data-p="31557600" aria-pressed="false">Nun ano</button>
+  </div>
+  <div id="temas" style="width:100%"></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Cada contador parte dun total anual (o último publicado, co ano en cada tarxeta) repartido por igual entre os 31.557.600 segundos dun ano. É unha media: os peregrinos e os viaxeiros concéntranse no verán, os lumes nunhas poucas semanas e a choiva no inverno, e «un cada 39 minutos» quere dicir en media, non que haxa un reloxo. Fontes: IGE (movemento natural da poboación, contabilidade trimestral, comercio exterior), INE (migracións, ocupación hoteleira), Aena, Oficina do Peregrino, FEGA/MAPA (entregas de leite), Xunta (vendas en lonxa), REE (balance eléctrico), EGIF e EFFIS (lumes) e AEMET (choiva, unha estimación a partir de seis observatorios). As ligazóns están na táboa de datos. Fundación Galicia Sustentable · inspirado nos contadores en directo de <a href="https://informationisbeautiful.net/" target="_blank" rel="noopener">Information is Beautiful</a>. Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+
+<script>
+const D={"c":[{"k":"nac","tema":"Persoas","n":"nacementos","y":2025,"v":13556,"u":"bebés","f":"IGE, MNP 2025 (provisional)","url":"https://www.ige.gal/estatico/html/gl/OperacionsEstruturais/PDF/Resumo_resultados_MNP_2025p.pdf","sub":"","d":true},{"k":"def","tema":"Persoas","n":"defuncións","y":2025,"v":33456,"u":"persoas","f":"IGE, MNP 2025 (provisional)","url":"https://www.ige.gal/estatico/html/gl/OperacionsEstruturais/PDF/Resumo_resultados_MNP_2025p.pdf","sub":"Máis de dous terzos, de 80 ou máis anos.","d":true},{"k":"mat","tema":"Persoas","n":"vodas","y":2025,"v":9714,"u":"matrimonios","f":"IGE, MNP 2025 (provisional)","url":"https://www.ige.gal/estatico/html/gl/OperacionsEstruturais/PDF/Resumo_resultados_MNP_2025p.pdf","sub":"","d":true},{"k":"inm","tema":"Persoas","n":"chegan a vivir dende o estranxeiro","y":2024,"v":44190,"u":"persoas","f":"INE, Estatística de migracións","url":"https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177000","sub":"","d":true},{"k":"emi","tema":"Persoas","n":"marchan a vivir ao estranxeiro","y":2024,"v":16460,"u":"persoas","f":"INE, Estatística de migracións","url":"https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177000","sub":"","d":true},{"k":"per","tema":"Viaxes","n":"peregrinos recollen a Compostela","y":2025,"v":530844,"u":"peregrinos","f":"Oficina do Peregrino","url":"https://oficinadelperegrino.com/estadisticas/","sub":"Concéntranse entre maio e outubro: no verán, case tres por minuto.","d":true},{"k":"hot","tema":"Viaxes","n":"viaxeiros entran nun hotel","y":2025,"v":5361261,"u":"viaxeiros","f":"INE, Enquisa de ocupación hoteleira","url":"https://www.ine.es/dynt3/inebase/index.htm?padre=238","sub":"E durmen 9.850.330 noites en hoteis ao ano.","d":true},{"k":"avi","tema":"Viaxes","n":"pasaxeiros nos aeroportos","y":2025,"v":5527735,"u":"pasaxeiros","f":"Aena, balance de tráfico 2025","url":"https://www.aena.es/es/prensa.html","sub":"Santiago, A Coruña e Vigo xuntos.","d":true},{"k":"pib","tema":"Economía","n":"de riqueza producida (PIB)","y":2025,"v":86437218000,"u":"euros","f":"IGE, Contabilidade trimestral (táboa 11070)","url":"https://www.ige.gal/igebdt/selector.jsp?COD=11070","sub":"","d":false},{"k":"exp","tema":"Economía","n":"en vendas ao estranxeiro","y":2025,"v":30939000000,"u":"euros","f":"IGE, Comercio exterior (decembro 2025)","url":"https://www.ige.gal/estatico/html/gl/OperacionsConxunturais/PDF/InformeComercioExterior2025_12.pdf","sub":"Exportacións de bens. A moda e o automóbil levan a maior parte.","d":false},{"k":"lei","tema":"Campo e mar","n":"de leite saen das granxas","y":2025,"v":2992562984,"u":"litros","f":"FEGA/MAPA, declaracións de entregas de leite 2025","url":"https://www.fega.gob.es/es/datos-abiertos/consulta-de-datos-sectoriales","sub":"O 40 % do leite de vaca de España. (3,09 millóns de toneladas a 1,032 kg por litro.)","d":false},{"k":"pei","tema":"Campo e mar","n":"de peixe e marisco véndense en lonxa","y":2025,"v":107600442,"u":"quilos","f":"Xunta, Pesca de Galicia (vendas en lonxa)","url":"https://www.pescadegalicia.gal/","sub":"Por 408 millóns de euros ao ano. Sen contar o mexillón de batea.","d":false},{"k":"ele","tema":"Enerxía e clima","n":"de electricidade xerada","y":2025,"v":21292000,"u":"MWh","f":"REE, balance eléctrico por comunidade","url":"https://www.ree.es/es/datos/balance","sub":"O 40 % co vento. Galicia consome só o 65 % do que xera.","d":false},{"k":"lum","tema":"Enerxía e clima","n":"de monte arden","y":"2016-2025","v":29704,"u":"hectáreas","f":"EGIF (ata 2016) e EFFIS (dende 2017)","url":"https://effis.jrc.ec.europa.eu/","sub":"Media da última década. En 2025 arderon 148.581 ha. cinco veces máis.","d":false},{"k":"cho","tema":"Enerxía e clima","n":"de choiva caen sobre Galicia","y":"1991-2020","v":40749420833333,"u":"litros","f":"AEMET, normais 1991-2020 de seis observatorios (estimación)","url":"https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos","sub":"Estimación: 1.378 mm ao ano. a media dos seis observatorios. sobre os 29.575 km² de Galicia.","d":false}]};
+const ANO=31557600;
+const TEMAS=[['Persoas','var(--persoas)'],['Viaxes','var(--viaxes)'],['Economía','var(--economia)'],['Campo e mar','var(--campo)'],['Enerxía e clima','var(--enerxia)']];
+const ICO={
+  nac:'<circle cx="12" cy="7" r="3.2"/><path d="M6.5 20c0-3.6 2.5-6.4 5.5-6.4s5.5 2.8 5.5 6.4"/><path d="M18.5 4.5v4M16.5 6.5h4"/>',
+  def:'<path d="M12 3.5c1.6 1.8 1.6 3.4 0 4.6c-1.6-1.2-1.6-2.8 0-4.6z"/><rect x="9" y="10" width="6" height="10.5" rx="1"/><path d="M6 20.5h12"/>',
+  mat:'<circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M13 4.5l2 2.5 2-2.5"/>',
+  inm:'<circle cx="15" cy="7" r="3"/><path d="M10 20c0-3.3 2.2-5.8 5-5.8s5 2.5 5 5.8"/><path d="M2.5 12h7M6.5 8.5l3 3.5-3 3.5"/>',
+  emi:'<circle cx="9" cy="7" r="3"/><path d="M4 20c0-3.3 2.2-5.8 5-5.8s5 2.5 5 5.8"/><path d="M14.5 12h7M18.5 8.5l3 3.5-3 3.5"/>',
+  per:'<path d="M12 20.5L3.5 9.5a9 9 0 0 1 17 0z"/><path d="M12 20.5L8 6.6M12 20.5V5.6M12 20.5l4-13.9M12 20.5L5.2 8.2M12 20.5l6.8-12.3"/>',
+  hot:'<path d="M3 19.5V7M3 15h18v4.5M21 15v-3.5a2.5 2.5 0 0 0-2.5-2.5H11v6"/><circle cx="7" cy="11.5" r="2"/>',
+  avi:'<path d="M2.5 13.5l19-6.5c.6.9.3 1.9-.7 2.3L5.5 15.5z"/><path d="M9.5 11.8L7 6.5l2-.6 5.5 4.3M11 14.2l1.8 5.3 2-.6.6-6"/>',
+  pib:'<path d="M17.5 6.5a7 7 0 1 0 0 11"/><path d="M4 10.5h9.5M4 13.5h9.5"/>',
+  exp:'<rect x="3" y="9" width="12" height="10" rx="1"/><path d="M3 13h12M14 5.5h7v7M21 5.5l-7.5 7.5"/>',
+  lei:'<path d="M9 2.5h6M9.5 2.5v3.5L7 9.5v11h10v-11L14.5 6V2.5"/><path d="M7 13.5c2-1 4 1 6 0s3-.5 4 0"/>',
+  pei:'<path d="M2.5 12c3-4.5 9-6 14-2.5l4-3v11l-4-3c-5 3.5-11 2-14-2.5z"/><circle cx="7.5" cy="11" r=".9"/>',
+  ele:'<path d="M13.5 2.5L5.5 13.5h6l-1 8 8-11h-6z"/>',
+  lum:'<path d="M12 21c-4 0-6.5-2.7-6.5-6.2 0-4.3 3.6-6.4 4.4-10.3 2.5 1.7 3 4.1 2.6 6 1.3-.5 2.1-1.8 2.2-3.3 2.2 2 3.8 4.4 3.8 7.6 0 3.5-2.5 6.2-6.5 6.2z"/>',
+  cho:'<path d="M7 14.5a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.3 1.6A3.8 3.8 0 0 1 17.5 14.5z"/><path d="M8 17.5l-1 3M12 17.5l-1 3M16 17.5l-1 3"/>'
+};
+const svgIco=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICO[k]||''}</svg>`;
+
+// Números en galego: punto para os miles, coma para os decimais.
+const miles=s=>s.replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+function fmt(v,dec){
+  if(dec>0){const [a,b]=v.toFixed(dec).split('.');return miles(a)+','+b}
+  return miles(String(Math.floor(v)));
+}
+// Para as tarxetas: as cifras moi grandes pasan a millóns ou billóns, e a palabra vai coa unidade.
+function escala(v,dec){
+  if(v>=1e12)return [fmt(v/1e12,1),'billóns de '];
+  if(v>=1e10)return [fmt(v/1e6,0),'millóns de '];
+  return [fmt(v,dec),''];
+}
+function intervalo(s){
+  if(s<90)return Math.round(s)+' segundos';
+  if(s<5400)return Math.round(s/60)+' minutos';
+  if(s<36*3600)return (s/3600).toFixed(1).replace('.',',').replace(',0','')+' horas';
+  return Math.round(s/86400)+' días';
+}
+function cada(c){
+  const ps=c.v/ANO;
+  if(!c.d)return '';
+  if(ps<1)return `En media, un cada ${intervalo(1/ps)}.`;
+  return `Uns ${fmt(ps,ps<10?1:0)} cada segundo.`;
+}
+
+// Debuxo das tarxetas
+const host=document.getElementById('temas');
+const card={};
+for(const [t,col] of TEMAS){
+  const s=document.createElement('section');s.className='tema';
+  s.innerHTML=`<h2><i style="background:${col}"></i>${t}</h2><div class="grella"></div>`;
+  const g=s.querySelector('.grella');
+  for(const c of D.c.filter(x=>x.tema===t)){
+    const el=document.createElement('article');el.className='card';el.style.setProperty('--c',col);
+    el.innerHTML=`<div class="cab">${svgIco(c.k)}<span>${c.n}</span></div>
+      <div class="v">0</div><div class="u"><span class="esc"></span>${c.u}</div>
+      ${c.d?`<div class="cada">${cada(c)}</div>`:''}
+      ${c.d&&c.v/ANO<1/10?'<div class="barra" title="Canto falta, en media, para o seguinte"><i></i></div>':''}
+      ${c.d?'<div class="puntos"></div><div class="pnota"></div>':''}
+      ${c.sub?`<div class="sub">${c.sub}</div>`:''}
+      ${c.k==='cho'?'<div class="sub pisc"></div>':''}
+      <div class="ano">${c.y} · ${c.f}</div>`;
+    g.appendChild(el);
+    card[c.k]={c,v:el.querySelector('.v'),esc:el.querySelector('.esc'),barra:el.querySelector('.barra i'),puntos:el.querySelector('.puntos'),pnota:el.querySelector('.pnota'),pisc:el.querySelector('.pisc'),n:0,paso:1};
+  }
+  host.appendChild(s);
+}
+
+// Táboa
+const tbl=document.getElementById('tbl');
+tbl.innerHTML='<tr><th>Que</th><th>Ano</th><th style="text-align:right">Total no ano</th><th style="text-align:right">Nun minuto</th><th>Fonte</th></tr>'+
+  D.c.map(c=>`<tr><td>${c.u[0].toUpperCase()+c.u.slice(1)} · ${c.n}</td><td>${c.y}</td><td class="n">${fmt(c.v,0)}</td><td class="n">${fmt(c.v/ANO*60,c.v/ANO*60<10?2:0)}</td><td><a href="${c.url}" target="_blank" rel="noopener">${c.f}</a></td></tr>`).join('');
+
+// Puntos: un por persoa ou, se non caben, un por cada 10, 100…
+function puntos(o,valor,anima){
+  if(!o.puntos)return;
+  let paso=1;while(valor/paso>160)paso*=10;
+  const n=Math.floor(valor/paso);
+  if(paso!==o.paso){o.puntos.innerHTML='';o.n=0;o.paso=paso}
+  if(n<o.n){o.puntos.innerHTML='';o.n=0}
+  const fr=document.createDocumentFragment();
+  for(let i=o.n;i<n;i++){const d=document.createElement('i');if(anima)d.className='nova';fr.appendChild(d)}
+  o.puntos.appendChild(fr);o.n=n;
+  o.pnota.textContent=paso>1?`Cada punto, ${miles(String(paso))} ${o.c.u}.`:'';
+}
+
+// Reloxo e contadores
+const arco=document.getElementById('arco'),R=44,CIRC=2*Math.PI*R;
+arco.style.strokeDasharray=CIRC;
+const tempo=document.getElementById('tempo'),tlab=document.getElementById('tlab'),htxt=document.getElementById('htxt');
+const NOMES={60:'nun minuto',3600:'nunha hora',86400:'nun día',31557600:'nun ano'};
+let periodo=0,t0=performance.now(),ultimo=-1;
+function mmss(s){s=Math.floor(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(x).padStart(2,'0')}
+function pinta(t,anima){
+  for(const k in card){
+    const o=card[k],c=o.c,v=c.v/ANO*t;
+    const dec=c.d?0:(v<10?2:v<1000?1:0);
+    const [num,esc]=escala(v,dec);o.v.textContent=num;o.esc.textContent=esc;
+    if(o.barra){const iv=ANO/c.v;o.barra.parentNode.hidden=!!periodo;o.barra.style.width=((t%iv)/iv*100).toFixed(1)+'%'}
+    if(c.d)puntos(o,v,anima);
+    if(o.pisc){const p=v/2.5e6;const [a,b]=escala(p,p<10?1:0);o.pisc.textContent=`Coma ${a} ${b}piscinas olímpicas.`}
+  }
+}
+function texto(t){
+  if(periodo){
+    tempo.textContent=periodo===60?'1:00':periodo===3600?'1 h':periodo===86400?'24 h':'365 d';
+    tlab.textContent=NOMES[periodo];
+    htxt.innerHTML=`O que pasa en Galicia <b>${NOMES[periodo]}</b>, en media.`;
+  }else{
+    tempo.textContent=mmss(t);tlab.textContent='nesta páxina';
+    const p=card.per.c.v/ANO*t,n=card.nac.c.v/ANO*t;
+    htxt.innerHTML=t<20?'Os contadores empezaron cando abriches a páxina. Deixa que corran.':
+      `Dende que chegaches, <b>${fmt(p,0)} ${Math.floor(p)===1?'peregrino recolleu':'peregrinos recolleron'}</b> a Compostela`+(n>=1?` e naceron <b>${fmt(n,0)}</b> ${Math.floor(n)===1?'bebé':'bebés'}.`:'. O próximo bebé, en media, aínda tardará.');
+  }
+}
+function tic(now){
+  const t=periodo||(now-t0)/1000;
+  arco.style.strokeDashoffset=periodo?0:CIRC*(1-(t%60)/60);
+  if(periodo){if(ultimo!==periodo){pinta(t,false);texto(t);ultimo=periodo}}
+  else{const q=Math.floor(t*10);if(q!==ultimo){pinta(t,true);texto(t);ultimo=q}}
+  requestAnimationFrame(tic);
+}
+for(const b of document.querySelectorAll('[data-p]'))b.addEventListener('click',()=>{
+  for(const x of document.querySelectorAll('[data-p]'))x.setAttribute('aria-pressed',x===b);
+  periodo=+b.dataset.p;ultimo=-1;
+  for(const k in card){const o=card[k];if(o.puntos){o.puntos.innerHTML='';o.n=0}}
+  if(periodo){pinta(periodo,false);texto(periodo);ultimo=periodo}
+});
+requestAnimationFrame(tic);
+</script>
+</body>
+</html>
