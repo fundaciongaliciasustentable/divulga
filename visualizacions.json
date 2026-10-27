@@ -1,5 +1,29 @@
 [
   {
+    "slug": "nomes-galicia",
+    "titulo": "De Manuel a Mateo",
+    "entradilla": "Os galegos dos anos cincuenta chámanse Manuel e Carmen; os bebés de hoxe, Mateo e Sofía. Un río de rankings dos nomes de Galicia década a década, dende antes de 1930, e ano a ano dende 2000.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Lingua"
+    ],
+    "formato": "Río de rankings",
+    "fontes": "IGE (nomes por década de nacemento e nomes dos neonatos)"
+  },
+  {
+    "slug": "reloxo-choiva",
+    "titulo": "O reloxo da choiva",
+    "entradilla": "A que hora chove en Galicia? Dez anos de choiva, hora a hora, en seis cidades: na costa das Rías Baixas chove máis de noite e de madrugada; en Lugo e Ourense, pola tarde.",
+    "data": "2026-10-27",
+    "temas": [
+      "Clima",
+      "Choiva"
+    ],
+    "formato": "Reloxos radiais",
+    "fontes": "MeteoGalicia (datos horarios das estacións, 2016-2025)"
+  },
+  {
     "slug": "galicia-minuto",
     "titulo": "Galicia nun minuto",
     "entradilla": "Cada minuto saen das farmacias 152 medicamentos, das granxas 5.690 litros de leite e das bateas 338 quilos de mexillón. Un panel en directo con quince fluxos de Galicia que empezan a sumar cando abres a páxina.",

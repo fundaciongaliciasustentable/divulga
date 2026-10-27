@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>De Manuel a Mateo — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Os nomes máis frecuentes en Galicia segundo a década de nacemento, dende antes de 1930 ata hoxe, e ano a ano dende 2000.">
+<meta property="og:title" content="De Manuel a Mateo: os nomes de Galicia">
+<meta property="og:description" content="Como suben e caen os nomes en Galicia, década a década e ano a ano.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Río de rankings (bump chart): unha columna por década de nacemento (ou por ano, dende 2000),
+   cos 20 nomes máis frecuentes en orde. A liña une o mesmo nome entre columnas seguidas; se sae
+   dos 20 primeiros, a liña morre cara abaixo. As formas propias do galego van en verde; ao pasar
+   por riba ou buscar un nome, ilumínase o seu percorrido. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7;
+  --gal:#1b9e77; --hl:#c2185b; --gris:#c9c5bb;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+.tog{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--card)}
+.tog button{font:600 .8rem var(--display);background:transparent;color:var(--muted);border:0;padding:7px 12px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tog button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+select,input{font:600 .82rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink)}
+input{text-transform:uppercase;width:12em}
+.info{min-height:1.4em;font-size:.88rem;color:var(--muted);text-align:center;max-width:72ch}
+.info b{color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:18px;height:3px;display:inline-block;border-radius:2px}
+.scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll svg{display:block;height:auto}
+.col{font:700 12px var(--num);fill:var(--muted);text-anchor:middle}
+.rk{font:600 11px var(--num);fill:var(--muted);text-anchor:end}
+.nm{font:600 10.5px var(--display);fill:var(--ink);text-anchor:middle;dominant-baseline:middle;cursor:pointer}
+.nm.g{fill:var(--gal);font-weight:800}
+.ln{fill:none;stroke:var(--gris);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ln.g{stroke:var(--gal);stroke-width:2.2}
+.dim .ln{opacity:.18}.dim .nm{opacity:.25}
+.dim .ln.on{opacity:1;stroke:var(--hl);stroke-width:3.4}.dim .nm.on{opacity:1;fill:var(--hl);font-weight:800}
+.pt{fill:var(--card);stroke:var(--gris);stroke-width:1.4}
+.pt.g{stroke:var(--gal)}
+.dim .pt{opacity:.25}.dim .pt.on{opacity:1;stroke:var(--hl);fill:var(--hl)}
+.bg{fill:transparent}
+details{width:100%;max-width:1000px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-size:.78rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:left;white-space:nowrap}
+th{font-size:.7rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td.r{text-align:right;font-family:var(--num);color:var(--muted)}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>De Manuel a Mateo</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <div class="tog" role="group" aria-label="Sexo"><button data-s="H" aria-pressed="true">Homes</button><button data-s="M" aria-pressed="false">Mulleres</button></div>
+    <div class="tog" role="group" aria-label="Período"><button data-v="dec" aria-pressed="true">Por décadas</button><button data-v="ano" aria-pressed="false">Ano a ano, dende 2000</button></div>
+    <select id="area" aria-label="Territorio"></select>
+    <form id="f" autocomplete="off"><input id="q" list="lista" placeholder="Busca un nome" aria-label="Nome"></form>
+    <datalist id="lista"></datalist>
+  </div>
+  <div class="legend"><span><i style="background:var(--gal)"></i>formas propias do galego (Uxía, Iago, Antía, Brais…)</span><span><i style="background:var(--gris)"></i>o resto</span><span><i style="background:var(--hl)"></i>o nome que buscas</span></div>
+  <p class="info" id="info"></p>
+  <div class="scroll"><svg id="ch" role="img" aria-label="Río de rankings: os 20 nomes máis frecuentes en cada década ou ano. A táboa de datos ten as listas completas."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw" id="tw"></div>
+  </details>
+  <p class="note">IGE: <a href="https://www.ige.gal/igebdt/onomast/nomdecadas.jsp" target="_blank" rel="noopener">Nomes máis frecuentes da poboación segundo a década de nacemento</a> (os 30 primeiros de cada década, sexo e territorio, segundo o padrón; son as persoas que viven hoxe en Galicia ou na provincia e naceron nesa década, polo que nas décadas antigas só quedan as que viven) e <a href="https://www.ige.gal/igebdt/selector.jsp?COD=2245" target="_blank" rel="noopener">Estatística de nomes dos neonatos galegos</a> (táboa 2245: os 50 primeiros de cada ano, 2000–__A1__, de nais residentes en Galicia). A década de 2020 é a dos que levan nacido ata a data do padrón. O IGE trata os nomes compostos (José Manuel, María del Carmen) como un nome distinto e escribe sen til; aquí lévanse a minúsculas cos tiles habituais só na presentación. As «formas propias do galego» son unha lista feita a man de nomes que non comparte co castelán. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const GAL=new Set(D.galegos),N=20;
+// Tiles habituais para a presentación (o IGE escribe sen til)
+const TIL={MARIA:'María',JOSE:'José',ADRIAN:'Adrián',MARTIN:'Martín',ALVARO:'Álvaro',IVAN:'Iván',RUBEN:'Rubén',RAMON:'Ramón',JESUS:'Jesús',ANGEL:'Ángel',JULIAN:'Julián',SEBASTIAN:'Sebastián',ANTON:'Antón',ANTIA:'Antía',UXIA:'Uxía',LUCIA:'Lucía',SOFIA:'Sofía',SONIA:'Sonia',MONICA:'Mónica',VERONICA:'Verónica',BEATRIZ:'Beatriz',CONCEPCION:'Concepción',ASUNCION:'Asunción',ENCARNACION:'Encarnación',PURIFICACION:'Purificación',ESTEFANIA:'Estefanía',INES:'Inés',ANGELA:'Ángela',RAQUEL:'Raquel',CHLOE:'Chloe',ZOE:'Zoe',MIA:'Mía',LIA:'Lía',ALEJANDRO:'Alejandro',JOAQUIN:'Joaquín',GONZALO:'Gonzalo',VICTOR:'Víctor',OSCAR:'Óscar',HECTOR:'Héctor',CESAR:'César',NICOLAS:'Nicolás',ANDRES:'Andrés',TOMAS:'Tomás',AGUSTIN:'Agustín',BENIGNO:'Benigno',ROCIO:'Rocío',NATALIA:'Natalia',ANGELES:'Ángeles',DARIO:'Darío',ELOY:'Eloy',GAEL:'Gael',THIAGO:'Thiago',ICIA:'Icía',LUA:'Lúa'};
+const bonito=n=>n.split(' ').map(w=>TIL[w]||(w==='DEL'||w==='DE'||w==='LA'?w.toLowerCase():w[0]+w.slice(1).toLowerCase())).join(' ');
+let sexo='H',vista='dec',area='12',busca=null;
+const sel=document.getElementById('area');
+sel.innerHTML=Object.entries(D.areas).map(([c,n])=>`<option value="${c}">${n}</option>`).join('');
+function columnas(){
+  if(vista==='dec')return {et:D.decadas.map(d=>d==='antes de 1930'?'antes de 1930':d==='2020'?'2020–':d+'s'),L:D.dec[area][sexo]};
+  const anos=Object.keys(D.anos[sexo]);
+  return {et:anos,L:anos.map(a=>D.anos[sexo][a].map(x=>x[0])),F:anos.map(a=>D.anos[sexo][a])};
+}
+const svg=document.getElementById('ch'),info=document.getElementById('info');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+function debuxa(){
+  svg.innerHTML='';sel.disabled=vista!=='dec';
+  const {et,L,F}=columnas(),nc=et.length;
+  const contW=svg.parentNode.clientWidth;
+  const etiquetas=vista==='dec';            // na vista de décadas, cada nó leva o nome
+  const cw=etiquetas?Math.max(86,(contW-50)/nc):Math.max(30,(contW-190)/nc);
+  const ML=etiquetas?28:92,MR=etiquetas?10:92,MT=34,RH=etiquetas?22:20;
+  const W=ML+cw*(nc-1)+(etiquetas?cw:0)+MR,H=MT+RH*N+28;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);
+  const cx=i=>ML+(etiquetas?cw/2:0)+i*cw,cy=r=>MT+RH*(r+.5);
+  et.forEach((t,i)=>{if(!etiquetas&&i%(contW<700?4:2)&&i!==nc-1)return;el('text',{x:cx(i),y:18,class:'col'},svg).textContent=t});
+  for(let r=0;r<N;r++)el('text',{x:etiquetas?ML-4:14,y:cy(r)+4,class:'rk','text-anchor':etiquetas?'end':'start'},svg).textContent=(r+1)+'º';
+  const gl=el('g',{},svg),gp=el('g',{},svg),gt=el('g',{},svg);
+  // Liñas entre columnas seguidas para cada nome
+  const pos=L.map(col=>new Map(col.map((n,r)=>[n,r])));
+  const nomes=new Set(L.flatMap(c=>c.slice(0,N)));
+  const fondo=H-12,dentro=(i,n)=>{const r=pos[i]?.get(n);return r!==undefined&&r<N};
+  const curva=(x0,y0,x1,y1)=>{const mx=(x0+x1)/2;return `C${mx},${y0} ${mx},${y1} ${x1},${y1}`};
+  for(const n of nomes){
+    let d='';
+    for(let i=0;i<nc;i++){
+      if(!dentro(i,n))continue;
+      const x=cx(i),y=cy(pos[i].get(n));
+      if(i>0&&dentro(i-1,n))d+=curva(cx(i-1),cy(pos[i-1].get(n)),x,y);
+      else if(i>0&&pos[i-1].has(n))d+=`M${cx(i-1)+cw*.45},${fondo}`+curva(cx(i-1)+cw*.45,fondo,x,y);  // sobe dende fóra dos 20
+      else d+=`M${x},${y}`;
+      if(i<nc-1&&!dentro(i+1,n)&&pos[i+1].has(n))d+=curva(x,y,cx(i+1)-cw*.45,fondo)+`M${x},${y}`;  // baixa: segue na lista, pero fóra dos 20
+    }
+    const p=el('path',{d,class:'ln'+(GAL.has(n)?' g':'')},gl);p.dataset.n=n;
+  }
+  L.forEach((col,i)=>col.slice(0,N).forEach((n,r)=>{
+    const g=GAL.has(n)?' g':'';
+    if(etiquetas){
+      const w=Math.min(cw-6,bonito(n).length*6.2+8);
+      el('rect',{x:cx(i)-w/2,y:cy(r)-8,width:w,height:16,rx:8,fill:'var(--paper)'},gp).dataset.n=n;
+      const t=el('text',{x:cx(i),y:cy(r),class:'nm'+g},gt);t.textContent=bonito(n).length>15?bonito(n).replace('María del ','M.ª del ').replace('José ','J. '):bonito(n);t.dataset.n=n;
+      const f=F?.[i]?.[r]?.[1];t.innerHTML+='';t.appendChild(el('title',{}));t.lastChild.textContent=`${bonito(n)}: ${r+1}º${f?' · '+f+' bebés':''}`;
+    }else{
+      const c=el('circle',{cx:cx(i),cy:cy(r),r:3.2,class:'pt'+g},gp);c.dataset.n=n;
+      c.appendChild(el('title',{})).textContent=`${bonito(n)} · ${et[i]}: ${r+1}º (${F[i][r][1]} bebés)`;
+      if(i===0||i===nc-1){const t=el('text',{x:i?cx(i)+8:cx(i)-8,y:cy(r),class:'nm'+g,'text-anchor':i?'start':'end'},gt);t.textContent=bonito(n);t.dataset.n=n}
+    }
+  }));
+  for(const e of svg.querySelectorAll('[data-n]')){e.addEventListener('mouseenter',()=>marca(e.dataset.n,false));e.addEventListener('mouseleave',()=>marca(busca,false));e.addEventListener('click',()=>{busca=e.dataset.n;document.getElementById('q').value=bonito(busca);marca(busca,true)})}
+  marca(busca,true);
+  document.getElementById('lista').innerHTML=[...new Set(L.flatMap(c=>c))].sort().map(n=>`<option value="${bonito(n)}">`).join('');
+  taboa(et,L,F);
+}
+function marca(n,texto){
+  svg.classList.toggle('dim',!!n);
+  for(const e of svg.querySelectorAll('[data-n]'))e.classList.toggle('on',e.dataset.n===n);
+  if(!texto)return;
+  if(!n){info.innerHTML=vista==='dec'?'Pasa por riba dun nome (ou tócao) para ver o seu percorrido.':'Os 20 nomes máis postos a bebés cada ano en Galicia. Pasa por riba dun punto (ou tócao) para ver o nome.';return}
+  const {et,L}=columnas();
+  const ps=L.map((c,i)=>[et[i],c.indexOf(n)]).filter(x=>x[1]>=0);
+  if(!ps.length){info.innerHTML=`<b>${bonito(n)}</b> non está entre os ${vista==='dec'?30:50} primeiros de ningunha ${vista==='dec'?'década':'ano'} aquí.`;return}
+  const mellor=ps.reduce((a,b)=>b[1]<a[1]?b:a);
+  info.innerHTML=`<b>${bonito(n)}</b>: ${ps.map(([e,r])=>`${e} ${r+1}º`).join(' · ')}. O seu mellor posto, ${mellor[1]+1}º (${mellor[0]}).`;
+}
+function taboa(et,L,F){
+  const M=vista==='dec'?30:50;
+  document.getElementById('tw').innerHTML='<table><tr><th></th>'+et.map(e=>`<th>${e}</th>`).join('')+'</tr>'+
+    Array.from({length:M},(_,r)=>`<tr><td class="r">${r+1}</td>${L.map((c,i)=>`<td>${c[r]?bonito(c[r])+(F?` <span style="color:var(--muted)">${F[i][r][1]}</span>`:''):''}</td>`).join('')}</tr>`).join('')+'</table>';
+}
+for(const b of document.querySelectorAll('[data-s]'))b.addEventListener('click',()=>{sexo=b.dataset.s;busca=null;document.getElementById('q').value='';for(const x of document.querySelectorAll('[data-s]'))x.setAttribute('aria-pressed',x===b);debuxa()});
+for(const b of document.querySelectorAll('[data-v]'))b.addEventListener('click',()=>{vista=b.dataset.v;for(const x of document.querySelectorAll('[data-v]'))x.setAttribute('aria-pressed',x===b);debuxa()});
+sel.addEventListener('change',()=>{area=sel.value;debuxa()});
+const sen=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toUpperCase().trim();
+const q=document.getElementById('q');
+const procura=()=>{busca=sen(q.value)||null;marca(busca,true)};
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();procura()});
+q.addEventListener('change',procura);
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(debuxa,150)});
+debuxa();
+</script>
+</body>
+</html>
