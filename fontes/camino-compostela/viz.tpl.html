@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Todos os camiños levan a Compostela — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Por onde chegan, de onde saen e de onde veñen os peregrinos que recollen a Compostela: 530.844 en 2025, un récord.">
+<meta property="og:title" content="__TITULO__">
+<meta property="og:description" content="Os camiños a Santiago co grosor dos seus peregrinos, os puntos de saída e a serie 2004-2025.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Mapa de fluxos: cada tramo dun camiño ten o grosor dos peregrinos que o percorren en 2025 (os
+   tramos comúns suman), e cada punto de saída un círculo de área proporcional. Debaixo, a serie
+   anual cos anos santos e de onde veñen os peregrinos. */
+:root{
+  --paper:#f4f0e7; --land:#e8e1d2; --coast:#d3c9b4; --card:#fffdf8; --ink:#25221d; --muted:#6a6456; --line:#ddd4c2;
+  --ruta:#2a6bb5; --vieira:#b97a00; --fin:#8a8170;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1140px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font:700 clamp(1.6rem,3.8vw,2.6rem)/1.08 var(--serif);text-align:center;margin:0;text-wrap:balance}
+h1 em{color:var(--vieira)}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+h2{font:800 .8rem var(--display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:22px 0 0;text-align:center}
+.block{width:100%;max-width:1100px}
+.block svg{display:block;width:100%;height:auto;overflow:visible}
+.seg{fill:none;stroke:var(--ruta);stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.85;cursor:pointer;transition:stroke-opacity .2s}
+.seg.dim{stroke-opacity:.18}
+.fin{fill:none;stroke:var(--fin);stroke-dasharray:4 4;stroke-linecap:round}
+.st{fill:var(--vieira);fill-opacity:.8;stroke:var(--paper);stroke-width:1.5;cursor:pointer}
+.st:hover{fill-opacity:1}
+.cl{font:700 13px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.rl{font:italic 700 15px var(--serif);fill:var(--ruta);paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round;cursor:pointer}
+.big{font:700 15px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px}
+.sea{font:italic 600 14px var(--serif);fill:#9b927f;letter-spacing:.2em}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;font-size:.8rem;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;width:100%;max-width:1100px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+.fact .v{font:700 2.2rem/1 var(--num)}
+.fact .l{font-size:.82rem;color:var(--muted);line-height:1.4;margin-top:4px}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.bv{font:700 12px var(--num);fill:var(--ink);text-anchor:middle}
+.gl line{stroke:var(--line)}
+.bar{fill:var(--ruta)}
+.bar.santo{fill:var(--vieira)}
+@media (max-width:639px){#serie .ax{font-size:24px}#serie .bv{font-size:22px}.hb{grid-template-columns:100px 1fr 56px}}
+.two{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;width:100%;max-width:1100px}
+@media (min-width:900px){.two{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.card h3{font:700 1.15rem/1.2 var(--serif);margin:0 0 8px}
+.hb{display:grid;grid-template-columns:130px 1fr 62px;gap:3px 8px;align-items:center;font-size:.84rem}
+.hb .b{height:12px;background:var(--ruta);border-radius:2px}
+.hb .v{font:700 .95rem var(--num);text-align:right}
+.hb .d{grid-column:2/4;font:600 .78rem var(--num);color:var(--muted);margin-top:-2px}
+.up{color:#2f7d32}.dn{color:#b8422a}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.4;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;white-space:nowrap}
+.tip b{display:block;font-size:.92rem}
+details{width:100%;max-width:860px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 10px;text-align:right}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.82rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:78ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>__H1__</h1>
+  <p class="dek">__DEK__</p>
+  <div class="block"><svg id="map" role="img" aria-label="Mapa do norte da península cos camiños a Santiago, co grosor proporcional aos peregrinos de 2025, e círculos nos puntos de saída máis habituais"></svg></div>
+  <div class="legend" id="legend"></div>
+  <div class="facts" id="facts"></div>
+
+  <h2>Peregrinos que recollen a Compostela cada ano</h2>
+  <div class="block"><svg id="serie" viewBox="0 0 1100 300" role="img" aria-label="Peregrinos por ano de 2004 a 2025, cos anos santos destacados"></svg></div>
+
+  <div class="two">
+    <div class="card"><h3>Por que camiño chegan (2025)</h3><div class="hb" id="cams"></div></div>
+    <div class="card"><h3>De onde veñen (2025)</h3><div class="hb" id="pais"></div></div>
+  </div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Oficina do Peregrino da catedral de Santiago: persoas que recollen a Compostela ou o certificado de peregrinación. Para a Compostela hai que facer polo menos os últimos 100 km a pé ou a cabalo, ou 200 km en bicicleta. Os datos de 2021–2025 están tirados do <a href="https://oficinadelperegrino.com/estadisticas-2/" target="_blank" rel="noopener">informe público da Oficina</a> e os de 2004–2018, dos seus informes anuais en PDF. O de 2019 é a cifra difundida pola Oficina e recollida por medios. O de 2020, ano da pandemia, non figura en ningunha das dúas fontes. 2021 e 2022 foron un Ano Santo prorrogado. Os trazados do mapa son esquemáticos e pasan polas localidades principais de cada camiño. O grosor de cada tramo son os peregrinos que saíron dun punto anterior dese camiño, contando os 20 puntos de saída máis habituais, que suman o 81 % dos peregrinos. É unha cota inferior. A Vía da Prata e o Camiño do Norte veñen de máis lonxe do que se ve no mapa. O punto de saída consta para __SAIDAP__ % dos peregrinos de 2025. Mapa base: Natural Earth. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const fmt=n=>Math.round(n).toLocaleString('gl-ES',{useGrouping:'always'});
+const pc=(a,b)=>a/b<.005?'menos do 1 %':(a/b*100).toLocaleString('gl-ES',{maximumFractionDigits:0})+' %';
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(110,Math.min(innerWidth-110,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>tip.hidden=true;
+const mk=sv=>(t,a,p)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);(p||sv).appendChild(e);return e};
+const TOT=D.serie[D.serie.length-1][1];
+
+// --- mapa ---
+const map=document.getElementById('map'),em=mk(map);
+const NARROW=map.parentElement.clientWidth<640;
+const [X0,Y0,X1,Y1]=NARROW?[-9.45,41.0,-5.2,43.85]:D.bbox,KX=Math.cos(42.4*Math.PI/180);
+const W=NARROW?600:1100,H=Math.round(W*(Y1-Y0)/((X1-X0)*KX));map.setAttribute('viewBox',`0 0 ${W} ${H}`);
+const px=([lon,lat])=>[(lon-X0)*KX/((X1-X0)*KX)*W,(Y1-lat)/(Y1-Y0)*H];
+const path=pts=>pts.map((p,i)=>(i?'L':'M')+px(p).map(v=>v.toFixed(1)).join(',')).join('');
+{const cl=em('clipPath',{id:'cl'});em('rect',{x:0,y:0,width:W,height:H},cl)}
+const g=em('g',{'clip-path':'url(#cl)'});
+D.contorno.forEach(r=>em('path',{d:path(r)+'Z',fill:'var(--land)',stroke:'var(--coast)','stroke-width':1},g));
+{const t=em('text',{class:'sea',x:18,y:H*.55,transform:`rotate(-90 18 ${H*.55})`,'text-anchor':'middle'},g);t.textContent='ATLÁNTICO';const t2=em('text',{class:'sea',x:W*(NARROW?.55:.45),y:NARROW?28:30},g);t2.textContent='MAR CANTÁBRICO'}
+// cada tramo: peregrinos que saíron dun punto anterior dese camiño
+const MAXV=Math.max(...D.tramos.map(t=>t[2])),SW=v=>1.5+v/MAXV*(NARROW?30:40);
+const gS=em('g',{},g),segEls=[];
+D.tramos.slice().sort((a,b)=>a[2]-b[2]).forEach(([a,b,v,r])=>{const e=em('path',{class:'seg',d:path([a,b]),'stroke-width':SW(v).toFixed(1)},gS);
+  e.addEventListener('pointermove',ev=>show(ev,`<b>${r.join(' + ')}</b>${v?'polo menos '+fmt(v)+' peregrinos en 2025':'poucos peregrinos neste tramo'}`));e.addEventListener('pointerleave',hide);e.__r=r;segEls.push(e)});
+const fin=D.rutas.find(r=>r[0]==='Muxía-Fisterra');
+if(fin){const e=em('path',{class:'fin',d:path(fin[2]),'stroke-width':2.5},g);e.addEventListener('pointermove',ev=>show(ev,`<b>Muxía-Fisterra</b>${fmt(fin[1])} peregrinos seguen ata o fin do mundo`));e.addEventListener('pointerleave',hide)}
+// puntos de saída
+const MAXS=D.saida[0][1],RS=v=>Math.sqrt(v/MAXS)*(NARROW?30:38);
+const gP=em('g',{},g);
+D.saida.slice().sort((a,b)=>b[1]-a[1]).forEach(([n,v,p])=>{const [x,y]=px(p);const c=em('circle',{class:'st',cx:x,cy:y,r:RS(v).toFixed(1)},gP);
+  c.addEventListener('pointermove',ev=>show(ev,`<b>Saíron de ${n}</b>${fmt(v)} peregrinos · ${pc(v,D.saidaTotal)} dos que constan`));c.addEventListener('pointerleave',hide)});
+// etiquetas
+const gL=em('g',{},g);
+const lab=(p,t,dx,dy,cls='cl',anchor='start')=>{const [x,y]=px(p);const e=em('text',{class:cls,x:x+dx,y:y+dy,'text-anchor':anchor},gL);e.textContent=t;return e};
+{const s=px(D.lugares.Santiago);em('circle',{cx:s[0],cy:s[1],r:7,fill:'var(--ink)',stroke:'var(--paper)','stroke-width':2},gL);lab(D.lugares.Santiago,'Santiago',-10,-12,'big','end')}
+const L=D.lugares;
+[['Porto',8,4],['Oviedo',8,-8],['León',8,16],['Ourense',8,16],['Lugo',8,-8],['Vigo',-10,4,'end'],['Ferrol',8,-6],['Burgos',8,16],['Pamplona',8,16],['Bilbao',0,16],['Santander',0,-10],['Zamora',8,4]].forEach(([n,dx,dy,an])=>{if(L[n])lab(L[n],n,dx,dy,'cl',an||'start')});
+{const sp=D.saida.find(s=>s[0]==='Sarria');const [x,y]=px(sp[2]);const t=em('text',{class:'big',x,y:y-RS(sp[1])-8,'text-anchor':'middle'},gL);t.textContent=`Sarria · ${pc(sp[1],D.saidaTotal)}`}
+const RL={'Francés':[-4.6,42.42],'Portugués':[-8.95,41.55],'Inglés':[-7.78,43.27],'Primitivo':[-6.6,43.10],'Norte':[-4.6,43.62],'Vía da Prata':[-6.8,41.75],'De Inverno':[-7.1,42.30]};
+Object.entries(RL).forEach(([n,p])=>{const r=D.rutas.find(x=>x[0]===n);if(!r)return;const [x,y]=px(p);if(x<0||x>W||y<0||y>H)return;
+  const e=em('text',{class:'rl',x,y,'text-anchor':'middle'},gL);e.textContent=n;
+  e.addEventListener('pointerenter',ev=>{segEls.forEach(s=>s.classList.toggle('dim',!s.__r.includes(n)));show(ev,`<b>Camiño ${n}</b>${fmt(r[1])} peregrinos en 2025`)});
+  e.addEventListener('pointerleave',()=>{segEls.forEach(s=>s.classList.remove('dim'));hide()})});
+document.getElementById('legend').innerHTML=`<span><svg width="34" height="14"><line x1="2" y1="7" x2="32" y2="7" stroke="var(--ruta)" stroke-width="8" stroke-linecap="round"/></svg>grosor = peregrinos que pasan por ese tramo</span><span><svg width="16" height="16"><circle cx="8" cy="8" r="7" fill="var(--vieira)" fill-opacity=".8"/></svg>punto de saída</span><span><svg width="34" height="10"><line x1="2" y1="5" x2="32" y2="5" stroke="var(--fin)" stroke-width="2.5" stroke-dasharray="4 4"/></svg>Fisterra e Muxía, despois de Santiago</span>`;
+
+// --- cifras ---
+{const S=D.serie.filter(s=>s[1]),u=S[S.length-1],c=D.camino,fr=c.find(x=>x[0]==='Francés'),sa=D.saida[0],e=D.ext['2025'],es=D.esp['2025'],m=D.motivo,mt=m.reduce((a,b)=>a+b[1],0);
+ document.getElementById('facts').innerHTML=[
+  [fmt(u[1]),`peregrinos recolleron a Compostela en ${u[0]}, un récord. Son ${(u[1]/S[0][1]).toLocaleString('gl-ES',{maximumFractionDigits:1})} veces os do Ano Santo de ${S[0][0]}.`],
+  [pc(sa[1],D.saidaTotal),`saíron de Sarria, que está a uns 115 km: pouco máis do mínimo para conseguir a Compostela. A seguinte saída é Tui (${pc(D.saida[1][1],D.saidaTotal)}).`],
+  [pc(e,e+es),`foron estranxeiros. Os que máis: Estados Unidos (${fmt(D.pais[1][1])}), Italia e Alemaña.`],
+  [pc(m[2][1],mt),`din que fixeron o camiño por motivos non relixiosos. O ${pc(m[0][1],mt)} di que só por motivos relixiosos.`]
+ ].map(([v,l])=>`<div class="fact"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('')}
+
+// --- serie ---
+const sv=document.getElementById('serie'),es_=mk(sv);
+const SER=D.serie,SANTO=[2004,2010,2021,2022],Lx=50,Rx=1080,Tt=20,Bb=260,MX=Math.ceil(Math.max(...SER.map(s=>s[1]||0))/100000)*100000;
+const bw=(Rx-Lx)/SER.length,sy=v=>Bb-v/MX*(Bb-Tt);
+const gg=es_('g',{class:'gl'});for(let v=0;v<=MX;v+=100000){es_('line',{x1:Lx,x2:Rx,y1:sy(v),y2:sy(v)},gg);const t=es_('text',{class:'ax',x:Lx-6,y:sy(v)+4,'text-anchor':'end'});t.textContent=v?fmt(v/1000)+' mil':'0'}
+SER.forEach(([y,v],i)=>{const x=Lx+i*bw;
+  if(v){const r=es_('rect',{class:'bar'+(SANTO.includes(y)?' santo':''),x:x+2,y:sy(v),width:bw-4,height:Bb-sy(v),rx:2});
+    r.addEventListener('pointermove',ev=>show(ev,`<b>${y}${SANTO.includes(y)?' · Ano Santo':''}</b>${fmt(v)} peregrinos`));r.addEventListener('pointerleave',hide);
+    if(SANTO.includes(y)&&!(NARROW&&y===2021)||i===SER.length-1||y===2019&&!NARROW){const t=es_('text',{class:'bv',x:x+bw/2,y:sy(v)-5});t.textContent=Math.round(v/1000)+' mil'}}
+  else{const t=es_('text',{class:'ax',x:x+bw/2,y:Bb-8,'text-anchor':'middle'});t.textContent='—';const t2=es_('text',{class:'ax',x:x+bw/2,y:Bb-60,'text-anchor':'middle',transform:`rotate(-90 ${x+bw/2} ${Bb-60})`});t2.textContent='pandemia, sen dato'}
+  if(y%(NARROW?4:2)===0||i===SER.length-1){const t=es_('text',{class:'ax',x:x+bw/2,y:Bb+(NARROW?26:18),'text-anchor':'middle'});t.textContent=y}});
+{const t=es_('text',{class:'ax',x:Lx,y:12});t.textContent='■ en ocre, os anos santos'}
+
+// --- barras horizontais ---
+const hb=(el,rows,tot)=>{const mx=Math.max(...rows.map(r=>r[1]));document.getElementById(el).innerHTML=rows.map(([n,v,py])=>{const d=py?(v-py)/py*100:null;
+  return `<span>${n}</span><span class="b" style="width:${(v/mx*100).toFixed(1)}%"></span><span class="v">${fmt(v)}</span>${d!=null?`<span class="d"><span class="${d>=0?'up':'dn'}">${d>=0?'▲':'▼'} ${Math.abs(d).toLocaleString('gl-ES',{maximumFractionDigits:0})} %</span> fronte a 2024 · ${pc(v,tot)} do total</span>`:''}`}).join('')};
+hb('cams',D.camino.slice(0,9),TOT);hb('pais',D.pais.slice(0,12),TOT);
+
+// --- táboa ---
+document.getElementById('tbl').innerHTML='<thead><tr><th>Ano</th><th>Peregrinos</th></tr></thead><tbody>'+SER.map(([y,v])=>`<tr><td>${y}</td><td>${v?fmt(v):'sen dato'}</td></tr>`).join('')+'</tbody>'+
+ '<thead><tr><th>Camiño (2025)</th><th>Peregrinos</th><th>2024</th></tr></thead><tbody>'+D.camino.map(([n,v,p])=>`<tr><td>${n}</td><td>${fmt(v)}</td><td>${fmt(p)}</td></tr>`).join('')+'</tbody>'+
+ '<thead><tr><th>Punto de saída (2025)</th><th>Peregrinos</th></tr></thead><tbody>'+D.saida.map(([n,v])=>`<tr><td>${n}</td><td>${fmt(v)}</td></tr>`).join('')+'</tbody>';
+</script>
+</body>
+</html>

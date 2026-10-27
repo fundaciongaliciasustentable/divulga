@@ -1,5 +1,17 @@
 [
   {
+    "slug": "camino-compostela",
+    "titulo": "Todos os camiños levan a Compostela",
+    "entradilla": "530.844 peregrinos recolleron a Compostela en 2025, un récord, e un de cada tres saíu de Sarria. Os camiños co grosor dos seus peregrinos, de onde veñen e a serie desde 2004.",
+    "data": "2026-10-27",
+    "temas": [
+      "Camiño de Santiago",
+      "Turismo"
+    ],
+    "formato": "Mapa de fluxos",
+    "fontes": "Oficina do Peregrino (informe público e informes anuais)"
+  },
+  {
     "slug": "galego-xeracions",
     "titulo": "O galego por xeracións",
     "entradilla": "A pirámide da lingua: só 7 de cada 100 nenos falan sempre en galego, fronte a 40 dos maiores de 65. Como cambiou de 2003 a 2023 e como pasa de nais a fillos.",
