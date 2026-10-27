@@ -1,5 +1,18 @@
 [
   {
+    "slug": "vacas-persoas",
+    "titulo": "Hai máis vacas ca persoas?",
+    "entradilla": "En 68 concellos galegos, si, e son cada vez máis porque marcha a xente. Se contamos tamén porcos, galiñas e ovellas en unidades gandeiras, son 128.",
+    "data": "2026-10-27",
+    "temas": [
+      "Rural",
+      "Gandería",
+      "Poboación"
+    ],
+    "formato": "Cartograma de hexágonos",
+    "fontes": "IGE/Medio Rural (gando bovino), INE (Padrón), Censo agrario 2020"
+  },
+  {
     "slug": "raias-clima",
     "titulo": "As raias da calor e da choiva",
     "entradilla": "Cada raia é un ano en seis observatorios galegos, dende 1931. Na Coruña, os catro anos máis quentes da serie son os catro últimos. Descarga a raia da túa cidade.",

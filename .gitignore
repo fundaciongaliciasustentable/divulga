@@ -7,3 +7,5 @@ api/datos/.ht-*
 fontes/galicia-apagandose/data/ige/
 fontes/raias-clima/data/SPE*.csv
 fontes/monte-concellos/data/raw/
+fontes/vacas-persoas/data/ige_*.csv
+fontes/vacas-persoas/data/ine_*.json

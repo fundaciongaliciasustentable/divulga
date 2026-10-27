@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hai máis vacas ca persoas? — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="En __N__ concellos galegos hai máis vacas ca persoas, e cada vez son máis. Concello a concello, de 2005 a __A1__, e todo o gando en unidades gandeiras.">
+<meta property="og:title" content="En __N__ concellos galegos hai máis vacas ca persoas">
+<meta property="og:description" content="Concello a concello, vacas fronte a veciños. E se contamos todo o gando, son __NUG__.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Cartograma de hexágonos (un por concello) en cor diverxente: azul onde hai máis persoas,
+   verde onde hai máis vacas. Ao lado, o concello escollido en isotipos (persoas e vacas en fila).
+   Debaixo, a evolución de 2005 a hoxe. */
+:root{
+  --paper:#f7f4ec; --card:#fffdf7; --ink:#24231f; --muted:#67645a; --line:#ddd6c6;
+  --pers:#4a6fb5; --vaca:#3f7d3c;
+  --bov:#2f7d32; --por:#e87ba4; --ave:#2a78d6; --ovi:#c98500;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.08;text-align:center;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--vaca)}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center}
+.tog{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--card)}
+.tog button{font:600 .82rem var(--display);background:transparent;color:var(--muted);border:0;padding:8px 13px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.slider{display:flex;align-items:center;gap:8px}
+#ano{width:min(220px,46vw);accent-color:var(--vaca)}
+#anoL{font:700 1.4rem/1 var(--num);min-width:3ch}
+#q{font:500 .85rem var(--display);background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:7px 10px;width:200px;max-width:100%}
+.tog button:focus-visible,#q:focus-visible,#ano:focus-visible,.hx:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.main{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;width:100%;align-items:start}
+@media (min-width:960px){.main{grid-template-columns:minmax(0,1fr) 330px}}
+.stage{position:relative;width:100%;max-width:760px;margin:0 auto}
+.stage svg{display:block;width:100%;height:auto;overflow:visible}
+.hx{stroke:var(--paper);stroke-width:1.5;cursor:pointer;transition:fill .35s}
+.hx.mais{stroke:var(--ink);stroke-width:1.3}
+.hx.on{stroke:#e0402a;stroke-width:3}
+.hx.dim{opacity:.25}
+.hl{font:700 10.5px var(--display);fill:#fff;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.35;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;white-space:nowrap}
+.tip b{display:block;font-size:.92rem}
+aside{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.card h2{font:800 1.2rem/1.15 var(--display);margin:0}
+.card .pr{font-size:.78rem;color:var(--muted)}
+.big{display:flex;gap:16px;margin:10px 0 6px}
+.big div{display:flex;flex-direction:column}
+.big .v{font:700 1.9rem/1 var(--num)}
+.big .l{font-size:.76rem;color:var(--muted)}
+.ratio{font-size:.9rem;margin:2px 0 8px}
+.ratio b{font:700 1.15rem var(--num)}
+.iso{display:flex;flex-wrap:wrap;gap:2px;margin:4px 0}
+.iso svg{width:15px;height:15px}
+.iso.v svg{width:20px}
+.iso.g i{display:block;width:11px;height:11px;border-radius:2px;margin:2px}
+.isol{font-size:.74rem;color:var(--muted);margin-top:6px}
+.stk{display:flex;height:12px;border-radius:2px;overflow:hidden;gap:2px;margin:8px 0 6px}
+.rows{display:grid;grid-template-columns:auto 1fr auto auto;gap:3px 10px;font-size:.82rem;align-items:center}
+.rows i{display:inline-block;width:10px;height:10px;border-radius:2px}
+.rows .v{font:700 1rem var(--num);text-align:right}
+.rows .d{font:600 .85rem var(--num);color:var(--muted);text-align:right}
+.hint{font-size:.8rem;color:var(--muted);margin:8px 0 0;line-height:1.4}
+.scale{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.78rem;color:var(--muted)}
+.scale .bar{display:flex;height:12px;width:min(440px,88vw);border-radius:2px;overflow:hidden}
+.scale .bar span{flex:1}
+.scale .tk{display:flex;justify-content:space-between;width:min(440px,88vw);font:600 .82rem var(--num)}
+.ev{width:100%;max-width:900px}
+.ev h3{font:800 .76rem var(--display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:8px 0 2px;text-align:center}
+.ev svg{display:block;width:100%;height:auto;overflow:visible}
+.gl line{stroke:var(--line)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.ln{fill:none;stroke-width:2.2}
+.dl{font:700 13px var(--display);fill:var(--ink)}
+details{width:100%;max-width:780px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{max-height:420px;overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 10px;text-align:right}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.82rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:78ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>En <em>__N__ concellos</em> galegos hai máis vacas ca persoas</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <div class="tog" role="group" aria-label="Que contar">
+      <button id="mV" aria-pressed="true">Vacas</button>
+      <button id="mG" aria-pressed="false">Todo o gando (2020)</button>
+    </div>
+    <div class="slider" id="sl"><input id="ano" type="range" min="__A0__" max="__A1__" value="__A1__" step="1" aria-label="Ano"><span id="anoL" aria-live="polite">__A1__</span></div>
+    <input id="q" type="search" placeholder="Buscar concello…" aria-label="Buscar concello" list="ql" autocomplete="off">
+    <datalist id="ql"></datalist>
+  </div>
+  <div class="main">
+    <div class="stage" id="stage"><svg id="hex" role="img" aria-label="Cartograma de Galicia cun hexágono por concello, coloreado segundo a relación entre vacas e persoas. A táboa de datos que hai debaixo ten as cifras de cada concello."></svg></div>
+    <aside><div class="card" id="card"></div></aside>
+  </div>
+  <div class="scale" id="scale"></div>
+  <div class="ev">
+    <h3>Concellos con máis vacas ca persoas, ano a ano</h3>
+    <svg id="ev" viewBox="0 0 900 220" role="img" aria-label="Evolución do número de concellos con máis vacas ca persoas, de __A0__ a __A1__"></svg>
+  </div>
+  <details>
+    <summary>Ver os datos por concello</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Vacas: efectivos de gando bovino por concello a 1 de xaneiro de cada ano, do rexistro da Consellería do Medio Rural publicado polo <a href="https://www.ige.gal/igebdt/selector.jsp?COD=62" target="_blank" rel="noopener">IGE</a> (táboa 62). As vacas son as femias que xa pariron, de leite ou de carne. A serie comeza en 2005 porque en 2002 e 2003 o rexistro contaba as vacas doutro xeito. Persoas: Padrón municipal do INE. Todo o gando: Censo agrario 2020 (<a href="https://www.ige.gal/igebdt/selector.jsp?COD=10332" target="_blank" rel="noopener">IGE, táboa 10332</a>), en unidades gandeiras totais (UGT), a medida que permite sumar especies: unha vaca adulta é arredor de 1 UG, un porco de cebo 0,3 e unha galiña poñedora 0,014. O INE non publica o dato dalgunhas especies en concellos con poucas explotacións, por segredo estatístico; nese caso contan como cero, e por iso o total pode quedar curto. Oza-Cesuras e Cerdedo-Cotobade súmanse nos anos anteriores á fusión. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__;
+const C=D.concellos,ANOS=D.anos.filter(a=>a>=__A0__).map(String),NS='http://www.w3.org/2000/svg';
+const fmt=n=>Math.round(n).toLocaleString('gl-ES',{useGrouping:'always'});
+const f1=n=>n.toLocaleString('gl-ES',{maximumFractionDigits:1,minimumFractionDigits:n<10?1:0});
+const ESP=[['b','Bovino','--bov'],['p','Porcino','--por'],['a','Aves','--ave'],['o','Ovino e caprino','--ovi']];
+// diverxente: azul (máis persoas) – gris – verde (máis vacas), por log2 da razón
+const DIV=['#2f4f8f','#4a6fb5','#7f98c8','#b4c1db','#e7e3d8','#b9d1b0','#86b07f','#58904f','#3f7d3c','#24561f'];
+const STEP=[-3,-2,-1,-.35,.35,1,1.6,2.2,3];
+const colR=r=>{if(!(r>0))return '#e7e3d8';const l=Math.log2(r);let i=0;while(i<STEP.length&&l>STEP[i])i++;return DIV[i]};
+let modo='v',yi=ANOS.length-1,sel=-1;
+const Y=()=>ANOS[yi];
+const val=c=>modo==='v'?{a:c.vac[Y()]||0,p:c.pob[Y()]}:{a:Object.values(c.ug).reduce((s,x)=>s+x,0),p:c.pob['2020']};
+
+// --- cartograma ---
+const sv=document.getElementById('hex'),tip=document.getElementById('tip');
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);(p||sv).appendChild(e);return e};
+const R=20,DX=Math.sqrt(3)*R,DY=1.5*R;
+const hp=(i,j)=>[i*DX+(j%2?DX/2:0),-j*DY];
+const xs=C.map(c=>hp(...c.h)[0]),ys=C.map(c=>hp(...c.h)[1]);
+const X0=Math.min(...xs)-R,X1=Math.max(...xs)+R,Y0=Math.min(...ys)-R,Y1=Math.max(...ys)+R;
+sv.setAttribute('viewBox',`${X0} ${Y0} ${X1-X0} ${Y1-Y0}`);
+const hexd=(x,y)=>{let d='';for(let k=0;k<6;k++){const a=Math.PI/180*(60*k-30);d+=(k?'L':'M')+(x+(R-.5)*Math.cos(a)).toFixed(1)+','+(y+(R-.5)*Math.sin(a)).toFixed(1)}return d+'Z'};
+const H=C.map((c,i)=>{const [x,y]=hp(...c.h);const p=el('path',{d:hexd(x,y),class:'hx',tabindex:0,'aria-label':c.n});
+  p.addEventListener('pointerenter',ev=>{const v=val(c);tip.innerHTML=`<b>${c.n}</b>${fmt(v.a)} ${modo==='v'?'vacas':'UG de gando'} · ${fmt(v.p)} persoas`;tip.hidden=false;mv(ev)});
+  p.addEventListener('pointermove',mv);p.addEventListener('pointerleave',()=>tip.hidden=true);
+  p.addEventListener('click',()=>setSel(sel===i?-1:i));p.addEventListener('keydown',e=>{if(e.key==='Enter')setSel(sel===i?-1:i)});
+  return {p,x,y}});
+// etiquetas das catro cidades e as cabeceiras de provincia, para orientarse
+const ORI={'15030':'CO','15078':'SA','36057':'VI','36038':'PO','32054':'OU','27028':'LU'};
+Object.entries(ORI).forEach(([id,l])=>{const i=C.findIndex(c=>c.id===id);if(i<0)return;const t=el('text',{class:'hl',x:H[i].x,y:H[i].y});t.textContent=l});
+function mv(ev){tip.style.left=Math.max(110,Math.min(innerWidth-110,ev.clientX))+'px';tip.style.top=ev.clientY+'px'}
+function paint(){C.forEach((c,i)=>{const v=val(c),r=v.a/v.p;H[i].p.setAttribute('fill',colR(r));H[i].p.classList.toggle('mais',r>1);H[i].p.classList.toggle('on',i===sel)})}
+
+// --- panel ---
+const card=document.getElementById('card');
+const PERS='<svg viewBox="0 0 12 14" aria-hidden="true"><circle cx="6" cy="3.2" r="2.6" fill="var(--pers)"/><path d="M1.5 14v-3.5a4.5 4.5 0 0 1 9 0V14z" fill="var(--pers)"/></svg>';
+const VACA='<svg viewBox="0 0 20 14" aria-hidden="true" fill="var(--vaca)"><rect x="5" y="3" width="13" height="6.5" rx="2.2"/><rect x="0.5" y="2" width="5.5" height="4.6" rx="1.8"/><path d="M1.2 2.4 0.4 0.6M5.2 2.4 6 0.6" stroke="var(--vaca)" stroke-width="1.1" stroke-linecap="round"/><rect x="6" y="9" width="1.8" height="4.5" rx=".6"/><rect x="9" y="9" width="1.8" height="4.5" rx=".6"/><rect x="12.4" y="9" width="1.8" height="4.5" rx=".6"/><rect x="15.4" y="9" width="1.8" height="4.5" rx=".6"/></svg>';
+function iso(n,ico,cl){const k=Math.min(n,200);return `<div class="iso ${cl}">${ico.repeat(k)}</div>`}
+function panel(){
+  if(sel<0){const tot={a:0,p:0};C.forEach(c=>{const v=val(c);tot.a+=v.a;tot.p+=v.p});
+    const n=C.filter(c=>{const v=val(c);return v.a>v.p}).length;
+    const top=C.map(c=>[c,val(c)]).sort((a,b)=>b[1].a/b[1].p-a[1].a/a[1].p).slice(0,6);
+    card.innerHTML=`<h2>Galicia ${modo==='v'?Y():'2020'}</h2><div class="pr">${modo==='v'?'Vacas e persoas':'Todo o gando en unidades gandeiras'}</div>
+      <div class="big"><div><span class="v">${n}</span><span class="l">concellos con máis ${modo==='v'?'vacas':'gando'} ca persoas</span></div></div>
+      <div class="ratio">En toda Galicia: <b>${f1(tot.a/tot.p)}</b> ${modo==='v'?'vacas':'UG'} por persoa</div>
+      <div class="hint"><b>Onde máis ${modo==='v'?'vacas':'gando'} hai por veciño:</b><br>${top.map(([c,v])=>`${c.n} (${f1(v.a/v.p)})`).join(' · ')}</div>
+      <p class="hint">Toca un hexágono para ver o concello.</p>`;return}
+  const c=C[sel],v=val(c),r=v.a/v.p;
+  const m=Math.max(v.a,v.p),unit=[1,10,100,1000].find(u=>m/u<=200)||1000;
+  const ug=()=>{const t=Object.values(c.ug).reduce((s,x)=>s+x,0)||1;let o='';ESP.forEach(([k,,cv])=>{o+=`<i style="background:var(${cv})"></i>`.repeat(Math.round((c.ug[k]||0)/unit))});return `<div class="iso g">${o}</div>`};
+  let html=`<h2>${c.n}</h2><div class="pr">${c.pr}</div>
+    <div class="big"><div><span class="v" style="color:var(--pers)">${fmt(v.p)}</span><span class="l">persoas</span></div><div><span class="v" style="color:var(--vaca)">${fmt(v.a)}</span><span class="l">${modo==='v'?'vacas':'UG de gando'}</span></div></div>
+    <div class="ratio">${r>=1?`<b>${f1(r)}</b> ${modo==='v'?'vacas':'UG'} por cada persoa`:`<b>${f1(1/r)}</b> persoas por cada ${modo==='v'?'vaca':'UG'}`}</div>
+    ${iso(Math.round(v.p/unit),PERS,'p')}${modo==='v'?iso(Math.round(v.a/unit),VACA,'v'):ug()}
+    <div class="isol">Cada icona = ${unit} ${unit>1?'persoas ou '+(modo==='v'?'vacas':'UG, coa cor da súa especie'):'persoa ou '+(modo==='v'?'vaca':'UG, coa cor da súa especie')}</div>`;
+  if(modo==='v'){const y0=ANOS[0],a0=c.vac[y0]||0,p0=c.pob[y0];
+    html+=`<p class="hint">En ${y0}: ${fmt(a0)} vacas e ${fmt(p0)} persoas. Dende entón: vacas ${sg(v.a-a0)}, persoas ${sg(v.p-p0)}.<br>Bovinos en total (con xatos e xuvencas): ${fmt(c.bov)} · vacas de leite: ${fmt(c.lei)}.</p>`}
+  else{const t=Object.values(c.ug).reduce((s,x)=>s+x,0)||1;
+    html+=`<div class="stk">${ESP.map(([k,,cv])=>`<span style="flex:${(c.ug[k]||0)/t};background:var(${cv})"></span>`).join('')}</div>
+      <div class="rows">${ESP.map(([k,l,cv])=>`<i style="background:var(${cv})"></i><span>${l}${c.res.includes(k)?' *':''}</span><span class="v">${fmt(c.ug[k]||0)} UG</span><span class="d">${fmt(c.cab[k]||0)} cab.</span>`).join('')}</div>
+      ${c.res.length?'<p class="hint">* Dato reservado polo INE: conta como cero.</p>':''}`}
+  card.innerHTML=html}
+const sg=n=>(n>0?'+':n<0?'−':'±')+fmt(Math.abs(n));
+
+// --- escala ---
+document.getElementById('scale').innerHTML=`<div class="bar">${DIV.map(c=>`<span style="background:${c}"></span>`).join('')}</div><div class="tk"><span>8 veces máis persoas</span><span>igual</span><span>8 veces máis vacas ou gando</span></div>`;
+
+// --- evolución ---
+const ev=document.getElementById('ev'),ee=(t,a)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);ev.appendChild(e);return e};
+const cnt=ANOS.map(y=>C.filter(c=>(c.vac[y]||0)>c.pob[y]).length);
+const L=40,RR=780,T=14,B=180,lo=Math.floor(Math.min(...cnt)/10)*10-10,hi=Math.ceil(Math.max(...cnt)/10)*10;
+const sx=i=>L+i*(RR-L)/(ANOS.length-1),sy=v=>B-(v-lo)/(hi-lo)*(B-T);
+for(let v=lo;v<=hi;v+=10){ee('line',{x1:L,x2:RR,y1:sy(v),y2:sy(v),stroke:'#ddd6c6'});const t=ee('text',{class:'ax',x:L-6,y:sy(v)+4,'text-anchor':'end'});t.textContent=v}
+ANOS.forEach((a,i)=>{if(a%5&&i!==ANOS.length-1)return;const t=ee('text',{class:'ax',x:sx(i),y:B+18,'text-anchor':'middle'});t.textContent=a});
+ee('path',{class:'ln',stroke:'var(--vaca)',d:cnt.map((v,i)=>(i?'L':'M')+sx(i)+','+sy(v)).join('')});
+[0,ANOS.length-1].forEach(i=>{ee('circle',{cx:sx(i),cy:sy(cnt[i]),r:4,fill:'var(--vaca)'});const t=ee('text',{class:'dl',x:sx(i)+(i?10:8),y:sy(cnt[i])+(i?4:-10),'text-anchor':'start'});t.textContent=cnt[i]+(i?' concellos':' en '+ANOS[0])});
+const cur=ee('line',{x1:0,x2:0,y1:T,y2:B,stroke:'#24231f','stroke-dasharray':'3 3'});
+const hit=ee('rect',{x:L-10,y:0,width:RR-L+20,height:B+24,fill:'transparent',style:'cursor:ew-resize'});
+const fromX=e=>{const p=ev.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(ev.getScreenCTM().inverse());return Math.max(0,Math.min(ANOS.length-1,Math.round((q.x-L)/(RR-L)*(ANOS.length-1))))};
+hit.addEventListener('pointermove',e=>{if(modo==='v')setYear(fromX(e))});
+
+// --- táboa ---
+function table(){document.getElementById('tbl').innerHTML=`<thead><tr><th>Concello</th><th>Persoas ${Y()}</th><th>Vacas ${Y()}</th><th>Persoas 2020</th><th>UG gando 2020</th></tr></thead><tbody>`+
+  C.map(c=>`<tr><td>${c.n}</td><td>${fmt(c.pob[Y()]||0)}</td><td>${fmt(c.vac[Y()]||0)}</td><td>${fmt(c.pob['2020']||0)}</td><td>${fmt(Object.values(c.ug).reduce((s,x)=>s+x,0))}</td></tr>`).join('')+'</tbody>'}
+
+// --- controis ---
+const ano=document.getElementById('ano'),anoL=document.getElementById('anoL'),sl=document.getElementById('sl');
+function setYear(i){yi=i;ano.value=Y();anoL.textContent=Y();cur.setAttribute('x1',sx(i));cur.setAttribute('x2',sx(i));paint();panel();table()}
+ano.addEventListener('input',()=>setYear(ANOS.indexOf(ano.value)));
+const mV=document.getElementById('mV'),mG=document.getElementById('mG');
+const setModo=m=>{modo=m;mV.setAttribute('aria-pressed',m==='v');mG.setAttribute('aria-pressed',m==='g');sl.style.visibility=m==='v'?'visible':'hidden';paint();panel()};
+mV.onclick=()=>setModo('v');mG.onclick=()=>setModo('g');
+const q=document.getElementById('q'),ql=document.getElementById('ql');
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+C.forEach(c=>{const o=document.createElement('option');o.value=c.n;ql.appendChild(o)});
+q.addEventListener('input',()=>{const s=norm(q.value.trim());if(!s){setSel(-1);return}const i=C.findIndex(c=>norm(c.n)===s);if(i>=0)setSel(i)});
+function setSel(i){sel=i;if(i<0)q.value='';paint();panel()}
+setYear(ANOS.length-1);
+</script>
+</body>
+</html>
