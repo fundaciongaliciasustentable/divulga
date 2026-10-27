@@ -11,3 +11,5 @@ fontes/vacas-persoas/data/ige_*.csv
 fontes/vacas-persoas/data/ine_*.json
 fontes/luz-galicia/data/ree/
 fontes/mar-prato/data/csv/
+fontes/migracions/data/ine_*.json
+fontes/migracions/data/countries-*.json

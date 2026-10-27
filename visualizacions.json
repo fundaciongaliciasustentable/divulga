@@ -1,5 +1,17 @@
 [
   {
+    "slug": "migracions",
+    "titulo": "Quen chega e quen marcha",
+    "entradilla": "Por cada persoa que marcha de Galicia ao estranxeiro chegan case tres, sobre todo de Venezuela e Colombia. Os fluxos de 2024 país a país e comunidade a comunidade, e o saldo dende 2002.",
+    "data": "2026-10-27",
+    "temas": [
+      "Poboación",
+      "Emigración"
+    ],
+    "formato": "Mapa de arcos",
+    "fontes": "INE (Estatística de migracións e cambios de residencia) e IGE"
+  },
+  {
     "slug": "camino-compostela",
     "titulo": "Todos os camiños levan a Compostela",
     "entradilla": "530.844 peregrinos recolleron a Compostela en 2025, un récord, e un de cada tres saíu de Sarria. Os camiños co grosor dos seus peregrinos, de onde veñen e a serie desde 2004.",

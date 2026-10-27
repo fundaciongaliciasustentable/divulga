@@ -78,6 +78,7 @@ Display e Lato).
 | mar-prato | Pesca de Galicia, notas de primeira venda de pesca fresca (CSV por ano, 2015-2025) | `cd fontes/mar-prato && python3 prep.py && python3 render.py` (prep.py descarga os CSV se faltan) |
 | galego-xeracions | IGE táboas 2953 (lingua habitual por idade, Galicia e provincias) e 7018 (lingua dos fillos segundo a da nai), 2003-2023 | `cd fontes/galego-xeracions && python3 prep.py && python3 render.py` |
 | camino-compostela | Oficina do Peregrino: informe público de Power BI (2021-2025, transcrito en `data/oficina.json`) e informes anuais en PDF (2004-2018); contorno de Natural Earth (world-atlas) | `cd fontes/camino-compostela && pip install pypdf shapely && python3 prep.py && python3 render.py` (para actualizar, transcribir as cifras novas en `data/oficina.json`) |
+| migracions | INE táboas 69695 e 69710 (estranxeiro por país, 2021-2024); IGE 10614, 10613, 568 e 567 (por comunidade e serie dende 1992); Natural Earth (world-atlas) | `cd fontes/migracions && pip install shapely && python3 prep.py && python3 render.py` (prep.py descarga o que falte) |
 | habelos-hainos | AEMET, MeteoGalicia, IGE, INEGA, Xunta, ICCT e outras (fonte enlazada en cada mito) | editar o array `MITOS` de `v/habelos-hainos/index.html` a man; votos en `api/votos.php` |
 | galicia-cero-neto | Ogacli/MITECO (emisións 2024), INEGA, REE, DGT, Lei 1/2026 do clima; método en `fontes/galicia-cero-neto/README.md` | editar `SECTORS`, `SINK` e `ROADMAP` en `v/galicia-cero-neto/index.html` a man |
 

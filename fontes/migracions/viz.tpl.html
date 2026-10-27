@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quen chega e quen marcha — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Inmigración e emigración de Galicia en __ANO__: de que países e comunidades chega a xente e a onde marcha, e o saldo migratorio dende 2002.">
+<meta property="og:title" content="__TITULO__">
+<meta property="og:description" content="De onde chega e a onde marcha a xente que se muda a Galicia ou sae dela, país a país e comunidade a comunidade.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Arcos sobre o mapa do mundo (e un de España para as comunidades) cara a Galicia ou desde Galicia,
+   co grosor proporcional ás persoas; o fluxo anímase na dirección do movemento. Debaixo, unha
+   bolboreta por lugar (marchan | chegan) e o saldo de cada ano dende 2002. */
+:root{
+  --paper:#f6f5f1; --land:#e6e3da; --coast:#d2cdbf; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e0ddd4;
+  --in:#1a8a73; --out:#d1572a; --ext:#5b6fd0; --esp:#b97a00;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1140px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.08;text-align:center;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1 .i{color:var(--in)} h1 .o{color:var(--out)}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+h2{font:800 .8rem var(--display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:22px 0 0;text-align:center}
+.tog{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--card)}
+.tog button{font:700 .84rem var(--display);background:transparent;color:var(--muted);border:0;padding:8px 14px;cursor:pointer}
+.tog button[aria-pressed="true"][data-m="i"]{background:var(--in);color:#fff}
+.tog button[aria-pressed="true"][data-m="e"]{background:var(--out);color:#fff}
+.tog button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.maps{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;width:100%}
+@media (min-width:980px){.maps{grid-template-columns:minmax(0,1.75fr) minmax(0,1fr)}}
+.mapc{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:10px}
+.mapc h3{font:700 .9rem var(--display);margin:2px 4px 6px;color:var(--muted)}
+.mapc svg{display:block;width:100%;height:auto;overflow:hidden}
+.arc{fill:none;stroke-linecap:round;cursor:pointer;opacity:.75;transition:opacity .2s}
+.arc:hover{opacity:1}
+.fl{fill:none;stroke:#fff;stroke-linecap:round;stroke-dasharray:2 14;opacity:.65;pointer-events:none;animation:fl 1.4s linear infinite}
+@keyframes fl{to{stroke-dashoffset:-16}}
+.gal{fill:var(--ink);stroke:#fff;stroke-width:2}
+.pl{font:700 11px var(--display);fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:3px;pointer-events:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;width:100%}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+.fact .v{font:700 2.2rem/1 var(--num)}
+.fact .l{font-size:.82rem;color:var(--muted);line-height:1.4;margin-top:4px}
+.two{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;width:100%}
+@media (min-width:980px){.two{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.card h3{font:700 1.05rem var(--display);margin:0 0 4px}
+.card .sub{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.bf{display:grid;grid-template-columns:1fr 110px 1fr;gap:3px 8px;align-items:center;font-size:.82rem}
+.bf .h{font:800 .72rem var(--display);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.bf .n{text-align:center;font-weight:600;line-height:1.1}
+.bf .l,.bf .r{display:flex;align-items:center;gap:6px}
+.bf .l{justify-content:flex-end}
+.bf .l i,.bf .r i{display:block;height:12px;border-radius:2px}
+.bf .l i{background:var(--out)} .bf .r i{background:var(--in)}
+.bf .v{font:700 .9rem var(--num);min-width:3.5ch}
+.bf .s{grid-column:1/-1;text-align:center;font:600 .74rem var(--num);color:var(--muted);margin:-2px 0 4px}
+.block{width:100%}
+.block svg{display:block;width:100%;height:auto;overflow:visible}
+.gl line{stroke:var(--line)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.dl{font:700 12.5px var(--display)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.4;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;white-space:nowrap}
+.tip b{display:block;font-size:.92rem}
+details{width:100%;max-width:860px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{max-height:420px;overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 10px;text-align:right}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.82rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:78ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.fl{animation:none;display:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>__H1__</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tog" role="group" aria-label="Que fluxos mostrar">
+    <button data-m="i" aria-pressed="true">Chegan a Galicia</button>
+    <button data-m="e" aria-pressed="false">Marchan de Galicia</button>
+  </div>
+  <div class="maps">
+    <div class="mapc"><h3 id="mT1">Co estranxeiro</h3><svg id="mundo" role="img" aria-label="Mapa do mundo con arcos entre cada país e Galicia, co grosor proporcional ás persoas que se mudaron en __ANO__"></svg></div>
+    <div class="mapc"><h3 id="mT2">Co resto de España</h3><svg id="espana" role="img" aria-label="Mapa de España con arcos entre cada comunidade autónoma e Galicia, co grosor proporcional ás persoas que se mudaron en __ANO__"></svg></div>
+  </div>
+  <div class="facts" id="facts"></div>
+
+  <div class="two">
+    <div class="card"><h3>Co estranxeiro, país a país (__ANO__)</h3><div class="sub">Persoas que marcharon de Galicia a cada país (esquerda) e que chegaron del (dereita)</div><div class="bf" id="bfP"></div></div>
+    <div class="card"><h3>Co resto de España, comunidade a comunidade (__ANO__)</h3><div class="sub">O mesmo, coas outras comunidades autónomas</div><div class="bf" id="bfC"></div></div>
+  </div>
+
+  <h2>Saldo migratorio de Galicia cada ano: chegadas menos saídas</h2>
+  <div class="block"><svg id="serie" viewBox="0 0 1100 320" role="img" aria-label="Saldo migratorio anual de Galicia co estranxeiro e co resto de España, de 2002 a __ANO__"></svg></div>
+  <div class="legend"><span><i style="background:var(--ext)"></i>co estranxeiro</span><span><i style="background:var(--esp)"></i>co resto de España</span><span><i style="background:none;border-top:2px solid var(--ink);height:0;width:18px;border-radius:0"></i>saldo total</span></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Altas e baixas no Padrón por cambio de residencia. Por países: INE, Estatística de migracións e cambios de residencia (<a href="https://www.ine.es/jaxiT3/Tabla.htm?t=69695" target="_blank" rel="noopener">69695</a> e <a href="https://www.ine.es/jaxiT3/Tabla.htm?t=69710" target="_blank" rel="noopener">69710</a>), por país de procedencia ou destino, non por nacionalidade. Moitas das persoas que chegan de Venezuela, Cuba ou Arxentina son descendentes de emigrantes galegos con nacionalidade española. Por comunidades e serie: IGE, inmigracións por procedencia e emigracións por destino (táboas 10614 e 10613, e 568 e 567 ata 2021). A serie usa a Estatística de variacións residenciais ata 2020 e a nova estatística do INE dende 2021, polo que hai un salto de método entre eses anos. Antes de 2002 non se rexistraban as saídas ao estranxeiro. Non se contan as mudanzas dentro de Galicia. Mapas: Natural Earth, proxección Equal Earth. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const fmt=n=>Math.round(n).toLocaleString('gl-ES',{useGrouping:'always'});
+const sg=n=>(n>0?'+':n<0?'−':'±')+fmt(Math.abs(n));
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(110,Math.min(innerWidth-110,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>tip.hidden=true;
+const mk=sv=>(t,a,p)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);(p||sv).appendChild(e);return e};
+let modo='i';
+
+// --- mapas ---
+const mu=document.getElementById('mundo'),em=mk(mu),es=document.getElementById('espana'),ee=mk(es);
+mu.setAttribute('viewBox',`0 0 1000 ${D.mundoH}`);es.setAttribute('viewBox','0 0 560 470');
+em('path',{d:D.mundo,fill:'var(--land)',stroke:'var(--coast)','stroke-width':.6});
+Object.entries(D.espana).forEach(([n,d])=>ee('path',{d,fill:n==='Spain'?'var(--land)':'#efede7',stroke:'var(--coast)','stroke-width':.8}));
+ee('rect',{x:8,y:470-62,width:96,height:54,fill:'none',stroke:'var(--coast)','stroke-dasharray':'3 3'});
+const gW=em('g',{}),gE=ee('g',{});
+const arcd=([x1,y1],[x2,y2],k)=>{const mx=(x1+x2)/2,my=(y1+y2)/2,dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);const cx=mx-dy/L*L*k,cy=my+dx/L*L*k;return `M${x1},${y1}Q${cx},${cy} ${x2},${y2}`};
+function arcs(g,items,G,maxW,kc){g.replaceChildren();const v=it=>it[modo],MX=Math.max(...items.map(v)),f=modo==='i'?'var(--in)':'var(--out)';
+  items.filter(it=>it.xy&&v(it)>0).sort((a,b)=>v(b)-v(a)).forEach(it=>{const w=Math.max(.8,v(it)/MX*maxW);
+    const [a,b]=modo==='i'?[it.xy,G]:[G,it.xy],d=arcd(a,b,kc*(it.xy[0]<G[0]?1:-1));
+    const p=mk(g.ownerSVGElement)('path',{class:'arc',d,stroke:f,'stroke-width':w.toFixed(2)},g);
+    if(w>2.5)mk(g.ownerSVGElement)('path',{class:'fl',d,'stroke-width':Math.max(1,w*.35).toFixed(2)},g);
+    p.addEventListener('pointermove',ev=>show(ev,`<b>${it.n}</b>${modo==='i'?'chegaron a Galicia':'marcharon de Galicia'}: ${fmt(v(it))}<br>saldo: ${sg(it.i-it.e)}`));p.addEventListener('pointerleave',hide)});
+  // Galicia
+  const s=mk(g.ownerSVGElement);s('circle',{class:'gal',cx:G[0],cy:G[1],r:5},g)}
+function labels(){
+  const lw=em('g',{});D.paises.filter(p=>p.xy&&Math.hypot(p.xy[0]-D.galicia[0],p.xy[1]-D.galicia[1])>18).sort((a,b)=>(b.i+b.e)-(a.i+a.e)).slice(0,8).forEach(p=>{const t=em('text',{class:'pl',x:p.xy[0]+4,y:p.xy[1]-4},lw);t.textContent=p.n});
+  const t=em('text',{class:'pl',x:D.galicia[0]+6,y:D.galicia[1]-6},lw);t.textContent='Galicia';
+  const le=ee('g',{});D.ccaa.slice().sort((a,b)=>(b.i+b.e)-(a.i+a.e)).slice(0,6).forEach(c=>{const t=ee('text',{class:'pl',x:c.xy[0]+5,y:c.xy[1]-5},le);t.textContent=c.n});
+  {const t=ee('text',{class:'pl',x:D.galiciaE[0]+6,y:D.galiciaE[1]-6},le);t.textContent='Galicia'}}
+function maps(){arcs(gW,D.paises,D.galicia,16,.25);arcs(gE,D.ccaa,D.galiciaE,14,.2);
+  const T=D.total;document.getElementById('mT1').textContent=`Co estranxeiro: ${fmt(modo==='i'?T.ei:T.ee)} persoas ${modo==='i'?'chegaron':'marcharon'} en ${D.ano}`;
+  document.getElementById('mT2').textContent=`Co resto de España: ${fmt(modo==='i'?T.si:T.se)} persoas`}
+
+// --- cifras ---
+{const T=D.total,P=D.paises.slice().sort((a,b)=>b.i-a.i),am=D.paises.filter(p=>p.c==='América').reduce((s,p)=>s+p.i,0);
+ const S=D.serie,low=S.reduce((a,b)=>(b.ei-b.ee+b.si-b.se)<(a.ei-a.ee+a.si-a.se)?b:a);
+ document.getElementById('facts').innerHTML=[
+  [`+${fmt(T.ei-T.ee+T.si-T.se)}`,`persoas gañou Galicia polas migracións en ${D.ano}: chegaron ${fmt(T.ei+T.si)} e marcharon ${fmt(T.ee+T.se)}.`],
+  [`${(T.ei/T.ee).toLocaleString('gl-ES',{maximumFractionDigits:1})}`,`persoas chegaron do estranxeiro por cada unha que marchou a el.`],
+  [`${Math.round(am/T.ei*100)} %`,`dos que chegaron do estranxeiro viñan de América. Por diante de todos, ${P[0].n} (${fmt(P[0].i)}) e ${P[1].n} (${fmt(P[1].i)}).`],
+  [`${sg(low.ei-low.ee+low.si-low.se)}`,`foi o saldo de ${low.y}, o peor da serie: na crise, marchaban máis persoas das que chegaban.`]
+ ].map(([v,l])=>`<div class="fact"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('')}
+
+// --- bolboretas ---
+function bf(el,rows){const mx=Math.max(...rows.flatMap(r=>[r.i,r.e]));
+  document.getElementById(el).innerHTML='<span class="h" style="text-align:right">Marchan</span><span></span><span class="h">Chegan</span>'+rows.map(r=>
+   `<span class="l"><span class="v">${fmt(r.e)}</span><i style="width:${(r.e/mx*100).toFixed(1)}%"></i></span><span class="n">${r.n}</span><span class="r"><i style="width:${(r.i/mx*100).toFixed(1)}%"></i><span class="v">${fmt(r.i)}</span></span>`).join('')}
+bf('bfP',D.paises.slice().sort((a,b)=>(b.i+b.e)-(a.i+a.e)).slice(0,16));
+bf('bfC',D.ccaa.slice().sort((a,b)=>(b.i+b.e)-(a.i+a.e)).slice(0,12));
+
+// --- serie de saldos ---
+const sv=document.getElementById('serie'),eS=mk(sv),S=D.serie;
+const L=60,R=1040,T=16,B=280,vals=S.flatMap(s=>[s.ei-s.ee,s.si-s.se,s.ei-s.ee+s.si-s.se]);
+const lo=Math.min(0,...S.map(s=>Math.min(s.ei-s.ee,0)+Math.min(s.si-s.se,0))),hi=Math.max(...S.map(s=>Math.max(s.ei-s.ee,0)+Math.max(s.si-s.se,0)));
+const Y0=Math.floor(lo/10000)*10000,Y1=Math.ceil(hi/10000)*10000,bw=(R-L)/S.length,sy=v=>B-(v-Y0)/(Y1-Y0)*(B-T);
+const g=eS('g',{class:'gl'});for(let v=Y0;v<=Y1;v+=5000){eS('line',{x1:L,x2:R,y1:sy(v),y2:sy(v),stroke:v===0?'#9a968c':''},g);const t=eS('text',{class:'ax',x:L-6,y:sy(v)+4,'text-anchor':'end'});t.textContent=(v>0?'+':'')+fmt(v)}
+S.forEach((s,i)=>{const x=L+i*bw+3,w=bw-6,a=s.ei-s.ee,b=s.si-s.se;let up=0,dn=0;
+  [[a,'var(--ext)','co estranxeiro'],[b,'var(--esp)','co resto de España']].forEach(([v,c,l])=>{const y0=v>=0?up:dn,y1=y0+v;
+    const r=eS('rect',{x,y:Math.min(sy(y0),sy(y1)),width:w,height:Math.abs(sy(y1)-sy(y0)),fill:c,rx:1.5});
+    r.addEventListener('pointermove',ev=>show(ev,`<b>${s.y}</b>Saldo ${l}: ${sg(v)}<br>Total: ${sg(a+b)}`));r.addEventListener('pointerleave',hide);
+    if(v>=0)up=y1;else dn=y1});
+  if(s.y%2===0||i===S.length-1){const t=eS('text',{class:'ax',x:x+w/2,y:B+18,'text-anchor':'middle'});t.textContent=s.y}});
+eS('path',{d:S.map((s,i)=>(i?'L':'M')+(L+i*bw+bw/2)+','+sy(s.ei-s.ee+s.si-s.se)).join(''),fill:'none',stroke:'var(--ink)','stroke-width':2});
+{const i=S.findIndex(s=>s.y===2021);if(i>0){const x=L+i*bw;eS('line',{x1:x,x2:x,y1:T,y2:B,stroke:'var(--muted)','stroke-dasharray':'3 3'});const t=eS('text',{class:'ax',x:x-4,y:T+10,'text-anchor':'end'});t.textContent='cambio de método →'}}
+
+// --- táboa ---
+document.getElementById('tbl').innerHTML='<thead><tr><th>Lugar</th><th>Chegan</th><th>Marchan</th><th>Saldo</th></tr></thead><tbody>'+
+  [...D.paises,...D.ccaa].sort((a,b)=>b.i-a.i).map(r=>`<tr><td>${r.n}</td><td>${fmt(r.i)}</td><td>${fmt(r.e)}</td><td>${sg(r.i-r.e)}</td></tr>`).join('')+'</tbody>'+
+  '<thead><tr><th>Ano</th><th>Estranx. chegan</th><th>marchan</th><th>Resto España chegan</th><th>marchan</th></tr></thead><tbody>'+S.map(s=>`<tr><td>${s.y}</td><td>${fmt(s.ei)}</td><td>${fmt(s.ee)}</td><td>${fmt(s.si)}</td><td>${fmt(s.se)}</td></tr>`).join('')+'</tbody>';
+
+document.querySelectorAll('.tog button').forEach(b=>b.onclick=()=>{modo=b.dataset.m;document.querySelectorAll('.tog button').forEach(x=>x.setAttribute('aria-pressed',x===b));maps()});
+maps();labels();
+</script>
+</body>
+</html>
