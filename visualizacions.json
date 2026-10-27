@@ -1,5 +1,17 @@
 [
   {
+    "slug": "galicia-apagandose",
+    "titulo": "Galicia apágase",
+    "entradilla": "As 30.518 aldeas e lugares de Galicia como puntos de luz, de 1999 a 2025. 1.070 quedaron sen ninguén e outras 5.039 teñen menos de cinco veciños.",
+    "data": "2026-10-27",
+    "temas": [
+      "Poboación",
+      "Rural"
+    ],
+    "formato": "Mapa de luces",
+    "fontes": "IGE/INE: Nomenclátor 1999-2025 · IET (Xunta): entidades de poboación"
+  },
+  {
     "slug": "espiral-lumes",
     "titulo": "A espiral dos lumes",
     "entradilla": "Cada volta é un ano dende 1983 e cada brasa, un día de lume. En 44 anos ardeu o equivalente a case a metade de Galicia, e 2025 xa é o segundo peor ano da serie.",
