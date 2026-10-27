@@ -76,6 +76,7 @@ Display e Lato).
 | luz-galicia | Red Eléctrica, API REData: estrutura da xeración e demanda de Galicia (geo_id 17), 2011-2025 | `cd fontes/luz-galicia && python3 prep.py && python3 render.py` (prep.py descarga as respostas da API se faltan) |
 | monte-concellos | Inventario Forestal Continuo de Galicia (INVEGA): capa de recintos con coberturas, servizo ArcGIS do IDEG, 2022-2024 | `cd fontes/monte-concellos && python3 descargar.py && pip install shapely pillow && python3 prep.py && python3 render.py` (descargar.py tarda ~2 h: unha consulta por concello) |
 | mar-prato | Pesca de Galicia, notas de primeira venda de pesca fresca (CSV por ano, 2015-2025) | `cd fontes/mar-prato && python3 prep.py && python3 render.py` (prep.py descarga os CSV se faltan) |
+| galego-xeracions | IGE táboas 2953 (lingua habitual por idade, Galicia e provincias) e 7018 (lingua dos fillos segundo a da nai), 2003-2023 | `cd fontes/galego-xeracions && python3 prep.py && python3 render.py` |
 | habelos-hainos | AEMET, MeteoGalicia, IGE, INEGA, Xunta, ICCT e outras (fonte enlazada en cada mito) | editar o array `MITOS` de `v/habelos-hainos/index.html` a man; votos en `api/votos.php` |
 | galicia-cero-neto | Ogacli/MITECO (emisións 2024), INEGA, REE, DGT, Lei 1/2026 do clima; método en `fontes/galicia-cero-neto/README.md` | editar `SECTORS`, `SINK` e `ROADMAP` en `v/galicia-cero-neto/index.html` a man |
 

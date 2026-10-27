@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O galego por xeracións — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="A lingua que falan habitualmente os galegos e as galegas segundo a súa idade, de 2003 a __A1__, e como se transmite de nais a fillos.">
+<meta property="og:title" content="__TITULO__">
+<meta property="og:description" content="A pirámide da lingua: galego á esquerda, castelán á dereita, idade a idade, de 2003 a __A1__.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Pirámide da lingua: unha fila por grupo de idade (os maiores arriba), co ancho proporcional ás
+   persoas e o eixo central na fronteira entre «máis galego» e «máis castelán». O galego queda á
+   esquerda e o castelán á dereita; ao pasar os anos a pirámide desprázase. */
+:root{
+  --paper:#fbfaf6; --card:#ffffff; --ink:#1d2330; --muted:#5d6370; --line:#e3e0d8;
+  --g2:#1d4f91; --g1:#5f97dc; --c1:#ec8a5f; --c2:#b8422a;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1.08;text-align:center;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1 .g{color:var(--g2)} h1 .c{color:var(--c2)}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+h2{font:800 .8rem var(--display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:22px 0 0;text-align:center}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center}
+.tog{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--card)}
+.tog button{font:600 .82rem var(--display);background:transparent;color:var(--muted);border:0;padding:7px 12px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn{font:700 .82rem var(--display);background:var(--g2);color:#fff;border:0;border-radius:3px;padding:8px 14px;cursor:pointer}
+.tog button:focus-visible,.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.block{width:100%;max-width:1000px}
+.block svg{display:block;width:100%;height:auto;overflow:visible}
+.seg{transition:x .6s ease,width .6s ease}
+.ghost{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3;opacity:.55;transition:x .6s ease,width .6s ease}
+.age{font:700 14px var(--display);fill:var(--ink)}
+.agen{font:600 12px var(--num);fill:var(--muted)}
+.pct{font:700 13px var(--num);fill:#fff;text-anchor:middle;pointer-events:none;transition:x .6s ease}
+.side{font:800 13px var(--display);text-transform:uppercase;letter-spacing:.08em}
+.axis{stroke:var(--ink);stroke-width:1.5}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px}
+.gl line{stroke:var(--line)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.ln{fill:none;stroke-width:2.4}
+.dl{font:700 12.5px var(--display)}
+.tr{font:600 13px var(--display);fill:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;width:100%;max-width:1000px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+.fact .v{font:700 2.2rem/1 var(--num)}
+.fact .l{font-size:.82rem;color:var(--muted);line-height:1.4;margin-top:4px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.4;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;white-space:nowrap}
+.tip b{display:block;font-size:.92rem}
+details{width:100%;max-width:860px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 9px;text-align:right}
+th{font-family:var(--display);font-size:.7rem;color:var(--muted);font-weight:700}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.82rem}
+@media (max-width:639px){.age{font-size:19px}.agen{font-size:16px}.pct{font-size:16px}.ax{font-size:16px}.dl{font-size:16px}.tr{font-size:17px}.side{font-size:16px}}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:78ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>__H1__</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <button class="btn" id="play">▶ 2003 → __A1__</button>
+    <div class="tog" role="group" aria-label="Ano da enquisa" id="tAno"></div>
+    <div class="tog" role="group" aria-label="Territorio" id="tEsp"></div>
+  </div>
+  <div class="block"><svg id="py" viewBox="0 0 1000 420" role="img" aria-label="Pirámide da lingua: unha barra por grupo de idade, co galego á esquerda e o castelán á dereita. A táboa de datos que hai debaixo ten as porcentaxes."></svg></div>
+  <div class="legend" id="legend"></div>
+
+  <h2>Cada idade, enquisa a enquisa: quen fala galego sempre ou máis ca castelán</h2>
+  <div class="block"><svg id="ln" viewBox="0 0 1000 300" role="img" aria-label="Porcentaxe de persoas que falan sempre ou maioritariamente en galego, por grupo de idade, en cada enquisa de 2003 a __A1__"></svg></div>
+
+  <h2>A lingua da nai e a dos fillos</h2>
+  <div class="block"><svg id="tr" viewBox="0 0 1000 250" role="img" aria-label="Lingua habitual das persoas segundo a lingua habitual da súa nai, no ano escollido"></svg></div>
+  <div class="facts" id="facts"></div>
+  <details>
+    <summary>Ver os datos (porcentaxes)</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">IGE, Enquisa estrutural a fogares: módulo de coñecemento e uso do galego (enquisas de 2003, 2008, 2013, 2018 e 2023), poboación de 5 e máis anos. A lingua habitual é a que cada persoa declara falar normalmente: sempre en galego, máis galego ca castelán, máis castelán ca galego ou sempre en castelán. O ancho de cada barra é proporcional ás persoas dese grupo de idade, e a liña descontinua marca a pirámide de 2003. Transmisión: <a href="https://www.ige.gal/igebdt/selector.jsp?COD=7018" target="_blank" rel="noopener">lingua de fala habitual dos fillos segundo a da nai</a>. Son datos dunha enquisa e teñen marxe de erro, que é maior nas provincias e nos grupos pequenos. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg',ANOS=D.anos,ID=D.idades,LG=D.linguas;
+const LS=['Sempre galego','Máis galego','Máis castelán','Sempre castelán'],COL=['var(--g2)','var(--g1)','var(--c1)','var(--c2)'];
+const fmt=n=>Math.round(n).toLocaleString('gl-ES',{useGrouping:'always'});
+const pc=n=>Math.round(n)+' %';
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(110,Math.min(innerWidth-110,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>tip.hidden=true;
+const mk=sv=>(t,a,p)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);(p||sv).appendChild(e);return e};
+let yi=ANOS.length-1,esp='Galicia';
+const NARROW=document.querySelector('.block').clientWidth<640;
+
+// --- pirámide ---
+const py=document.getElementById('py'),ep=mk(py);
+const PW=NARROW?600:1000,PH=NARROW?520:420;py.setAttribute('viewBox',`0 0 ${PW} ${PH}`);
+const RH=NARROW?70:62,T0=NARROW?56:40,GAP=NARROW?34:10,ML=NARROW?8:150,MR=10;
+let CX=PW/2,K=1;
+// escala e eixo de cada territorio: o maior lado galego e o maior lado castelán de todos os anos caben no ancho
+function escala(){const rs=Object.values(D.pob[esp]).flat();const mL=Math.max(...rs.map(v=>v[0]+v[1])),mR=Math.max(...rs.map(v=>v[2]+v[3]));
+  K=(PW-ML-MR)/(mL+mR);CX=ML+mL*K}
+escala();
+const order=[4,3,2,1,0];   // os maiores arriba, coma nunha pirámide de poboación
+const ghosts=[],segs=[],pcts=[],labs=[];
+const sideG=ep('text',{class:'side',y:22,'text-anchor':'end',fill:'var(--g2)'});sideG.textContent='← galego';
+const sideC=ep('text',{class:'side',y:22,fill:'var(--c2)'});sideC.textContent='castelán →';
+order.forEach((ai,r)=>{const y=T0+r*(RH+GAP);
+  ghosts.push(ep('rect',{class:'ghost',y,height:RH,x:CX,width:0}));
+  segs.push(LG.map((l,k)=>{const s=ep('rect',{class:'seg',y,height:RH,x:CX,width:0,fill:COL[k]});
+    s.addEventListener('pointermove',ev=>{const v=D.pob[esp][ANOS[yi]][ai],t=v.reduce((a,b)=>a+b,0);show(ev,`<b>${ID[ai]} · ${ANOS[yi]}</b>${LS[k]}: ${pc(v[k]/t*100)}<br>${fmt(v[k])} persoas`)});
+    s.addEventListener('pointerleave',hide);return s}));
+  pcts.push(LG.map(()=>ep('text',{class:'pct',y:y+RH/2+5})));
+  const a=ep('text',{class:'age',x:NARROW?6:16,y:y+(NARROW?-8:RH/2-2)});a.textContent=ID[ai].replace('De ','').replace(' anos','');
+  labs.push(ep('text',{class:'agen',x:NARROW?PW-6:16,y:y+(NARROW?-8:RH/2+16),'text-anchor':NARROW?'end':'start'}))});
+const axis=ep('line',{class:'axis',y1:T0-8,y2:T0+5*(RH+GAP)});
+function pyramid(){const Y=ANOS[yi],base=D.pob[esp][ANOS[0]];escala();
+  axis.setAttribute('x1',CX);axis.setAttribute('x2',CX);sideG.setAttribute('x',CX-14);sideC.setAttribute('x',CX+14);
+  order.forEach((ai,r)=>{const v=D.pob[esp][Y][ai],t=v.reduce((a,b)=>a+b,0),k=K;
+    let x=CX-(v[0]+v[1])*k;
+    v.forEach((n,j)=>{const w=n*k;segs[r][j].setAttribute('x',x);segs[r][j].setAttribute('width',Math.max(0,w));
+      const p=pcts[r][j];p.setAttribute('x',x+w/2);p.textContent=w>(NARROW?40:30)?pc(n/t*100):'';x+=w});
+    const b=base[ai],bt=b.reduce((a,c)=>a+c,0);
+    ghosts[r].setAttribute('x',CX-(b[0]+b[1])*k);ghosts[r].setAttribute('width',bt*k);ghosts[r].style.display=yi?'':'none';
+    labs[r].textContent=`${fmt(t)} persoas`});}
+
+// --- liñas por idade ---
+const ln=document.getElementById('ln'),el=mk(ln);
+const LW=NARROW?600:1000,LH=NARROW?380:300;ln.setAttribute('viewBox',`0 0 ${LW} ${LH}`);
+const L=50,R=NARROW?430:860,T=14,B=LH-40,sx=i=>L+i*(R-L)/(ANOS.length-1),sy=v=>B-v/100*(B-T);
+const SH=['#a9c4ea','#7fa8de','#5f97dc','#3a72b8','#1d4f91'];
+function lines(){ln.replaceChildren();
+  const g=el('g',{class:'gl'});for(let v=0;v<=100;v+=20){el('line',{x1:L,x2:R,y1:sy(v),y2:sy(v)},g);const t=el('text',{class:'ax',x:L-6,y:sy(v)+4,'text-anchor':'end'});t.textContent=v+' %'}
+  ANOS.forEach((a,i)=>{const t=el('text',{class:'ax',x:sx(i),y:B+18,'text-anchor':'middle'});t.textContent=a});
+  const labs=[];
+  ID.forEach((nm,ai)=>{const vals=ANOS.map(a=>{const v=D.pob[esp][a][ai],t=v.reduce((x,y)=>x+y,0);return (v[0]+v[1])/t*100});
+    el('path',{class:'ln',stroke:SH[ai],d:vals.map((v,i)=>(i?'L':'M')+sx(i)+','+sy(v)).join('')});
+    vals.forEach((v,i)=>{const c=el('circle',{cx:sx(i),cy:sy(v),r:4,fill:SH[ai]});c.addEventListener('pointermove',ev=>show(ev,`<b>${nm} · ${ANOS[i]}</b>${pc(v)} fala sempre ou máis en galego`));c.addEventListener('pointerleave',hide)});
+    labs.push([sy(vals[vals.length-1])+4,`${nm.replace('De ','').replace(' anos','')} · ${pc(vals[vals.length-1])}`])});
+  labs.sort((a,b)=>a[0]-b[0]);for(let i=1;i<labs.length;i++)labs[i][0]=Math.max(labs[i][0],labs[i-1][0]+15);
+  labs.forEach(([y,t])=>{const e=el('text',{class:'dl',x:R+8,y,fill:'var(--ink)'});e.textContent=t})}
+
+// --- transmisión ---
+const tr=document.getElementById('tr'),et=mk(tr);
+function trans(){tr.replaceChildren();const Y=D.nai[ANOS[yi]]?ANOS[yi]:ANOS[ANOS.length-1],M=D.nai[Y];
+  const VW=NARROW?600:1000,TL=NARROW?10:260,TW=NARROW?580:700,RH2=NARROW?34:36;
+  const h=et('text',{class:'tr',x:NARROW?10:TL,y:16});h.textContent=`Lingua habitual das persoas segundo a da súa nai (${Y})`;
+  const Y0=NARROW?58:34;
+  M.forEach((row,mi)=>{const y=Y0+mi*(RH2+(NARROW?26:12));
+    const t=et('text',{class:'tr',x:NARROW?10:TL-10,y:NARROW?y-6:y+RH2/2+5,'text-anchor':NARROW?'start':'end'});t.textContent=`Nai: ${LS[mi].toLowerCase()}`;
+    const yy=NARROW?y:y;let x=TL;const tot=row.reduce((a,b)=>a+b,0)||1;
+    row.forEach((v,k)=>{const w=v/tot*TW;const r=et('rect',{x,y:yy,width:Math.max(0,w-1),height:RH2,fill:COL[k]});
+      r.addEventListener('pointermove',ev=>show(ev,`<b>Nai: ${LS[mi].toLowerCase()}</b>Fillos: ${LS[k].toLowerCase()} · ${pc(v)}`));r.addEventListener('pointerleave',hide);
+      if(w>34){const p=et('text',{class:'pct',x:x+w/2,y:yy+RH2/2+5});p.textContent=pc(v)}x+=w})});
+  tr.setAttribute('viewBox',`0 0 ${VW} ${Y0+4*(RH2+(NARROW?26:12))+6}`)}
+
+// --- cifras ---
+function facts(){const Y=ANOS[yi],G=D.pob.Galicia,s=(y,ai)=>{const v=G[y][ai];return v[0]/v.reduce((a,b)=>a+b,0)*100};
+  const M=D.nai[Y]||D.nai[ANOS[ANOS.length-1]];
+  document.getElementById('facts').innerHTML=[
+   [pc(s(Y,0)),`dos nenos e nenas de 5 a 14 anos falaban sempre en galego en ${Y}. Entre os maiores de 65, o ${pc(s(Y,4))}.`],
+   [pc(s(ANOS[0],0)),`era a porcentaxe de nenos que falaban sempre en galego en ${ANOS[0]}. Hoxe esa xeración ten entre 25 e 34 anos.`],
+   [pc(M[0][0]),`dos fillos de nais que falan sempre galego falan eles tamén sempre galego. Dos de nais que falan sempre castelán, o ${M[3][0].toLocaleString('gl-ES')} %.`]
+  ].map(([v,l])=>`<div class="fact"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('')}
+
+// --- táboa ---
+function table(){document.getElementById('tbl').innerHTML='<thead><tr><th>Idade</th>'+ANOS.map(a=>`<th>${a}</th>`).join('')+'</tr></thead><tbody>'+
+  ID.map((nm,ai)=>LG.map((l,k)=>`<tr><td>${nm} · ${LS[k].toLowerCase()}</td>${ANOS.map(a=>{const v=D.pob[esp][a][ai];return `<td>${(v[k]/v.reduce((x,y)=>x+y,0)*100).toLocaleString('gl-ES',{maximumFractionDigits:1})}</td>`}).join('')}</tr>`).join('')).join('')+'</tbody>'}
+
+// --- controis ---
+document.getElementById('legend').innerHTML=LS.map((l,k)=>`<span><i style="background:${COL[k]}"></i>${l}</span>`).join('')+'<span><i style="background:none;border:1.5px dashed var(--ink)"></i>Pirámide de 2003</span>';
+const tA=document.getElementById('tAno'),tE=document.getElementById('tEsp');
+tA.innerHTML=ANOS.map((a,i)=>`<button data-i="${i}" aria-pressed="${i===yi}">${a}</button>`).join('');
+tE.innerHTML=Object.keys(D.pob).map(e=>`<button data-e="${e}" aria-pressed="${e===esp}">${e}</button>`).join('');
+const setYear=i=>{yi=i;tA.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.i===i));pyramid();trans();facts()};
+tA.querySelectorAll('button').forEach(b=>b.onclick=()=>{stop();setYear(+b.dataset.i)});
+tE.querySelectorAll('button').forEach(b=>b.onclick=()=>{esp=b.dataset.e;tE.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));pyramid();lines();table()});
+const play=document.getElementById('play');let tm=0,playing=false;
+function stop(){playing=false;clearTimeout(tm);play.textContent='▶ 2003 → '+ANOS[ANOS.length-1]}
+play.onclick=()=>{if(playing){stop();return}playing=true;play.textContent='■ Parar';let i=0;const st=()=>{setYear(i);i++;if(i<ANOS.length)tm=setTimeout(st,1300);else stop()};st()};
+setYear(yi);lines();table();
+</script>
+</body>
+</html>
