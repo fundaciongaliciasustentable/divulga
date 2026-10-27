@@ -5,11 +5,12 @@ pensado para `divulga.galiciasustentable.org`. Sen build de framework: o que
 hai na raíz é o que se publica.
 
 A portada (`index.html`) é deliberadamente **allea á estética institucional**
-da web da FGS: lenzo crema, tipografía editorial, sen barra verde nin botóns
-de cor — un escaparate que deixa falar as propias pezas (si leva unha banda
-con foto, `assets/img/heroe-1200/2400.jpg`, por riba do filtro). A marca FGS
-queda como sutileza no corpo (símbolo pequeno na cabeceira) pero é ben visible
-no pé, co logotipo estendido. A portada non amosa datas de publicación: a
+da web da FGS na grella de pezas: lenzo crema, tipografía editorial, sen
+barra verde nin botóns de cor — deixa falar as propias pezas. A banda de
+enriba (`assets/img/heroe-1200/2400.jpg` con degradado, logo branco, «Divulga»
+e subtítulo) si segue o tratamento institucional, igual ca na vella portada e
+ca `og-divulga.jpg`. A marca FGS queda tamén ben visible no pé, co logotipo
+estendido. A portada non amosa datas de publicación: a
 `data` do manifesto só ordena as tarxetas, para non confundir esa data coa
 temporalidade propia de cada peza (que pode cubrir anos ou décadas distintos).
 Cada peza en `v/<slug>/`
