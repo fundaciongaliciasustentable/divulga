@@ -1,0 +1,448 @@
+{
+  "sectors": [
+    {
+      "k": "transporte",
+      "n": "Transporte",
+      "v": 5.03,
+      "c": "--c-transporte"
+    },
+    {
+      "k": "agro",
+      "n": "Agricultura e gandaría",
+      "v": 3.69,
+      "c": "--c-agro"
+    },
+    {
+      "k": "edificios",
+      "n": "Edificios e sector primario",
+      "v": 3.02,
+      "c": "--c-edificios"
+    },
+    {
+      "k": "industria",
+      "n": "Industria",
+      "v": 2.44,
+      "c": "--c-industria"
+    },
+    {
+      "k": "enerxia",
+      "n": "Enerxía (térmicas e refino)",
+      "v": 1.84,
+      "c": "--c-enerxia"
+    },
+    {
+      "k": "residuos",
+      "n": "Residuos",
+      "v": 0.58,
+      "c": "--c-residuos"
+    }
+  ],
+  "sink": 9.58,
+  "gross": 16.59,
+  "net": 7.02,
+  "roadmap": [
+    {
+      "sector": "Transporte",
+      "c": "--c-transporte",
+      "meta": "<b>5,0 Mt</b> · 30 % do total · +56 % desde 1990",
+      "rows": [
+        {
+          "w": "Turismos eléctricos, cota de vendas",
+          "tag": "aumentar",
+          "t": "pct",
+          "v": [
+            11.7,
+            60,
+            100
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "UE: sen venda de coches de combustión desde 2035"
+        },
+        {
+          "w": "Eléctricos en circulación",
+          "tag": "aumentar",
+          "t": "num",
+          "v": [
+            null,
+            300000,
+            1000000
+          ],
+          "s": [
+            "sen dato oficial público",
+            "",
+            ""
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "5,6 % dos 5,5 M do PNIEC 2030"
+        },
+        {
+          "w": "Puntos de recarga públicos",
+          "tag": "aumentar",
+          "t": "num",
+          "v": [
+            2040,
+            10000,
+            25000
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "65 % hoxe son lentos (<22 kW)"
+        },
+        {
+          "w": "Emisións do sector",
+          "t": "mt",
+          "v": [
+            5.03,
+            4,
+            1
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "transporte público rural á demanda e mercadorías por tren"
+        }
+      ]
+    },
+    {
+      "sector": "Electricidade",
+      "c": "--c-enerxia",
+      "meta": "<b>1,8 Mt</b> en enerxía · térmicas 0,8 + refino 1,0",
+      "rows": [
+        {
+          "w": "Potencia renovable",
+          "tag": "aumentar",
+          "t": "pct",
+          "v": [
+            82,
+            90,
+            100
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "REE, peche de 2025"
+        },
+        {
+          "w": "Eólica terrestre",
+          "tag": "repotenciar",
+          "t": "gw",
+          "v": [
+            4,
+            5.5,
+            7
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "substituír muíños vellos por máis potentes"
+        },
+        {
+          "w": "Solar fotovoltaica",
+          "tag": "aumentar",
+          "t": "gw",
+          "v": [
+            0.27,
+            1.5,
+            3
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "tellados, autoconsumo e comunidades enerxéticas"
+        },
+        {
+          "w": "Eólica mariña",
+          "tag": "construír",
+          "t": "gw",
+          "v": [
+            0,
+            0,
+            1.5
+          ],
+          "s": [
+            "ningunha",
+            "en tramitación",
+            ""
+          ],
+          "est": [
+            0,
+            0,
+            1
+          ],
+          "note": "condicionada á pesca e ao marisqueo"
+        },
+        {
+          "w": "Ciclos combinados de gas",
+          "tag": "reducir",
+          "t": "text",
+          "v": [
+            "As Pontes e Sabón",
+            "só respaldo",
+            "pechados ou con CO₂ capturado"
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "sector": "Edificios e sector primario",
+      "c": "--c-edificios",
+      "meta": "<b>3,0 Mt</b> · vivendas, comercio, servizos, pesca e maquinaria agraria",
+      "rows": [
+        {
+          "w": "Vivendas rehabilitadas enerxeticamente",
+          "tag": "aumentar",
+          "t": "num",
+          "v": [
+            null,
+            77000,
+            250000
+          ],
+          "s": [
+            "poucas e lentas",
+            "",
+            ""
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "5,6 % do 1,38 M de vivendas do PNIEC"
+        },
+        {
+          "w": "Calefacción con gasóleo",
+          "tag": "substituír",
+          "t": "text",
+          "v": [
+            "maioritaria no rural",
+            "−50 %",
+            "residual"
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "por bomba de calor ou biomasa local"
+        },
+        {
+          "w": "Emisións do sector",
+          "t": "mt",
+          "v": [
+            3.02,
+            2.3,
+            0.6
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "sector": "Industria",
+      "c": "--c-industria",
+      "meta": "<b>2,4 Mt</b> · aluminio, aceiro, cemento, química, papel",
+      "rows": [
+        {
+          "w": "Refinaría da Coruña",
+          "tag": "transformar",
+          "t": "mt",
+          "v": [
+            1.01,
+            0.8,
+            0.2
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "a instalación que máis emite en Galicia"
+        },
+        {
+          "w": "Hidróxeno renovable",
+          "tag": "construír",
+          "t": "text",
+          "v": [
+            "proxectos",
+            "primeiros electrolizadores",
+            "só onde non hai alternativa"
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "w": "Emisións da industria",
+          "t": "mt",
+          "v": [
+            2.44,
+            1.9,
+            0.6
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "electrificar calor e cambiar materias primas"
+        }
+      ]
+    },
+    {
+      "sector": "Agricultura e gandaría",
+      "c": "--c-agro",
+      "meta": "<b>3,7 Mt</b> · +18 % desde 1990 · metano das vacas e dos xurros",
+      "rows": [
+        {
+          "w": "Xurros en biodixestor ou balsa cuberta",
+          "tag": "aumentar",
+          "t": "pct",
+          "v": [
+            null,
+            30,
+            70
+          ],
+          "s": [
+            "moi poucos",
+            "",
+            ""
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "o biogás substitúe gas fósil"
+        },
+        {
+          "w": "Emisións do sector",
+          "t": "mt",
+          "v": [
+            3.69,
+            3.3,
+            2.6
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "non chegará a cero: é a emisión residual"
+        }
+      ]
+    },
+    {
+      "sector": "Residuos",
+      "c": "--c-residuos",
+      "meta": "<b>0,6 Mt</b> · metano dos vertedoiros",
+      "rows": [
+        {
+          "w": "Emisións do sector",
+          "t": "mt",
+          "v": [
+            0.58,
+            0.45,
+            0.25
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "compostaxe e recollida separada da materia orgánica"
+        }
+      ]
+    },
+    {
+      "sector": "Sumidoiro: monte e solos",
+      "c": "--c-sumidoiro",
+      "meta": "<b>−9,6 Mt</b> · 1,5 M ha de monte arborado",
+      "rows": [
+        {
+          "w": "Absorción anual",
+          "tag": "manter",
+          "t": "mt",
+          "v": [
+            9.58,
+            9,
+            7
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "perderá forza a medida que o monte envelleza"
+        },
+        {
+          "w": "Lumes",
+          "tag": "reducir",
+          "t": "text",
+          "v": [
+            "≈9,6 Mt en 2025",
+            "menos superficie queimada",
+            "paisaxe en mosaico"
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "cada gran lume borra un ano de absorción"
+        }
+      ]
+    },
+    {
+      "sector": "Balance",
+      "c": "--c-2030",
+      "meta": "obxectivos da Lei 1/2026 do clima de Galicia",
+      "rows": [
+        {
+          "w": "Emisións netas",
+          "t": "mt",
+          "v": [
+            7.02,
+            4.3,
+            0
+          ],
+          "est": [
+            0,
+            1,
+            1
+          ],
+          "note": "lei: ≤5,9 Mt en 2030 e cero en 2040"
+        }
+      ]
+    }
+  ]
+}

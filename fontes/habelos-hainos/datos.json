@@ -1,0 +1,410 @@
+[
+  {
+    "cat": "clima",
+    "v": "falso",
+    "big": true,
+    "mito": "En Galicia chove sempre.",
+    "fig": "811 mm",
+    "figl": "de choiva ao ano en Ourense, menos da metade que en Santiago (1.787 mm)",
+    "short": "Galicia ten varios climas. Ourense suma 2.054 horas de sol e máximas medias de 30 °C en xullo e agosto.",
+    "txt": [
+      "Nas normais climatolóxicas de AEMET (1981–2010), Santiago de Compostela rexistra 1.787 mm anuais e 140 días de choiva. Ourense queda en 811 mm e 97 días, con 2.054 horas de sol ao ano.",
+      "Entre a fachada atlántica e os vales do interior hai diferenzas maiores ca entre moitas rexións europeas. Tratar Galicia como un bloque chuvioso esconde secas estivais e calores intensas no interior."
+    ],
+    "q": "Como cambiaría a planificación do rego, dos incendios ou do turismo se pensásemos en «as Galicias» climáticas?",
+    "src": [
+      [
+        "AEMET, valores normais Santiago Aeroporto 1981–2010",
+        "https://www.aemet.es/gl/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=1428"
+      ],
+      [
+        "AEMET, valores normais Ourense 1981–2010",
+        "https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=1690A"
+      ]
+    ],
+    "id": "chove"
+  },
+  {
+    "cat": "clima",
+    "v": "falso",
+    "mito": "Aquí sobra auga: en Galicia non hai secas.",
+    "fig": "−48 %",
+    "figl": "caudal dos ríos de Galicia-Costa en abril de 2022 respecto do normal",
+    "short": "En 2022 toda a demarcación Galicia-Costa estivo en prealerta por seca, e Vigo, Baiona e Nigrán pasaron a medidas de alerta.",
+    "txt": [
+      "En abril de 2022 a Xunta estendeu a prealerta por seca a toda a demarcación Galicia-Costa. Os caudais dese mes estiveron un 48 % por debaixo do habitual, e en setembro os sistemas Zamáns e Baíña, que abastecen Nigrán, Baiona e parte de Vigo, pasaron a medidas de alerta.",
+      "Houbo novas prealertas en 2023, 2024 e 2025. Chover moito no ano non garante auga no verán, cando a demanda sobe e os ríos baixan."
+    ],
+    "q": "Están os concellos galegos preparados para veráns máis secos con máis demanda turística?",
+    "src": [
+      [
+        "Xunta: prealerta por seca en toda Galicia-Costa (2022)",
+        "https://www.xunta.gal/gl/hemeroteca/-/nova/145370/xunta-amplia-declaracion-prealerta-por-seca-toda-conca-galicia-costa-como-medida"
+      ],
+      [
+        "Xunta: alerta nos sistemas Zamáns e Baíña (2022)",
+        "https://www.xunta.gal/hemeroteca/-/nova/156644/oficina-tecnica-seca-eleva-situacion-alerta-por-escaseza-sistemas-zamans-baina"
+      ]
+    ],
+    "id": "seca"
+  },
+  {
+    "cat": "clima",
+    "v": "falso",
+    "mito": "O cambio climático notarase aquí dentro de moitos anos.",
+    "fig": "+0,2 °C",
+    "figl": "por década: ritmo de quecemento en Galicia segundo MeteoGalicia",
+    "short": "2022, 2023 e 2024 foron os tres anos máis cálidos en Galicia desde que hai rexistros, en 1961.",
+    "txt": [
+      "MeteoGalicia estima unha tendencia de quecemento de 0,2 °C por década, algo inferior á media estatal de 0,25 °C. O ano 2024, cunha media de 14,7 °C, foi o terceiro máis cálido desde 1961, só por detrás de 2022 e 2023.",
+      "O cambio xa se mide en temperaturas, avisos meteorolóxicos e episodios de seca."
+    ],
+    "q": "Que sectores galegos dependen máis de que o clima siga como era: o viño, o marisqueo, o leite?",
+    "src": [
+      [
+        "Xunta / MeteoGalicia: 2024, terceiro ano máis cálido",
+        "https://www.xunta.gal/es/notas-de-prensa/-/nova/008938/galicia-registro-2024-tercer-ano-mas-calido-las-ultimas-seis-decadas"
+      ],
+      [
+        "elDiario.es: balance meteorolóxico 2025 (declaracións de MeteoGalicia)",
+        "https://www.eldiario.es/galicia/galicia-paso-mitad-dias-2025-aviso-meteorologico-activo_1_12921596.html"
+      ]
+    ],
+    "id": "quecemento"
+  },
+  {
+    "cat": "monte",
+    "v": "falso",
+    "big": true,
+    "mito": "Os incendios son cousa de pirómanos.",
+    "fig": "6,5 %",
+    "figl": "dos lumes en Galicia atribuíbles a pirómanos, segundo investigación da Universidade de Vigo",
+    "short": "A maioría dos lumes son intencionados, pero obra de incendiarios con motivos ligados ao uso do territorio, sen trastorno psiquiátrico.",
+    "txt": [
+      "A Unidade de Investigación de Incendios Forestais calcula que entre o 60 % e o 70 % dos lumes son provocados, e preto do 80 % en épocas de risco. A investigadora María Calviño (UVigo) estima que os pirómanos, persoas cun trastorno, explican arredor do 6,5 %.",
+      "Os motivos máis comúns son conflitos veciñais, queimas agrícolas ou disputas sobre o uso da terra. Falar de pirómanos desvía a atención da xestión do monte e dos conflitos rurais."
+    ],
+    "q": "Se o lume ten causas sociais, que parte da prevención debería ser mediación e ordenación do territorio?",
+    "src": [
+      [
+        "Ecoticias: incendios provocados en Galicia (declaracións da UIFO)",
+        "https://www.ecoticias.com/?p=235872"
+      ],
+      [
+        "El Salto: datos de M. Calviño (UVigo) sobre pirómanos",
+        "https://www.elsaltodiario.com/incendios/pp-agita-mito-pirómano-territorios-arden-gobierna-derecha"
+      ]
+    ],
+    "id": "piromanos"
+  },
+  {
+    "cat": "monte",
+    "v": "falso",
+    "mito": "O monte galego é público.",
+    "fig": "98 %",
+    "figl": "da propiedade forestal galega é privada",
+    "short": "Arredor de 3.000 comunidades de montes veciñais xestionan máis de 700.000 ha; o resto pertence a máis de 675.000 familias.",
+    "txt": [
+      "Segundo o Decreto 52/2014 da Xunta, o 98 % do monte galego é de propiedade privada. Inclúe uns 3.000 montes veciñais en man común, unha forma colectiva singular en Europa con máis de 700.000 hectáreas, e 1,3 millóns de hectáreas repartidas entre máis de 675.000 familias.",
+      "Calquera política forestal pasa por convencer miles de propietarios, non por ordenar unha administración."
+    ],
+    "q": "Como se coordina a xestión dun monte repartido entre centos de miles de persoas propietarias?",
+    "src": [
+      [
+        "Decreto 52/2014, Xunta de Galicia",
+        "https://ovmediorural.xunta.gal/sites/default/files/auxiliar/decreto_52_2014.pdf"
+      ]
+    ],
+    "id": "monte-publico"
+  },
+  {
+    "cat": "monte",
+    "v": "falso",
+    "mito": "O eucalipto sempre formou parte da paisaxe galega.",
+    "fig": "×3",
+    "figl": "superficie con eucalipto: de 131.181 ha (1972–73) a 419.051 ha (2023)",
+    "short": "Chegou de Australia no século XIX e triplicou a súa superficie en medio século.",
+    "txt": [
+      "O eucalipto é unha especie exótica introducida en Galicia no século XIX. O Inventario Forestal Nacional de 1972–73 situábao en 131.181 ha; o Inventario Forestal Continuo de Galicia de 2023 recolle 419.051 ha.",
+      "A súa expansión explica boa parte da renda forestal galega e tamén da perda de bosque autóctono, polo que a Xunta mantén unha moratoria a novas plantacións."
+    ],
+    "q": "Que modelo forestal queremos para 2050, e quen o decide?",
+    "src": [
+      [
+        "elDiario.es: evolución da superficie de eucalipto",
+        "https://www.eldiario.es/galicia/superficie-eucalipto-disparado-galicia-comienzos_1_3316310.html"
+      ],
+      [
+        "Greenpeace: declaración pola moratoria do eucalipto (2025), con datos do IFCG 2023",
+        "https://es.greenpeace.org/es/wp-content/uploads/sites/3/2025/04/Declaracion-por-la-prolongacion-de-la-moratoria-al-eucalipto-Galicia-23abril2025.docx.pdf"
+      ]
+    ],
+    "id": "eucalipto"
+  },
+  {
+    "cat": "monte",
+    "v": "medias",
+    "mito": "Galicia é tan verde que está ben protexida.",
+    "fig": "≈12 %",
+    "figl": "do territorio galego en Rede Natura, fronte ao 27 % de media en España",
+    "short": "Verde non equivale a protexido: Galicia está entre as comunidades con menos superficie en Rede Natura 2000.",
+    "txt": [
+      "Os lugares de importancia comunitaria (LIC) da Rede Natura ocupan o 11,7 % da superficie terrestre de Galicia. En España, a Rede Natura terrestre cubre arredor do 27 %. Xa en 2008 o Anuario Forestal sinalaba Galicia como a única comunidade con menos dun 20 % de superficie protexida.",
+      "Unha paisaxe verde pode ser unha plantación, unha pradaría intensiva ou un bosque maduro. A cor non mide a biodiversidade."
+    ],
+    "q": "Que espazos valiosos de Galicia quedan fóra de calquera figura de protección?",
+    "src": [
+      [
+        "DOG 2012: Rede Natura en Galicia",
+        "https://www.xunta.gal/dog/Publicados/2012/20121005/AnuncioCA02-011012-0008_gl.html"
+      ],
+      [
+        "MAPA, Anuario de Estatística 2017: Rede Natura por comunidade",
+        "https://www.mapa.gob.es/estadistica/pags/anuario/2017/CAPITULOSPDF/CAPITULO12/pdfc12_6.1.1.pdf"
+      ],
+      [
+        "MITECO, Anuario Forestal 2008",
+        "https://www.miteco.gob.es/content/dam/miteco/es/biodiversidad/estadisticas/4_2008_tcm30-132250.pdf"
+      ]
+    ],
+    "id": "proteccion"
+  },
+  {
+    "cat": "monte",
+    "v": "falso",
+    "mito": "A herba da pampa é só unha planta decorativa.",
+    "fig": "800.000",
+    "figl": "sementes pode producir unha soa planta femia",
+    "short": "Está no Catálogo Español de Especies Exóticas Invasoras desde 2013 e esténdese por cunetas, polígonos e beiras de ríos.",
+    "txt": [
+      "Todas as especies do xénero Cortaderia figuran no Catálogo Español de Especies Exóticas Invasoras (Real Decreto 630/2013), o que prohibe a súa venda e plantación. A Cornixa Cantábrica e Galicia están entre as zonas máis afectadas.",
+      "O vento dispersa as sementes a longa distancia, así que cada plumacho de xardín pode orixinar focos novos a quilómetros."
+    ],
+    "q": "Cantas plantas invasoras seguimos plantando por descoñecemento?",
+    "src": [
+      [
+        "MITECO: ficha de Cortaderia spp.",
+        "https://www.miteco.gob.es/es/biodiversidad/temas/conservacion-de-especies/mtjcortaderiaactualizada_tcm30-498069.pdf"
+      ],
+      [
+        "EPPO Global Database: Cortaderia selloana",
+        "https://gd.eppo.int/taxon/CDTSE/distribution/ES"
+      ]
+    ],
+    "id": "pampa"
+  },
+  {
+    "cat": "enerxia",
+    "v": "medias",
+    "big": true,
+    "mito": "Galicia é unha potencia renovable: vive de enerxía limpa.",
+    "fig": "85 % / 26 %",
+    "figl": "renovable na electricidade xerada (2024) fronte ao conxunto da enerxía primaria",
+    "short": "A electricidade é case toda renovable, pero o transporte, a industria e a calefacción seguen dependendo de combustibles fósiles importados.",
+    "txt": [
+      "Segundo o INEGA, o 85,2 % da electricidade xerada en Galicia en 2024 foi renovable, sobre todo hidráulica e eólica. Mais a electricidade é só unha parte da enerxía que usamos.",
+      "O informe de Greenpeace e o Observatorio Galego de Acción Climática (2023) calcula que só o 25,8 % da enerxía primaria empregada en Galicia é renovable, e que arredor de tres cuartas partes dos recursos enerxéticos son importados."
+    ],
+    "q": "Se a electricidade xa é limpa, como electrificamos o transporte e a calor?",
+    "src": [
+      [
+        "INEGA: evolución da xeración de electricidade (2026)",
+        "https://www.inega.gal/sites/default/files/publicacions/20260331_evolucion_xeracion_electricidade.pdf"
+      ],
+      [
+        "Energías Renovables: informe Greenpeace e OGACLI (2023)",
+        "https://www.energias-renovables.com/panorama/greenpeace-desmonta-el-bulo-de-la-20231212"
+      ]
+    ],
+    "id": "renovable"
+  },
+  {
+    "cat": "enerxia",
+    "v": "falso",
+    "mito": "Aquí non compensan as placas solares: non hai sol.",
+    "fig": "> Alemaña",
+    "figl": "radiación solar en Galicia segundo o Atlas de Radiación Solar de MeteoGalicia",
+    "short": "Galicia recibe máis radiación ca Alemaña, un dos países europeos con máis fotovoltaica instalada.",
+    "txt": [
+      "O Atlas de Radiación Solar elaborado por MeteoGalicia, con 23 anos de datos de satélite e 75 estacións, conclúe que Galicia ten un índice de radiación maior que o de Alemaña. As Rías Baixas e o interior de Ourense son as zonas con máis potencial.",
+      "O autoconsumo en tellados, naves e explotacións agrarias aproveita ese recurso sen ocupar solo."
+    ],
+    "q": "Cantos tellados públicos dos 313 concellos galegos teñen xa placas?",
+    "src": [
+      [
+        "Energías Renovables: Galicia ten sol para ser unha potencia",
+        "https://www.energias-renovables.com/fotovoltaica/galicia-tiene-sol-para-ser-una-potencia"
+      ],
+      [
+        "AEMET: horas de sol en Ourense",
+        "https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=1690A"
+      ]
+    ],
+    "id": "solar"
+  },
+  {
+    "cat": "enerxia",
+    "v": "falso",
+    "mito": "Contando a batería, o coche eléctrico contamina máis.",
+    "fig": "−66 %",
+    "figl": "emisións no ciclo de vida dun eléctrico medio en Europa fronte a un de gasolina (mínimo da estimación)",
+    "short": "Incluída a fabricación da batería, o eléctrico emite entre un 66 % e un 69 % menos ao longo da súa vida útil.",
+    "txt": [
+      "O estudo do ICCT (2021) compara o ciclo de vida completo, desde a fabricación ata o uso. Un eléctrico medio matriculado en Europa emite entre un 66 % e un 69 % menos gases de efecto invernadoiro ca un de gasolina equivalente.",
+      "Cunha rede tan renovable como a galega, a vantaxe aquí é aínda maior. O coche máis sustentable segue sendo o que non fai falta usar."
+    ],
+    "q": "Que alternativas ao coche privado existen hoxe no rural galego?",
+    "src": [
+      [
+        "ICCT: comparación global do ciclo de vida de coches (2021)",
+        "https://theicct.org/publication/a-global-comparison-of-the-life-cycle-greenhouse-gas-emissions-of-combustion-engine-and-electric-passenger-cars/"
+      ]
+    ],
+    "id": "electrico"
+  },
+  {
+    "cat": "mar",
+    "v": "medias",
+    "mito": "A acuicultura sempre contamina o mar.",
+    "fig": "> 95 %",
+    "figl": "da acuicultura mariña galega (191.219 t en 2024) é mexillón en batea",
+    "short": "O mexillón de batea non leva pensos: aliméntase filtrando a auga da ría. A súa sorte depende da calidade do mar.",
+    "txt": [
+      "En 2024 a acuicultura mariña galega produciu 191.219 toneladas, e o mexillón supuxo máis do 95 %. Cultívase en arredor de 3.300 bateas e non necesita pensos nin fármacos, porque se alimenta do fitoplancto da ría.",
+      "Outras acuiculturas, como a de peixe en gaiola, teñen impactos diferentes. E o mexillón é moi sensible á contaminación e ás mareas vermellas: depende dunha ría sa."
+    ],
+    "q": "Que relación hai entre o saneamento dos concellos costeiros e o futuro do mexillón?",
+    "src": [
+      [
+        "Mercasa: alimentación en Galicia, datos IGE 2024",
+        "https://www.mercasa.es/wp-content/uploads/2026/02/galicia.pdf"
+      ],
+      [
+        "Consumer: entrevista a Uxío Labarta (IIM-CSIC)",
+        "https://www.consumer.es/seguridad-alimentaria/uxio-labarta-instituto-de-investigaciones-marinas-de-vigo.html"
+      ]
+    ],
+    "id": "acuicultura"
+  },
+  {
+    "cat": "mar",
+    "v": "falso",
+    "mito": "A gandaría de leite galega é residual.",
+    "fig": "41 %",
+    "figl": "do leite de vaca producido en España sae de Galicia (2024)",
+    "short": "Galicia produciu en 2024 máis de 3 millóns de toneladas de leite, a primeira comunidade de España con moita diferenza.",
+    "txt": [
+      "O informe de EY sobre o sector lácteo galego sitúa a produción en 3,07 millóns de toneladas en 2024, o 41 % do total español, fronte ao 39 % de 2015.",
+      "Producir máis con menos granxas tamén concentra impactos: xurros, dependencia de pensos importados e presión sobre as terras. O reto é que o sector siga sendo viable e sustentable no territorio."
+    ],
+    "q": "Como se reparte o valor do leite entre granxas, industria e distribución?",
+    "src": [
+      [
+        "EY: informe do sector lácteo en Galicia (2026)",
+        "https://www.ey.com/content/dam/ey-unified-site/ey-com/es-es/insights/government-public-sector/documents/ey-informe-sector-lacteo-galicia2026.pdf"
+      ],
+      [
+        "Xunta: importancia da produción láctea",
+        "https://www.xunta.gal/notas-de-prensa/-/nova/015063/medio-rural-salienta-importancia-producion-industria-lactea-sector-primario-galego"
+      ]
+    ],
+    "id": "leite"
+  },
+  {
+    "cat": "consumo",
+    "v": "medias",
+    "mito": "Comer local é o que máis reduce a pegada da dieta.",
+    "fig": "5–6 %",
+    "figl": "das emisións dos alimentos débense ao transporte, segundo Our World in Data",
+    "short": "O que comemos pesa máis ca de onde vén. O consumo local ten outras vantaxes: renda no rural e circuítos curtos.",
+    "txt": [
+      "Our World in Data, a partir de Poore e Nemecek (2018), estima que o transporte supón un 5–6 % das emisións dos alimentos; a maior parte xérase no cambio de uso do solo e na granxa. Un estudo de 2022 en Nature Food eleva esa cifra ao 19 % ao contar toda a cadea loxística.",
+      "Comprar local segue tendo sentido para a economía rural, pero para o clima conta máis o tipo de alimento e o desperdicio."
+    ],
+    "q": "Como se comunica o valor do produto local sen prometer un beneficio climático que non sempre ten?",
+    "src": [
+      [
+        "Our World in Data: transporte de alimentos",
+        "https://ourworldindata.org/food-transport-by-mode"
+      ],
+      [
+        "Scimex: estudo da Universidade de Sydney en Nature Food (2022)",
+        "https://www.scimex.org/newsfeed/eat-local-food-miles-account-for-almost-20-of-all-food-emissions"
+      ]
+    ],
+    "id": "local"
+  },
+  {
+    "cat": "rural",
+    "v": "falso",
+    "big": true,
+    "mito": "De Galicia só se marcha: aquí xa non vén ninguén.",
+    "fig": "25.738",
+    "figl": "persoas de saldo migratorio positivo en 2023, o segundo máis alto da serie do IGE",
+    "short": "Galicia recibe máis poboación da que perde, aínda que iso non compensa o baixo número de nacementos.",
+    "txt": [
+      "Segundo o IGE, o saldo migratorio galego de 2023 foi de 25.738 persoas, o segundo máis alto da serie. A poboación estranxeira residente acadou o 5,7 % a comezos de 2024. Chegan persoas doutros países e tamén de Madrid, Cataluña ou o País Vasco.",
+      "A chegada concéntrase nas cidades e na costa. O rural interior segue envellecendo, e o saldo natural continúa sendo negativo."
+    ],
+    "q": "Que precisa un concello do interior para que a xente que chega a Galicia queira instalarse nel?",
+    "src": [
+      [
+        "IGE: Indicadores migratorios 2025",
+        "https://www.ige.gal/estatico/html/gl/OperacionsEstruturais/PDF/Indicadores_Migratorios_2025.pdf"
+      ],
+      [
+        "Xunta: balance migratorio 2024",
+        "https://www.xunta.gal/es/notas-de-prensa/-/nova/019759/xunta-destaca-que-galicia-conseguido-mejor-balance-migratorio-historia-con-saldo"
+      ]
+    ],
+    "id": "migracion"
+  },
+  {
+    "cat": "rural",
+    "v": "falso",
+    "mito": "O minifundio é cousa do pasado.",
+    "fig": "0,26 ha",
+    "figl": "tamaño medio dunha parcela rústica galega, fronte a 1,21 ha en España",
+    "short": "Galicia ten case 11 millóns de parcelas rústicas, arredor do 28 % das de España, con só o 6 % da superficie.",
+    "txt": [
+      "En 2024 a superficie rústica galega era de 2,8 millóns de hectáreas repartidas en 10.892.783 parcelas (IGE). A media é dunha cuarta parte de hectárea, e cada titular ten de media 7,7 parcelas.",
+      "A fragmentación encarece a xestión, favorece o abandono e complica a prevención de incendios. Os polígonos agroforestais e as agrupacións de xestión conxunta intentan respostar a iso."
+    ],
+    "q": "Como se poden xestionar xuntas terras que seguen tendo donos distintos?",
+    "src": [
+      [
+        "IGE: Datos básicos, Territorio",
+        "https://www.ige.gal/estatico/html/gl/DatosBasicos/PDF/Territorio.pdf"
+      ],
+      [
+        "Revista Española de Estudios Agrosociales y Pesqueros, n.º 246",
+        "https://www.mapa.gob.es/ministerio/pags/biblioteca/revistas/pdf_REEAP/Pdf_REEAP_r246_61_84.pdf"
+      ]
+    ],
+    "id": "minifundio"
+  },
+  {
+    "cat": "rural",
+    "v": "falso",
+    "mito": "O lobo é un perigo para as persoas.",
+    "fig": "93",
+    "figl": "mandas reprodutoras en Galicia (censo 2021–22), unha poboación estable",
+    "short": "Non constan ataques a persoas en Galicia en décadas. O conflito real é cos danos ao gando.",
+    "txt": [
+      "O censo da Xunta de 2021–2022 estima 93 mandas reprodutoras, fronte a 90 en 2013–2015: a poboación está estable. Cazadores e persoas expertas coinciden en que non hai ataques a persoas rexistrados e en que o lobo evita o contacto humano.",
+      "Os ataques ao gando si son un problema real para moitas explotacións, e a súa prevención e compensación é onde se xoga a convivencia."
+    ],
+    "q": "Que medidas de prevención funcionan mellor para protexer o gando sen eliminar o lobo?",
+    "src": [
+      [
+        "Xunta: censo do lobo 2021–2022",
+        "https://www.xunta.gal/hemeroteca/-/nova/162906/censo-lobo-realizado-pola-xunta-estima-93-mandas-reprodutoras-galicia-confirma"
+      ],
+      [
+        "Xataka: convivencia co lobo nunha aldea galega",
+        "https://www.xataka.com/magnet/pueblo-gallego-esta-empezando-a-convivir-lobos-como-fueran-perros-callejeros-eso-problema"
+      ]
+    ],
+    "id": "lobo"
+  }
+]

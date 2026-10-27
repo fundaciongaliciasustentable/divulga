@@ -39,7 +39,10 @@ def miniatura(libros):
     with tempfile.TemporaryDirectory() as tmp:
         for k, b in enumerate(sel):
             small = Path(tmp) / f"{k}.jpg"
-            subprocess.run(["sips", "-Z", "300", str(OUT / "capas" / b["capa"]), "--out", str(small)],
+            # -Z 220 + compresión moderada: abonda para un mosaico de 600x600
+            # na portada e baixa thumb.svg de ~264 KB a preto de 110 KB.
+            subprocess.run(["sips", "-Z", "220", "-s", "formatOptions", "58",
+                             str(OUT / "capas" / b["capa"]), "--out", str(small)],
                            check=True, capture_output=True)
             data = base64.b64encode(small.read_bytes()).decode()
             x, y = x0 + (k % 3) * (w + gap), -60 + (k // 3) * (h + gap)

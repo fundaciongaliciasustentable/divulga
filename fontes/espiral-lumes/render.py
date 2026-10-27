@@ -44,10 +44,13 @@ track = "".join(
     '<path d="' + "".join(("L" if k else "M") + "%.1f,%.1f" % pos(i, min(k * 6, 365.25)) for k in range(62)) + '"/>'
     for i in range(N))
 dots = []
+# Miniatura: só os lumes >=200 ha (o 19% dos rexistros) abonda para debuxar o
+# mesmo patrón de anos malos — mantén a peza interactiva (JS, __DATA__ arriba)
+# a resolución completa (>=5 ha) e deixa o thumb.svg lixeiro para a portada.
 for i, a in enumerate(d["anos"]):
-    for doy, ha in sorted((p for p in a["d"] if p[1] >= 5), key=lambda p: -p[1]):
+    for doy, ha in sorted((p for p in a["d"] if p[1] >= 200), key=lambda p: -p[1]):
         x, y = pos(i, doy)
-        dots.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{max(.5, .175 * math.sqrt(ha)):.1f}" '
+        dots.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{max(.5, .175 * math.sqrt(ha)):.1f}" '
                     f'fill="{next(c for t, c in RAMP if ha < t)}"/>')
 thumb = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-300 -300 600 600" width="600" height="600">'
          f'<rect x="-300" y="-300" width="600" height="600" fill="#191514"/>'

@@ -21,32 +21,37 @@ a:hover{color:var(--gs-verde-claro)}
 :focus-visible{outline:2px solid var(--gs-verde-claro);outline-offset:3px}
 .inner{max-width:1120px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
 
-/* Cabeceira común (criterios FGS): fondo verde nato, logo extendido branco
-   a 55 px como na navegación da web, un só logo por páxina. */
-.dv-bar{background:var(--gs-verde-nato);color:var(--gs-branco);font-family:var(--gs-font-corpo)}
-.dv-bar .inner{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:16px;flex-wrap:wrap}
-.dv-bar .logo img{height:55px;width:auto}
-.dv-bar .ident{display:flex;align-items:center;gap:18px}
-.dv-bar .sep{width:1px;height:36px;background:rgba(232,239,227,.45)}
-.dv-bar .seccion{font-family:var(--gs-font-display);font-weight:700;font-size:1.375rem;color:var(--gs-branco);text-decoration:none;letter-spacing:.01em}
-.dv-bar .seccion:hover{color:var(--gs-verde-moi-claro);text-decoration:underline;text-underline-offset:.2em}
-.dv-bar .marca{display:flex;align-items:center;gap:12px;color:var(--gs-branco);text-decoration:none}
-.dv-bar .marca svg{width:30px;height:30px}
-.dv-bar .marca svg path{fill:var(--gs-branco)}
-.dv-bar .marca span{font-family:var(--gs-font-display);font-weight:700;font-size:1.25rem;letter-spacing:.01em}
-.dv-bar nav a{color:var(--gs-verde-moi-claro);font-size:.875rem;text-decoration:none}
-.dv-bar nav a:hover{color:var(--gs-branco);text-decoration:underline}
+/* Cabeceira e pé comúns, INTEGRADOS no tema de cada peza: en vez de impoñer
+   un bloque de cor fixo, van transparentes — amosan o fondo e a cor de texto
+   que o propio body da peza xa resolveu (claro ou escuro, cada un o seu) — e
+   só engaden unha liña fina de --line (ou un neutro translúcido onde a peza
+   non o defina). Un só símbolo «gs» por páxina (fill:currentColor, adáptase
+   el só), nunca o logotipo estendido — ese resérvase para portadas e
+   documentos externos. */
+.dv-bar{background:transparent;color:inherit;font-family:var(--gs-font-corpo);border-bottom:1px solid var(--line,rgba(128,128,128,.25))}
+.dv-bar .inner{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:14px;flex-wrap:wrap}
+.dv-bar .marca{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none}
+.dv-bar .marca svg{width:24px;height:24px;flex-shrink:0}
+.dv-bar .marca svg path{fill:currentColor}
+.dv-bar .marca span{font-family:var(--gs-font-display);font-weight:700;font-size:1.15rem;letter-spacing:.01em}
+.dv-bar .marca:hover{opacity:.8}
+.dv-bar nav a{color:var(--muted,inherit);font-size:.8rem;text-decoration:none;letter-spacing:.01em}
+.dv-bar nav a:hover{color:inherit;text-decoration:underline;text-underline-offset:.2em}
 
-/* Pé común (criterios FGS): nome + CIF + web institucional, sen segundo logo */
-.dv-foot{background:var(--gs-verde-nato);color:var(--gs-verde-moi-claro);font-family:var(--gs-font-corpo);font-size:.75rem;line-height:1.5}
-.dv-foot .inner{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;padding-block:20px}
-.dv-foot a{color:var(--gs-verde-moi-claro)}
-.dv-foot a:hover{color:var(--gs-branco)}
+/* Pé común (criterios FGS): símbolo + nome + CIF, licenza e as ligazóns
+   legais que ten que levar calquera sitio da fundación. */
+.dv-foot{background:transparent;color:var(--muted,inherit);font-family:var(--gs-font-corpo);font-size:.75rem;line-height:1.5;border-top:1px solid var(--line,rgba(128,128,128,.25))}
+.dv-foot .inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 24px;padding-block:20px}
+.dv-foot .simbolo{display:flex;align-items:center;gap:8px}
+.dv-foot .simbolo svg{width:15px;height:15px;flex-shrink:0;opacity:.7}
+.dv-foot .simbolo svg path{fill:currentColor}
+.dv-foot .legal{display:flex;flex-wrap:wrap;gap:4px 16px}
+.dv-foot a{color:inherit;text-decoration:none}
+.dv-foot a:hover{text-decoration:underline;text-underline-offset:.2em;opacity:.8}
 @media (max-width:560px){
-  .dv-bar .logo img{height:44px}
-  .dv-bar .ident{gap:12px}
-  .dv-bar .sep{height:28px}
-  .dv-bar .seccion{font-size:1.15rem}
+  .dv-bar .marca svg{width:20px;height:20px}
+  .dv-bar .marca span{font-size:1.05rem}
+  .dv-foot .inner{gap:10px 20px}
 }
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

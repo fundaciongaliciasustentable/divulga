@@ -16,144 +16,180 @@
 <link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap">
-<link rel="stylesheet" href="assets/css/divulga.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 <style>
-/* Portada ao xeito de informationisbeautiful.net: barra branca, frase-manifesto
-   centrada, banda a todo o ancho (aquí a foto da FGS), filtro de temas fixo
-   e grella de tarxetas. Identidade e tokens da FGS. */
-body{background:var(--gs-gris-10)}
+/* Portada-escaparate, á parte da estética institucional (acordado co equipo):
+   lenzo crema, tipografía editorial, sen tarxetas con sombra, sen banda
+   fotográfica, sen botóns verdes. A cor vén das propias pezas (thumbs).
+   A marca FGS queda como sutileza: símbolo pequeno + liña legal no pé. */
+:root{
+  --dv-crema:#F3F1EA; --dv-crema-2:#EAE7DC;
+  --dv-tinta:#1A1A17; --dv-tinta-60:rgba(26,26,23,.6); --dv-tinta-38:rgba(26,26,23,.38);
+  --dv-liña:rgba(26,26,23,.14);
+  --dv-acento:#4a5846; /* verde nato FGS, só en hover/foco: o único fío institucional */
+  --dv-display:'Playfair Display',Georgia,serif;
+  --dv-corpo:'Lato',system-ui,-apple-system,sans-serif;
+  --gutter:max(28px,env(safe-area-inset-left,0px));
+  --gutter-r:max(28px,env(safe-area-inset-right,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--dv-crema);color:var(--dv-tinta);font-family:var(--dv-corpo);line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--dv-acento);outline-offset:3px}
+.inner{max-width:1320px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.tracked{font-family:var(--dv-corpo);font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
 
-.topo{background:var(--gs-branco);border-bottom:1px solid var(--gs-gris-20)}
-.topo .inner{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:10px;flex-wrap:wrap}
-.marca{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--gs-verde-nato)}
-.marca img{height:44px;width:auto}
-.marca .sep{width:1px;height:30px;background:var(--gs-gris-20)}
-.marca b{font-family:var(--gs-font-display);font-weight:700;font-size:1.35rem;letter-spacing:.01em}
-.topo nav{display:flex;gap:4px 20px;flex-wrap:wrap;font-size:.92rem}
-.topo nav a{color:var(--gs-gris-80);text-decoration:none}
-.topo nav a:hover{color:var(--gs-verde-claro);text-decoration:underline}
+/* cabeceira: case invisible, tres bloques, sen barra de cor */
+header.topo{position:sticky;top:0;z-index:20;background:rgba(243,241,234,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+header.topo .inner{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-block:22px 18px}
+.marca-dv{display:flex;flex-direction:column;gap:2px}
+.marca-dv .tracked{color:var(--dv-tinta)}
+.marca-dv .sub{font-size:.68rem;color:var(--dv-tinta-38);letter-spacing:.02em}
+nav.topo-nav{display:flex;gap:22px;padding-top:2px}
+nav.topo-nav a{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dv-tinta-60);font-weight:700}
+nav.topo-nav a:hover{color:var(--dv-acento)}
+.lectura{display:flex;align-items:center;gap:10px;text-align:right}
+.lectura .tracked{color:var(--dv-tinta-38)}
+.lectura .val{font-family:var(--dv-corpo);font-size:.8rem;font-weight:700;color:var(--dv-tinta)}
+.lectura svg{width:22px;height:22px;flex-shrink:0}
+.lectura svg path{fill:var(--dv-tinta-38)}
+@media (max-width:640px){nav.topo-nav{display:none}}
 
-.manifesto{text-align:center;padding-block:clamp(28px,5vw,48px) clamp(24px,4vw,40px)}
-.manifesto h1{font-family:var(--gs-font-display);font-weight:400;color:var(--gs-gris-80);font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.25;margin:0 auto;max-width:30ch;text-wrap:balance}
-.manifesto p{margin:14px auto 0;max-width:52ch;font-size:clamp(1rem,1.6vw,1.15rem);color:var(--gs-gris-80);text-wrap:balance}
-.k1{color:var(--gs-verde-claro)} .k2{color:var(--gs-terra)} .k3{color:var(--gs-azul)} .k4{color:var(--gs-viola)}
-.manifesto p b{font-weight:700}
+/* manifesto curto: unha liña editorial, sen foto institucional */
+.manifesto{padding-block:clamp(28px,7vw,64px) clamp(20px,4vw,36px)}
+.manifesto p.kicker{margin:0 0 10px;color:var(--dv-tinta-38)}
+.manifesto h1{margin:0;font-family:var(--dv-display);font-style:italic;font-weight:400;font-size:clamp(1.6rem,4vw,2.9rem);line-height:1.2;max-width:22ch;color:var(--dv-tinta);text-wrap:balance}
+.manifesto .meta{margin-top:16px;font-size:.78rem;color:var(--dv-tinta-60)}
+.manifesto .meta b{color:var(--dv-tinta);font-weight:700}
 
-.banda{position:relative;isolation:isolate;color:var(--gs-branco);text-align:center;background:var(--gs-negro);overflow:hidden}
-.banda img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 58%;z-index:-2}
-.banda::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,26,23,.62),rgba(74,88,70,.45) 50%,rgba(26,26,23,.62))}
-.banda .inner{padding-block:clamp(36px,6vw,64px)}
-.banda h2{font-family:var(--gs-font-display);font-weight:400;font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.15;margin:0;text-wrap:balance}
-.banda p{margin:10px 0 18px;font-size:clamp(1rem,1.8vw,1.2rem);color:var(--gs-verde-moi-claro)}
-.selos{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;list-style:none;margin:0;padding:0}
-.selos li{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato);font-weight:700;font-size:.82rem;padding:5px 10px;border-radius:var(--gs-radius)}
+/* filtro: liña de texto, non botóns con fondo */
+.filtro{border-top:1px solid var(--dv-liña);border-bottom:1px solid var(--dv-liña);position:sticky;top:69px;z-index:15;background:var(--dv-crema)}
+.filtro .inner{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;padding-block:14px}
+.filtro .rot{color:var(--dv-tinta-38)}
+.tema{font:700 .7rem/1 var(--dv-corpo);letter-spacing:.08em;text-transform:uppercase;background:none;border:0;color:var(--dv-tinta-60);cursor:pointer;padding:5px 0;position:relative}
+.tema::after{content:"";position:absolute;left:0;right:0;bottom:1px;height:1px;background:var(--dv-acento);transform:scaleX(0);transition:transform .2s ease}
+.tema:hover{color:var(--dv-tinta)}
+.tema[aria-pressed="true"]{color:var(--dv-acento)}
+.tema[aria-pressed="true"]::after{transform:scaleX(1)}
 
-.filtro{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(245,245,240,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--gs-gris-20)}
-.filtro .inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;padding-block:12px}
-.filtro .rot{font-weight:700;font-size:.85rem;margin-right:4px}
-.tema{font:400 .85rem var(--gs-font-corpo);background:var(--gs-gris-20);color:var(--gs-gris-80);border:0;border-radius:var(--gs-radius);padding:6px 10px;cursor:pointer}
-.tema:hover{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato)}
-.tema[aria-pressed="true"]{background:var(--gs-verde-nato);color:var(--gs-branco)}
+/* grella de pezas: sen tarxeta, sen sombra — só imaxe + lenda */
+main{padding-block:48px 80px}
+.grella{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 32px}
+@media (max-width:980px){.grella{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.grella{grid-template-columns:1fr;gap:44px}}
+.peza{display:flex;flex-direction:column}
+.peza .linea-sup{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;color:var(--dv-tinta-38);font-size:.68rem;letter-spacing:.1em}
+.peza .num{font-variant-numeric:tabular-nums}
+.peza .marco{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--dv-crema-2)}
+.peza .marco img{width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.peza:hover .marco img{transform:scale(1.045)}
+.peza .cap{margin-top:14px}
+.peza h2{margin:0;font-family:var(--dv-display);font-weight:700;font-size:1.22rem;line-height:1.28;color:var(--dv-tinta);text-wrap:balance}
+.peza:hover h2{color:var(--dv-acento);text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px}
+.peza .entradilla{margin:7px 0 0;font-size:.86rem;line-height:1.5;color:var(--dv-tinta-60);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:46ch}
+.peza .data{display:block;margin-top:9px;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dv-tinta-38)}
+.peza[hidden]{display:none}
+.baleiro{text-align:center;color:var(--dv-tinta-38);font-size:.9rem;padding-block:40px}
 
-main{padding-block:28px 64px}
-.grella{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:22px}
-.tarxeta{background:var(--gs-branco);border-radius:3px;box-shadow:0 1px 3px rgba(26,26,23,.08);transition:box-shadow .2s,transform .2s}
-.tarxeta:hover{box-shadow:0 8px 24px rgba(26,26,23,.14);transform:translateY(-2px)}
-.tarxeta a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
-.tarxeta .img{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--gs-gris-20);border-radius:3px 3px 0 0}
-.tarxeta .img img{width:100%;height:100%;object-fit:cover}
-.sen-img{width:100%;height:100%;background:var(--gs-verde-moi-claro)}
-.tarxeta .txt{display:flex;flex-direction:column;gap:6px;padding:14px 16px 18px}
-.tarxeta .titulo{font-family:var(--gs-font-display);font-weight:700;font-size:1.15rem;line-height:1.25;color:var(--gs-gris-80);text-wrap:balance}
-.tarxeta a:hover .titulo{color:var(--gs-verde-nato);text-decoration:underline;text-underline-offset:.2em}
-.tarxeta .sub{font-size:.85rem;color:var(--gs-gris-50)}
-.tarxeta[hidden]{display:none}
-.baleiro{text-align:center;color:var(--gs-gris-50)}
+/* pé: unha liña legal e un símbolo pequeno — a única marca FGS visible */
+footer.pe{border-top:1px solid var(--dv-liña)}
+footer.pe .inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding-block:26px}
+footer.pe .fgs{display:flex;align-items:center;gap:10px}
+footer.pe svg{width:18px;height:18px;flex-shrink:0}
+footer.pe svg path{fill:var(--dv-tinta-38)}
+footer.pe .fgs span{font-size:.72rem;color:var(--dv-tinta-60)}
+footer.pe nav{display:flex;gap:18px;flex-wrap:wrap}
+footer.pe a{font-size:.72rem;color:var(--dv-tinta-60)}
+footer.pe a:hover{color:var(--dv-acento)}
 
-.sobre{margin-top:64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;border-top:1px solid var(--gs-gris-20);padding-top:32px}
-.sobre h2{font-family:var(--gs-font-display);font-weight:700;color:var(--gs-verde-nato);font-size:1.4rem;margin:0}
-.sobre p{margin:0 0 10px;max-width:62ch}
-@media (max-width:760px){.sobre{grid-template-columns:1fr}.marca img{height:38px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
+
 <header class="topo">
   <div class="inner">
-    <a class="marca" href="./" aria-label="Divulga, Fundación Galicia Sustentable">
-      <img src="assets/logos/logo-fgs-horizontal.png" alt="" width="103" height="44">
-      <span class="sep" aria-hidden="true"></span>
-      <b>Divulga</b>
+    <a class="marca-dv" href="./">
+      <span class="tracked">Divulga</span>
+      <span class="sub">Datos para entender Galicia</span>
     </a>
-    <nav aria-label="Ligazóns">
+    <nav class="topo-nav" aria-label="Ligazóns">
       <a href="#sobre">Sobre</a>
       <a href="https://fundaciongaliciasustentable.gal">A Fundación</a>
       <a href="https://galiciasustentable.org">Revista</a>
     </nav>
+    <div class="lectura">
+      <span class="tracked">Última peza</span>
+      <span class="val">{{ULTIMA}}</span>
+      <svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fundación Galicia Sustentable">
+        <path d="M247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2ZM184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7Z"/>
+        <path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1ZM835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/>
+      </svg>
+    </div>
   </div>
 </header>
 
 <section class="manifesto">
   <div class="inner">
-    <h1>Divulga é o espazo da Fundación Galicia Sustentable para entender Galicia con datos</h1>
-    <p><b>convertemos</b> <span class="k1">datos públicos</span> en <span class="k2">visualizacións interactivas</span>, <span class="k3">historias</span> e <span class="k4">listas de lectura</span> sobre o territorio</p>
-  </div>
-</section>
-
-<section class="banda">
-  <img src="assets/img/heroe-1200.jpg" srcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" sizes="100vw" alt="" width="2400" height="1430">
-  <div class="inner">
-    <h2>Transformar Galicia nunha sociedade sustentable</h2>
-    <p>tamén é contala ben, con datos e sen ruído</p>
-    <ul class="selos">
-      <li>{{CONTA}}</li>
-      <li>Fontes abertas</li>
-      <li>CC BY-NC-SA 4.0</li>
-    </ul>
+    <p class="tracked kicker">Fundación Galicia Sustentable — Divulga</p>
+    <h1>Datos públicos convertidos en historias que se len dun vistazo.</h1>
+    <p class="meta"><b>{{CONTA}}</b> · fontes abertas · licenza CC BY-NC-SA 4.0</p>
   </div>
 </section>
 
 <nav class="filtro" aria-label="Filtrar por tema">
   <div class="inner">
-    <span class="rot">Temas</span>
-    <button type="button" class="tema" data-tema="" aria-pressed="true">todos</button>
+    <span class="rot tracked">Filtrar</span>
+    <button type="button" class="tema" data-tema="" aria-pressed="true">Todas</button>
     {{FILTROS}}
   </div>
 </nav>
 
 <main class="inner">
   <div class="grella" id="grella">
-{{TARXETAS}}
+{{PEZAS}}
   </div>
   <p class="baleiro" id="baleiro" hidden>Aínda non hai visualizacións con este tema.</p>
-
-  <section class="sobre" id="sobre" aria-labelledby="h-sobre">
-    <h2 id="h-sobre">Sobre Divulga</h2>
-    <div>
-      <p>Pezas puntuais da Fundación Galicia Sustentable feitas con datos públicos. Cada visualización indica as súas fontes e a data dos datos.</p>
-      <p>Os contidos publícanse baixo licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.gl">CC BY-NC-SA 4.0</a>. Podes reutilizalos citando a fonte.</p>
-    </div>
-  </section>
 </main>
 
-<footer class="dv-foot">
+<section class="inner" id="sobre" style="padding-bottom:60px;max-width:62ch">
+  <h2 style="font-family:var(--dv-display);font-weight:700;font-size:1.1rem;color:var(--dv-tinta);margin:0 0 10px">Sobre Divulga</h2>
+  <p style="margin:0 0 10px;color:var(--dv-tinta-60);font-size:.92rem">Pezas puntuais da Fundación Galicia Sustentable feitas con datos públicos. Cada visualización indica as súas fontes e a data dos datos.</p>
+  <p style="margin:0;color:var(--dv-tinta-60);font-size:.92rem">Os contidos publícanse baixo licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.gl" style="text-decoration:underline">CC BY-NC-SA 4.0</a>. Podes reutilizalos citando a fonte.</p>
+</section>
+
+<footer class="pe">
   <div class="inner">
-    <span>Fundación Galicia Sustentable · CIF G70193537</span>
-    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+    <div class="fgs">
+      <svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2ZM184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7Z"/>
+        <path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1ZM835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/>
+      </svg>
+      <span>Fundación Galicia Sustentable · CIF G70193537 · CC BY-NC-SA 4.0</span>
+    </div>
+    <nav aria-label="Ligazóns institucionais">
+      <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+      <a href="https://galiciasustentable.org">galiciasustentable.org</a>
+      <a href="https://fundaciongaliciasustentable.gal/aviso-legal/">Aviso legal</a>
+      <a href="https://fundaciongaliciasustentable.gal/privacidade/">Privacidade</a>
+      <a href="https://fundaciongaliciasustentable.gal/cookies/">Cookies</a>
+    </nav>
   </div>
 </footer>
 
 <script>
 (() => {
   const botons = [...document.querySelectorAll('.tema')];
-  const tarxetas = [...document.querySelectorAll('.tarxeta')];
+  const pezas = [...document.querySelectorAll('.peza')];
   const baleiro = document.getElementById('baleiro');
   function filtrar(tema) {
     botons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tema === tema)));
     let n = 0;
-    tarxetas.forEach(t => {
-      const ok = !tema || t.dataset.temas.split('|').includes(tema);
-      t.hidden = !ok; if (ok) n++;
+    pezas.forEach(p => {
+      const ok = !tema || p.dataset.temas.split('|').includes(tema);
+      p.hidden = !ok; if (ok) n++;
     });
     baleiro.hidden = n > 0;
   }
