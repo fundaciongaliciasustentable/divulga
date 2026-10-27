@@ -11,14 +11,14 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 OUT = ROOT / "v" / "galicia-minuto"
 ANO = 31_557_600
-COL = {"Persoas": "#6a3d9a", "Viaxes": "#d95f02", "Economía": "#1f78b4", "Campo e mar": "#33a02c", "Enerxía e clima": "#e7298a"}
+COL = {"Saúde e emerxencias": "#6a3d9a", "Viaxes": "#d95f02", "Economía": "#1f78b4", "Campo, monte e mar": "#33a02c", "Auga, enerxía e lixo": "#e7298a"}
 
 d = json.loads((HERE / "data" / "datos.json").read_text(encoding="utf-8"))
 C = {c["k"]: c for c in d["c"]}
 mil = lambda v: f"{v:,.0f}".replace(",", ".")
 per_min = lambda k: C[k]["v"] / ANO * 60
-dek = (f"Cada minuto, en media, un peregrino recolle a Compostela, saen das granxas <b>{mil(per_min('lei'))} litros de leite</b> "
-       f"e Galicia produce {mil(per_min('pib'))} euros de riqueza. Un bebé nace cada {round(ANO / C['nac']['v'] / 60)} minutos. "
+dek = (f"Cada minuto, en media, saen das farmacias <b>{mil(per_min('far'))} medicamentos</b>, das granxas "
+       f"{mil(per_min('lei'))} litros de leite e das bateas {mil(per_min('mex'))} quilos de mexillón. "
        f"Os contadores empezan a sumar cando abres a páxina.")
 page = (HERE / "viz.tpl.html").read_text(encoding="utf-8")
 page = page.replace("__DATA__", json.dumps(d, ensure_ascii=False, separators=(",", ":"))).replace("__DEK__", dek)

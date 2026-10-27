@@ -2,14 +2,14 @@
   {
     "slug": "galicia-minuto",
     "titulo": "Galicia nun minuto",
-    "entradilla": "Cada minuto, en media, un peregrino recolle a Compostela, saen das granxas 5.690 litros de leite e Galicia produce 164.342 euros. Quince contadores que empezan a sumar cando abres a páxina.",
+    "entradilla": "Cada minuto saen das farmacias 152 medicamentos, das granxas 5.690 litros de leite e das bateas 338 quilos de mexillón. Un panel en directo con quince fluxos de Galicia que empezan a sumar cando abres a páxina.",
     "data": "2026-10-27",
     "temas": [
-      "Poboación",
-      "Economía"
+      "Economía",
+      "Sociedade"
     ],
-    "formato": "Contadores en directo",
-    "fontes": "IGE, INE, Aena, Oficina do Peregrino, FEGA, Pesca de Galicia, REE, EFFIS e AEMET"
+    "formato": "Panel en directo",
+    "fontes": "Ministerio de Sanidade, Xunta, Aena, INE, IGE, FEGA, Pesca de Galicia, REE, Sogama e AEMET"
   },
   {
     "slug": "fenda-rural",
