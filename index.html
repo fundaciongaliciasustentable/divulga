@@ -74,6 +74,10 @@ nav.topo-nav a:hover{color:#fff}
 .heroe h1{margin:0;font-family:var(--dv-display);font-weight:700;font-size:clamp(2.6rem,9vw,5.2rem);line-height:1;color:#fff}
 .heroe .sub{margin:12px 0 4px;font-size:clamp(1rem,1.8vw,1.2rem);color:#fff}
 .heroe .url{margin:0;font-size:.82rem;color:rgba(255,255,255,.78)}
+.heroe .credito{position:absolute;right:14px;bottom:10px;margin:0;font-size:.68rem;color:rgba(255,255,255,.55)}
+.heroe .credito a{color:inherit;text-decoration:underline}
+.heroe .credito a:hover{color:#fff}
+@media (max-width:640px){.heroe .credito{display:none}}
 .meta-conta{padding-block:clamp(16px,3vw,24px);font-size:.78rem;color:var(--dv-tinta-60)}
 .meta-conta b{color:var(--dv-tinta);font-weight:700}
 @media (max-width:640px){.heroe .marco{aspect-ratio:3/4}}
@@ -141,7 +145,7 @@ footer.pe a:hover{color:var(--dv-acento)}
 
 <section class="heroe">
   <div class="marco">
-    <img src="assets/img/heroe-1200.jpg" srcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" sizes="100vw" alt="" width="2400" height="1430" loading="eager">
+    <img src="assets/img/heroe-1200.jpg" srcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" sizes="100vw" alt="Solpor en Cabo Fisterra, Galicia" width="2400" height="1430" loading="eager">
     <div class="veo" aria-hidden="true"></div>
     <div class="contido inner">
       <img class="logo" src="assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="94" height="40">
@@ -150,6 +154,7 @@ footer.pe a:hover{color:var(--dv-acento)}
       <p class="sub">Datos públicos para entender Galicia</p>
       <p class="url">divulga.galiciasustentable.org</p>
     </div>
+    <p class="credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:Fisterra_ocaso_en_el_cabo.jpg">Arm.arte</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></p>
   </div>
 </section>
 

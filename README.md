@@ -95,7 +95,10 @@ exemplo, coa vista previa local) a páxina funciona e oculta a votación.
 ## Imaxe de marca
 
 `assets/img/heroe-1200.jpg`/`heroe-2400.jpg` son a foto da banda da portada
-(srcset responsive). `assets/img/og-divulga.jpg` é a imaxe para compartir en
+(srcset responsive): solpor en Cabo Fisterra, de
+[Arm.arte en Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Fisterra_ocaso_en_el_cabo.jpg),
+licenza CC BY-SA 3.0 — a atribución vai nun pequeno crédito na propia banda
+(`.heroe .credito`). `assets/img/og-divulga.jpg` é a imaxe para compartir en
 redes, xerada con `scripts/og.py` (Pillow + Playfair Display e Lato) a partir
 de `heroe-2400.jpg`, co mesmo tratamento que a portada de
 fundaciongaliciasustentable.gal:
@@ -104,10 +107,9 @@ fundaciongaliciasustentable.gal:
 python3 scripts/og.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf>
 ```
 
-> **Pendente**: `heroe-2400.jpg` é unha foto de stock de Quiraing (Illa de
-> Skye, Escocia), non de Galicia. Mentres non se substitúa por unha foto real
-> de Galicia con licenza, tanto a banda da portada como `og-divulga.jpg`
-> seguen usándoa.
+Ao cambiar a foto, actualiza tamén a ligazón e a autoría do crédito en
+`templates/index.tpl.html` (`.heroe .credito`) e en `og.py` se cambia o
+recorte, e rexenera `og-divulga.jpg`.
 
 ## Visualizacións
 
