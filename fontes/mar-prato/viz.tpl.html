@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O mar nun prato — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="O calendario das lonxas galegas: que se vende cada mes, cando hai veda e cando sobe o prezo, con __A0__–__A1__ de notas de primeira venda.">
+<meta property="og:title" content="__TITULO__">
+<meta property="og:description" content="O calendario do mar galego, especie a especie, a partir das vendas nas lonxas.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Marea do ano (streamgraph do mes medio por especie), calendario de tempadas (especies × meses,
+   intensidade = parte das vendas do ano nese mes) e ficha de prezo por mes da especie escollida. */
+:root{
+  --paper:#f4f8f8; --card:#ffffff; --ink:#132430; --muted:#566673; --line:#d7e2e4;
+  --pei:#1f5fae; --biv:#c98500; --cef:#6250d6; --cru:#e0602d; --equ:#1baf7a; --out:#8a8f98;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+h1{font:700 clamp(1.6rem,3.8vw,2.6rem)/1.08 var(--serif);text-align:center;margin:0;text-wrap:balance}
+h1 em{color:var(--cru)}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+h2{font:800 .8rem var(--display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:18px 0 0;text-align:center}
+.tog{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--card)}
+.tog button{font:600 .82rem var(--display);background:transparent;color:var(--muted);border:0;padding:7px 13px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tog button:focus-visible,.rowl:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.block{width:100%;max-width:1040px}
+.block svg{display:block;width:100%;height:auto;overflow:visible}
+.lay{stroke:var(--paper);stroke-width:.8;cursor:pointer;transition:opacity .2s}
+.lay.dim{opacity:.25}
+.ll{font:700 12.5px var(--display);fill:#fff;pointer-events:none;text-anchor:middle;paint-order:stroke;stroke:rgba(0,0,0,.25);stroke-width:2px}
+.mx{font:600 13px var(--display);fill:var(--muted);text-anchor:middle}
+.mx.now{fill:var(--ink);font-weight:800}
+.cap{font:600 13px var(--display);fill:var(--muted)}
+@media (max-width:639px){.rowl{font-size:12px}.gl{font-size:10px}.mx{font-size:13px}.ll{font-size:14px}}
+.grid line{stroke:var(--line)}
+.cell{cursor:pointer}
+.rowl{font:600 12.5px var(--display);fill:var(--ink);cursor:pointer}
+.rowl.on{font-weight:800;text-decoration:underline}
+.gl{font:800 11px var(--display);text-transform:uppercase;letter-spacing:.08em}
+.nowcol{fill:none;stroke:var(--ink);stroke-width:2}
+.vd{fill:var(--muted);font:600 9px var(--num);text-anchor:middle;pointer-events:none}
+.two{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;width:100%;max-width:1040px}
+@media (min-width:900px){.two{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.card h3{font:700 1.25rem/1.15 var(--serif);margin:0}
+.card .sub{font-size:.8rem;color:var(--muted)}
+.card svg{display:block;width:100%;height:auto;overflow:visible;margin-top:6px}
+.card p{font-size:.86rem;line-height:1.45;margin:8px 0 0}
+.now li{display:flex;justify-content:space-between;gap:10px;padding:4px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.now ul{list-style:none;margin:8px 0 0;padding:0}
+.now li span:last-child{font:700 .95rem var(--num);color:var(--muted)}
+.now li i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:.05em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;width:100%;max-width:1040px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+.fact .v{font:700 2.2rem/1 var(--num)}
+.fact .l{font-size:.82rem;color:var(--muted);line-height:1.4;margin-top:4px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.4;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;white-space:nowrap}
+.tip b{display:block;font-size:.92rem}
+details{width:100%;max-width:860px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{max-height:420px;overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 10px;text-align:right}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.82rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:78ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>__H1__</h1>
+  <p class="dek">__DEK__</p>
+
+  <h2>A marea do ano: o que se vende cada mes nas lonxas</h2>
+  <div class="tog" role="group" aria-label="Medida"><button id="bE" aria-pressed="true">En euros</button><button id="bK" aria-pressed="false">En quilos</button></div>
+  <div class="block"><svg id="st" viewBox="0 0 1040 380" role="img" aria-label="Streamgraph coas vendas medias de cada mes das principais especies"></svg></div>
+  <div class="legend" id="legend"></div>
+
+  <h2>Calendario do mar: cando se vende cada especie</h2>
+  <div class="block"><svg id="cal" role="img" aria-label="Calendario: unha fila por especie e unha columna por mes; canto máis intensa a cor, maior parte das vendas do ano nese mes"></svg></div>
+
+  <div class="two">
+    <div class="card" id="ficha"></div>
+    <div class="card now" id="agora"></div>
+  </div>
+  <div class="facts" id="facts"></div>
+  <details>
+    <summary>Ver os datos por especie</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Notas de primeira venda de pesca fresca e marisqueo nas lonxas e centros de primeira venda de Galicia, __A0__–__A1__ (<a href="https://www.pescadegalicia.gal/gl/descargas" target="_blank" rel="noopener">Pesca de Galicia</a>, Consellería do Mar). O mes medio é a media dos __NA__ anos. No calendario, a intensidade é a parte das vendas en quilos de cada especie que se fan nese mes, e o guión marca os meses con menos do 1 % (veda, paro ou tempada pechada). Só aparece o que pasa pola lonxa. O mexillón de batea, a maior produción do mar galego, véndese case todo directamente ás depuradoras e cociñeiras, polo que aquí apenas aparece. Tampouco está o peixe que chega conxelado. Prezos en euros correntes, sen descontar a inflación. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg',A=D.anos,NA=A.length;
+const MES=['xaneiro','febreiro','marzo','abril','maio','xuño','xullo','agosto','setembro','outubro','novembro','decembro'];
+const MC=['Xan','Feb','Mar','Abr','Mai','Xuñ','Xul','Ago','Set','Out','Nov','Dec'];
+const GR={'Peixes':'--pei','Bivalvos':'--biv','Cefalópodos':'--cef','Crustáceos':'--cru','Equinodermos':'--equ'};
+const gc=g=>`var(${GR[g]||'--out'})`;
+const fmt=n=>Math.round(n).toLocaleString('gl-ES',{useGrouping:'always'});
+const f2=n=>n.toLocaleString('gl-ES',{minimumFractionDigits:2,maximumFractionDigits:2});
+const mill=n=>(n/1e6).toLocaleString('gl-ES',{maximumFractionDigits:1});
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(110,Math.min(innerWidth-110,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>tip.hidden=true;
+const mk=sv=>(t,a,p)=>{const e=document.createElementNS(NS,t);for(const x in a)e.setAttribute(x,a[x]);(p||sv).appendChild(e);return e};
+const NOW=new Date().getMonth();
+// perfil medio por mes de cada especie
+const E=D.esp.map(e=>{const kg=Array(12).fill(0),eu=Array(12).fill(0);e.m.forEach(([k,v],i)=>{kg[i%12]+=k/NA;eu[i%12]+=v/NA});
+  const tk=kg.reduce((a,b)=>a+b,0)||1;return {...e,kgm:kg,eum:eu,sh:kg.map(k=>k/tk),pr:kg.map((k,i)=>k?eu[i]/k:null)}});
+let sel=E.findIndex(e=>e.n==='Percebe');if(sel<0)sel=0;
+
+// --- streamgraph ---
+const st=document.getElementById('st'),es=mk(st);
+const TOPN=12,ORD=['Peixes','Cefalópodos','Crustáceos','Bivalvos','Equinodermos'];
+let med='e';
+// en pantallas estreitas: lenzos máis pequenos para que a letra se lea
+const NARROW=document.querySelector('.block').clientWidth<640;
+const SW=NARROW?560:1040,SH=NARROW?460:380;st.setAttribute('viewBox',`0 0 ${SW} ${SH}`);
+const L=20,R=SW-20,T=10,B=SH-40,mxx=m=>L+m*(R-L)/11;
+const MCs=NARROW?MC.map(m=>m[0]):MC;
+function stream(){st.replaceChildren();
+  const key=med==='e'?'eum':'kgm',top=E.slice().sort((a,b)=>b[med==='e'?'eur':'kg']-a[med==='e'?'eur':'kg']).slice(0,TOPN)
+    .sort((a,b)=>ORD.indexOf(a.g)-ORD.indexOf(b.g)||b[key].reduce((s,x)=>s+x,0)-a[key].reduce((s,x)=>s+x,0));
+  const tot=Array.from({length:12},(_,m)=>top.reduce((s,e)=>s+e[key][m],0)),MX=Math.max(...tot);
+  const sy=v=>v/MX*(B-T)*.92;
+  let base=tot.map(t=>(T+B)/2-sy(t)/2);
+  // curva suave (Catmull-Rom → Bézier)
+  const smooth=pts=>{let d=`M${pts[0][0]},${pts[0][1]}`;for(let i=0;i<pts.length-1;i++){const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
+    d+=`C${p1[0]+(p2[0]-p0[0])/6},${p1[1]+(p2[1]-p0[1])/6} ${p2[0]-(p3[0]-p1[0])/6},${p2[1]-(p3[1]-p1[1])/6} ${p2[0]},${p2[1]}`}return d};
+  const g=es('g',{});
+  for(let m=0;m<12;m++){const t=es('text',{class:'mx'+(m===NOW?' now':''),x:mxx(m),y:B+26});t.textContent=MCs[m]}
+  top.forEach((e,k)=>{const y0=base.slice(),y1=base.map((b,m)=>b+sy(e[key][m]));
+    const up=y0.map((y,m)=>[mxx(m),y]),dn=y1.map((y,m)=>[mxx(m),y]).reverse();
+    const d=smooth(up)+'L'+smooth(dn).slice(1)+'Z';
+    const p=es('path',{class:'lay',d,fill:gc(e.g),'fill-opacity':k%2?.72:.95},g);
+    p.addEventListener('pointermove',ev=>{const b=st.getBoundingClientRect(),m=Math.max(0,Math.min(11,Math.round(((ev.clientX-b.left)/b.width*SW-L)/(R-L)*11)));
+      show(ev,`<b>${e.n} · ${MES[m]}</b>${med==='e'?fmt(e.eum[m])+' € de media':fmt(e.kgm[m])+' kg de media'}${e.pr[m]?'<br>'+f2(e.pr[m])+' €/kg':''}`)});
+    p.addEventListener('pointerleave',hide);p.addEventListener('click',()=>setSel(E.indexOf(e)));
+    const th=y1.map((y,m)=>y-y0[m]),mm=th.indexOf(Math.max(...th));
+    if(th[mm]>16){const t=es('text',{class:'ll',x:mxx(Math.min(10,Math.max(1,mm))),y:(y0[mm]+y1[mm])/2+4},g);t.textContent=e.n}
+    base=y1});
+  const tl=es('text',{class:'cap',x:L,y:T+6});tl.textContent=med==='e'?`Euros nun mes medio · as ${TOPN} especies de máis valor`:`Quilos nun mes medio · as ${TOPN} especies con máis quilos`}
+document.getElementById('legend').innerHTML=ORD.map(g=>`<span><i style="background:${gc(g)}"></i>${g}</span>`).join('');
+const bE=document.getElementById('bE'),bK=document.getElementById('bK');
+bE.onclick=()=>{med='e';bE.setAttribute('aria-pressed',true);bK.setAttribute('aria-pressed',false);stream()};
+bK.onclick=()=>{med='k';bK.setAttribute('aria-pressed',true);bE.setAttribute('aria-pressed',false);stream()};
+
+// --- calendario ---
+const cal=document.getElementById('cal'),ec=mk(cal);
+const CN=30,CW=NARROW?24:58,RH=NARROW?24:22,CL=NARROW?128:190,CT=30;
+const CAL=E.slice(0,CN).sort((a,b)=>ORD.indexOf(a.g)-ORD.indexOf(b.g)||a.sh.indexOf(Math.max(...a.sh))-b.sh.indexOf(Math.max(...b.sh)));
+let rows=[];
+function calendar(){cal.replaceChildren();rows=[];
+  const W=CL+12*CW+10,H=CT+CAL.length*RH+ORD.length*26+10;cal.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  for(let m=0;m<12;m++){const t=ec('text',{class:'mx'+(m===NOW?' now':''),x:CL+m*CW+CW/2,y:CT-10});t.textContent=MCs[m]}
+  let y=CT,lastG=null;
+  CAL.forEach(e=>{if(e.g!==lastG){y+=lastG?10:0;const t=ec('text',{class:'gl',x:CL-8,y:y+11,'text-anchor':'end',fill:gc(e.g)});t.textContent=e.g;lastG=e.g;y+=16}
+    const lab=ec('text',{class:'rowl'+(E.indexOf(e)===sel?' on':''),x:CL-8,y:y+RH/2+4,'text-anchor':'end',tabindex:0});lab.textContent=e.n;
+    lab.addEventListener('click',()=>setSel(E.indexOf(e)));lab.addEventListener('keydown',ev=>{if(ev.key==='Enter')setSel(E.indexOf(e))});
+    const mx=Math.max(...e.sh);
+    e.sh.forEach((s,m)=>{const x=CL+m*CW;
+      if(s<.01){ec('rect',{x:x+1,y:y+1,width:CW-2,height:RH-2,fill:'#e9eff0',rx:2});const t=ec('text',{class:'vd',x:x+CW/2,y:y+RH/2+3});t.textContent='–'}
+      else{const c=ec('rect',{class:'cell',x:x+1,y:y+1,width:CW-2,height:RH-2,rx:2,fill:gc(e.g),'fill-opacity':(.12+.88*s/mx).toFixed(2)});
+        c.addEventListener('pointermove',ev=>show(ev,`<b>${e.n} · ${MES[m]}</b>${Math.round(s*100)} % das vendas do ano${e.pr[m]?'<br>'+f2(e.pr[m])+' €/kg de media':''}`));
+        c.addEventListener('pointerleave',hide);c.addEventListener('click',()=>setSel(E.indexOf(e)))}});
+    rows.push(lab);y+=RH});
+  ec('rect',{class:'nowcol',x:CL+NOW*CW,y:CT-2,width:CW,height:y-CT+4,rx:3})}
+
+// --- ficha da especie ---
+const ficha=document.getElementById('ficha');
+function card(){const e=E[sel],pr=e.pr,ok=pr.map((p,m)=>[p,m]).filter(x=>x[0]);
+  const hi=ok.reduce((a,b)=>b[0]>a[0]?b:a),lo=ok.reduce((a,b)=>b[0]<a[0]?b:a),pk=e.sh.indexOf(Math.max(...e.sh));
+  const veda=e.sh.map((s,m)=>s<.01?m:-1).filter(m=>m>=0);
+  const W=480,H=170,l=34,r=470,t=12,b=140,MX=Math.max(...ok.map(x=>x[0]))*1.1,KX=Math.max(...e.kgm);
+  let sv=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Prezo medio por mes de ${e.n}">`;
+  for(let m=0;m<12;m++){const x=l+m*(r-l)/12,w=(r-l)/12-4,h=e.kgm[m]/KX*(b-t);sv+=`<rect x="${x}" y="${b-h}" width="${w}" height="${h}" fill="${gc(e.g)}" fill-opacity=".18" rx="2"/><text x="${x+w/2}" y="${b+16}" class="mx" style="font-size:11px">${MC[m][0]}</text>`}
+  const pts=pr.map((p,m)=>p?`${l+m*(r-l)/12+((r-l)/12-4)/2},${b-p/MX*(b-t)}`:null);
+  sv+=`<polyline points="${pts.filter(Boolean).join(' ')}" fill="none" stroke="${gc(e.g)}" stroke-width="2.5"/>`;
+  pr.forEach((p,m)=>{if(p){const [x,y]=pts[m].split(',');sv+=`<circle cx="${x}" cy="${y}" r="3.5" fill="${gc(e.g)}"/>`}});
+  [hi,lo].forEach(([p,m])=>{const [x,y]=pts[m].split(',');sv+=`<text x="${x}" y="${+y-8}" text-anchor="middle" style="font:700 12px var(--num);fill:var(--ink)">${f2(p)} €</text>`});
+  sv+='</svg>';
+  ficha.innerHTML=`<h3>${e.n}</h3><div class="sub">${e.g} · ${mill(e.eur/NA)} M€ e ${mill(e.kg/NA)} millóns de kg ao ano</div>${sv}
+    <p>A liña é o prezo medio en lonxa (€/kg) e as barras, os quilos de cada mes. Véndese máis en <b>${MES[pk]}</b>. Está máis cara en <b>${MES[hi[1]]}</b> (${f2(hi[0])} €/kg) e máis barata en <b>${MES[lo[1]]}</b> (${f2(lo[0])} €/kg).${veda.length?` Case non se vende en ${veda.map(m=>MES[m]).join(', ')}.`:''}</p>`}
+
+// --- agora ---
+function agora(){const c=E.slice(0,60).filter(e=>e.sh[NOW]>.01).map(e=>[e,e.sh[NOW]*12]).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  document.getElementById('agora').innerHTML=`<h3>Que hai na lonxa en ${MES[NOW]}</h3><div class="sub">Especies que en ${MES[NOW]} venden moito máis do habitual nun mes</div>
+    <ul>${c.map(([e,r])=>`<li><span><i style="background:${gc(e.g)}"></i>${e.n}</span><span>×${r.toLocaleString('gl-ES',{maximumFractionDigits:1})}</span></li>`).join('')}</ul>
+    <p class="sub">×2 quere dicir que nese mes se vende o dobre que nun mes medio do ano.</p>`}
+
+// --- cifras ---
+{const T=D.total,ks=Object.keys(T).map(Number),kmx=ks.reduce((a,b)=>T[b][0]>T[a][0]?b:a),u=ks[ks.length-1];
+  const pes=E.find(e=>e.n==='Pescada'),tot=Object.values(T).reduce((s,v)=>s+v[1],0);
+  const per=E.find(e=>e.n==='Percebe');const ph=per?Math.max(...per.pr.filter(Boolean)):0,pl=per?Math.min(...per.pr.filter(Boolean)):0;
+  document.getElementById('facts').innerHTML=[
+   [`${mill(T[u][0])} M kg`,`vendidos nas lonxas en ${u}, a metade ca en ${kmx} (${mill(T[kmx][0])} millóns). O valor baixou menos: ${mill(T[u][1])} M€ fronte a ${mill(T[kmx][1])}.`],
+   pes?[`${Math.round(pes.eur/tot*100)} %`,`do valor das lonxas galegas é pescada, a especie que máis diñeiro move con moita diferenza.`]:null,
+   per?[`×${(ph/pl).toLocaleString('gl-ES',{maximumFractionDigits:1})}`,`É o que se multiplica o prezo do percebe entre o mes máis barato e o Nadal: de ${f2(pl)} a ${f2(ph)} €/kg de media.`]:null
+  ].filter(Boolean).map(([v,l])=>`<div class="fact"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('')}
+
+// --- táboa ---
+document.getElementById('tbl').innerHTML='<thead><tr><th>Especie</th><th>Grupo</th><th>€ ao ano</th><th>kg ao ano</th><th>€/kg</th></tr></thead><tbody>'+
+  E.map(e=>`<tr><td>${e.n}</td><td>${e.g}</td><td>${fmt(e.eur/NA)}</td><td>${fmt(e.kg/NA)}</td><td>${f2(e.eur/e.kg)}</td></tr>`).join('')+'</tbody>';
+
+function setSel(i){sel=i;card();rows.forEach(r=>r.classList.toggle('on',r.textContent===E[sel].n));document.getElementById('ficha').scrollIntoView({block:'nearest',behavior:'smooth'})}
+stream();calendar();card();agora();
+</script>
+</body>
+</html>

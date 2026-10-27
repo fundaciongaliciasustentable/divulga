@@ -1,5 +1,17 @@
 [
   {
+    "slug": "mar-prato",
+    "titulo": "O mar nun prato",
+    "entradilla": "O calendario das lonxas galegas: que se vende cada mes, cando hai veda e cando sobe o prezo. O percebe vale case o dobre no Nadal, e as lonxas venden a metade de quilos ca en 2017.",
+    "data": "2026-10-27",
+    "temas": [
+      "Mar",
+      "Alimentación"
+    ],
+    "formato": "Calendario e marea",
+    "fontes": "Pesca de Galicia: notas de primeira venda 2015-2025"
+  },
+  {
     "slug": "monte-concellos",
     "titulo": "O monte de cada concello",
     "entradilla": "O monte galego árbore a árbore: eucalipto, piñeiro ou frondosas, concello a concello. En 78 concellos o eucalipto xa é máis da metade do monte arborado.",
