@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Os apelidos máis galegos — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Que apelidos viven case só en Galicia? Os primeiros apelidos de España segundo a parte dos seus portadores que reside en Galicia, cun buscador.">
+<meta property="og:title" content="Os apelidos máis galegos">
+<meta property="og:description" content="Busca o teu apelido: canto ten de galego?">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Tres pezas: o buscador (canto de galego ten un apelido, coas catro provincias como burbullas
+   nun mapa de teselas), a nube dos apelidos máis galegos (tamaño = persoas, cor = provincia onde
+   máis abunda) e o «galicianómetro», un diagrama de dispersión de todos os apelidos (persoas no
+   eixo horizontal, en escala logarítmica; parte que vive en Galicia no vertical). */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7;
+  --c15:#2166ac; --c27:#1b9e77; --c32:#c2185b; --c36:#e08214; --resto:#9a968c;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.busca{width:100%;max-width:760px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+.busca form{display:flex;gap:8px}
+.busca input{flex:1;font:600 1.05rem var(--display);padding:9px 12px;border:1px solid var(--line);border-radius:3px;text-transform:uppercase;min-width:0}
+.busca input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.busca button{font:700 .9rem var(--display);background:var(--ink);color:var(--paper);border:0;border-radius:3px;padding:0 16px;cursor:pointer}
+.res{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:16px;align-items:center}
+@media (max-width:620px){.res{grid-template-columns:1fr}}
+.res .big{font:700 3.4rem var(--num);line-height:1}
+.res .ap{font:800 1.4rem var(--display);letter-spacing:.02em}
+.res p{margin:4px 0;font-size:.86rem;color:var(--muted);line-height:1.45}
+.res p b{color:var(--ink)}
+.meter{height:12px;border-radius:6px;background:var(--soft);position:relative;overflow:visible;margin:8px 0 4px}
+.meter i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--ink)}
+.meter s{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--muted)}
+.meter + small{display:block;font-size:.72rem;color:var(--muted)}
+.tiles svg{width:100%;height:auto;display:block}
+.tiles text{font:600 11px var(--display);fill:var(--ink);text-anchor:middle}
+.tiles .v{font:700 13px var(--num)}
+.nada{font-size:.88rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chips button{font:600 .78rem var(--display);background:var(--soft);border:0;border-radius:12px;padding:4px 10px;cursor:pointer;color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.nube{width:100%;display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:2px 12px;line-height:1.05;padding:6px 0}
+.nube button{font-family:var(--display);font-weight:800;border:0;background:none;padding:0 2px;cursor:pointer;letter-spacing:-.01em}
+.nube button:hover,.nube button:focus-visible{text-decoration:underline;outline:none}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.lab{font:700 11px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3px;stroke-linejoin:round}
+.pt{cursor:pointer}
+.pt:hover{stroke:var(--ink);stroke-width:1.5}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:260px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 10px;text-align:right}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.82rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:600px){.ax{font-size:14px}.axt{font-size:13px}.lab{font-size:13px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Os apelidos máis galegos</h1>
+  <p class="dek">__DEK__</p>
+
+  <section class="busca" aria-label="Buscador de apelidos">
+    <form id="f" autocomplete="off"><input id="q" list="lista" placeholder="Escribe un apelido: Otero, Varela, Souto…" aria-label="Apelido"><button>Buscar</button></form>
+    <datalist id="lista"></datalist>
+    <div id="res"></div>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <h2>Os que viven case só en Galicia</h2>
+  <p class="sub" id="nubeTxt"></p>
+  <div class="legend" id="legend"></div>
+  <div class="nube" id="nube"></div>
+
+  <h2>O galicianómetro</h2>
+  <p class="sub">Cada punto é un apelido. Á dereita, os máis comúns; arriba, os que teñen máis portadores vivindo en Galicia. A liña marca o __PG__ %, a parte de España que vive en Galicia: o que queda por riba é máis galego ca a media.</p>
+  <div class="chart"><svg id="ch" role="img" aria-label="Diagrama de dispersión: persoas con cada apelido fronte á parte que vive en Galicia. A táboa de datos ten os valores."></svg></div>
+
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">INE, <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=1254736177009" target="_blank" rel="noopener">Apelidos e nomes da poboación residente</a>, a 1 de xaneiro de 2025: todos os primeiros apelidos con polo menos __MIN__ persoas en España (__N__ apelidos) e, para cada un, a frecuencia por mil habitantes en cada provincia que dá o buscador do INE. As persoas en Galicia saen desa frecuencia e da poboación de cada provincia galega no padrón de 2025; a parte galega é iso entre o total de España dese primeiro apelido. Conta só o primeiro apelido e só a quen vive en España: non os galegos de Bos Aires nin de Xenebra. O INE escribe os apelidos en maiúsculas e sen til (GARCIA). O mapa de teselas sitúa as provincias de xeito aproximado. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const PROV={'15':'A Coruña','27':'Lugo','32':'Ourense','36':'Pontevedra'};
+const COR={'15':'var(--c15)','27':'var(--c27)','32':'var(--c32)','36':'var(--c36)'};
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const pct=v=>(v*100).toFixed(v<.1?1:0).replace('.',',')+' %';
+const tit=s=>s.toLowerCase().replace(/(^|[\s-])\p{L}/gu,m=>m.toUpperCase());
+const sen=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toUpperCase().trim().replace(/Ñ/g,'Ñ');
+const AP=D.ap,BY=new Map(AP.map(a=>[a.a,a]));
+const forte=a=>Object.entries(a.pm).sort((x,y)=>y[1]-x[1])[0][0];  // provincia galega con máis ‰
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(140,Math.min(innerWidth-140,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+document.getElementById('legend').innerHTML=Object.entries(PROV).map(([c,n])=>`<span><i style="background:${COR[c]}"></i>${n}</span>`).join('')+'<span style="color:var(--muted)">(onde abunda máis)</span>';
+
+// Buscador
+document.getElementById('lista').innerHTML=AP.slice().sort((a,b)=>b.n-a.n).map(a=>`<option value="${tit(a.a)}">`).join('');
+const res=document.getElementById('res');
+function teselas(a){
+  // mapa de teselas: A Coruña e Lugo arriba, Pontevedra e Ourense abaixo; o círculo, ‰ da provincia
+  const pos={'15':[60,52],'27':[170,52],'36':[60,150],'32':[170,150]};
+  const mx=Math.max(...Object.values(a.pm),a.pmE||0,1);
+  let s='<svg viewBox="0 0 230 210" role="img" aria-label="Persoas por mil habitantes en cada provincia galega">';
+  for(const [c,[x,y]] of Object.entries(pos)){
+    const r=3+25*Math.sqrt(a.pm[c]/mx);
+    s+=`<rect x="${x-52}" y="${y-46}" width="104" height="92" rx="4" fill="#f5f3ee"/><circle cx="${x}" cy="${y+2}" r="${r.toFixed(1)}" fill="${COR[c]}" fill-opacity=".85"/><text x="${x}" y="${y-33}">${PROV[c]}</text><text class="v" x="${x}" y="${y+40}">${a.pm[c].toFixed(1).replace('.',',')} ‰</text>`;
+  }
+  return s+`<text x="115" y="206" style="font-size:10px;fill:var(--muted)">En España: ${(a.pmE||0).toFixed(2).replace('.',',')} ‰</text></svg>`;
+}
+function mostra(nome){
+  const k=sen(nome),a=BY.get(k);
+  if(!a){res.innerHTML=`<p class="nada">Non atopo <b>${tit(k)||'ese apelido'}</b> entre os ${miles(AP.length)} primeiros apelidos con polo menos ${miles(D.min)} persoas en España. Proba sen til ou con outra grafía.</p>`;return}
+  const fora=a.n-a.ng,veces=a.g/D.pobGal;
+  res.innerHTML=`<div class="res"><div><div class="ap">${tit(a.a)}</div><div class="big">${pct(a.g)}</div>
+    <p>dos <b>${miles(a.n)}</b> que levan ${tit(a.a)} como primeiro apelido viven en Galicia (uns <b>${miles(a.ng)}</b>). ${veces>=1.5?`É <b>${veces.toFixed(0)} veces</b> máis galego ca a media.`:veces<.7?'Está menos en Galicia ca a media dos apelidos.':'Está repartido coma a poboación.'}</p>
+    <div class="meter"><i style="width:${(a.g*100).toFixed(1)}%"></i><s style="left:${(D.pobGal*100).toFixed(1)}%" title="A parte de España que vive en Galicia"></s></div><small>A raia marca o ${pct(D.pobGal)}: a parte de España que vive en Galicia.</small>
+    <p>Onde máis abunda: ${a.t.slice(0,3).map(([c,v])=>`${D.prov[c]?.replace(/^(.*), (A|O|As|Os)$/,'$2 $1')||c} (${v.toFixed(1).replace('.',',')} ‰)`).join(', ')}.</p></div>
+    <div class="tiles">${teselas(a)}</div></div>`;
+}
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();mostra(document.getElementById('q').value)});
+document.getElementById('q').addEventListener('change',e=>mostra(e.target.value));
+const EX=['OTERO','VARELA','SOUTO','GARCIA','CASTRO','IGLESIAS','LAMAS','REY'].filter(x=>BY.has(x));
+document.getElementById('chips').innerHTML=EX.map(x=>`<button data-a="${x}">${tit(x)}</button>`).join('');
+for(const b of document.querySelectorAll('[data-a]'))b.addEventListener('click',()=>{document.getElementById('q').value=tit(b.dataset.a);mostra(b.dataset.a)});
+mostra(EX[0]||AP[0].a);
+
+// Nube: os apelidos con polo menos o 75 % en Galicia, tamaño segundo as persoas
+const UMBRAL=.75;
+const nube=AP.filter(a=>a.g>=UMBRAL).sort((a,b)=>b.n-a.n).slice(0,140);
+document.getElementById('nubeTxt').textContent=`${miles(AP.filter(a=>a.g>=UMBRAL).length)} apelidos con polo menos ${miles(D.min)} persoas teñen tres de cada catro portadores en Galicia. Estes son os ${nube.length} máis comúns; o tamaño vai coas persoas. Preme nun para velo no buscador.`;
+const nmax=nube[0]?.n||1,nmin=nube.at(-1)?.n||1;
+document.getElementById('nube').innerHTML=nube.map(a=>{const s=.8+1.9*Math.sqrt((a.n-nmin)/(nmax-nmin||1));return `<button data-a="${a.a}" style="font-size:${s.toFixed(2)}rem;color:${COR[forte(a)]}" title="${tit(a.a)}: ${miles(a.n)} persoas, o ${pct(a.g)} en Galicia">${tit(a.a)}</button>`}).join('');
+for(const b of document.querySelectorAll('.nube [data-a]'))b.addEventListener('click',()=>{document.getElementById('q').value=tit(b.dataset.a);mostra(b.dataset.a);document.querySelector('.busca').scrollIntoView({behavior:'smooth',block:'center'})});
+
+// Galicianómetro
+function galicianometro(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640,H=NARROW?420:520;
+  const ML=NARROW?36:46,MR=12,MT=12,MB=44,cw=W-ML-MR,ch=H-MT-MB;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const n0=Math.log10(D.min),n1=Math.log10(Math.max(...AP.map(a=>a.n))*1.1);
+  const sx=n=>ML+(Math.log10(n)-n0)/(n1-n0)*cw,sy=g=>MT+(1-g)*ch;
+  for(const g of [0,.25,.5,.75,1]){el('line',{x1:ML,x2:W-MR,y1:sy(g),y2:sy(g),stroke:'#ecebe6'},svg);el('text',{x:ML-6,y:sy(g),class:'ax','text-anchor':'end','dominant-baseline':'middle'},svg).textContent=Math.round(g*100)+' %'}
+  for(const n of [1e3,3e3,1e4,3e4,1e5,3e5,1e6]){if(n<D.min||Math.log10(n)>n1)continue;if(NARROW&&String(n)[0]==='3')continue;el('text',{x:sx(n),y:H-MB+18,class:'ax','text-anchor':'middle'},svg).textContent=n>=1e6?'1 millón':miles(n)}
+  el('text',{x:ML+cw/2,y:H-6,class:'axt','text-anchor':'middle'},svg).textContent='persoas con ese primeiro apelido en España (escala logarítmica)';
+  el('line',{x1:ML,x2:W-MR,y1:sy(D.pobGal),y2:sy(D.pobGal),stroke:'#1f2328','stroke-dasharray':'4 3'},svg);
+  el('text',{x:ML+6,y:sy(D.pobGal)-5,class:'axt','text-anchor':'start'},svg).textContent=`media de España: ${pct(D.pobGal)}`;
+  const g=el('g',{},svg);
+  for(const a of AP.slice().sort((x,y)=>x.g-y.g)){
+    const c=a.g>=D.pobGal*1.5?COR[forte(a)]:'var(--resto)';
+    const p=el('circle',{cx:sx(a.n),cy:sy(a.g),r:a.g>=D.pobGal*1.5?2.6:1.8,fill:c,'fill-opacity':a.g>=D.pobGal*1.5?.85:.4,class:'pt'},g);
+    p.addEventListener('mousemove',ev=>show(ev,`<b>${tit(a.a)}</b>${miles(a.n)} persoas · ${pct(a.g)} en Galicia`));
+    p.addEventListener('mouseleave',hide);
+    p.addEventListener('click',()=>{document.getElementById('q').value=tit(a.a);mostra(a.a);document.querySelector('.busca').scrollIntoView({behavior:'smooth',block:'center'})});
+  }
+  // Etiquetas: os máis comúns con máis do 50 % en Galicia, e os máis comúns de España
+  const lab=[...AP.filter(a=>a.g>=.5).sort((x,y)=>y.n-x.n).slice(0,NARROW?6:12),...AP.slice().sort((x,y)=>y.n-x.n).slice(0,NARROW?2:4)];
+  const usados=[];
+  for(const a of lab){const x=sx(a.n),y=sy(a.g)-6;if(usados.some(([ux,uy])=>Math.abs(ux-x)<60&&Math.abs(uy-y)<13))continue;usados.push([x,y]);
+    el('text',{x,y,class:'lab','text-anchor':x>W-80?'end':'middle'},svg).textContent=tit(a.a)}
+}
+galicianometro();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(galicianometro,150)});
+
+document.getElementById('tbl').innerHTML='<tr><th>Apelido</th><th>Persoas en España</th><th>En Galicia</th><th>Parte</th>'+Object.values(PROV).map(p=>`<th>${p} ‰</th>`).join('')+'</tr>'+
+  AP.filter(a=>a.g>=D.pobGal*1.5).sort((a,b)=>b.g-a.g).map(a=>`<tr><td>${tit(a.a)}</td><td>${miles(a.n)}</td><td>${miles(a.ng)}</td><td>${pct(a.g)}</td>${Object.keys(PROV).map(c=>`<td>${a.pm[c].toFixed(1).replace('.',',')}</td>`).join('')}</tr>`).join('');
+</script>
+</body>
+</html>

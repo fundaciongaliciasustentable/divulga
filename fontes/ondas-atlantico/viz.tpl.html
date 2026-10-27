@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>As ondas do Atlántico — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="A temperatura da auga do mar fronte ás Rías Baixas, ano a ano dende 1982: unha onda por ano que se despraza cara á calor.">
+<meta property="og:title" content="As ondas do Atlántico">
+<meta property="og:description" content="Corenta e catro anos da temperatura do mar fronte a Galicia, ao xeito de Unknown Pleasures.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Ridgeline ao xeito da portada de Unknown Pleasures (Joy Division): unha onda por ano, de 1982
+   (arriba) a hoxe (abaixo). Na vista «Como se reparte o ano», cada onda é a distribución das
+   temperaturas diarias dese ano: canto máis á dereita, máis quente o mar. Na vista «Semana a
+   semana», cada onda é o percorrido do ano, de xaneiro a decembro, coa mesma escala vertical.
+   A cor do recheo é a anomalía da media anual fronte a 1991-2020 (diverxente azul-vermello). */
+:root{
+  --paper:#fbfaf7; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da;
+  --noite:#0d0f12; --tinta-noite:#e9e6df; --gris-noite:#8d9097;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:64ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+.tog{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:#fff}
+.tog button{font:600 .8rem var(--display);background:transparent;color:var(--muted);border:0;padding:7px 12px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tog button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.panel{width:100%;background:var(--noite);border-radius:4px;padding:20px 16px 14px;box-sizing:border-box}
+.panel svg{display:block;width:100%;height:auto;overflow:visible}
+.ano{font:600 11px var(--num);fill:var(--gris-noite)}
+.ano.fito{fill:var(--tinta-noite);font-weight:700}
+.ax{font:600 12px var(--num);fill:var(--gris-noite);text-anchor:middle}
+.axt{font:600 11px var(--display);fill:var(--gris-noite);text-anchor:middle}
+.onda path.f{stroke:none}
+.onda path.l{fill:none;stroke:var(--tinta-noite);stroke-width:1.1}
+.onda:hover path.l,.onda.on path.l{stroke:#fff;stroke-width:2.2}
+.lenda{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.78rem;color:var(--muted)}
+.lenda .esc{display:flex;align-items:center}
+.lenda .esc i{display:inline-block;width:26px;height:11px}
+.lenda .et{display:flex;font-family:var(--num);font-size:.85rem}
+.lenda .et span{width:26px;text-align:center}
+.tip{position:fixed;pointer-events:none;background:#fff;color:var(--ink);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.92rem}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:420px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.95rem;color:var(--ink)}
+th,td{padding:2px 10px;text-align:right}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:600px){.ano{font-size:13px}.ax{font-size:14px}.axt{font-size:13px}.panel{padding:14px 8px 10px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>As ondas do Atlántico</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <div class="tog" role="group" aria-label="Vista"><button data-v="d" aria-pressed="true">Como se reparte o ano</button><button data-v="s" aria-pressed="false">Semana a semana</button></div>
+    <div class="tog" role="group" aria-label="Cor"><button data-c="1" aria-pressed="true">Con cor</button><button data-c="0" aria-pressed="false">Unknown Pleasures</button></div>
+  </div>
+  <div class="lenda" id="lenda"></div>
+  <div class="panel"><svg id="ch" role="img" aria-label="Unha onda por ano dende 1982: a distribución das temperaturas diarias do mar fronte ás Rías Baixas. A táboa de datos ten os valores."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">NOAA OISST v2.1 (Optimum Interpolation Sea Surface Temperature: satélites, boias e barcos, en celas de 0,25° e un dato por día), servido polo <a href="https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21Agg_LonPM180.html" target="_blank" rel="noopener">ERDDAP de NOAA CoastWatch</a> e, para os días que faltan alí, polo <a href="https://psl.noaa.gov/data/gridded/data.noaa.oisst.v2.highres.html" target="_blank" rel="noopener">THREDDS de NOAA PSL</a>. Media das celas de mar entre 42,1 e 43,9 °N e entre 9,9 e 8,9 °O, a plataforma fronte ás Rías Baixas e a Costa da Morte. É a temperatura da capa de arriba do mar (a pel do océano), non a do fondo. Cada onda é a densidade dos días do ano segundo a súa temperatura, suavizada cun núcleo gaussiano de 0,35 °C; a cor, a diferenza da media do ano coa de __N0__–__N1__ (__NORM__ °C). Fundación Galicia Sustentable · a forma vén da portada de Peter Saville para <i>Unknown Pleasures</i> (1979). Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const [X0,PX,NX]=D.x,XS=Array.from({length:NX},(_,i)=>X0+i*PX);
+// Diverxente azul–gris–vermello para a anomalía (°C fronte a 1991-2020)
+const DIV=['#2166ac','#4393c3','#92c5de','#c9ccd2','#f4a582','#d6604d','#b2182b'],DL=[-0.6,-0.35,-0.12,0.12,0.35,0.6];
+const corAn=a=>{let i=0;while(i<DL.length&&a>=DL[i])i++;return DIV[i]};
+const fmt=(v,d=1)=>v.toFixed(d).replace('.',',').replace('-','−');
+const sig=v=>(v>0?'+':'')+fmt(v,2);
+let vista='d',cor=true;
+const svg=document.getElementById('ch'),tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const MES=['xan','feb','mar','abr','mai','xuñ','xul','ago','set','out','nov','dec'];
+
+function lenda(){
+  const L=document.getElementById('lenda');
+  if(!cor){L.innerHTML='<span>Unha onda por ano, de 1982 (arriba) a '+D.anos.at(-1).a+' (abaixo)</span>';return}
+  L.innerHTML=`<span>Media do ano fronte a ${D.normal[0]}–${D.normal[1]} (°C)</span><div class="esc"><span style="margin-right:6px">máis fría</span>${DIV.map(c=>`<i style="background:${c}"></i>`).join('')}<span style="margin-left:6px">máis quente</span></div><div class="et" style="margin-left:4px">${DL.map(v=>`<span>${(v>0?'+':'')+fmt(v,1)}</span>`).join('')}</div>`;
+}
+
+function debuxa(){
+  svg.innerHTML='';
+  const W=svg.parentNode.clientWidth-32,NARROW=W<560;
+  const ML=NARROW?34:44,MR=12,MT=NARROW?40:56,MB=40;
+  const A=D.anos,n=A.length;
+  const paso=NARROW?9:11,altoOnda=NARROW?52:70;
+  const H=MT+paso*(n-1)+MB;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const cw=W-ML-MR;
+  let sx,xs,vals,ymax,eixo;
+  if(vista==='d'){
+    // recortar a reixa ao rango con densidade apreciable
+    const xmin=Math.floor(Math.min(...A.map(a=>a.min))-.6),xmax=Math.ceil(Math.max(...A.map(a=>a.max))+.6);
+    sx=v=>ML+(v-xmin)/(xmax-xmin)*cw;
+    xs=XS.map(sx);vals=a=>a.d;ymax=Math.max(...A.flatMap(a=>a.d));
+    eixo=()=>{for(let t=xmin+1;t<xmax;t++){if(NARROW&&t%2)continue;el('text',{x:sx(t),y:H-MB+18,class:'ax'},svg).textContent=t+'°'}
+      el('text',{x:ML+cw/2,y:H-6,class:'axt'},svg).textContent=NARROW?'temperatura diaria da auga (°C)':'temperatura diaria da auga (°C) · canto máis alta a onda, máis días a esa temperatura'};
+  }else{
+    const N=52;sx=i=>ML+i/(N-1)*cw;xs=Array.from({length:N},(_,i)=>sx(i));
+    const tmin=Math.min(...A.flatMap(a=>a.s.filter(v=>v!=null)));
+    vals=a=>a.s.map(v=>v==null?0:v-tmin+.6);ymax=Math.max(...A.flatMap(vals));
+    eixo=()=>{MES.forEach((m,i)=>{if(NARROW&&i%2)return;el('text',{x:sx(i*52/12+2),y:H-MB+18,class:'ax'},svg).textContent=m});
+      el('text',{x:ML+cw/2,y:H-6,class:'axt'},svg).textContent=NARROW?'semana do ano':'semana do ano · canto máis alta a onda, máis quente a auga'};
+  }
+  const k=altoOnda/ymax;
+  // de atrás (1982, arriba) cara a diante (o último ano, abaixo): o de diante tapa o de detrás
+  A.forEach((a,i)=>{
+    const y0=MT+i*paso,v=vals(a);
+    const pts=v.map((d,j)=>`${xs[j].toFixed(1)},${(y0-d*k).toFixed(1)}`);
+    const g=el('g',{class:'onda'},svg);
+    el('path',{class:'f',d:`M${xs[0].toFixed(1)},${y0}L${pts.join('L')}L${xs.at(-1).toFixed(1)},${y0}Z`,fill:cor?corAn(a.an):'var(--noite)'},g);
+    el('path',{class:'l',d:'M'+pts.join('L')},g);
+    const fito=a.a%10===0||i===0||i===n-1;
+    if(fito||!NARROW)el('text',{x:ML-6,y:y0,class:'ano'+(fito?' fito':''),'text-anchor':'end','dominant-baseline':'middle'},svg).textContent=a.a;
+    const hit=el('rect',{x:ML,y:y0-paso,width:cw,height:paso,fill:'transparent'},g);
+    hit.addEventListener('mousemove',ev=>{g.classList.add('on');show(ev,`<b>${a.a}</b>Media ${fmt(a.m,2)} °C (${sig(a.an)} fronte a ${D.normal[0]}–${D.normal[1]})<br>Do ${fmt(a.min)} ao ${fmt(a.max)} °C · ${a.q18} días a 18 °C ou máis`)});
+    hit.addEventListener('mouseleave',()=>{g.classList.remove('on');tip.hidden=true});
+  });
+  eixo();
+}
+lenda();debuxa();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(debuxa,150)});
+for(const b of document.querySelectorAll('[data-v]'))b.addEventListener('click',()=>{vista=b.dataset.v;for(const x of document.querySelectorAll('[data-v]'))x.setAttribute('aria-pressed',x===b);debuxa()});
+for(const b of document.querySelectorAll('[data-c]'))b.addEventListener('click',()=>{cor=b.dataset.c==='1';for(const x of document.querySelectorAll('[data-c]'))x.setAttribute('aria-pressed',x===b);lenda();debuxa()});
+
+document.getElementById('tbl').innerHTML='<tr><th>Ano</th><th>Media (°C)</th><th>Anomalía</th><th>Mínima</th><th>Máxima</th><th>Días ≥ 18 °C</th></tr>'+
+  D.anos.map(a=>`<tr><td>${a.a}</td><td>${fmt(a.m,2)}</td><td>${sig(a.an)}</td><td>${fmt(a.min)}</td><td>${fmt(a.max)}</td><td>${a.q18}</td></tr>`).join('');
+</script>
+</body>
+</html>

@@ -1,5 +1,53 @@
 [
   {
+    "slug": "castros",
+    "titulo": "Os castros: unha constelación",
+    "entradilla": "1.880 castros de OpenStreetMap debuxados como estrelas: Galicia aparece coma un ceo cheo. Cada castro ten outro a 1,6 km de media, e case a metade do país está a menos de 2 km dun deles.",
+    "data": "2026-10-28",
+    "temas": [
+      "Patrimonio",
+      "Territorio"
+    ],
+    "formato": "Mapa de puntos",
+    "fontes": "OpenStreetMap (ODbL)"
+  },
+  {
+    "slug": "ondas-atlantico",
+    "titulo": "As ondas do Atlántico",
+    "entradilla": "A temperatura do mar fronte ás Rías Baixas, unha onda por ano dende 1982, ao xeito de Unknown Pleasures. As ondas fuxen cara á calor: a última década está 0,8 °C máis quente ca a primeira e 2023 foi o ano récord.",
+    "data": "2026-10-28",
+    "temas": [
+      "Clima",
+      "Mar"
+    ],
+    "formato": "Ridgeline",
+    "fontes": "NOAA OISST v2.1 (ERDDAP CoastWatch e PSL)"
+  },
+  {
+    "slug": "apelidos-galegos",
+    "titulo": "Os apelidos máis galegos",
+    "entradilla": "Galicia ten o 5,5 % da poboación de España, pero 50 apelidos teñen tres de cada catro portadores aquí: Souto, Costas, Rial, Pose… Un galicianómetro dos 4.410 primeiros apelidos máis comúns e un buscador para o teu.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Lingua"
+    ],
+    "formato": "Buscador e dispersión",
+    "fontes": "INE (apelidos da poboación residente, 2025; padrón 2025)"
+  },
+  {
+    "slug": "vida-semanas",
+    "titulo": "A túa vida en semanas",
+    "entradilla": "Unha vida galega cabe en arredor de 4.500 semanas. Pon a túa data de nacemento e verás as que levas vividas e as que, en media, che quedan segundo as táboas de mortalidade da túa provincia.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Saúde"
+    ],
+    "formato": "Grella interactiva",
+    "fontes": "INE (táboas de mortalidade 2024) e IGE"
+  },
+  {
     "slug": "nomes-galicia",
     "titulo": "De Manuel a Mateo",
     "entradilla": "Os galegos dos anos cincuenta chámanse Manuel e Carmen; os bebés de hoxe, Mateo e Sofía. Un río de rankings dos nomes de Galicia década a década, dende antes de 1930, e ano a ano dende 2000.",
