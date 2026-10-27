@@ -42,7 +42,7 @@ a{color:inherit;text-decoration:none}
 .tracked{font-family:var(--dv-corpo);font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
 
 /* cabeceira: case invisible, tres bloques, sen barra de cor */
-header.topo{position:sticky;top:0;z-index:20;background:rgba(243,241,234,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+header.topo{position:sticky;top:0;z-index:20;background:transparent;text-shadow:0 1px 4px rgba(0,0,0,.3)}
 header.topo .inner{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-block:22px 18px}
 .marca-dv{display:flex;flex-direction:column;gap:2px}
 .marca-dv .tracked{color:var(--dv-tinta)}
@@ -50,14 +50,14 @@ header.topo .inner{display:flex;align-items:flex-start;justify-content:space-bet
 nav.topo-nav{display:flex;gap:22px;padding-top:2px}
 nav.topo-nav a{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dv-tinta-60);font-weight:700}
 nav.topo-nav a:hover{color:var(--dv-acento)}
-.simbolo-topo{width:26px;height:26px;flex-shrink:0}
+.simbolo-topo{width:26px;height:26px;flex-shrink:0;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3))}
 .simbolo-topo path{fill:var(--dv-tinta-38)}
 @media (max-width:640px){nav.topo-nav{display:none}}
 
 /* banda de imaxe: a portada de sempre — foto + degradado + logo branco +
    titular, ao xeito da imaxe social (og-divulga.jpg) e da vella banda */
 .heroe{position:relative}
-.heroe .marco{position:relative;isolation:isolate;height:calc(100vh - 70px);height:calc(100svh - 70px);min-height:480px;max-height:980px;overflow:hidden;background:var(--dv-tinta)}
+.heroe .marco{position:relative;isolation:isolate;aspect-ratio:2.3/1;overflow:hidden;background:var(--dv-tinta)}
 .heroe .marco>img{width:100%;height:100%;object-fit:cover;object-position:60% 56%}
 .heroe .veo{position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(26,26,23,.05) 0%,rgba(26,26,23,.2) 45%,rgba(26,26,23,.82) 100%),
@@ -71,7 +71,7 @@ nav.topo-nav a:hover{color:var(--dv-acento)}
 .heroe .url{margin:0;font-size:.82rem;color:rgba(255,255,255,.78)}
 .meta-conta{padding-block:clamp(16px,3vw,24px);font-size:.78rem;color:var(--dv-tinta-60)}
 .meta-conta b{color:var(--dv-tinta);font-weight:700}
-@media (max-width:640px){.heroe .marco{height:calc(100vh - 62px);height:calc(100svh - 62px);min-height:560px}}
+@media (max-width:640px){.heroe .marco{aspect-ratio:3/4}}
 
 /* filtro: liña de texto, non botóns con fondo */
 .filtro{border-top:1px solid var(--dv-liña);border-bottom:1px solid var(--dv-liña);position:sticky;top:69px;z-index:15;background:var(--dv-crema)}
