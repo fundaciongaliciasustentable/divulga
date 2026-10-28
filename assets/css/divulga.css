@@ -47,12 +47,18 @@ a:hover{color:var(--gs-verde-claro)}
 .dv-share{font:inherit;color:var(--muted,inherit);font-size:.8rem;letter-spacing:.01em;background:none;border:0;padding:0;cursor:pointer;font-family:var(--gs-font-corpo)}
 .dv-share:hover,.dv-share[aria-expanded="true"]{color:inherit;text-decoration:underline;text-underline-offset:.2em}
 .dv-share__panel{position:absolute;right:0;top:calc(100% + 14px);z-index:30;width:min(300px,85vw);background:#fff;color:var(--gs-gris-80);border:1px solid rgba(26,26,23,.1);border-radius:var(--gs-radius-card);box-shadow:0 12px 32px rgba(26,26,23,.18);padding:16px;font-size:.82rem}
+.dv-share__nativo{display:block;width:100%;margin:0 0 14px;font:700 .76rem/1 var(--gs-font-corpo);letter-spacing:.02em;color:#fff;background:var(--gs-verde-nato);border:0;border-radius:var(--gs-radius);padding:10px;cursor:pointer}
+.dv-share__nativo:hover{background:var(--gs-verde-claro)}
 .dv-share__panel h3{margin:0 0 6px;font:700 .68rem/1 var(--gs-font-corpo);letter-spacing:.08em;text-transform:uppercase;color:var(--gs-gris-50)}
 .dv-share__panel h3:not(:first-child){margin-top:14px}
 .dv-share__fila{display:flex;gap:6px}
 .dv-share__fila input,.dv-share__fila textarea{flex:1;min-width:0;font:.76rem/1.3 var(--gs-font-corpo);color:var(--gs-gris-80);background:var(--gs-gris-10);border:1px solid var(--gs-gris-20);border-radius:var(--gs-radius);padding:6px 8px;resize:none}
 .dv-share__fila button{flex-shrink:0;font:700 .7rem/1 var(--gs-font-corpo);letter-spacing:.03em;color:var(--gs-verde-nato);background:var(--gs-verde-moi-claro);border:0;border-radius:var(--gs-radius);padding:0 10px;cursor:pointer}
 .dv-share__fila button:hover{background:#dcead2}
+.dv-share__nota{margin:0 0 8px;font-size:.74rem;line-height:1.4;color:var(--gs-gris-50)}
+.dv-share__descarga{margin:0}
+.dv-share__descarga a{font-size:.78rem;font-weight:700;color:var(--gs-verde-nato);text-decoration:none}
+.dv-share__descarga a:hover{text-decoration:underline;text-underline-offset:.2em}
 .dv-share__redes{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px}
 .dv-share__redes a{font-size:.78rem;color:var(--gs-verde-nato);text-decoration:none}
 .dv-share__redes a:hover{text-decoration:underline;text-underline-offset:.2em}

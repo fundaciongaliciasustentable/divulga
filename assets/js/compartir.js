@@ -1,7 +1,7 @@
 // Compartir/incrustar: engade un botón "Compartir" á barra (.dv-bar nav)
-// de cada peza, cun panel con ligazón, código <iframe> e redes sociais.
-// Un só ficheiro compartido por todas as pezas — nada que manter á man
-// en cada unha.
+// de cada peza, cun panel con ligazón, código <iframe>, imaxe para
+// Instagram/TikTok e redes sociais. Un só ficheiro compartido por todas
+// as pezas — nada que manter á man en cada unha.
 (() => {
   const nav = document.querySelector('.dv-bar nav');
   if (!nav) return;
@@ -10,6 +10,8 @@
   const url = location.href.split(/[?#]/)[0];
   const titulo = meta('og:title') || document.title;
   const descricion = meta('og:description') || '';
+  const imaxeOg = meta('og:image');
+  const imaxeHistoria = new URL('historia.jpg', url).href;
   const embed = `<iframe src="${url}" width="100%" height="820" style="border:0;max-width:980px" loading="lazy" title="${titulo.replace(/"/g, '&quot;')}"></iframe>`;
 
   const redes = [
@@ -25,11 +27,17 @@
   caixa.innerHTML = `
     <button type="button" class="dv-share" aria-haspopup="true" aria-expanded="false">Compartir</button>
     <div class="dv-share__panel" hidden>
+      <button type="button" class="dv-share__nativo" hidden>Compartir dende este dispositivo</button>
       <h3>Ligazón</h3>
       <div class="dv-share__fila">
         <input type="text" readonly value="${url}" aria-label="Ligazón da peza">
         <button type="button" data-copiar="url">Copiar</button>
       </div>
+      <h3>Instagram e TikTok</h3>
+      <p class="dv-share__nota">Esas redes non len ligazóns: descarga a imaxe e súbea a man como Story ou vídeo.</p>
+      <p class="dv-share__descarga">
+        <a href="${imaxeHistoria}" download>Descargar imaxe (1080×1920)</a>
+      </p>
       <h3>Incrustar nunha web</h3>
       <div class="dv-share__fila">
         <textarea readonly rows="3" aria-label="Código para incrustar">${embed}</textarea>
@@ -44,6 +52,28 @@
 
   const boton = caixa.querySelector('.dv-share');
   const panel = caixa.querySelector('.dv-share__panel');
+  const botonNativo = caixa.querySelector('.dv-share__nativo');
+
+  if (navigator.share) {
+    botonNativo.hidden = false;
+    botonNativo.addEventListener('click', async () => {
+      const datos = { title: titulo, text: descricion, url };
+      try {
+        if (imaxeOg && navigator.canShare) {
+          const resp = await fetch(imaxeOg);
+          const blob = await resp.blob();
+          const ficheiro = new File([blob], 'divulga.jpg', { type: blob.type });
+          if (navigator.canShare({ files: [ficheiro] })) {
+            await navigator.share({ ...datos, files: [ficheiro] });
+            return;
+          }
+        }
+        await navigator.share(datos);
+      } catch {
+        // A persoa cancelou o panel nativo, ou o dispositivo non puido: sen erro, queda o resto do panel.
+      }
+    });
+  }
 
   function pechar() {
     panel.hidden = true;

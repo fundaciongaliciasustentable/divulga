@@ -21,8 +21,10 @@ resolveu, só cun símbolo «gs» pequeno e unha liña fina), non un bloque de c
 fixo que rompa coa estética de cada visualización. O pé inclúe sempre o
 mínimo legal: nome, CIF, licenza e ligazóns a Aviso legal/Privacidade/Cookies
 da web institucional (non hai páxinas propias en Divulga para iso). A
-cabeceira inclúe tamén un botón «Compartir» (ligazón, código para incrustar
-e redes sociais), inxectado por `assets/js/compartir.js` en todas as pezas.
+cabeceira inclúe tamén un botón «Compartir» (ligazón, código para incrustar,
+imaxe para Instagram/TikTok e redes sociais — e compartir nativo do
+dispositivo cando o navegador o permite), inxectado por
+`assets/js/compartir.js` en todas as pezas.
 
 ```
 index.html                 portada (XERADA por build.py, non editar a man)
@@ -37,7 +39,8 @@ assets/logos/               logos FGS (de fundaciongaliciasustentable.gal)
 assets/img/                 foto da banda (heroe-1200/2400.jpg) e og-divulga.jpg
 v/<slug>/index.html         cada visualización, páxina autónoma
 v/<slug>/thumb.svg|png      miniatura cadrada para a portada
-v/<slug>/og.jpg             imaxe propia para redes (xerada por scripts/og_pezas.py)
+v/<slug>/og.jpg             imaxe propia para redes, 1200×630 (scripts/og_pezas.py)
+v/<slug>/historia.jpg       imaxe propia para Instagram/TikTok, 1080×1920 (scripts/og_pezas.py)
 fontes/<slug>/               datos e scripts que xeran v/<slug>/ (non se suben)
 scripts/                     empaquetado (`empaquetar.sh`) e xeración das imaxes OG
                             (`og.py` para a portada, `og_pezas.py` para cada peza)
@@ -71,7 +74,7 @@ scripts/                     empaquetado (`empaquetar.sh`) e xeración das imaxe
    soltos nas poucas categorías amplas do filtro da portada); se é un tema
    novo, engádeo primeiro a `CATEGORIAS` coa categoría que lle corresponda.
 4. `python3 scripts/og_pezas.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf> <slug>`
-   xera `v/<slug>/og.jpg`, a imaxe para redes sociais (usa o `og:title`/
+   xera `v/<slug>/og.jpg` e `v/<slug>/historia.jpg` (usa o `og:title`/
    `og:description` que puxeches no paso 1, non o do manifesto).
 5. `python3 build.py` rexenera a portada: unha grella de pezas da máis
    recente á máis antiga, numeradas, cunha liña de filtro por categoría.
