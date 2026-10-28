@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Os encoros, vaso a vaso — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Os encoros das concas galegas como vasos que se enchen e se baleiran, semana a semana dende 1988.">
+<meta property="og:title" content="Os encoros, vaso a vaso">
+<meta property="og:description" content="Corenta encoros galegos como vasos de auga, semana a semana dende 1988.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Cada encoro é un vaso: o ancho vai coa raíz da capacidade (a área, coa capacidade) e a auga,
+   coa porcentaxe de enchido na semana escollida. A raia discontinua é o normal desa semana do
+   ano (media 1991-2020). O control desliza por todas as semanas dende 1988 e o botón reprodúceas;
+   abaixo, a reserva total das dúas concas, coa semana marcada. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --auga:#2c7fb8; --auga2:#7fcdbb; --vidro:#9aa3ad;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.control{width:100%;max-width:860px;display:flex;flex-direction:column;gap:8px;align-items:center;position:sticky;top:0;z-index:1;background:var(--paper);padding:8px 0}
+.fecha{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;justify-content:center}
+.fecha b{font:700 2rem var(--num)}
+.fecha span{font-size:.9rem;color:var(--muted)}
+.fecha span b{font-size:1.2rem;color:var(--ink)}
+.slider{display:flex;gap:10px;align-items:center;width:100%}
+.slider input{flex:1;accent-color:var(--auga)}
+.slider button,.atallos button{font:600 .8rem var(--display);border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:3px;padding:6px 10px;cursor:pointer}
+.slider button:focus-visible,.atallos button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.atallos{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.serie{width:100%;max-width:860px}
+.serie svg{display:block;width:100%;height:auto;cursor:pointer}
+.ax{font:600 11px var(--num);fill:var(--muted)}
+.vasos{width:100%;display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:14px 10px}
+.vaso{display:flex;flex-direction:column;align-items:center;gap:3px}
+.vaso svg{display:block}
+.vaso .n{font:700 .72rem var(--display);text-align:center;max-width:9em;line-height:1.15}
+.vaso .v{font:700 .9rem var(--num)}
+.vaso .v span{font-weight:500;color:var(--muted);font-size:.78rem}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.78rem;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+h2{font:800 .8rem var(--display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:10px 0 0;width:100%;text-align:center}
+.fecha span b{white-space:nowrap}
+@media (max-width:640px){.control{position:static}}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+details{width:100%;max-width:860px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:420px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.92rem;color:var(--ink)}
+th,td{padding:2px 9px;text-align:right}
+th{font-family:var(--display);font-size:.7rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.8rem}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Os encoros, vaso a vaso</h1>
+  <p class="dek">__DEK__</p>
+  <div class="control">
+    <div class="fecha"><b id="fe"></b><span>Reserva total: <b id="pt"></b> · o normal desa semana: <b id="pn"></b></span></div>
+    <div class="slider"><button id="play" type="button" aria-label="Reproducir">▶︎ Reproducir</button><input type="range" id="sl" min="0" aria-label="Semana"></div>
+    <div class="atallos" id="atallos"></div>
+  </div>
+  <div class="serie"><svg id="se" role="img" aria-label="Reserva total das concas Miño-Sil e Galicia-Costa, semana a semana dende 1988. Preme para ir a unha semana."></svg></div>
+  <div class="legend"><span><svg width="22" height="14"><rect x="1" y="1" width="20" height="12" fill="var(--auga)" opacity=".85"/></svg>auga embalsada</span><span><svg width="22" height="14"><line x1="1" x2="21" y1="7" y2="7" stroke="var(--ink)" stroke-dasharray="3 2" stroke-width="1.5"/></svg>o normal desa semana (1991–2020)</span><span>o tamaño do vaso, a capacidade</span></div>
+  <h2>Miño-Sil</h2>
+  <div class="vasos" id="v1"></div>
+  <h2>Galicia-Costa</h2>
+  <div class="vasos" id="v2"></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">MITECO, <a href="https://www.miteco.gob.es/es/agua/temas/evaluacion-de-los-recursos-hidricos/boletin-hidrologico.html" target="_blank" rel="noopener">Boletín Hidrolóxico</a>, base de datos histórica de encoros (datos semanais, provisionais os últimos): os encoros de máis de 5 hm³ das concas Miño-Sil e Galicia-Costa. A conca do Miño-Sil inclúe uns poucos encoros río arriba, en León e Zamora (Bárcena, Matalavilla, Las Rozas…). Case todos son hidroeléctricos: o seu nivel depende tanto da choiva coma de cando se turbina, e por iso baixan no verán e en anos de moita produción. A reserva total pondérase pola capacidade dos encoros con dato nesa semana. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const MESES=['xaneiro','febreiro','marzo','abril','maio','xuño','xullo','agosto','setembro','outubro','novembro','decembro'];
+const fecha=s=>{const [a,m,d]=s.split('-').map(Number);return `${d} de ${MESES[m-1]} de ${a}`};
+const semAno=s=>{const d=new Date(s+'T12:00:00Z'),j=new Date(Date.UTC(d.getUTCFullYear(),0,4));const w=1+Math.round(((d-j)/864e5-3+((j.getUTCDay()+6)%7))/7);return Math.min(53,Math.max(1,w))};
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const N=D.sem.length,sl=document.getElementById('sl');sl.max=N-1;sl.value=N-1;
+const cmax=Math.max(...D.enc.map(e=>e.c));
+// Vasos: alto fixo e ancho segundo a raíz da capacidade, para que a área vaia coa capacidade
+const V=[];
+for(const e of D.enc){
+  const w=Math.max(26,Math.round(118*Math.sqrt(e.c/cmax))),h=Math.max(58,Math.round(130*Math.sqrt(e.c/cmax)));
+  const box=document.createElement('div');box.className='vaso';
+  const svg=document.createElementNS(NS,'svg');svg.setAttribute('width',w+4);svg.setAttribute('height',h+4);
+  const sesgo=Math.min(6,w*.08);  // o vaso estréitase un pouco cara abaixo
+  const contorno=`M2,2 L${2+sesgo},${h+2} L${w+2-sesgo},${h+2} L${w+2},2`;
+  const clip=`c${V.length}`;
+  el('clipPath',{id:clip},svg).appendChild(el('path',{d:contorno+'Z'}));
+  const auga=el('rect',{x:0,width:w+4,fill:'var(--auga)',opacity:.85,'clip-path':`url(#${clip})`},svg);
+  const nor=el('line',{x1:2,x2:w+2,stroke:'var(--ink)','stroke-width':1.5,'stroke-dasharray':'3 2'},svg);
+  el('path',{d:contorno,fill:'none',stroke:'var(--vidro)','stroke-width':2,'stroke-linejoin':'round'},svg);
+  box.appendChild(svg);
+  const n=document.createElement('div');n.className='n';n.textContent=e.n;box.appendChild(n);
+  const v=document.createElement('div');v.className='v';box.appendChild(v);
+  box.title=`${e.n}: ${String(e.c).replace('.',',')} hm³${e.el?' · hidroeléctrico':''}`;
+  (e.a==='Miño-Sil'?document.getElementById('v1'):document.getElementById('v2')).appendChild(box);
+  V.push({e,auga,nor,v,h});
+}
+// Serie do total
+const se=document.getElementById('se');let marca;
+function serie(){
+  se.innerHTML='';const W=se.parentNode.clientWidth,H=120,ML=28,MR=8,MT=8,MB=18;se.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const sx=i=>ML+i/(N-1)*(W-ML-MR),sy=v=>MT+(1-v/100)*(H-MT-MB);
+  for(const v of [0,50,100]){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},se);el('text',{x:ML-4,y:sy(v)+4,class:'ax','text-anchor':'end'},se).textContent=v+'%'}
+  for(let a=1990;a<=2025;a+=5){const i=D.sem.findIndex(s=>s.startsWith(a));if(i>=0)el('text',{x:sx(i),y:H-4,class:'ax','text-anchor':'middle'},se).textContent=a}
+  let d='';D.tot.forEach((v,i)=>{if(v!=null)d+=(d?'L':'M')+sx(i).toFixed(1)+','+sy(v).toFixed(1)});
+  el('path',{d:d+`L${sx(N-1)},${sy(0)}L${sx(0)},${sy(0)}Z`,fill:'var(--auga)',opacity:.18},se);
+  el('path',{d,fill:'none',stroke:'var(--auga)','stroke-width':1.2},se);
+  marca=el('line',{y1:MT,y2:H-MB,stroke:'var(--ink)','stroke-width':1.5},se);
+  se.onclick=ev=>{const r=se.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width*W;sl.value=Math.round(Math.max(0,Math.min(N-1,(x-ML)/(W-ML-MR)*(N-1))));pinta()};
+  se._sx=sx;
+}
+function pinta(){
+  const i=+sl.value,s=D.sem[i],w=semAno(s)-1;
+  document.getElementById('fe').textContent=fecha(s);
+  const nt=D.enc.reduce((a,e)=>a+e.c*e.nor[w]/100,0)/D.enc.reduce((a,e)=>a+e.c,0)*100;
+  document.getElementById('pt').textContent=D.tot[i]==null?'–':String(D.tot[i]).replace('.',',')+' %';
+  document.getElementById('pn').textContent=Math.round(nt)+' %';
+  for(const o of V){
+    const p=o.e.p[i];
+    const y=p==null?o.h+2:2+o.h*(1-p/100);
+    o.auga.setAttribute('y',y);o.auga.setAttribute('height',o.h+4-y);
+    const yn=2+o.h*(1-o.e.nor[w]/100);o.nor.setAttribute('y1',yn);o.nor.setAttribute('y2',yn);
+    o.v.innerHTML=p==null?'<span>sen dato</span>':`${p} % <span>de ${String(o.e.c).replace('.',',')} hm³</span>`;
+  }
+  if(marca){const x=se._sx(i);marca.setAttribute('x1',x);marca.setAttribute('x2',x)}
+}
+// Atallos a semanas sinaladas
+const busca=(pred)=>{let m=null;D.tot.forEach((v,i)=>{if(v!=null&&pred(D.sem[i])&&(m===null||v<D.tot[m]))m=i});return m};
+const minTot=D.tot.reduce((m,v,i)=>v!=null&&(m===null||v<D.tot[m])?i:m,null),maxTot=D.tot.reduce((m,v,i)=>v!=null&&(m===null||v>D.tot[m])?i:m,null);
+const AT=[['Hoxe',N-1],['O mínimo',minTot],['O máximo',maxTot],['Seca de 2017',busca(s=>s.startsWith('2017'))],['Verán de 2022',busca(s=>s.startsWith('2022'))]];
+document.getElementById('atallos').innerHTML=AT.filter(a=>a[1]!=null).map(([t,i])=>`<button type="button" data-i="${i}">${t}</button>`).join('');
+for(const b of document.querySelectorAll('[data-i]'))b.addEventListener('click',()=>{sl.value=b.dataset.i;pinta()});
+sl.addEventListener('input',pinta);
+let timer=null;const play=document.getElementById('play');
+play.addEventListener('click',()=>{
+  if(timer){clearInterval(timer);timer=null;play.textContent='▶︎ Reproducir';return}
+  if(+sl.value>=N-1)sl.value=Math.max(0,N-1-52*5);
+  play.textContent='❚❚ Parar';
+  timer=setInterval(()=>{if(+sl.value>=N-1){clearInterval(timer);timer=null;play.textContent='▶︎ Reproducir';return}sl.value=+sl.value+1;pinta()},90);
+});
+serie();pinta();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{serie();pinta()},150)});
+document.getElementById('tbl').innerHTML='<tr><th>Encoro</th><th>Conca</th><th>Capacidade (hm³)</th><th>Hoxe</th><th>Mínimo</th><th>Máximo</th></tr>'+
+  D.enc.map(e=>{const v=e.p.filter(x=>x!=null);return `<tr><td>${e.n}</td><td>${e.a}</td><td>${String(e.c).replace('.',',')}</td><td>${e.p[N-1]??'–'} %</td><td>${Math.min(...v)} %</td><td>${Math.max(...v)} %</td></tr>`}).join('');
+</script>
+</body>
+</html>

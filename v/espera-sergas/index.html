@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Canto esperas no Sergas — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="A espera media para operarse en cada hospital do Sergas e en cada especialidade: un punto por hospital, para ver canto cambia segundo onde vivas.">
+<meta property="og:title" content="Canto esperas no Sergas">
+<meta property="og:description" content="Os días de espera para unha operación, hospital a hospital e especialidade a especialidade.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Enxame de puntos (beeswarm): unha fila por especialidade e un punto por hospital, colocado
+   segundo o tempo medio de espera e co tamaño segundo os pacientes que esperan. A cor separa os
+   grandes complexos universitarios, os hospitais comarcais e o concertado (Povisa). A raia de
+   cada fila é a media do Sergas nesa especialidade. Arriba, a serie da espera media dende 2014. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --chu:#2166ac; --com:#1b9e77; --con:#e08214; --hl:#c2185b;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:8px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink)}
+select:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:600 12.5px var(--display);fill:var(--ink)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.pt{stroke:#fff;stroke-width:1;cursor:pointer}
+.pt:hover{stroke:var(--ink);stroke-width:1.5}
+.dim .pt{opacity:.18}.dim .pt.on{opacity:1;stroke:var(--ink);stroke-width:1.6}
+.med{stroke:var(--ink);stroke-width:2}
+.serie{width:100%;max-width:820px}
+.serie svg{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.rl{font-size:13px}.ax{font-size:14px}.axt{font-size:13px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Canto esperas no Sergas</h1>
+  <p class="dek">A 30/06/2026, <b>55.348 persoas</b> agardaban por unha operación no Sergas, cunha espera media de <b>91 días</b>, +17 en seis meses. Pero depende moito de onde e de que: en traumatoloxía, no CHU de Santiago, a media é de 167 días; en xinecoloxía, no hospital de Valdeorras, de 13. Cada punto é un hospital; escolle o teu.</p>
+  <div class="tools">
+    <label>O teu hospital <select id="h"><option value="">Todos</option></select></label>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Enxame de puntos: o tempo medio de espera cirúrxica de cada hospital en cada especialidade. A táboa de datos ten os valores."></svg></div>
+  <h2>A espera media, dende 2014</h2>
+  <p class="sub">Días de espera media de toda a lista cirúrxica do Sergas (sen Povisa) en cada corte, e pacientes en espera.</p>
+  <div class="serie"><svg id="se" role="img" aria-label="Serie da espera media cirúrxica do Sergas dende 2014."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Sergas, <a href="https://www.sergas.gal/Asistencia-sanitaria/Lista-de-espera-cir%C3%BArxica" target="_blank" rel="noopener">lista de espera cirúrxica</a>, corte do 30/06/2026 e cortes anteriores dende 2014 (faltan os que non teñen PDF publicado). O tempo medio de espera son os días que levan esperando, de media, as persoas que seguen na lista nese día; non é o que tardará en operarse quen entra hoxe. Inclúe as prioridades 1 (as urxentes, con menos espera), 2 e 3. Os hospitais comarcais operan sobre todo casos sinxelos, e os casos complexos da súa área van ao complexo universitario, polo que as esperas non son de todo comparables. Povisa é un hospital privado concertado de Vigo. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D={"data":"2026-06-30","serie":[["2014-09-30",32432,81.5],["2014-12-31",31825,67.1],["2015-12-31",33054,70.8],["2016-12-31",32704,67.5],["2017-06-30",34454,59.8],["2017-12-31",33024,65.3],["2018-06-30",33024,57.8],["2018-12-31",32176,60.6],["2019-12-31",32874,53.9],["2020-06-30",33583,101.1],["2020-12-31",32906,72.9],["2021-06-30",37550,70.3],["2021-12-31",40401,78.2],["2022-06-30",43770,75.6],["2022-12-31",43544,75.4],["2023-06-30",44410,65.9],["2023-12-31",42167,67.9],["2024-06-30",47288,72.0],["2024-12-31",45839,67.5],["2025-06-30",46812,70.1],["2025-12-31",46775,73.9],["2026-06-30",55348,91.1]],"hosp":{"C.H. UNIVERSITARIO A CORUÑA":{"ANXIOLOXIA E CIRURXIA VASCULAR":{"p":415,"t":79.7,"m12":0},"CIRURXIA CARDIACA":{"p":128,"t":80.4,"m12":0},"CIRURXIA CARDIACA INFANTIL":{"p":3,"t":47.3,"m12":0},"CIRURXIA MAXILOFACIAL":{"p":250,"t":81.9,"m12":0},"CIRURXIA PEDIATRICA":{"p":233,"t":89.9,"m12":0},"CIRURXIA PLASTICA E REPARADORA":{"p":736,"t":96.8,"m12":0},"CIRURXIA TORACICA":{"p":128,"t":73.9,"m12":0},"CIRURXIA XERAL E DIXESTIVA":{"p":1905,"t":88.7,"m12":0},"DERMATOLOXIA":{"p":347,"t":50.1,"m12":0},"NEUROCIRURXIA":{"p":123,"t":69.2,"m12":0},"OFTALMOLOXIA":{"p":2876,"t":76.7,"m12":0},"OTORRINOLARINGOLOXIA":{"p":709,"t":115.5,"m12":0},"TRAUMATOLOXIA":{"p":2061,"t":129.3,"m12":135},"UROLOXIA":{"p":768,"t":88.2,"m12":0},"XINECOLOXIA":{"p":419,"t":89.0,"m12":0}},"H. PÚBLICO VIRXE DA XUNQUEIRA":{"CIRURXIA XERAL E DIXESTIVA":{"p":61,"t":24.3,"m12":0},"DERMATOLOXIA":{"p":3,"t":50.0,"m12":0},"OFTALMOLOXIA":{"p":131,"t":72.9,"m12":0},"OTORRINOLARINGOLOXIA":{"p":10,"t":23.3,"m12":0},"TRAUMATOLOXIA":{"p":83,"t":36.7,"m12":0},"UROLOXIA":{"p":19,"t":29.1,"m12":0},"XINECOLOXIA":{"p":23,"t":32.8,"m12":0}},"C.H. UNIVERSITARIO DE SANTIAGO":{"ANXIOLOXIA E CIRURXIA VASCULAR":{"p":460,"t":118.6,"m12":0},"CIRURXIA CARDIACA":{"p":66,"t":77.7,"m12":0},"CIRURXIA MAXILOFACIAL":{"p":375,"t":164.6,"m12":29},"CIRURXIA PEDIATRICA":{"p":367,"t":93.1,"m12":0},"CIRURXIA PLASTICA E REPARADORA":{"p":345,"t":78.7,"m12":0},"CIRURXIA TORACICA":{"p":103,"t":97.9,"m12":0},"CIRURXIA XERAL E DIXESTIVA":{"p":2144,"t":108.7,"m12":28},"DERMATOLOXIA":{"p":404,"t":65.3,"m12":0},"NEUROCIRURXIA":{"p":228,"t":141.9,"m12":7},"OFTALMOLOXIA":{"p":2273,"t":80.8,"m12":0},"OTORRINOLARINGOLOXIA":{"p":1184,"t":165.7,"m12":67},"TRAUMATOLOXIA":{"p":2830,"t":167.4,"m12":207},"UROLOXIA":{"p":891,"t":77.6,"m12":1},"XINECOLOXIA":{"p":295,"t":52.0,"m12":0}},"H. PÚBLICO DA BARBANZA":{"CIRURXIA XERAL E DIXESTIVA":{"p":95,"t":54.0,"m12":0},"DERMATOLOXIA":{"p":8,"t":30.5,"m12":0},"OFTALMOLOXIA":{"p":131,"t":39.0,"m12":0},"OTORRINOLARINGOLOXIA":{"p":21,"t":32.0,"m12":0},"TRAUMATOLOXIA":{"p":217,"t":60.8,"m12":0},"UROLOXIA":{"p":3,"t":51.3,"m12":0},"XINECOLOXIA":{"p":41,"t":47.4,"m12":0}},"C.H. UNIVERSITARIO DE FERROL":{"CIRURXIA XERAL E DIXESTIVA":{"p":421,"t":59.9,"m12":0},"DERMATOLOXIA":{"p":79,"t":52.6,"m12":0},"OFTALMOLOXIA":{"p":1048,"t":87.7,"m12":0},"OTORRINOLARINGOLOXIA":{"p":377,"t":109.1,"m12":0},"TRAUMATOLOXIA":{"p":414,"t":53.2,"m12":0},"UROLOXIA":{"p":382,"t":90.0,"m12":0},"XINECOLOXIA":{"p":49,"t":40.1,"m12":0}},"C.H. UNIVERSITARIO DE LUGO":{"ANXIOLOXIA E CIRURXIA VASCULAR":{"p":185,"t":78.4,"m12":0},"CIRURXIA PLASTICA E REPARADORA":{"p":15,"t":43.9,"m12":0},"CIRURXIA XERAL E DIXESTIVA":{"p":775,"t":75.4,"m12":0},"DERMATOLOXIA":{"p":90,"t":62.0,"m12":0},"NEUROCIRURXIA":{"p":205,"t":130.2,"m12":0},"OFTALMOLOXIA":{"p":738,"t":70.2,"m12":0},"OTORRINOLARINGOLOXIA":{"p":282,"t":83.8,"m12":0},"TRAUMATOLOXIA":{"p":1493,"t":71.5,"m12":0},"UROLOXIA":{"p":450,"t":91.2,"m12":0},"XINECOLOXIA":{"p":162,"t":80.7,"m12":0}},"H. PÚBLICO DA MARIÑA":{"CIRURXIA XERAL E DIXESTIVA":{"p":184,"t":77.5,"m12":0},"OFTALMOLOXIA":{"p":256,"t":41.8,"m12":0},"OTORRINOLARINGOLOXIA":{"p":31,"t":65.5,"m12":0},"TRAUMATOLOXIA":{"p":239,"t":66.8,"m12":0},"UROLOXIA":{"p":143,"t":75.3,"m12":0},"XINECOLOXIA":{"p":22,"t":39.0,"m12":0}},"H. PÚBLICO DE MONFORTE":{"CIRURXIA XERAL E DIXESTIVA":{"p":46,"t":37.8,"m12":0},"OFTALMOLOXIA":{"p":50,"t":43.0,"m12":0},"OTORRINOLARINGOLOXIA":{"p":3,"t":17.3,"m12":0},"TRAUMATOLOXIA":{"p":139,"t":52.2,"m12":0},"UROLOXIA":{"p":9,"t":23.0,"m12":0},"XINECOLOXIA":{"p":21,"t":31.4,"m12":0}},"C.H. UNIVERSITARIO DE OURENSE":{"ANXIOLOXIA E CIRURXIA VASCULAR":{"p":87,"t":43.3,"m12":0},"CIRURXIA PEDIATRICA":{"p":99,"t":76.5,"m12":0},"CIRURXIA XERAL E DIXESTIVA":{"p":897,"t":68.4,"m12":0},"DERMATOLOXIA":{"p":68,"t":19.9,"m12":0},"NEUROCIRURXIA":{"p":75,"t":59.5,"m12":0},"OFTALMOLOXIA":{"p":1556,"t":80.7,"m12":0},"OTORRINOLARINGOLOXIA":{"p":247,"t":70.1,"m12":0},"TRAUMATOLOXIA":{"p":1079,"t":67.1,"m12":0},"UROLOXIA":{"p":705,"t":73.2,"m12":0},"XINECOLOXIA":{"p":106,"t":37.0,"m12":0}},"H. PÚBLICO DE VALDEORRAS":{"CIRURXIA XERAL E DIXESTIVA":{"p":54,"t":53.6,"m12":0},"OFTALMOLOXIA":{"p":220,"t":68.8,"m12":0},"OTORRINOLARINGOLOXIA":{"p":2,"t":39.0,"m12":0},"TRAUMATOLOXIA":{"p":126,"t":36.3,"m12":0},"UROLOXIA":{"p":27,"t":52.4,"m12":0},"XINECOLOXIA":{"p":21,"t":13.3,"m12":0}},"H. PÚBLICO DE VERÍN":{"CIRURXIA XERAL E DIXESTIVA":{"p":72,"t":51.7,"m12":0},"DERMATOLOXIA":{"p":77,"t":36.4,"m12":0},"OFTALMOLOXIA":{"p":174,"t":60.4,"m12":0},"TRAUMATOLOXIA":{"p":356,"t":73.5,"m12":0},"UROLOXIA":{"p":3,"t":35.0,"m12":0},"XINECOLOXIA":{"p":25,"t":55.6,"m12":0}},"C.H. UNIVERSITARIO DE PONTEVEDRA":{"ANXIOLOXIA E CIRURXIA VASCULAR":{"p":432,"t":99.0,"m12":0},"CIRURXIA XERAL E DIXESTIVA":{"p":907,"t":85.1,"m12":0},"DERMATOLOXIA":{"p":55,"t":40.4,"m12":0},"OFTALMOLOXIA":{"p":1744,"t":116.1,"m12":0},"OTORRINOLARINGOLOXIA":{"p":422,"t":78.2,"m12":0},"TRAUMATOLOXIA":{"p":1060,"t":96.3,"m12":0},"UROLOXIA":{"p":568,"t":81.0,"m12":0},"XINECOLOXIA":{"p":93,"t":39.8,"m12":0}},"H. PÚBLICO DO SALNÉS":{"CIRURXIA XERAL E DIXESTIVA":{"p":277,"t":62.6,"m12":0},"DERMATOLOXIA":{"p":16,"t":9.3,"m12":0},"OFTALMOLOXIA":{"p":223,"t":56.5,"m12":0},"OTORRINOLARINGOLOXIA":{"p":71,"t":38.6,"m12":0},"TRAUMATOLOXIA":{"p":322,"t":75.7,"m12":0},"UROLOXIA":{"p":72,"t":29.2,"m12":0},"XINECOLOXIA":{"p":10,"t":12.8,"m12":0}},"C.H. UNIVERSITARIO DE VIGO":{"ANXIOLOXIA E CIRURXIA VASCULAR":{"p":182,"t":63.6,"m12":0},"CIRURXIA CARDIACA":{"p":62,"t":52.3,"m12":0},"CIRURXIA MAXILOFACIAL":{"p":40,"t":115.9,"m12":0},"CIRURXIA PEDIATRICA":{"p":480,"t":113.8,"m12":0},"CIRURXIA PLASTICA E REPARADORA":{"p":295,"t":106.4,"m12":1},"CIRURXIA TORACICA":{"p":56,"t":25.9,"m12":0},"CIRURXIA XERAL E DIXESTIVA":{"p":1625,"t":79.1,"m12":1},"DERMATOLOXIA":{"p":47,"t":96.8,"m12":0},"NEUROCIRURXIA":{"p":374,"t":96.3,"m12":1},"OFTALMOLOXIA":{"p":3095,"t":78.3,"m12":3},"OTORRINOLARINGOLOXIA":{"p":900,"t":82.5,"m12":0},"TRAUMATOLOXIA":{"p":2228,"t":97.2,"m12":24},"UROLOXIA":{"p":1088,"t":91.4,"m12":0},"XINECOLOXIA":{"p":308,"t":61.6,"m12":0}},"H. POVISA (concertado)":{"ANXIOLOXIA E CIRURXIA VASCULAR":{"p":50,"t":23.0,"m12":0},"CIRURXIA MAXILOFACIAL":{"p":52,"t":43.9,"m12":0},"CIRURXIA PLASTICA E REPARADORA":{"p":160,"t":97.1,"m12":0},"CIRURXIA XERAL E DIXESTIVA":{"p":350,"t":42.5,"m12":0},"OFTALMOLOXIA":{"p":865,"t":43.7,"m12":0},"OTORRINOLARINGOLOXIA":{"p":56,"t":27.4,"m12":0},"TRAUMATOLOXIA":{"p":536,"t":56.3,"m12":0},"UROLOXIA":{"p":220,"t":51.1,"m12":0},"XINECOLOXIA":{"p":43,"t":20.3,"m12":0}}},"serv":["ANXIOLOXIA E CIRURXIA VASCULAR","CIRURXIA CARDIACA","CIRURXIA CARDIACA INFANTIL","CIRURXIA MAXILOFACIAL","CIRURXIA PEDIATRICA","CIRURXIA PLASTICA E REPARADORA","CIRURXIA TORACICA","CIRURXIA XERAL E DIXESTIVA","DERMATOLOXIA","NEUROCIRURXIA","OFTALMOLOXIA","OTORRINOLARINGOLOXIA","TRAUMATOLOXIA","UROLOXIA","XINECOLOXIA"]},NS='http://www.w3.org/2000/svg';
+const tipo=h=>/POVISA/i.test(h)?'con':/^C\.H\./.test(h)?'chu':'com';
+const TIPOS={chu:['Complexos hospitalarios universitarios','var(--chu)'],com:['Hospitais comarcais','var(--com)'],con:['Povisa (concertado)','var(--con)']};
+const bonito=s=>s.toLowerCase().replace(/(^|\s|\()(\p{L})/gu,(m,a,b)=>a+b.toUpperCase()).replace(/\b(E|Da|Do|De|Dos|Das)\b/g,w=>w.toLowerCase()).replace('C.h.','CH').replace(/^H\. /,'H. ').replace('Universitario','Univ.').replace('Público ','');
+const SERV={'ANXIOLOXIA E CIRURXIA VASCULAR':'Anxioloxía e cirurxía vascular','CIRURXIA CARDIACA':'Cirurxía cardíaca','CIRURXIA CARDIACA INFANTIL':'Cirurxía cardíaca infantil','CIRURXIA MAXILOFACIAL':'Cirurxía maxilofacial','CIRURXIA PEDIATRICA':'Cirurxía pediátrica','CIRURXIA PLASTICA E REPARADORA':'Cirurxía plástica','CIRURXIA TORACICA':'Cirurxía torácica','CIRURXIA XERAL E DIXESTIVA':'Cirurxía xeral e dixestiva','DERMATOLOXIA':'Dermatoloxía','NEUROCIRURXIA':'Neurocirurxía','OFTALMOLOXIA':'Oftalmoloxía','OTORRINOLARINGOLOXIA':'Otorrinolaringoloxía','TRAUMATOLOXIA':'Traumatoloxía','UROLOXIA':'Uroloxía','XINECOLOXIA':'Xinecoloxía'};
+const sv=s=>SERV[s]||bonito(s);
+const d1=v=>v.toFixed(0);
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+document.getElementById('legend').innerHTML=Object.values(TIPOS).map(([n,c])=>`<span><i style="background:${c}"></i>${n}</span>`).join('')+'<span><i style="background:none;border-radius:0;width:2px;height:14px;background:var(--ink)"></i>media do Sergas</span><span style="color:var(--muted)">· o tamaño, pacientes en espera</span>';
+const H=Object.keys(D.hosp);
+const sel=document.getElementById('h');sel.innerHTML+=H.map(h=>`<option value="${h}">${bonito(h)}</option>`).join('');
+// Especialidades con media ponderada; fóra as de menos de 20 pacientes en total
+const filas=D.serv.map(s=>{const pts=H.filter(h=>D.hosp[h][s]).map(h=>({h,s,...D.hosp[h][s]}));const p=pts.reduce((a,b)=>a+b.p,0);return {s,pts,p,m:pts.reduce((a,b)=>a+b.p*b.t,0)/p}}).filter(f=>f.p>=20).sort((a,b)=>b.m-a.m);
+function enxame(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?8:200,MR=14,MT=26,RH=NARROW?62:46;
+  const H_=MT+RH*filas.length+30;svg.setAttribute('viewBox',`0 0 ${W} ${H_}`);
+  const tmax=Math.ceil(Math.max(...filas.flatMap(f=>f.pts.map(p=>p.t)))/20)*20;
+  const sx=t=>ML+t/tmax*(W-ML-MR),rr=p=>NARROW?Math.min(13,2+Math.sqrt(p)*.2):2.5+Math.sqrt(p)*.32;
+  for(let t=0;t<=tmax;t+=NARROW?40:20){el('line',{x1:sx(t),x2:sx(t),y1:MT-6,y2:H_-30,stroke:'var(--grid)'},svg);el('text',{x:sx(t),y:MT-10,class:'ax','text-anchor':'middle'},svg).textContent=t}
+  el('text',{x:W-MR,y:H_-8,class:'axt','text-anchor':'end'},svg).textContent='días de espera media';
+  const g=el('g',{},svg);
+  filas.forEach((f,i)=>{
+    const yc=MT+RH*i+RH/2+(NARROW?8:0);
+    el('text',{x:NARROW?ML:ML-12,y:NARROW?yc-RH/2+6:yc+4,class:'rl','text-anchor':NARROW?'start':'end'},svg).textContent=sv(f.s)+(NARROW?` · ${d1(f.m)} días`:'');
+    if(!NARROW)el('text',{x:ML-12,y:yc+18,class:'ax','text-anchor':'end'},svg).textContent=`${d1(f.m)} días · ${miles(f.p)} pac.`;
+    el('line',{x1:sx(f.m),x2:sx(f.m),y1:yc-RH*.38,y2:yc+RH*.38,class:'med'},g);
+    // Enxame: colocar cada punto o máis preto posible da liña central sen solaparse
+    const colocados=[];
+    for(const p of f.pts.slice().sort((a,b)=>b.p-a.p)){
+      const x=sx(p.t),r=rr(p.p);let y=0;
+      for(let k=0;k<60;k++){const cand=(k%2?1:-1)*Math.ceil(k/2)*2;if(colocados.every(c=>Math.hypot(c.x-x,c.y-cand)>=c.r+r+1)){y=cand;break}}
+      colocados.push({x,y,r});
+      const c=el('circle',{cx:x,cy:yc+y,r,fill:TIPOS[tipo(p.h)][1],class:'pt'},g);c.dataset.h=p.h;
+      c.addEventListener('mousemove',ev=>show(ev,`<b>${bonito(p.h)}</b>${sv(p.s)}<br>${d1(p.t)} días de espera media · ${miles(p.p)} pacientes${p.m12?`<br>${miles(p.m12)} levan máis dun ano`:''}`));
+      c.addEventListener('mouseleave',hide);
+    }
+  });
+  marca();
+}
+function marca(){
+  const h=sel.value,svg=document.getElementById('ch');
+  svg.classList.toggle('dim',!!h);
+  for(const c of svg.querySelectorAll('.pt'))c.classList.toggle('on',c.dataset.h===h);
+}
+sel.addEventListener('change',marca);
+function serie(){
+  const svg=document.getElementById('se');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,Hh=210,ML=34,MR=40,MT=14,MB=26;
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const S=D.serie,t=s=>{const [a,m]=s.split('-').map(Number);return a+(m-.5)/12};
+  const x0=t(S[0][0]),x1=t(S.at(-1)[0]),sx=v=>ML+(v-x0)/(x1-x0)*(W-ML-MR);
+  const ymax=Math.ceil(Math.max(...S.map(s=>s[2]))/20)*20,sy=v=>MT+(1-v/ymax)*(Hh-MT-MB);
+  for(let v=0;v<=ymax;v+=20){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-6,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v}
+  for(let a=Math.ceil(x0);a<=x1;a+=2)el('text',{x:sx(a),y:Hh-6,class:'ax','text-anchor':'middle'},svg).textContent=a;
+  el('path',{d:'M'+S.map(s=>`${sx(t(s[0])).toFixed(1)},${sy(s[2]).toFixed(1)}`).join('L'),fill:'none',stroke:'var(--ink)','stroke-width':2},svg);
+  for(const s of S){const c=el('circle',{cx:sx(t(s[0])),cy:sy(s[2]),r:3.5,fill:'var(--ink)'},svg);c.addEventListener('mousemove',ev=>show(ev,`<b>${s[0].split('-').reverse().join('/')}</b>${d1(s[2])} días · ${miles(s[1])} pacientes`));c.addEventListener('mouseleave',hide)}
+  const u=S.at(-1);el('text',{x:sx(t(u[0]))+6,y:sy(u[2])+4,class:'ax'},svg).textContent=d1(u[2])+' d';
+  const c20=S.find(s=>s[0].startsWith('2020-06'));if(c20)el('text',{x:sx(t(c20[0])),y:sy(c20[2])-8,class:'axt','text-anchor':'middle'},svg).textContent='covid';
+}
+enxame();serie();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{enxame();serie()},150)});
+document.getElementById('tbl').innerHTML='<tr><th>Especialidade</th><th>Media</th>'+H.map(h=>`<th>${bonito(h)}</th>`).join('')+'</tr>'+
+  filas.map(f=>`<tr><td>${sv(f.s)}</td><td>${d1(f.m)}</td>${H.map(h=>`<td>${D.hosp[h][f.s]?d1(D.hosp[h][f.s].t):''}</td>`).join('')}</tr>`).join('');
+</script>
+</body>
+</html>

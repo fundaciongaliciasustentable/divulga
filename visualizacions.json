@@ -1,5 +1,63 @@
 [
   {
+    "slug": "centrais-galicia",
+    "titulo": "As centrais de Galicia, en megavatios",
+    "entradilla": "Douscentos parques eólicos, encoros e ciclos combinados, cada un co tamaño dos seus MW, ao xeito de Mega-What?, e as térmicas de carbón que xa pecharon. Con canto cobren dos totais oficiais de REE.",
+    "data": "2026-10-28",
+    "temas": [
+      "Enerxía"
+    ],
+    "formato": "Círculos empaquetados",
+    "fontes": "OpenStreetMap, Wikidata, Galipedia e REE (Informe do Sistema Eléctrico 2025)"
+  },
+  {
+    "slug": "horas-transporte",
+    "titulo": "Galicia en horas de autobús e tren",
+    "entradilla": "Un martes pola mañá, saíndo de Santiago en bus ou tren, chégase en menos de dúas horas a 96 dos 313 concellos. O mapa de Galicia medido en horas de transporte público dende as sete cidades, e deformado polo tempo.",
+    "data": "2026-10-28",
+    "temas": [
+      "Mobilidade",
+      "Territorio"
+    ],
+    "formato": "Mapa e mapa do tempo",
+    "fontes": "GTFS dos autobuses da Xunta (Punto de Acceso Nacional) e de Renfe"
+  },
+  {
+    "slug": "encoros",
+    "titulo": "Os encoros, vaso a vaso",
+    "entradilla": "Corenta encoros das concas galegas debuxados coma vasos que se enchen e se baleiran, semana a semana dende 1988. Move a data ou dálle ao play: o inverno énchea, o verán e as turbinas baleírana.",
+    "data": "2026-10-28",
+    "temas": [
+      "Auga",
+      "Enerxía"
+    ],
+    "formato": "Pictogramas animados",
+    "fontes": "MITECO, Boletín Hidrolóxico (base histórica de encoros)"
+  },
+  {
+    "slug": "espera-sergas",
+    "titulo": "Canto esperas no Sergas",
+    "entradilla": "55.348 persoas agardaban por unha operación en xuño de 2026, cunha espera media de 91 días. Hospital a hospital e especialidade a especialidade, canto cambia segundo onde vivas, e a serie dende 2014.",
+    "data": "2026-10-28",
+    "temas": [
+      "Saúde"
+    ],
+    "formato": "Enxame de puntos",
+    "fontes": "Sergas (lista de espera cirúrxica)"
+  },
+  {
+    "slug": "casas-baleiras",
+    "titulo": "As casas baleiras",
+    "entradilla": "Catro de cada dez vivendas galegas non teñen ninguén empadroado. Concello a concello, cantas casas están apagadas, e onde son abandono (sen xente e sen luz) ou segundas residencias.",
+    "data": "2026-10-28",
+    "temas": [
+      "Vivenda",
+      "Rural"
+    ],
+    "formato": "Mapa e pictogramas",
+    "fontes": "INE, Censo de Poboación e Vivendas 2021"
+  },
+  {
     "slug": "castros",
     "titulo": "Os castros: unha constelación",
     "entradilla": "1.880 castros de OpenStreetMap debuxados como estrelas: Galicia aparece coma un ceo cheo. Cada castro ten outro a 1,6 km de media, e case a metade do país está a menos de 2 km dun deles.",
