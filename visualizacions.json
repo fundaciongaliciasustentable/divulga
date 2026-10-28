@@ -397,14 +397,15 @@
   {
     "slug": "calculadora-persoal",
     "titulo": "Dende que naciches",
-    "entradilla": "Escribe o ano no que naciches e mira cantas hectáreas arderon en Galicia, canto quentou o aire e o mar, cantas aldeas quedaron baleiras e cantos peregrinos chegaron a Compostela dende entón.",
+    "entradilla": "Escribe o ano no que naciches: canto subiron os prezos, que daba de si o salario mínimo (un piso, un coche, a compra, un café), cantas hectáreas arderon, canto quentou Galicia, como cambiou o mundo e que noticias deu o teu ano.",
     "data": "2026-10-28",
     "temas": [
       "Clima",
-      "Poboación"
+      "Poboación",
+      "Economía"
     ],
     "formato": "Calculadora persoal",
-    "fontes": "Series de Divulga: EGIF/EFFIS, AEMET, NOAA, IGE e Oficina do Peregrino"
+    "fontes": "INE (IPC), Ministerio de Traballo (SMI), Ministerio de Vivenda, Our World in Data, Wikipedia e series de Divulga: EGIF/EFFIS, AEMET, NOAA, IGE e Oficina do Peregrino"
   },
   {
     "slug": "hexagonos-electorais",
