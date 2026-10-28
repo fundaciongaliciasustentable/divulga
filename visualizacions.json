@@ -1,5 +1,29 @@
 [
   {
+    "slug": "calculadora-persoal",
+    "titulo": "Dende que naciches",
+    "entradilla": "Escribe o ano no que naciches e mira cantas hectáreas arderon en Galicia, canto quentou o aire e o mar, cantas aldeas quedaron baleiras e cantos peregrinos chegaron a Compostela dende entón.",
+    "data": "2026-10-28",
+    "temas": [
+      "Clima",
+      "Poboación"
+    ],
+    "formato": "Calculadora persoal",
+    "fontes": "Series de Divulga: EGIF/EFFIS, AEMET, NOAA, IGE e Oficina do Peregrino"
+  },
+  {
+    "slug": "hexagonos-electorais",
+    "titulo": "Galicia en hexágonos electorais",
+    "entradilla": "Autonómicas, municipais e xerais dende 2000, concello a concello, nun mapa onde todos pesan igual. Vótase o mesmo para a Xunta, o concello e o Estado? Só en 198 concellos gañou o mesmo partido nas autonómicas de 2024 e nas municipais de 2023.",
+    "data": "2026-10-28",
+    "temas": [
+      "Política",
+      "Territorio"
+    ],
+    "formato": "Cartograma de hexágonos",
+    "fontes": "Xunta de Galicia (Abert@s) e Ministerio do Interior (Infoelectoral)"
+  },
+  {
     "slug": "centrais-galicia",
     "titulo": "As centrais de Galicia, en megavatios",
     "entradilla": "Douscentos parques eólicos, encoros e ciclos combinados, cada un co tamaño dos seus MW, ao xeito de Mega-What?, e as térmicas de carbón que xa pecharon. Con canto cobren dos totais oficiais de REE.",
