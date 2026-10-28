@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O lixo de cada quen — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Residuos municipais por habitante nos países da UE e nas comunidades autónomas, e canto se recicla ou se recolle por separado. Galicia resaltada.">
+<meta property="og:title" content="O lixo de cada quen">
+<meta property="og:description" content="Os quilos de residuos municipais por habitante: Galicia entre as comunidades e na escala europea.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Barras ordenadas en dous paneis coa mesma escala de kg por habitante. Esquerda: os 27 países da
+   UE; a barra enteira son os residuos municipais xerados e o tramo escuro, a parte que se recicla.
+   Galicia entra como unha fila máis na súa posición, para situala na escala europea. Dereita: as
+   comunidades autónomas; a barra son os residuos recollidos e o tramo escuro, a recollida separada
+   (que non é o mesmo que reciclaxe). Os botóns cambian a orde: por quilos ou pola porcentaxe. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --bar:#dcd8ce; --rc:#4f6f5c; --hl:#c2185b; --hl-soft:#f1c7d7;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:0;text-align:left}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:2px 0 6px;color:var(--muted);font-size:.8rem;max-width:60ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+.tools label{display:inline-flex;align-items:center;gap:8px}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink);max-width:78vw}
+select:focus-visible,.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.seg button{font:700 .8rem var(--display);border:0;background:var(--card);color:var(--muted);padding:7px 11px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.estado{font-size:.86rem;color:var(--ink);text-align:center;min-height:1.3em;margin:0;max-width:72ch}
+.estado b{font-family:var(--num);font-size:1.05rem}
+.estado .g{color:var(--hl);font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:16px;height:10px;display:inline-block}
+.paneis{display:grid;grid-template-columns:1fr 1fr;gap:28px;width:100%}
+.panel svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:600 12.5px var(--display);fill:var(--ink)}
+.rv{font:600 12.5px var(--num);fill:var(--muted);paint-order:stroke;stroke:var(--paper);stroke-width:3px}
+.ax{font:600 11.5px var(--num);fill:var(--muted)}
+.row{cursor:pointer}
+.row:hover .tot{fill:#cbc6ba}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px;display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
+table{border-collapse:collapse;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:760px){.paneis{grid-template-columns:1fr}}
+@media (max-width:640px){.rl{font-size:12px}.rv{font-size:13px}.ax{font-size:12.5px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>O lixo de cada quen</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>Resalta <select id="sel"><option value="">— país ou comunidade —</option></select></label>
+    <span class="seg" role="group" aria-label="Orde"><button type="button" data-o="kg" aria-pressed="true">Ordenar por kg</button><button type="button" data-o="pc" aria-pressed="false">por %</button></span>
+  </div>
+  <p class="estado" id="estado"></p>
+  <div class="legend"><span><i style="background:var(--bar)"></i>residuos municipais por habitante</span><span><i style="background:var(--rc)"></i>parte reciclada (países) ou recollida por separado (comunidades)</span><span><i style="background:var(--hl)"></i>Galicia</span></div>
+  <div class="paneis">
+    <div class="panel"><h2>Os países da UE, __ANO__</h2><p class="sub">Residuos municipais xerados e % reciclado (Eurostat). Galicia, cos seus kg recollidos, colocada entre eles.</p><svg id="pa" role="img" aria-label="Barras ordenadas: residuos municipais por habitante e parte reciclada nos países da UE, con Galicia intercalada."></svg></div>
+    <div class="panel"><h2>As comunidades autónomas, __ANO__</h2><p class="sub">Residuos municipais recollidos e % de recollida separada (INE).</p><svg id="pc" role="img" aria-label="Barras ordenadas: residuos municipais recollidos por habitante e parte de recollida separada en cada comunidade autónoma."></svg></div>
+  </div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="t1"></table><table id="t2"></table></div>
+  </details>
+  <p class="note">Países: Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/env_wasmun/default/table" target="_blank" rel="noopener">residuos municipais por operación de xestión (env_wasmun)</a>, residuos xerados en kg por habitante, e <a href="https://ec.europa.eu/eurostat/databrowser/view/cei_wm011/default/table" target="_blank" rel="noopener">taxa de reciclaxe de residuos municipais (cei_wm011)</a>, que suma reciclaxe de materiais, compostaxe e dixestión; __ANO__ (__FLAGS__). Comunidades: INE, <a href="https://www.ine.es/jaxi/Tabla.htm?tpx=32999" target="_blank" rel="noopener">recollida de residuos municipais por comunidades autónomas, indicadores per cápita (táboa 32999)</a> e <a href="https://www.ine.es/jaxi/Tabla.htm?tpx=32998" target="_blank" rel="noopener">cantidade recollida por tipo de residuo (táboa 32998)</a>, __ANO__, sen residuos de construción nin «outros»; Ceuta e Melilla non teñen per cápita publicado. <b>Comparabilidade:</b> o total por habitante si é comparable, porque Eurostat toma para España os datos do INE (__ESINE__ kg no INE, __ESEU__ kg en Eurostat). A porcentaxe non: para as comunidades só hai recollida separada (o que se deposita en colectores de papel, vidro, envases, orgánico, puntos limpos…), e parte dela é rexeitada nas plantas; e unha parte dos residuos mesturados acaba reciclada ou compostada nas plantas de tratamento. Por iso Galicia non leva tramo escuro no panel europeo. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const f0=v=>Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'),f1=v=>v==null?'—':v.toFixed(1).replace('.',',');
+const GAL=D.ccaa.find(c=>c.c==='12');
+// filas comúns: país {n,kg,pc,tipo}; Galicia entra nos países sen porcentaxe
+const PA=D.paises.map(p=>({id:'p'+p.c,n:p.n,kg:p.kg,pc:p.rc,tipo:'p',f:p.f}));
+PA.push({id:'gal',n:'Galicia',kg:GAL.kg,pc:null,tipo:'g'});
+const CA=D.ccaa.map(c=>({id:'c'+c.c,n:c.n,kg:c.kg,pc:c.sep,tipo:c.c==='12'?'g':'c'}));
+let orde='kg',escollida='';
+const sel=document.getElementById('sel');
+sel.innerHTML+=`<optgroup label="Países da UE">${[...PA].filter(p=>p.tipo==='p').sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(p=>`<option value="${p.id}">${p.n}</option>`).join('')}</optgroup><optgroup label="Comunidades autónomas">${CA.filter(c=>c.tipo!=='g').sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(c=>`<option value="${c.id}">${c.n}</option>`).join('')}</optgroup>`;
+const KMAX=Math.ceil(Math.max(...PA.map(p=>p.kg),...CA.map(c=>c.kg))/100)*100;
+const posto=(lista,r,k,maior)=>1+lista.filter(x=>x[k]!=null&&(maior?x[k]>r[k]:x[k]<r[k])).length;
+function estado(){
+  const pp=PA.filter(p=>p.tipo==='p');
+  let h=`<span class="g">Galicia</span>: <b>${f1(GAL.kg)} kg</b> por habitante en ${D.ano} (media UE ${D.ue.kg} kg). Con eses quilos sería o ${posto(PA,{kg:GAL.kg},'kg',false)}º que menos xera dos ${pp.length+1}; entre as comunidades, a ${posto(CA,{kg:GAL.kg},'kg',false)}ª de ${CA.length}. Recolle por separado o <b>${f1(GAL.sep)} %</b> (${posto(CA,{pc:GAL.sep},'pc',true)}ª de ${CA.length}; España ${f1(D.es_ine.sep)} %).`;
+  const s=[...PA,...CA].find(r=>r.id===escollida);
+  if(s)h+=`<br>${s.n}: <b>${f1(s.kg)} kg</b>${s.pc!=null?`, ${f1(s.pc)} % ${s.tipo==='p'?'reciclado':'recollido por separado'}`:''}.`;
+  document.getElementById('estado').innerHTML=h;
+}
+function panel(id,L,etq){
+  const svg=document.getElementById(id);svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<420;
+  const ML=NARROW?112:118,MR=NARROW?64:74,MT=20,RH=NARROW?21:22,H=MT+RH*L.length+6;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const sx=v=>ML+v/KMAX*(W-ML-MR);
+  const paso=NARROW?200:100;
+  for(let v=0;v<=KMAX;v+=paso){el('line',{x1:sx(v),x2:sx(v),y1:MT-4,y2:H-4,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:MT-8,class:'ax','text-anchor':'middle'},svg).textContent=v+(v===KMAX?' kg':'')}
+  // media de referencia
+  const ref=id==='pa'?D.ue.kg:D.es_ine.kg,txt=id==='pa'?'UE':'España';
+  el('line',{x1:sx(ref),x2:sx(ref),y1:MT-2,y2:H-2,stroke:'var(--ink)','stroke-dasharray':'3 3','stroke-width':1},svg);
+  el('text',{x:sx(ref)+3,y:H+10,class:'ax'},svg).textContent=`${txt} ${f0(ref)}`;
+  const ord=[...L].sort(orde==='kg'?(a,b)=>b.kg-a.kg:(a,b)=>(b.pc??-1)-(a.pc??-1));
+  ord.forEach((r,k)=>{
+    const y=MT+RH*k,g=r.tipo==='g',s=r.id===escollida,bh=RH-7;
+    const row=el('g',{class:'row'},svg);
+    if(s)el('rect',{x:0,y:y,width:W,height:RH,fill:'var(--grid)'},row);
+    el('text',{x:ML-8,y:y+RH/2+4,class:'rl','text-anchor':'end',fill:g?'var(--hl)':'var(--ink)',style:g||s?'font-weight:800':''},row).textContent=r.n;
+    el('rect',{x:sx(0),y:y+3.5,width:sx(r.kg)-sx(0),height:bh,fill:g?'var(--hl-soft)':'var(--bar)',class:g?'':'tot'},row);
+    if(r.pc!=null)el('rect',{x:sx(0),y:y+3.5,width:(sx(r.kg)-sx(0))*r.pc/100,height:bh,fill:g?'var(--hl)':'var(--rc)'},row);
+    const t=el('text',{x:sx(r.kg)+5,y:y+RH/2+4,class:'rv',fill:g?'var(--hl)':'var(--muted)'},row);
+    t.textContent=`${f0(r.kg)}${r.pc!=null?' · '+f1(r.pc)+' %':''}`;
+    el('rect',{x:0,y:y,width:W,height:RH,fill:'transparent'},row);
+    row.addEventListener('mousemove',ev=>show(ev,`<b>${r.n}</b>${f1(r.kg)} kg por habitante${r.pc!=null?`<br>${f1(r.pc)} % ${etq}`:'<br>sen taxa de reciclaxe comparable'}${r.f&&r.f.includes('p')?'<br>dato provisional':''}${r.f&&r.f.includes('e')?'<br>dato estimado':''}`));
+    row.addEventListener('mouseleave',hide);
+    row.addEventListener('click',()=>{if(!g){escollida=r.id;sel.value=r.id;todo()}});
+  });
+}
+function todo(){estado();panel('pa',PA,'reciclado');panel('pc',CA,'recollido por separado')}
+sel.addEventListener('change',()=>{escollida=sel.value;todo()});
+for(const b of document.querySelectorAll('.seg button'))b.addEventListener('click',()=>{orde=b.dataset.o;for(const x of document.querySelectorAll('.seg button'))x.setAttribute('aria-pressed',x===b);todo()});
+document.getElementById('t1').innerHTML='<tr><th>País</th><th>kg/hab xerados</th><th>% reciclado</th></tr>'+D.paises.map(p=>`<tr><td>${p.n}</td><td>${p.kg}</td><td>${f1(p.rc)}</td></tr>`).join('')+`<tr><td>UE-27</td><td>${D.ue.kg}</td><td>${f1(D.ue.rc)}</td></tr>`;
+document.getElementById('t2').innerHTML='<tr><th>Comunidade</th><th>kg/hab recollidos</th><th>kg/hab mesturados</th><th>% recollida separada</th></tr>'+D.ccaa.map(c=>`<tr${c.c==='12'?' class="g"':''}><td>${c.n}</td><td>${f1(c.kg)}</td><td>${f1(c.mez)}</td><td>${f1(c.sep)}</td></tr>`).join('')+`<tr><td>España</td><td>${f1(D.es_ine.kg)}</td><td>${f1(D.es_ine.mez)}</td><td>${f1(D.es_ine.sep)}</td></tr>`;
+todo();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(todo,150)});
+</script>
+</body>
+</html>

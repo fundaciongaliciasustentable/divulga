@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Os que pasan dos cen — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Persoas de 100 anos ou máis por cada 10.000 habitantes en cada provincia de España (__ULT__) e en cada rexión da UE (__EANO__): onde están Ourense, Lugo e Galicia.">
+<meta property="og:title" content="Os que pasan dos cen">
+<meta property="og:description" content="Centenarios por cada 10.000 habitantes: as provincias galegas fronte a España e Europa.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Dous gráficos. Arriba, un dumbbell (pesa): unha fila por provincia, ordenadas de máis a menos
+   centenarios por cada 10.000 habitantes no último ano; o círculo baleiro é o ano de partida e o
+   cheo o último, unidos por unha barra que mide canto medrou. As galegas, en maxenta; a liña
+   vertical é a media de España. Abaixo, un enxame (beeswarm) cun punto por rexión NUTS 2 da UE
+   colocado segundo a mesma taxa, para ver a Galicia no mapa europeo da lonxevidade extrema. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --dot:#b9b4a8; --dot2:#4b4f57; --hl:#c2185b; --hl2:#f3c6d8;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:18px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:68ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select,input{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink);max-width:100%}
+input{width:15em}
+select:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.pos{font:600 1rem var(--num);color:var(--ink);text-align:center;min-height:1.4em;margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block;box-sizing:border-box}
+.chart{width:100%;max-width:860px}
+.swarm{width:100%}
+.chart svg,.swarm svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:600 12.5px var(--display);fill:var(--ink)}
+.rl.g{fill:var(--hl);font-weight:800}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.vn{font:700 12.5px var(--num);fill:var(--ink)}
+.row{cursor:pointer}
+.row:hover .bg{fill:var(--grid)}
+.pt{stroke:var(--paper);stroke-width:1;cursor:pointer}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:260px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:760px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td.n,th.n{text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.rl{font-size:12px}.ax{font-size:13px}.axt{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Os que pasan dos cen</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>A túa provincia <select id="prov"><option value="">—</option></select></label>
+  </div>
+  <p class="pos" id="pos"></p>
+  <div class="legend"><span><i style="border:2px solid var(--muted);background:var(--paper)"></i>1 de xaneiro de __A0__</span><span><i style="background:var(--dot2)"></i>1 de xaneiro de __ULT__</span><span><i style="background:var(--hl)"></i>provincias galegas</span><span><i style="background:none;border-radius:0;width:2px;height:14px;background:var(--ink)"></i>media de España</span></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Gráfico de pesas: centenarios por cada 10.000 habitantes en cada provincia de España, no ano de partida e no último. A táboa de datos ten os valores."></svg></div>
+  <h2>E en Europa?</h2>
+  <p class="sub">Persoas de 100 anos ou máis por cada 10.000 habitantes en __EN__ rexións NUTS 2 da UE a 1 de xaneiro de __EANO__. Cada punto é unha rexión.</p>
+  <div class="tools"><label>Busca unha rexión <input id="busca" list="rexs" placeholder="Escribe: Norte, Kriti…" autocomplete="off"></label><datalist id="rexs"></datalist></div>
+  <p class="pos" id="pose"></p>
+  <div class="swarm"><svg id="sw" role="img" aria-label="Enxame de puntos: centenarios por cada 10.000 habitantes en cada rexión da UE, con Galicia resaltada."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Provincias: INE, <a href="https://www.ine.es/jaxiT3/Tabla.htm?t=69792" target="_blank" rel="noopener">Estatística Continua de Poboación, táboa 69792</a>, poboación residente a 1 de xaneiro de __A0__ e de __ULT____PROV__. Europa: Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/demo_r_d2jan/default/table" target="_blank" rel="noopener">demo_r_d2jan</a>, poboación a 1 de xaneiro de __EANO__ por idade simple; os centenarios son a clase aberta final cando a idade 99 vén separada. Alemaña non publica idade simple por rexión e non aparece. As cifras de persoas moi maiores dependen da calidade dos rexistros de cada país: un falecemento sen dar de baixa ou unha data de nacemento mal anotada pesan moito cando se contan centos de persoas. Unha taxa alta de centenarios reflicte tanto a lonxevidade como unha poboación envellecida pola emigración da xente nova. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const f1=v=>v.toFixed(1).replace('.',','),miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const tip=document.getElementById('tip');
+const show=(x,y,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(135,Math.min(innerWidth-135,x))+'px';tip.style.top=y+'px'};
+const hide=()=>{tip.hidden=true};
+const tx=s=>s[1]/s[2]*1e4;
+// Provincias: taxa no ano de partida e no último
+const P=D.prov.map(p=>{const a=p.s.find(s=>s[0]===D.a0),u=p.s.at(-1);return {...p,a:tx(a),u:tx(u),na:a[1],nu:u[1],pob:u[2]}});
+const ES=P.find(p=>p.t),PR=P.filter(p=>!p.t).sort((a,b)=>b.u-a.u);PR.forEach((p,i)=>p.r=i+1);
+const NP=PR.length;
+const sel=document.getElementById('prov');
+sel.innerHTML+=PR.slice().sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(p=>`<option>${p.n}</option>`).join('');
+function posP(){
+  const p=PR.find(p=>p.n===sel.value),o=document.getElementById('pos');
+  if(p)o.innerHTML=`${p.n}: <b>${f1(p.u)}</b> por 10.000 habitantes (${miles(p.nu)} persoas) · posto ${p.r} de ${NP}`;
+  else{const g=PR.filter(p=>p.g);o.innerHTML=g.map(p=>`<span style="color:var(--hl)">${p.n} ${p.r}.ª</span>`).join(' · ')+` de ${NP} provincias`}
+}
+sel.addEventListener('change',()=>{posP();pesas()});
+function pesas(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<560;
+  const ML=NARROW?104:150,MR=NARROW?34:60,MT=24,RH=NARROW?17:18,Hh=MT+RH*NP+28;
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const xm=Math.ceil(Math.max(...PR.map(p=>Math.max(p.u,p.a)))/2)*2,sx=v=>ML+v/xm*(W-ML-MR);
+  for(let v=0;v<=xm;v+=2){el('line',{x1:sx(v),x2:sx(v),y1:MT-8,y2:Hh-26,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:MT-12,class:'ax','text-anchor':'middle'},svg).textContent=v}
+  el('text',{x:W-MR,y:Hh-8,class:'axt','text-anchor':'end'},svg).textContent='centenarios por cada 10.000 habitantes';
+  el('line',{x1:sx(ES.u),x2:sx(ES.u),y1:MT-6,y2:Hh-26,stroke:'var(--ink)','stroke-width':1.5},svg);
+  el('text',{x:sx(ES.u)+4,y:Hh-14,class:'axt'},svg).textContent=`España ${f1(ES.u)}`;
+  PR.forEach((p,i)=>{
+    const y=MT+RH*i+RH/2,on=p.n===sel.value,cor=p.g?'var(--hl)':on?'var(--ink)':'var(--dot2)';
+    const g=el('g',{class:'row'},svg);
+    el('rect',{x:0,y:y-RH/2,width:W,height:RH,fill:on?'var(--grid)':'transparent',class:'bg'},g);
+    const t=el('text',{x:ML-10,y:y+4,class:'rl'+(p.g?' g':''),'text-anchor':'end'},g);t.textContent=NARROW?p.n.split('/')[0].replace('Santa Cruz de Tenerife','S. C. Tenerife'):p.r+'. '+p.n;if(on)t.setAttribute('font-weight','800');
+    el('line',{x1:sx(p.a),x2:sx(p.u),y1:y,y2:y,stroke:p.g?'var(--hl2)':'var(--line)','stroke-width':NARROW?4:5,'stroke-linecap':'round'},g);
+    el('circle',{cx:sx(p.a),cy:y,r:3.6,fill:'var(--paper)',stroke:p.g?'var(--hl)':'var(--muted)','stroke-width':1.6},g);
+    el('circle',{cx:sx(p.u),cy:y,r:p.g||on?5.2:4.4,fill:cor},g);
+    if(p.g||on||i<1)el('text',{x:sx(Math.max(p.u,p.a))+8,y:y+4,class:'vn'},g).textContent=f1(p.u);
+    g.addEventListener('mousemove',ev=>show(ev.clientX,ev.clientY,`<b>${p.n} · ${p.r}.ª de ${NP}</b>${D.ult}: ${f1(p.u)} por 10.000 (${miles(p.nu)} persoas)<br>${D.a0}: ${f1(p.a)} por 10.000 (${miles(p.na)})`));
+    g.addEventListener('mouseleave',hide);
+    g.addEventListener('click',()=>{sel.value=p.n;posP();pesas()});
+  });
+}
+// Europa: enxame
+const E=D.eur.reg.map(r=>({id:r[0],n:r[1],c:r[0].slice(0,2),k:r[2],v:r[2]/r[3]*1e4})).sort((a,b)=>b.v-a.v);E.forEach((r,i)=>r.r=i+1);
+const NE=E.length,GE=E.find(r=>r.id==='ES11');
+const nome=r=>`${r.n} (${D.pais[r.c]})`;
+document.getElementById('rexs').innerHTML=E.map(r=>`<option value="${nome(r)}">`).join('');
+const bi=document.getElementById('busca');let selE=null;
+function posE(){const r=selE||GE;document.getElementById('pose').innerHTML=`${r.n}: <b style="color:${r===GE?'var(--hl)':'var(--ink)'}">${f1(r.v)}</b> por 10.000 habitantes (${miles(r.k)} persoas) · posto ${r.r} de ${NE}`}
+bi.addEventListener('input',()=>{const r=E.find(r=>nome(r)===bi.value);if(r||!bi.value){selE=r||null;posE();enxame()}});
+function enxame(){
+  const svg=document.getElementById('sw');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<560,ML=14,MR=14,R=NARROW?3.6:5;
+  const xm=Math.ceil(Math.max(...E.map(r=>r.v))),sx=v=>ML+v/xm*(W-ML-MR);
+  // Colocación: de dentro a fóra, sen solapar
+  const col=[];
+  for(const r of E.slice().sort((a,b)=>(a===GE||a===selE)-(b===GE||b===selE))){
+    const x=sx(r.v);let y=0;
+    for(let k=0;k<400;k++){const c=(k%2?1:-1)*Math.ceil(k/2)*(R*.5);if(col.every(o=>Math.hypot(o.x-x,o.y-c)>=2*R+.6)){y=c;break}}
+    col.push({x,y,r});
+  }
+  const ext=Math.max(...col.map(o=>Math.abs(o.y)))+R,MT=58,Hh=MT+2*ext+40,yc=MT+ext;
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  for(let v=0;v<=xm;v+=NARROW?2:1){el('line',{x1:sx(v),x2:sx(v),y1:MT-8,y2:Hh-24,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:Hh-10,class:'ax','text-anchor':'middle'},svg).textContent=v}
+  const esp=E.filter(r=>r.c==='ES');
+  for(const o of col){const r=o.r,on=r===GE||r===selE;
+    const c=el('circle',{cx:o.x,cy:yc+o.y,r:on?R+1.5:R,fill:r===GE?'var(--hl)':r===selE?'var(--ink)':r.c==='ES'?'var(--dot2)':'var(--dot)',class:'pt'},svg);
+    c.addEventListener('mousemove',ev=>show(ev.clientX,ev.clientY,`<b>${r.n}</b>${D.pais[r.c]}<br>${f1(r.v)} por 10.000 (${miles(r.k)} persoas) · posto ${r.r} de ${NE}`));
+    c.addEventListener('mouseleave',hide);c.addEventListener('click',()=>{selE=r===GE?null:r;bi.value=selE?nome(r):'';posE();enxame()})}
+  // Etiquetas: Galicia, a primeira e a buscada
+  const lab=(r,nv,cor)=>{const o=col.find(o=>o.r===r),x=o.x,y=yc+o.y,yl=MT-44+nv*18,right=x>W*.62;
+    el('line',{x1:x,x2:x,y1:yl+4,y2:y-R-2,stroke:cor,'stroke-width':1},svg);
+    const t=el('text',{x:right?x+4:x+4,y:yl,class:'rl','text-anchor':right?'end':'start'},svg);t.textContent=`${r.n} ${f1(r.v)}`;t.setAttribute('style',`fill:${cor}`);
+    if(right)t.setAttribute('x',x-4)};
+  lab(GE,'1','var(--hl)');
+  if(E[0]!==GE&&E[0]!==selE)lab(E[0],0,'var(--muted)');
+  if(selE&&selE!==GE)lab(selE,2,'var(--ink)');
+}
+const leg=document.createElement('div');leg.className='legend';leg.innerHTML='<span><i style="background:var(--hl)"></i>Galicia</span><span><i style="background:var(--dot2)"></i>outras rexións de España</span><span><i style="background:var(--dot)"></i>resto da UE</span>';
+document.querySelector('.swarm').before(leg);
+posP();pesas();posE();enxame();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{pesas();enxame()},150)});
+document.getElementById('tbl').innerHTML=`<tr><th>Posto</th><th class="n">Provincia</th><th>${D.a0}</th><th>${D.ult}</th><th>Persoas ${D.ult}</th></tr>`+
+  PR.map(p=>`<tr${p.g?' class="g"':''}><td>${p.r}</td><td class="n">${p.n}</td><td>${f1(p.a)}</td><td>${f1(p.u)}</td><td>${miles(p.nu)}</td></tr>`).join('')+
+  `<tr><td></td><td class="n"><b>España</b></td><td>${f1(ES.a)}</td><td>${f1(ES.u)}</td><td>${miles(ES.nu)}</td></tr>`+
+  `<tr><th>Posto</th><th class="n">Rexión UE (${D.eur.ano})</th><th class="n">País</th><th>Por 10.000</th><th>Persoas</th></tr>`+
+  E.map(r=>`<tr${r===GE?' class="g"':''}><td>${r.r}</td><td class="n">${r.n}</td><td class="n">${D.pais[r.c]}</td><td>${f1(r.v)}</td><td>${miles(r.k)}</td></tr>`).join('');
+</script>
+</body>
+</html>

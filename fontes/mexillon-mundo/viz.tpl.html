@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O mexillón do mundo — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Galicia, coma se fose un país, fronte aos grandes produtores mundiais de mexillón de acuicultura: un círculo por país, proporcional ás toneladas, ano a ano dende 2003.">
+<meta property="og:title" content="O mexillón do mundo">
+<meta property="og:description" content="As bateas galegas fronte a países enteiros: Galicia é o terceiro produtor mundial de mexillón de acuicultura.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Círculos proporcionais empaquetados: un círculo por país (área = toneladas de mexillón de
+   acuicultura nese ano), colocados en espiral arredor do maior, sen solaparse. Galicia vai como un
+   país máis, en maxenta; o resto en gris segundo o continente. Un control desliza o ano dende 2003
+   e os círculos recolócanse. Debaixo, liñas coas toneladas dos cinco primeiros, ano a ano, e un
+   carril co posto de Galicia en cada ano. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --hl:#c2185b; --c1:#8f9aa6; --c2:#b9b2a3; --c3:#a3b2a0; --c4:#c7b8c4; --c5:#a9bfcf;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--hl)}
+h2{font:800 1.05rem var(--display);margin:8px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink);max-width:220px}
+select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.ano{display:flex;align-items:center;gap:10px}
+.ano input{width:min(300px,52vw);accent-color:var(--hl)}
+.ano output{font:700 1.5rem var(--num);color:var(--ink);min-width:3ch}
+button.play{font:700 .8rem var(--display);border:1px solid var(--line);background:var(--card);border-radius:3px;padding:6px 10px;cursor:pointer;color:var(--ink)}
+.posto{font:600 .95rem var(--display);color:var(--ink);text-align:center;margin:0}
+.posto b{color:var(--hl);font-family:var(--num);font-size:1.25rem}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.chart,.serie{width:100%}
+.chart svg,.serie svg{display:block;width:100%;height:auto;overflow:visible}
+.serie{max-width:900px}
+.bub{stroke:#fff;stroke-width:1.2;cursor:pointer;transition:opacity .2s}
+.bub:hover{stroke:var(--ink)}
+.bub.on{stroke:var(--ink);stroke-width:2}
+.bl{font:700 12px var(--display);fill:var(--ink);pointer-events:none;text-anchor:middle}
+.bl.w{fill:#fff}
+.bv{font:600 12px var(--num);fill:var(--ink);pointer-events:none;text-anchor:middle;opacity:.8}
+.bv.w{fill:#fff}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.ll{font:700 12px var(--display)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:290px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.78rem;position:sticky;left:0;background:var(--paper)}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>O mexillón do mundo</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label class="ano">Ano <input type="range" id="y" min="0" max="0" step="1" aria-label="Ano"><output id="yo"></output></label>
+    <button class="play" id="play" type="button">▶ Dende 2003</button>
+    <label>Resaltar un país <select id="p"><option value="">—</option></select></label>
+  </div>
+  <p class="posto" id="posto"></p>
+  <div class="legend" id="legend"></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Círculos proporcionais: toneladas de mexillón de acuicultura de cada país e de Galicia no ano escollido. A táboa de datos ten os valores."></svg></div>
+  <h2>Os grandes, ano a ano</h2>
+  <p class="sub">Toneladas de mexillón de acuicultura dos cinco primeiros produtores do último ano, e o posto de Galicia en cada ano.</p>
+  <div class="serie"><svg id="se" role="img" aria-label="Liñas coas toneladas anuais de mexillón de China, Chile, Galicia e outros grandes produtores dende 2003."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Países: FAO, <a href="https://www.fao.org/fishery/en/collection/aquaculture" target="_blank" rel="noopener">Global aquaculture production</a> (FishStat, versión 2025.1.0), toneladas de peso vivo de todas as especies do grupo «mexillóns» (ISSCAAP), __ANOS__. Galicia: Pesca de Galicia, Consellería do Mar, <a href="https://www.pescadegalicia.gal/gl/descargas/acuicultura" target="_blank" rel="noopener">produción de acuicultura</a> (mexillón de batea e de parques de cultivo, __ANOS__). Galicia ponse como se fose un país e España non aparece no gráfico para non contala dúas veces. As dúas fontes non miden o mesmo: a FAO recibe a cifra estatal do Ministerio de Agricultura, Pesca e Alimentación, que en __UANO__ é de __ESP__ t para toda España, menos das __GAL__ t que a Xunta rexistra só en Galicia a partir das vendas declaradas. A cifra galega é, polo tanto, a da fonte galega, e as dos países son as que cada un comunica á FAO, algunhas estimadas por ela. Nomes dos países: Unicode CLDR. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const A=D.anos,P=D.paises;
+const CONT={'Asia':['Asia','var(--c1)'],'Americas':['América','var(--c2)'],'Europe':['Europa','var(--c3)'],'Oceania':['Oceanía','var(--c5)'],'Africa':['África','var(--c4)']};
+const col=p=>p.id==='GZ'?'var(--hl)':(CONT[p.c]||CONT.Asia)[1];
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+document.getElementById('legend').innerHTML='<span><i style="background:var(--hl)"></i>Galicia</span>'+Object.values(CONT).map(([n,c])=>`<span><i style="background:${c}"></i>${n}</span>`).join('')+'<span>· a área do círculo, as toneladas</span>';
+const ys=document.getElementById('y'),yo=document.getElementById('yo'),sel=document.getElementById('p');
+ys.max=A.length-1;ys.value=A.length-1;
+sel.innerHTML+=P.slice().sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(p=>`<option value="${p.id}">${p.n}</option>`).join('');
+const rank=i=>P.filter(p=>p.s[i]>0).sort((a,b)=>b.s[i]-a.s[i]);
+const mundo=i=>D.mundo[i]-D.espana[i]+P.find(p=>p.id==='GZ').s[i];
+function posto(){
+  const i=+ys.value,r=rank(i),id=sel.value||'GZ',k=r.findIndex(p=>p.id===id),p=P.find(q=>q.id===id);
+  const txt=k<0?`${p.n} non rexistra mexillón de acuicultura en ${A[i]}`:
+    `${p.n} en ${A[i]}: <b>${miles(p.s[i])} t</b>, posto <b>${k+1}</b> de ${r.length} · ${(p.s[i]/mundo(i)*100).toLocaleString('gl',{maximumFractionDigits:1})} % do mundo`;
+  document.getElementById('posto').innerHTML=txt;
+}
+// Empaquetado: cada círculo, do maior ao menor, no punto libre máis próximo ao centro
+function empaqueta(cs){
+  const out=[];
+  for(const c of cs){
+    if(!out.length){out.push({...c,x:0,y:0});continue}
+    let best=null;
+    for(const o of out)for(let a=0;a<360;a+=10){
+      const t=a*Math.PI/180,x=o.x+(o.r+c.r+1.5)*Math.cos(t),y=o.y+(o.r+c.r+1.5)*Math.sin(t);
+      if(out.every(q=>Math.hypot(q.x-x,q.y-y)>=q.r+c.r+1.4)){const dd=x*x/2.2+y*y;if(!best||dd<best.d)best={x,y,d:dd}}
+    }
+    out.push({...c,x:best.x,y:best.y});
+  }
+  return out;
+}
+function burbullas(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const i=+ys.value;yo.textContent=A[i];
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const max=Math.max(...P.map(p=>Math.max(...p.s)));
+  const R=Math.min(W*(NARROW?.28:.17),165);
+  const cs=rank(i).map(p=>({p,r:Math.max(1.5,R*Math.sqrt(p.s[i]/max))}));
+  const pk=empaqueta(cs);
+  const x0=Math.min(...pk.map(c=>c.x-c.r)),x1=Math.max(...pk.map(c=>c.x+c.r)),y0=Math.min(...pk.map(c=>c.y-c.r)),y1=Math.max(...pk.map(c=>c.y+c.r));
+  const s=Math.min(1,(W-8)/(x1-x0));
+  const H=(y1-y0)*s+20;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const ox=W/2-(x0+x1)/2*s,oy=10-y0*s;
+  const g=el('g',{},svg),hl=sel.value;
+  for(const c of pk){
+    const cx=ox+c.x*s,cy=oy+c.y*s,r=c.r*s,p=c.p;
+    const ci=el('circle',{cx,cy,r,fill:col(p),class:'bub'+(p.id===hl?' on':''),opacity:hl&&p.id!==hl&&p.id!=='GZ'?.35:1},g);
+    ci.addEventListener('mousemove',ev=>show(ev,`<b>${p.n}</b>${A[i]}: ${miles(p.s[i])} t · posto ${rank(i).indexOf(p)+1}`+(i===A.length-1?'<br>'+Object.entries(p.sp).slice(0,3).map(([k,v])=>`${D.sp[k]||k}: ${miles(v)} t`).join('<br>'):'')));
+    ci.addEventListener('mouseleave',hide);
+    ci.addEventListener('click',()=>{sel.value=p.id===sel.value?'':p.id;burbullas();posto()});
+    if(r>=22){
+      const w=p.id==='GZ'?' w':'',fs=Math.min(16,Math.max(10,r/3.6));
+      const l=el('text',{x:cx,y:cy-(r>34?2:-4),class:'bl'+w,'font-size':fs},g);l.textContent=p.n.length*fs*.55>2*r?p.n.slice(0,Math.floor(2*r/(fs*.55))-1)+'.':p.n;
+      if(r>34)el('text',{x:cx,y:cy+fs,class:'bv'+w,'font-size':Math.max(11,fs*.9)},g).textContent=miles(p.s[i]/1000)+' mil t';
+    }
+  }
+  posto();
+}
+ys.addEventListener('input',burbullas);
+sel.addEventListener('change',()=>{burbullas();serie()});
+let tm=null;
+document.getElementById('play').addEventListener('click',()=>{
+  clearInterval(tm);ys.value=0;burbullas();
+  tm=setInterval(()=>{if(+ys.value>=A.length-1){clearInterval(tm);return}ys.value=+ys.value+1;burbullas()},700);
+});
+function serie(){
+  const svg=document.getElementById('se');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640,Hh=NARROW?280:300,ML=44,MR=NARROW?84:110,MT=14,MB=58;
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const L=A.length-1,top=rank(L).slice(0,5),hl=sel.value&&!top.find(p=>p.id===sel.value)?P.find(p=>p.id===sel.value):null;
+  if(hl)top.push(hl);
+  const sx=i=>ML+i/L*(W-ML-MR),ymax=Math.ceil(Math.max(...top.flatMap(p=>p.s))/2e5)*2e5,sy=v=>MT+(1-v/ymax)*(Hh-MT-MB);
+  for(let v=0;v<=ymax;v+=2e5){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-6,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v?miles(v/1000)+' mil':'0 t'}
+  for(let i=0;i<=L;i+=NARROW?5:2)el('text',{x:sx(i),y:Hh-MB+16,class:'ax','text-anchor':'middle'},svg).textContent=A[i];
+  const labs=[];
+  for(const p of top){
+    const c=p.id==='GZ'?'var(--hl)':p===hl?'var(--ink)':'#8a8f96';
+    el('path',{d:'M'+p.s.map((v,i)=>`${sx(i).toFixed(1)},${sy(v).toFixed(1)}`).join('L'),fill:'none',stroke:c,'stroke-width':p.id==='GZ'?3:1.8},svg);
+    p.s.forEach((v,i)=>{const h=el('circle',{cx:sx(i),cy:sy(v),r:6,fill:'transparent'},svg);h.addEventListener('mousemove',ev=>show(ev,`<b>${p.n} · ${A[i]}</b>${miles(v)} t`));h.addEventListener('mouseleave',hide)});
+    labs.push({y:sy(p.s[L]),t:p.n,c});
+  }
+  labs.sort((a,b)=>a.y-b.y);for(let k=1;k<labs.length;k++)labs[k].y=Math.max(labs[k].y,labs[k-1].y+14);
+  for(const l of labs)el('text',{x:W-MR+6,y:l.y+4,class:'ll',fill:l.c},svg).textContent=l.t;
+  // carril co posto de Galicia
+  const yb=Hh-18;el('text',{x:ML-6,y:yb+4,class:'axt','text-anchor':'end'},svg).textContent='posto';
+  const rp=Math.min(9,(W-ML-MR)/L/2-.6);
+  A.forEach((a,i)=>{const k=rank(i).findIndex(p=>p.id==='GZ')+1;el('circle',{cx:sx(i),cy:yb,r:rp,fill:'var(--hl)',opacity:k===2?1:k===3?.75:.5},svg);el('text',{x:sx(i),y:yb+rp*.42,'text-anchor':'middle',class:'ax',style:`fill:#fff;font-size:${Math.max(8,rp*1.25)}px`},svg).textContent=k});
+  el('text',{x:W-MR+6,y:yb+4,class:'ll',fill:'var(--hl)'},svg).textContent='Galicia';
+}
+burbullas();serie();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{burbullas();serie()},150)});
+const L=A.length-1;
+document.getElementById('tbl').innerHTML='<tr><th>País</th>'+A.map(a=>`<th>${a}</th>`).join('')+'</tr>'+
+  rank(L).concat(P.filter(p=>!p.s[L])).map(p=>`<tr${p.id==='GZ'?' class="g"':''}><td>${p.n}</td>${p.s.map(v=>`<td>${miles(v)}</td>`).join('')}</tr>`).join('')+
+  `<tr><td>España (FAO, inclúe Galicia)</td>${D.espana.map(v=>`<td>${miles(v)}</td>`).join('')}</tr><tr><td>Mundo (FAO)</td>${D.mundo.map(v=>`<td>${miles(v)}</td>`).join('')}</tr>`;
+</script>
+</body>
+</html>

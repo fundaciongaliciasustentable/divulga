@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A metade dos lugares de España — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="As entidades singulares de poboación (aldeas, lugares, barrios e vilas) de cada comunidade autónoma segundo o Nomenclátor do INE: un punto por cada cen.">
+<meta property="og:title" content="A metade dos lugares de España">
+<meta property="og:description" content="Galicia ten case a metade das entidades singulares de poboación de España. Un punto por cada cen lugares.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Pictograma (waffle) por comunidade: cada punto son 100 entidades singulares de poboación do
+   Nomenclátor do INE, en liñas dunha grella común (o mesmo número de puntos por liña para todas)
+   e ordenadas de máis a menos. O último punto
+   de cada fila, se a cifra non é redonda, é máis pequeno en proporción ao que falta. Galicia vai
+   en maxenta; o selector resalta outra comunidade. Debaixo, barras coas entidades por cada 100 km²,
+   coa media de España e a de España sen Galicia como referencia. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --hl:#c2185b; --dot:#9aa0a8; --sel:#1f2328;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:14px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink)}
+select:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.podio{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;font-size:.82rem;color:var(--muted)}
+.podio b{font:700 1.5rem var(--num);color:var(--ink);display:block;line-height:1}
+.podio .g b{color:var(--hl)}
+.podio div{text-align:center}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:700 12.5px var(--display);fill:var(--ink)}
+.rv{font:600 13px var(--num);fill:var(--muted)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.fila{cursor:pointer}
+.fila:hover .bg{fill:#f1efe9}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:290px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.rl{font-size:13px}.rv{font-size:14px}.ax{font-size:13px}.axt{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>A metade dos lugares de España</h1>
+  <p class="dek">__DEK__</p>
+  <div class="podio" id="podio"></div>
+  <div class="tools">
+    <label>Compara cunha comunidade <select id="sel"><option value="">—</option></select></label>
+  </div>
+  <p class="sub">Cada punto son <b>100 entidades singulares de poboación</b> (aldeas, lugares, barrios, vilas e cidades con nome propio no Nomenclátor) a 1 de xaneiro de __ANO__.</p>
+  <div class="chart"><svg id="wf" role="img" aria-label="Pictograma: entidades singulares de poboación por comunidade autónoma, un punto por cada cen. A táboa de datos ten os valores."></svg></div>
+  <h2>E por cada 100 km²</h2>
+  <p class="sub">Entidades singulares por cada 100 km² de superficie. As liñas marcan a media de España e a de España sen contar Galicia.</p>
+  <div class="chart"><svg id="km" role="img" aria-label="Barras: entidades singulares de poboación por cada 100 km² en cada comunidade autónoma."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">INE, <a href="https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&amp;cid=1254736177010&amp;menu=resultados&amp;idp=1254735572981" target="_blank" rel="noopener">Nomenclátor: población del Padrón Continuo por unidad poblacional</a>, ficheiro nacional a 1 de xaneiro de __ANO__ (unha entidade singular é calquera área habitable do municipio, habitada ou non, claramente diferenciada e coñecida por unha denominación específica; en Galicia corresponde ao lugar ou aldea). Superficie: Instituto Geográfico Nacional, no <a href="https://mapa.gob.es/estadistica/pags/anuario/2023/FORMATO%20PDF/AE23-C01/1.1.pdf" target="_blank" rel="noopener">Anuario de Estadística 2023 do MAPA, táboa 1.1</a>. O número de entidades depende de como cada comunidade organiza o seu territorio: en Galicia e Asturias o poboamento disperso está rexistrado lugar a lugar, mentres que noutras rexións moitos núcleos pequenos figuran só como «diseminado» dentro dunha entidade maior, polo que as cifras non miden só a dispersión real senón tamén a tradición do rexistro. Inclúense as entidades sen poboación empadroada. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const d1=v=>v.toFixed(1).replace('.',',');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const C=D.ccaa.slice().sort((a,b)=>b.es-a.es);
+const TOT=C.reduce((a,c)=>a+c.es,0),KM=D.km2_es;
+const G=C.find(c=>c.c==='GA');
+const dens=c=>c.es/c.km2*100;
+const posto=(arr,c)=>arr.indexOf(c)+1;
+const sel=document.getElementById('sel');
+sel.innerHTML+=C.filter(c=>c.c!=='GA').map(c=>`<option value="${c.c}">${c.n}</option>`).join('');
+const cor=c=>c.c==='GA'?'var(--hl)':c.c===sel.value?'var(--sel)':'var(--dot)';
+const info=c=>`<b>${c.n}</b>${miles(c.es)} entidades singulares (${d1(c.es/TOT*100)} % de España)<br>${d1(dens(c))} por cada 100 km² · ${miles(c.mun)} municipios<br>${miles(c.es-c.hab)} sen poboación empadroada · mediana das habitadas: ${miles(c.med)} hab.`;
+function podio(){
+  const Dn=C.slice().sort((a,b)=>dens(b)-dens(a));
+  const s=C.find(c=>c.c===sel.value);
+  const f=(c,cl)=>`<div class="${cl}"><b>${posto(C,c)}.º</b>${c.n} en número<br>de ${C.length}</div><div class="${cl}"><b>${posto(Dn,c)}.º</b>en densidade<br>${d1(dens(c))} por 100 km²</div>`;
+  document.getElementById('podio').innerHTML=f(G,'g')+(s?f(s,''):'');
+}
+function waffle(){
+  const svg=document.getElementById('wf');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?0:150,MR=NARROW?0:8;
+  // Grella de K puntos por liña, igual para todas as comunidades
+  const s=NARROW?Math.max(8,(W-ML-MR)/30):11,K=Math.floor((W-ML-MR)/s),r=s*.4;
+  const filas=C.map(c=>{const n=c.es/100,h=Math.max(1,Math.ceil(n/K));return {c,n,h,rh:(NARROW?20:8)+h*s+(NARROW?8:6)}});
+  const H=filas.reduce((a,f)=>a+f.rh,0)+4;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  let y=2;
+  for(const f of filas){
+    const g=el('g',{class:'fila'},svg),c=f.c,col=cor(c),y0=NARROW?y+20:y+4;
+    el('rect',{x:0,y:y,width:W,height:f.rh,fill:'transparent',class:'bg'},g);
+    const ly=NARROW?y+14:y0+Math.min(f.h,2)*s/2+4;
+    const lab=el('text',{x:NARROW?0:ML-10,y:ly,class:'rl','text-anchor':NARROW?'start':'end'},g);
+    lab.textContent=c.n;if(c.c==='GA'||c.c===sel.value)lab.style.fill=c.c==='GA'?'var(--hl)':'var(--ink)';
+    const full=Math.floor(f.n),fr=f.n-full;
+    for(let i=0;i<full+(fr>0?1:0);i++){
+      const cx=ML+(i%K)*s+s/2,cy=y0+Math.floor(i/K)*s+s/2;
+      el('circle',{cx,cy,r:i<full?r:Math.max(.9,r*Math.sqrt(fr)),fill:col},g);
+    }
+    const txt=miles(c.es)+(c.c==='GA'?` · ${d1(c.es/TOT*100)} %`:'');
+    const nl=Math.ceil(f.n)%K||K;
+    if(NARROW)el('text',{x:W,y:ly,class:'rv','text-anchor':'end'},g).textContent=txt;
+    else el('text',{x:f.h>1?ML-10:ML+nl*s+6,y:f.h>1?ly+16:ly,class:'rv','text-anchor':f.h>1?'end':'start'},g).textContent=txt;
+    g.addEventListener('mousemove',ev=>show(ev,info(c)));g.addEventListener('mouseleave',hide);
+    g.addEventListener('click',()=>{if(c.c!=='GA'){sel.value=sel.value===c.c?'':c.c;todo()}});
+    y+=f.rh;
+  }
+}
+function barras(){
+  const svg=document.getElementById('km');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?112:150,MR=56,MT=22,RH=NARROW?22:21;
+  const B=C.filter(c=>c.km2>=100).sort((a,b)=>dens(b)-dens(a));
+  const H=MT+RH*B.length+26;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const vmax=Math.ceil(Math.max(...B.map(dens))/20)*20,sx=v=>ML+v/vmax*(W-ML-MR);
+  for(let v=0;v<=vmax;v+=NARROW?40:20){el('line',{x1:sx(v),x2:sx(v),y1:MT-4,y2:H-22,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:MT-8,class:'ax','text-anchor':'middle'},svg).textContent=v}
+  B.forEach((c,i)=>{
+    const y=MT+i*RH,g=el('g',{class:'fila'},svg);
+    el('rect',{x:0,y,width:W,height:RH,fill:'transparent',class:'bg'},g);
+    const t=el('text',{x:ML-8,y:y+RH/2+4,class:'rl','text-anchor':'end'},g);t.textContent=c.n;
+    if(c.c==='GA')t.style.fill='var(--hl)';
+    el('rect',{x:ML,y:y+3,width:Math.max(1,sx(dens(c))-ML),height:RH-7,fill:cor(c),rx:1},g);
+    el('text',{x:sx(dens(c))+5,y:y+RH/2+4,class:'rv'},g).textContent=d1(dens(c));
+    g.addEventListener('mousemove',ev=>show(ev,info(c)));g.addEventListener('mouseleave',hide);
+  });
+  const es=TOT/KM*100,sg=(TOT-G.es)/(KM-G.km2)*100;
+  for(const [v,t,an] of [[es,'España',1],[sg,'sen Galicia',0]]){
+    el('line',{x1:sx(v),x2:sx(v),y1:MT-2,y2:H-20,stroke:'var(--ink)','stroke-dasharray':'3 3'},svg);
+    el('text',{x:sx(v)+(an?4:-4),y:H-6,class:'axt','text-anchor':an?'start':'end'},svg).textContent=`${t} ${d1(v)}`;
+  }
+}
+function todo(){podio();waffle();barras()}
+sel.addEventListener('change',todo);
+todo();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(todo,150)});
+document.getElementById('tbl').innerHTML='<tr><th>Comunidade</th><th>Entidades</th><th>% España</th><th>km²</th><th>Por 100 km²</th><th>Municipios</th><th>Por municipio</th><th>Sen poboación</th><th>Mediana hab.</th></tr>'+
+  C.map(c=>`<tr class="${c.c==='GA'?'g':''}"><td>${c.n}</td><td>${miles(c.es)}</td><td>${d1(c.es/TOT*100)}</td><td>${miles(c.km2)}</td><td>${d1(dens(c))}</td><td>${miles(c.mun)}</td><td>${d1(c.es/c.mun)}</td><td>${miles(c.es-c.hab)}</td><td>${miles(c.med)}</td></tr>`).join('')+
+  `<tr><td>España</td><td>${miles(TOT)}</td><td>100,0</td><td>${miles(KM)}</td><td>${d1(TOT/KM*100)}</td><td>${miles(C.reduce((a,c)=>a+c.mun,0))}</td><td>${d1(TOT/C.reduce((a,c)=>a+c.mun,0))}</td><td>${miles(C.reduce((a,c)=>a+c.es-c.hab,0))}</td><td></td></tr>`;
+</script>
+</body>
+</html>

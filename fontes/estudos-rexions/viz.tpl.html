@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menos abandono, máis títulos — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Abandono escolar temperán e mocidade con estudos superiores nas rexións da UE: Galicia fronte a Europa e ás demais comunidades.">
+<meta property="og:title" content="Menos abandono, máis títulos">
+<meta property="og:description" content="Abandono escolar temperán e mocidade con estudos superiores en cada rexión da UE, con Galicia resaltada.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Dispersión: un punto por rexión NUTS 2 da UE. Eixo horizontal, abandono escolar temperán
+   (18-24 anos); eixo vertical, poboación de 25-34 anos con estudos superiores. Arriba á esquerda
+   está o mellor: pouco abandono e moitos titulados. A zona tinguida cumpre os dous obxectivos da
+   UE para 2030. As raias discontinuas son a media da UE. Galicia leva un rastro co seu camiño
+   dende 2008; o control de ano move todos os puntos. Embaixo, un dumbbell 2008 → último ano do
+   abandono en cada comunidade autónoma. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --eu:#cfcbc1; --es:#7d828a; --hl:#c2185b; --ok:#e8f1ea;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:14px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+.tools label{display:inline-flex;align-items:center;gap:8px}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink);max-width:78vw}
+select:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+input[type=range]{accent-color:var(--hl);width:180px}
+.ano{font:700 1.3rem var(--num);color:var(--ink);min-width:3ch}
+.estado{font-size:.86rem;color:var(--ink);text-align:center;min-height:1.3em;margin:0;max-width:70ch}
+.estado b{font-family:var(--num);font-size:1.05rem}
+.estado .g{color:var(--hl);font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.chart{width:100%;max-width:900px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:700 11.5px var(--display);fill:var(--muted)}
+.zl{font:700 11px var(--display);fill:#4f7a5a;paint-order:stroke;stroke:var(--paper);stroke-width:3px}
+.lb{font:700 12.5px var(--display);paint-order:stroke;stroke:var(--paper);stroke-width:3.5px}
+.pt{cursor:pointer}
+.pt:hover{stroke:var(--ink);stroke-width:1.5}
+.db{width:100%;max-width:720px}
+.db svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:600 12.5px var(--display);fill:var(--ink)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}.rl{font-size:12.5px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Menos abandono, máis títulos</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>Compara con <select id="sel"><option value="">— escolle unha rexión —</option></select></label>
+    <label>Ano <input type="range" id="ano" step="1"> <span class="ano" id="anoTxt"></span></label>
+  </div>
+  <p class="estado" id="estado"></p>
+  <div class="legend"><span><i style="background:var(--hl)"></i>Galicia (e o seu camiño dende __A0__)</span><span><i style="background:var(--ink)"></i>rexión escollida</span><span><i style="background:var(--es)"></i>outras rexións españolas</span><span><i style="background:var(--eu)"></i>resto da UE</span><span><i style="background:none;border:1.5px solid var(--es)"></i>mostra pequena</span></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Dispersión: abandono escolar temperán fronte a poboación de 25 a 34 anos con estudos superiores en cada rexión NUTS 2 da UE. Galicia resaltada. A táboa de datos ten os valores."></svg></div>
+  <h2>O abandono temperán nas comunidades, __A0__ → __A1__</h2>
+  <p class="sub">% de mozos de 18 a 24 anos que deixaron os estudos sen pasar da ESO e non se forman. Ordenadas polo valor de __A1__.</p>
+  <div class="db"><svg id="db" role="img" aria-label="Dumbbell: abandono escolar temperán de cada comunidade autónoma no primeiro e no último ano."></svg></div>
+  <details>
+    <summary>Ver os datos (* mostra pequena no último ano)</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Eurostat, Enquisa de Poboación Activa da UE (LFS): <a href="https://ec.europa.eu/eurostat/databrowser/view/edat_lfse_16/default/table" target="_blank" rel="noopener">abandono temperán da educación e formación por rexión NUTS 2 (edat_lfse_16)</a> e <a href="https://ec.europa.eu/eurostat/databrowser/view/edat_lfse_04/default/table" target="_blank" rel="noopener">poboación de 25-34 anos por nivel de estudos e rexión (edat_lfse_04)</a>, __A0__-__A1__ (actualización do __ACT__). Abandono temperán: % de persoas de 18 a 24 anos que como moito completaron a primeira etapa de secundaria (ESO) e non seguiron ningunha formación nas catro semanas anteriores. Estudos superiores: niveis ISCED 5-8 (FP de grao superior, grao, mestrado e doutoramento). Os obxectivos da UE para 2030 son menos do 9 % de abandono e polo menos un 45 % de titulados superiores entre 25 e 34 anos. Son datos dunha enquisa: nas rexións pequenas varían bastante dun ano a outro, e os puntos baleiros teñen fiabilidade baixa (marca «u» de Eurostat) no último ano. Hai __N__ rexións con ambos datos en __A1__; faltan as que Eurostat non publica por mostra insuficiente (a maior parte das polacas, Ceuta e outras). Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const A=D.anos,NA=A.length,R=D.rex,G=R.find(r=>r.c==='ES11');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const f1=v=>v==null?'—':v.toFixed(1).replace('.',',');
+let escollida='',ia=NA-1;
+const sel=document.getElementById('sel'),rng=document.getElementById('ano');
+rng.min=0;rng.max=NA-1;rng.value=ia;
+const paises=[...new Set(R.map(r=>r.p))].sort((a,b)=>a.localeCompare(b,'gl'));
+sel.innerHTML+=paises.map(p=>`<optgroup label="${p}">${R.filter(r=>r.p===p&&r.c!=='ES11').sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(r=>`<option value="${r.c}">${r.n}</option>`).join('')}</optgroup>`).join('');
+// postos no ano i: abandono (menor = mellor) e titulados (maior = mellor)
+const postos=(r,i,lista)=>{const c=lista.filter(x=>x.e[i]!=null&&x.t[i]!=null);return {n:c.length,e:1+c.filter(x=>x.e[i]<r.e[i]).length,t:1+c.filter(x=>x.t[i]>r.t[i]).length}};
+const ESP=R.filter(r=>r.p==='España');
+function estado(){
+  const h=[];
+  for(const r of [G,R.find(x=>x.c===escollida)].filter(Boolean)){
+    if(r.e[ia]==null||r.t[ia]==null){h.push(`${r.n}: sen dato en ${A[ia]}.`);continue}
+    const pu=postos(r,ia,R),pe=postos(r,ia,ESP);
+    h.push(`<span class="${r===G?'g':''}">${r.n}</span> en ${A[ia]}: <b>${f1(r.e[ia])} %</b> de abandono (posto ${pu.e} de ${pu.n} na UE${r.p==='España'?`, ${pe.e}º de ${pe.n} en España`:''}) e <b>${f1(r.t[ia])} %</b> con estudos superiores (posto ${pu.t}${r.p==='España'?`, ${pe.t}º en España`:''}).`);
+  }
+  document.getElementById('estado').innerHTML=h.join('<br>');
+}
+// límites fixos para todos os anos
+const allE=R.flatMap(r=>r.e).filter(v=>v!=null),allT=R.flatMap(r=>r.t).filter(v=>v!=null);
+const EMAX=Math.ceil(Math.min(45,Math.max(...allE))/5)*5,TMAX=Math.ceil(Math.max(...allT)/10)*10,TMIN=Math.max(0,Math.floor(Math.min(...allT)/10)*10);
+function disp(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?34:46,MR=NARROW?10:24,MT=14,MB=44,H=NARROW?Math.round(W*1.05):Math.min(620,Math.round(W*.68));
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const sx=v=>ML+Math.min(v,EMAX)/EMAX*(W-ML-MR),sy=v=>MT+(TMAX-v)/(TMAX-TMIN)*(H-MT-MB);
+  // zona dos obxectivos 2030
+  el('rect',{x:sx(0),y:sy(TMAX),width:sx(9)-sx(0),height:sy(45)-sy(TMAX),fill:'var(--ok)'},svg);
+  el('text',{x:sx(0)+6,y:sy(TMAX)+14,class:'zl'},svg).textContent=NARROW?'obxectivos UE 2030':'cumpre os dous obxectivos UE 2030';
+  for(let v=0;v<=EMAX;v+=5){el('line',{x1:sx(v),x2:sx(v),y1:MT,y2:H-MB,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:H-MB+16,class:'ax','text-anchor':'middle'},svg).textContent=v+' %'}
+  for(let v=TMIN;v<=TMAX;v+=10){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-6,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v+' %'}
+  el('text',{x:W-MR,y:H-6,class:'axt','text-anchor':'end'},svg).textContent='→ abandono escolar temperán (18-24 anos)';
+  el('text',{x:ML+4,y:MT-2,class:'axt'},svg).textContent='↑ con estudos superiores (25-34 anos)';
+  const ue={e:D.ue.e[ia],t:D.ue.t[ia]};
+  if(ue.e!=null){el('line',{x1:sx(ue.e),x2:sx(ue.e),y1:MT,y2:H-MB,stroke:'var(--muted)','stroke-dasharray':'4 3'},svg);el('text',{x:sx(ue.e)+4,y:H-MB-6,class:'axt'},svg).textContent='media UE'}
+  if(ue.t!=null){el('line',{x1:ML,x2:W-MR,y1:sy(ue.t),y2:sy(ue.t),stroke:'var(--muted)','stroke-dasharray':'4 3'},svg);el('text',{x:W-MR,y:sy(ue.t)-5,class:'axt','text-anchor':'end'},svg).textContent='media UE'}
+  const S=R.find(r=>r.c===escollida);
+  const ult=ia===NA-1;
+  const capa=el('g',{},svg);
+  const orde=R.filter(r=>r.e[ia]!=null&&r.t[ia]!=null).sort((a,b)=>(a.p==='España')-(b.p==='España'));
+  for(const r of orde){
+    if(r===G||r===S)continue;
+    const es=r.p==='España',u=ult&&r.u;
+    const c=el('circle',{cx:sx(r.e[ia]),cy:sy(r.t[ia]),r:es?(NARROW?4:5):(NARROW?3:4),class:'pt',fill:u?'var(--paper)':es?'var(--es)':'var(--eu)',stroke:u?(es?"var(--es)":"#8f8a7f"):"#fff",'stroke-width':u?1.3:.8},capa);
+    c.addEventListener('mousemove',ev=>show(ev,`<b>${r.n}</b>${r.p} · ${A[ia]}<br>abandono ${f1(r.e[ia])} % · estudos superiores ${f1(r.t[ia])} %${u?'<br>mostra pequena':''}`));
+    c.addEventListener('mouseleave',hide);
+    c.addEventListener('click',()=>{escollida=r.c;sel.value=r.c;todo()});
+  }
+  // rastros e marcas
+  const rastro=(r,cor)=>{const pts=[];for(let i=0;i<=ia;i++)if(r.e[i]!=null&&r.t[i]!=null)pts.push([sx(r.e[i]),sy(r.t[i]),A[i]]);
+    if(pts.length>1){el('path',{d:'M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join('L'),fill:'none',stroke:cor,'stroke-width':1.4,opacity:.55,'stroke-linejoin':'round'},svg);
+      pts.slice(0,-1).forEach(p=>el('circle',{cx:p[0],cy:p[1],r:2,fill:cor,opacity:.6},svg));
+      const p0=pts[0];el('text',{x:p0[0]+5,y:p0[1]-5,class:'lb',fill:cor,style:'font-size:11px'},svg).textContent=p0[2]}
+    if(r.e[ia]==null||r.t[ia]==null)return;
+    const x=sx(r.e[ia]),y=sy(r.t[ia]);
+    const c=el('circle',{cx:x,cy:y,r:NARROW?6:7.5,fill:cor,stroke:'#fff','stroke-width':1.5,class:'pt'},svg);
+    c.addEventListener('mousemove',ev=>show(ev,`<b>${r.n}</b>${r.p} · ${A[ia]}<br>abandono ${f1(r.e[ia])} % · estudos superiores ${f1(r.t[ia])} %`));c.addEventListener('mouseleave',hide);
+    const dch=x<W*.7;el('text',{x:dch?x+11:x-11,y:y+4,class:'lb',fill:cor,'text-anchor':dch?'start':'end'},svg).textContent=r.n;
+  };
+  if(S)rastro(S,'var(--ink)');
+  rastro(G,'var(--hl)');
+}
+function dumbbell(){
+  const svg=document.getElementById('db');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<520;
+  const L=ESP.filter(r=>r.e[0]!=null&&r.e.at(-1)!=null).sort((a,b)=>a.e.at(-1)-b.e.at(-1));
+  const ML=NARROW?112:140,MR=20,MT=26,RH=24,H=MT+RH*L.length+10;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const vmax=Math.ceil(Math.max(...L.map(r=>r.e[0]))/10)*10,sx=v=>ML+v/vmax*(W-ML-MR);
+  for(let v=0;v<=vmax;v+=10){el('line',{x1:sx(v),x2:sx(v),y1:MT-6,y2:H-6,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:MT-10,class:'ax','text-anchor':'middle'},svg).textContent=v+' %'}
+  el('line',{x1:sx(9),x2:sx(9),y1:MT-6,y2:H-6,stroke:'#4f7a5a','stroke-dasharray':'3 3'},svg);
+  L.forEach((r,k)=>{const y=MT+RH*k+RH/2,g=r===G,s=r.c===escollida,cor=g?'var(--hl)':s?'var(--ink)':'var(--es)';
+    el('text',{x:ML-10,y:y+4,class:'rl','text-anchor':'end',fill:g?'var(--hl)':'var(--ink)',style:g||s?'font-weight:800':''},svg).textContent=r.n;
+    el('line',{x1:sx(r.e[0]),x2:sx(r.e.at(-1)),y1:y,y2:y,stroke:cor,'stroke-width':g?3:2,opacity:g||s?1:.55},svg);
+    el('circle',{cx:sx(r.e[0]),cy:y,r:4.5,fill:'var(--paper)',stroke:cor,'stroke-width':1.6},svg);
+    const c=el('circle',{cx:sx(r.e.at(-1)),cy:y,r:5.5,fill:cor},svg);
+    const hit=el('rect',{x:0,y:y-RH/2,width:W,height:RH,fill:'transparent'},svg);
+    hit.addEventListener('mousemove',ev=>show(ev,`<b>${r.n}</b>${A[0]}: ${f1(r.e[0])} % → ${A.at(-1)}: ${f1(r.e.at(-1))} %`));hit.addEventListener('mouseleave',hide);
+  });
+  el('text',{x:sx(9)+4,y:H-2,class:'zl'},svg).textContent='obxectivo 2030';
+}
+function taboa(){
+  const i0=0,i1=NA-1;
+  document.getElementById('tbl').innerHTML=`<tr><th>Rexión</th><th>País</th><th>Abandono ${A[i0]}</th><th>Abandono ${A[i1]}</th><th>Superiores ${A[i0]}</th><th>Superiores ${A[i1]}</th></tr>`+
+    [...R].sort((a,b)=>a.p.localeCompare(b.p,'gl')||a.n.localeCompare(b.n,'gl')).map(r=>`<tr${r===G?' class="g"':''}><td>${r.n}${r.u?' *':''}</td><td>${r.p}</td><td>${f1(r.e[i0])}</td><td>${f1(r.e[i1])}</td><td>${f1(r.t[i0])}</td><td>${f1(r.t[i1])}</td></tr>`).join('')+
+    `<tr><td>UE-27</td><td></td><td>${f1(D.ue.e[i0])}</td><td>${f1(D.ue.e[i1])}</td><td>${f1(D.ue.t[i0])}</td><td>${f1(D.ue.t[i1])}</td></tr><tr><td>España</td><td></td><td>${f1(D.es.e[i0])}</td><td>${f1(D.es.e[i1])}</td><td>${f1(D.es.t[i0])}</td><td>${f1(D.es.t[i1])}</td></tr>`;
+}
+function todo(){document.getElementById('anoTxt').textContent=A[ia];estado();disp();dumbbell()}
+sel.addEventListener('change',()=>{escollida=sel.value;todo()});
+rng.addEventListener('input',()=>{ia=+rng.value;todo()});
+todo();taboa();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{disp();dumbbell()},150)});
+</script>
+</body>
+</html>

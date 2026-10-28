@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chove, pero hai sol — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Choiva anual, días de choiva e horas de sol de Santiago, Vigo, A Coruña, Pontevedra, Lugo e Ourense fronte a cidades europeas, coas normais climatolóxicas oficiais 1991-2020.">
+<meta property="og:title" content="Chove, pero hai sol">
+<meta property="og:description" content="As cidades galegas recollen máis choiva ca Londres ou Bruxelas, pero teñen máis horas de sol. Normais 1991-2020.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Dispersión: cada cidade é un punto colocado segundo a súa choiva anual (eixo horizontal) e as
+   súas horas de sol ao ano (eixo vertical), coas normais climatolóxicas 1991-2020. As cidades
+   galegas van en maxenta, o resto de España en gris escuro e Europa en gris claro. As que non
+   teñen horas de sol nas normais (Portugal, Noruega, Dinamarca, Suecia, Finlandia, Polonia) van
+   nunha franxa debaixo, só pola choiva. Segundo gráfico: piruletas cos días de choiva (≥ 1 mm)
+   e, á dereita, os litros que caen de media cada día que chove. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --hl:#c2185b; --es:#5f636b; --eu:#a9aeb5; --sel:#1f2328;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:16px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:72ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink)}
+select:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.podio{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;font-size:.82rem;color:var(--muted)}
+.podio b{font:700 1.5rem var(--num);color:var(--hl);display:block;line-height:1}
+.podio div{text-align:center}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.lb{font:700 11.5px var(--display);fill:var(--muted);paint-order:stroke;stroke:var(--paper);stroke-width:3px;stroke-linejoin:round}
+.lb.g{fill:var(--hl);font-size:12.5px}
+.lb.on{fill:var(--ink);font-size:12.5px}
+.rl{font:700 12px var(--display);fill:var(--ink)}
+.rv{font:600 13px var(--num);fill:var(--muted)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.q{font:italic 600 12px var(--display);fill:#b4b0a6}
+.pt{stroke:#fff;stroke-width:1.2;cursor:pointer}
+.pt:hover{stroke:var(--ink)}
+.fila{cursor:pointer}
+.fila:hover .bg{fill:#f1efe9}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:290px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.rl{font-size:13px}.rv{font-size:14px}.ax{font-size:13px}.axt{font-size:12px}.lb{font-size:11px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Chove, pero hai sol</h1>
+  <p class="dek">__DEK__</p>
+  <div class="podio" id="podio"></div>
+  <div class="tools">
+    <label>Resalta unha cidade <select id="sel"><option value="">—</option></select></label>
+  </div>
+  <div class="legend"><span><i style="background:var(--hl)"></i>Galicia</span><span><i style="background:var(--es)"></i>resto de España</span><span><i style="background:var(--eu)"></i>Europa</span></div>
+  <div class="chart"><svg id="sc" role="img" aria-label="Dispersión: choiva anual en milímetros fronte a horas de sol ao ano de cada cidade, normais 1991-2020. A táboa de datos ten os valores."></svg></div>
+  <h2>Moitos litros, non tantos días</h2>
+  <p class="sub">Días de choiva ao ano (con 1 mm ou máis) e, á dereita, os litros por metro cadrado que caen de media cada un deses días.</p>
+  <div class="chart"><svg id="di" role="img" aria-label="Piruletas: días de choiva ao ano de cada cidade e litros por día de choiva."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Normais climatolóxicas 1991-2020. OMM, <a href="https://www.ncei.noaa.gov/products/wmo-climate-normals" target="_blank" rel="noopener">WMO Climate Normals 1991-2020</a>, arquivadas por NOAA NCEI (accesión 0253808; <a href="https://www.ncei.noaa.gov/data/oceans/archive/arc0216/0253808/1.1/data/0-data/data-composite-primary-parameters/" target="_blank" rel="noopener">ficheiros compostos de precipitación, días con ≥ 1 mm e horas de sol</a>), co que envía cada servizo meteorolóxico nacional: AEMET para as cidades españolas, Met Office, Météo-France, DWD, KNMI, MET Norway, Met Éireann, etc. Portugal non enviou as súas normais á OMM: Lisboa e Porto saen das <a href="https://www.ipma.pt/pt/oclima/normais.clima/1991-2020/normalclimate9120.jsp" target="_blank" rel="noopener">fichas 1991-2020 do IPMA</a>, que non inclúen o sol. Cada cidade está representada por un único observatorio (Santiago: Lavacolla; Vigo: Peinador; Lugo: Rozas; Londres: Heathrow; Dublín: Casement…), que pode estar fóra da cidade e a outra altitude. Os días de choiva de Alemaña non se mostran porque o DWD enviou como «días con ≥ 1 mm» o reconto de días con ≥ 0,1 mm. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const d1=v=>v.toFixed(1).replace('.',',');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const C=D.cidades;
+const COR={g:'var(--hl)',e:'var(--es)',u:'var(--eu)'};
+const sel=document.getElementById('sel');
+sel.innerHTML+=C.filter(c=>c.g!=='g').slice().sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(c=>`<option>${c.n}</option>`).join('');
+const cor=c=>c.n===sel.value?'var(--sel)':COR[c.g];
+const info=c=>`<b>${c.n}</b>${miles(c.mm)} mm ao ano${c.dias?` · ${d1(c.dias)} días de choiva`:''}<br>${c.sol?miles(c.sol)+' horas de sol':'sen horas de sol nas normais'}<br><span style="opacity:.75">${c.f==='IPMA'?'IPMA':'OMM'} · estación ${c.est} (${miles(c.alt)} m)</span>`;
+function podio(){
+  const S=C.filter(c=>c.sol),Rm=C.slice().sort((a,b)=>b.mm-a.mm),Rs=S.slice().sort((a,b)=>b.sol-a.sol);
+  const v=C.find(c=>c.n===(sel.value||'Santiago'));
+  document.getElementById('podio').innerHTML=`<div><b>${Rm.indexOf(v)+1}.ª de ${Rm.length}</b>${v.n} en choiva</div>`+(v.sol?`<div><b>${Rs.indexOf(v)+1}.ª de ${Rs.length}</b>en horas de sol</div>`:'')+(v.dias?`<div><b>${d1(v.mm/v.dias)} l/m²</b>por día de choiva</div>`:'');
+}
+// Coloca as etiquetas evitando solapamentos (proba dereita, esquerda, arriba e abaixo)
+function etiquetas(svg,pts,W,H,extra){
+  const caixas=(extra||[]).slice();
+  const solapa=b=>caixas.some(o=>b.x<o.x+o.w&&b.x+b.w>o.x&&b.y<o.y+o.h&&b.y+b.h>o.y)||b.x<0||b.x+b.w>W||b.y<0||b.y+b.h>H;
+  for(const p of pts)caixas.push({x:p.x-p.r,y:p.y-p.r,w:2*p.r,h:2*p.r});
+  const orde=pts.slice().sort((a,b)=>(b.pri||0)-(a.pri||0));
+  for(const p of orde){
+    const w=p.t.length*(p.pri?7:6.3)+2,h=12;
+    const cand=[[p.x+p.r+3,p.y-h/2,'start'],[p.x-p.r-3-w,p.y-h/2,'end'],[p.x-w/2,p.y-p.r-h-1,'middle'],[p.x-w/2,p.y+p.r+1,'middle']];
+    for(const [x,y,an] of cand){const b={x,y,w,h};if(!solapa(b)){caixas.push(b);
+      const tx=an==='start'?x:an==='end'?x+w:x+w/2;
+      el('text',{x:tx,y:y+h-2,class:'lb'+(p.cl?' '+p.cl:''),'text-anchor':an},svg).textContent=p.t;break}}
+  }
+}
+function scatter(){
+  const svg=document.getElementById('sc');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?38:52,MR=12,MT=14,PH=NARROW?380:470,STRIP=46;
+  const H=MT+PH+34+STRIP+18;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const S=C.filter(c=>c.sol),N=C.filter(c=>!c.sol);
+  const xmax=Math.ceil(Math.max(...C.map(c=>c.mm))/250)*250;
+  const y0=Math.floor(Math.min(...S.map(c=>c.sol))/250)*250,y1=Math.ceil(Math.max(...S.map(c=>c.sol))/250)*250;
+  const sx=v=>ML+v/xmax*(W-ML-MR),sy=v=>MT+(1-(v-y0)/(y1-y0))*PH;
+  const pasoX=NARROW?500:250;
+  for(let v=0;v<=xmax;v+=pasoX){el('line',{x1:sx(v),x2:sx(v),y1:MT,y2:MT+PH,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:MT+PH+16,class:'ax','text-anchor':'middle'},svg).textContent=miles(v)}
+  for(let v=y0;v<=y1;v+=250){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-6,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=miles(v)}
+  el('text',{x:W-MR,y:MT+PH+30,class:'axt','text-anchor':'end'},svg).textContent='choiva ao ano (mm = litros por m²) →';
+  el('text',{x:ML+4,y:MT+12,class:'axt'},svg).textContent='↑ horas de sol ao ano';
+  el('text',{x:W-MR-6,y:MT+30,class:'q','text-anchor':'end'},svg).textContent='moita choiva e moito sol';
+  el('text',{x:W-MR-6,y:MT+PH-8,class:'q','text-anchor':'end'},svg).textContent='moita choiva e pouco sol';
+  // franxa das cidades sen sol
+  const ys=MT+PH+34+STRIP/2+6;
+  el('line',{x1:ML,x2:W-MR,y1:ys,y2:ys,stroke:'var(--line)'},svg);
+  el('text',{x:ML,y:ys-14,class:'axt'},svg).textContent='sen horas de sol nas normais:';
+  const pts=[];
+  const r=c=>c.g==='g'||c.n===sel.value?7:5.5;
+  for(const c of [...S.filter(c=>c.g!=='g'&&c.n!==sel.value),...S.filter(c=>c.g==='g'||c.n===sel.value)]){
+    const x=sx(c.mm),y=sy(c.sol);
+    const p=el('circle',{cx:x,cy:y,r:r(c),fill:cor(c),class:'pt'},svg);
+    p.addEventListener('mousemove',ev=>show(ev,info(c)));p.addEventListener('mouseleave',hide);
+    p.addEventListener('click',()=>{if(c.g!=='g'){sel.value=sel.value===c.n?'':c.n;todo()}});
+    pts.push({x,y,r:r(c),t:c.n,pri:c.g==='g'?3:c.n===sel.value?2:c.g==='e'?1:0,cl:c.g==='g'?'g':c.n===sel.value?'on':''});
+  }
+  for(const c of N){
+    const x=sx(c.mm);
+    const p=el('circle',{cx:x,cy:ys,r:r(c),fill:'none',stroke:cor(c),'stroke-width':2,class:'pt'},svg);
+    p.style.stroke=cor(c);
+    p.addEventListener('mousemove',ev=>show(ev,info(c)));p.addEventListener('mouseleave',hide);
+    p.addEventListener('click',()=>{sel.value=sel.value===c.n?'':c.n;todo()});
+    pts.push({x,y:ys,r:r(c),t:c.n,pri:c.n===sel.value?2:0,cl:c.n===sel.value?'on':''});
+  }
+  etiquetas(svg,pts,W,H,[{x:ML,y:ys-26,w:190,h:15},{x:W-MR-170,y:MT+18,w:170,h:15},{x:W-MR-170,y:MT+PH-20,w:170,h:15}]);
+}
+function dias(){
+  const svg=document.getElementById('di');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const R=C.filter(c=>c.dias).sort((a,b)=>b.dias-a.dias);
+  const ML=NARROW?84:120,MR=NARROW?44:70,MT=36,RH=NARROW?19:18;
+  const H=MT+RH*R.length+10;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const xmax=Math.ceil(Math.max(...R.map(c=>c.dias))/50)*50,sx=v=>ML+v/xmax*(W-ML-MR);
+  for(let v=0;v<=xmax;v+=50){el('line',{x1:sx(v),x2:sx(v),y1:MT-4,y2:H-6,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:MT-8,class:'ax','text-anchor':'middle'},svg).textContent=v}
+  el('text',{x:W,y:MT-24,class:'axt','text-anchor':'end'},svg).textContent='l/m² por día';
+  el('text',{x:ML,y:MT-24,class:'axt'},svg).textContent='días de choiva ao ano →';
+  R.forEach((c,i)=>{
+    const y=MT+i*RH+RH/2,g=el('g',{class:'fila'},svg),col=cor(c);
+    el('rect',{x:0,y:y-RH/2,width:W,height:RH,fill:'transparent',class:'bg'},g);
+    const t=el('text',{x:ML-8,y:y+4,class:'rl','text-anchor':'end'},g);t.textContent=c.n;
+    if(c.g==='g'||c.n===sel.value)t.style.fill=c.g==='g'?'var(--hl)':'var(--ink)';
+    el('line',{x1:ML,x2:sx(c.dias),y1:y,y2:y,stroke:col,'stroke-width':1.6},g);
+    el('circle',{cx:sx(c.dias),cy:y,r:4.5,fill:col},g);
+    el('text',{x:W,y:y+4,class:'rv','text-anchor':'end',style:c.g==='g'?'fill:var(--hl)':''},g).textContent=d1(c.mm/c.dias);
+    g.addEventListener('mousemove',ev=>show(ev,info(c)+`<br>${d1(c.mm/c.dias)} l/m² por día de choiva`));g.addEventListener('mouseleave',hide);
+    g.addEventListener('click',()=>{if(c.g!=='g'){sel.value=sel.value===c.n?'':c.n;todo()}});
+  });
+}
+function todo(){podio();scatter();dias()}
+sel.addEventListener('change',todo);
+todo();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(todo,150)});
+document.getElementById('tbl').innerHTML='<tr><th>Cidade</th><th>Estación</th><th>Choiva (mm)</th><th>Días ≥ 1 mm</th><th>l/m² por día</th><th>Horas de sol</th><th>Altitude (m)</th><th>Fonte</th></tr>'+
+  C.slice().sort((a,b)=>b.mm-a.mm).map(c=>`<tr class="${c.g==='g'?'g':''}"><td>${c.n}</td><td>${c.est}</td><td>${miles(c.mm)}</td><td>${c.dias?d1(c.dias):'—'}</td><td>${c.dias?d1(c.mm/c.dias):'—'}</td><td>${c.sol?miles(c.sol):'—'}</td><td>${miles(c.alt)}</td><td>${c.f}</td></tr>`).join('');
+</script>
+</body>
+</html>

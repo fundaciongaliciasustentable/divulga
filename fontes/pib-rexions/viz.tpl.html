@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Galicia na escaleira europea — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="O posto de Galicia entre as rexións da UE en PIB por habitante (en paridade de poder de compra) dende 2000: unha liña por rexión.">
+<meta property="og:title" content="Galicia na escaleira europea">
+<meta property="og:description" content="O posto de Galicia entre as rexións da UE en PIB por habitante, ano a ano dende 2000.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Bump chart: unha liña por rexión NUTS 2 da UE (as mesmas en todos os anos) que vai de ano en
+   ano polo seu posto en PIB por habitante en PPS; o posto 1 está arriba. As rexións españolas van
+   nun gris máis escuro, Galicia en maxenta e a rexión escollida en tinta. Un botón cambia o eixo
+   vertical do posto ao valor (% da media UE). Embaixo, un slope chart 2000 → último ano coas
+   comunidades autónomas. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --bg-line:#d8d5cc; --es:#8a8e96; --hl:#c2185b;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:14px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink);max-width:78vw}
+select:focus-visible,.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.seg button{font:700 .8rem var(--display);border:0;background:var(--card);color:var(--muted);padding:7px 11px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.estado{font-size:.86rem;color:var(--ink);text-align:center;min-height:1.3em;margin:0}
+.estado b{font-family:var(--num);font-size:1.05rem}
+.estado .g{color:var(--hl)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:18px;height:0;border-top:3px solid;display:inline-block}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.lb{font:700 12.5px var(--display)}
+.lbn{font:700 13px var(--num)}
+.hit{fill:none;stroke:transparent;stroke-width:7;cursor:pointer}
+.slope{width:100%;max-width:640px}
+.slope svg{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}.lb{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Galicia na escaleira europea</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>Compara con <select id="sel"><option value="">— escolle unha rexión —</option></select></label>
+    <span class="seg" role="group" aria-label="Eixo vertical"><button type="button" data-m="r" aria-pressed="true">Posto</button><button type="button" data-m="v" aria-pressed="false">% da media UE</button></span>
+  </div>
+  <p class="estado" id="estado"></p>
+  <div class="legend"><span><i style="border-color:var(--hl)"></i>Galicia</span><span><i style="border-color:var(--ink)"></i>rexión escollida</span><span><i style="border-color:var(--es);border-top-width:2px"></i>outras rexións españolas</span><span><i style="border-color:var(--bg-line);border-top-width:1px"></i>resto da UE</span></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Bump chart: o posto de cada rexión NUTS 2 da UE en PIB por habitante en PPS, ano a ano. Galicia resaltada. A táboa de datos ten os valores."></svg></div>
+  <h2>As comunidades autónomas, __A0__ e __A1__</h2>
+  <p class="sub">PIB por habitante en PPS, en % da media da UE. Cada liña une o valor dunha comunidade no primeiro e no último ano.</p>
+  <div class="slope"><svg id="sl" role="img" aria-label="Slope chart: o PIB por habitante das comunidades autónomas en % da media UE no primeiro e no último ano."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/nama_10r_2gdp/default/table" target="_blank" rel="noopener">PIB rexional por NUTS 2 (nama_10r_2gdp)</a>, unidade «PPS por habitante en % da media UE-27», __A0__-__A1__ (actualización do __ACT__; __PROV__). O PPS (estándar de poder de compra) corrixe as diferenzas de prezos entre países, pero non dentro de cada país. O PIB mídese onde se produce: as rexións con moitos traballadores que viven noutra (Luxemburgo, Praga, Hamburgo) saen infladas. O posto calcúlase sobre as __N__ rexións NUTS 2 da UE-27 con dato en todos os anos; quedan fóra __FORA__, sen serie completa. Eurostat publica os valores redondeados a enteiros, polo que hai empates (comparten posto). Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const A=D.anos,NA=A.length,R=D.rex,G=R.find(r=>r.c==='ES11');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+let modo='r',escollida='';
+const sel=document.getElementById('sel');
+const paises=[...new Set(R.map(r=>r.p))].sort((a,b)=>a.localeCompare(b,'gl'));
+sel.innerHTML+=paises.map(p=>`<optgroup label="${p}">${R.filter(r=>r.p===p&&r.c!=='ES11').sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(r=>`<option value="${r.c}">${r.n}</option>`).join('')}</optgroup>`).join('');
+const txtR=r=>`<b>${r.n}</b>${r.p} · ${A.at(-1)}: posto ${r.r.at(-1)} de ${D.n}, ${r.v.at(-1)} % da media UE<br>${A[0]}: posto ${r.r[0]}, ${r.v[0]} %`;
+function estado(){
+  const s=R.find(r=>r.c===escollida);
+  let h=`<span class="g">Galicia</span>: posto <b>${G.r.at(-1)}</b> de ${D.n} en ${A.at(-1)} (${G.v.at(-1)} % da media UE), dende o <b>${G.r[0]}</b> en ${A[0]}.`;
+  if(s)h+=`<br>${s.n}: posto <b>${s.r.at(-1)}</b> (${s.v.at(-1)} %), dende o <b>${s.r[0]}</b> en ${A[0]}.`;
+  document.getElementById('estado').innerHTML=h;
+}
+function bump(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?30:44,MR=NARROW?44:150,MT=18,MB=28,H=NARROW?520:Math.min(720,Math.max(560,W*.6));
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const sx=i=>ML+i/(NA-1)*(W-ML-MR);
+  let sy,ticks,fmt;
+  if(modo==='r'){sy=r=>MT+(r-1)/(D.n-1)*(H-MT-MB);ticks=[1,25,50,75,100,125,150,175,200,D.n];fmt=t=>t+'º'}
+  else{const vmax=Math.ceil(Math.max(...R.flatMap(r=>r.v))/50)*50,vmin=Math.floor(Math.min(...R.flatMap(r=>r.v))/25)*25;
+    sy=v=>MT+(vmax-v)/(vmax-vmin)*(H-MT-MB);ticks=[];for(let v=vmin;v<=vmax;v+=50)ticks.push(v);fmt=t=>t+' %'}
+  const Y=r=>r[modo];
+  for(const t of ticks){el('line',{x1:ML,x2:W-MR,y1:sy(t),y2:sy(t),stroke:'var(--grid)'},svg);el('text',{x:ML-6,y:sy(t)+4,class:'ax','text-anchor':'end'},svg).textContent=fmt(t)}
+  if(modo==='v'){el('line',{x1:ML,x2:W-MR,y1:sy(100),y2:sy(100),stroke:'var(--muted)','stroke-dasharray':'4 3'},svg);el('text',{x:W-MR+4,y:sy(100)+4,class:'axt'},svg).textContent='media UE'}
+  const paso=NARROW?6:4;
+  for(let i=0;i<NA;i++)if((A[i]-A[0])%paso===0||i===NA-1)el('text',{x:sx(i),y:H-8,class:'ax','text-anchor':'middle'},svg).textContent=A[i];
+  if(D.prov.length){const i0=A.indexOf(D.prov[0]);el('rect',{x:sx(i0-.5),y:MT-8,width:sx(NA-1)-sx(i0-.5),height:H-MT-MB+14,fill:'var(--grid)',opacity:.6},svg);
+    el('text',{x:sx(NA-1),y:MT-11,class:'axt','text-anchor':'end'},svg).textContent='provisional'}
+  const d=r=>'M'+Y(r).map((v,i)=>`${sx(i).toFixed(1)},${sy(v).toFixed(1)}`).join('L');
+  const capa=(lista,st)=>{const g=el('g',{},svg);for(const r of lista)el('path',{d:d(r),fill:'none',...st},g);return g};
+  capa(R.filter(r=>r.p!=='España'),{stroke:'var(--bg-line)','stroke-width':.8});
+  capa(R.filter(r=>r.p==='España'&&r.c!=='ES11'),{stroke:'var(--es)','stroke-width':1.3,opacity:.85});
+  const s=R.find(r=>r.c===escollida);
+  const marca=(r,cor,w)=>{el('path',{d:d(r),fill:'none',stroke:'var(--paper)','stroke-width':w+3},svg);el('path',{d:d(r),fill:'none',stroke:cor,'stroke-width':w,'stroke-linejoin':'round'},svg);
+    Y(r).forEach((v,i)=>el('circle',{cx:sx(i),cy:sy(v),r:NARROW?2.2:3,fill:cor},svg))};
+  if(s)marca(s,'var(--ink)',2.2);
+  marca(G,'var(--hl)',3);
+  // etiquetas extremos
+  const fv=v=>modo==='r'?v+'º':v+' %';
+  const etiq=[];
+  etiq.push({r:G,cor:'var(--hl)'});if(s)etiq.push({r:s,cor:'var(--ink)'});
+  // evitar solapamento na dereita
+  const ys=etiq.map(e=>sy(Y(e.r).at(-1)));if(ys.length===2&&Math.abs(ys[0]-ys[1])<28){const m=(ys[0]+ys[1])/2,s0=ys[0]<=ys[1]?-1:1;ys[0]=m+s0*14;ys[1]=m-s0*14}
+  const ys0=etiq.map(e=>sy(Y(e.r)[0]));if(ys0.length===2&&Math.abs(ys0[0]-ys0[1])<16){const m=(ys0[0]+ys0[1])/2,s0=ys0[0]<=ys0[1]?-1:1;ys0[0]=m+s0*8;ys0[1]=m-s0*8}
+  etiq.forEach((e,k)=>{
+    const t=el('text',{x:W-MR+8,y:ys[k]+(NARROW?4:0),class:'lbn',fill:e.cor},svg);t.textContent=fv(Y(e.r).at(-1));
+    if(!NARROW)el('text',{x:W-MR+8,y:ys[k]+15,class:'lb',fill:e.cor},svg).textContent=e.r.n.length>20?e.r.n.slice(0,19)+'…':e.r.n;
+    el('text',{x:sx(0)-6,y:ys0[k]+4,class:'lbn',fill:e.cor,'text-anchor':'end',stroke:'var(--paper)','stroke-width':3,'paint-order':'stroke'},svg).textContent=fv(Y(e.r)[0]);
+  });
+  // capa de interacción
+  const hg=el('g',{},svg);
+  for(const r of R){const p=el('path',{d:d(r),class:'hit'},hg);
+    p.addEventListener('mousemove',ev=>{const b=svg.getBoundingClientRect(),x=(ev.clientX-b.left)*W/b.width,i=Math.max(0,Math.min(NA-1,Math.round((x-ML)/(W-ML-MR)*(NA-1))));
+      show(ev,`<b>${r.n}</b>${r.p}<br>${A[i]}: posto ${r.r[i]} de ${D.n} · ${r.v[i]} % da media UE`)});
+    p.addEventListener('mouseleave',hide);
+    p.addEventListener('click',()=>{if(r.c!=='ES11'){escollida=r.c;sel.value=r.c;estado();bump()}});}
+}
+function slope(){
+  const svg=document.getElementById('sl');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<520;
+  const ES=R.filter(r=>r.p==='España'),H=560,MT=20,MB=20,X0=NARROW?118:170,X1=W-(NARROW?118:170);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const all=ES.flatMap(r=>[r.v[0],r.v.at(-1)]),vmin=Math.min(...all)-2,vmax=Math.max(...all)+2;
+  const sy=v=>MT+(vmax-v)/(vmax-vmin)*(H-MT-MB);
+  el('text',{x:X0,y:12,class:'ax','text-anchor':'middle'},svg).textContent=A[0];
+  el('text',{x:X1,y:12,class:'ax','text-anchor':'middle'},svg).textContent=A.at(-1);
+  el('line',{x1:X0,x2:X1,y1:sy(100),y2:sy(100),stroke:'var(--muted)','stroke-dasharray':'4 3'},svg);
+  el('text',{x:(X0+X1)/2,y:sy(100)-5,class:'axt','text-anchor':'middle'},svg).textContent='media UE = 100';
+  // colocar etiquetas sen solaparse
+  const coloca=(vals)=>{const o=vals.map((v,i)=>({i,y:sy(v)})).sort((a,b)=>a.y-b.y);for(let k=1;k<o.length;k++)if(o[k].y-o[k-1].y<13)o[k].y=o[k-1].y+13;const res=[];o.forEach(e=>res[e.i]=e.y);return res};
+  const yl=coloca(ES.map(r=>r.v[0])),yr=coloca(ES.map(r=>r.v.at(-1)));
+  const orde=ES.map((r,i)=>i).sort((a,b)=>(ES[a].c==='ES11'||ES[a].c===escollida)-(ES[b].c==='ES11'||ES[b].c===escollida));
+  for(const i of orde){const r=ES[i],g=r.c==='ES11',s=r.c===escollida,cor=g?'var(--hl)':s?'var(--ink)':'var(--es)';
+    el('line',{x1:X0,x2:X1,y1:sy(r.v[0]),y2:sy(r.v.at(-1)),stroke:cor,'stroke-width':g?3:s?2.2:1.2,opacity:g||s?1:.7},svg);
+    el('circle',{cx:X0,cy:sy(r.v[0]),r:g?4:3,fill:cor},svg);el('circle',{cx:X1,cy:sy(r.v.at(-1)),r:g?4:3,fill:cor},svg);
+    const fw=g||s?'700':'500';
+    const t0=el('text',{x:X0-8,y:yl[i]+4,'text-anchor':'end',fill:g?'var(--hl)':s?'var(--ink)':'var(--muted)',style:`font:${fw} 12px var(--display)`},svg);t0.textContent=`${r.n} ${r.v[0]}`;
+    const t1=el('text',{x:X1+8,y:yr[i]+4,fill:g?'var(--hl)':s?'var(--ink)':'var(--muted)',style:`font:${fw} 12px var(--display)`},svg);t1.textContent=`${r.v.at(-1)} ${r.n}`;
+  }
+}
+function taboa(){
+  const ix=[0,A.indexOf(2008),A.indexOf(2019),NA-1].filter((v,i,a)=>v>=0&&a.indexOf(v)===i);
+  document.getElementById('tbl').innerHTML='<tr><th>Rexión</th><th>País</th>'+ix.map(i=>`<th>% UE ${A[i]}</th>`).join('')+ix.map(i=>`<th>Posto ${A[i]}</th>`).join('')+'</tr>'+
+    R.map(r=>`<tr${r.c==='ES11'?' class="g"':''}><td>${r.n}</td><td>${r.p}</td>${ix.map(i=>`<td>${r.v[i]}</td>`).join('')}${ix.map(i=>`<td>${r.r[i]}</td>`).join('')}</tr>`).join('');
+}
+sel.addEventListener('change',()=>{escollida=sel.value;estado();bump();slope()});
+for(const b of document.querySelectorAll('.seg button'))b.addEventListener('click',()=>{modo=b.dataset.m;for(const x of document.querySelectorAll('.seg button'))x.setAttribute('aria-pressed',x===b);bump()});
+estado();bump();slope();taboa();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{bump();slope()},150)});
+</script>
+</body>
+</html>

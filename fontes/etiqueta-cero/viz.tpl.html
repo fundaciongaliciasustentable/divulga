@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A etiqueta CERO chega aos concellos — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Cantos vehículos eléctricos e híbridos enchufables (etiqueta CERO) hai por cada mil habitantes en cada concello galego, e como medraron dende 2020.">
+<meta property="og:title" content="A etiqueta CERO chega aos concellos">
+<meta property="og:description" content="Vehículos eléctricos e híbridos enchufables por cada mil habitantes, concello a concello, 2020-2025.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Feixe de liñas + mapa de símbolos proporcionais. Arriba, unha liña por concello cos vehículos
+   con etiqueta CERO por cada mil habitantes de 2020 a 2025: o feixe gris son os 313, a liña
+   negra é Galicia e a magenta o concello que escollas (os poucos que se saen da escala
+   etiquétanse no bordo). Abaixo, un círculo por concello no seu sitio, coa área segundo o número
+   de vehículos CERO e a cor segundo a taxa por mil habitantes. Ao final, as comunidades. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --hl:#c2185b; --bun:#c9c5bb;
+  --b1:#dcebf2; --b2:#a9d0e0; --b3:#6fb0cc; --b4:#3a8bb1; --b5:#1c6390; --b6:#0d3f63;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:12px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+input{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;width:15em;max-width:70vw;background:var(--card);color:var(--ink)}
+input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.res{font-size:.88rem;color:var(--muted);text-align:center;max-width:70ch;min-height:1.3em;margin:0}
+.res b{color:var(--hl)}
+.lines,.map,.cc{width:100%}
+.lines{max-width:980px}.cc{max-width:760px}
+.map{max-width:720px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.lb{font:700 12px var(--display);fill:var(--ink)}
+.ln{fill:none;stroke:var(--bun);stroke-width:1;opacity:.55}
+.ln.on{stroke:var(--hl);stroke-width:3;opacity:1}
+.hit{fill:none;stroke:transparent;stroke-width:8;cursor:pointer}
+.bb{stroke:#fff;stroke-width:.7;cursor:pointer;fill-opacity:.9}
+.bb:hover{stroke:var(--ink);stroke-width:1.4}
+.bb.on{stroke:var(--hl);stroke-width:3}
+.legend{display:flex;flex-wrap:wrap;gap:4px 0;justify-content:center;font:600 .78rem var(--num);color:var(--muted);align-items:center}
+.legend span{display:inline-flex;flex-direction:column;align-items:center;gap:2px;min-width:44px}
+.legend i{width:44px;height:10px;display:block}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}.lb{font-size:13px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>A etiqueta CERO chega aos concellos</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <form id="f" autocomplete="off" onsubmit="return false"><label>O teu concello <input id="q" list="lista" placeholder="Escribe o nome" aria-label="O teu concello"></label></form>
+    <datalist id="lista"></datalist>
+  </div>
+  <p class="res" id="res"></p>
+  <div class="lines"><svg id="ln" role="img" aria-label="Feixe de liñas: vehículos con etiqueta CERO por cada mil habitantes en cada concello galego, __A0__-__ULT__."></svg></div>
+  <h2>Onde están, en __ULT__</h2>
+  <p class="sub">Un círculo por concello: o tamaño é o número de vehículos con etiqueta CERO; a cor, cantos hai por cada mil habitantes.</p>
+  <div class="legend" id="legend"></div>
+  <div class="map"><svg id="mapa" role="img" aria-label="Mapa de Galicia cun círculo por concello segundo os seus vehículos con etiqueta CERO en __ULT__."></svg></div>
+  <h2>Galicia entre as comunidades</h2>
+  <p class="sub">Vehículos con etiqueta CERO por cada mil habitantes, __ULT__.</p>
+  <div class="cc"><svg id="cc" role="img" aria-label="Barras: vehículos con etiqueta CERO por cada mil habitantes en cada comunidade autónoma, __ULT__."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">DGT, <a href="https://www.dgt.es/menusecundario/dgt-en-cifras/dgt-en-cifras-resultados/dgt-en-cifras-detalle/Datos-municipales-informacion-general-__ULT__/" target="_blank" rel="noopener">Datos municipales – información general</a>, __A0__-__ULT__: parque de vehículos de cada municipio a 31 de decembro (ciclomotores, motocicletas, turismos, furgonetas e camións) por distintivo ambiental, e poboación do municipio. A etiqueta CERO lévana os eléctricos de batería, os híbridos enchufables con máis de 40 km de autonomía eléctrica e os de pila de hidróxeno; os «eléctricos puros» da táboa son os que a DGT clasifica como propulsión eléctrica. Os vehículos cóntanse no concello do domicilio do titular: unha empresa con frota ou de aluguer pode disparar o dato dun concello pequeno (é o caso de Palas de Rei e Portomarín) e, ao revés, os coches de renting matriculados fóra non aparecen. A peza pedía tamén o autoconsumo solar, pero non hai datos oficiais publicados por concello: o rexistro galego de autoconsumo non ten datos abertos e o estatal só se difunde agregado. Nos ficheiros de anos anteriores a DGT non trae todas as comunidades co mesmo nome, así que a comparación entre comunidades vai só para __ULT__. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const A=D.anos,U=A.length-1,ULT=A[U],C=D.conc;
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const d1=v=>v.toFixed(1).replace('.',',');
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const tx=(c,i=U)=>c.z[i]/c.pob[i]*1000;
+const G=D.ccaa['Galicia'],E=D.esp;
+const rk=C.slice().sort((a,b)=>tx(b)-tx(a));rk.forEach((c,i)=>c.posto=i+1);
+const mediana=xs=>{const s=xs.slice().sort((a,b)=>a-b),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
+const MED={};for(const p of new Set(C.map(c=>c.pr)))MED[p]=mediana(C.filter(c=>c.pr===p).map(c=>tx(c)));
+const CORTES=[3,6,9,12,18],CORES=['var(--b1)','var(--b2)','var(--b3)','var(--b4)','var(--b5)','var(--b6)'];
+const cor=v=>CORES[CORTES.filter(t=>v>=t).length];
+document.getElementById('legend').innerHTML=CORES.map((c,i)=>`<span><i style="background:${c}"></i>${i===0?'< '+CORTES[0]:i===CORES.length-1?'≥ '+CORTES.at(-1):CORTES[i-1]+'–'+CORTES[i]}</span>`).join('')+'<span style="min-width:auto;margin-left:10px">por mil habitantes</span>';
+const txt=c=>`<b>${c.n}</b>${c.pr}<br>${d1(tx(c))} vehículos CERO por mil habitantes en ${ULT} (${d1(tx(c,0))} en ${A[0]})<br>${miles(c.z[U])} vehículos CERO, ${miles(c.el[U])} eléctricos puros · posto ${c.posto} de ${C.length}`;
+let sel=null;
+function linhas(){
+  const svg=document.getElementById('ln');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<600,Hh=NARROW?340:400,ML=30,MR=NARROW?92:150,MT=24,MB=26;
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const YM=40,sx=i=>ML+i/U*(W-ML-MR),sy=v=>MT+(1-Math.min(v,YM)/YM)*(Hh-MT-MB);
+  for(let t=0;t<=YM;t+=10){el('line',{x1:ML,x2:W-MR,y1:sy(t),y2:sy(t),stroke:'var(--grid)'},svg);el('text',{x:ML-6,y:sy(t)+4,class:'ax','text-anchor':'end'},svg).textContent=t}
+  A.forEach((a,i)=>el('text',{x:sx(i),y:Hh-6,class:'ax','text-anchor':'middle'},svg).textContent=a);
+  el('text',{x:ML,y:MT-10,class:'axt'},svg).textContent='vehículos con etiqueta CERO por cada mil habitantes';
+  const path=ys=>'M'+ys.map((v,i)=>`${sx(i).toFixed(1)},${sy(v).toFixed(1)}`).join('L');
+  const g=el('g',{},svg);
+  for(const c of C){
+    const ys=A.map((_,i)=>tx(c,i));
+    const p=el('path',{d:path(ys),class:'ln'},g);p.dataset.id=c.id;
+    const h=el('path',{d:path(ys),class:'hit'},g);
+    h.addEventListener('mousemove',ev=>show(ev,txt(c)));h.addEventListener('mouseleave',hide);h.addEventListener('click',()=>escolle(c));
+  }
+  // os que se saen da escala
+  const fora=C.filter(c=>tx(c)>YM).sort((a,b)=>tx(b)-tx(a));
+  fora.forEach((c,k)=>{el('text',{x:sx(U)+6,y:MT+4+k*14,class:'ax'},svg).textContent=`↑ ${c.n} ${d1(tx(c))}`});
+  // Galicia e España
+  el('path',{d:path(A.map((_,i)=>G.z[i]/G.pob[i]*1000)),fill:'none',stroke:'var(--ink)','stroke-width':3},svg);
+  const gy=sy(G.z[U]/G.pob[U]*1000),ey=sy(E.z[U]/E.pob[U]*1000);
+  el('text',{x:sx(U)+6,y:gy+4,class:'lb'},svg).textContent='Galicia '+d1(G.z[U]/G.pob[U]*1000);
+  el('circle',{cx:sx(U),cy:ey,r:4,fill:'none',stroke:'var(--ink)','stroke-width':1.6},svg);
+  el('text',{x:sx(U)+6,y:ey+4,class:'lb',style:'font-weight:600'},svg).textContent='España '+d1(E.z[U]/E.pob[U]*1000);
+  const lab=el('text',{x:sx(U)+6,y:0,class:'lb',style:'fill:var(--hl)',id:'lsel'},svg);
+  marca();
+}
+function mapa(){
+  const svg=document.getElementById('mapa');svg.innerHTML='';
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(const p of Object.values(D.provs))for(const r of p)for(const [x,y] of r){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y)}
+  svg.setAttribute('viewBox',`${x0-10} ${y0-10} ${x1-x0+20} ${y1-y0+20}`);
+  for(const p of Object.values(D.provs))el('path',{d:p.map(r=>'M'+r.map(q=>q.join(',')).join('L')+'Z').join(''),fill:'var(--soft)',stroke:'#fff','stroke-width':3},svg);
+  const g=el('g',{},svg);
+  const k=(x1-x0)/62/Math.sqrt(Math.max(...C.map(c=>c.z[U])));
+  for(const c of C.slice().sort((a,b)=>b.z[U]-a.z[U])){
+    const b=el('circle',{cx:c.xy[0],cy:c.xy[1],r:Math.max(2.5,Math.sqrt(c.z[U])*k*3.2),fill:cor(tx(c)),class:'bb'},g);b.dataset.id=c.id;
+    b.addEventListener('mousemove',ev=>show(ev,txt(c)));b.addEventListener('mouseleave',hide);b.addEventListener('click',()=>escolle(c));
+  }
+  marca();
+}
+function ccaa(){
+  const svg=document.getElementById('cc');svg.innerHTML='';
+  const L=Object.entries(D.ccaa).map(([n,v])=>({n,v:v.z[U]/v.pob[U]*1000})).sort((a,b)=>b.v-a.v);
+  const ev=E.z[U]/E.pob[U]*1000;
+  const W=svg.parentNode.clientWidth,NARROW=W<520,ML=NARROW?128:180,MR=40,RH=22,MT=8,Hh=MT+RH*L.length+20;
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const vmax=Math.ceil(L[0].v/10)*10,sx=v=>ML+v/vmax*(W-ML-MR);
+  const curto=n=>n.replace('Comunidad de ','').replace(', Comunidad de','').replace(', Comunidad Foral de','').replace(', Principado de','').replace(', Región de','').replace(', Illes','').replace(', La','').replace('Comunitat Valenciana','C. Valenciana').replace('Castilla - La Mancha','Castilla-La Mancha');
+  L.forEach((c,i)=>{
+    const y=MT+i*RH,gal=c.n==='Galicia';
+    el('text',{x:ML-8,y:y+RH*.68,class:'lb','text-anchor':'end',style:gal?'fill:var(--hl)':'font-weight:600'},svg).textContent=curto(c.n)+(gal?` · ${i+1}ª`:'');
+    el('rect',{x:ML,y:y+4,width:sx(c.v)-ML,height:RH-8,fill:gal?'var(--hl)':'var(--bun)'},svg);
+    el('text',{x:sx(c.v)+5,y:y+RH*.68,class:'ax',style:gal?'fill:var(--hl)':''},svg).textContent=d1(c.v);
+  });
+  el('line',{x1:sx(ev),x2:sx(ev),y1:MT,y2:Hh-18,stroke:'var(--ink)','stroke-dasharray':'3 3'},svg);
+  el('text',{x:sx(ev),y:Hh-4,class:'axt','text-anchor':'middle'},svg).textContent='España '+d1(ev);
+}
+function marca(){
+  for(const e of document.querySelectorAll('.ln,.bb'))e.classList.toggle('on',!!sel&&e.dataset.id===sel.id);
+  for(const e of document.querySelectorAll('.ln.on,.bb.on'))e.parentNode.appendChild(e);
+  const l=document.getElementById('lsel');
+  if(l){if(sel&&tx(sel)<=40){const svg=document.getElementById('ln'),[,,W,Hh]=svg.getAttribute('viewBox').split(' ').map(Number);
+      const NARROW=W<600,MR=NARROW?92:150,MT=24,MB=26,y=MT+(1-tx(sel)/40)*(Hh-MT-MB);l.setAttribute('y',y+(Math.abs(y-(MT+(1-G.z[U]/G.pob[U]*1000/40)*(Hh-MT-MB)))<14?-12:4));l.textContent=(sel.n.length>14&&NARROW?sel.n.slice(0,13)+'…':sel.n)+' '+d1(tx(sel))}
+    else l.textContent=''}
+  const r=document.getElementById('res');
+  r.innerHTML=sel?`<b>${sel.n}</b>: ${d1(tx(sel))} vehículos CERO por mil habitantes en ${ULT}, posto <b>${sel.posto} de ${C.length}</b>. A mediana de ${sel.pr} é ${d1(MED[sel.pr])} e a media galega, ${d1(G.z[U]/G.pob[U]*1000)}. En ${A[0]} tiña ${miles(sel.z[0])}; agora, ${miles(sel.z[U])}.`:'';
+}
+function escolle(c){sel=c;document.getElementById('q').value=c?c.n:'';marca()}
+const lista=document.getElementById('lista');lista.innerHTML=C.map(c=>`<option value="${c.n}">`).join('');
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const c=C.find(c=>c.n.toLowerCase()===q.value.trim().toLowerCase());if(c)escolle(c);else if(!q.value.trim())escolle(null)});
+linhas();mapa();ccaa();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{linhas();ccaa()},150)});
+document.getElementById('tbl').innerHTML='<tr><th>Concello</th><th>Provincia</th><th>Posto</th><th>CERO/1.000 hab '+ULT+'</th><th>CERO '+ULT+'</th><th>Eléctricos puros</th><th>ECO</th><th>Parque total</th><th>Poboación</th>'+A.slice(0,U).map(a=>`<th>CERO/1.000 ${a}</th>`).join('')+'</tr>'+
+  rk.map(c=>`<tr><td>${c.n}</td><td>${c.pr}</td><td>${c.posto}</td><td>${d1(tx(c))}</td><td>${miles(c.z[U])}</td><td>${miles(c.el[U])}</td><td>${miles(c.eco[U])}</td><td>${miles(c.par[U])}</td><td>${miles(c.pob[U])}</td>${A.slice(0,U).map((_,i)=>`<td>${d1(tx(c,i))}</td>`).join('')}</tr>`).join('');
+</script>
+</body>
+</html>

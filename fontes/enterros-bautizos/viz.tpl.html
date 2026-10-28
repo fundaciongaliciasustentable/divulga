@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Máis enterros ca bautizos — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Nacementos por cada defunción en cada concello galego, de 1975 a 2025: un cartograma de hexágonos e un pictograma de berces e cruces para o teu concello.">
+<meta property="og:title" content="Máis enterros ca bautizos">
+<meta property="og:description" content="En que concellos galegos nacen máis persoas das que morren, de 1975 a 2025.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Cartograma de hexágonos + pictograma. Cada hexágono é un concello, colocado preto do seu sitio
+   real, e coloreado polos nacementos que houbo por cada 10 defuncións nun quinquenio (verde se
+   naceron máis dos que morreron, en grises cada vez máis escuros canto menos nacen). Os botóns
+   cambian de quinquenio, de 1975-1979 a 2021-2025. As columnas contan, ano a ano, en cantos
+   concellos houbo máis defuncións ca nacementos. O pictograma pon berces fronte a cruces para o
+   concello escollido (ou Galicia) no quinquenio activo. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6; --hl:#c2185b;
+  --k0:#2b2d33; --k1:#55585f; --k2:#80838a; --k3:#a9abb0; --k4:#cfd0d2; --k5:#e6e6e4; --v1:#8cc1a4; --v2:#3f8f6a;
+  --berce:#3f8f6a; --cruz:#55585f;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:10px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:68ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.85rem;color:var(--muted)}
+input{font:600 .9rem var(--display);border:1px solid var(--line);border-radius:3px;padding:8px 10px;background:var(--card);color:var(--ink);width:240px;max-width:70vw}
+input:focus-visible,button:focus-visible,.hx:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+button{font:600 .8rem var(--display);border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:3px;padding:7px 10px;cursor:pointer}
+.per{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.per button{font-family:var(--num);font-size:.9rem;padding:5px 9px}
+.per button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.legend{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));width:100%;max-width:480px;font:600 .74rem/1.1 var(--num);color:var(--muted)}
+.legend span{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.legend i{height:12px;width:100%;display:block}
+.top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px 26px;width:100%;align-items:start}
+.hex svg{display:block;width:100%;height:auto}
+.hx{stroke:var(--paper);stroke-width:1.5;cursor:pointer}
+.hx:hover{stroke:var(--ink)}
+.hx.on{stroke:var(--hl);stroke-width:4}
+.ficha{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px}
+.ficha h3{margin:0;font:800 1.3rem var(--display)}
+.ficha h3 small{display:block;font:600 .78rem var(--display);color:var(--muted);margin-top:2px}
+.ficha .big{font:700 2.4rem/1 var(--num);margin-top:8px}
+.ficha .big small{font:600 .95rem var(--display);color:var(--muted)}
+.ficha ul{list-style:none;padding:0;margin:8px 0 0;font-size:.86rem;color:var(--muted);line-height:1.5}
+.ficha ul b{color:var(--ink);font-family:var(--num);font-size:1.05rem}
+.pict{margin-top:12px}
+.pict .row{display:grid;grid-template-columns:62px minmax(0,1fr);gap:8px;align-items:start;margin-bottom:8px}
+.pict .row > span{font:600 .78rem var(--display);color:var(--muted);padding-top:2px}
+.pict .row > span b{display:block;font:700 1.2rem var(--num);color:var(--ink)}
+.icons{display:flex;flex-wrap:wrap;gap:2px}
+.icons svg{width:16px;height:16px;flex:none}
+.pict .un{font-size:.74rem;color:var(--muted);margin:0}
+.spark svg{display:block;width:100%;height:auto;margin-top:6px}
+.chart{width:100%;max-width:1000px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.lab{font:700 12px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}
+.col{cursor:pointer}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper);cursor:pointer}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:760px){.top{grid-template-columns:1fr}}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}.icons svg{width:13px;height:13px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Máis enterros ca bautizos</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>O teu concello <input id="q" list="lc" placeholder="Escribe o nome…" autocomplete="off"></label>
+    <datalist id="lc"></datalist>
+    <button id="lim" type="button">Ver Galicia</button>
+  </div>
+  <div class="per" id="per" role="group" aria-label="Quinquenio"></div>
+  <div class="legend" id="legend"></div>
+  <div class="top">
+    <div class="hex"><svg id="hex" role="img" aria-label="Cartograma de Galicia cun hexágono por concello, coloreado polos nacementos por cada 10 defuncións no quinquenio escollido. A táboa ten as cifras."></svg></div>
+    <div class="ficha" id="ficha" aria-live="polite"></div>
+  </div>
+  <h2>En cantos concellos morre máis xente da que nace, ano a ano</h2>
+  <p class="sub">Concellos (de 313) con máis defuncións ca nacementos cada ano. Toca unha columna para levar o mapa ao seu quinquenio.</p>
+  <div class="chart"><svg id="ch" role="img" aria-label="Columnas: número de concellos con máis defuncións ca nacementos cada ano de 1975 a __ULT__."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Instituto Galego de Estatística (IGE) e INE, Movemento natural da poboación: <a href="https://www.ige.gal/igebdt/selector.jsp?COD=227&paxina=001&c=0201002001" target="_blank" rel="noopener">nacementos, defuncións, matrimonios e crecemento vexetativo por concello, serie 1975-__ULT__</a> (táboa 227), segundo o concello de residencia da nai (nacementos) e da persoa falecida (defuncións). Os datos de __ULT__ son provisionais. Cóntanse os nacementos e as defuncións de veciños do concello, ocorran onde ocorran; non son bautizos nin enterros: o título é unha imaxe. Nos concellos pequenos un só ano pode moverse moito, por iso o mapa usa sumas de cinco anos. Oza-Cesuras e Cerdedo-Cotobade suman os seus dous concellos antes da fusión. A posición dos hexágonos é a da peza <a href="../vacas-persoas/">Máis vacas ca persoas</a>. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const C=D.conc,N=C.length,A=D.anos,G=D.gal;
+const f0=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const f1=v=>v.toFixed(1).replace('.',',');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+// Quinquenios: o último é o dos cinco últimos anos con datos
+const ULT=A.at(-1);
+const PER=[[1975,1979],[1985,1989],[1995,1999],[2005,2009],[2015,2019],[ULT-4,ULT]];
+let per=PER.length-1;
+const sum=(arr,p)=>{let s=0;for(let a=PER[p][0];a<=PER[p][1];a++)s+=arr[A.indexOf(a)];return s};
+const r10=(o,p)=>{const d=sum(o.d,p);return d?sum(o.b,p)/d*10:Infinity};
+// rango dentro do quinquenio (1 = o que máis nacementos ten por defunción)
+function ranks(){C.slice().sort((a,b)=>r10(b,per)-r10(a,per)).forEach((o,i)=>o.rk=i+1)}
+const med=a=>{const s=a.slice().sort((x,y)=>x-y),k=s.length;return k%2?s[(k-1)/2]:(s[k/2-1]+s[k/2])/2};
+// Cor: nacementos por cada 10 defuncións
+const CUT=[1,2,4,6,8,10,15],COL=['var(--k0)','var(--k1)','var(--k2)','var(--k3)','var(--k4)','var(--k5)','var(--v1)','var(--v2)'];
+const LEG=['menos de 1','1–2','2–4','4–6','6–8','8–10','10–15','15 ou máis'];
+const col=v=>COL[CUT.filter(c=>v>=c).length];
+document.getElementById('legend').innerHTML=COL.map((c,i)=>`<span><i style="background:${c};${i===5?'outline:1px solid var(--line)':''}"></i>${LEG[i]}</span>`).join('')+
+  '<span style="grid-column:1/-1;margin-top:4px;font-family:var(--display)">nacementos por cada 10 defuncións · en verde, nacen máis dos que morren</span>';
+const pb=document.getElementById('per');
+pb.innerHTML=PER.map((p,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===per}">${p[0]}–${p[1]}</button>`).join('');
+pb.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setPer(+b.dataset.i)));
+function setPer(i){per=i;pb.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.i===per));ranks();pinta();ficha();columnas()}
+let sel=null;
+const q=document.getElementById('q');
+document.getElementById('lc').innerHTML=C.map(o=>`<option value="${o.n}">`).join('');
+function escolle(o){sel=o;q.value=o?o.n:'';marca();ficha()}
+q.addEventListener('input',()=>{const o=C.find(o=>o.n.toLowerCase()===q.value.trim().toLowerCase());if(o)escolle(o)});
+q.addEventListener('change',()=>{const v=q.value.trim().toLowerCase();if(!v){escolle(null);return}const o=C.find(o=>o.n.toLowerCase()===v)||C.find(o=>o.n.toLowerCase().includes(v));if(o)escolle(o)});
+document.getElementById('lim').addEventListener('click',()=>escolle(null));
+
+// Cartograma
+const sv=document.getElementById('hex'),R=20,DX=Math.sqrt(3)*R,DY=1.5*R;
+const hp=(i,j)=>[i*DX+(j%2?DX/2:0),-j*DY];
+const HX={};
+(function(){
+  const xs=C.map(c=>hp(...c.h)[0]),ys=C.map(c=>hp(...c.h)[1]);
+  const X0=Math.min(...xs)-R,X1=Math.max(...xs)+R,Y0=Math.min(...ys)-R,Y1=Math.max(...ys)+R;
+  sv.setAttribute('viewBox',`${X0} ${Y0} ${X1-X0} ${Y1-Y0}`);
+  const hexd=(x,y)=>{let d='';for(let k=0;k<6;k++){const a=Math.PI/180*(60*k-30);d+=(k?'L':'M')+(x+R*Math.cos(a)).toFixed(1)+','+(y+R*Math.sin(a)).toFixed(1)}return d+'Z'};
+  for(const o of C){const [x,y]=hp(...o.h);
+    const p=el('path',{d:hexd(x,y),class:'hx',tabindex:0,'aria-label':o.n},sv);HX[o.id]=p;
+    p.addEventListener('mousemove',ev=>{const b=sum(o.b,per),d=sum(o.d,per);show(ev,`<b>${o.n}</b>${o.pr} · ${PER[per][0]}–${PER[per][1]}<br>${f0(b)} nacementos · ${f0(d)} defuncións<br>${d?f1(b/d*10):'–'} nacementos por cada 10 defuncións`)});
+    p.addEventListener('mouseleave',hide);p.addEventListener('click',()=>escolle(o));p.addEventListener('keydown',e=>{if(e.key==='Enter')escolle(o)});
+  }
+})();
+function pinta(){for(const o of C)HX[o.id].setAttribute('fill',col(r10(o,per)))}
+function marca(){for(const id in HX)HX[id].classList.toggle('on',!!sel&&id===sel.id);if(sel)sv.appendChild(HX[sel.id])}
+
+// Iconas: berce e cruz (24×24)
+const BERCE='<path d="M3 9h18a9 7 0 0 1-18 0z" fill="var(--berce)"/><path d="M5 19c4 3 10 3 14 0" stroke="var(--berce)" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="16.5" cy="6" r="2.6" fill="var(--berce)"/>';
+const CRUZ='<path d="M10 2h4v6h5v4h-5v10h-4V12H5V8h5z" fill="var(--cruz)"/>';
+const ico=(s,n)=>Array.from({length:n},()=>`<svg viewBox="0 0 24 24" aria-hidden="true">${s}</svg>`).join('');
+const UNID=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000];
+function ficha(){
+  const fx=document.getElementById('ficha'),o=sel||G,[p0,p1]=PER[per];
+  const b=sum(o.b,per),d=sum(o.d,per);
+  const u=UNID.find(u=>Math.max(b,d)/u<=(innerWidth<640?60:90))||UNID.at(-1);
+  const cab=sel?`<h3>${o.n}<small>${o.pr} · ${p0}–${p1}</small></h3>`:`<h3>Galicia<small>${p0}–${p1}</small></h3>`;
+  const ratio=d?b/d*10:0;
+  let extra='';
+  if(sel){const rs=C.filter(c=>c.pr===o.pr).map(c=>r10(c,per)).filter(isFinite);
+    extra=`<li>Posto <b>${o.rk}</b> de ${N} (1 = o que máis nacementos ten por defunción)</li><li>Mediana de ${o.pr}: <b>${f1(med(rs))}</b> · Galicia: <b>${f1(sum(G.b,per)/sum(G.d,per)*10)}</b></li>`}
+  else extra=`<li><b>${C.filter(c=>sum(c.d,per)>sum(c.b,per)).length}</b> dos ${N} concellos tiveron máis defuncións ca nacementos</li><li>Busca o teu concello ou toca un hexágono.</li>`;
+  fx.innerHTML=`${cab}<div class="big" style="color:${ratio>=10?'var(--v2)':'var(--ink)'}">${f1(ratio)} <small>nacementos por cada 10 defuncións</small></div>
+    <ul><li><b>${f0(b)}</b> nacementos e <b>${f0(d)}</b> defuncións en cinco anos (${b-d>=0?'+':'−'}${f0(Math.abs(b-d))})</li>${extra}</ul>
+    <div class="pict"><div class="row"><span>Berces<b>${f0(b)}</b></span><div class="icons">${ico(BERCE,Math.round(b/u))}</div></div>
+    <div class="row"><span>Cruces<b>${f0(d)}</b></span><div class="icons">${ico(CRUZ,Math.round(d/u))}</div></div>
+    <p class="un">Cada icona: ${u===1?'unha persoa':f0(u)+' persoas'} (redondeado).</p></div>
+    <div class="spark"><svg id="sp"></svg></div>`;
+  serie(o);
+}
+// Liñas de nacementos e defuncións dende 1975
+function serie(o){
+  const svg=document.getElementById('sp'),W=svg.parentNode.clientWidth||300,H=130,ML=8,MR=40,MT=16,MB=18;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('role','img');svg.setAttribute('aria-label',`Nacementos e defuncións de ${sel?o.n:'Galicia'} cada ano dende 1975`);
+  const ymax=Math.max(...o.b,...o.d)*1.1||1,sx=a=>ML+(a-A[0])/(ULT-A[0])*(W-ML-MR),sy=v=>MT+(1-v/ymax)*(H-MT-MB);
+  el('rect',{x:sx(PER[per][0])-2,y:MT-4,width:sx(PER[per][1])-sx(PER[per][0])+4,height:H-MT-MB+4,fill:'var(--grid)'},svg);
+  for(const a of [1975,2000,ULT])el('text',{x:sx(a),y:H-3,class:'ax','text-anchor':'middle'},svg).textContent=a;
+  let yb=sy(o.b.at(-1))+4,yd=sy(o.d.at(-1))+4;
+  if(Math.abs(yb-yd)<13){const m=(yb+yd)/2,s=o.b.at(-1)>=o.d.at(-1)?-1:1;yb=m+s*6.5;yd=m-s*6.5}
+  for(const [arr,c,yl] of [[o.b,'var(--berce)',yb],[o.d,'var(--cruz)',yd]]){
+    el('path',{d:'M'+arr.map((v,i)=>`${sx(A[i]).toFixed(1)},${sy(v).toFixed(1)}`).join('L'),fill:'none',stroke:c,'stroke-width':1.8},svg);
+    el('text',{x:sx(ULT)+4,y:yl,class:'ax',fill:c},svg).textContent=f0(arr.at(-1));
+  }
+  el('text',{x:ML,y:10,class:'axt'},svg).textContent='nacementos e defuncións cada ano';
+}
+// Columnas: concellos con máis defuncións ca nacementos cada ano
+function columnas(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640,H=NARROW?220:250,ML=30,MR=6,MT=22,MB=22;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const n=A.map((a,i)=>C.filter(o=>o.d[i]>o.b[i]).length);
+  const bw=(W-ML-MR)/A.length,sy=v=>MT+(1-v/N)*(H-MT-MB);
+  for(const v of [0,100,200,300]){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-5,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v}
+  el('line',{x1:ML,x2:W-MR,y1:sy(N),y2:sy(N),stroke:'var(--muted)','stroke-dasharray':'2 3'},svg);
+  el('text',{x:ML+2,y:sy(N)-5,class:'axt'},svg).textContent=`${N}: todos`;
+  A.forEach((a,i)=>{
+    const p=PER.findIndex(p=>a>=p[0]&&a<=p[1]);
+    const r=el('rect',{x:ML+i*bw+.5,y:sy(n[i]),width:Math.max(1,bw-1.5),height:sy(0)-sy(n[i]),fill:p===per?'var(--ink)':'var(--k3)',class:'col'},svg);
+    r.addEventListener('mousemove',ev=>show(ev,`<b>${a}${a===ULT?' (provisional)':''}</b>${n[i]} de ${N} concellos con máis defuncións ca nacementos<br>Galicia: ${f0(G.b[i])} nacementos, ${f0(G.d[i])} defuncións`));
+    r.addEventListener('mouseleave',hide);
+    r.addEventListener('click',()=>{const k=PER.findIndex(p=>a>=p[0]&&a<=p[1]);setPer(k>=0?k:PER.reduce((m,p,j)=>Math.abs(p[0]+2-a)<Math.abs(PER[m][0]+2-a)?j:m,0))});
+    if(a%(NARROW?10:5)===0||a===ULT)el('text',{x:ML+i*bw+bw/2,y:H-6,class:'ax','text-anchor':'middle'},svg).textContent=a;
+  });
+  const i0=0,iu=A.length-1;
+  el('text',{x:ML+i0*bw,y:sy(n[i0])-6,class:'lab'},svg).textContent=n[i0];
+  el('text',{x:ML+iu*bw+bw,y:sy(n[iu])-6,class:'lab','text-anchor':'end'},svg).textContent=n[iu];
+}
+let ordT='r',dirT=-1;
+function taboa(){
+  const p=PER.length-1,p0=0;
+  const cols=[['n','Concello'],['pr','Provincia'],['b',`Nacementos ${PER[p][0]}–${PER[p][1]}`],['d',`Defuncións ${PER[p][0]}–${PER[p][1]}`],['r','Nac. por 10 def.'],['r0',`Nac. por 10 def. ${PER[p0][0]}–${PER[p0][1]}`],['bu',`Nacementos ${ULT}`],['du',`Defuncións ${ULT}`]];
+  const rows=C.map(o=>({n:o.n,pr:o.pr,b:sum(o.b,p),d:sum(o.d,p),r:r10(o,p),r0:r10(o,p0),bu:o.b.at(-1),du:o.d.at(-1)}));
+  rows.sort((a,b)=>(typeof a[ordT]==='string'?a[ordT].localeCompare(b[ordT],'gl'):a[ordT]-b[ordT])*dirT);
+  const t=document.getElementById('tbl');
+  t.innerHTML='<tr>'+cols.map(([k,n])=>`<th data-k="${k}">${n}${k===ordT?(dirT>0?' ↑':' ↓'):''}</th>`).join('')+'</tr>'+
+    rows.map(o=>`<tr><td>${o.n}</td><td>${o.pr}</td><td>${f0(o.b)}</td><td>${f0(o.d)}</td><td>${f1(o.r)}</td><td>${isFinite(o.r0)?f1(o.r0):'–'}</td><td>${o.bu}</td><td>${o.du}</td></tr>`).join('');
+  t.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;dirT=k===ordT?-dirT:1;ordT=k;taboa()}));
+}
+ranks();pinta();ficha();columnas();taboa();
+let lw=innerWidth;
+addEventListener('resize',()=>{if(innerWidth===lw)return;lw=innerWidth;clearTimeout(window._r);window._r=setTimeout(()=>{columnas();ficha()},150)});
+</script>
+</body>
+</html>

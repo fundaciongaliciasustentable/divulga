@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vento por cabeza — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="A potencia eólica instalada por habitante e por quilómetro cadrado en Galicia e nos 27 países da Unión Europea, de 2015 a 2024.">
+<meta property="og:title" content="Vento por cabeza">
+<meta property="og:description" content="Galicia ten máis potencia eólica por habitante ca Dinamarca ou Alemaña: compárao cos 27 países da UE.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Dispersión con dúas medidas da mesma potencia: en horizontal, vatios eólicos por habitante; en
+   vertical, quilovatios de eólica en terra por km² de superficie. Cada punto é un país da UE (gris,
+   co tamaño segundo os MW totais) e Galicia vai en maxenta. As raias de puntos marcan a media da
+   UE-27, que divide o plano en catro cuadrantes. Ao escoller un país ou Galicia, debúxase o seu
+   rastro dende 2015 ata o ano do control. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --hl:#c2185b; --dot:#8c949c; --sel:#1f2328;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.tools{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink)}
+select:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.ano{display:flex;align-items:center;gap:10px}
+.ano input{width:min(240px,50vw);accent-color:var(--hl)}
+.ano output{font:700 1.5rem var(--num);color:var(--ink)}
+.fichas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;width:100%}
+.ficha{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:10px 14px;min-width:150px;text-align:center}
+.ficha .v{font:700 1.7rem/1 var(--num);color:var(--ink)}
+.ficha .v small{font-size:.9rem;color:var(--muted);font-weight:600}
+.ficha .l{font-size:.74rem;color:var(--muted);margin-top:3px}
+.ficha .r{font:700 .82rem var(--display);color:var(--hl);margin-top:2px}
+.chart{width:100%;max-width:960px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.pt{stroke:#fff;stroke-width:1;cursor:pointer}
+.pt:hover{stroke:var(--ink);stroke-width:1.5}
+.pl{font:600 11.5px var(--display);fill:var(--muted);pointer-events:none}
+.pl.g{font-weight:800;font-size:13px;fill:var(--hl)}
+.pl.s{font-weight:800;fill:var(--ink)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:700 11.5px var(--display);fill:var(--ink)}
+.q{font:600 11px var(--display);fill:var(--muted);font-style:italic}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}.pl{font-size:11px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Vento por cabeza</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>Compara con <select id="p"><option value="">—</option></select></label>
+    <label class="ano">Ano <input type="range" id="y" min="0" max="0" step="1" aria-label="Ano"><output id="yo"></output></label>
+  </div>
+  <div class="fichas" id="fichas"></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Dispersión: potencia eólica por habitante e eólica en terra por km² en Galicia e nos países da UE. A táboa de datos ten os valores."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Países: Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_inf_epcrw/default/table" target="_blank" rel="noopener">nrg_inf_epcrw</a> (capacidade eléctrica neta máxima, eólica total e mariña, MW a fin de ano, __ANOS__). Galicia: Inega, <a href="https://www.inega.gal/sites/default/files/publicacions/20260331_evolucion_potencia.pdf" target="_blank" rel="noopener">potencia eléctrica instalada en Galicia</a> (eólica, a partir do Rexistro de Instalacións de Produción de Enerxía Eléctrica, __ANOS__). Poboación a 1 de xaneiro do ano seguinte: Eurostat <a href="https://ec.europa.eu/eurostat/databrowser/view/demo_r_d2jan/default/table" target="_blank" rel="noopener">demo_r_d2jan</a>. Superficie terrestre: Eurostat <a href="https://ec.europa.eu/eurostat/databrowser/view/reg_area3/default/table" target="_blank" rel="noopener">reg_area3</a> (__AREA__). A medida por km² conta só a eólica en terra, porque os parques mariños (Dinamarca, Países Baixos, Alemaña, Bélxica…) non ocupan territorio; a medida por habitante conta toda. As cifras de Galicia e das dos países veñen de rexistros distintos e poden diferir lixeiramente na data de corte. A comparación coas outras comunidades autónomas non se puido facer: o servizo de potencia instalada do REData de Red Eléctrica non responde (outubro de 2026) e non hai outra táboa oficial descargable. Nomes dos países: Unicode CLDR. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const A=D.anos,P=D.paises,UE=P.find(p=>p.id==='EU27_2020'),G=P.find(p=>p.id==='GZ'),PS=P.filter(p=>p!==UE);
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const hab=(p,i)=>p.mw[i]*1e6/p.pob[i];          // W por habitante
+const km=(p,i)=>(p.mw[i]-p.mar[i])*1000/p.km2;    // kW en terra por km²
+const ys=document.getElementById('y'),yo=document.getElementById('yo'),sel=document.getElementById('p');
+ys.max=A.length-1;ys.value=A.length-1;
+sel.innerHTML+=PS.filter(p=>p!==G).sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(p=>`<option value="${p.id}">${p.n}</option>`).join('');
+const posto=(f,p,i)=>PS.slice().sort((a,b)=>f(b,i)-f(a,i)).indexOf(p)+1;
+function fichas(){
+  const i=+ys.value,s=PS.find(p=>p.id===sel.value);
+  const f=(p,c)=>`<div class="ficha" style="border-top:3px solid ${c}"><div style="font-weight:800;font-size:.9rem">${p.n} · ${A[i]}</div>
+    <div class="v">${miles(hab(p,i))} <small>W/hab</small></div><div class="r">posto ${posto(hab,p,i)} de ${PS.length}</div>
+    <div class="v" style="margin-top:6px">${miles(km(p,i))} <small>kW/km²</small></div><div class="r">posto ${posto(km,p,i)} de ${PS.length}</div>
+    <div class="l">${miles(p.mw[i])} MW${p.mar[i]?` (${miles(p.mar[i])} no mar)`:''}</div></div>`;
+  document.getElementById('fichas').innerHTML=f(G,'var(--hl)')+(s?f(s,'var(--ink)'):'')+
+    `<div class="ficha" style="border-top:3px dotted var(--muted)"><div style="font-weight:800;font-size:.9rem">Media UE-27</div><div class="v">${miles(hab(UE,i))} <small>W/hab</small></div><div class="v" style="margin-top:6px">${miles(km(UE,i))} <small>kW/km²</small></div><div class="l">${miles(UE.mw[i])} MW</div></div>`;
+}
+function dispersion(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const i=+ys.value;yo.textContent=A[i];
+  const W=svg.parentNode.clientWidth,NARROW=W<640,H=NARROW?Math.round(W*1.05):560,ML=NARROW?40:56,MR=16,MT=18,MB=48;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const xm=Math.ceil(Math.max(...PS.flatMap(p=>A.map((_,k)=>hab(p,k))))/250)*250,ym=Math.ceil(Math.max(...PS.flatMap(p=>A.map((_,k)=>km(p,k))))/50)*50;
+  const sx=v=>ML+v/xm*(W-ML-MR),sy=v=>MT+(1-v/ym)*(H-MT-MB);
+  for(let v=0;v<=xm;v+=NARROW?500:250){el('line',{x1:sx(v),x2:sx(v),y1:MT,y2:H-MB,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:H-MB+16,class:'ax','text-anchor':'middle'},svg).textContent=miles(v)}
+  for(let v=0;v<=ym;v+=50){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-6,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v}
+  el('text',{x:W-MR,y:H-8,class:'axt','text-anchor':'end'},svg).textContent='vatios eólicos por habitante →';
+  el('text',{x:ML,y:MT-6,class:'axt'},svg).textContent='↑ kW de eólica en terra por km²';
+  // medias UE
+  el('line',{x1:sx(hab(UE,i)),x2:sx(hab(UE,i)),y1:MT,y2:H-MB,stroke:'var(--muted)','stroke-dasharray':'2 4'},svg);
+  el('line',{x1:ML,x2:W-MR,y1:sy(km(UE,i)),y2:sy(km(UE,i)),stroke:'var(--muted)','stroke-dasharray':'2 4'},svg);
+  el('text',{x:sx(hab(UE,i))+4,y:H-MB-6,class:'q'},svg).textContent='media UE-27';
+  el('text',{x:W-MR-4,y:MT+12,class:'q','text-anchor':'end'},svg).textContent='moita por habitante e por km²';
+  const rr=p=>Math.max(3.5,Math.sqrt(p.mw[i])/(NARROW?13:10));
+  const s=PS.find(p=>p.id===sel.value);
+  // rastros
+  for(const p of [G,s].filter(Boolean)){
+    const c=p===G?'var(--hl)':'var(--sel)';
+    el('path',{d:'M'+A.slice(0,i+1).map((_,k)=>`${sx(hab(p,k)).toFixed(1)},${sy(km(p,k)).toFixed(1)}`).join('L'),fill:'none',stroke:c,'stroke-width':1.5,opacity:.6},svg);
+    A.slice(0,i).forEach((a,k)=>el('circle',{cx:sx(hab(p,k)),cy:sy(km(p,k)),r:2,fill:c,opacity:.6},svg));
+    if(i>0)el('text',{x:sx(hab(p,0))+4,y:sy(km(p,0))+12,class:'ax',fill:c},svg).textContent=A[0];
+  }
+  const orde=PS.slice().sort((a,b)=>b.mw[i]-a.mw[i]);
+  const labs=[];
+  for(const p of orde){
+    const x=sx(hab(p,i)),y=sy(km(p,i)),on=p===G||p===s;
+    const c=el('circle',{cx:x,cy:y,r:p===G?Math.max(7,rr(p)):rr(p),fill:p===G?'var(--hl)':p===s?'var(--sel)':'var(--dot)',class:'pt',opacity:on?1:.75},svg);
+    c.addEventListener('mousemove',ev=>show(ev,`<b>${p.n} · ${A[i]}</b>${miles(p.mw[i])} MW${p.mar[i]?` (${miles(p.mar[i])} no mar)`:''}<br>${miles(hab(p,i))} W por habitante (posto ${posto(hab,p,i)})<br>${miles(km(p,i))} kW en terra por km² (posto ${posto(km,p,i)})`));
+    c.addEventListener('mouseleave',hide);
+    c.addEventListener('click',()=>{if(p!==G){sel.value=p.id;todo()}});
+    labs.push({p,x,y,r:+c.getAttribute('r'),on});
+  }
+  // etiquetas: as destacadas sempre; as demais se hai sitio
+  const pos=[];
+  for(const l of labs.sort((a,b)=>b.on-a.on||b.p.mw[i]-a.p.mw[i])){
+    const w=l.p.n.length*6.4,esq=l.x+l.r+3+w>W,x=esq?l.x-l.r-3-w:l.x+l.r+3,y=l.y+4,bx=[x,y-10,x+w,y+2];
+    if(!l.on&&(NARROW&&l.p.mw[i]<5000||pos.some(b=>!(bx[2]<b[0]||bx[0]>b[2]||bx[3]<b[1]||bx[1]>b[3]))))continue;
+    pos.push(bx);
+    el('text',{x:esq?x+w:x,y,class:'pl'+(l.p===G?' g':l.on?' s':''),'text-anchor':esq?'end':'start'},svg).textContent=l.p.n;
+  }
+}
+function todo(){dispersion();fichas()}
+ys.addEventListener('input',todo);sel.addEventListener('change',todo);
+todo();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(dispersion,150)});
+const L=A.length-1;
+document.getElementById('tbl').innerHTML='<tr><th>País</th><th>MW '+A[L]+'</th><th>no mar</th><th>W/hab</th><th>kW/km² (terra)</th>'+A.map(a=>`<th>MW ${a}</th>`).join('')+'</tr>'+
+  PS.slice().sort((a,b)=>hab(b,L)-hab(a,L)).concat([UE]).map(p=>`<tr${p===G?' class="g"':''}><td>${p.n}</td><td>${miles(p.mw[L])}</td><td>${miles(p.mar[L])}</td><td>${miles(hab(p,L))}</td><td>${miles(km(p,L))}</td>${p.mw.map(v=>`<td>${miles(v)}</td>`).join('')}</tr>`).join('');
+</script>
+</body>
+</html>

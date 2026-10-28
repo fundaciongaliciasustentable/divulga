@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Un país de árbores — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Canto bosque ten Galicia fronte aos países do mundo, canto dese bosque é eucalipto comparado con Portugal e Brasil, e o ranking dos 313 concellos pola súa superficie de eucalipto.">
+<meta property="og:title" content="Un país de árbores">
+<meta property="og:description" content="Galicia ten máis bosque, en proporción, ca España, Portugal ou Francia. E o eucalipto cobre unha parte maior do seu territorio ca en Portugal.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Tres formas para tres escalas. 1) Enxame horizontal: un punto por país segundo a porcentaxe de
+   superficie terrestre con bosque (FAO), co tamaño segundo a superficie forestal; Galicia en
+   maxenta. 2) Barras 100 % apiladas: o territorio de Galicia, Portugal continental e Brasil partido
+   en eucalipto, resto do bosque e o demais. 3) «Perfil de cidade»: os 313 concellos como columnas
+   finas ordenadas pola porcentaxe de eucalipto, cun mapa coroplético ao lado; o buscador resalta o
+   concello nos dous e dá o seu posto e a mediana da súa provincia. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --hl:#c2185b; --dot:#9aa39a; --euc:#2f7f86; --bos:#9fb89a; --res:#e9e6dd;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.25rem var(--display);margin:26px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b,.sub b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.86rem;text-align:center;max-width:68ch;text-wrap:balance}
+.tools{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+input[type=search],select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink);width:220px;max-width:70vw}
+select{width:auto}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.seg button{font:700 .78rem var(--display);border:0;background:var(--card);color:var(--muted);padding:7px 10px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.posto{font:600 .95rem var(--display);color:var(--ink);text-align:center;margin:0;min-height:1.4em}
+.posto b{color:var(--hl);font-family:var(--num);font-size:1.2rem}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;display:inline-block;border-radius:2px}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.duo{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px;width:100%;align-items:start}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+.pt{stroke:#fff;stroke-width:.8;cursor:pointer}
+.pt:hover{stroke:var(--ink);stroke-width:1.4}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:700 11.5px var(--display);fill:var(--ink)}
+.lb{font:700 12px var(--display);fill:var(--ink)}
+.lb.g{fill:var(--hl);font-weight:800}
+.bv{font:700 13px var(--num);fill:var(--ink)}
+.bv.w{fill:#fff}
+.col{cursor:pointer}
+.mp path{stroke:#fff;stroke-width:.35;cursor:pointer}
+.mp path.on{stroke:var(--hl);stroke-width:2.2}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:290px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Un país de árbores</h1>
+  <p class="dek">__DEK__</p>
+
+  <h2>O bosque, país a país</h2>
+  <p class="sub">Porcentaxe da superficie terrestre cuberta de bosque en __ANOF__ (FAO). Cada punto é un país, do tamaño do seu bosque; Galicia, co dato do Inventario Forestal Continuo (__ANOG__).</p>
+  <div class="tools"><label>Busca un país <input type="search" id="qp" list="lp" placeholder="Portugal, Xapón…" autocomplete="off"></label><datalist id="lp"></datalist></div>
+  <p class="posto" id="pp"></p>
+  <div class="legend" id="legp"></div>
+  <div class="chart"><svg id="bw" role="img" aria-label="Enxame de puntos: porcentaxe de bosque de cada país do mundo e de Galicia. A táboa de datos ten os valores."></svg></div>
+
+  <h2>Canto dese bosque é eucalipto</h2>
+  <p class="sub">O territorio de cada un, partido en tres. Só se comparan países cun inventario oficial da superficie de eucalipto: a FAO non a publica por especie.</p>
+  <div class="legend"><span><i style="background:var(--euc)"></i>eucalipto</span><span><i style="background:var(--bos)"></i>resto do bosque</span><span><i style="background:var(--res);border:1px solid var(--line)"></i>outros usos</span></div>
+  <div class="chart" style="max-width:900px"><svg id="st" role="img" aria-label="Barras apiladas: parte do territorio con eucalipto, outro bosque e outros usos en Galicia, Portugal continental e Brasil."></svg></div>
+
+  <h2>Concello a concello</h2>
+  <p class="sub" id="subc"></p>
+  <div class="tools">
+    <label>O teu concello <input type="search" id="qc" list="lc" placeholder="Escribe o nome…" autocomplete="off"></label><datalist id="lc"></datalist>
+    <span class="seg" role="group" aria-label="Medida"><button type="button" id="m1" aria-pressed="true">% do territorio</button><button type="button" id="m2" aria-pressed="false">% do monte arborado</button></span>
+  </div>
+  <p class="posto" id="pc"></p>
+  <div class="duo">
+    <div class="chart"><svg id="sk" role="img" aria-label="Columnas ordenadas: porcentaxe de eucalipto dos 313 concellos galegos, do maior ao menor."></svg></div>
+    <div class="chart"><svg id="mp" class="mp" role="img" aria-label="Mapa coroplético dos concellos galegos segundo a porcentaxe de eucalipto."></svg></div>
+  </div>
+
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Países: FAO, <a href="https://fra-data.fao.org" target="_blank" rel="noopener">Global Forest Resources Assessment 2025</a>, táboa 1a (bosque e superficie terrestre, __ANOF__; só territorios de máis de 1.000 km²). Galicia e concellos: <a href="https://invega.xunta.gal/invega/" target="_blank" rel="noopener">Inventario Forestal Continuo de Galicia</a> (INVEGA, capa de recintos SIGPAC con coberturas, __ANOG__), agregado na peza <a href="../monte-concellos/">O monte concello a concello</a>; o bosque é o monte arborado de eucalipto, coníferas e frondosas, incluídas as cortas, a rexeneración e as áreas queimadas de cada grupo, que é tamén o criterio da FAO (o bosque temporalmente sen árbores segue sendo bosque); a porcentaxe calcúlase sobre a superficie total do inventario, que inclúe as augas interiores. Esa capa de resolución media dá sumas algo inferiores ás cifras oficiais do inventario (en 2024, 438.156 ha de eucalipto), pero é coherente entre concellos. Portugal continental: ICNF, <a href="https://www.icnf.pt/api/file/doc/c8cc40b3b7ec8541" target="_blank" rel="noopener">6.º Inventário Florestal Nacional</a> (__ANOPT__), táboas 101.PT e 106.PTC. Brasil: IBGE, <a href="https://sidra.ibge.gov.br/tabela/5930" target="_blank" rel="noopener">Produção da Extração Vegetal e da Silvicultura</a> (táboa 5930, eucalipto plantado, __ANOBR__), sobre o bosque e a superficie da FAO. Os anos non coinciden e cada inventario ten o seu método, así que as porcentaxes son ordes de magnitude comparables, non cifras exactas. Australia, onde o eucalipto é a árbore nativa (en torno a tres cuartas partes do seu bosque), non se inclúe por non poder descargar a fonte oficial (ABARES). Nomes dos países: Unicode CLDR. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const pc=(v,d=1)=>v.toLocaleString('gl',{minimumFractionDigits:d,maximumFractionDigits:d});
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+
+// 1 · Enxame de países
+const G=D.galicia,garb=G.e+G.c+G.f;
+const PA=D.paises.map(p=>({...p,v:p.f/p.t*100})).concat([{id:'GZ',n:'Galicia',r:'Europa',f:garb/1000,t:G.sup/1000,v:garb/G.sup*100}]);
+const REX=[...new Set(PA.map(p=>p.r))];
+const RC={'Europa':'#8e9c8a','Asia':'#a9a38f','África':'#b7a796','América do Norte e Central':'#98a6b2','América do Sur':'#8fa9a6','Oceanía':'#b3a3b5'};
+document.getElementById('legp').innerHTML='<span><i style="background:var(--hl);border-radius:50%"></i>Galicia</span>'+REX.filter(r=>RC[r]).map(r=>`<span><i style="background:${RC[r]};border-radius:50%"></i>${r}</span>`).join('');
+document.getElementById('lp').innerHTML=PA.filter(p=>p.id!=='GZ').map(p=>`<option value="${p.n}">`).join('');
+const rankP=PA.slice().sort((a,b)=>b.v-a.v);
+const qp=document.getElementById('qp');
+let selP=null;
+function postoP(){
+  const g=PA.find(p=>p.id==='GZ'),gi=rankP.indexOf(g)+1;
+  let t=`Galicia: <b>${pc(g.v)} %</b> de bosque, posto <b>${gi}</b> de ${PA.length}`;
+  if(selP){const k=rankP.indexOf(selP)+1;t+=` · ${selP.n}: <b>${pc(selP.v)} %</b>, posto ${k}`}
+  document.getElementById('pp').innerHTML=t;
+}
+function enxame(){
+  const svg=document.getElementById('bw');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640,ML=10,MR=10;
+  const sx=v=>ML+v/100*(W-ML-MR);
+  const fmax=Math.max(...PA.map(p=>p.f)),rr=p=>Math.max(2.2,Math.sqrt(p.f/fmax)*(NARROW?16:26));
+  const col=[];
+  for(const p of PA.slice().sort((a,b)=>b.f-a.f)){
+    const x=sx(p.v),r=p.id==='GZ'?Math.max(rr(p),7):rr(p);let y=0;
+    for(let k=0;k<400;k++){const c=(k%2?1:-1)*Math.ceil(k/2)*1.5;if(col.every(q=>Math.hypot(q.x-x,q.y-c)>=q.r+r+.6)){y=c;break}}
+    col.push({p,x,y,r});
+  }
+  const ymin=Math.min(...col.map(c=>c.y-c.r)),ymax=Math.max(...col.map(c=>c.y+c.r));
+  const H=ymax-ymin+70,y0=34-ymin;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  for(let v=0;v<=100;v+=NARROW?25:10){el('line',{x1:sx(v),x2:sx(v),y1:22,y2:H-24,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:H-8,class:'ax','text-anchor':'middle'},svg).textContent=v+' %'}
+  for(const c of col){
+    const p=c.p,on=p===selP,g=p.id==='GZ';
+    const e=el('circle',{cx:c.x,cy:y0+c.y,r:c.r,fill:g?'var(--hl)':on?'var(--ink)':RC[p.r]||'var(--dot)',class:'pt',opacity:selP&&!on&&!g?.5:.95},svg);
+    e.addEventListener('mousemove',ev=>show(ev,`<b>${p.n}</b>${pc(p.v)} % de bosque · posto ${rankP.indexOf(p)+1}<br>${miles(p.f)} mil ha de bosque`));
+    e.addEventListener('mouseleave',hide);
+    e.addEventListener('click',()=>{if(!g){selP=p;qp.value=p.n;enxame();postoP()}});
+  }
+  for(const c of col.filter(c=>c.p.id==='GZ'||c.p===selP)){
+    const g=c.p.id==='GZ',yy=g?22-6:H-30;
+    el('line',{x1:c.x,x2:c.x,y1:g?yy+4:y0+c.y+c.r,y2:g?y0+c.y-c.r:yy-12,stroke:g?'var(--hl)':'var(--ink)'},svg);
+    el('text',{x:c.x,y:g?yy:yy,class:'lb'+(g?' g':''),'text-anchor':c.x>W-80?'end':c.x<80?'start':'middle'},svg).textContent=`${c.p.n} ${pc(c.p.v,0)} %`;
+  }
+}
+qp.addEventListener('input',()=>{const q=norm(qp.value);selP=q?PA.find(p=>p.id!=='GZ'&&norm(p.n)===q)||null:null;if(selP||!q){enxame();postoP()}});
+
+// 2 · Barras apiladas do eucalipto
+const ST=[{n:'Galicia',a:G.ano,e:G.e,b:garb,s:G.sup,g:1},{n:'Portugal continental',a:D.pt.ano,e:D.pt.e,b:D.pt.bosque,s:D.pt.sup},{n:'Brasil',a:D.br.ano,e:D.br.e,b:D.br.bosque,s:D.br.sup}];
+function apiladas(){
+  const svg=document.getElementById('st');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640,ML=NARROW?0:170,MR=8,BH=34,GAP=NARROW?46:22,MT=6;
+  const H=MT+ST.length*(BH+GAP)+8;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const sx=v=>ML+v*(W-ML-MR);
+  ST.forEach((s,i)=>{
+    const y=MT+i*(BH+GAP)+(NARROW?18:0);
+    el('text',{x:NARROW?0:ML-10,y:NARROW?y-6:y+BH/2+2,class:'lb'+(s.g?' g':''),'text-anchor':NARROW?'start':'end'},svg).textContent=s.n;
+    el('text',{x:NARROW?W-MR:ML-10,y:NARROW?y-6:y+BH/2+15,class:'ax','text-anchor':'end'},svg).textContent=`eucalipto ${s.a}`;
+    const pe=s.e/s.s,pb=(s.b-s.e)/s.s;
+    const seg=[[0,pe,'var(--euc)',`Eucalipto: ${miles(s.e)} ha, ${pc(pe*100)} % do territorio e ${pc(s.e/s.b*100)} % do bosque`],[pe,pb,'var(--bos)',`Resto do bosque: ${miles(s.b-s.e)} ha`],[pe+pb,1-pe-pb,'var(--res)','Outros usos']];
+    for(const [x0,w,c,t] of seg){const r=el('rect',{x:sx(x0),y,width:Math.max(0,sx(x0+w)-sx(x0)),height:BH,fill:c},svg);r.addEventListener('mousemove',ev=>show(ev,`<b>${s.n}</b>${t}`));r.addEventListener('mouseleave',hide)}
+    const lt=`${pc(pe*100)} %`;
+    if(sx(pe)-sx(0)>44)el('text',{x:sx(0)+6,y:y+BH/2+5,class:'bv w'},svg).textContent=lt;
+    else el('text',{x:sx(pe)+5,y:y+BH/2+5,class:'bv'},svg).textContent=lt;
+    el('text',{x:sx(pe+pb)+6,y:y+BH/2+5,class:'bv',opacity:.75},svg).textContent=`bosque ${pc((pe+pb)*100,0)} %`;
+  });
+}
+
+// 3 · Concellos
+const C=D.concellos.map(c=>({...c,a:c.e+c.c+c.f}));
+let modo='t',selC=null;
+const val=c=>modo==='t'?c.e/c.s*100:(c.a?c.e/c.a*100:0);
+const qc=document.getElementById('qc');
+document.getElementById('lc').innerHTML=C.slice().sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(c=>`<option value="${c.n}">`).join('');
+const med=a=>{const s=a.slice().sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
+const cor=v=>{const t=Math.min(1,v/(modo==='t'?50:85));const a=[236,234,226],b=[22,92,99];return `rgb(${a.map((x,i)=>Math.round(x+(b[i]-x)*Math.sqrt(t))).join(',')})`};
+function postoC(){
+  const r=C.slice().sort((a,b)=>val(b)-val(a));
+  const gv=modo==='t'?G.e/G.sup*100:G.e/garb*100;
+  document.getElementById('subc').innerHTML=`Porcentaxe ${modo==='t'?'do territorio de cada concello cuberta de eucalipto':'do monte arborado de cada concello que é eucalipto'} en ${G.ano}. A media de Galicia é o <b>${pc(gv)} %</b>.`;
+  if(!selC){const t=r[0];document.getElementById('pc').innerHTML=`O primeiro: <b>${t.n}</b> (${t.pr}), ${pc(val(t))} %. Escolle o teu concello.`;return}
+  const k=r.indexOf(selC)+1,mp=med(C.filter(c=>c.pr===selC.pr).map(val));
+  document.getElementById('pc').innerHTML=`${selC.n}: <b>${pc(val(selC))} %</b> · posto <b>${k}</b> de ${C.length} · mediana da provincia de ${selC.pr}: ${pc(mp)} % · ${miles(selC.e)} ha de eucalipto`;
+}
+function perfil(){
+  const svg=document.getElementById('sk');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640,H=NARROW?300:420,ML=34,MR=6,MT=20,MB=24;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const r=C.slice().sort((a,b)=>val(b)-val(a)),vmax=Math.ceil(val(r[0])/10)*10;
+  const bw=(W-ML-MR)/r.length,sy=v=>MT+(1-v/vmax)*(H-MT-MB);
+  for(let v=0;v<=vmax;v+=10){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-5,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v+(v===vmax?' %':'')}
+  const gv=modo==='t'?G.e/G.sup*100:G.e/garb*100;
+  r.forEach((c,i)=>{
+    const v=val(c),on=c===selC;
+    const b=el('rect',{x:ML+i*bw,y:sy(v),width:Math.max(.6,bw-(bw>2?.35:0)),height:Math.max(0,sy(0)-sy(v)),fill:on?'var(--hl)':cor(v),class:'col'},svg);
+    b.addEventListener('mousemove',ev=>show(ev,`<b>${c.n}</b>${c.pr} · posto ${i+1}<br>${pc(val(c))} % · ${miles(c.e)} ha de eucalipto`));
+    b.addEventListener('mouseleave',hide);
+    b.addEventListener('click',()=>escolle(c));
+  });
+  el('line',{x1:ML,x2:W-MR,y1:sy(gv),y2:sy(gv),stroke:'var(--ink)','stroke-dasharray':'3 3'},svg);
+  el('text',{x:W-MR,y:sy(gv)-5,class:'axt','text-anchor':'end'},svg).textContent=`Galicia ${pc(gv)} %`;
+  el('text',{x:ML,y:H-6,class:'ax'},svg).textContent='← máis eucalipto';
+  el('text',{x:W-MR,y:H-6,class:'ax','text-anchor':'end'},svg).textContent=`${C.length} concellos`;
+  if(selC){const i=r.indexOf(selC),x=ML+i*bw+bw/2,v=val(selC);el('circle',{cx:x,cy:sy(v)-6,r:3.5,fill:'var(--hl)'},svg);el('text',{x:Math.min(W-MR,Math.max(ML,x)),y:Math.max(12,sy(v)-14),class:'lb g','text-anchor':x>W*.7?'end':x<W*.3?'start':'middle'},svg).textContent=selC.n}
+}
+const XS=C.flatMap(c=>c.p.flat().map(p=>p[0])),YS=C.flatMap(c=>c.p.flat().map(p=>p[1]));
+const bx=[Math.min(...XS),Math.min(...YS),Math.max(...XS),Math.max(...YS)];
+function mapa(){
+  const svg=document.getElementById('mp');svg.innerHTML='';
+  svg.setAttribute('viewBox',`${bx[0]-4} ${bx[1]-4} ${bx[2]-bx[0]+8} ${bx[3]-bx[1]+8}`);
+  for(const c of C){
+    const pa=el('path',{d:c.p.map(a=>'M'+a.join('L')+'Z').join(''),fill:cor(val(c)),class:c===selC?'on':''},svg);
+    pa.addEventListener('mousemove',ev=>show(ev,`<b>${c.n}</b>${c.pr}<br>${pc(val(c))} % · ${miles(c.e)} ha de eucalipto`));
+    pa.addEventListener('mouseleave',hide);
+    pa.addEventListener('click',()=>escolle(c));
+  }
+  const s=svg.querySelector('path.on');if(s)svg.appendChild(s);
+}
+function concellos(){perfil();mapa();postoC()}
+function escolle(c){selC=c;qc.value=c?c.n:'';concellos()}
+qc.addEventListener('input',()=>{const q=norm(qc.value);const c=q?C.find(x=>norm(x.n)===q):null;if(c||!q){selC=c||null;concellos()}});
+for(const [id,m] of [['m1','t'],['m2','a']])document.getElementById(id).addEventListener('click',()=>{modo=m;document.getElementById('m1').setAttribute('aria-pressed',m==='t');document.getElementById('m2').setAttribute('aria-pressed',m==='a');concellos()});
+
+enxame();postoP();apiladas();concellos();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{enxame();apiladas();perfil()},150)});
+document.getElementById('tbl').innerHTML='<tr><th>Concello</th><th>Provincia</th><th>Eucalipto (ha)</th><th>Monte arborado (ha)</th><th>Superficie (ha)</th><th>% territorio</th><th>% arborado</th></tr>'+
+  C.slice().sort((a,b)=>b.e/b.s-a.e/a.s).map(c=>`<tr><td>${c.n}</td><td>${c.pr}</td><td>${miles(c.e)}</td><td>${miles(c.a)}</td><td>${miles(c.s)}</td><td>${pc(c.e/c.s*100)}</td><td>${c.a?pc(c.e/c.a*100):'–'}</td></tr>`).join('')+
+  '<tr><th>País</th><th>Rexión</th><th>Bosque (mil ha)</th><th>Superficie (mil ha)</th><th>% bosque</th><th></th><th></th></tr>'+
+  rankP.map(p=>`<tr><td>${p.n}</td><td>${p.r}</td><td>${miles(p.f)}</td><td>${miles(p.t)}</td><td>${pc(p.v)}</td><td></td><td></td></tr>`).join('');
+</script>
+</body>
+</html>

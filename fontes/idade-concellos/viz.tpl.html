@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Do concello máis novo ao máis vello — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="A idade media e o índice de envellecemento dos 313 concellos galegos en 2025, do máis novo ao máis vello, coa pirámide de idades de cada un.">
+<meta property="og:title" content="Do concello máis novo ao máis vello">
+<meta property="og:description" content="A idade media de cada concello galego e a forma da súa pirámide de idades.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Enxame de puntos (beeswarm) ordenado pola idade media: un punto por concello, unha fila por
+   provincia, de esquerda (máis novo) a dereita (máis vello). O tamaño é a poboación e a cor o
+   índice de envellecemento (maiores de 65 por cada 100 menores de 20). A raia vertical é a idade
+   media de Galicia. Debaixo, a pirámide de idades do concello escollido fronte á de Galicia, e as
+   pirámides en miniatura dos tres concellos máis novos e dos tres máis vellos. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6; --hl:#c2185b;
+  --s1:#e3ddd0; --s2:#c9b99a; --s3:#a88f68; --s4:#7a6446; --s5:#4a3b29;
+  --hom:#5b7d8c; --mul:#b48a5a;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:10px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:68ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.85rem;color:var(--muted)}
+input{font:600 .9rem var(--display);border:1px solid var(--line);border-radius:3px;padding:8px 10px;background:var(--card);color:var(--ink);width:240px;max-width:70vw}
+input:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+button{font:600 .8rem var(--display);border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:3px;padding:7px 10px;cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:.78rem;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:700 13px var(--display);fill:var(--ink)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.lab{font:700 12px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}
+.lab.hl{fill:var(--hl)}
+.pt{stroke:#fff;stroke-width:.8;cursor:pointer}
+.pt:hover{stroke:var(--ink);stroke-width:1.5}
+.pt.on{stroke:var(--hl);stroke-width:3}
+.ficha{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px 28px;width:100%;max-width:900px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px}
+.ficha h3{margin:0 0 4px;font:800 1.3rem var(--display)}
+.ficha h3 small{display:block;font:600 .78rem var(--display);color:var(--muted);margin-top:2px}
+.ficha .big{font:700 2.6rem/1 var(--num);color:var(--hl)}
+.ficha .big small{font:600 1rem var(--display);color:var(--muted)}
+.ficha ul{list-style:none;padding:0;margin:10px 0 0;font-size:.86rem;color:var(--muted);line-height:1.5}
+.ficha ul b{color:var(--ink);font-family:var(--num);font-size:1.05rem}
+.pir svg{display:block;width:100%;height:auto}
+.minis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;width:100%;max-width:1000px}
+.mini{text-align:center;font-size:.78rem;color:var(--muted);cursor:pointer;border:1px solid transparent;border-radius:4px;padding:4px 2px}
+.mini:hover{border-color:var(--line);background:var(--card)}
+.mini b{display:block;color:var(--ink);font-size:.82rem}
+.mini svg{display:block;width:100%;height:auto}
+.mini .sep{height:0}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper);cursor:pointer}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:720px){.ficha{grid-template-columns:1fr}.minis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Do concello máis novo ao máis vello</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>O teu concello <input id="q" list="lc" placeholder="Escribe o nome…" autocomplete="off"></label>
+    <datalist id="lc"></datalist>
+    <button id="lim" type="button">Ver Galicia</button>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Enxame de puntos: a idade media de cada concello galego en 2025, por provincia. A táboa de datos ten os valores."></svg></div>
+  <div class="ficha" id="ficha" aria-live="polite">
+    <div id="fx"></div>
+    <div class="pir"><svg id="pir" role="img" aria-label="Pirámide de idades do concello escollido fronte á de Galicia"></svg><p class="sub" id="pcap"></p></div>
+  </div>
+  <h2>Os tres máis novos e os tres máis vellos</h2>
+  <p class="sub">A forma da pirámide en cada extremo: os concellos do arredor das cidades teñen cintura de nenos e pais; os da montaña, unha copa de maiores.</p>
+  <div class="minis" id="minis"></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Instituto Galego de Estatística (IGE), <a href="https://www.ige.gal/igebdt/selector.jsp?COD=723&paxina=001&c=0201001006" target="_blank" rel="noopener">Indicadores demográficos: indicadores de poboación</a> (táboa 723), a 1 de xaneiro de __ANO__ e __ANO0__; e IGE a partir do INE, <a href="https://www.ige.gal/igebdt/selector.jsp?COD=142&paxina=001" target="_blank" rel="noopener">poboación segundo sexo e grupos quinquenais de idade</a> (táboa 142, censo anual de poboación), a 1 de xaneiro de __ANO__. A idade media é a media das idades de toda a poboación residente. O índice de envellecemento é a poboación de 65 e máis anos por cada 100 menores de 20 (definición do IGE; outras fontes usan os menores de 16). A pirámide amosa cada grupo de cinco anos como porcentaxe da poboación do concello; nos concellos pequenos uns poucos veciños moven moito a forma. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const C=D.conc,N=C.length,G=D.gal;
+const PR=['A Coruña','Lugo','Ourense','Pontevedra'];
+const f1=v=>v.toFixed(1).replace('.',','),f0=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const pob=o=>o.h.reduce((a,b)=>a+b,0)+o.m.reduce((a,b)=>a+b,0);
+C.forEach(o=>o.pob=pob(o));
+// Posto do máis novo (1) ao máis vello (313)
+C.slice().sort((a,b)=>a.im-b.im).forEach((o,i)=>o.rk=i+1);
+const med=a=>{const s=a.slice().sort((x,y)=>x-y),k=s.length;return k%2?s[(k-1)/2]:(s[k/2-1]+s[k/2])/2};
+const MEDP={};PR.forEach(p=>MEDP[p]=med(C.filter(o=>o.pr===p).map(o=>o.im)));
+// Cor: índice de envellecemento
+const CUT=[100,200,300,500],COL=['var(--s1)','var(--s2)','var(--s3)','var(--s4)','var(--s5)'];
+const col=v=>COL[CUT.filter(c=>v>=c).length];
+document.getElementById('legend').innerHTML='<span>Maiores de 65 por cada 100 menores de 20:</span>'+['menos de 100','100–200','200–300','300–500','500 ou máis'].map((t,i)=>`<span><i style="background:${COL[i]}"></i>${t}</span>`).join('')+'<span>· o tamaño, a poboación</span>';
+let sel=null;
+const q=document.getElementById('q');
+document.getElementById('lc').innerHTML=C.map(o=>`<option value="${o.n}">`).join('');
+function escolle(o){sel=o;q.value=o?o.n:'';marca();ficha()}
+q.addEventListener('input',()=>{const o=C.find(o=>o.n.toLowerCase()===q.value.trim().toLowerCase());if(o)escolle(o)});
+q.addEventListener('change',()=>{const v=q.value.trim().toLowerCase();if(!v){escolle(null);return}const o=C.find(o=>o.n.toLowerCase()===v)||C.find(o=>o.n.toLowerCase().includes(v));if(o)escolle(o)});
+document.getElementById('lim').addEventListener('click',()=>escolle(null));
+
+const PMAX=Math.max(...C.map(o=>o.pob));
+function enxame(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?6:96,MR=10,MT=28;
+  const x0=Math.floor(Math.min(...C.map(o=>o.im))),x1=Math.ceil(Math.max(...C.map(o=>o.im)));
+  const sx=v=>ML+(v-x0)/(x1-x0)*(W-ML-MR);
+  const rr=o=>(NARROW?1.8:2.4)+(NARROW?8:12)*Math.sqrt(o.pob/PMAX);
+  // Colocar os puntos de cada provincia e medir a altura que precisa a fila
+  const filas=PR.map(p=>{
+    const pts=[];
+    for(const o of C.filter(o=>o.pr===p).sort((a,b)=>b.pob-a.pob)){
+      const x=sx(o.im),r=rr(o);let y=0;
+      for(let k=0;k<400;k++){const c=(k%2?1:-1)*Math.ceil(k/2)*1.2;if(pts.every(q=>Math.abs(q.x-x)>q.r+r+.6||Math.hypot(q.x-x,q.y-c)>=q.r+r+.6)){y=c;break}}
+      pts.push({x,y,r,o});
+    }
+    const h=Math.max(...pts.map(q=>Math.abs(q.y)+q.r))*2+(NARROW?26:18);
+    return {p,pts,h};
+  });
+  const H=MT+filas.reduce((a,f)=>a+f.h,0)+34;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  for(let t=x0;t<=x1;t++){if(t%(NARROW?4:2))continue;el('line',{x1:sx(t),x2:sx(t),y1:MT-6,y2:H-30,stroke:'var(--grid)'},svg);el('text',{x:sx(t),y:MT-12,class:'ax','text-anchor':'middle'},svg).textContent=t}
+  el('text',{x:W-MR,y:H-10,class:'axt','text-anchor':'end'},svg).textContent='idade media, anos →';
+  el('text',{x:ML,y:H-10,class:'axt'},svg).textContent='← máis novo';
+  el('line',{x1:sx(G.im),x2:sx(G.im),y1:MT-4,y2:H-30,stroke:'var(--ink)','stroke-width':1.5,'stroke-dasharray':'3 3'},svg);
+  el('text',{x:sx(G.im)+4,y:MT+6,class:'axt'},svg).textContent=`Galicia ${f1(G.im)}`;
+  let y0=MT;
+  const g=el('g',{},svg);
+  for(const f of filas){
+    const yc=y0+f.h/2+(NARROW?8:0);
+    if(NARROW)el('text',{x:ML,y:y0+14,class:'rl'},svg).textContent=f.p;
+    else{el('text',{x:ML-12,y:yc-2,class:'rl','text-anchor':'end'},svg).textContent=f.p;el('text',{x:ML-12,y:yc+13,class:'ax','text-anchor':'end'},svg).textContent='mediana '+f1(MEDP[f.p])}
+    el('line',{x1:ML,x2:W-MR,y1:y0+f.h,y2:y0+f.h,stroke:'var(--line)'},svg);
+    for(const q of f.pts){
+      const c=el('circle',{cx:q.x.toFixed(1),cy:(yc+q.y).toFixed(1),r:q.r.toFixed(1),fill:col(q.o.ie),class:'pt'},g);c.dataset.id=q.o.id;
+      q.o._xy=[q.x,yc+q.y,q.r];
+      c.addEventListener('mousemove',ev=>show(ev,`<b>${q.o.n}</b>${q.o.pr} · ${f0(q.o.pob)} hab.<br>Idade media ${f1(q.o.im)} anos (posto ${q.o.rk} de ${N})<br>${f0(q.o.ie)} maiores de 65 por cada 100 menores de 20`));
+      c.addEventListener('mouseleave',hide);
+      c.addEventListener('click',()=>escolle(q.o));
+    }
+    y0+=f.h;
+  }
+  // Etiquetas dos extremos
+  const ord=C.slice().sort((a,b)=>a.im-b.im);
+  svg._labs=el('g',{},svg);
+  for(const o of [ord[0],ord[N-1]])etiqueta(svg._labs,o,o===ord[0]?'start':'end',false);
+  marca();
+}
+function etiqueta(g,o,anchor,hl){
+  const [x,y,r]=o._xy;
+  el('text',{x:anchor==='start'?x+r+3:x-r-3,y:y+4,class:'lab'+(hl?' hl':''),'text-anchor':anchor},g).textContent=o.n+(hl?` ${f1(o.im)}`:'');
+}
+function marca(){
+  const svg=document.getElementById('ch');
+  for(const c of svg.querySelectorAll('.pt'))c.classList.toggle('on',!!sel&&c.dataset.id===sel.id);
+  svg.querySelector('.sel')?.remove();
+  if(sel&&sel._xy){const g=el('g',{class:'sel'},svg);const W=+svg.getAttribute('viewBox').split(' ')[2];etiqueta(g,sel,sel._xy[0]>W*.7?'end':'start',true);
+    svg.querySelector(`.pt[data-id="${sel.id}"]`)?.parentNode.appendChild(svg.querySelector(`.pt[data-id="${sel.id}"]`))}
+}
+// Pirámide: porcentaxe de cada grupo; barras do concello e contorno de Galicia
+function piramide(svg,o,opt={}){
+  svg.innerHTML='';
+  const W=opt.W||svg.parentNode.clientWidth||300,K=D.grupos.length,BH=opt.bh||9,MT=opt.mini?2:18,MB=opt.mini?2:22,LAB=opt.mini?0:44;
+  const H=MT+K*BH+MB;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const tot=o.pob,tg=G.pob;
+  const ph=o.h.map(v=>v/tot*100),pm=o.m.map(v=>v/tot*100);
+  const gh=G.h.map(v=>v/tg*100),gm=G.m.map(v=>v/tg*100);
+  const mx=opt.max||Math.max(6,Math.ceil(Math.max(...ph,...pm,...gh,...gm)));
+  const cx=W/2,half=(W-LAB)/2-4,sx=v=>v/mx*half;
+  const yb=i=>MT+(K-1-i)*BH;
+  for(let i=0;i<K;i++){
+    el('rect',{x:cx-LAB/2-sx(ph[i]),y:yb(i)+.5,width:sx(ph[i]),height:BH-1,fill:'var(--hom)'},svg);
+    el('rect',{x:cx+LAB/2,y:yb(i)+.5,width:sx(pm[i]),height:BH-1,fill:'var(--mul)'},svg);
+    if(!opt.mini&&i%2===0)el('text',{x:cx,y:yb(i)+BH-1,class:'ax','text-anchor':'middle','font-size':10},svg).textContent=D.grupos[i].replace(' e máis','+');
+  }
+  if(o!==G){
+    const st=(arr,sg)=>arr.map((v,i)=>`${i?'L':'M'}${(cx+sg*(LAB/2+sx(v))).toFixed(1)},${(yb(i)+BH).toFixed(1)}L${(cx+sg*(LAB/2+sx(v))).toFixed(1)},${yb(i).toFixed(1)}`).join('');
+    el('path',{d:st(gh,-1),fill:'none',stroke:'var(--ink)','stroke-width':opt.mini?1:1.4},svg);
+    el('path',{d:st(gm,1),fill:'none',stroke:'var(--ink)','stroke-width':opt.mini?1:1.4},svg);
+  }
+  if(!opt.mini){
+    el('text',{x:cx-LAB/2-4,y:12,class:'axt','text-anchor':'end'},svg).textContent='homes';
+    el('text',{x:cx+LAB/2+4,y:12,class:'axt'},svg).textContent='mulleres';
+    for(const v of [0,mx/2,mx]){for(const sg of [-1,1]){if(!v&&sg>0)continue;el('text',{x:cx+sg*(LAB/2+sx(v)),y:H-6,class:'ax','text-anchor':v===mx?(sg<0?'start':'end'):'middle'},svg).textContent=String(v).replace('.',',')+' %'}}
+  }
+  return mx;
+}
+G.pob=pob(G);
+function ficha(){
+  const o=sel,fx=document.getElementById('fx');
+  if(!o){
+    fx.innerHTML=`<h3>Galicia<small>${f0(G.pob)} habitantes a 1/1/${D.ano}</small></h3><div class="big">${f1(G.im)} <small>anos de idade media</small></div>
+    <ul><li>En ${D.ano0} era de <b>${f1(G.im0)}</b> anos</li><li><b>${f0(G.ie)}</b> maiores de 65 por cada 100 menores de 20</li>
+    <li><b>${f1(G.p65)} %</b> ten 65 ou máis anos; <b>${f1(G.p20)} %</b>, menos de 20</li><li>Busca o teu concello ou toca un punto para comparalo.</li></ul>`;
+  }else{
+    fx.innerHTML=`<h3>${o.n}<small>${o.pr} · ${f0(o.pob)} habitantes a 1/1/${D.ano}</small></h3><div class="big">${f1(o.im)} <small>anos de idade media</small></div>
+    <ul><li>Posto <b>${o.rk}</b> de ${N}, do máis novo ao máis vello</li><li>Mediana de ${o.pr}: <b>${f1(MEDP[o.pr])}</b> · Galicia: <b>${f1(G.im)}</b></li>
+    <li><b>${f0(o.ie)}</b> maiores de 65 por cada 100 menores de 20 (Galicia, ${f0(G.ie)})</li>
+    <li><b>${f1(o.p65)} %</b> ten 65 ou máis anos; <b>${f1(o.p20)} %</b>, menos de 20</li>${o.im0?`<li>En ${D.ano0}: <b>${f1(o.im0)}</b> anos (${o.im-o.im0>=0?'+':''}${f1(o.im-o.im0)})</li>`:''}</ul>`;
+  }
+  const s=document.getElementById('pir');
+  piramide(s,o||G);
+  document.getElementById('pcap').textContent=o?`Barras: ${o.n} · liña: Galicia. Cada grupo, en % da poboación.`:'Cada grupo de idade, en % da poboación de Galicia.';
+  s.setAttribute('aria-label',`Pirámide de idades de ${o?o.n:'Galicia'}`+(o?' (barras) fronte á de Galicia (liña)':''));
+}
+function minis(){
+  const ord=C.slice().sort((a,b)=>a.im-b.im),xs=[...ord.slice(0,3),...ord.slice(-3)];
+  const box=document.getElementById('minis');box.innerHTML='';
+  // mesma escala para as seis
+  const mx=Math.ceil(Math.max(...xs.flatMap(o=>[...o.h,...o.m].map(v=>v/o.pob*100))));
+  xs.forEach((o,i)=>{
+    const d=document.createElement('div');d.className='mini';d.tabIndex=0;
+    d.innerHTML=`<b>${o.n}</b>${f1(o.im)} anos · ${i<3?'posto '+o.rk:'posto '+o.rk}`;
+    const s=document.createElementNS(NS,'svg');d.prepend(s);box.appendChild(d);
+    piramide(s,o,{mini:true,W:150,bh:5,max:mx});
+    d.addEventListener('click',()=>{escolle(o);document.getElementById('ficha').scrollIntoView({behavior:'smooth',block:'center'})});
+    d.addEventListener('keydown',e=>{if(e.key==='Enter')escolle(o)});
+  });
+}
+// Táboa ordenable
+let ordT='im',dirT=1;
+function taboa(){
+  const cols=[['n','Concello'],['pr','Provincia'],['im','Idade media'],['im0','Idade media '+D.ano0],['ie','Índice de envellecemento'],['p20','% menores de 20'],['p65','% 65 e máis'],['pob','Poboación']];
+  const r=C.slice().sort((a,b)=>(typeof a[ordT]==='string'?a[ordT].localeCompare(b[ordT],'gl'):(a[ordT]??0)-(b[ordT]??0))*dirT);
+  const t=document.getElementById('tbl');
+  t.innerHTML='<tr>'+cols.map(([k,n])=>`<th data-k="${k}">${n}${k===ordT?(dirT>0?' ↑':' ↓'):''}</th>`).join('')+'</tr>'+
+    r.map(o=>`<tr><td>${o.n}</td><td>${o.pr}</td><td>${f1(o.im)}</td><td>${o.im0?f1(o.im0):''}</td><td>${f1(o.ie)}</td><td>${f1(o.p20)}</td><td>${f1(o.p65)}</td><td>${f0(o.pob)}</td></tr>`).join('');
+  t.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;dirT=k===ordT?-dirT:1;ordT=k;taboa()}));
+}
+enxame();ficha();minis();taboa();
+let lw=innerWidth;
+addEventListener('resize',()=>{if(innerWidth===lw)return;lw=innerWidth;clearTimeout(window._r);window._r=setTimeout(()=>{enxame();ficha()},150)});
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moitos coches, poucos enchufes — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Turismos por cada mil habitantes e peso dos coches con etiqueta CERO (eléctricos e híbridos enchufables) no parque e nas matriculacións de cada comunidade autónoma, coas cifras da DGT.">
+<meta property="og:title" content="Moitos coches, poucos enchufes">
+<meta property="og:description" content="Galicia está entre as comunidades con máis coches por habitante e cun parque dos menos electrificados. Datos da DGT.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Gráfico de pendentes (slope): á esquerda, a porcentaxe de turismos con etiqueta CERO no parque
+   a 31/12/2025; á dereita, a mesma porcentaxe entre os turismos matriculados en 2025, as dúas na
+   mesma escala, unha liña por comunidade. A pendente mostra canto máis rápido se electrifica o
+   que entra ca o que xa circula. Galicia en maxenta. Debaixo, barras cos turismos por cada 1.000
+   habitantes e unha barra apilada por comunidade co parque segundo a etiqueta ambiental da DGT. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --hl:#c2185b; --gr:#a9aeb5; --sel:#1f2328;
+  --cero:#1b7f6b; --eco:#7fb7a6; --c:#c9cdd2; --b:#9ea3aa; --sin:#5f636b;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:16px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:72ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink)}
+select:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;display:inline-block;border-radius:2px}
+.podio{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;font-size:.82rem;color:var(--muted)}
+.podio b{font:700 1.5rem var(--num);color:var(--hl);display:block;line-height:1}
+.podio div{text-align:center}
+.chart{width:100%}
+.slope{max-width:760px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:700 12px var(--display);fill:var(--ink)}
+.lb{font:700 11.5px var(--display);fill:var(--muted)}
+.rv{font:600 13px var(--num);fill:var(--muted)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:700 12px var(--display);fill:var(--ink)}
+.axs{font:600 11px var(--display);fill:var(--muted)}
+.ln{cursor:pointer}
+.fila{cursor:pointer}
+.fila:hover .bg{fill:#f1efe9}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:300px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.rl{font-size:13px}.rv{font-size:14px}.ax{font-size:13px}.lb{font-size:11px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Moitos coches, poucos enchufes</h1>
+  <p class="dek">__DEK__</p>
+  <div class="podio" id="podio"></div>
+  <div class="tools">
+    <label>Compara cunha comunidade <select id="sel"><option value="">—</option></select></label>
+  </div>
+  <h2>O que circula e o que entra</h2>
+  <p class="sub">Porcentaxe de turismos con etiqueta CERO (eléctricos, híbridos enchufables con máis de 40 km de autonomía eléctrica e de hidróxeno), no parque a 31/12/__ANO__ e entre os matriculados en __ANO__.</p>
+  <div class="chart slope"><svg id="sl" role="img" aria-label="Gráfico de pendentes: porcentaxe de turismos CERO no parque e nas matriculacións de cada comunidade autónoma. A táboa de datos ten os valores."></svg></div>
+  <h2>Turismos por cada 1.000 habitantes</h2>
+  <div class="chart"><svg id="br" role="img" aria-label="Barras: turismos por cada 1.000 habitantes en cada comunidade autónoma."></svg></div>
+  <h2>O parque, por etiqueta ambiental</h2>
+  <div class="legend"><span><i style="background:var(--cero)"></i>CERO</span><span><i style="background:var(--eco)"></i>ECO</span><span><i style="background:var(--c)"></i>C</span><span><i style="background:var(--b)"></i>B</span><span><i style="background:var(--sin)"></i>sen etiqueta</span></div>
+  <p class="sub">Reparto dos turismos de cada comunidade segundo a etiqueta da DGT, ordenado polos que non teñen ningunha (en xeral, gasolina anterior a 2001 e diésel anterior a 2006).</p>
+  <div class="chart"><svg id="st" role="img" aria-label="Barras apiladas: reparto do parque de turismos por etiqueta ambiental en cada comunidade."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">DGT, <a href="https://www.dgt.es/menusecundario/dgt-en-cifras/dgt-en-cifras-resultados/dgt-en-cifras-detalle/Parque-de-vehiculos-Tablas-Estadisticas-2025/" target="_blank" rel="noopener">Parque de vehículos. Tablas estadísticas __ANO__</a> (táboa 82, parque de turismos por provincia e distintivo ambiental, a 31 de decembro) e <a href="https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/publicaciones/matriculaciones-tablas-estadisticas/Matriculaciones-Tablas-estadisticas-2025.xlsx" target="_blank" rel="noopener">Matriculaciones. Tablas estadísticas __ANO__</a> (táboa 42, turismos matriculados por distintivo; táboa 41, renting). Poboación: INE, <a href="https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1" target="_blank" rel="noopener">Estatística continua de poboación</a> a 1/1/2026. A etiqueta CERO non distingue entre eléctricos puros e híbridos enchufables; os enchufables con menos de 40 km de autonomía levan a ECO, igual ca os híbridos sen enchufe e os de gas. A DGT asigna cada vehículo á provincia do domicilio do titular: as empresas de renting e as flotas de aluguer matricúlanse sobre todo en Madrid (__RENT__ dos turismos de renting de __ANO__), o que infla alí as matriculacións e a cota de CERO e rebaixa a do resto. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const d1=v=>v.toFixed(1).replace('.',',');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const C=D.ccaa,ES=D.es,G=C.find(c=>c.c==='GA');
+const DIST=[['CERO','--cero','CERO'],['ECO','--eco','ECO'],['C','--c','C'],['B','--b','B'],['Sin distintivo','--sin','sen etiqueta']];
+const sel=document.getElementById('sel');
+sel.innerHTML+=C.filter(c=>c.c!=='GA').slice().sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(c=>`<option value="${c.c}">${c.n}</option>`).join('');
+const cor=c=>c.c==='GA'?'var(--hl)':c.c===sel.value?'var(--sel)':'var(--gr)';
+const destacada=c=>c.c==='GA'||c.c===sel.value;
+const info=c=>`<b>${c.n}</b>${miles(c.tur)} turismos · ${miles(c.tur1000)} por 1.000 hab.<br>CERO: ${d1(c.cero_p)} % do parque · ${d1(c.cero_m)} % das matriculacións ${D.ano}<br>${miles(c.mat)} turismos matriculados (${miles(c.rent)} de renting)<br>sen etiqueta: ${d1(c.sin_p)} % do parque`;
+const posto=(k,c,inv)=>C.slice().sort((a,b)=>inv?a[k]-b[k]:b[k]-a[k]).indexOf(c)+1;
+function podio(){
+  const v=C.find(c=>c.c===sel.value)||G;
+  document.getElementById('podio').innerHTML=`<div><b>${posto('tur1000',v)}.ª de ${C.length}</b>${v.n} en coches por habitante</div><div><b>${posto('cero_p',v)}.ª de ${C.length}</b>en % CERO no parque</div><div><b>${posto('cero_m',v)}.ª de ${C.length}</b>en % CERO nas matriculacións</div>`;
+}
+// Separa etiquetas verticais para que non se pisen
+function separa(ys,min,lo,hi){
+  const o=ys.map((y,i)=>({y,i})).sort((a,b)=>a.y-b.y);
+  for(let k=1;k<o.length;k++)if(o[k].y-o[k-1].y<min)o[k].y=o[k-1].y+min;
+  if(o.length&&o[o.length-1].y>hi){o[o.length-1].y=hi;for(let k=o.length-2;k>=0;k--)if(o[k+1].y-o[k].y<min)o[k].y=o[k+1].y-min}
+  if(o.length&&o[0].y<lo){o[0].y=lo;for(let k=1;k<o.length;k++)if(o[k].y-o[k-1].y<min)o[k].y=o[k-1].y+min}
+  const r=[];o.forEach(e=>r[e.i]=e.y);return r}
+function slope(){
+  const svg=document.getElementById('sl');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<520;
+  const MT=46,PH=NARROW?420:460,H=MT+PH+20;
+  const xL=NARROW?96:200,xR=W-(NARROW?96:200);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const vmax=Math.ceil(Math.max(...C.map(c=>Math.max(c.cero_m,c.cero_p)))/5)*5;
+  const sy=v=>MT+(1-v/vmax)*PH;
+  for(let v=0;v<=vmax;v+=5){el('line',{x1:xL,x2:xR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:(xL+xR)/2,y:sy(v)-3,class:'ax','text-anchor':'middle'},svg).textContent=v+' %'}
+  el('line',{x1:xL,x2:xL,y1:MT,y2:MT+PH,stroke:'var(--line)'},svg);el('line',{x1:xR,x2:xR,y1:MT,y2:MT+PH,stroke:'var(--line)'},svg);
+  el('text',{x:xL,y:MT-28,class:'axt','text-anchor':'middle'},svg).textContent='no parque';
+  el('text',{x:xL,y:MT-14,class:'axs','text-anchor':'middle'},svg).textContent=`31/12/${D.ano}`;
+  el('text',{x:xR,y:MT-28,class:'axt','text-anchor':'middle'},svg).textContent='nas matriculacións';
+  el('text',{x:xR,y:MT-14,class:'axs','text-anchor':'middle'},svg).textContent=`${D.ano}`;
+  const R=C.filter(c=>c.c!=='CE'&&c.c!=='ML');
+  const orde=[...R.filter(c=>!destacada(c)),...R.filter(destacada)];
+  // etiquetas: á dereita todas (en móbil só as destacadas); á esquerda, onde se amontoan,
+  // só as destacadas e os extremos. España vai con trazo discontinuo e etiqueta propia.
+  const E={n:'España',c:'ES',cero_p:ES.cero_p,cero_m:ES.cero_m};
+  const ext=[R.reduce((a,c)=>c.cero_p>a.cero_p?c:a),R.reduce((a,c)=>c.cero_p<a.cero_p?c:a)];
+  const labL=[...new Set([...R.filter(destacada),...ext]),E];
+  const labR=[...(NARROW?R.filter(destacada):R),E];
+  const yl=separa(labL.map(c=>sy(c.cero_p)),13,MT,MT+PH+12),yr=separa(labR.map(c=>sy(c.cero_m)),13,MT,MT+PH+12);
+  for(const c of orde){
+    const g=el('g',{class:'ln'},svg),col=cor(c),w=destacada(c)?3:1.4;
+    el('line',{x1:xL,x2:xR,y1:sy(c.cero_p),y2:sy(c.cero_m),stroke:col,'stroke-width':w},g);
+    el('line',{x1:xL,x2:xR,y1:sy(c.cero_p),y2:sy(c.cero_m),stroke:'transparent','stroke-width':10},g);
+    for(const [x,v] of [[xL,c.cero_p],[xR,c.cero_m]])el('circle',{cx:x,cy:sy(v),r:destacada(c)?4.5:3,fill:col},g);
+    g.addEventListener('mousemove',ev=>show(ev,info(c)));g.addEventListener('mouseleave',hide);
+    g.addEventListener('click',()=>{if(c.c!=='GA'){sel.value=sel.value===c.c?'':c.c;todo()}});
+  }
+  const st=c=>c.c==='ES'||destacada(c)?`fill:${c.c==='GA'?'var(--hl)':'var(--ink)'}`:'';
+  labL.forEach((c,i)=>el('text',{x:xL-8,y:yl[i]+4,class:'lb','text-anchor':'end',style:st(c)},svg).textContent=`${c.n} ${d1(c.cero_p)}`);
+  labR.forEach((c,i)=>el('text',{x:xR+8,y:yr[i]+4,class:'lb',style:st(c)},svg).textContent=`${d1(c.cero_m)} ${c.n}`);
+  // España
+  const ge=el('g',{},svg);
+  el('line',{x1:xL,x2:xR,y1:sy(ES.cero_p),y2:sy(ES.cero_m),stroke:'var(--ink)','stroke-width':1.5,'stroke-dasharray':'4 3'},ge);
+}
+function barras(){
+  const svg=document.getElementById('br');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?112:150,MR=44,MT=22,RH=NARROW?22:20;
+  const B=C.slice().sort((a,b)=>b.tur1000-a.tur1000);
+  const H=MT+RH*B.length+22;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const vmax=Math.ceil(Math.max(...B.map(c=>c.tur1000))/100)*100,sx=v=>ML+v/vmax*(W-ML-MR);
+  for(let v=0;v<=vmax;v+=NARROW?200:100){el('line',{x1:sx(v),x2:sx(v),y1:MT-4,y2:H-20,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:MT-8,class:'ax','text-anchor':'middle'},svg).textContent=v}
+  B.forEach((c,i)=>{
+    const y=MT+i*RH,g=el('g',{class:'fila'},svg);
+    el('rect',{x:0,y,width:W,height:RH,fill:'transparent',class:'bg'},g);
+    const t=el('text',{x:ML-8,y:y+RH/2+4,class:'rl','text-anchor':'end'},g);t.textContent=c.n;
+    if(destacada(c))t.style.fill=c.c==='GA'?'var(--hl)':'var(--ink)';
+    el('rect',{x:ML,y:y+3,width:sx(c.tur1000)-ML,height:RH-7,fill:cor(c),rx:1},g);
+    el('text',{x:sx(c.tur1000)+5,y:y+RH/2+4,class:'rv'},g).textContent=miles(c.tur1000);
+    g.addEventListener('mousemove',ev=>show(ev,info(c)));g.addEventListener('mouseleave',hide);
+    g.addEventListener('click',()=>{if(c.c!=='GA'){sel.value=sel.value===c.c?'':c.c;todo()}});
+  });
+  el('line',{x1:sx(ES.tur1000),x2:sx(ES.tur1000),y1:MT-2,y2:H-18,stroke:'var(--ink)','stroke-dasharray':'3 3'},svg);
+  el('text',{x:sx(ES.tur1000)+4,y:H-5,class:'axs'},svg).textContent=`España ${miles(ES.tur1000)}`;
+}
+function apiladas(){
+  const svg=document.getElementById('st');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?112:150,MR=8,MT=20,RH=NARROW?22:20;
+  const B=C.slice().sort((a,b)=>b.sin_p-a.sin_p);
+  const H=MT+RH*B.length+6;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const sx=v=>ML+v/100*(W-ML-MR);
+  for(let v=0;v<=100;v+=NARROW?50:25)el('text',{x:sx(v),y:MT-6,class:'ax','text-anchor':'middle'},svg).textContent=v+' %';
+  B.forEach((c,i)=>{
+    const y=MT+i*RH,g=el('g',{class:'fila'},svg);
+    el('rect',{x:0,y,width:W,height:RH,fill:'transparent',class:'bg'},g);
+    const t=el('text',{x:ML-8,y:y+RH/2+4,class:'rl','text-anchor':'end'},g);t.textContent=c.n;
+    if(destacada(c))t.style.fill=c.c==='GA'?'var(--hl)':'var(--ink)';
+    let acc=0;
+    for(const [k,v] of DIST){const p=c.p[k]/c.tur*100;el('rect',{x:sx(acc),y:y+3,width:Math.max(0,sx(acc+p)-sx(acc)-.5),height:RH-7,fill:`var(${v})`},g);acc+=p}
+    if(destacada(c))el('rect',{x:ML-1,y:y+2,width:W-ML-MR+2,height:RH-5,fill:'none',stroke:c.c==='GA'?'var(--hl)':'var(--ink)','stroke-width':1.6},g);
+    g.addEventListener('mousemove',ev=>show(ev,`<b>${c.n}</b>`+DIST.map(([k,,n])=>`${n}: ${d1(c.p[k]/c.tur*100)} %`).join('<br>')));g.addEventListener('mouseleave',hide);
+    g.addEventListener('click',()=>{if(c.c!=='GA'){sel.value=sel.value===c.c?'':c.c;todo()}});
+  });
+}
+function todo(){podio();slope();barras();apiladas()}
+sel.addEventListener('change',todo);
+todo();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(todo,150)});
+document.getElementById('tbl').innerHTML='<tr><th>Comunidade</th><th>Poboación</th><th>Turismos</th><th>Por 1.000 hab.</th><th>% CERO parque</th><th>% sen etiqueta</th><th>Matriculados '+D.ano+'</th><th>% CERO matric.</th><th>% ECO matric.</th><th>Renting</th></tr>'+
+  C.slice().sort((a,b)=>b.tur1000-a.tur1000).map(c=>`<tr class="${c.c==='GA'?'g':''}"><td>${c.n}</td><td>${miles(c.pob)}</td><td>${miles(c.tur)}</td><td>${miles(c.tur1000)}</td><td>${d1(c.cero_p)}</td><td>${d1(c.sin_p)}</td><td>${miles(c.mat)}</td><td>${d1(c.cero_m)}</td><td>${d1(c.eco_m)}</td><td>${miles(c.rent)}</td></tr>`).join('')+
+  `<tr><td>España</td><td>${miles(ES.pob)}</td><td>${miles(ES.tur)}</td><td>${miles(ES.tur1000)}</td><td>${d1(ES.cero_p)}</td><td></td><td>${miles(ES.mat)}</td><td>${d1(ES.cero_m)}</td><td></td><td>${miles(ES.rent)}</td></tr>`;
+</script>
+</body>
+</html>

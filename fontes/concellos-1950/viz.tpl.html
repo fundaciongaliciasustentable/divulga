@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Os que medran e os que se baleiran — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Canto gañou ou perdeu cada concello galego entre o censo de 1950 e o padrón de 2025: un mapa e unha clasificación dos 313 concellos.">
+<meta property="og:title" content="Os que medran e os que se baleiran">
+<meta property="og:description" content="A poboación de cada concello galego en 1950 e en 2025.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Mapa coroplético diverxente + barras diverxentes ordenadas. O mapa colorea cada concello
+   segundo canto cambiou a súa poboación entre o censo de 1950 e o padrón de 2025 (terras para os
+   que perden, verde-azulado para os que gañan). Debaixo, os 313 concellos en fila, do que máis
+   perdeu ao que máis gañou: cada barra sobe ou baixa dende a liña de 1950 nunha escala
+   logarítmica (perder a metade e duplicar quedan á mesma distancia). A ficha amosa a traxectoria
+   do concello escollido censo a censo, e o podio, os dez extremos de cada lado. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6; --hl:#c2185b;
+  --l4:#7a4419; --l3:#ad6c34; --l2:#d3a26b; --l1:#efd9b8; --g1:#cfe4df; --g2:#7fb5ab; --g3:#2e7b70;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:10px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:68ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.85rem;color:var(--muted)}
+input{font:600 .9rem var(--display);border:1px solid var(--line);border-radius:3px;padding:8px 10px;background:var(--card);color:var(--ink);width:240px;max-width:70vw}
+input:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+button{font:600 .8rem var(--display);border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:3px;padding:7px 10px;cursor:pointer}
+.legend{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));width:100%;max-width:460px;font:600 .74rem/1.1 var(--num);color:var(--muted)}
+.legend span{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.legend i{height:12px;width:100%;display:block}
+.top{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px 26px;width:100%;align-items:start}
+.map svg{display:block;width:100%;height:auto}
+.co{stroke:#fff;stroke-width:.6;cursor:pointer}
+.co:hover{stroke:var(--ink);stroke-width:1.2}
+.co.on{stroke:var(--hl);stroke-width:2.6}
+.ficha{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px}
+.ficha h3{margin:0;font:800 1.3rem var(--display)}
+.ficha h3 small{display:block;font:600 .78rem var(--display);color:var(--muted);margin-top:2px}
+.ficha .big{font:700 2.6rem/1 var(--num);margin-top:8px}
+.ficha .big small{font:600 1rem var(--display);color:var(--muted)}
+.ficha ul{list-style:none;padding:0;margin:8px 0 0;font-size:.86rem;color:var(--muted);line-height:1.5}
+.ficha ul b{color:var(--ink);font-family:var(--num);font-size:1.05rem}
+.ficha .gr{font-size:.76rem;color:var(--muted);margin:6px 0 0}
+.spark svg{display:block;width:100%;height:auto;margin-top:8px}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.lab{font:700 12px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}
+.lab.hl{fill:var(--hl)}
+.bar{cursor:pointer}
+.bar.on{fill:var(--hl)!important}
+.podio{display:grid;grid-template-columns:1fr 1fr;gap:20px 36px;width:100%;max-width:900px}
+.podio h3{font:800 .95rem var(--display);margin:0 0 6px;text-align:center}
+.podio ol{list-style:none;margin:0;padding:0;font-size:.84rem;counter-reset:p}
+.podio li{display:grid;grid-template-columns:22px minmax(0,1fr) 64px;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid var(--line);cursor:pointer;counter-increment:p}
+.podio li::before{content:counter(p);font:700 .9rem var(--num);color:var(--muted)}
+.podio li:hover{background:var(--card)}
+.podio li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.podio li small{color:var(--muted);font-size:.72rem}
+.podio li b{font:700 1rem var(--num);text-align:right}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper);cursor:pointer}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:760px){.top{grid-template-columns:1fr}.podio{grid-template-columns:1fr}}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Os que medran e os que se baleiran</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>O teu concello <input id="q" list="lc" placeholder="Escribe o nome…" autocomplete="off"></label>
+    <datalist id="lc"></datalist>
+    <button id="lim" type="button">Ver Galicia</button>
+  </div>
+  <div class="legend" id="legend" aria-label="Lenda: variación da poboación entre 1950 e __ANO__"></div>
+  <div class="top">
+    <div class="map"><svg id="map" role="img" aria-label="Mapa dos concellos galegos coloreados segundo a variación da súa poboación entre 1950 e __ANO__"></svg></div>
+    <div class="ficha" id="ficha" aria-live="polite"></div>
+  </div>
+  <h2>Os 313 concellos en fila, do que máis perdeu ao que máis gañou</h2>
+  <p class="sub">Cada barra é un concello. A liña do medio é a poboación que tiña en 1950; a escala é logarítmica, así que perder a metade e duplicar quedan á mesma distancia.</p>
+  <div class="chart"><svg id="ch" role="img" aria-label="Barras diverxentes ordenadas: a variación da poboación de cada concello entre 1950 e __ANO__. A táboa ten os valores."></svg></div>
+  <div class="podio">
+    <div><h3>Os dez que máis gañan</h3><ol id="pg"></ol></div>
+    <div><h3>Os dez que máis se baleiran</h3><ol id="pp"></ol></div>
+  </div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">INE, <a href="https://www.ine.es/intercensal/" target="_blank" rel="noopener">Alteraciones de los municipios en los Censos de Población desde 1842</a> (poboación de feito do censo de 1950 e dos censos de 1900 a 1991; poboación de dereito ou residente de 2001, 2011 e 2021) e INE, Padrón municipal, <a href="https://www.ine.es/dynt3/inebase/index.htm?padre=525" target="_blank" rel="noopener">cifras oficiais a 1 de xaneiro de __ANO__</a> (táboas 2868, 2880, 2885 e 2890). Compárase a poboación de feito de 1950 (a presente o día do censo) coa empadroada en __ANO__: non son exactamente o mesmo, e en 1950 a emigración temporal facía que nalgúns concellos houbese menos presentes ca veciños. Todo vai co termo municipal actual: Oza-Cesuras e Cerdedo-Cotobade suman os seus dous concellos de 1950; Santiago, Baralla, A Pontenova, Celanova e Pontevedra inclúen os municipios que absorberon despois (Enfesta, Neira de Xusá, Puente Nuevo e Villaodrid, Acevedo do Río e Ponte Sampaio). Catro pares que se separaron ou cambiaron termo despois de 1950 compáranse xuntos e cada un dos dous leva a cifra común: Ortigueira e Cariño, Cervo e Burela, Vilanova e A Illa de Arousa, Ribadavia e Carballeda de Avia. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const C=D.conc,N=C.length,ANO=D.ano;
+const f0=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const pc=v=>(v>0?'+':v<0?'−':'')+String(Math.abs(Math.round(v*100)))+'\u00a0%';
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+// Variación 1950 → ANO (os pares segregados levan a cifra común)
+C.forEach(o=>{o.a=o.g?o.g.h50:o.h['1950'];o.b=o.g?o.g.p25:o.p25;o.r=o.b/o.a;o.v=o.r-1});
+const ord=C.slice().sort((a,b)=>a.r-b.r);
+C.slice().sort((a,b)=>b.r-a.r).forEach((o,i)=>o.rk=i+1); // posto 1 = o que máis gaña
+const med=a=>{const s=a.slice().sort((x,y)=>x-y),k=s.length;return k%2?s[(k-1)/2]:(s[k/2-1]+s[k/2])/2};
+const PR=['A Coruña','Lugo','Ourense','Pontevedra'],MEDP={};PR.forEach(p=>MEDP[p]=med(C.filter(o=>o.pr===p).map(o=>o.v)));
+const GA=C.reduce((s,o)=>s+(o.h['1950']||0),0),GB=C.reduce((s,o)=>s+o.p25,0);
+// Cor
+const CUT=[-.75,-.5,-.25,0,.5,1],COL=['var(--l4)','var(--l3)','var(--l2)','var(--l1)','var(--g1)','var(--g2)','var(--g3)'];
+const col=v=>COL[CUT.filter(c=>v>=c).length];
+const LEG=['máis de −75 %','−75 a −50','−50 a −25','−25 a 0','0 a +50','+50 a +100','máis do dobre'];
+document.getElementById('legend').innerHTML=COL.map((c,i)=>`<span><i style="background:${c}"></i>${LEG[i]}</span>`).join('');
+let sel=null;
+const q=document.getElementById('q');
+document.getElementById('lc').innerHTML=C.map(o=>`<option value="${o.n}">`).join('');
+function escolle(o){sel=o;q.value=o?o.n:'';marca();ficha()}
+q.addEventListener('input',()=>{const o=C.find(o=>o.n.toLowerCase()===q.value.trim().toLowerCase());if(o)escolle(o)});
+q.addEventListener('change',()=>{const v=q.value.trim().toLowerCase();if(!v){escolle(null);return}const o=C.find(o=>o.n.toLowerCase()===v)||C.find(o=>o.n.toLowerCase().includes(v));if(o)escolle(o)});
+document.getElementById('lim').addEventListener('click',()=>escolle(null));
+const tt=o=>`<b>${o.n}</b>${o.pr}<br>${o.g?o.g.n+' (xuntos)':''}${o.g?'<br>':''}1950: ${f0(o.a)} · ${ANO}: ${f0(o.b)}<br>${pc(o.v)} · posto ${o.rk} de ${N}`;
+
+// Mapa
+const P={};
+(function mapa(){
+  const svg=document.getElementById('map');
+  const xs=C.flatMap(o=>o.pol.flatMap(r=>r.map(p=>p[0]))),ys=C.flatMap(o=>o.pol.flatMap(r=>r.map(p=>p[1])));
+  const x0=Math.min(...xs),y0=Math.min(...ys),x1=Math.max(...xs),y1=Math.max(...ys);
+  svg.setAttribute('viewBox',`${x0-4} ${y0-4} ${x1-x0+8} ${y1-y0+8}`);
+  for(const o of C){
+    const p=el('path',{d:o.pol.map(r=>'M'+r.map(q=>q.join(',')).join('L')+'Z').join(''),class:'co',fill:col(o.v)},svg);
+    p.dataset.id=o.id;P[o.id]=p;
+    p.addEventListener('mousemove',ev=>show(ev,tt(o)));p.addEventListener('mouseleave',hide);p.addEventListener('click',()=>escolle(o));
+  }
+})();
+
+// Barras diverxentes ordenadas
+const B={};
+function barras(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640,H=NARROW?300:340,ML=NARROW?34:44,MR=8,MT=24,MB=22;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const lr=C.map(o=>Math.log(o.r)),lo=Math.min(...lr),hi=Math.max(...lr);
+  const sy=v=>MT+(hi-v)/(hi-lo)*(H-MT-MB),bw=(W-ML-MR)/N;
+  const TK=[[.15,'−85 %'],[.25,'−75 %'],[.5,'−50 %'],[1,'1950'],[2,'×2'],[3,'×3'],[4,'×4']];
+  for(const [r,t] of TK){if(Math.log(r)<lo-.05||Math.log(r)>hi+.05)continue;const y=sy(Math.log(r));
+    el('line',{x1:ML,x2:W-MR,y1:y,y2:y,stroke:r===1?'var(--ink)':'var(--grid)','stroke-width':r===1?1.2:1},svg);
+    el('text',{x:ML-5,y:y+4,class:'ax','text-anchor':'end'},svg).textContent=t}
+  const g=el('g',{},svg);
+  ord.forEach((o,i)=>{
+    const v=Math.log(o.r),y=sy(Math.max(v,0)),h=Math.max(1,Math.abs(sy(v)-sy(0)));
+    const r=el('rect',{x:(ML+i*bw).toFixed(2),y:y.toFixed(1),width:Math.max(.6,bw-(bw>2.5?.6:0)).toFixed(2),height:h.toFixed(1),fill:col(o.v),class:'bar'},g);
+    r.dataset.id=o.id;B[o.id]=r;o._bx=ML+i*bw+bw/2;o._by=v<0?sy(v):sy(v);
+    r.addEventListener('mousemove',ev=>show(ev,tt(o)));r.addEventListener('mouseleave',hide);r.addEventListener('click',()=>escolle(o));
+  });
+  // franxa invisible para tocar no móbil
+  if(NARROW){const ov=el('rect',{x:ML,y:MT,width:W-ML-MR,height:H-MT-MB,fill:'transparent'},svg);
+    ov.addEventListener('click',ev=>{const b=svg.getBoundingClientRect(),x=(ev.clientX-b.left)/b.width*W;const i=Math.max(0,Math.min(N-1,Math.floor((x-ML)/bw)));escolle(ord[i])})}
+  const ganan=C.filter(o=>o.r>1).length;
+  const xg=ML+(N-ganan)*bw;
+  el('text',{x:xg-6,y:H-6,class:'axt','text-anchor':'end'},svg).textContent=`← ${N-ganan} perden`;
+  el('text',{x:xg+6,y:H-6,class:'axt'},svg).textContent=`${ganan} gañan →`;
+  el('line',{x1:xg,x2:xg,y1:MT,y2:H-MB+4,stroke:'var(--muted)','stroke-dasharray':'2 3'},svg);
+  svg._lab=el('g',{},svg);
+  marca();
+}
+function marca(){
+  for(const id in P)P[id].classList.toggle('on',!!sel&&id===sel.id);
+  if(sel)P[sel.id].parentNode.appendChild(P[sel.id]);
+  for(const id in B)B[id].classList.toggle('on',!!sel&&id===sel.id);
+  const svg=document.getElementById('ch');if(!svg._lab)return;svg._lab.innerHTML='';
+  const W=+svg.getAttribute('viewBox').split(' ')[2];
+  const lab=(o,hl)=>{const x=o._bx,right=x<W*.6;const y=o.r<1?o._by+14:o._by-6;
+    el('text',{x:right?x+4:x-4,y,class:'lab'+(hl?' hl':''),'text-anchor':right?'start':'end'},svg._lab).textContent=o.n+' '+pc(o.v)};
+  if(sel)lab(sel,true);else{lab(ord[0],false);lab(ord[N-1],false)}
+}
+function ficha(){
+  const fx=document.getElementById('ficha'),o=sel;
+  if(!o){
+    fx.innerHTML=`<h3>Galicia<small>a poboación de 1950 e a de ${ANO}</small></h3><div class="big" style="color:var(--g3)">${pc(GB/GA-1)}</div>
+    <ul><li>1950: <b>${f0(GA)}</b> persoas · ${ANO}: <b>${f0(GB)}</b></li><li><b>${C.filter(o=>o.r>1).length}</b> concellos teñen hoxe máis xente ca en 1950; <b>${C.filter(o=>o.r<.5).length}</b> perderon máis da metade</li>
+    <li>A mediana dos concellos: <b>${pc(med(C.map(o=>o.v)))}</b></li><li>Busca o teu concello ou toca o mapa.</li></ul><div class="spark"><svg id="sp"></svg></div>`;
+    serie(null);
+  }else{
+    fx.innerHTML=`<h3>${o.n}<small>${o.pr}</small></h3><div class="big" style="color:${o.v<0?'var(--l3)':'var(--g3)'}">${pc(o.v)}</div>
+    <ul><li>${o.g?o.g.n+', xuntos. ':''}1950: <b>${f0(o.a)}</b> persoas · ${ANO}: <b>${f0(o.b)}</b></li><li>Posto <b>${o.rk}</b> de ${N}, do que máis gaña ao que máis perde</li>
+    <li>Mediana de ${o.pr}: <b>${pc(MEDP[o.pr])}</b> · Galicia: <b>${pc(GB/GA-1)}</b></li></ul>
+    ${o.g?`<p class="gr">${o.g.n} compáranse xuntos porque en 1950 eran un só termo ou cambiaron territorio despois. A liña é a suma dos dous; ${o.n} só ten ${f0(o.p25)} habitantes en ${ANO}.</p>`:''}<div class="spark"><svg id="sp"></svg></div>`;
+    serie(o);
+  }
+}
+// Traxectoria censo a censo
+function serie(o){
+  const svg=document.getElementById('sp'),W=svg.parentNode.clientWidth||300,H=140,ML=12,MR=54,MT=12,MB=20;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('role','img');
+  let pts;
+  if(o){const s={};for(const c of (o.g?C.filter(c=>c.g&&c.g.n===o.g.n):[o])){for(const [a,v] of [...Object.entries(c.h),...Object.entries(c.d),[ANO,c.p25]])s[a]=(s[a]||0)+v}
+    pts=Object.entries(s).map(([a,v])=>[+a,v])}
+  else{const s={};for(const c of C){for(const [a,v] of Object.entries(c.h))s[a]=(s[a]||0)+v;for(const [a,v] of Object.entries(c.d))s[a]=(s[a]||0)+v}s[ANO]=GB;pts=Object.entries(s).map(([a,v])=>[+a,v])}
+  pts.sort((a,b)=>a[0]-b[0]);
+  svg.setAttribute('aria-label',`Poboación de ${o?(o.g?o.g.n:o.n):'Galicia'} en cada censo dende 1900`);
+  const ymax=Math.max(...pts.map(p=>p[1]))*1.08,sx=a=>ML+(a-1900)/(ANO-1900)*(W-ML-MR),sy=v=>MT+(1-v/ymax)*(H-MT-MB);
+  for(const a of [1900,1950,2000,ANO])el('text',{x:sx(a),y:H-4,class:'ax','text-anchor':'middle'},svg).textContent=a;
+  el('line',{x1:sx(1950),x2:sx(1950),y1:MT,y2:H-MB,stroke:'var(--grid)','stroke-width':6},svg);
+  el('line',{x1:ML,x2:W-MR,y1:sy(0),y2:sy(0),stroke:'var(--line)'},svg);
+  el('path',{d:'M'+pts.map(p=>`${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join('L'),fill:'none',stroke:'var(--ink)','stroke-width':1.8},svg);
+  for(const p of pts){const c=el('circle',{cx:sx(p[0]),cy:sy(p[1]),r:p[0]===1950||p[0]===ANO?4:2.4,fill:p[0]===1950||p[0]===ANO?'var(--hl)':'var(--ink)'},svg);
+    c.addEventListener('mousemove',ev=>show(ev,`<b>${p[0]}</b>${f0(p[1])} persoas`));c.addEventListener('mouseleave',hide)}
+  const p50=pts.find(p=>p[0]===1950),pu=pts.at(-1);
+  if(p50)el('text',{x:sx(1950)-6,y:sy(p50[1])-7,class:'ax','text-anchor':'end'},svg).textContent=f0(p50[1]);
+  el('text',{x:sx(pu[0])+6,y:sy(pu[1])+4,class:'ax'},svg).textContent=f0(pu[1]);
+}
+function podio(){
+  const li=o=>`<li data-id="${o.id}"><span>${o.n} <small>${o.pr}${o.g?' · cifra conxunta':''}</small></span><b style="color:${o.v<0?'var(--l3)':'var(--g3)'}">${pc(o.v)}</b></li>`;
+  document.getElementById('pg').innerHTML=ord.slice(-10).reverse().map(li).join('');
+  document.getElementById('pp').innerHTML=ord.slice(0,10).map(li).join('');
+  document.querySelectorAll('.podio li').forEach(l=>l.addEventListener('click',()=>escolle(C.find(o=>o.id===l.dataset.id))));
+}
+let ordT='rk',dirT=1;
+function taboa(){
+  const cols=[['n','Concello'],['pr','Provincia'],['a','1950'],['b',String(ANO)],['v','Variación'],['rk','Posto']];
+  const r=C.slice().sort((a,b)=>(typeof a[ordT]==='string'?a[ordT].localeCompare(b[ordT],'gl'):a[ordT]-b[ordT])*dirT);
+  const t=document.getElementById('tbl');
+  t.innerHTML='<tr>'+cols.map(([k,n])=>`<th data-k="${k}">${n}${k===ordT?(dirT>0?' ↑':' ↓'):''}</th>`).join('')+'</tr>'+
+    r.map(o=>`<tr><td>${o.n}${o.g?' *':''}</td><td>${o.pr}</td><td>${f0(o.a)}</td><td>${f0(o.b)}</td><td>${pc(o.v)}</td><td>${o.rk}</td></tr>`).join('')+
+    '<tr><td colspan="6">* Cifra conxunta do par (véxase a nota).</td></tr>';
+  t.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;dirT=k===ordT?-dirT:1;ordT=k;taboa()}));
+}
+barras();ficha();podio();taboa();
+let lw=innerWidth;
+addEventListener('resize',()=>{if(innerWidth===lw)return;lw=innerWidth;clearTimeout(window._r);window._r=setTimeout(()=>{barras();ficha()},150)});
+</script>
+</body>
+</html>

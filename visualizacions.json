@@ -1,5 +1,400 @@
 [
   {
+    "slug": "pib-rexions",
+    "titulo": "Galicia na escaleira europea",
+    "entradilla": "En 2000 Galicia era a rexión 157 de 224 da UE en PIB por habitante en poder de compra; en 2024 é a 122, co 84 % da media europea, o seu mellor posto da serie.",
+    "data": "2026-10-28",
+    "temas": [
+      "Economía"
+    ],
+    "formato": "Bump chart",
+    "fontes": "Eurostat, PIB rexional NUTS 2 en PPS por habitante (% da media UE-27), nama_10r_2gdp, 2000-2024"
+  },
+  {
+    "slug": "estudos-rexions",
+    "titulo": "Menos abandono, máis títulos",
+    "entradilla": "En 2025 só o 10,4 % dos mozos galegos deixara os estudos sen pasar da ESO, fronte ao 23,6 % de 2008, e o 53,3 % dos de 25 a 34 anos ten estudos superiores, nove puntos máis ca media da UE.",
+    "data": "2026-10-28",
+    "temas": [
+      "Sociedade"
+    ],
+    "formato": "Dispersión",
+    "fontes": "Eurostat, LFS: abandono temperán (edat_lfse_16) e poboación de 25-34 anos con estudos superiores (edat_lfse_04) por rexión NUTS 2, 2008-2025"
+  },
+  {
+    "slug": "residuos-europa",
+    "titulo": "O lixo de cada quen",
+    "entradilla": "En 2023 recolléronse en Galicia 416 kg de residuos municipais por habitante, 94 menos ca media da UE; pero só o 17,6 % chega por recollida separada, fronte ao 23,9 % de España.",
+    "data": "2026-10-28",
+    "temas": [
+      "Sustentabilidade"
+    ],
+    "formato": "Barras ordenadas",
+    "fontes": "Eurostat env_wasmun e cei_wm011 (países UE, 2023); INE, recollida de residuos municipais por CCAA, táboas 32999 e 32998 (2023)"
+  },
+  {
+    "slug": "fecundidade-europa",
+    "titulo": "Os berces de Europa",
+    "entradilla": "En 2024 Galicia tivo 0,96 fillos por muller, a cuarta cifra máis baixa das 244 rexións da Unión Europea (posto 241 de 244). A media da UE foi de 1,34.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Sociedade"
+    ],
+    "formato": "Barras ordenadas e liñas",
+    "fontes": "Eurostat demo_r_frate2 (fecundidade por rexión NUTS 2) e demo_frate (UE-27 e España), 2000-2024"
+  },
+  {
+    "slug": "centenarios",
+    "titulo": "Os que pasan dos cen",
+    "entradilla": "A 1 de xaneiro de 2026 vivían en Ourense 322 persoas de 100 anos ou máis, 10,5 por cada 10.000 habitantes: a quinta provincia de España, despois de Soria, Zamora, Salamanca e Ávila. Lugo é a oitava.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Saúde",
+      "Sociedade"
+    ],
+    "formato": "Gráfico de pesas e enxame",
+    "fontes": "INE, Estatística Continua de Poboación (táboa 69792), 2006-2026; Eurostat demo_r_d2jan, 2025"
+  },
+  {
+    "slug": "envellecemento-europa",
+    "titulo": "O mapa das canas",
+    "entradilla": "A metade da poboación de Ourense ten máis de 53,3 anos: é a 29.ª rexión máis envellecida de 1.165 da Unión Europea (2025), e Lugo a 59.ª. A idade mediana da UE é de 44,9 anos.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Territorio",
+      "Sociedade"
+    ],
+    "formato": "Mapa coroplético e ranking",
+    "fontes": "Eurostat demo_r_pjanind3 e demo_pjanind (idade mediana, 2014-2025); xeometría Eurostat GISCO NUTS 2024"
+  },
+  {
+    "slug": "galego-concellos",
+    "titulo": "Onde se fala sempre galego",
+    "entradilla": "No Censo de 2011, o 43,8 % da poboación de 5 e máis anos dicía falar sempre en galego, 13 puntos menos ca en 2001. O uso habitual baixou en 305 dos 313 concellos.",
+    "data": "2026-10-28",
+    "temas": [
+      "Lingua",
+      "Sociedade"
+    ],
+    "formato": "Mapa coroplético e dispersión",
+    "fontes": "IGE, Censo de poboación e vivendas 2001 e 2011, uso do galego por concello (táboas 1845 e 6856)"
+  },
+  {
+    "slug": "toponimos",
+    "titulo": "Os nomes que se repiten",
+    "entradilla": "Das 30.518 entidades de poboación do Nomenclátor de 2025, 433 chámanse Vilar (ou Vilares) e 424 Outeiro; detrás veñen Igrexa, Castro e Pazo.",
+    "data": "2026-10-28",
+    "temas": [
+      "Territorio",
+      "Lingua",
+      "Rural"
+    ],
+    "formato": "Mosaico e mapa de puntos",
+    "fontes": "IGE, Nomenclátor 2025; IET (Xunta), entidades de poboación e límites de concellos"
+  },
+  {
+    "slug": "bibliotecas-concellos",
+    "titulo": "O andel de cada concello",
+    "entradilla": "En 2024 as bibliotecas públicas galegas fixeron 2,29 millóns de préstamos, 0,84 por habitante; 84 concellos, con 141.459 veciños, non tiñan ningunha biblioteca pública.",
+    "data": "2026-10-28",
+    "temas": [
+      "Sociedade",
+      "Rural"
+    ],
+    "formato": "Andeis de lombos",
+    "fontes": "Ministerio de Cultura, Bibliotecas Públicas Españolas en cifras, informe anual por municipio 2024"
+  },
+  {
+    "slug": "mexillon-mundo",
+    "titulo": "O mexillón do mundo",
+    "entradilla": "Coas súas bateas, Galicia sería o terceiro produtor mundial de mexillón de acuicultura: 178.069 toneladas en 2023, o 9,5 % do total, só por detrás de China e Chile.",
+    "data": "2026-10-28",
+    "temas": [
+      "Mar",
+      "Economía"
+    ],
+    "formato": "Círculos proporcionais",
+    "fontes": "FAO FishStat, Global aquaculture production 2025.1.0 (2003-2023); Pesca de Galicia, produción de acuicultura (2003-2025)"
+  },
+  {
+    "slug": "eolica-europa",
+    "titulo": "Vento por cabeza",
+    "entradilla": "Galicia tiña 3.932 MW eólicos en 2024: 1.448 vatios por habitante, 2,8 veces a media da UE e máis ca Dinamarca. Sería terceira da UE por habitante e por km².",
+    "data": "2026-10-28",
+    "temas": [
+      "Enerxía",
+      "Sustentabilidade"
+    ],
+    "formato": "Dispersión",
+    "fontes": "Eurostat nrg_inf_epcrw, demo_r_d2jan e reg_area3; Inega, potencia eléctrica instalada en Galicia (2015-2024)"
+  },
+  {
+    "slug": "eucalipto-mundo",
+    "titulo": "Un país de árbores",
+    "entradilla": "O 48 % de Galicia é bosque, máis ca en España, Portugal ou Francia. O eucalipto cobre o 13,8 % do territorio, máis ca en Portugal continental (9,5 %), e en 59 concellos pasa do 30 %.",
+    "data": "2026-10-28",
+    "temas": [
+      "Monte",
+      "Territorio"
+    ],
+    "formato": "Enxame, barras apiladas e perfil de concellos",
+    "fontes": "FAO FRA 2025; INVEGA (vía monte-concellos, 2024); ICNF IFN6 (2015); IBGE PEVS táboa 5930 (2025)"
+  },
+  {
+    "slug": "minutos-hospital",
+    "titulo": "Canto queda o hospital",
+    "entradilla": "Para máis da metade dos galegos (53 %) o hospital público máis próximo está a 15 minutos en coche ou menos, pero 515.000 persoas viven a máis de media hora e en Negueira de Muñiz a viaxe media chega a 103 minutos.",
+    "data": "2026-10-28",
+    "temas": [
+      "Saúde",
+      "Territorio",
+      "Rural"
+    ],
+    "formato": "Mapa de isócronas e curva acumulada",
+    "fontes": "Ministerio de Sanidade, Catálogo Nacional de Hospitais 2025; IGE, Nomenclátor 2025; OSRM sobre OpenStreetMap"
+  },
+  {
+    "slug": "fibra-concellos",
+    "titulo": "A fibra, concello a concello",
+    "entradilla": "En xuño de 2025, o 94,1 % dos fogares galegos podía contratar 100 Mbps e o 85,2 % 1 Gbps, pero en 11 concellos os 100 Mbps non chegan nin á metade das casas.",
+    "data": "2026-10-28",
+    "temas": [
+      "Sociedade",
+      "Rural",
+      "Territorio"
+    ],
+    "formato": "Liña de horizonte",
+    "fontes": "Ministerio para a Transformación Dixital e da Función Pública, Informe de cobertura de banda ancha 2025"
+  },
+  {
+    "slug": "vivenda-turistica",
+    "titulo": "Casas para turistas",
+    "entradilla": "En maio de 2026 había 0,99 vivendas turísticas anunciadas por cada 100 vivendas en Galicia; en Fisterra e Sanxenxo son 7,8 de cada 100.",
+    "data": "2026-10-28",
+    "temas": [
+      "Vivenda",
+      "Turismo"
+    ],
+    "formato": "Mapa coroplético e ranking",
+    "fontes": "INE, Medición experimental das vivendas turísticas (táboas 39363 e 39366); INE, Censo 2021; Turismo de Galicia, REAT"
+  },
+  {
+    "slug": "prazas-turisticas",
+    "titulo": "Camas para cada veciño",
+    "entradilla": "Galicia ten 10,8 prazas de aloxamento turístico por cada 100 habitantes; en Sanxenxo, o concello máis turístico, son 185, e Barreiros e O Grove tamén teñen máis camas para visitantes ca veciños.",
+    "data": "2026-10-28",
+    "temas": [
+      "Turismo",
+      "Economía"
+    ],
+    "formato": "Dispersión con diagonais",
+    "fontes": "Turismo de Galicia, REAT (serie mensual por concello); INE, Padrón 2025"
+  },
+  {
+    "slug": "nucleos-espana",
+    "titulo": "A metade dos lugares de España",
+    "entradilla": "Das 62.151 entidades singulares de poboación que o INE conta en España, 30.518 están en Galicia: o 49,1 %, nun 5,9 % da superficie. Un punto por cada cen lugares.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Territorio",
+      "Rural"
+    ],
+    "formato": "Pictograma e barras",
+    "fontes": "INE, Nomenclátor 2025 (ficheiro nacional por unidade poboacional); IGN, superficie por comunidade (Anuario MAPA 2023, táboa 1.1)"
+  },
+  {
+    "slug": "costa-galicia",
+    "titulo": "A costa estirada",
+    "entradilla": "Estirada en liña recta, a costa galega mide 1.498 km segundo o IGN e 1.895 km seguindo o deslinde polas rías: unha costa de país, entre a de Portugal e a de Irlanda.",
+    "data": "2026-10-28",
+    "temas": [
+      "Mar",
+      "Territorio"
+    ],
+    "formato": "Fíos estirados",
+    "fontes": "IGN (INE, Anuario Estadístico 2008, táboa 1.1.3); MITECO-D.X. da Costa e o Mar, DPM-T (Anuario MAPA 2017, táboa 9.3); CIA World Factbook, «Coastline» (copia arquivada, 2026)"
+  },
+  {
+    "slug": "choiva-sol-europa",
+    "titulo": "Chove, pero hai sol",
+    "entradilla": "Vigo recolle 1.696 l/m² ao ano, 2,8 veces o que cae en Londres, pero as cidades galegas teñen entre 1.896 e 2.290 horas de sol, máis ca Londres, París, Bruxelas ou Dublín.",
+    "data": "2026-10-28",
+    "temas": [
+      "Clima"
+    ],
+    "formato": "Dispersión e piruletas",
+    "fontes": "OMM, WMO Climate Normals 1991-2020 (NOAA NCEI, accesión 0253808; datos de AEMET e servizos nacionais); IPMA, normais 1991-2020 (Lisboa, Porto)"
+  },
+  {
+    "slug": "coches-ccaa",
+    "titulo": "Moitos coches, poucos enchufes",
+    "entradilla": "Galicia ten 593 turismos por cada 1.000 habitantes, a terceira cifra máis alta, pero só o 1,3 % do seu parque leva a etiqueta CERO (España: 2,5 %); nas matriculacións de 2025, o 16,3 %.",
+    "data": "2026-10-28",
+    "temas": [
+      "Mobilidade",
+      "Enerxía",
+      "Sustentabilidade"
+    ],
+    "formato": "Pendentes e barras apiladas",
+    "fontes": "DGT, Parque de vehículos e Matriculacións, táboas estatísticas 2025; INE, Estatística continua de poboación a 1/1/2026"
+  },
+  {
+    "slug": "vidro-concellos",
+    "titulo": "O vidro, concello a concello",
+    "entradilla": "En 2025 cada galego levou ao contedor verde 15,6 kg de vidro, menos que os 18,9 de 2022. Santiago chega a 26,0 kg por habitante e Ourense queda en 10,3.",
+    "data": "2026-10-28",
+    "temas": [
+      "Sustentabilidade",
+      "Territorio"
+    ],
+    "formato": "Mapa coroplético e enxame",
+    "fontes": "Ecovidrio, datos de recollida de vidro por municipio (2015-2025); INE, Padrón municipal"
+  },
+  {
+    "slug": "etiqueta-cero",
+    "titulo": "A etiqueta CERO chega aos concellos",
+    "entradilla": "Galicia tiña a finais de 2025 25.039 vehículos con etiqueta CERO, 8,9 veces máis que en 2020, pero son 9,2 por cada mil habitantes fronte a 17,0 en España.",
+    "data": "2026-10-28",
+    "temas": [
+      "Mobilidade",
+      "Enerxía",
+      "Sustentabilidade"
+    ],
+    "formato": "Feixe de liñas e mapa de símbolos",
+    "fontes": "DGT, Datos municipais – información xeral (2020-2025)"
+  },
+  {
+    "slug": "bandeiras-azuis",
+    "titulo": "As bandeiras azuis",
+    "entradilla": "Galicia ten 118 praias con bandeira azul en 2026, terceira comunidade en número; pero por quilómetro de costa baixa ao posto 7 de 12, con 7,9 por cada 100 km.",
+    "data": "2026-10-28",
+    "temas": [
+      "Mar",
+      "Turismo",
+      "Sustentabilidade"
+    ],
+    "formato": "Mapa de bandeiriñas e pictograma",
+    "fontes": "Xunta, Datos Abertos, praias con bandeira azul (2013-2026); ADEAC, relación de praias galardoadas 2026; INE/IGN, lonxitude da costa por provincias"
+  },
+  {
+    "slug": "concellos-1950",
+    "titulo": "Os que medran e os que se baleiran",
+    "entradilla": "Galicia ten un 4 % máis de habitantes ca en 1950, pero só 77 dos 313 concellos teñen hoxe máis xente e 156 perderon máis da metade: Oleiros multiplicou a súa poboación por 3,7 e A Veiga quedou co 14 %.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Territorio",
+      "Rural"
+    ],
+    "formato": "Mapa diverxente e barras",
+    "fontes": "INE, Alteracións dos municipios nos censos de poboación dende 1842 (poboación de feito 1950); INE Padrón municipal 2025"
+  },
+  {
+    "slug": "idade-concellos",
+    "titulo": "Do concello máis novo ao máis vello",
+    "entradilla": "A idade media galega é de 48,5 anos (2025), pero vai dos 42,6 de Ames aos 64,5 de Lobeira; en 159 dos 313 concellos hai tres ou máis maiores de 65 por cada menor de 20.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Rural",
+      "Sociedade"
+    ],
+    "formato": "Enxame e pirámides",
+    "fontes": "IGE, Indicadores demográficos (táboa 723); IGE a partir do INE, poboación por sexo e grupos quinquenais de idade (táboa 142), 2025"
+  },
+  {
+    "slug": "enterros-bautizos",
+    "titulo": "Máis enterros ca bautizos",
+    "entradilla": "Entre 2021 e 2025, 312 dos 313 concellos galegos tiveron máis defuncións ca nacementos (só Ames, non); en 1975-1979 pasaba en 157. En 2025 houbo 4 nacementos por cada 10 defuncións.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Rural",
+      "Sociedade"
+    ],
+    "formato": "Cartograma de hexágonos e pictograma",
+    "fontes": "IGE e INE, Movemento natural da poboación por concello 1975-2025 (táboa 227)"
+  },
+  {
+    "slug": "nados-fora",
+    "titulo": "Nados fóra, veciños aquí",
+    "entradilla": "331.997 veciños de Galicia (12,2 %) naceron fóra de España, sobre todo en Venezuela, Colombia e Arxentina; en Avión son o 35,4 % da poboación.",
+    "data": "2026-10-28",
+    "temas": [
+      "Poboación",
+      "Sociedade",
+      "Territorio"
+    ],
+    "formato": "Mapa de círculos e barras apiladas",
+    "fontes": "INE, Censo de poboación anual 2025: poboación por sexo e país de nacemento por municipio (táboas 66404, 66426, 66436, 66442)"
+  },
+  {
+    "slug": "renda-concellos",
+    "titulo": "Canto se gaña en cada concello",
+    "entradilla": "En 2024 a renda neta media en Galicia foi de 15.471 euros por persoa, pero entre concellos vai de 20.827 € en Oleiros a 10.083 € en Avión. E dentro da Coruña, a sección censal máis rica ten 3,5 veces a renda da máis pobre.",
+    "data": "2026-10-28",
+    "temas": [
+      "Economía",
+      "Sociedade",
+      "Territorio"
+    ],
+    "formato": "Mapa coroplético e enxame",
+    "fontes": "INE, Atlas de Distribución de Renda dos Fogares 2024 (táboas 30989, 31088, 31133, 31160 e 53689)"
+  },
+  {
+    "slug": "pensionistas-afiliados",
+    "titulo": "Quen paga as pensións",
+    "entradilla": "A fin de 2024 vivían en Galicia 1,48 persoas afiliadas á Seguridade Social por cada pensionista, pero en 144 dos 313 concellos hai máis pensionistas ca afiliados. En Beariz quedan 0,40; en Ames, 3,23.",
+    "data": "2026-10-28",
+    "temas": [
+      "Economía",
+      "Poboación",
+      "Sociedade"
+    ],
+    "formato": "Dispersión logarítmica e pictograma",
+    "fontes": "IGE, pensións da Seguridade Social por concello de residencia (táboa 6560) e persoas afiliadas segundo o concello de residencia (táboa 11311)"
+  },
+  {
+    "slug": "debeda-concellos",
+    "titulo": "Os concellos que non deben nada",
+    "entradilla": "A fin de 2025, 156 dos 313 concellos galegos non tiñan ningún crédito pendente. Entre todos debían 272,8 millóns, 101 € por habitante e un 47 % menos ca en 2015; só Os Blancos, Miño, Pol e Catoira pasan dos 1.000 € por veciño.",
+    "data": "2026-10-28",
+    "temas": [
+      "Economía",
+      "Territorio"
+    ],
+    "formato": "Histograma de unidades e pesas",
+    "fontes": "Ministerio de Facenda, débeda viva das entidades locais (2015 e 2025); INE, Padrón (táboas 2868, 2880, 2885, 2890)"
+  },
+  {
+    "slug": "paro-concellos",
+    "titulo": "O paro, concello a concello",
+    "entradilla": "En setembro de 2012 había en Galicia 259.373 persoas no paro rexistrado, o 14,3 % da poboación de 15 a 64 anos; en setembro de 2025 eran 113.085, o 6,7 %. A taxa baixou en 309 dos 313 concellos.",
+    "data": "2026-10-28",
+    "temas": [
+      "Economía",
+      "Sociedade"
+    ],
+    "formato": "Pendentes en pequenos múltiplos",
+    "fontes": "SEPE, paro rexistrado por municipios (setembro 2012-2026); IGE, poboación por grupos quinquenais de idade (táboa 142)"
+  },
+  {
+    "slug": "vivenda-salario",
+    "titulo": "Canto custa unha casa en anos",
+    "entradilla": "Unha vivenda de 90 m² ao valor tasado medio de 2024 custaba en Galicia 5,1 anos de salario medio, fronte a 11,8 nas Illes Balears e 3,0 en Ciudad Real. Pontevedra é a galega máis cara (5,8 anos, posto 17 de 48).",
+    "data": "2026-10-28",
+    "temas": [
+      "Vivenda",
+      "Economía"
+    ],
+    "formato": "Pictograma de filas",
+    "fontes": "MIVAU, valor tasado medio da vivenda libre por provincia (2024); Axencia Tributaria, Mercado de traballo e pensións nas fontes tributarias 2024"
+  },
+  {
     "slug": "calculadora-persoal",
     "titulo": "Dende que naciches",
     "entradilla": "Escribe o ano no que naciches e mira cantas hectáreas arderon en Galicia, canto quentou o aire e o mar, cantas aldeas quedaron baleiras e cantos peregrinos chegaron a Compostela dende entón.",

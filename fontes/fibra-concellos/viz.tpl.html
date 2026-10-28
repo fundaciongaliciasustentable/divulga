@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A fibra, concello a concello — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Que parte dos fogares de cada concello galego pode contratar internet fixa a 100 Mbps e a 1 Gbps: os 313 concellos ordenados nunha soa liña de horizonte.">
+<meta property="og:title" content="A fibra, concello a concello">
+<meta property="og:description" content="A cobertura de banda larga a 100 Mbps e a 1 Gbps nos 313 concellos galegos, en 2025.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Liña de horizonte (skyline): os 313 concellos son 313 columnas finas, ordenadas de máis a menos
+   cobertura a 100 Mbps. Cada columna mide o 100 % dos fogares do concello: a parte escura son os
+   fogares con 1 Gbps, a clara os que chegan a 100 Mbps pero non a 1 Gbps, e o oco de papel os que
+   non chegan a 100 Mbps. O perfil que se derruba á dereita é a Galicia que segue sen fibra.
+   Debaixo, a mesma liña repetida para cada provincia (small multiples), coa súa mediana. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --g1:#1d5e6a; --g100:#8cbfc3; --hl:#c2185b;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:10px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+input{font:600 .9rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 10px;background:var(--card);color:var(--ink);width:min(260px,70vw)}
+input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.ficha{min-height:2.9em;margin:0;font-size:.9rem;text-align:center;max-width:62ch;color:var(--muted)}
+.ficha b{color:var(--ink)}.ficha .hl{color:var(--hl)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;display:inline-block;border-radius:2px}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.multi{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px}
+.multi svg{display:block;width:100%;height:auto;overflow:visible}
+@media (max-width:640px){.multi{grid-template-columns:1fr}}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.lab{font:700 12.5px var(--display);fill:var(--ink)}
+.labhl{font:800 13px var(--display);fill:var(--hl)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:820px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:nth-child(2),th:nth-child(2),td:nth-child(3),th:nth-child(3){text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>A fibra, concello a concello</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>O teu concello <input id="q" list="lista" placeholder="Escribe o nome…" autocomplete="off"></label>
+    <datalist id="lista"></datalist>
+  </div>
+  <p class="ficha" id="ficha" aria-live="polite">Pasa o rato ou o dedo pola liña, ou escolle un concello.</p>
+  <div class="legend"><span><i style="background:var(--g1)"></i>fogares con 1 Gbps</span><span><i style="background:var(--g100)"></i>con 100 Mbps, pero non 1 Gbps</span><span><i style="background:var(--soft);border:1px solid var(--line)"></i>sen 100 Mbps</span></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Liña de horizonte: unha columna por concello coa porcentaxe de fogares con cobertura a 100 Mbps e a 1 Gbps, ordenados de máis a menos. A táboa de datos ten os valores."></svg></div>
+  <h2>Provincia a provincia</h2>
+  <p class="sub">A mesma liña para cada provincia. A raia discontinua é a mediana dos seus concellos a 100 Mbps.</p>
+  <div class="multi" id="multi"></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Ministerio para a Transformación Dixital e da Función Pública, <a href="https://digital.gob.es/telecomunicaciones-infraestructuras-digitales/areas-interes/banda-ancha/informacion-cobertura/informes-cobertura/informe-cobertura-2025" target="_blank" rel="noopener">Informe de cobertura de banda ancha en España 2025</a> (datos a 30/06/2025), cobertura por municipio dos seus <a href="https://digital.gob.es/telecomunicaciones-infraestructuras-digitales/areas-interes/banda-ancha/informacion-cobertura/mapas-cobertura-agregada" target="_blank" rel="noopener">mapas de cobertura agregada</a>. A cobertura é a porcentaxe de fogares que poderían contratar esa velocidade de descarga con calquera tecnoloxía fixa (fibra, cable ou redes sen fíos fixas), segundo o que declaran os operadores, non a velocidade que teñen contratada nin a que medirían. «1 Gbps» inclúe só as redes capaces dun xigabit (case sempre fibra ata o fogar). O total de Galicia é o do Ministerio, ponderado polos fogares. Na táboa, a cobertura a 1 Gbps de 2023 vai como referencia, pero o Ministerio medíaa entón sobre unidades inmobiliarias e non sobre fogares. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const f1=v=>v.toFixed(1).replace('.',','),f0=v=>Math.round(v)+'';
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const C=D.conc.slice().sort((a,b)=>b.g100-a.g100||b.g1-a.g1||a.n.localeCompare(b.n,'gl'));
+const posto=c=>1+D.conc.filter(o=>o.g100>c.g100).length;
+const PROV=['A Coruña','Lugo','Ourense','Pontevedra'];
+const mediana=a=>{const s=a.slice().sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
+const MED={};for(const p of PROV)MED[p]=mediana(D.conc.filter(c=>c.pr===p).map(c=>c.g100));
+const ficha=document.getElementById('ficha');
+let sel=null;
+const txt=c=>`<b class="hl">${c.n}</b> (${c.pr}): <b>${f1(c.g100)} %</b> dos fogares con 100 Mbps e <b>${f1(c.g1)} %</b> con 1 Gbps. Posto <b>${posto(c)} de 313</b> a 100 Mbps; a mediana dos concellos ${c.pr==='A Coruña'?'da Coruña':c.pr==='Pontevedra'?'de Pontevedra':'de '+c.pr} é ${f1(MED[c.pr])} %.`;
+const tipT=c=>`<b>${c.n}</b>${c.pr} · posto ${posto(c)} de 313<br>100 Mbps: ${f1(c.g100)} % · 1 Gbps: ${f1(c.g1)} %<br>${miles(c.fog)} fogares, ${miles((100-c.g100)/100*c.fog)} sen 100 Mbps`;
+// Debuxa unha liña de horizonte para unha lista de concellos
+function horizonte(svg,L,o){
+  svg.innerHTML='';
+  const W=svg.parentNode.clientWidth||600,NARROW=W<560;
+  const ML=o.grande?(NARROW?26:34):22,MR=o.grande?8:6,MT=o.grande?30:22,Hc=o.grande?(NARROW?230:330):(NARROW?110:130),MB=o.grande?40:18;
+  const H=MT+Hc+MB;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const cw=(W-ML-MR)/L.length,sy=v=>MT+Hc*(1-v/100);
+  if(o.titulo)el('text',{x:ML,y:14,class:'lab'},svg).textContent=o.titulo;
+  for(const v of [0,25,50,75,100]){
+    el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);
+    if(o.grande||v%50===0)el('text',{x:ML-5,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v+(o.grande&&v===100?' %':'');
+  }
+  // Columnas: un só path por capa (máis lixeiro ca 313 rect)
+  let p100='',p1='';
+  L.forEach((c,i)=>{const x=(ML+i*cw).toFixed(2),w=Math.max(cw-(cw>2.5?.6:0),.6).toFixed(2);
+    p100+=`M${x},${sy(c.g100).toFixed(1)}h${w}V${sy(0)}h-${w}Z`;p1+=`M${x},${sy(c.g1).toFixed(1)}h${w}V${sy(0)}h-${w}Z`});
+  el('rect',{x:ML,y:sy(100),width:W-ML-MR,height:Hc,fill:'var(--soft)'},svg);
+  el('path',{d:p100,fill:'var(--g100)'},svg);el('path',{d:p1,fill:'var(--g1)'},svg);
+  if(o.media!=null){const y=sy(o.media);el('line',{x1:ML,x2:W-MR,y1:y,y2:y,stroke:'var(--ink)','stroke-dasharray':'4 3','stroke-width':1.2},svg);
+    el('text',{x:W-MR-2,y:y-5,class:'axt','text-anchor':'end'},svg).textContent=o.mediaTxt}
+  if(o.grande){
+    el('text',{x:ML,y:H-12,class:'axt'},svg).textContent='← máis cobertura';
+    el('text',{x:W-MR,y:H-12,class:'axt','text-anchor':'end'},svg).textContent='menos cobertura →';
+    el('text',{x:(ML+W-MR)/2,y:H-12,class:'axt','text-anchor':'middle'},svg).textContent=NARROW?'':'cada columna, un dos 313 concellos';
+  }
+  // Concello escollido
+  const g=el('g',{},svg);
+  const marca=c=>{g.innerHTML='';if(!c)return;const i=L.indexOf(c);if(i<0)return;const x=ML+(i+.5)*cw;
+    el('line',{x1:x,x2:x,y1:sy(100)-6,y2:sy(0),stroke:'var(--hl)','stroke-width':Math.max(2,cw)},g);
+    el('circle',{cx:x,cy:sy(c.g100),r:o.grande?4.5:3.5,fill:'var(--hl)',stroke:'#fff','stroke-width':1.5},g);
+    const t=o.grande?el('text',{x:Math.min(Math.max(x,ML+70),W-MR-70),y:sy(100)-12,class:'labhl','text-anchor':'middle'},g):el('text',{x:W-MR,y:14,class:'labhl','text-anchor':'end'},g);
+    t.textContent=o.grande?`${c.n} · ${f0(c.g100)} %`:c.n;};
+  marca(sel);svg._marca=marca;
+  // Interacción: o punteiro escolle a columna máis próxima
+  const hit=el('rect',{x:ML,y:MT,width:W-ML-MR,height:Hc,fill:'transparent'},svg);
+  const pick=ev=>{const r=svg.getBoundingClientRect(),x=(ev.clientX-r.left)*W/r.width;const i=Math.max(0,Math.min(L.length-1,Math.floor((x-ML)/cw)));return L[i]};
+  hit.addEventListener('pointermove',ev=>{const c=pick(ev);show(ev,tipT(c));marca(c)});
+  hit.addEventListener('pointerleave',()=>{hide();marca(sel)});
+  hit.addEventListener('click',ev=>{escoller(pick(ev))});
+}
+function todo(){
+  horizonte(document.getElementById('ch'),C,{grande:true,media:D.gal.g100,mediaTxt:`Galicia: ${f1(D.gal.g100)} % dos fogares a 100 Mbps`});
+  const m=document.getElementById('multi');m.innerHTML='';
+  for(const p of PROV){const d=document.createElement('div');const s=document.createElementNS(NS,'svg');s.setAttribute('role','img');s.setAttribute('aria-label','Liña de horizonte da provincia de '+p);d.appendChild(s);m.appendChild(d);
+    const L=C.filter(c=>c.pr===p);horizonte(s,L,{titulo:`${p} · ${L.length} concellos`,media:MED[p],mediaTxt:`mediana ${f1(MED[p])} %`})}
+}
+function escoller(c){sel=c;document.querySelectorAll('svg').forEach(s=>s._marca&&s._marca(sel));ficha.innerHTML=c?txt(c):'Pasa o rato ou o dedo pola liña, ou escolle un concello.';if(c)document.getElementById('q').value=c.n}
+const q=document.getElementById('q');
+document.getElementById('lista').innerHTML=D.conc.map(c=>`<option value="${c.n}">`).join('');
+const busca=()=>{const v=q.value.trim().toLowerCase();const c=D.conc.find(c=>c.n.toLowerCase()===v);if(c)escoller(c);else if(!v)escoller(null)};
+q.addEventListener('input',busca);q.addEventListener('change',busca);
+todo();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(todo,150)});
+document.getElementById('tbl').innerHTML='<tr><th>Posto</th><th>Concello</th><th>Provincia</th><th>100 Mbps</th><th>1 Gbps</th><th>FTTH</th><th>Fogares</th><th>1 Gbps 2023*</th></tr>'+
+  C.map(c=>`<tr><td>${posto(c)}</td><td>${c.n}</td><td>${c.pr}</td><td>${f1(c.g100)}</td><td>${f1(c.g1)}</td><td>${f1(c.ftth)}</td><td>${miles(c.fog)}</td><td>${c.g1_23!=null?f1(c.g1_23):''}</td></tr>`).join('');
+addEventListener('load',()=>dispatchEvent(new Event('resize')));
+</script>
+</body>
+</html>

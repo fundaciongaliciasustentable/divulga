@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Os berces de Europa — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Fillos por muller nas 244 rexións da Unión Europea en 2024: Galicia, entre as que menos teñen, e a súa evolución dende 2000 fronte a España e a media da UE.">
+<meta property="og:title" content="Os berces de Europa">
+<meta property="og:description" content="Fillos por muller nas rexións da UE: onde está Galicia.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Perfil de barras ordenadas («skyline»): unha barra fina por cada rexión NUTS 2 da UE, da que
+   máis fillos por muller ten (esquerda) á que menos (dereita). A altura é o indicador conxuntural
+   de fecundidade; a liña discontinua, os 2,1 fillos do relevo xeracional; a liña continua, a media
+   da UE. Galicia vai en maxenta; o país escollido, en tinta. As barras que pasan de 2,4 córtanse
+   cun pequeno chanzo e levan o seu valor. Debaixo, a serie de Galicia, España e a UE dende 2000. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --bar:#c9c5bb; --bar2:#4b4f57; --hl:#c2185b;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:14px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select,input{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink);max-width:100%}
+input{width:15em}
+select:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.pos{font:600 1rem var(--num);color:var(--ink);text-align:center;min-height:1.4em;margin:0}
+.pos b{color:var(--hl)}
+.chart,.serie{width:100%}
+.serie{max-width:820px}
+.chart svg,.serie svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.lb{font:700 12.5px var(--display);fill:var(--ink)}
+.lbn{font:700 13px var(--num);fill:var(--ink)}
+.hl{fill:var(--hl)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:260px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:760px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td.n,th.n{text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}.lb{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Os berces de Europa</h1>
+  <p class="dek">En 2024 Galicia tivo <b>0,96 fillos por muller</b>, a cuarta cifra máis baixa das 244 rexións da Unión Europea (posto 241 de 244). A media da UE foi de 1,34 e a de España, de 1,10; o relevo xeracional pide 2,1. Só 5 rexións quedan por baixo de un fillo, e Galicia é unha delas.</p>
+  <div class="tools">
+    <label>Resalta un país <select id="pais"><option value="">Ningún</option></select></label>
+    <label>ou unha rexión <input id="busca" list="rexs" placeholder="Escribe: Norte, Bretagne…" autocomplete="off"></label>
+    <datalist id="rexs"></datalist>
+  </div>
+  <p class="pos" id="pos"></p>
+  <div class="chart"><svg id="ch" role="img" aria-label="Barras ordenadas: fillos por muller en cada rexión NUTS 2 da UE, de máis a menos, con Galicia resaltada. A táboa de datos ten os valores."></svg></div>
+  <h2>Galicia tocou teito en 2008, con 1,13, e volveu baixar</h2>
+  <p class="sub">Fillos por muller en Galicia, España e o conxunto da UE-27, 2000–2024.</p>
+  <div class="serie"><svg id="se" role="img" aria-label="Serie dos fillos por muller en Galicia, España e a UE dende 2000."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/demo_r_frate2/default/table" target="_blank" rel="noopener">demo_r_frate2</a> (fecundidade por rexión NUTS 2, 2024 e serie de Galicia) e <a href="https://ec.europa.eu/eurostat/databrowser/view/demo_frate/default/table" target="_blank" rel="noopener">demo_frate</a> (UE-27 e España). Os fillos por muller son o indicador conxuntural de fecundidade: os fillos que tería unha muller se ao longo da súa vida tivese os fillos que tiveron, por idade, as mulleres dese ano. Non é unha media de fillos de mulleres reais, e baixa cando os nacementos se atrasan. Rexións segundo a clasificación NUTS 2024 que usa Eurostat para 2024; inclúe as rexións ultraperiféricas (Canarias, Mayotte, Guyane…). Os datos anteriores a 2013 publícanse con dúas cifras decimais. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D={"ano":2024,"reg":[["ES70","Canarias",0.818],["ITG2","Sardegna",0.91],["ES12","Principado de Asturias",0.945],["ES11","Galicia",0.958],["ES13","Cantabria",0.993],["MT00","Malta",1.013],["PL51","Dolnośląskie",1.043],["ITF2","Molise",1.052],["ITC2","Valle d’Aosta/Vallée d’Aoste",1.054],["HU11","Budapest",1.067],["DED5","Leipzig",1.069],["ES41","Castilla y León",1.069],["PL72","Świętokrzyskie",1.07],["PL42","Zachodniopomorskie",1.073],["PL22","Śląskie",1.078],["ES53","Illes Balears",1.079],["PL91","Warszawski stołeczny",1.082],["ES51","Cataluña",1.084],["PL52","Opolskie",1.084],["PL61","Kujawsko-pomorskie",1.091],["ES30","Comunidad de Madrid",1.092],["ITF5","Basilicata",1.093],["LT01","Sostinės regionas",1.094],["ITI4","Lazio",1.098],["ES21","País Vasco",1.104],["PL43","Lubuskie",1.104],["ITI3","Marche",1.111],["LT02","Vidurio ir vakarų Lietuvos regionas",1.111],["ITI2","Umbria",1.115],["PL62","Warmińsko-mazurskie",1.119],["ITF1","Abruzzo",1.12],["ITI1","Toscana",1.124],["PL71","Łódzkie",1.128],["ES43","Extremadura",1.13],["ES52","Comunitat Valenciana",1.136],["EL30","Attiki",1.139],["PL81","Lubelskie",1.14],["ITC1","Piemonte",1.145],["ES24","Aragón",1.155],["ITF4","Puglia",1.161],["ES23","La Rioja",1.164],["EL53","Dytiki Makedonia",1.166],["ITC3","Liguria",1.169],["EE00","Eesti",1.177],["ES61","Andalucía",1.177],["EL54","Ipeiros",1.179],["FI1C","Etelä-Suomi",1.183],["RO32","Bucureşti-Ilfov",1.188],["ITC4","Lombardia",1.189],["EL52","Kentriki Makedonia",1.19],["PL41","Wielkopolskie",1.19],["ITH5","Emilia-Romagna",1.191],["PL63","Pomorskie",1.191],["ES42","Castilla-La Mancha",1.192],["ITH4","Friuli-Venezia Giulia",1.192],["PL82","Podkarpackie",1.195],["PL21","Małopolskie",1.197],["ITH3","Veneto",1.2],["ES22","Comunidad Foral de Navarra",1.205],["PL84","Podlaskie",1.205],["AT11","Burgenland",1.21],["FRM0","Corse",1.211],["PT11","Norte",1.211],["DE30","Berlin",1.214],["AT13","Wien",1.218],["EL64","Sterea Elláda",1.224],["PT20","Região Autónoma dos Açores",1.227],["FI1B","Helsinki-Uusimaa",1.229],["LV00","Latvija",1.235],["DE60","Hamburg",1.236],["DED2","Dresden",1.236],["SK02","Západné Slovensko",1.24],["DEG0","Thüringen",1.244],["ITF6","Calabria",1.247],["NL11","Groningen",1.248],["LU00","Luxembourg",1.254],["CZ01","Praha",1.255],["ES63","Ciudad de Ceuta",1.256],["PT30","Região Autónoma da Madeira",1.257],["RO41","Sud-Vest Oltenia",1.261],["ITF3","Campania",1.263],["ITH2","Provincia Autonoma di Trento",1.267],["ITG1","Sicilia",1.268],["FI19","Länsi-Suomi",1.281],["AT22","Steiermark",1.284],["EL51","Anatoliki Makedonia, Thraki",1.287],["EL61","Thessalia",1.289],["FI20","Åland",1.291],["AT21","Kärnten",1.297],["DE80","Mecklenburg-Vorpommern",1.298],["SK01","Bratislavský kraj",1.298],["AT33","Tirol",1.303],["DEA2","Köln",1.305],["NL32","Noord-Holland",1.306],["DEE0","Sachsen-Anhalt",1.311],["PL92","Mazowiecki regionalny",1.311],["PT19","Centro (PT)",1.313],["EL63","Dytiki Elláda",1.314],["DEF0","Schleswig-Holstein",1.318],["AT32","Salzburg",1.319],["FI1D","Pohjois- ja Itä-Suomi",1.319],["DEC0","Saarland",1.32],["DEB2","Trier",1.322],["ES62","Región de Murcia",1.322],["HR05","Grad Zagreb",1.322],["DE12","Karlsruhe",1.329],["RO42","Vest",1.329],["CZ04","Severozápad",1.334],["BE31","Prov. Brabant wallon",1.336],["CZ08","Moravskoslezsko",1.338],["DE50","Bremen",1.339],["DE40","Brandenburg",1.34],["SK03","Stredné Slovensko",1.344],["DE21","Oberbayern",1.345],["BE10","Région de Bruxelles-Capitale/Brussels Hoofdstedelijk Gewest",1.349],["DE72","Gießen",1.35],["SE33","Övre Norrland",1.35],["CZ02","Střední Čechy",1.353],["NL42","Limburg (NL)",1.354],["DE24","Oberfranken",1.355],["ES64","Ciudad de Melilla",1.359],["RO31","Sud-Muntenia",1.361],["DE91","Braunschweig",1.363],["DEA1","Düsseldorf",1.364],["DE71","Darmstadt",1.366],["HU22","Nyugat-Dunántúl",1.369],["AT12","Niederösterreich",1.369],["BE35","Prov. Namur",1.37],["CZ03","Jihozápad",1.374],["EL65","Peloponnisos",1.374],["DE25","Mittelfranken",1.375],["CY00","Kýpros",1.381],["HU23","Dél-Dunántúl",1.384],["CZ05","Severovýchod",1.388],["DE26","Unterfranken",1.389],["DE92","Hannover",1.389],["DE13","Freiburg",1.393],["SE11","Stockholm",1.393],["DED4","Chemnitz",1.401],["BE22","Prov. Limburg (BE)",1.404],["DK01","Hovedstaden",1.404],["FRF3","Lorraine",1.406],["DEA5","Arnsberg",1.41],["DEB1","Koblenz",1.41],["RO22","Sud-Est",1.411],["FRI1","Aquitaine",1.412],["CZ06","Jihovýchod",1.413],["IE06","Eastern and Midland",1.413],["DE73","Kassel",1.414],["NL36","Zuid-Holland",1.414],["HU33","Dél-Alföld",1.415],["RO11","Nord-Vest",1.415],["FRJ2","Midi-Pyrénées",1.419],["DE11","Stuttgart",1.42],["BE33","Prov. Liège",1.421],["SE12","Östra Mellansverige",1.421],["SE32","Mellersta Norrland",1.424],["EL41","Voreio Aigaio",1.426],["HU21","Közép-Dunántúl",1.426],["PT1D","Oeste e Vale do Tejo",1.426],["DEB3","Rheinhessen-Pfalz",1.427],["HR03","Jadranska Hrvatska",1.43],["SE22","Sydsverige",1.436],["DE14","Tübingen",1.44],["CZ07","Střední Morava",1.441],["NL41","Noord-Brabant",1.441],["FRF1","Alsace",1.444],["BE23","Prov. Oost-Vlaanderen",1.445],["HU12","Pest",1.445],["AT34","Vorarlberg",1.448],["AT31","Oberösterreich",1.452],["DE22","Niederbayern",1.457],["DE94","Weser-Ems",1.458],["DE23","Oberpfalz",1.46],["NL35","Utrecht",1.462],["SE23","Västsverige",1.462],["SE31","Norra Mellansverige",1.462],["SI04","Zahodna Slovenija",1.463],["BE24","Prov. Vlaams-Brabant",1.467],["DEA3","Münster",1.468],["FRI2","Limousin",1.47],["DK05","Nordjylland",1.474],["DE27","Schwaben",1.479],["BE32","Prov. Hainaut",1.486],["DE93","Lüneburg",1.487],["RO21","Nord-Est",1.496],["HR06","Sjeverna Hrvatska",1.497],["DEA4","Detmold",1.498],["FRC1","Bourgogne",1.498],["BE25","Prov. West-Vlaanderen",1.499],["EL62","Ionia Nisia",1.5],["FRJ1","Languedoc-Roussillon",1.503],["PT1C","Alentejo",1.503],["IE05","Southern",1.505],["FRK1","Auvergne",1.506],["FRI3","Poitou-Charentes",1.51],["BE34","Prov. Luxembourg (BE)",1.511],["ITH1","Provincia Autonoma di Bolzano/Bozen",1.511],["NL22","Gelderland",1.511],["EL43","Kriti",1.514],["RO12","Centru",1.525],["FRH0","Bretagne",1.53],["DK03","Syddanmark",1.531],["DK04","Midtjylland",1.537],["SE21","Småland med öarna",1.54],["DK02","Sjælland",1.542],["FRD1","Basse-Normandie",1.544],["FRF2","Champagne-Ardenne",1.546],["FRY2","Martinique",1.546],["BE21","Prov. Antwerpen",1.551],["BG41","Yugozapaden",1.552],["FRC2","Franche-Comté",1.554],["NL12","Friesland (NL)",1.568],["NL21","Overijssel",1.569],["NL23","Flevoland",1.58],["FRK2","Rhône-Alpes",1.588],["NL13","Drenthe",1.592],["SI03","Vzhodna Slovenija",1.593],["HR02","Panonska Hrvatska",1.598],["NL34","Zeeland",1.6],["FRG0","Pays de la Loire",1.602],["BG32","Severen tsentralen",1.623],["HU32","Észak-Alföld",1.624],["FRE1","Nord-Pas de Calais",1.629],["IE04","Northern and Western",1.63],["BG33","Severoiztochen",1.633],["PT1A","Grande Lisboa",1.646],["PT15","Algarve",1.651],["FRL0","Provence-Alpes-Côte d’Azur",1.656],["FRD2","Haute-Normandie",1.658],["FRB0","Centre — Val de Loire",1.66],["HU31","Észak-Magyarország",1.674],["FRE2","Picardie",1.682],["FR10","Ile de France",1.684],["EL42","Notio Aigaio",1.693],["PT1B","Península de Setúbal",1.695],["BG42","Yuzhen tsentralen",1.753],["SK04","Východné Slovensko",1.765],["FRY1","Guadeloupe",1.81],["BG31","Severozapaden",1.916],["BG34","Yugoiztochen",2.036],["FRY4","La Réunion",2.116],["FRY3","Guyane",3.115],["FRY5","Mayotte",3.539]],"pais":{"AT":"Austria","BE":"Bélxica","BG":"Bulgaria","CY":"Chipre","CZ":"Chequia","DE":"Alemaña","DK":"Dinamarca","EE":"Estonia","EL":"Grecia","ES":"España","FI":"Finlandia","FR":"Francia","HR":"Croacia","HU":"Hungría","IE":"Irlanda","IT":"Italia","LT":"Lituania","LU":"Luxemburgo","LV":"Letonia","MT":"Malta","NL":"Países Baixos","PL":"Polonia","PT":"Portugal","RO":"Romanía","SE":"Suecia","SI":"Eslovenia","SK":"Eslovaquia"},"serie":{"ES11":[[2000,0.96],[2001,0.95],[2002,0.95],[2003,1.0],[2004,1.0],[2005,1.02],[2006,1.04],[2007,1.06],[2008,1.13],[2009,1.1],[2010,1.09],[2011,1.08],[2012,1.09],[2013,1.044],[2014,1.071],[2015,1.099],[2016,1.12],[2017,1.12],[2018,1.041],[2019,1.018],[2020,1.017],[2021,1.007],[2022,1.007],[2023,0.991],[2024,0.958]],"ES":[[2000,1.215],[2001,1.232],[2002,1.252],[2003,1.296],[2004,1.313],[2005,1.33],[2006,1.362],[2007,1.377],[2008,1.446],[2009,1.379],[2010,1.369],[2011,1.342],[2012,1.321],[2013,1.273],[2014,1.318],[2015,1.33],[2016,1.333],[2017,1.305],[2018,1.256],[2019,1.229],[2020,1.18],[2021,1.181],[2022,1.157],[2023,1.119],[2024,1.103]],"EU":[[2001,1.433],[2002,1.431],[2003,1.442],[2004,1.464],[2005,1.475],[2006,1.502],[2007,1.521],[2008,1.572],[2009,1.564],[2010,1.572],[2011,1.537],[2012,1.537],[2013,1.509],[2014,1.54],[2015,1.541],[2016,1.571],[2017,1.565],[2018,1.545],[2019,1.531],[2020,1.509],[2021,1.531],[2022,1.46],[2023,1.382],[2024,1.341]]}},NS='http://www.w3.org/2000/svg';
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const f2=v=>v.toFixed(2).replace('.',',');
+const tip=document.getElementById('tip');
+const show=(x,y,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(135,Math.min(innerWidth-135,x))+'px';tip.style.top=y+'px'};
+const hide=()=>{tip.hidden=true};
+// De máis a menos fillos: posto 1 = a rexión con máis
+const R=D.reg.slice().reverse().map((r,i)=>({id:r[0],n:r[1],v:r[2],p:i+1,c:r[0].slice(0,2)}));
+const N=R.length,G=R.find(r=>r.id==='ES11');
+const EU=D.serie.EU.at(-1)[1];
+const nome=r=>`${r.n} (${D.pais[r.c]})`;
+const sp=document.getElementById('pais');
+sp.innerHTML+=Object.entries(D.pais).sort((a,b)=>a[1].localeCompare(b[1],'gl')).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
+document.getElementById('rexs').innerHTML=R.map(r=>`<option value="${nome(r)}">`).join('');
+const bi=document.getElementById('busca');
+let selR=null;
+function estado(){
+  const c=sp.value,pos=document.getElementById('pos');
+  if(selR)pos.innerHTML=`${selR.n}: <b style="color:var(--ink)">${f2(selR.v)}</b> fillos por muller · posto ${selR.p} de ${N}`;
+  else if(c){const rs=R.filter(r=>r.c===c);pos.innerHTML=`${D.pais[c]}: ${rs.length} ${rs.length>1?'rexións':'rexión'}, de ${f2(rs.at(-1).v)} a ${f2(rs[0].v)} fillos por muller`}
+  else pos.innerHTML=`Galicia: <b>${f2(G.v)}</b> fillos por muller · posto <b>${G.p}</b> de ${N}`;
+  perfil();
+}
+sp.addEventListener('change',()=>{selR=null;bi.value='';estado()});
+bi.addEventListener('input',()=>{const r=R.find(r=>nome(r)===bi.value);if(r||!bi.value){selR=r||null;if(r)sp.value='';estado()}});
+function perfil(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?26:34,MR=NARROW?6:14,MT=NARROW?64:58,MB=34,Hh=NARROW?340:420;
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const YM=2.4,bw=(W-ML-MR)/N,sx=i=>ML+i*bw,sy=v=>MT+(1-Math.min(v,YM)/YM)*(Hh-MT-MB);
+  for(let v=0;v<=YM+1e-9;v+=.5){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-5,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=f2(v).replace(',00','').replace(/,50$/,',5')}
+  const c=sp.value,g=el('g',{},svg);
+  R.forEach((r,i)=>{
+    const on=r===G||r===selR||(c&&r.c===c);
+    el('rect',{x:sx(i)+(bw>2.2?.3:0),y:sy(r.v),width:Math.max(.6,bw-(bw>2.2?.6:0)),height:sy(0)-sy(r.v),fill:r===G?'var(--hl)':on?'var(--bar2)':'var(--bar)'},g);
+    if(r.v>YM){el('rect',{x:sx(i)-1,y:sy(YM)+7,width:bw+2,height:3,fill:'var(--paper)'},g);}
+  });
+  // Galicia (e a rexión buscada) un chisco máis anchas para que se vexan entre 244
+  for(const r of [G,selR]){if(!r)continue;const w=Math.max(3,bw),x=sx(r.p-1)+bw/2-w/2;
+    el('rect',{x,y:sy(r.v),width:w,height:sy(0)-sy(r.v),fill:r===G?'var(--hl)':'var(--ink)'},g);
+    el('circle',{cx:x+w/2,cy:sy(r.v),r:3.5,fill:r===G?'var(--hl)':'var(--ink)',stroke:'var(--paper)','stroke-width':1.5},g)}
+  // Os cortados, co seu valor
+  R.filter(r=>r.v>YM).forEach((r,k)=>{const i=r.p-1;el('text',{x:sx(i)+bw+4,y:sy(YM)+11+k*13,class:'ax'},svg).textContent=`${r.n} ${f2(r.v)}`});
+  // Relevo e media UE
+  el('line',{x1:ML,x2:W-MR,y1:sy(2.1),y2:sy(2.1),stroke:'var(--ink)','stroke-dasharray':'4 3','stroke-width':1.2},svg);
+  el('text',{x:W-MR,y:sy(2.1)-6,class:'axt','text-anchor':'end'},svg).textContent='2,1: relevo xeracional';
+  el('line',{x1:ML,x2:W-MR,y1:sy(EU),y2:sy(EU),stroke:'var(--ink)','stroke-width':1.2,opacity:.7},svg);
+  el('text',{x:W-MR,y:sy(EU)-6,class:'axt','text-anchor':'end'},svg).textContent=`media UE-27: ${f2(EU)}`;
+  // Etiquetas: Galicia e a seleccionada
+  const etiq=(r,cor,nivel)=>{
+    const x=sx(r.p-1)+bw/2,y0=sy(r.v),yl=MT-40+nivel*22;
+    el('line',{x1:x,x2:x,y1:yl+5,y2:y0-2,stroke:cor,'stroke-width':1},svg);
+    const right=x>W*.6;
+    const t=el('text',{x:right?x-4:x+4,y:yl,class:'lb','text-anchor':right?'end':'start',fill:cor},svg);
+    t.textContent=`${r.n} ${f2(r.v)} · ${r.p}.º de ${N}`;if(cor!=='var(--ink)')t.setAttribute('style',`fill:${cor}`);
+  };
+  etiq(G,'var(--hl)',0);
+  if(selR&&selR!==G)etiq(selR,'var(--ink)',1);
+  el('text',{x:ML,y:Hh-10,class:'axt'},svg).textContent='← máis fillos';
+  el('text',{x:W-MR,y:Hh-10,class:'axt','text-anchor':'end'},svg).textContent='menos fillos →';
+  if(!NARROW)el('text',{x:(ML+W-MR)/2,y:Hh-10,class:'axt','text-anchor':'middle'},svg).textContent=`${N} rexións NUTS 2 da UE, ${D.ano}`;
+  // Capa de rato/dedo: a barra máis próxima
+  const hit=el('rect',{x:ML,y:MT-10,width:W-ML-MR,height:Hh-MT-MB+10,fill:'transparent'},svg);
+  const mv=ev=>{const b=svg.getBoundingClientRect(),k=(ev.clientX-b.left)*(W/b.width);const i=Math.max(0,Math.min(N-1,Math.floor((k-ML)/bw)));const r=R[i];
+    show(ev.clientX,ev.clientY,`<b>${r.n}</b>${D.pais[r.c]}<br>${f2(r.v)} fillos por muller · posto ${r.p} de ${N}`)};
+  hit.addEventListener('pointermove',mv);hit.addEventListener('pointerdown',mv);hit.addEventListener('pointerleave',hide);
+}
+function serie(){
+  const svg=document.getElementById('se');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<520,Hh=NARROW?240:260,ML=30,MR=NARROW?70:84,MT=14,MB=26;
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const S=D.serie,a0=Math.min(...Object.values(S).map(s=>s[0][0])),a1=D.ano;
+  const sx=a=>ML+(a-a0)/(a1-a0)*(W-ML-MR),y0=.8,y1=1.6,sy=v=>MT+(1-(v-y0)/(y1-y0))*(Hh-MT-MB);
+  for(let v=y0;v<=y1+1e-9;v+=.2){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-5,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v.toFixed(1).replace('.',',')}
+  el('line',{x1:ML,x2:W-MR,y1:sy(1),y2:sy(1),stroke:'var(--muted)','stroke-width':1},svg);
+  for(let a=Math.ceil(a0/4)*4;a<=a1;a+=NARROW?8:4)el('text',{x:sx(a),y:Hh-6,class:'ax','text-anchor':'middle'},svg).textContent=a;
+  const L=[['EU','UE-27','var(--bar2)'],['ES','España','var(--muted)'],['ES11','Galicia','var(--hl)']];
+  const ys=[];
+  for(const [k,n,c] of L){
+    const s=S[k];
+    el('path',{d:'M'+s.map(p=>`${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join('L'),fill:'none',stroke:c,'stroke-width':k==='ES11'?3:2,'stroke-dasharray':k==='ES'?'':'', 'stroke-linejoin':'round'},svg);
+    for(const p of s){const ci=el('circle',{cx:sx(p[0]),cy:sy(p[1]),r:k==='ES11'?3:2.2,fill:c},svg);
+      ci.addEventListener('pointermove',ev=>show(ev.clientX,ev.clientY,`<b>${n}, ${p[0]}</b>${f2(p[1])} fillos por muller`));ci.addEventListener('pointerleave',hide)}
+    ys.push([sy(s.at(-1)[1]),n,c,s.at(-1)[1],s.at(-1)[0]]);
+  }
+  ys.sort((a,b)=>a[0]-b[0]);for(let i=1;i<ys.length;i++)if(ys[i][0]-ys[i-1][0]<15)ys[i][0]=ys[i-1][0]+15;
+  for(const [y,n,c,v,a] of ys){const t=el('text',{x:sx(a)+7,y:y+4,class:'lb'},svg);t.textContent=`${n} ${f2(v)}`;t.setAttribute('style',`fill:${c}`)}
+  // Máximo de Galicia
+  const gm=S.ES11.reduce((m,p)=>p[1]>m[1]?p:m);
+  el('text',{x:sx(gm[0]),y:sy(gm[1])-9,class:'axt','text-anchor':'middle'},svg).textContent=`máximo: ${f2(gm[1])} en ${gm[0]}`;
+}
+estado();serie();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{perfil();serie()},150)});
+document.getElementById('tbl').innerHTML='<tr><th>Posto</th><th class="n">Rexión</th><th class="n">País</th><th>Fillos por muller</th></tr>'+
+  R.map(r=>`<tr${r===G?' class="g"':''}><td>${r.p}</td><td class="n">${r.n}</td><td class="n">${D.pais[r.c]}</td><td>${f2(r.v)}</td></tr>`).join('');
+</script>
+</body>
+</html>

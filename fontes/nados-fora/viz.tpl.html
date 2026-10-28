@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nados fóra, veciños aquí — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Canta xente de cada concello galego naceu no estranxeiro, e en que países: un mapa de círculos e os vinte concellos coa maior porcentaxe, segundo o censo de 2025.">
+<meta property="og:title" content="Nados fóra, veciños aquí">
+<meta property="og:description" content="A poboación nada no estranxeiro de cada concello galego e os seus países de orixe.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Mapa de círculos proporcionais + barras apiladas. No mapa, cada círculo está no centro dun
+   concello: a área é o número de veciños nados no estranxeiro e a cor, a porcentaxe que son da
+   súa poboación. Ao lado, a ficha do concello escollido cos seus países de nacemento. Debaixo,
+   barras apiladas horizontais para os 20 concellos con maior porcentaxe (máis Galicia e o
+   concello escollido): o largo é a porcentaxe de nados fóra e cada tramo, unha rexión de orixe. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6; --hl:#c2185b;
+  --p1:#dfe6ea; --p2:#a9c0cc; --p3:#6f97ab; --p4:#3f6d86; --p5:#1f4458;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:10px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:68ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.85rem;color:var(--muted)}
+input{font:600 .9rem var(--display);border:1px solid var(--line);border-radius:3px;padding:8px 10px;background:var(--card);color:var(--ink);width:240px;max-width:70vw}
+input:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+button{font:600 .8rem var(--display);border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:3px;padding:7px 10px;cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:.78rem;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.legend.sq i{border-radius:2px}
+.top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px 26px;width:100%;align-items:start}
+.map svg{display:block;width:100%;height:auto}
+.co{fill:#f1efe9;stroke:#fff;stroke-width:.8;cursor:pointer}
+.co.on{fill:#f6dfe8;stroke:var(--hl);stroke-width:2}
+.ci{stroke:#fff;stroke-width:.8;fill-opacity:.92;cursor:pointer}
+.ci:hover{stroke:var(--ink);stroke-width:1.4}
+.ci.on{stroke:var(--hl);stroke-width:3}
+.ficha{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px}
+.ficha h3{margin:0;font:800 1.3rem var(--display)}
+.ficha h3 small{display:block;font:600 .78rem var(--display);color:var(--muted);margin-top:2px}
+.ficha .big{font:700 2.6rem/1 var(--num);margin-top:8px;color:var(--p4)}
+.ficha .big small{font:600 .95rem var(--display);color:var(--muted)}
+.ficha ul{list-style:none;padding:0;margin:8px 0 0;font-size:.86rem;color:var(--muted);line-height:1.5}
+.ficha ul b{color:var(--ink);font-family:var(--num);font-size:1.05rem}
+.paises{margin-top:12px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:3px 8px;align-items:center;font-size:.8rem}
+.paises i{display:block;height:10px;border-radius:1px}
+.paises b{font:700 .95rem var(--num);text-align:right}
+.chart{width:100%;max-width:1000px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:600 12.5px var(--display);fill:var(--ink)}
+.rl.hl{fill:var(--hl);font-weight:800}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.row{cursor:pointer}
+.row:hover .rl{text-decoration:underline}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:290px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper);cursor:pointer}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:760px){.top{grid-template-columns:1fr}}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}.rl{font-size:12.5px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Nados fóra, veciños aquí</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>O teu concello <input id="q" list="lc" placeholder="Escribe o nome…" autocomplete="off"></label>
+    <datalist id="lc"></datalist>
+    <button id="lim" type="button">Ver Galicia</button>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="top">
+    <div class="map"><svg id="map" role="img" aria-label="Mapa de Galicia cun círculo por concello: a área é a poboación nada no estranxeiro e a cor a súa porcentaxe sobre o total. A táboa ten as cifras."></svg></div>
+    <div class="ficha" id="ficha" aria-live="polite"></div>
+  </div>
+  <h2>Os 20 concellos con máis veciños nados fóra, e de onde veñen</h2>
+  <p class="sub">Porcentaxe da poboación nada no estranxeiro, por rexión de nacemento. Arriba, Galicia e o concello escollido.</p>
+  <div class="legend sq" id="lg2"></div>
+  <div class="chart"><svg id="ch" role="img" aria-label="Barras apiladas: porcentaxe de poboación nada no estranxeiro en cada un dos 20 concellos con maior proporción, por rexión de nacemento."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">INE, Censo de poboación (censo anual) a 1 de xaneiro de __ANO__, «Población por sexo y país de nacimiento (principales países)» por municipio: táboas <a href="https://www.ine.es/jaxiT3/Tabla.htm?t=66404" target="_blank" rel="noopener">66404</a> (A Coruña), <a href="https://www.ine.es/jaxiT3/Tabla.htm?t=66426" target="_blank" rel="noopener">66426</a> (Lugo), <a href="https://www.ine.es/jaxiT3/Tabla.htm?t=66436" target="_blank" rel="noopener">66436</a> (Ourense) e <a href="https://www.ine.es/jaxiT3/Tabla.htm?t=66442" target="_blank" rel="noopener">66442</a> (Pontevedra). Nado no estranxeiro non quere dicir estranxeiro: unha boa parte son fillos e netos da emigración galega nados en América ou en Europa, con nacionalidade española, e moitos volveron á terra dos seus pais. O INE só detalla os 14 países de nacemento máis frecuentes en España e agrupa o resto por continente, así que países con moita relación con Galicia como Suíza, Brasil, México, Uruguai ou Portugal quedan en «resto de Europa» ou «resto de América». Este mapa é o stock de residentes a unha data, non os fluxos de cada ano (véxase <a href="../migracions/">Quen chega e quen marcha</a>). Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const C=D.conc,N=C.length,PA=D.paises,ANO=D.ano;
+const f0=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const f1=v=>v.toFixed(1).replace('.',',');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+// Rexións de orixe para as cores (os 19 grupos do INE en 8)
+const RX=[['Venezuela','#2e6b8a',['Venezuela']],['Cuba','#6fa3bd',['Cuba']],['Arxentina','#a9cadb',['Arxentina']],['Colombia','#6b4c8a',['Colombia']],
+  ['Resto de América','#b49ccb',['Perú','Rep. Dominicana','Ecuador','Bolivia','Resto de América']],
+  ['Europa','#b0743a',['Francia','Reino Unido','Romanía','Ucraína','Resto de Europa']],['África','#7a7a2e',['Marrocos','Resto de África']],['Asia e Oceanía','#a9abb0',['China','Resto de Asia','Oceanía']]];
+const rx=o=>RX.map(r=>r[2].reduce((s,p)=>s+o.p[PA.indexOf(p)],0));
+const G={n:'Galicia',t:C.reduce((s,o)=>s+o.t,0),f:C.reduce((s,o)=>s+o.f,0),p:PA.map((_,i)=>C.reduce((s,o)=>s+o.p[i],0))};
+C.forEach(o=>o.pc=o.f/o.t*100);G.pc=G.f/G.t*100;
+C.slice().sort((a,b)=>b.pc-a.pc).forEach((o,i)=>o.rk=i+1);
+const med=a=>{const s=a.slice().sort((x,y)=>x-y),k=s.length;return k%2?s[(k-1)/2]:(s[k/2-1]+s[k/2])/2};
+const PR=['A Coruña','Lugo','Ourense','Pontevedra'],MEDP={};PR.forEach(p=>MEDP[p]=med(C.filter(o=>o.pr===p).map(o=>o.pc)));
+const CUT=[5,10,15,20],COL=['var(--p1)','var(--p2)','var(--p3)','var(--p4)','var(--p5)'];
+const col=v=>COL[CUT.filter(c=>v>=c).length];
+document.getElementById('legend').innerHTML='<span>Nados no estranxeiro, % da poboación:</span>'+['menos do 5 %','5–10 %','10–15 %','15–20 %','20 % ou máis'].map((t,i)=>`<span><i style="background:${COL[i]}"></i>${t}</span>`).join('')+'<span>· a área, cantos son</span>';
+document.getElementById('lg2').innerHTML=RX.map(r=>`<span><i style="background:${r[1]}"></i>${r[0]}</span>`).join('');
+let sel=null;
+const q=document.getElementById('q');
+document.getElementById('lc').innerHTML=C.map(o=>`<option value="${o.n}">`).join('');
+function escolle(o){sel=o;q.value=o?o.n:'';marca();ficha();barras()}
+q.addEventListener('input',()=>{const o=C.find(o=>o.n.toLowerCase()===q.value.trim().toLowerCase());if(o)escolle(o)});
+q.addEventListener('change',()=>{const v=q.value.trim().toLowerCase();if(!v){escolle(null);return}const o=C.find(o=>o.n.toLowerCase()===v)||C.find(o=>o.n.toLowerCase().includes(v));if(o)escolle(o)});
+document.getElementById('lim').addEventListener('click',()=>escolle(null));
+const top3=o=>PA.map((p,i)=>[p,o.p[i]]).sort((a,b)=>b[1]-a[1]).slice(0,3).filter(x=>x[1]>0).map(([p,v])=>`${p} ${f0(v)}`).join(' · ');
+const tt=o=>`<b>${o.n}</b>${o.pr?o.pr+' · ':''}${f0(o.t)} hab.<br>${f0(o.f)} nados no estranxeiro (${f1(o.pc)} %)${o.rk?' · posto '+o.rk+' de '+N:''}<br>${top3(o)}`;
+
+// Mapa
+const PO={},CI={};
+(function(){
+  const svg=document.getElementById('map');
+  const xs=C.flatMap(o=>o.pol.flatMap(r=>r.map(p=>p[0]))),ys=C.flatMap(o=>o.pol.flatMap(r=>r.map(p=>p[1])));
+  const x0=Math.min(...xs),y0=Math.min(...ys),x1=Math.max(...xs),y1=Math.max(...ys);
+  svg.setAttribute('viewBox',`${x0-6} ${y0-6} ${x1-x0+12} ${y1-y0+12}`);
+  const gp=el('g',{},svg),gc=el('g',{},svg);
+  for(const o of C){const p=el('path',{d:o.pol.map(r=>'M'+r.map(q=>q.join(',')).join('L')+'Z').join(''),class:'co'},gp);PO[o.id]=p;
+    p.addEventListener('mousemove',ev=>show(ev,tt(o)));p.addEventListener('mouseleave',hide);p.addEventListener('click',()=>escolle(o))}
+  const FM=Math.max(...C.map(o=>o.f)),RM=44;
+  for(const o of C.slice().sort((a,b)=>b.f-a.f)){
+    const c=el('circle',{cx:o.c[0],cy:o.c[1],r:Math.max(1.6,RM*Math.sqrt(o.f/FM)).toFixed(1),fill:col(o.pc),class:'ci'},gc);CI[o.id]=c;
+    c.addEventListener('mousemove',ev=>show(ev,tt(o)));c.addEventListener('mouseleave',hide);c.addEventListener('click',()=>escolle(o));
+  }
+  // lenda de tamaños
+  const lx=x1-95,ly=y1-46;
+  for(const v of [1000,10000,40000]){if(v>FM*1.2)continue;const r=RM*Math.sqrt(v/FM);el('circle',{cx:lx,cy:ly-r,r,fill:'none',stroke:'var(--muted)','stroke-width':.8},svg);
+    el('line',{x1:lx,x2:lx+RM+4,y1:ly-2*r,y2:ly-2*r,stroke:'var(--muted)','stroke-width':.6},svg);el('text',{x:lx+RM+8,y:ly-2*r+7,class:'ax','font-size':30},svg).textContent=f0(v)}
+  el('text',{x:lx,y:ly+34,class:'axt','text-anchor':'middle','font-size':28},svg).textContent='persoas nadas fóra';
+})();
+function marca(){
+  for(const id in PO){PO[id].classList.toggle('on',!!sel&&id===sel.id);CI[id].classList.toggle('on',!!sel&&id===sel.id)}
+  if(sel){PO[sel.id].parentNode.appendChild(PO[sel.id]);CI[sel.id].parentNode.appendChild(CI[sel.id])}
+}
+function ficha(){
+  const o=sel||G,fx=document.getElementById('ficha');
+  const pais=PA.map((p,i)=>[p,o.p[i]]).sort((a,b)=>b[1]-a[1]).filter(x=>x[1]>0).slice(0,8);
+  const mx=pais.length?pais[0][1]:1;
+  const cor=p=>RX.find(r=>r[2].includes(p))[1];
+  fx.innerHTML=`<h3>${o.n}<small>${sel?o.pr+' · ':''}${f0(o.t)} habitantes a 1/1/${ANO}</small></h3>
+    <div class="big">${f1(o.pc)} % <small>naceu no estranxeiro</small></div>
+    <ul><li><b>${f0(o.f)}</b> persoas, máis ou menos ${o.pc>=1?'unha de cada '+Math.round(100/o.pc):'menos dunha de cada cen'}</li>
+    ${sel?`<li>Posto <b>${o.rk}</b> de ${N} pola porcentaxe</li><li>Mediana de ${o.pr}: <b>${f1(MEDP[o.pr])} %</b> · Galicia: <b>${f1(G.pc)} %</b></li>`:'<li>Busca o teu concello ou toca o mapa.</li>'}</ul>
+    <div class="paises">${pais.map(([p,v])=>`<span>${p}</span><i style="width:${(v/mx*100).toFixed(1)}%;background:${cor(p)}"></i><b>${f0(v)}</b>`).join('')}</div>`;
+}
+// Barras apiladas
+function barras(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const top=C.slice().sort((a,b)=>b.pc-a.pc).slice(0,20);
+  const filas=[G,...(sel&&!top.includes(sel)?[sel]:[]),null,...top];
+  const RH=NARROW?34:24,ML=NARROW?0:170,MR=NARROW?36:50,MT=22;
+  const H=MT+filas.length*RH+20;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const xm=Math.ceil(Math.max(...top.map(o=>o.pc))/5)*5,sx=v=>ML+v/xm*(W-ML-MR);
+  for(let v=0;v<=xm;v+=5){el('line',{x1:sx(v),x2:sx(v),y1:MT-4,y2:H-18,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:MT-8,class:'ax','text-anchor':'middle'},svg).textContent=v+' %'}
+  filas.forEach((o,i)=>{
+    if(!o)return;
+    const y=MT+i*RH,g=el('g',{class:'row'},svg),bh=NARROW?14:16,by=NARROW?y+16:y+(RH-bh)/2;
+    const lab=o===G?'Galicia':(o.rk?o.rk+'. ':'')+o.n;
+    el('text',{x:NARROW?0:ML-8,y:NARROW?y+12:y+RH/2+4,class:'rl'+(o===sel||o===G?' hl':''),'text-anchor':NARROW?'start':'end'},g).textContent=lab+(NARROW&&o!==G?' · '+o.pr:'');
+    let x=0;const parts=rx(o);
+    parts.forEach((v,k)=>{const w=v/o.t*100;if(w<=0)return;
+      const r=el('rect',{x:sx(x),y:by,width:Math.max(.5,sx(x+w)-sx(x)-.6),height:bh,fill:RX[k][1]},g);
+      r.addEventListener('mousemove',ev=>show(ev,`<b>${o.n}</b>${RX[k][0]}: ${f0(v)} persoas (${f1(w)} % da poboación)`));r.addEventListener('mouseleave',hide);x+=w});
+    el('text',{x:sx(o.pc)+5,y:by+bh-3,class:'ax'},g).textContent=f1(o.pc)+' %';
+    if(o!==G)g.addEventListener('click',()=>escolle(o));
+  });
+}
+let ordT='pc',dirT=-1;
+function taboa(){
+  const cols=[['n','Concello'],['pr','Provincia'],['t','Poboación'],['f','Nados fóra'],['pc','%'],...PA.map((p,i)=>['p'+i,p])];
+  const rows=C.map(o=>({...o,...Object.fromEntries(o.p.map((v,i)=>['p'+i,v]))}));
+  rows.sort((a,b)=>(typeof a[ordT]==='string'?a[ordT].localeCompare(b[ordT],'gl'):a[ordT]-b[ordT])*dirT);
+  const t=document.getElementById('tbl');
+  t.innerHTML='<tr>'+cols.map(([k,n])=>`<th data-k="${k}">${n}${k===ordT?(dirT>0?' ↑':' ↓'):''}</th>`).join('')+'</tr>'+
+    rows.map(o=>`<tr><td>${o.n}</td><td>${o.pr}</td><td>${f0(o.t)}</td><td>${f0(o.f)}</td><td>${f1(o.pc)}</td>${o.p.map(v=>`<td>${f0(v)}</td>`).join('')}</tr>`).join('');
+  t.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;dirT=k===ordT?-dirT:1;ordT=k;taboa()}));
+}
+ficha();barras();taboa();
+let lw=innerWidth;
+addEventListener('resize',()=>{if(innerWidth===lw)return;lw=innerWidth;clearTimeout(window._r);window._r=setTimeout(barras,150)});
+</script>
+</body>
+</html>

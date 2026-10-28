@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Canto queda o hospital — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Os minutos en coche dende cada aldea, lugar e núcleo de Galicia ata o hospital público do Sergas máis próximo, e a media de cada concello.">
+<meta property="og:title" content="Canto queda o hospital">
+<meta property="og:description" content="Minutos en coche ao hospital público máis próximo dende os 28.000 núcleos habitados de Galicia.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Mapa de isócronas en grella + curva acumulada. O mapa divide Galicia en cadros de 3 × 3 km e
+   colorea os que teñen xente segundo os minutos en coche ao hospital público máis próximo
+   (media das súas aldeas e núcleos, ponderada pola poboación); os baleiros quedan en papel. As
+   cruces son os 14 hospitais xerais do Sergas. Á dereita, a curva acumulada: que parte da
+   poboación chega ao hospital en X minutos ou menos, para Galicia e para o concello escollido.
+   Debaixo, os 15 concellos onde a viaxe media é máis longa, en piruletas. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --hl:#c2185b;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:0 0 4px}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0 0 6px;color:var(--muted);font-size:.84rem}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+input{font:600 .9rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 10px;background:var(--card);color:var(--ink);width:min(260px,70vw)}
+input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.ficha{min-height:2.9em;margin:0;font-size:.9rem;text-align:center;max-width:64ch;color:var(--muted)}
+.ficha b{color:var(--ink)}.ficha .hl{color:var(--hl)}
+.duo{width:100%;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px 32px;align-items:start}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+.duo svg,.lol svg{display:block;width:100%;height:auto;overflow:visible}
+.lol{width:100%;max-width:760px}
+.co{fill:transparent;stroke:rgba(255,255,255,.55);stroke-width:.7;cursor:pointer}
+.co:hover{stroke:var(--ink);stroke-width:1.6}
+.co.on{stroke:var(--hl);stroke-width:3}
+.leg{font:600 11.5px var(--num);fill:var(--muted)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.rl{font:600 12.5px var(--display);fill:var(--ink)}
+.rv{font:600 13px var(--num);fill:var(--ink)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:290px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:nth-child(2),th:nth-child(2),td:nth-child(3),th:nth-child(3),td:nth-child(9),th:nth-child(9){text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}.rl{font-size:13px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Canto queda o hospital</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>O teu concello <input id="q" list="lista" placeholder="Escribe o nome…" autocomplete="off"></label>
+    <datalist id="lista"></datalist>
+  </div>
+  <p class="ficha" id="ficha" aria-live="polite">Toca un concello no mapa ou búscao.</p>
+  <div class="duo">
+    <div><svg id="mapa" role="img" aria-label="Mapa de Galicia en cadros de 3 km coloreados segundo os minutos en coche ao hospital público máis próximo, cos 14 hospitais do Sergas marcados. A táboa de datos ten os valores por concello."></svg></div>
+    <div><h2>A curva do tempo</h2><p class="sub">Que parte da poboación chega ao hospital público en tantos minutos ou menos.</p>
+      <svg id="cu" role="img" aria-label="Curva acumulada da poboación segundo os minutos ao hospital, para Galicia e para o concello escollido."></svg></div>
+  </div>
+  <div class="lol"><h2>Os 15 concellos máis lonxe</h2><p class="sub">Minutos medios ata o hospital público máis próximo, ponderados pola poboación de cada núcleo.</p><svg id="rk" role="img" aria-label="Os 15 concellos coa viaxe media máis longa ao hospital."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Hospitais: Ministerio de Sanidade, <a href="https://www.sanidad.gob.es/estadEstudios/estadisticas/sisInfSanSNS/ofertaRecursos/hospitales/home.htm" target="_blank" rel="noopener">Catálogo Nacional de Hospitais 2025</a> (situación a 31/12/2024): os 14 hospitais xerais do Sergas. Os complexos hospitalarios cóntanse no seu edificio principal, e quedan fóra os hospitais privados, tamén Povisa (concertado). Poboación: <a href="https://www.ige.gal/web/mostrar_actividade_estatistica.jsp?idioma=gl&codigo=0201001002" target="_blank" rel="noopener">Nomenclátor do IGE</a> de 2025, __NE__ entidades habitadas, situadas cos puntos do Instituto de Estudos do Territorio (ou, se faltan, no centro da parroquia). Tempos: <a href="http://project-osrm.org" target="_blank" rel="noopener">OSRM</a> sobre a rede viaria de <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (© colaboradores de OSM), en coche e sen tráfico: o tempo real adoita ser maior, sobre todo nas cidades e nas horas punta. Coordenadas dos hospitais de OpenStreetMap (Nominatim). O hospital «máis próximo» é o máis rápido en coche, non necesariamente o que corresponde por área sanitaria, e non todos os hospitais teñen todas as especialidades. Non se contan os hospitais de fóra de Galicia (para o leste de Lugo e Ourense, o do Bierzo en Ponferrada pode quedar máis preto), nin o transporte sanitario urxente. Nas illas sen ponte (como Ons ou as Cíes) OSRM sae da estrada máis próxima en terra e o tempo é orientativo. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const f0=v=>Math.round(v)+'',f1=v=>v.toFixed(1).replace('.',',');
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const C=D.conc,H=D.hosp,ORD=C.slice().sort((a,b)=>b.m-a.m||a.n.localeCompare(b.n,'gl'));
+const posto=c=>1+C.filter(o=>o.m>c.m).length;// 1 = o máis lonxe
+const PROV=['A Coruña','Lugo','Ourense','Pontevedra'];
+const mediana=a=>{const s=a.slice().sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
+const MED={};for(const p of PROV)MED[p]=mediana(C.filter(c=>c.pr===p).map(c=>c.m));
+const dp=p=>p==='A Coruña'?'da Coruña':'de '+p;
+const BAN=[10,20,30,45,60],COR=['#f2efe6','#cfe0d6','#93bfae','#5a9384','#2f6467','#173a49'];
+const cor=v=>COR[BAN.filter(t=>v>t).length];
+const ET=['ata 10','10-20','20-30','30-45','45-60','máis de 60'];
+let sel=null;
+const tipC=c=>`<b>${c.n}</b>${c.pr} · posto ${posto(c)} de 313 (1 = o máis lonxe)<br>${f0(c.m)} min de media ao ${H[c.h].n}<br>${f1(c.km)} km por estrada · ${f1(c.lr)} km en liña recta<br>${f0(c.p30*100)} % dos veciños a máis de 30 min<br>Núcleo máis lonxe: ${c.pe[0]}, ${c.pe[1]} min`;
+function mapa(){
+  const svg=document.getElementById('mapa');svg.innerHTML='';
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;for(const c of C)for(const r of c.pol)for(const [x,y] of r){x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y)}
+  const k=(x1-x0)/Math.max(280,svg.getBoundingClientRect().width||svg.parentNode.clientWidth||600);
+  svg.setAttribute('viewBox',`${x0-4} ${y0-4} ${x1-x0+8} ${y1-y0+8+52*k}`);
+  // Contorno de Galicia (todos os concellos en papel escuro) e grella de cadros
+  el('path',{d:C.map(c=>c.pol.map(r=>'M'+r.map(q=>q.join(',')).join('L')+'Z').join('')).join(''),fill:'var(--soft)'},svg);
+  const S=D.cel;let ps=COR.map(()=>'');
+  for(const [i,j,m] of D.grella){ps[BAN.filter(t=>m>t).length]+=`M${i*S},${j*S}h${S}v${S}h-${S}Z`}
+  ps.forEach((d,i)=>el('path',{d,fill:COR[i]},svg));
+  for(const c of C){const p=el('path',{d:c.pol.map(r=>'M'+r.map(q=>q.join(',')).join('L')+'Z').join(''),class:'co'},svg);c._p=p;
+    p.addEventListener('mousemove',ev=>show(ev,tipC(c)));p.addEventListener('mouseleave',hide);p.addEventListener('click',()=>escoller(c))}
+  // Hospitais: cruces
+  const s=7*k;
+  for(const h of H){const [x,y]=h.xy;const g=el('g',{style:'cursor:default'},svg);
+    el('rect',{x:x-s,y:y-s,width:2*s,height:2*s,rx:s*.3,fill:'#fff',stroke:'var(--ink)','stroke-width':k*1.2},g);
+    el('path',{d:`M${x-s*.6},${y}H${x+s*.6}M${x},${y-s*.6}V${y+s*.6}`,stroke:'var(--hl)','stroke-width':k*2.2},g);
+    g.addEventListener('mousemove',ev=>show(ev,`<b>${h.n}</b>${h.cnh}<br>${miles(h.camas)} camas`));g.addEventListener('mouseleave',hide)}
+  const ly=y1+16*k,lw=Math.min(54,(x1-x0)/k/6.4)*k;
+  el('text',{x:x0,y:ly-5*k,class:'leg',style:`font-size:${12*k}px`},svg).textContent='minutos en coche ao hospital público máis próximo';
+  COR.forEach((col,i)=>{el('rect',{x:x0+i*lw,y:ly,width:lw-2*k,height:10*k,fill:col},svg);el('text',{x:x0+i*lw,y:ly+24*k,class:'leg',style:`font-size:${11.5*k}px`},svg).textContent=ET[i]});
+  marca();
+}
+function curva(){
+  const svg=document.getElementById('cu');svg.innerHTML='';
+  const W=svg.getBoundingClientRect().width||svg.parentNode.clientWidth||420,Hh=Math.min(320,Math.max(240,W*.72)),ML=36,MR=14,MT=12,MB=34;
+  svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const XM=90,sx=v=>ML+v/XM*(W-ML-MR),sy=v=>MT+(1-v)*(Hh-MT-MB);
+  for(const v of [0,.25,.5,.75,1]){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);el('text',{x:ML-6,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=f0(v*100)+(v===1?' %':'')}
+  for(let m=0;m<=XM;m+=15){el('line',{x1:sx(m),x2:sx(m),y1:MT,y2:sy(0),stroke:'var(--grid)'},svg);el('text',{x:sx(m),y:Hh-16,class:'ax','text-anchor':'middle'},svg).textContent=m}
+  el('text',{x:W-MR,y:Hh-2,class:'axt','text-anchor':'end'},svg).textContent='minutos en coche →';
+  const acum=(cu,paso)=>{const t=cu.reduce((a,b)=>a+b,0);let s=0;const pts=[[0,0]];cu.forEach((v,i)=>{s+=v;pts.push([(i+1)*paso,s/t])});return pts};
+  const lin=(pts,col,w)=>el('path',{d:'M'+pts.filter(p=>p[0]<=XM+5).map(p=>`${sx(Math.min(p[0],XM)).toFixed(1)},${sy(p[1]).toFixed(1)}`).join('L'),fill:'none',stroke:col,'stroke-width':w,'stroke-linejoin':'round'},svg);
+  const G=acum(D.gal.cu,1);lin(G,'var(--ink)',2.4);
+  const at=(pts,m)=>{const p=pts.find(p=>p[0]>=m);return p?p[1]:1};
+  // Marcas en 15 e 30 minutos
+  for(const m of [15,30]){const v=at(G,m);el('circle',{cx:sx(m),cy:sy(v),r:3.5,fill:'var(--ink)'},svg);
+    el('text',{x:sx(m)+6,y:sy(v)+14,class:'rv'},svg).textContent=`${f0(v*100)} % en ${m} min`}
+  el('text',{x:sx(55),y:sy(at(G,55))-8,class:'rl','text-anchor':'middle'},svg).textContent='Galicia';
+  if(sel){const P=acum(sel.cu,5);lin(P,'var(--hl)',2.4);const v=at(P,30);
+    el('circle',{cx:sx(30),cy:sy(v),r:4,fill:'var(--hl)'},svg);
+    el('text',{x:sx(30)+6,y:sy(v)-8,class:'rv',style:'fill:var(--hl)'},svg).textContent=`${sel.n}: ${f0(v*100)} % en 30 min`}
+  const hit=el('rect',{x:ML,y:MT,width:W-ML-MR,height:Hh-MT-MB,fill:'transparent'},svg);
+  hit.addEventListener('mousemove',ev=>{const r=svg.getBoundingClientRect(),m=Math.max(0,Math.min(XM,((ev.clientX-r.left)*W/r.width-ML)/(W-ML-MR)*XM));
+    show(ev,`<b>${f0(m)} minutos ou menos</b>Galicia: ${f0(at(G,m)*100)} % da poboación`+(sel?`<br>${sel.n}: ${f0(at(acum(sel.cu,5),Math.ceil(m/5)*5)*100)} %`:''))});
+  hit.addEventListener('mouseleave',hide);
+}
+function ranking(){
+  const svg=document.getElementById('rk');svg.innerHTML='';
+  const W=svg.getBoundingClientRect().width||svg.parentNode.clientWidth||600,NARROW=W<480,LW=NARROW?152:170,RH=22;
+  const top=ORD.slice(0,15),extra=sel&&!top.includes(sel)?sel:null,H=RH*(top.length+(extra?1.6:0))+30;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const vmax=Math.ceil(ORD[0].m/10)*10,sx=v=>LW+v/vmax*(W-LW-36);
+  for(let v=0;v<=vmax;v+=NARROW?20:10){el('line',{x1:sx(v),x2:sx(v),y1:0,y2:RH*15,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:H-4,class:'ax','text-anchor':'middle'},svg).textContent=v}
+  const xg=sx(D.gal.m);el('line',{x1:xg,x2:xg,y1:0,y2:RH*15,stroke:'var(--ink)','stroke-dasharray':'3 3'},svg);
+  el('text',{x:xg+4,y:RH*15+12,class:'axt'},svg).textContent=`Galicia: ${f0(D.gal.m)} min`;
+  const fila=(c,y)=>{const on=c===sel,col=on?'var(--hl)':'#2f6467';
+    el('text',{x:LW-8,y:y+RH*.68,class:'rl','text-anchor':'end',style:on?'fill:var(--hl);font-weight:800':''},svg).textContent=`${posto(c)}. ${c.n}`;
+    el('line',{x1:LW,x2:sx(c.m),y1:y+RH/2,y2:y+RH/2,stroke:col,'stroke-width':2},svg);
+    el('circle',{cx:sx(c.m),cy:y+RH/2,r:5,fill:col},svg);
+    el('text',{x:sx(c.m)+9,y:y+RH*.7,class:'rv'},svg).textContent=f0(c.m)+' min';
+    const h=el('rect',{x:0,y,width:W,height:RH,fill:'transparent',style:'cursor:pointer'},svg);
+    h.addEventListener('mousemove',ev=>show(ev,tipC(c)));h.addEventListener('mouseleave',hide);h.addEventListener('click',()=>escoller(c))};
+  top.forEach((c,i)=>fila(c,i*RH));
+  if(extra){el('text',{x:LW-8,y:RH*15+12,class:'axt','text-anchor':'end'},svg).textContent='…';fila(extra,RH*15.6)}
+}
+function marca(){for(const c of C)c._p&&c._p.classList.toggle('on',c===sel);if(sel&&sel._p)sel._p.parentNode.insertBefore(sel._p,sel._p.parentNode.querySelector('g'))}
+const ficha=document.getElementById('ficha');
+function escoller(c){sel=c;marca();curva();ranking();
+  ficha.innerHTML=c?`<b class="hl">${c.n}</b>: os seus veciños tardan de media <b>${f0(c.m)} minutos</b> en coche (${f1(c.km)} km) ata o hospital público máis próximo, case sempre o ${H[c.h].n}. Posto <b>${posto(c)} de 313</b> dos máis lonxe; a mediana dos concellos ${dp(c.pr)} é ${f0(MED[c.pr])} min.`:'Toca un concello no mapa ou búscao.';
+  if(c)document.getElementById('q').value=c.n}
+const q=document.getElementById('q');
+document.getElementById('lista').innerHTML=C.map(c=>`<option value="${c.n}">`).join('');
+const busca=()=>{const v=q.value.trim().toLowerCase();const c=C.find(c=>c.n.toLowerCase()===v);if(c)escoller(c);else if(!v)escoller(null)};
+q.addEventListener('input',busca);q.addEventListener('change',busca);
+const todo=()=>{mapa();curva();ranking()};
+todo();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(todo,150)});
+addEventListener('load',todo);
+document.getElementById('tbl').innerHTML='<tr><th>Posto</th><th>Concello</th><th>Provincia</th><th>Minutos</th><th>Km estrada</th><th>Km liña recta</th><th>&gt; 30 min</th><th>Poboación</th><th>Hospital máis rápido</th></tr>'+
+  ORD.map(c=>`<tr><td>${posto(c)}</td><td>${c.n}</td><td>${c.pr}</td><td>${f0(c.m)}</td><td>${f1(c.km)}</td><td>${f1(c.lr)}</td><td>${f0(c.p30*100)} %</td><td>${miles(c.pob)}</td><td>${H[c.h].n}</td></tr>`).join('');
+</script>
+</body>
+</html>

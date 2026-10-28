@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Onde se fala sempre galego — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="A parte da veciñanza que fala sempre en galego en cada un dos 313 concellos, segundo os Censos de 2001 e 2011: mapa, ranking e o cambio entre os dous censos.">
+<meta property="og:title" content="Onde se fala sempre galego">
+<meta property="og:description" content="Concello a concello, canta xente falaba sempre en galego en 2001 e en 2011.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Mapa coroplético + diagrama de dispersión «antes e despois». O mapa pinta cada concello pola
+   parte da poboación de 5 e máis anos que fala sempre en galego (2011 ou 2001), ou polo cambio en
+   puntos entre os dous censos. Debaixo, cada concello é un punto: no eixe horizontal o dato de 2001
+   e no vertical o de 2011; a diagonal é «igual ca en 2001», de xeito que canto máis por debaixo
+   dela, máis caeu o uso. A cor dos puntos é a provincia; o concello escollido, en maxenta. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6; --soft:#efede7;
+  --hl:#c2185b; --c15:#2E6B8A; --c27:#6B8F47; --c32:#8B5E3C; --c36:#6B4C8A;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:10px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center}
+.tog{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--card)}
+.tog button{font:600 .8rem var(--display);background:transparent;color:var(--muted);border:0;padding:7px 12px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tog button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+input{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;width:15em;background:var(--card);color:var(--ink)}
+.legend{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.78rem;color:var(--muted)}
+.legend .esc{display:flex}
+.legend .esc i{width:38px;height:11px;display:inline-block}
+.legend .et{display:flex;font-family:var(--num);font-size:.85rem}
+.legend .et span{width:38px;text-align:center}
+.mapa{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px;width:100%;align-items:start}
+@media (max-width:820px){.mapa{grid-template-columns:1fr}}
+.mapa svg{display:block;width:100%;height:auto}
+.co{stroke:#fff;stroke-width:.7;cursor:pointer}
+.co:hover{stroke:var(--ink);stroke-width:1.4}
+.co.on{stroke:var(--hl);stroke-width:2.6}
+.ficha{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.ficha h3{margin:0;font:800 1.25rem var(--display)}
+.ficha .pr{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.ficha .big{font:700 3.2rem var(--num);line-height:1;color:var(--hl)}
+.ficha .big small{font-size:1.1rem;color:var(--muted);font-weight:600;margin-left:6px}
+.ficha p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.45}
+.ficha p b{color:var(--ink)}
+.ficha .posto{font:700 1rem var(--num);color:var(--ink);letter-spacing:.02em}
+.barra{display:grid;grid-template-columns:2.6em 1fr;gap:4px 8px;align-items:center;font:600 .8rem var(--num);color:var(--muted)}
+.barra .b{display:flex;height:16px;border-radius:2px;overflow:hidden;background:var(--soft)}
+.barra .b i{display:block;height:100%}
+.chave{display:flex;gap:12px;flex-wrap:wrap;font-size:.74rem;color:var(--muted)}
+.chave span{display:inline-flex;gap:5px;align-items:center}
+.chave i{width:10px;height:10px;display:inline-block;border-radius:2px}
+.disp{width:100%;max-width:760px}
+.disp svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11.5px var(--display);fill:var(--muted)}
+.lab{font:700 11.5px var(--display);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3px}
+.pt{stroke:#fff;stroke-width:.8;cursor:pointer;opacity:.85}
+.pt:hover{stroke:var(--ink);stroke-width:1.4;opacity:1}
+.pt.on{fill:var(--hl);stroke:var(--ink);stroke-width:1.6;opacity:1}
+.ley2{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.ley2 span{display:inline-flex;align-items:center;gap:6px}
+.ley2 i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:7px 10px;border-radius:3px;font-size:.78rem;line-height:1.4;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 12px));z-index:2;max-width:250px}
+.tip b{display:block}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.92rem;color:var(--ink)}
+th,td{padding:2px 9px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.7rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:nth-child(2),th:nth-child(2),td:nth-child(3),th:nth-child(3){text-align:left;font-family:var(--display);font-size:.8rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:14px}.axt{font-size:13px}.lab{font-size:13px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Onde se fala sempre galego</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <div class="tog" role="group" aria-label="Que mostra o mapa"><button data-m="v2" aria-pressed="true">2011</button><button data-m="v1" aria-pressed="false">2001</button><button data-m="dv" aria-pressed="false">Cambio</button></div>
+    <form autocomplete="off" onsubmit="return false"><input id="q" list="lista" placeholder="O teu concello" aria-label="O teu concello"></form>
+    <datalist id="lista"></datalist>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="mapa">
+    <svg id="m" role="img" aria-label="Mapa dos concellos de Galicia coloreados pola parte da poboación que fala sempre en galego. A táboa de datos ten os valores."></svg>
+    <div class="ficha" id="ficha"></div>
+  </div>
+  <h2>Antes e despois: cada punto é un concello</h2>
+  <p class="sub">Parte da poboación que fala sempre en galego en 2001 (eixe horizontal) e en 2011 (vertical). Os concellos por debaixo da diagonal perderon falantes habituais.</p>
+  <div class="ley2" id="ley2"></div>
+  <div class="disp"><svg id="d" role="img" aria-label="Diagrama de dispersión: uso do galego en 2001 fronte a 2011 en cada concello."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">IGE, Censo de poboación e vivendas, «Coñecemento e uso do galego»: <a href="https://www.ige.gal/igebdt/selector.jsp?COD=1845" target="_blank" rel="noopener">uso do galego en 2001</a> (táboa 1845) e <a href="https://www.ige.gal/igebdt/selector.jsp?COD=6856" target="_blank" rel="noopener">en 2011</a> (táboa 6856), poboación de 5 e máis anos en vivendas familiares, por concello. A pregunta era «Cando usa o galego?» (sempre, ás veces, nunca). Ollo coa comparación: en 2001 o censo foi exhaustivo e en 2011 os datos de lingua saen da gran enquisa por mostraxe do censo (207.942 persoas en Galicia), cun cuestionario en papel e outro por internet ou entrevista (<a href="https://www.ige.gal/estatico/pdfs/s3/notasExplicativas/notas_Censo_Galego_2011.pdf" target="_blank" rel="noopener">notas do IGE</a>); nos concellos pequenos a marxe de erro é maior, e o IGE non publica «nunca» nin «ás veces» onde a mostra é escasa. O Censo de 2021 xa non preguntou pola lingua. Oza-Cesuras e Cerdedo-Cotobade, fusionados despois, son a suma dos seus concellos de orixe. Límites: IET, Xunta de Galicia. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const B64='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_',IX={};[...B64].forEach((c,i)=>IX[c]=i);
+const aneis=s=>s.split(' ').map(r=>{let x=IX[r[0]]*64+IX[r[1]],y=IX[r[2]]*64+IX[r[3]],i=4;const p=[[x,y]];while(i<r.length){if(r[i]==='~'){x=IX[r[i+1]]*64+IX[r[i+2]];y=IX[r[i+3]]*64+IX[r[i+4]];i+=5}else{x+=IX[r[i]]-32;y+=IX[r[i+1]]-32;i+=2}p.push([x,y])}return p});
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const pct=v=>(v*100).toFixed(1).replace('.',',')+' %';
+const pts=v=>(v>0?'+':v<0?'−':'')+Math.abs(v*100).toFixed(1).replace('.',',')+' p.';
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const sen=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+const PROV={'A Coruña':'var(--c15)','Lugo':'var(--c27)','Ourense':'var(--c32)','Pontevedra':'var(--c36)'};
+const C=D.conc;
+for(const c of C){c.v1=c.s1/c.t1;c.v2=c.s2/c.t2;c.dv=c.v2-c.v1;c.P=aneis(c.pol)}
+const G=D.agr.gal;
+// Escalas: secuencial para a porcentaxe e de perda para o cambio
+const ESC={v:{lim:[.2,.35,.5,.65,.8,.9],cor:['#f1efe6','#dbe6d3','#b9d3b3','#8db98f','#5f9a6c','#38784f','#1c5434'],et:['20','35','50','65','80','90'],tit:'Fala sempre en galego (% da poboación de 5 e máis anos)'},
+           dv:{lim:[-.2,-.15,-.1,-.05,0],cor:['#7f4117','#b06a2c','#d39552','#e9c48c','#f5e7cc','#4f8fb3'],et:['−20','−15','−10','−5','0'],tit:'Cambio 2001–2011, en puntos porcentuais (en azul, os que suben)'}};
+let modo='v2',sel=null;
+const esc=()=>modo==='dv'?ESC.dv:ESC.v;
+const cor=v=>{const e=esc();let i=0;while(i<e.lim.length&&v>=e.lim[i])i++;return e.cor[i]};
+// postos e medianas
+const posto={};for(const m of ['v1','v2','dv']){C.slice().sort((a,b)=>b[m]-a[m]).forEach((c,i)=>{(posto[m]=posto[m]||{})[c.id]=i+1})}
+const med=(arr)=>{const s=arr.slice().sort((a,b)=>a-b),n=s.length;return n%2?s[(n-1)/2]:(s[n/2-1]+s[n/2])/2};
+const MED={};for(const p in PROV){MED[p]={};for(const m of ['v1','v2','dv'])MED[p][m]=med(C.filter(c=>c.pr===p).map(c=>c[m]))}
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(130,Math.min(innerWidth-130,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const tipo=c=>`<b>${c.n}</b>Sempre en galego: ${pct(c.v2)} en 2011 · ${pct(c.v1)} en 2001 (${pts(c.dv)})`;
+
+// --- Mapa
+const svg=document.getElementById('m');
+const xs=C.flatMap(c=>c.P.flat().map(p=>p[0])),ys=C.flatMap(c=>c.P.flat().map(p=>p[1]));
+const [x0,x1,y0,y1]=[Math.min(...xs),Math.max(...xs),Math.min(...ys),Math.max(...ys)];
+svg.setAttribute('viewBox',`${x0-4} ${y0-4} ${x1-x0+8} ${y1-y0+8}`);
+const gm=el('g',{},svg),gs=el('g',{},svg),PA={};
+for(const c of C){
+  const p=el('path',{d:c.P.map(r=>'M'+r.join('L')+'Z').join(''),class:'co'},gm);PA[c.id]=p;
+  p.addEventListener('mousemove',ev=>show(ev,tipo(c)));p.addEventListener('mouseleave',hide);
+  p.addEventListener('click',()=>escolle(c));
+}
+function pinta(){
+  for(const c of C)PA[c.id].setAttribute('fill',cor(c[modo]));
+  const e=esc();
+  document.getElementById('legend').innerHTML=`<span>${e.tit}</span><div class="esc">${e.cor.map(c=>`<i style="background:${c}"></i>`).join('')}</div><div class="et" style="margin-left:38px">${e.et.map(v=>`<span>${v}</span>`).join('')}</div>`;
+}
+// --- Ficha
+function barra(t,s,n){const a=n==null?null:t-s-n;return `<div class="b"><i style="width:${s/t*100}%;background:var(--hl)"></i>${a==null?`<i style="width:${(t-s)/t*100}%;background:#cfcbc0"></i>`:`<i style="width:${a/t*100}%;background:#e4b9cb"></i><i style="width:${n/t*100}%;background:#cfcbc0"></i>`}</div>`}
+function ficha(c){
+  const m=MED[c.pr];
+  document.getElementById('ficha').innerHTML=`<div class="pr">${c.pr}</div><h3>${c.n}</h3>
+  <div class="big">${pct(c.v2)}<small>en 2011</small></div>
+  <p class="posto">Posto ${posto.v2[c.id]} de 313 · mediana da provincia ${pct(m.v2)}</p>
+  <p>Das <b>${miles(c.t2)}</b> persoas de 5 e máis anos, <b>${miles(c.s2)}</b> dicían falar sempre en galego. En 2001 eran o <b>${pct(c.v1)}</b> (posto ${posto.v1[c.id]}): ${Math.abs(c.dv)<.005?'case igual':c.dv>0?'<b>subiu</b> '+pts(c.dv):'baixou <b>'+pts(c.dv).replace('−','')+'</b>'}${c.dv<0?`, fronte aos ${pts(G.s2/G.t2-G.s1/G.t1).replace('−','')} de Galicia`:''}.</p>
+  <div class="barra"><span>2001</span>${barra(c.t1,c.s1,c.n1)}<span>2011</span>${barra(c.t2,c.s2,c.n2)}</div>
+  <div class="chave"><span><i style="background:var(--hl)"></i>sempre</span><span><i style="background:#e4b9cb"></i>ás veces</span><span><i style="background:#cfcbc0"></i>nunca${c.n2==null?' (en 2011, ás veces e nunca xuntos: o IGE non os separa neste concello)':''}</span></div>`;
+}
+function escolle(c){
+  sel=c;
+  for(const k in PA)PA[k].classList.toggle('on',k===c.id);
+  gs.innerHTML='';const p=PA[c.id];gs.appendChild(p.cloneNode(false)).setAttribute('fill','none');gs.firstChild.style.pointerEvents='none';
+  ficha(c);disp();
+}
+// --- Dispersión 2001 → 2011
+const DS=document.getElementById('d');
+function disp(){
+  DS.innerHTML='';
+  const W=DS.parentNode.clientWidth,N=W<560,M={l:N?34:44,r:12,t:12,b:40},S=Math.min(W-M.l-M.r,N?W-M.l-M.r:560),H=S+M.t+M.b;
+  DS.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const ox=M.l+(W-M.l-M.r-S)/2,sx=v=>ox+v*S,sy=v=>M.t+(1-v)*S;
+  for(let v=0;v<=1.0001;v+=.2){
+    el('line',{x1:sx(v),x2:sx(v),y1:sy(0),y2:sy(1),stroke:'var(--grid)'},DS);el('line',{x1:sx(0),x2:sx(1),y1:sy(v),y2:sy(v),stroke:'var(--grid)'},DS);
+    el('text',{x:sx(v),y:sy(0)+16,class:'ax','text-anchor':'middle'},DS).textContent=Math.round(v*100);
+    el('text',{x:sx(0)-6,y:sy(v)+4,class:'ax','text-anchor':'end'},DS).textContent=Math.round(v*100);
+  }
+  el('line',{x1:sx(0),y1:sy(0),x2:sx(1),y2:sy(1),stroke:'var(--muted)','stroke-dasharray':'4 4'},DS);
+  el('text',{x:sx(.13),y:sy(.17),class:'axt',transform:`rotate(-45 ${sx(.13)} ${sy(.17)})`},DS).textContent='igual ca en 2001';
+  el('text',{x:sx(1),y:sy(0)+34,class:'axt','text-anchor':'end'},DS).textContent='% que fala sempre galego en 2001 →';
+  el('text',{x:sx(0)+4,y:sy(1)+12,class:'axt'},DS).textContent='↑ en 2011';
+  const g=el('g',{},DS);
+  for(const c of C){
+    const k=el('circle',{cx:sx(c.v1),cy:sy(c.v2),r:N?3:3.6,fill:PROV[c.pr],class:'pt'+(sel&&sel.id===c.id?' on':'')},g);
+    k.addEventListener('mousemove',ev=>show(ev,tipo(c)));k.addEventListener('mouseleave',hide);k.addEventListener('click',()=>escolle(c));
+  }
+  // Galicia e etiquetas
+  const gv1=G.s1/G.t1,gv2=G.s2/G.t2;
+  el('circle',{cx:sx(gv1),cy:sy(gv2),r:6,fill:'none',stroke:'var(--ink)','stroke-width':2},DS);
+  el('text',{x:sx(gv1)+9,y:sy(gv2)+4,class:'lab'},DS).textContent='Galicia';
+  const caidas=C.slice().sort((a,b)=>a.dv-b.dv).slice(0,N?2:4);
+  for(const c of caidas)if(!sel||c.id!==sel.id)el('text',{x:sx(c.v1)+6,y:sy(c.v2)+4,class:'lab',style:'font-weight:600;fill:var(--muted)'},DS).textContent=c.n;
+  if(sel){const s=g.querySelector('.on');g.appendChild(s);el('text',{x:sx(sel.v1)+(sel.v1>.8?-8:8),y:sy(sel.v2)-8,class:'lab','text-anchor':sel.v1>.8?'end':'start',style:'fill:var(--hl)'},DS).textContent=sel.n}
+}
+document.getElementById('ley2').innerHTML=Object.entries(PROV).map(([p,c])=>`<span><i style="background:${c}"></i>${p}</span>`).join('')+'<span><i style="background:none;border:2px solid var(--ink);box-sizing:border-box"></i>Galicia</span>';
+for(const b of document.querySelectorAll('[data-m]'))b.addEventListener('click',()=>{modo=b.dataset.m;for(const x of document.querySelectorAll('[data-m]'))x.setAttribute('aria-pressed',x===b);pinta()});
+document.getElementById('lista').innerHTML=C.map(c=>`<option value="${c.n}">`).join('');
+const q=document.getElementById('q');
+const busca=()=>{const c=C.find(c=>sen(c.n)===sen(q.value));if(c)escolle(c)};
+q.addEventListener('change',busca);q.addEventListener('input',busca);
+pinta();
+escolle(C.find(c=>c.n==='Santiago de Compostela')||C[0]);
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(disp,150)});
+const ord=C.slice().sort((a,b)=>b.v2-a.v2);
+document.getElementById('tbl').innerHTML='<tr><th>Posto</th><th>Concello</th><th>Provincia</th><th>2001</th><th>2011</th><th>Cambio</th><th>Poboación 5+ (2011)</th></tr>'+
+  ord.map((c,i)=>`<tr><td>${i+1}</td><td>${c.n}</td><td>${c.pr}</td><td>${pct(c.v1)}</td><td>${pct(c.v2)}</td><td>${pts(c.dv)}</td><td>${miles(c.t2)}</td></tr>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A costa estirada — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Os quilómetros de costa de Galicia fronte aos das outras comunidades costeiras e dos países de Europa, estirados en liña recta, e por que a cifra depende da vara de medir.">
+<meta property="og:title" content="A costa estirada">
+<meta property="og:description" content="Se estirásemos a costa galega en liña recta: comparada coas outras comunidades e cos países europeos.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Fíos estirados: cada costa é unha liña recta de lonxitude proporcional aos seus quilómetros,
+   cunha marca cada 100 km coma nunha cinta métrica. Nas comunidades hai dous fíos por fila:
+   o grosor é a medida do IGN (sen illas nas provincias peninsulares) e o fino o deslinde do
+   dominio público marítimo-terrestre do MITECO, que segue rías, esteiros e illas. Nos países a
+   medida é a do World Factbook, con Galicia engadida á parte (outra vara). Noruega pasa da
+   escala e córtase cun zigzag. Debaixo, o paradoxo da costa: a mesma costa, tres cifras. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --grid:#ecebe6;
+  --hl:#c2185b; --fio:#8c9199; --fio2:#b9bdc3; --sel:#1f2328;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:16px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:68ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:72ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+select{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;background:var(--card);color:var(--ink);max-width:100%}
+select:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{display:inline-block;width:28px;background:var(--fio)}
+.podio{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;font-size:.82rem;color:var(--muted)}
+.podio b{font:700 1.5rem var(--num);color:var(--hl);display:block;line-height:1}
+.podio div{text-align:center}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.rl{font:700 12.5px var(--display);fill:var(--ink)}
+.rv{font:600 13px var(--num);fill:var(--muted)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.fila{cursor:pointer}
+.fila:hover .bg{fill:#f1efe9}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:290px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto 12px;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 8px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.78rem}
+tr.g td{color:var(--hl);font-weight:700}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.rl{font-size:13px}.rv{font-size:14px}.ax{font-size:13px}.axt{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>A costa estirada</h1>
+  <p class="dek">__DEK__</p>
+  <div class="podio" id="podio"></div>
+  <div class="tools">
+    <label>Resalta <select id="sel"><option value="">—</option></select></label>
+  </div>
+  <h2>As comunidades costeiras, en liña recta</h2>
+  <div class="legend"><span><i style="height:5px"></i>IGN (sen illas nas provincias peninsulares)</span><span><i style="height:2px;background:var(--fio2)"></i>MITECO, dominio público marítimo-terrestre</span><span>· marca cada 100 km</span></div>
+  <div class="chart"><svg id="ca" role="img" aria-label="Fíos de lonxitude proporcional aos quilómetros de costa de cada comunidade autónoma, segundo o IGN e segundo o MITECO. A táboa de datos ten os valores."></svg></div>
+  <h2>Galicia fronte a Europa</h2>
+  <p class="sub">Lonxitude da costa de cada país segundo o World Factbook, cunha marca cada 1.000 km. Galicia vai á parte e con trazo discontinuo porque se mide con outra vara (IGN) e non é directamente comparable.</p>
+  <div class="chart"><svg id="eu" role="img" aria-label="Fíos de lonxitude proporcional aos quilómetros de costa dos países europeos segundo o World Factbook, con Galicia como referencia."></svg></div>
+  <h2>O paradoxo da costa</h2>
+  <p class="sub">A lonxitude dunha costa non é un número fixo: canto máis fina é a vara coa que se mide, máis entrantes, rías e illas entran na conta, e máis longa sae. A mesma costa, varias cifras oficiais.</p>
+  <div class="chart"><svg id="px" role="img" aria-label="A mesma costa medida de varias maneiras: Galicia, España e Noruega."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table><table id="tbl2"></table></div>
+  </details>
+  <p class="note">Comunidades: IGN, <a href="https://ine.es/prodyser/pubweb/anuario08/anu08_01entor.pdf" target="_blank" rel="noopener">lonxitude da costa por provincias</a> (INE, Anuario Estadístico de España 2008, táboa 1.1.3; sen illas nin illotes nas provincias peninsulares, polo que Galicia non inclúe Arousa, Ons, Sálvora nin Cíes; Sevilla non ten costa nesta medida). MITECO, Dirección General de la Costa y el Mar, <a href="https://servicio.mapa.gob.es/estadistica/pags/anuario/2017/CAPITULOSPDF/CAPITULO09/pdfc09_3.pdf" target="_blank" rel="noopener">lonxitude do dominio público marítimo-terrestre por provincia</a> (Anuario de Estadística 2017 do MAPA, táboa 9.3), que segue o deslinde legal polas rías, esteiros e ríos ata onde chega a marea, e inclúe as illas. Países: CIA, <a href="http://web.archive.org/web/20260203220455/https://www.cia.gov/the-world-factbook/field/coastline/" target="_blank" rel="noopener">The World Factbook, «Coastline»</a> (última edición, copia arquivada en febreiro de 2026; inclúe illas; para Francia úsase só a metropolitana). As tres fontes miden con escalas distintas, así que só son comparables as cifras dentro de cada fonte. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+const CA=D.ccaa.filter(c=>c.ign>=50);
+const P=D.paises;
+const G=D.ccaa.find(c=>c.c==='GA');
+const sel=document.getElementById('sel');
+sel.innerHTML+='<optgroup label="Comunidades">'+CA.filter(c=>c.c!=='GA').map(c=>`<option value="c:${c.c}">${c.n}</option>`).join('')+'</optgroup>'+
+  '<optgroup label="Países">'+P.slice().sort((a,b)=>a.n.localeCompare(b.n,'gl')).map(p=>`<option value="p:${p.en}">${p.n}</option>`).join('')+'</optgroup>';
+const esSel=k=>sel.value===k;
+// Un fío: liña de lonxitude L desde x0, con marcas cada 100 km
+function fio(g,x0,y,km,sx,w,col,marcas,dash){
+  el('line',{x1:x0,x2:sx(km),y1:y,y2:y,stroke:col,'stroke-width':w,'stroke-linecap':'round','stroke-dasharray':dash||''},g);
+  // marcas: cada canto se pon unha marca (100 km nas comunidades, 1.000 km en Europa), se caben
+  if(marcas&&sx(marcas)-sx(0)>=3)for(let k=marcas;k<km;k+=marcas)el('line',{x1:sx(k),x2:sx(k),y1:y-w/2-2,y2:y+w/2+2,stroke:col,'stroke-width':1},g)
+}
+function eixo(svg,sx,vmax,y0,y1,paso){
+  for(let v=0;v<=vmax;v+=paso){el('line',{x1:sx(v),x2:sx(v),y1:y0,y2:y1,stroke:'var(--grid)'},svg);el('text',{x:sx(v),y:y0-5,class:'ax','text-anchor':'middle'},svg).textContent=miles(v)}
+  el('text',{x:sx(vmax),y:y1+16,class:'axt','text-anchor':'end'},svg).textContent='km';
+}
+function podio(){
+  const rI=D.ccaa.slice().sort((a,b)=>b.ign-a.ign),rD=D.ccaa.slice().sort((a,b)=>b.dpm-a.dpm);
+  document.getElementById('podio').innerHTML=`<div><b>${rI.indexOf(G)+1}.º de ${rI.length}</b>comunidades, medida IGN</div><div><b>${rD.indexOf(G)+1}.º de ${rD.length}</b>medida MITECO</div><div><b>${miles(G.dpm-G.ign)} km</b>de diferenza<br>entre as dúas medidas</div>`;
+}
+function comunidades(){
+  const svg=document.getElementById('ca');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?0:130,MR=NARROW?8:60,MT=24,RH=NARROW?44:34;
+  const R=CA.slice().sort((a,b)=>b.ign-a.ign);
+  const H=MT+RH*R.length+20;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const vmax=Math.ceil(Math.max(...R.map(c=>Math.max(c.ign,c.dpm)))/250)*250;
+  const sx=v=>ML+v/vmax*(W-ML-MR);
+  eixo(svg,sx,vmax,MT-6,H-18,NARROW?1000:500);
+  R.forEach((c,i)=>{
+    const y=MT+i*RH,g=el('g',{class:'fila'},svg),isG=c.c==='GA',on=esSel('c:'+c.c);
+    const col=isG?'var(--hl)':on?'var(--sel)':'var(--fio)';
+    el('rect',{x:0,y,width:W,height:RH,fill:'transparent',class:'bg'},g);
+    const yl=NARROW?y+12:y+RH/2;
+    const t=el('text',{x:NARROW?0:ML-10,y:NARROW?yl:yl+4,class:'rl','text-anchor':NARROW?'start':'end'},g);t.textContent=c.n;
+    if(isG||on)t.style.fill=isG?'var(--hl)':'var(--ink)';
+    const y1=NARROW?y+22:y+RH/2-5,y2=y1+9;
+    fio(g,ML,y1,c.ign,sx,5,col,100);
+    fio(g,ML,y2,c.dpm,sx,2,isG?'var(--hl)':on?'var(--sel)':'var(--fio2)',0);
+    el('text',{x:sx(c.ign)+6,y:y1+4,class:'rv'},g).textContent=miles(c.ign);
+    el('text',{x:sx(c.dpm)+6,y:y2+5,class:'rv',style:'font-size:11px'},g).textContent=miles(c.dpm);
+    g.addEventListener('mousemove',ev=>show(ev,`<b>${c.n}</b>IGN: ${miles(c.ign)} km<br>MITECO (DPM-T): ${miles(c.dpm)} km<br>${Object.entries(c.pi).map(([p,v])=>`${p} ${miles(v)}`).join(' · ')}`));
+    g.addEventListener('mouseleave',hide);
+    g.addEventListener('click',()=>{if(!isG){sel.value=on?'':'c:'+c.c;todo()}});
+  });
+}
+function europa(){
+  const svg=document.getElementById('eu');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?0:130,MR=NARROW?8:60,MT=24,RH=NARROW?36:22;
+  const R=[...P.map(p=>({...p,tipo:'p'})),{n:'Galicia (IGN)',km:G.ign,tipo:'g'}].sort((a,b)=>b.km-a.km);
+  const H=MT+RH*R.length+20;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const tope=R[1].km*1.08,vmax=Math.ceil(tope/1000)*1000;
+  const sx=v=>ML+Math.min(v,vmax)/vmax*(W-ML-MR);
+  eixo(svg,sx,vmax,MT-6,H-18,NARROW?4000:2000);
+  R.forEach((p,i)=>{
+    const y=MT+i*RH,g=el('g',{class:'fila'},svg),isG=p.tipo==='g',on=esSel('p:'+p.en);
+    const col=isG?'var(--hl)':on?'var(--sel)':'var(--fio)';
+    el('rect',{x:0,y,width:W,height:RH,fill:'transparent',class:'bg'},g);
+    const yl=NARROW?y+12:y+RH/2+4;
+    const t=el('text',{x:NARROW?0:ML-10,y:yl,class:'rl','text-anchor':NARROW?'start':'end'},g);t.textContent=p.n;
+    if(isG||on)t.style.fill=isG?'var(--hl)':'var(--ink)';
+    const yf=NARROW?y+24:y+RH/2;
+    const corta=p.km>vmax;
+    fio(g,ML,yf,Math.min(p.km,vmax*.97),sx,4,col,1000,isG?'7 4':'');
+    if(corta){const xc=sx(vmax*.97);el('path',{d:`M${xc+3},${yf-6}l4,4l-4,4l4,4`,fill:'none',stroke:col,'stroke-width':1.4},g)}
+    const tx=corta?sx(vmax*.97)-6:sx(p.km)+6;
+    const lv=el('text',{x:tx,y:yf+(corta?-6:4),class:'rv','text-anchor':corta?'end':'start'},g);lv.textContent=miles(p.km);
+    g.addEventListener('mousemove',ev=>show(ev,isG?`<b>Galicia</b>${miles(G.ign)} km segundo o IGN, sen illas<br>${miles(G.dpm)} km de dominio público marítimo-terrestre (MITECO)<br>Outra fonte: non directamente comparable co Factbook`:`<b>${p.n}</b>${p.nota}`));
+    g.addEventListener('mouseleave',hide);
+    g.addEventListener('click',()=>{if(!isG){sel.value=on?'':'p:'+p.en;todo()}});
+  });
+}
+function paradoxo(){
+  const svg=document.getElementById('px');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,NARROW=W<640;
+  const ML=NARROW?0:230,MR=NARROW?8:60,MT=24,RH=NARROW?36:24,GAP=14;
+  const no=P.find(p=>p.en==='Norway');
+  const grupos=[['Galicia',[['IGN, sen illas',G.ign,1],['MITECO, deslinde con rías e illas',G.dpm,1]]],
+    ['España',[['World Factbook',D.es.fb,0],['IGN, suma das provincias',D.es.ign,0],['MITECO, deslinde',D.es.dpm,0]]],
+    ['Noruega',[['Factbook, só a costa continental',D.noruega_continente,0],['Factbook, con fiordes e entrantes',no.km,0],['Factbook, as costas de todas as illas',D.noruega_illas,0]]]];
+  const n=grupos.reduce((a,g)=>a+g[1].length+1,0);
+  const H=MT+RH*n+GAP*grupos.length+20;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const vmax=Math.ceil(D.noruega_illas/10000)*10000,sx=v=>ML+v/vmax*(W-ML-MR);
+  eixo(svg,sx,vmax,MT-6,H-18,NARROW?20000:10000);
+  let y=MT;
+  for(const [nome,ms] of grupos){
+    el('text',{x:NARROW?0:ML-10,y:y+RH/2+4,class:'rl','text-anchor':NARROW?'start':'end',style:nome==='Galicia'?'fill:var(--hl)':''},svg).textContent=nome;
+    y+=RH;
+    for(const [t,km,hl] of ms){
+      const g=el('g',{},svg),yf=NARROW?y+22:y+RH/2;
+      el('text',{x:NARROW?0:ML-10,y:NARROW?y+11:yf+4,class:'axt','text-anchor':NARROW?'start':'end'},g).textContent=t;
+      fio(g,ML,yf,km,sx,4,hl?'var(--hl)':'var(--fio)',0);
+      el('text',{x:sx(km)+6,y:yf+4,class:'rv'},g).textContent=miles(km);
+      y+=RH;
+    }
+    y+=GAP;
+  }
+}
+function todo(){podio();comunidades();europa();paradoxo()}
+sel.addEventListener('change',todo);
+todo();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(todo,150)});
+document.getElementById('tbl').innerHTML='<tr><th>Comunidade</th><th>IGN (km)</th><th>MITECO DPM-T (km)</th></tr>'+
+  D.ccaa.map(c=>`<tr class="${c.c==='GA'?'g':''}"><td>${c.n}</td><td>${miles(c.ign)}</td><td>${c.dpm.toFixed(1).replace('.',',')}</td></tr>`).join('')+
+  `<tr><td>España</td><td>${miles(D.es.ign)}</td><td>${D.es.dpm.toFixed(1).replace('.',',')}</td></tr>`;
+document.getElementById('tbl2').innerHTML='<tr><th>País</th><th>Factbook (km)</th><th>Nota da fonte</th></tr>'+
+  P.map(p=>`<tr><td>${p.n}</td><td>${miles(p.km)}</td><td style="text-align:left;font-size:.75rem;white-space:normal;min-width:240px">${p.nota}</td></tr>`).join('');
+</script>
+</body>
+</html>

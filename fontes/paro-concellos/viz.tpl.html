@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O paro, concello a concello — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="O paro rexistrado de cada concello galego sobre a súa poboación de 15 a 64 anos en 2012 e en 2025, e como evolucionou setembro a setembro.">
+<meta property="og:title" content="O paro, concello a concello">
+<meta property="og:description" content="__OGD__">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Pendentes en pequenos múltiplos (slope chart): un panel por provincia, cunha liña por concello
+   que une a súa taxa de paro rexistrado de 2012 (esquerda) coa de 2025 (dereita). As liñas finas
+   grises son os concellos; a grosa escura, a mediana da provincia; a magenta, o concello escollido.
+   Debaixo, unha madeixa de liñas (spaghetti) co número de parados de cada concello en setembro de
+   cada ano, en índice 2012 = 100, coa liña de Galicia e a do concello escollido por riba. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --hl:#c2185b; --fio:#c9c5bb;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:14px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+input{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;width:15em;background:var(--card);color:var(--ink)}
+input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.res{min-height:1.4em;font-size:.9rem;text-align:center;color:var(--ink);max-width:72ch}
+.res b{color:var(--hl)}
+.chart,.sp{width:100%}
+.sp{max-width:900px}
+.chart svg,.sp svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.pn{font:800 13px var(--display);fill:var(--ink)}
+.lab{font:700 12px var(--num);fill:var(--ink)}
+.lab.hl{fill:var(--hl);font-family:var(--display);font-size:12.5px}
+.fio{fill:none;stroke:var(--fio);stroke-width:.8;stroke-opacity:.75}
+.hit{fill:none;stroke:transparent;stroke-width:7;cursor:pointer}
+.med{fill:none;stroke:var(--ink);stroke-width:2.6}
+.sel{fill:none;stroke:var(--hl);stroke-width:2.8}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:900px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child{text-align:left;font-family:var(--display);font-size:.78rem;position:sticky;left:0;background:var(--paper)}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:640px){.ax{font-size:13px}.axt{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>O paro, concello a concello</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <label>O teu concello <input id="q" list="lista" placeholder="Escribe o nome" autocomplete="off"></label>
+    <datalist id="lista"></datalist>
+  </div>
+  <p class="res" id="res" aria-live="polite"></p>
+  <div class="chart"><svg id="ch" role="img" aria-label="Pendentes por provincia: taxa de paro rexistrado de cada concello en 2012 e en 2025. A táboa de datos ten os valores."></svg></div>
+  <h2>Setembro a setembro</h2>
+  <p class="sub">Parados rexistrados en setembro de cada ano, en índice (2012 = 100). Cada liña fina é un concello de máis de 1.000 habitantes de 15 a 64 anos.</p>
+  <div class="sp"><svg id="sp" role="img" aria-label="Liñas: evolución do paro rexistrado de cada concello entre 2012 e 2026 en índice."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">SEPE, <a href="https://www.sepe.es/HomeSepe/que-es-el-sepe/estadisticas/datos-estadisticos/municipios.html" target="_blank" rel="noopener">paro rexistrado por municipios</a>, setembro de 2012 a setembro de __ULT__. IGE, <a href="https://www.ige.gal/igebdt/selector.jsp?COD=142" target="_blank" rel="noopener">poboación por grupos quinquenais de idade</a> (Censo de 2011 e censo anual a 1/1/2025, INE). A taxa é o paro rexistrado dividido pola poboación de 15 a 64 anos: o IGE só publica grupos de cinco anos para os concellos pequenos, así que o denominador inclúe os de 15 anos, que non poden estar no paro. Non é a taxa de paro da EPA (parados sobre poboación activa), que sempre sae máis alta. A de 2012 usa a poboación do Censo de 2011 e a de 2025, a de xaneiro de 2025. O paro rexistrado conta as persoas inscritas como demandantes nas oficinas de emprego sen traballo; non inclúe quen non se inscribe. Setembro sempre, para non mesturar a estacionalidade do verán. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const C=D.conc,A=D.anos,G=D.gal,I25=A.indexOf(2025);
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const pc=v=>(v*100).toFixed(1).replace('.',',')+' %';
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+for(const c of C){c.t0=c.s[0]/c.p11;c.t1=c.s[I25]/c.p25}
+const g0=G.s[0]/G.p11,g1=G.s[I25]/G.p25;
+const PR=['A Coruña','Lugo','Ourense','Pontevedra'];
+const med=a=>{const v=a.slice().sort((x,y)=>x-y),n=v.length;return n%2?v[(n-1)/2]:(v[n/2-1]+v[n/2])/2};
+const MED=Object.fromEntries(PR.map(p=>{const cc=C.filter(c=>c.pr===p);return [p,[med(cc.map(c=>c.t0)),med(cc.map(c=>c.t1))]]}));
+const ORD=C.slice().sort((a,b)=>b.t1-a.t1);
+const posto=c=>ORD.indexOf(c)+1;
+const tipc=c=>`<b>${c.n}</b>${c.pr}<br>2012: ${pc(c.t0)} · ${miles(c.s[0])} parados<br>2025: ${pc(c.t1)} · ${miles(c.s[I25])} parados<br>posto ${posto(c)} de ${C.length} en 2025 (de máis a menos paro)`;
+let sel=null;
+function slopes(){
+  const svg=document.getElementById('ch');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth||1000,NARROW=W<700,NC=NARROW?2:4,gap=NARROW?22:30,pw=(W-gap*(NC-1))/NC;
+  const PH=NARROW?250:330,MT=34,MB=26,H=(PH+MT+MB)*(NARROW?2:1);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const ymax=Math.ceil(Math.max(...C.map(c=>Math.max(c.t0,c.t1)))*20)/20;
+  PR.forEach((p,i)=>{
+    const ox=(i%NC)*(pw+gap),oy=Math.floor(i/NC)*(PH+MT+MB),xa=ox+(NARROW?26:34),xb=ox+pw-(NARROW?26:40);
+    const sy=v=>oy+MT+(1-v/ymax)*PH;
+    el('text',{x:ox+pw/2,y:oy+14,class:'pn','text-anchor':'middle'},svg).textContent=p;
+    for(let v=0;v<=ymax+1e-9;v+=.05){el('line',{x1:xa,x2:xb,y1:sy(v),y2:sy(v),stroke:'var(--grid)'},svg);if(i%NC===0)el('text',{x:xa-6,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=Math.round(v*100)+' %'}
+    el('text',{x:xa,y:oy+MT+PH+18,class:'ax','text-anchor':'middle'},svg).textContent='2012';
+    el('text',{x:xb,y:oy+MT+PH+18,class:'ax','text-anchor':'middle'},svg).textContent='2025';
+    const cc=C.filter(c=>c.pr===p);
+    for(const c of cc){const d=`M${xa},${sy(c.t0)}L${xb},${sy(c.t1)}`;el('path',{d,class:'fio'},svg);
+      const h=el('path',{d,class:'hit'},svg);h.addEventListener('mousemove',ev=>show(ev,tipc(c)));h.addEventListener('mouseleave',hide);h.addEventListener('click',()=>escolle(c))}
+    const [m0,m1]=MED[p];el('path',{d:`M${xa},${sy(m0)}L${xb},${sy(m1)}`,class:'med'},svg);
+    el('text',{x:xa-4,y:sy(m0)-6,class:'lab','text-anchor':'start'},svg).textContent=pc(m0);
+    el('text',{x:xb+4,y:sy(m1)+4,class:'lab'},svg).textContent=pc(m1);
+    if(i===0)el('text',{x:xb-2,y:sy(m1)+18,class:'axt','text-anchor':'end'},svg).textContent='mediana';
+    if(sel&&sel.pr===p){el('path',{d:`M${xa},${sy(sel.t0)}L${xb},${sy(sel.t1)}`,class:'sel'},svg);
+      for(const [x,v] of [[xa,sel.t0],[xb,sel.t1]])el('circle',{cx:x,cy:sy(v),r:3.6,fill:'var(--hl)'},svg);
+      el('text',{x:(xa+xb)/2,y:sy((sel.t0+sel.t1)/2)-8,class:'lab hl','text-anchor':'middle'},svg).textContent=sel.n}
+  });
+}
+function spaghetti(){
+  const svg=document.getElementById('sp');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth||900,NARROW=W<560,H=NARROW?300:360,ML=38,MR=NARROW?44:60,MT=14,MB=26;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const sx=a=>ML+(a-A[0])/(A.at(-1)-A[0])*(W-ML-MR),ymax=160,sy=v=>MT+(1-Math.min(v,ymax)/ymax)*(H-MT-MB);
+  for(let v=0;v<=ymax;v+=20){el('line',{x1:ML,x2:W-MR,y1:sy(v),y2:sy(v),stroke:v===100?'#bdb8ae':'var(--grid)'},svg);el('text',{x:ML-6,y:sy(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v}
+  for(const a of A)if(!NARROW||a%2===0)el('text',{x:sx(a),y:H-8,class:'ax','text-anchor':'middle'},svg).textContent=a;
+  const ln=(s,b)=>'M'+s.map((v,i)=>`${sx(A[i]).toFixed(1)},${sy(v/b*100).toFixed(1)}`).join('L');
+  for(const c of C)if(c.p25>=1000)el('path',{d:ln(c.s,c.s[0]),class:'fio'},svg);
+  el('path',{d:ln(G.s,G.s[0]),class:'med'},svg);
+  const gl=G.s.at(-1)/G.s[0]*100;el('text',{x:W-MR+5,y:sy(gl)+4,class:'lab'},svg).textContent='Galicia '+Math.round(gl);
+  if(sel){el('path',{d:ln(sel.s,sel.s[0]),class:'sel'},svg);const v=sel.s.at(-1)/sel.s[0]*100;
+    el('text',{x:W-MR+5,y:sy(v)+(Math.abs(v-gl)<8?(v>gl?-8:16):4),class:'lab hl'},svg).textContent=Math.round(v)}
+  // capa para o tooltip por ano
+  const hov=el('rect',{x:ML,y:MT,width:W-ML-MR,height:H-MT-MB,fill:'transparent'},svg);
+  hov.addEventListener('mousemove',ev=>{const r=svg.getBoundingClientRect(),x=(ev.clientX-r.left)*W/r.width,i=Math.max(0,Math.min(A.length-1,Math.round((x-ML)/(W-ML-MR)*(A.length-1))));
+    show(ev,`<b>Setembro de ${A[i]}</b>Galicia: ${miles(G.s[i])} parados${sel?`<br>${sel.n}: ${miles(sel.s[i])}`:''}`)});
+  hov.addEventListener('mouseleave',hide);
+}
+const q=document.getElementById('q'),res=document.getElementById('res');
+document.getElementById('lista').innerHTML=C.map(c=>c.n).sort((a,b)=>a.localeCompare(b,'gl')).map(n=>`<option value="${n}">`).join('');
+function texto(){if(!sel){res.innerHTML='';return}const [m0,m1]=MED[sel.pr];
+  res.innerHTML=`<b>${sel.n}</b>: ${miles(sel.s[I25])} parados en setembro de 2025, o ${pc(sel.t1)} da poboación de 15 a 64 anos (${pc(sel.t0)} en 2012). Posto <b>${posto(sel)} de ${C.length}</b>, de máis a menos paro; a mediana da provincia de ${sel.pr} é ${pc(m1)}.`}
+function escolle(c){sel=c;q.value=c?c.n:'';texto();slopes();spaghetti()}
+q.addEventListener('input',()=>{const c=C.find(c=>c.n.toLowerCase()===q.value.trim().toLowerCase());if(c)escolle(c);else if(!q.value.trim())escolle(null)});
+slopes();spaghetti();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{slopes();spaghetti()},150)});
+document.getElementById('tbl').innerHTML='<tr><th>Concello</th><th>Taxa 2012</th><th>Taxa 2025</th>'+A.map(a=>`<th>${a}</th>`).join('')+'</tr>'+
+  ORD.map(c=>`<tr><td>${c.n}</td><td>${pc(c.t0)}</td><td>${pc(c.t1)}</td>${c.s.map(v=>`<td>${miles(v)}</td>`).join('')}</tr>`).join('');
+</script>
+</body>
+</html>

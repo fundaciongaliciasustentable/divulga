@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O vidro, concello a concello — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Os quilos de vidro que cada concello galego leva ao contedor verde por habitante: un mapa e un enxame por provincia para atopar o teu.">
+<meta property="og:title" content="O vidro, concello a concello">
+<meta property="og:description" content="Canto vidro se recicla por habitante en cada un dos 313 concellos galegos.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/assets/img/og-divulga.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<style>
+/* Mapa coroplético + enxame. Á esquerda, o mapa dos 313 concellos coloreado polos quilos de vidro
+   por habitante que levaron ao contedor verde no último ano (escala secuencial de verdes, en
+   tramos). Á dereita, un enxame de puntos por provincia: cada punto é un concello, colocado
+   segundo os seus kg/hab e co tamaño segundo a poboación; a raia é a mediana provincial. O
+   concello que escollas resáltase en magenta nos dous e na ficha, que trae a súa serie dende 2015. */
+:root{
+  --paper:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5f636b; --line:#e5e2da; --soft:#efede7; --grid:#ecebe6;
+  --hl:#c2185b; --nd:#dcd9d1;
+  --g1:#e4efe3; --g2:#bcdcb9; --g3:#8cc28c; --g4:#5a9f68; --g5:#2f7a4c; --g6:#164f31;
+  --display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+h1{font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.06;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font:800 1.05rem var(--display);margin:10px 0 0;text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.95rem;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+.sub{margin:0;color:var(--muted);font-size:.84rem;text-align:center;max-width:70ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;align-items:center;font-size:.82rem;color:var(--muted)}
+input{font:600 .85rem var(--display);border:1px solid var(--line);border-radius:3px;padding:7px 9px;width:15em;max-width:70vw;background:var(--card);color:var(--ink)}
+input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 0;justify-content:center;font:600 .78rem var(--num);color:var(--muted);align-items:center}
+.legend span{display:inline-flex;flex-direction:column;align-items:center;gap:2px;min-width:44px}
+.legend i{width:44px;height:10px;display:block}
+.legend .nd{margin-left:12px}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:18px;width:100%;align-items:start}
+.map svg,.sw svg,.serie svg{display:block;width:100%;height:auto;overflow:visible}
+.co{stroke:#fff;stroke-width:.6;cursor:pointer}
+.co:hover{stroke:var(--ink);stroke-width:1.4}
+.co.on{stroke:var(--hl);stroke-width:3}
+.rl{font:700 13px var(--display);fill:var(--ink)}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axt{font:600 11px var(--display);fill:var(--muted)}
+.pt{stroke:#fff;stroke-width:.8;cursor:pointer}
+.pt:hover{stroke:var(--ink);stroke-width:1.4}
+.pt.on{fill:var(--hl);stroke:var(--ink);stroke-width:1.5}
+.med{stroke:var(--ink);stroke-width:2;stroke-dasharray:4 2}
+.ficha{width:100%;max-width:820px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:8px 18px;align-items:center}
+.ficha[hidden]{display:none}
+.ficha .nm{font:800 1.15rem var(--display)}
+.ficha .big{font:700 2.4rem/1 var(--num);color:var(--hl)}
+.ficha .big small{font-size:1rem;color:var(--muted);font-weight:600}
+.ficha p{margin:4px 0 0;font-size:.85rem;color:var(--muted)}
+.ficha p b{color:var(--ink)}
+.serie{width:100%;max-width:820px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;font-size:.8rem;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);transform:translate(-50%,calc(-100% - 14px));z-index:2;max-width:280px}
+.tip b{display:block;font-size:.9rem}
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px;max-height:460px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.9rem;color:var(--ink)}
+th,td{padding:2px 7px;text-align:right;white-space:nowrap}
+th{font-family:var(--display);font-size:.66rem;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--paper)}
+td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;font-family:var(--display);font-size:.78rem}
+.note{color:var(--muted);font-size:.74rem;line-height:1.5;text-align:center;max-width:80ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (max-width:760px){.duo{grid-template-columns:1fr}.ficha{grid-template-columns:1fr}.ax{font-size:13px}.rl{font-size:14px}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>O vidro, concello a concello</h1>
+  <p class="dek">__DEK__</p>
+  <div class="tools">
+    <form id="f" autocomplete="off" onsubmit="return false"><label>O teu concello <input id="q" list="lista" placeholder="Escribe o nome" aria-label="O teu concello"></label></form>
+    <datalist id="lista"></datalist>
+  </div>
+  <div class="ficha" id="ficha" hidden>
+    <div><div class="nm" id="fn"></div><div class="big" id="fk"></div><p id="ft"></p></div>
+    <div><svg id="fs" role="img" aria-label="Serie dos quilos de vidro por habitante do concello escollido e de Galicia, 2015-__ULT__."></svg></div>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="duo">
+    <div class="map"><svg id="mapa" role="img" aria-label="Mapa dos concellos galegos coloreado polos quilos de vidro por habitante recollidos no contedor verde en __ULT__."></svg></div>
+    <div class="sw"><svg id="sw" role="img" aria-label="Enxame de puntos: os concellos de cada provincia segundo os quilos de vidro por habitante. A táboa de datos ten os valores."></svg></div>
+  </div>
+  <h2>Galicia, ano a ano</h2>
+  <p class="sub">Quilos de vidro por habitante en toda Galicia: o que vai ao contedor verde e a recollida porta a porta en hostalaría.</p>
+  <div class="serie"><svg id="se" role="img" aria-label="Serie anual dos quilos de vidro por habitante en Galicia dende 2015."></svg></div>
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Ecovidrio, <a href="https://www.ecovidrio.es/reciclaje/datos-reciclaje" target="_blank" rel="noopener">datos de recollida de envases de vidro por rexión, provincia e municipio</a>, __ANOS__ (quilos recollidos no contedor verde e número de contedores de cada concello); INE, <a href="https://www.ine.es/dynt3/inebase/index.htm?padre=525" target="_blank" rel="noopener">Padrón municipal</a> a 1 de xaneiro de cada ano. Non hai datos públicos e completos do resto dos residuos municipais (fracción resto, envases, papel ou orgánica) concello a concello, polo que a peza fala só do vidro. Os quilos son os do contedor do propio concello; a recollida porta a porta en hostalaría e o vidro que se recupera nas plantas de tratamento non se asignan a ningún concello e só entran na serie de Galicia. Os concellos turísticos ou con moita hostalaría (balnearios, costa) saen altos porque o vidro dos visitantes cóntase sobre a poboación empadroada. Os concellos con 0 kg nun ano márcanse sen dato: en __ULT__, __SENDATO__; en 2022 Ecovidrio non asignou a recollida de 62 concellos de Ourense. Oza-Cesuras e Cerdedo-Cotobade cóntanse xuntos en todos os anos. Fundación Galicia Sustentable · Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D=__DATA__,NS='http://www.w3.org/2000/svg';
+const A=D.anos,U=A.length-1,ULT=A[U];
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const d1=v=>v.toFixed(1).replace('.',',');
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const tip=document.getElementById('tip');
+const show=(ev,h)=>{tip.innerHTML=h;tip.hidden=false;tip.style.left=Math.max(150,Math.min(innerWidth-150,ev.clientX))+'px';tip.style.top=ev.clientY+'px'};
+const hide=()=>{tip.hidden=true};
+// kg/hab dun concello nun ano (null se non hai dato ou é 0)
+const kh=(c,i=U)=>c.kg[i]&&c.pob[i]?c.kg[i]/c.pob[i]:null;
+const C=D.conc;
+const conDato=C.filter(c=>kh(c)!==null).sort((a,b)=>kh(b)-kh(a));
+conDato.forEach((c,i)=>c.posto=i+1);
+const PROVS=['A Coruña','Lugo','Ourense','Pontevedra'];
+const mediana=xs=>{const s=xs.slice().sort((a,b)=>a-b),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
+const MED={};for(const p of PROVS)MED[p]=mediana(conDato.filter(c=>c.pr===p).map(c=>kh(c)));
+const galK=i=>D.gal[A[i]].contedor/D.pob[i];
+// Escala en tramos
+const CORTES=[8,12,16,20,25],CORES=['var(--g1)','var(--g2)','var(--g3)','var(--g4)','var(--g5)','var(--g6)'];
+const cor=v=>v===null?'var(--nd)':CORES[CORTES.filter(t=>v>=t).length];
+document.getElementById('legend').innerHTML=CORES.map((c,i)=>`<span><i style="background:${c}"></i>${i===0?'< '+CORTES[0]:i===CORES.length-1?'≥ '+CORTES.at(-1):CORTES[i-1]+'–'+CORTES[i]}</span>`).join('')+
+  '<span class="nd"><i style="background:var(--nd);width:22px"></i>sen dato</span><span style="min-width:auto;margin-left:10px">kg por habitante, '+ULT+'</span>';
+const txtTip=c=>{const v=kh(c);return `<b>${c.n}</b>${c.pr}<br>`+(v===null?'Sen dato en '+ULT:`${d1(v)} kg de vidro por habitante en ${ULT}<br>posto ${c.posto} de ${conDato.length} · ${miles(c.pob[U]/c.ct[U])} hab. por contedor`)};
+let sel=null;
+function mapa(){
+  const svg=document.getElementById('mapa');svg.innerHTML='';
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(const c of C)for(const r of c.pol)for(const [x,y] of r){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y)}
+  svg.setAttribute('viewBox',`${x0-6} ${y0-6} ${x1-x0+12} ${y1-y0+12}`);
+  const g=el('g',{},svg);
+  for(const c of C){
+    const p=el('path',{d:c.pol.map(r=>'M'+r.map(q=>q.join(',')).join('L')+'Z').join(''),fill:cor(kh(c)),class:'co'},g);
+    p.dataset.id=c.id;
+    p.addEventListener('mousemove',ev=>show(ev,txtTip(c)));p.addEventListener('mouseleave',hide);
+    p.addEventListener('click',()=>escolle(c));
+  }
+  marca();
+}
+function enxame(){
+  const svg=document.getElementById('sw');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,ML=10,MR=14,MT=22,RH=W<500?150:125;
+  const Hh=MT+RH*PROVS.length+28;svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const vmax=Math.ceil(Math.max(...conDato.map(c=>kh(c)))/10)*10;
+  const sx=v=>ML+v/vmax*(W-ML-MR),rr=c=>Math.max(2.2,Math.min(W<500?11:14,Math.sqrt(c.pob[U])*.055));
+  for(let t=0;t<=vmax;t+=10){el('line',{x1:sx(t),x2:sx(t),y1:MT-4,y2:Hh-26,stroke:'var(--grid)'},svg);el('text',{x:sx(t),y:Hh-10,class:'ax','text-anchor':'middle'},svg).textContent=t}
+  el('text',{x:W-MR,y:MT-8,class:'axt','text-anchor':'end'},svg).textContent='kg de vidro por habitante, '+ULT;
+  const g=el('g',{},svg);
+  PROVS.forEach((pv,i)=>{
+    const yc=MT+RH*i+RH/2+8;
+    el('text',{x:ML,y:MT+RH*i+14,class:'rl'},svg).textContent=pv;
+    el('text',{x:ML,y:MT+RH*i+29,class:'ax'},svg).textContent='mediana '+d1(MED[pv])+' kg';
+    const col=[];
+    for(const c of conDato.filter(c=>c.pr===pv).sort((a,b)=>b.pob[U]-a.pob[U])){
+      const x=sx(kh(c)),r=rr(c);let y=0;
+      for(let k=0;k<120;k++){const cand=(k%2?1:-1)*Math.ceil(k/2)*1.5;if(Math.abs(cand)>RH*.42)break;if(col.every(o=>Math.hypot(o.x-x,o.y-cand)>=o.r+r+.6)){y=cand;break}}
+      col.push({x,y,r});
+      const p=el('circle',{cx:x,cy:yc+y,r,fill:cor(kh(c)),class:'pt'},g);p.dataset.id=c.id;
+      p.addEventListener('mousemove',ev=>show(ev,txtTip(c)));p.addEventListener('mouseleave',hide);p.addEventListener('click',()=>escolle(c));
+    }
+    el('line',{x1:sx(MED[pv]),x2:sx(MED[pv]),y1:yc-RH*.4,y2:yc+RH*.4,class:'med','pointer-events':'none'},svg);
+  });
+  marca();
+}
+function marca(){
+  for(const e of document.querySelectorAll('.co,.pt'))e.classList.toggle('on',!!sel&&e.dataset.id===sel.id);
+  const on=document.querySelector('#mapa .co.on');if(on)on.parentNode.appendChild(on);
+  const pt=document.querySelector('#sw .pt.on');if(pt)pt.parentNode.appendChild(pt);
+}
+function escolle(c){
+  sel=c;document.getElementById('q').value=c?c.n:'';marca();ficha();
+}
+function ficha(){
+  const f=document.getElementById('ficha');f.hidden=!sel;if(!sel)return;
+  const c=sel,v=kh(c);
+  document.getElementById('fn').textContent=c.n+' · '+c.pr;
+  document.getElementById('fk').innerHTML=v===null?'sen dato':`${d1(v)} <small>kg/hab en ${ULT}</small>`;
+  document.getElementById('ft').innerHTML=v===null?`Ecovidrio non asigna recollida a ${c.n} en ${ULT}.`:
+    `Posto <b>${c.posto} de ${conDato.length}</b> concellos con dato. A mediana de ${c.pr} é ${d1(MED[c.pr])} kg e a media de Galicia, ${d1(galK(U))} kg. `+
+    `${miles(c.kg[U]/1000)} toneladas en ${c.ct[U]} contedores (un por cada ${miles(c.pob[U]/c.ct[U])} habitantes).`;
+  // serie do concello fronte a Galicia
+  const svg=document.getElementById('fs');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth||300,Hh=150,ML=26,MR=40,MT=12,MB=22;svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const vs=A.map((_,i)=>kh(c,i)),gs=A.map((_,i)=>galK(i));
+  const vmax=Math.ceil(Math.max(...vs.filter(v=>v!==null),...gs)/5)*5;
+  const sx=i=>ML+i/U*(W-ML-MR),sy=v=>MT+(1-v/vmax)*(Hh-MT-MB);
+  for(let t=0;t<=vmax;t+=vmax>30?10:5){el('line',{x1:ML,x2:W-MR,y1:sy(t),y2:sy(t),stroke:'var(--grid)'},svg);el('text',{x:ML-5,y:sy(t)+4,class:'ax','text-anchor':'end'},svg).textContent=t}
+  A.forEach((a,i)=>{if(i%2===0||i===U)el('text',{x:sx(i),y:Hh-5,class:'ax','text-anchor':'middle'},svg).textContent=a});
+  const linha=(ys,cl,w)=>{let d='',pen=false;ys.forEach((v,i)=>{if(v===null){pen=false;return}d+=(pen?'L':'M')+sx(i).toFixed(1)+','+sy(v).toFixed(1);pen=true});el('path',{d,fill:'none',stroke:cl,'stroke-width':w,'stroke-linejoin':'round'},svg)};
+  linha(gs,'var(--muted)',1.6);linha(vs,'var(--hl)',2.6);
+  vs.forEach((v,i)=>{if(v!==null)el('circle',{cx:sx(i),cy:sy(v),r:2.6,fill:'var(--hl)'},svg)});
+  el('text',{x:W-MR+4,y:sy(gs[U])+4,class:'ax'},svg).textContent='Galicia';
+  const ul=[...vs].reverse().find(v=>v!==null);if(ul!==undefined)el('text',{x:W-MR+4,y:sy(ul)+(Math.abs(sy(ul)-sy(gs[U]))<12?(ul>gs[U]?-6:14):4),class:'ax',fill:'var(--hl)',style:'fill:var(--hl)'},svg).textContent=c.n.length>9?'concello':c.n;
+}
+function serie(){
+  const svg=document.getElementById('se');svg.innerHTML='';
+  const W=svg.parentNode.clientWidth,Hh=214,ML=30,MR=10,MT=34,MB=24;svg.setAttribute('viewBox',`0 0 ${W} ${Hh}`);
+  const v1=A.map((a,i)=>D.gal[a].contedor/D.pob[i]),v2=A.map((a,i)=>D.gal[a].complementaria/D.pob[i]);
+  const vmax=Math.ceil(Math.max(...v1.map((v,i)=>v+v2[i]))/5)*5,sy=v=>MT+(1-v/vmax)*(Hh-MT-MB);
+  const bw=(W-ML-MR)/A.length;
+  for(let t=0;t<=vmax;t+=5){el('line',{x1:ML,x2:W-MR,y1:sy(t),y2:sy(t),stroke:'var(--grid)'},svg);el('text',{x:ML-5,y:sy(t)+4,class:'ax','text-anchor':'end'},svg).textContent=t}
+  A.forEach((a,i)=>{
+    const x=ML+i*bw+bw*.18,w=bw*.64;
+    const r1=el('rect',{x,y:sy(v1[i]),width:w,height:sy(0)-sy(v1[i]),fill:'var(--g4)'},svg);
+    const r2=el('rect',{x,y:sy(v1[i]+v2[i]),width:w,height:sy(0)-sy(v2[i]),fill:'var(--g2)'},svg);
+    for(const r of [r1,r2]){r.addEventListener('mousemove',ev=>show(ev,`<b>${a}</b>${d1(v1[i])} kg/hab no contedor verde<br>${d1(v2[i])} kg/hab porta a porta en hostalaría`));r.addEventListener('mouseleave',hide)}
+    el('text',{x:x+w/2,y:Hh-7,class:'ax','text-anchor':'middle'},svg).textContent=W<500?"'"+String(a).slice(2):a;
+    if(i===U||v1[i]===Math.max(...v1))el('text',{x:x+w/2,y:sy(v1[i]+v2[i])-5,class:'ax','text-anchor':'middle'},svg).textContent=d1(v1[i]);
+  });
+  const lg=el('g',{transform:`translate(${ML},2)`},svg);
+  el('rect',{width:10,height:10,fill:'var(--g4)'},lg);el('text',{x:14,y:9,class:'axt'},lg).textContent='contedor verde';
+  el('rect',{x:110,width:10,height:10,fill:'var(--g2)'},lg);el('text',{x:124,y:9,class:'axt'},lg).textContent='hostalaría';
+}
+// Buscador
+const lista=document.getElementById('lista');lista.innerHTML=C.map(c=>`<option value="${c.n}">`).join('');
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const c=C.find(c=>c.n.toLowerCase()===q.value.trim().toLowerCase());if(c)escolle(c);else if(!q.value.trim())escolle(null)});
+mapa();enxame();serie();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{enxame();serie();ficha()},150)});
+document.getElementById('tbl').innerHTML='<tr><th>Concello</th><th>Provincia</th><th>Posto</th><th>kg/hab '+ULT+'</th><th>Toneladas '+ULT+'</th><th>Contedores</th><th>Hab./contedor</th>'+A.slice(0,U).map(a=>`<th>kg/hab ${a}</th>`).join('')+'</tr>'+
+  C.slice().sort((a,b)=>(a.posto||999)-(b.posto||999)).map(c=>`<tr><td>${c.n}</td><td>${c.pr}</td><td>${c.posto||''}</td><td>${kh(c)===null?'':d1(kh(c))}</td><td>${d1(c.kg[U]/1000)}</td><td>${c.ct[U]||''}</td><td>${c.ct[U]?miles(c.pob[U]/c.ct[U]):''}</td>${A.slice(0,U).map((_,i)=>`<td>${kh(c,i)===null?'':d1(kh(c,i))}</td>`).join('')}</tr>`).join('');
+</script>
+</body>
+</html>
