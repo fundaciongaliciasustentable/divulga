@@ -83,13 +83,19 @@ nav.topo-nav a:hover{color:#fff}
 
 /* filtro: liña de texto, non botóns con fondo */
 .filtro{border-top:1px solid var(--dv-liña);border-bottom:1px solid var(--dv-liña);position:sticky;top:69px;z-index:15;background:var(--dv-crema)}
-.filtro .inner{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;padding-block:14px}
+.filtro .inner{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding-block:14px}
 .filtro .rot{color:var(--dv-tinta-38)}
 .tema{font:700 .7rem/1 var(--dv-corpo);letter-spacing:.08em;text-transform:uppercase;background:none;border:0;color:var(--dv-tinta-60);cursor:pointer;padding:5px 0;position:relative}
 .tema::after{content:"";position:absolute;left:0;right:0;bottom:1px;height:1px;background:var(--dv-acento);transform:scaleX(0);transition:transform .2s ease}
 .tema:hover{color:var(--dv-tinta)}
 .tema[aria-pressed="true"]{color:var(--dv-acento)}
 .tema[aria-pressed="true"]::after{transform:scaleX(1)}
+.busca{margin-left:auto;display:flex;align-items:center;gap:7px;min-width:0}
+.busca svg{flex-shrink:0;color:var(--dv-tinta-38)}
+.busca input{font:400 .82rem/1 var(--dv-corpo);background:none;border:0;border-bottom:1px solid transparent;color:var(--dv-tinta);padding:4px 0;width:11em;min-width:0;transition:border-color .2s ease}
+.busca input::placeholder{color:var(--dv-tinta-38)}
+.busca input:focus{outline:0;border-bottom-color:var(--dv-acento)}
+@media (max-width:760px){.busca{margin-left:0;order:1;flex-basis:100%}.busca input{width:100%}}
 
 /* grella de pezas: sen tarxeta, sen sombra — só imaxe + lenda */
 main{padding-block:48px 80px}
@@ -156,116 +162,504 @@ footer.pe a:hover{color:var(--dv-acento)}
   </div>
 </section>
 
-<p class="meta-conta inner"><b>13 visualizacións</b> · fontes abertas · licenza CC BY-NC-SA 4.0</p>
+<p class="meta-conta inner"><b>61 visualizacións</b> · fontes abertas · licenza CC BY-NC-SA 4.0</p>
 
 <nav class="filtro" aria-label="Filtrar por tema">
   <div class="inner">
     <span class="rot tracked">Filtrar</span>
     <button type="button" class="tema" data-tema="" aria-pressed="true">Todas</button>
-    <button type="button" class="tema" data-tema="Alimentación" aria-pressed="false">Alimentación</button><button type="button" class="tema" data-tema="Camiño de Santiago" aria-pressed="false">Camiño de Santiago</button><button type="button" class="tema" data-tema="Clima" aria-pressed="false">Clima</button><button type="button" class="tema" data-tema="Emigración" aria-pressed="false">Emigración</button><button type="button" class="tema" data-tema="Enerxía" aria-pressed="false">Enerxía</button><button type="button" class="tema" data-tema="Gandería" aria-pressed="false">Gandería</button><button type="button" class="tema" data-tema="Lecturas" aria-pressed="false">Lecturas</button><button type="button" class="tema" data-tema="Lingua" aria-pressed="false">Lingua</button><button type="button" class="tema" data-tema="Lumes" aria-pressed="false">Lumes</button><button type="button" class="tema" data-tema="Mar" aria-pressed="false">Mar</button><button type="button" class="tema" data-tema="Mitos e datos" aria-pressed="false">Mitos e datos</button><button type="button" class="tema" data-tema="Monte" aria-pressed="false">Monte</button><button type="button" class="tema" data-tema="Poboación" aria-pressed="false">Poboación</button><button type="button" class="tema" data-tema="Rural" aria-pressed="false">Rural</button><button type="button" class="tema" data-tema="Sustentabilidade" aria-pressed="false">Sustentabilidade</button><button type="button" class="tema" data-tema="Turismo" aria-pressed="false">Turismo</button>
+    <button type="button" class="tema" data-tema="Economía e vivenda" aria-pressed="false">Economía e vivenda</button><button type="button" class="tema" data-tema="Enerxía e sustentabilidade" aria-pressed="false">Enerxía e sustentabilidade</button><button type="button" class="tema" data-tema="Patrimonio e cultura" aria-pressed="false">Patrimonio e cultura</button><button type="button" class="tema" data-tema="Poboación e sociedade" aria-pressed="false">Poboación e sociedade</button><button type="button" class="tema" data-tema="Rural e alimentación" aria-pressed="false">Rural e alimentación</button><button type="button" class="tema" data-tema="Territorio e clima" aria-pressed="false">Territorio e clima</button>
+    <span class="busca">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="5.3"/><path d="M11 11l3.5 3.5"/></svg>
+      <input type="search" id="busca" placeholder="Buscar…" aria-label="Buscar visualizacións">
+    </span>
   </div>
 </nav>
 
 <main class="inner">
   <div class="grella" id="grella">
-    <a class="peza" href="v/camino-compostela/" data-temas="Camiño de Santiago|Turismo">
-      <span class="linea-sup"><span class="num">01</span><span>Mapa de fluxos</span></span>
+    <a class="peza" href="v/pib-rexions/" data-temas="Economía e vivenda" data-busca="galicia na escaleira europea en 2000 galicia era a rexión 157 de 224 da ue en pib por habitante en poder de compra; en 2024 é a 122, co 84 % da media europea, o seu mellor posto da serie. economía">
+      <span class="linea-sup"><span class="num">01</span><span>Bump chart</span></span>
+      <div class="marco"><img src="v/pib-rexions/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Galicia na escaleira europea</h2>
+        <p class="entradilla">En 2000 Galicia era a rexión 157 de 224 da UE en PIB por habitante en poder de compra; en 2024 é a 122, co 84 % da media europea, o seu mellor posto da serie.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/estudos-rexions/" data-temas="Poboación e sociedade" data-busca="menos abandono, máis títulos en 2025 só o 10,4 % dos mozos galegos deixara os estudos sen pasar da eso, fronte ao 23,6 % de 2008, e o 53,3 % dos de 25 a 34 anos ten estudos superiores, nove puntos máis ca media da ue. sociedade">
+      <span class="linea-sup"><span class="num">02</span><span>Dispersión</span></span>
+      <div class="marco"><img src="v/estudos-rexions/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Menos abandono, máis títulos</h2>
+        <p class="entradilla">En 2025 só o 10,4 % dos mozos galegos deixara os estudos sen pasar da ESO, fronte ao 23,6 % de 2008, e o 53,3 % dos de 25 a 34 anos ten estudos superiores, nove puntos máis ca media da UE.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/residuos-europa/" data-temas="Enerxía e sustentabilidade" data-busca="o lixo de cada quen en 2023 recolléronse en galicia 416 kg de residuos municipais por habitante, 94 menos ca media da ue; pero só o 17,6 % chega por recollida separada, fronte ao 23,9 % de españa. sustentabilidade">
+      <span class="linea-sup"><span class="num">03</span><span>Barras ordenadas</span></span>
+      <div class="marco"><img src="v/residuos-europa/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O lixo de cada quen</h2>
+        <p class="entradilla">En 2023 recolléronse en Galicia 416 kg de residuos municipais por habitante, 94 menos ca media da UE; pero só o 17,6 % chega por recollida separada, fronte ao 23,9 % de España.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/fecundidade-europa/" data-temas="Poboación e sociedade" data-busca="os berces de europa en 2024 galicia tivo 0,96 fillos por muller, a cuarta cifra máis baixa das 244 rexións da unión europea (posto 241 de 244). a media da ue foi de 1,34. poboación sociedade">
+      <span class="linea-sup"><span class="num">04</span><span>Barras ordenadas e liñas</span></span>
+      <div class="marco"><img src="v/fecundidade-europa/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Os berces de Europa</h2>
+        <p class="entradilla">En 2024 Galicia tivo 0,96 fillos por muller, a cuarta cifra máis baixa das 244 rexións da Unión Europea (posto 241 de 244). A media da UE foi de 1,34.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/centenarios/" data-temas="Poboación e sociedade" data-busca="os que pasan dos cen a 1 de xaneiro de 2026 vivían en ourense 322 persoas de 100 anos ou máis, 10,5 por cada 10.000 habitantes: a quinta provincia de españa, despois de soria, zamora, salamanca e ávila. lugo é a oitava. poboación saúde sociedade">
+      <span class="linea-sup"><span class="num">05</span><span>Gráfico de pesas e enxame</span></span>
+      <div class="marco"><img src="v/centenarios/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Os que pasan dos cen</h2>
+        <p class="entradilla">A 1 de xaneiro de 2026 vivían en Ourense 322 persoas de 100 anos ou máis, 10,5 por cada 10.000 habitantes: a quinta provincia de España, despois de Soria, Zamora, Salamanca e Ávila. Lugo é a oitava.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/envellecemento-europa/" data-temas="Poboación e sociedade|Territorio e clima" data-busca="o mapa das canas a metade da poboación de ourense ten máis de 53,3 anos: é a 29.ª rexión máis envellecida de 1.165 da unión europea (2025), e lugo a 59.ª. a idade mediana da ue é de 44,9 anos. poboación territorio sociedade">
+      <span class="linea-sup"><span class="num">06</span><span>Mapa coroplético e ranking</span></span>
+      <div class="marco"><img src="v/envellecemento-europa/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O mapa das canas</h2>
+        <p class="entradilla">A metade da poboación de Ourense ten máis de 53,3 anos: é a 29.ª rexión máis envellecida de 1.165 da Unión Europea (2025), e Lugo a 59.ª. A idade mediana da UE é de 44,9 anos.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/galego-concellos/" data-temas="Poboación e sociedade" data-busca="onde se fala sempre galego no censo de 2011, o 43,8 % da poboación de 5 e máis anos dicía falar sempre en galego, 13 puntos menos ca en 2001. o uso habitual baixou en 305 dos 313 concellos. lingua sociedade">
+      <span class="linea-sup"><span class="num">07</span><span>Mapa coroplético e dispersión</span></span>
+      <div class="marco"><img src="v/galego-concellos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Onde se fala sempre galego</h2>
+        <p class="entradilla">No Censo de 2011, o 43,8 % da poboación de 5 e máis anos dicía falar sempre en galego, 13 puntos menos ca en 2001. O uso habitual baixou en 305 dos 313 concellos.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/toponimos/" data-temas="Poboación e sociedade|Rural e alimentación|Territorio e clima" data-busca="os nomes que se repiten das 30.518 entidades de poboación do nomenclátor de 2025, 433 chámanse vilar (ou vilares) e 424 outeiro; detrás veñen igrexa, castro e pazo. territorio lingua rural">
+      <span class="linea-sup"><span class="num">08</span><span>Mosaico e mapa de puntos</span></span>
+      <div class="marco"><img src="v/toponimos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Os nomes que se repiten</h2>
+        <p class="entradilla">Das 30.518 entidades de poboación do Nomenclátor de 2025, 433 chámanse Vilar (ou Vilares) e 424 Outeiro; detrás veñen Igrexa, Castro e Pazo.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/bibliotecas-concellos/" data-temas="Poboación e sociedade|Rural e alimentación" data-busca="o andel de cada concello en 2024 as bibliotecas públicas galegas fixeron 2,29 millóns de préstamos, 0,84 por habitante; 84 concellos, con 141.459 veciños, non tiñan ningunha biblioteca pública. sociedade rural">
+      <span class="linea-sup"><span class="num">09</span><span>Andeis de lombos</span></span>
+      <div class="marco"><img src="v/bibliotecas-concellos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O andel de cada concello</h2>
+        <p class="entradilla">En 2024 as bibliotecas públicas galegas fixeron 2,29 millóns de préstamos, 0,84 por habitante; 84 concellos, con 141.459 veciños, non tiñan ningunha biblioteca pública.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/mexillon-mundo/" data-temas="Economía e vivenda|Territorio e clima" data-busca="o mexillón do mundo coas súas bateas, galicia sería o terceiro produtor mundial de mexillón de acuicultura: 178.069 toneladas en 2023, o 9,5 % do total, só por detrás de china e chile. mar economía">
+      <span class="linea-sup"><span class="num">10</span><span>Círculos proporcionais</span></span>
+      <div class="marco"><img src="v/mexillon-mundo/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O mexillón do mundo</h2>
+        <p class="entradilla">Coas súas bateas, Galicia sería o terceiro produtor mundial de mexillón de acuicultura: 178.069 toneladas en 2023, o 9,5 % do total, só por detrás de China e Chile.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/eolica-europa/" data-temas="Enerxía e sustentabilidade" data-busca="vento por cabeza galicia tiña 3.932 mw eólicos en 2024: 1.448 vatios por habitante, 2,8 veces a media da ue e máis ca dinamarca. sería terceira da ue por habitante e por km². enerxía sustentabilidade">
+      <span class="linea-sup"><span class="num">11</span><span>Dispersión</span></span>
+      <div class="marco"><img src="v/eolica-europa/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Vento por cabeza</h2>
+        <p class="entradilla">Galicia tiña 3.932 MW eólicos en 2024: 1.448 vatios por habitante, 2,8 veces a media da UE e máis ca Dinamarca. Sería terceira da UE por habitante e por km².</p>
+      </div>
+    </a>
+    <a class="peza" href="v/eucalipto-mundo/" data-temas="Territorio e clima" data-busca="un país de árbores o 48 % de galicia é bosque, máis ca en españa, portugal ou francia. o eucalipto cobre o 13,8 % do territorio, máis ca en portugal continental (9,5 %), e en 59 concellos pasa do 30 %. monte territorio">
+      <span class="linea-sup"><span class="num">12</span><span>Enxame, barras apiladas e perfil de concellos</span></span>
+      <div class="marco"><img src="v/eucalipto-mundo/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Un país de árbores</h2>
+        <p class="entradilla">O 48 % de Galicia é bosque, máis ca en España, Portugal ou Francia. O eucalipto cobre o 13,8 % do territorio, máis ca en Portugal continental (9,5 %), e en 59 concellos pasa do 30 %.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/minutos-hospital/" data-temas="Poboación e sociedade|Rural e alimentación|Territorio e clima" data-busca="canto queda o hospital para máis da metade dos galegos (53 %) o hospital público máis próximo está a 15 minutos en coche ou menos, pero 515.000 persoas viven a máis de media hora e en negueira de muñiz a viaxe media chega a 103 minutos. saúde territorio rural">
+      <span class="linea-sup"><span class="num">13</span><span>Mapa de isócronas e curva acumulada</span></span>
+      <div class="marco"><img src="v/minutos-hospital/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Canto queda o hospital</h2>
+        <p class="entradilla">Para máis da metade dos galegos (53 %) o hospital público máis próximo está a 15 minutos en coche ou menos, pero 515.000 persoas viven a máis de media hora e en Negueira de Muñiz a viaxe media chega a 103 minutos.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/fibra-concellos/" data-temas="Poboación e sociedade|Rural e alimentación|Territorio e clima" data-busca="a fibra, concello a concello en xuño de 2025, o 94,1 % dos fogares galegos podía contratar 100 mbps e o 85,2 % 1 gbps, pero en 11 concellos os 100 mbps non chegan nin á metade das casas. sociedade rural territorio">
+      <span class="linea-sup"><span class="num">14</span><span>Liña de horizonte</span></span>
+      <div class="marco"><img src="v/fibra-concellos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>A fibra, concello a concello</h2>
+        <p class="entradilla">En xuño de 2025, o 94,1 % dos fogares galegos podía contratar 100 Mbps e o 85,2 % 1 Gbps, pero en 11 concellos os 100 Mbps non chegan nin á metade das casas.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/vivenda-turistica/" data-temas="Economía e vivenda" data-busca="casas para turistas en maio de 2026 había 0,99 vivendas turísticas anunciadas por cada 100 vivendas en galicia; en fisterra e sanxenxo son 7,8 de cada 100. vivenda turismo">
+      <span class="linea-sup"><span class="num">15</span><span>Mapa coroplético e ranking</span></span>
+      <div class="marco"><img src="v/vivenda-turistica/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Casas para turistas</h2>
+        <p class="entradilla">En maio de 2026 había 0,99 vivendas turísticas anunciadas por cada 100 vivendas en Galicia; en Fisterra e Sanxenxo son 7,8 de cada 100.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/prazas-turisticas/" data-temas="Economía e vivenda" data-busca="camas para cada veciño galicia ten 10,8 prazas de aloxamento turístico por cada 100 habitantes; en sanxenxo, o concello máis turístico, son 185, e barreiros e o grove tamén teñen máis camas para visitantes ca veciños. turismo economía">
+      <span class="linea-sup"><span class="num">16</span><span>Dispersión con diagonais</span></span>
+      <div class="marco"><img src="v/prazas-turisticas/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Camas para cada veciño</h2>
+        <p class="entradilla">Galicia ten 10,8 prazas de aloxamento turístico por cada 100 habitantes; en Sanxenxo, o concello máis turístico, son 185, e Barreiros e O Grove tamén teñen máis camas para visitantes ca veciños.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/nucleos-espana/" data-temas="Poboación e sociedade|Rural e alimentación|Territorio e clima" data-busca="a metade dos lugares de españa das 62.151 entidades singulares de poboación que o ine conta en españa, 30.518 están en galicia: o 49,1 %, nun 5,9 % da superficie. un punto por cada cen lugares. poboación territorio rural">
+      <span class="linea-sup"><span class="num">17</span><span>Pictograma e barras</span></span>
+      <div class="marco"><img src="v/nucleos-espana/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>A metade dos lugares de España</h2>
+        <p class="entradilla">Das 62.151 entidades singulares de poboación que o INE conta en España, 30.518 están en Galicia: o 49,1 %, nun 5,9 % da superficie. Un punto por cada cen lugares.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/costa-galicia/" data-temas="Territorio e clima" data-busca="a costa estirada estirada en liña recta, a costa galega mide 1.498 km segundo o ign e 1.895 km seguindo o deslinde polas rías: unha costa de país, entre a de portugal e a de irlanda. mar territorio">
+      <span class="linea-sup"><span class="num">18</span><span>Fíos estirados</span></span>
+      <div class="marco"><img src="v/costa-galicia/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>A costa estirada</h2>
+        <p class="entradilla">Estirada en liña recta, a costa galega mide 1.498 km segundo o IGN e 1.895 km seguindo o deslinde polas rías: unha costa de país, entre a de Portugal e a de Irlanda.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/choiva-sol-europa/" data-temas="Territorio e clima" data-busca="chove, pero hai sol vigo recolle 1.696 l/m² ao ano, 2,8 veces o que cae en londres, pero as cidades galegas teñen entre 1.896 e 2.290 horas de sol, máis ca londres, parís, bruxelas ou dublín. clima">
+      <span class="linea-sup"><span class="num">19</span><span>Dispersión e piruletas</span></span>
+      <div class="marco"><img src="v/choiva-sol-europa/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Chove, pero hai sol</h2>
+        <p class="entradilla">Vigo recolle 1.696 l/m² ao ano, 2,8 veces o que cae en Londres, pero as cidades galegas teñen entre 1.896 e 2.290 horas de sol, máis ca Londres, París, Bruxelas ou Dublín.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/coches-ccaa/" data-temas="Economía e vivenda|Enerxía e sustentabilidade" data-busca="moitos coches, poucos enchufes galicia ten 593 turismos por cada 1.000 habitantes, a terceira cifra máis alta, pero só o 1,3 % do seu parque leva a etiqueta cero (españa: 2,5 %); nas matriculacións de 2025, o 16,3 %. mobilidade enerxía sustentabilidade">
+      <span class="linea-sup"><span class="num">20</span><span>Pendentes e barras apiladas</span></span>
+      <div class="marco"><img src="v/coches-ccaa/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Moitos coches, poucos enchufes</h2>
+        <p class="entradilla">Galicia ten 593 turismos por cada 1.000 habitantes, a terceira cifra máis alta, pero só o 1,3 % do seu parque leva a etiqueta CERO (España: 2,5 %); nas matriculacións de 2025, o 16,3 %.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/vidro-concellos/" data-temas="Enerxía e sustentabilidade|Territorio e clima" data-busca="o vidro, concello a concello en 2025 cada galego levou ao contedor verde 15,6 kg de vidro, menos que os 18,9 de 2022. santiago chega a 26,0 kg por habitante e ourense queda en 10,3. sustentabilidade territorio">
+      <span class="linea-sup"><span class="num">21</span><span>Mapa coroplético e enxame</span></span>
+      <div class="marco"><img src="v/vidro-concellos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O vidro, concello a concello</h2>
+        <p class="entradilla">En 2025 cada galego levou ao contedor verde 15,6 kg de vidro, menos que os 18,9 de 2022. Santiago chega a 26,0 kg por habitante e Ourense queda en 10,3.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/etiqueta-cero/" data-temas="Economía e vivenda|Enerxía e sustentabilidade" data-busca="a etiqueta cero chega aos concellos galicia tiña a finais de 2025 25.039 vehículos con etiqueta cero, 8,9 veces máis que en 2020, pero son 9,2 por cada mil habitantes fronte a 17,0 en españa. mobilidade enerxía sustentabilidade">
+      <span class="linea-sup"><span class="num">22</span><span>Feixe de liñas e mapa de símbolos</span></span>
+      <div class="marco"><img src="v/etiqueta-cero/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>A etiqueta CERO chega aos concellos</h2>
+        <p class="entradilla">Galicia tiña a finais de 2025 25.039 vehículos con etiqueta CERO, 8,9 veces máis que en 2020, pero son 9,2 por cada mil habitantes fronte a 17,0 en España.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/bandeiras-azuis/" data-temas="Economía e vivenda|Enerxía e sustentabilidade|Territorio e clima" data-busca="as bandeiras azuis galicia ten 118 praias con bandeira azul en 2026, terceira comunidade en número; pero por quilómetro de costa baixa ao posto 7 de 12, con 7,9 por cada 100 km. mar turismo sustentabilidade">
+      <span class="linea-sup"><span class="num">23</span><span>Mapa de bandeiriñas e pictograma</span></span>
+      <div class="marco"><img src="v/bandeiras-azuis/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>As bandeiras azuis</h2>
+        <p class="entradilla">Galicia ten 118 praias con bandeira azul en 2026, terceira comunidade en número; pero por quilómetro de costa baixa ao posto 7 de 12, con 7,9 por cada 100 km.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/concellos-1950/" data-temas="Poboación e sociedade|Rural e alimentación|Territorio e clima" data-busca="os que medran e os que se baleiran galicia ten un 4 % máis de habitantes ca en 1950, pero só 77 dos 313 concellos teñen hoxe máis xente e 156 perderon máis da metade: oleiros multiplicou a súa poboación por 3,7 e a veiga quedou co 14 %. poboación territorio rural">
+      <span class="linea-sup"><span class="num">24</span><span>Mapa diverxente e barras</span></span>
+      <div class="marco"><img src="v/concellos-1950/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Os que medran e os que se baleiran</h2>
+        <p class="entradilla">Galicia ten un 4 % máis de habitantes ca en 1950, pero só 77 dos 313 concellos teñen hoxe máis xente e 156 perderon máis da metade: Oleiros multiplicou a súa poboación por 3,7 e A Veiga quedou co 14 %.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/idade-concellos/" data-temas="Poboación e sociedade|Rural e alimentación" data-busca="do concello máis novo ao máis vello a idade media galega é de 48,5 anos (2025), pero vai dos 42,6 de ames aos 64,5 de lobeira; en 159 dos 313 concellos hai tres ou máis maiores de 65 por cada menor de 20. poboación rural sociedade">
+      <span class="linea-sup"><span class="num">25</span><span>Enxame e pirámides</span></span>
+      <div class="marco"><img src="v/idade-concellos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Do concello máis novo ao máis vello</h2>
+        <p class="entradilla">A idade media galega é de 48,5 anos (2025), pero vai dos 42,6 de Ames aos 64,5 de Lobeira; en 159 dos 313 concellos hai tres ou máis maiores de 65 por cada menor de 20.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/enterros-bautizos/" data-temas="Poboación e sociedade|Rural e alimentación" data-busca="máis enterros ca bautizos entre 2021 e 2025, 312 dos 313 concellos galegos tiveron máis defuncións ca nacementos (só ames, non); en 1975-1979 pasaba en 157. en 2025 houbo 4 nacementos por cada 10 defuncións. poboación rural sociedade">
+      <span class="linea-sup"><span class="num">26</span><span>Cartograma de hexágonos e pictograma</span></span>
+      <div class="marco"><img src="v/enterros-bautizos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Máis enterros ca bautizos</h2>
+        <p class="entradilla">Entre 2021 e 2025, 312 dos 313 concellos galegos tiveron máis defuncións ca nacementos (só Ames, non); en 1975-1979 pasaba en 157. En 2025 houbo 4 nacementos por cada 10 defuncións.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/nados-fora/" data-temas="Poboación e sociedade|Territorio e clima" data-busca="nados fóra, veciños aquí 331.997 veciños de galicia (12,2 %) naceron fóra de españa, sobre todo en venezuela, colombia e arxentina; en avión son o 35,4 % da poboación. poboación sociedade territorio">
+      <span class="linea-sup"><span class="num">27</span><span>Mapa de círculos e barras apiladas</span></span>
+      <div class="marco"><img src="v/nados-fora/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Nados fóra, veciños aquí</h2>
+        <p class="entradilla">331.997 veciños de Galicia (12,2 %) naceron fóra de España, sobre todo en Venezuela, Colombia e Arxentina; en Avión son o 35,4 % da poboación.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/renda-concellos/" data-temas="Economía e vivenda|Poboación e sociedade|Territorio e clima" data-busca="canto se gaña en cada concello en 2024 a renda neta media en galicia foi de 15.471 euros por persoa, pero entre concellos vai de 20.827 € en oleiros a 10.083 € en avión. e dentro da coruña, a sección censal máis rica ten 3,5 veces a renda da máis pobre. economía sociedade territorio">
+      <span class="linea-sup"><span class="num">28</span><span>Mapa coroplético e enxame</span></span>
+      <div class="marco"><img src="v/renda-concellos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Canto se gaña en cada concello</h2>
+        <p class="entradilla">En 2024 a renda neta media en Galicia foi de 15.471 euros por persoa, pero entre concellos vai de 20.827 € en Oleiros a 10.083 € en Avión. E dentro da Coruña, a sección censal máis rica ten 3,5 veces a renda da máis pobre.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/pensionistas-afiliados/" data-temas="Economía e vivenda|Poboación e sociedade" data-busca="quen paga as pensións a fin de 2024 vivían en galicia 1,48 persoas afiliadas á seguridade social por cada pensionista, pero en 144 dos 313 concellos hai máis pensionistas ca afiliados. en beariz quedan 0,40; en ames, 3,23. economía poboación sociedade">
+      <span class="linea-sup"><span class="num">29</span><span>Dispersión logarítmica e pictograma</span></span>
+      <div class="marco"><img src="v/pensionistas-afiliados/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Quen paga as pensións</h2>
+        <p class="entradilla">A fin de 2024 vivían en Galicia 1,48 persoas afiliadas á Seguridade Social por cada pensionista, pero en 144 dos 313 concellos hai máis pensionistas ca afiliados. En Beariz quedan 0,40; en Ames, 3,23.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/debeda-concellos/" data-temas="Economía e vivenda|Territorio e clima" data-busca="os concellos que non deben nada a fin de 2025, 156 dos 313 concellos galegos non tiñan ningún crédito pendente. entre todos debían 272,8 millóns, 101 € por habitante e un 47 % menos ca en 2015; só os blancos, miño, pol e catoira pasan dos 1.000 € por veciño. economía territorio">
+      <span class="linea-sup"><span class="num">30</span><span>Histograma de unidades e pesas</span></span>
+      <div class="marco"><img src="v/debeda-concellos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Os concellos que non deben nada</h2>
+        <p class="entradilla">A fin de 2025, 156 dos 313 concellos galegos non tiñan ningún crédito pendente. Entre todos debían 272,8 millóns, 101 € por habitante e un 47 % menos ca en 2015; só Os Blancos, Miño, Pol e Catoira pasan dos 1.000 € por veciño.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/paro-concellos/" data-temas="Economía e vivenda|Poboación e sociedade" data-busca="o paro, concello a concello en setembro de 2012 había en galicia 259.373 persoas no paro rexistrado, o 14,3 % da poboación de 15 a 64 anos; en setembro de 2025 eran 113.085, o 6,7 %. a taxa baixou en 309 dos 313 concellos. economía sociedade">
+      <span class="linea-sup"><span class="num">31</span><span>Pendentes en pequenos múltiplos</span></span>
+      <div class="marco"><img src="v/paro-concellos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O paro, concello a concello</h2>
+        <p class="entradilla">En setembro de 2012 había en Galicia 259.373 persoas no paro rexistrado, o 14,3 % da poboación de 15 a 64 anos; en setembro de 2025 eran 113.085, o 6,7 %. A taxa baixou en 309 dos 313 concellos.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/vivenda-salario/" data-temas="Economía e vivenda" data-busca="canto custa unha casa en anos unha vivenda de 90 m² ao valor tasado medio de 2024 custaba en galicia 5,1 anos de salario medio, fronte a 11,8 nas illes balears e 3,0 en ciudad real. pontevedra é a galega máis cara (5,8 anos, posto 17 de 48). vivenda economía">
+      <span class="linea-sup"><span class="num">32</span><span>Pictograma de filas</span></span>
+      <div class="marco"><img src="v/vivenda-salario/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Canto custa unha casa en anos</h2>
+        <p class="entradilla">Unha vivenda de 90 m² ao valor tasado medio de 2024 custaba en Galicia 5,1 anos de salario medio, fronte a 11,8 nas Illes Balears e 3,0 en Ciudad Real. Pontevedra é a galega máis cara (5,8 anos, posto 17 de 48).</p>
+      </div>
+    </a>
+    <a class="peza" href="v/calculadora-persoal/" data-temas="Economía e vivenda|Poboación e sociedade|Territorio e clima" data-busca="dende que naciches escribe o ano no que naciches: canto subiron os prezos, que daba de si o salario mínimo (un piso, un coche, a compra, un café), cantas hectáreas arderon, canto quentou galicia, como cambiou o mundo e que noticias deu o teu ano. clima poboación economía">
+      <span class="linea-sup"><span class="num">33</span><span>Calculadora persoal</span></span>
+      <div class="marco"><img src="v/calculadora-persoal/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Dende que naciches</h2>
+        <p class="entradilla">Escribe o ano no que naciches: canto subiron os prezos, que daba de si o salario mínimo (un piso, un coche, a compra, un café), cantas hectáreas arderon, canto quentou Galicia, como cambiou o mundo e que noticias deu o teu ano.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/hexagonos-electorais/" data-temas="Poboación e sociedade|Territorio e clima" data-busca="galicia en hexágonos electorais autonómicas, municipais e xerais dende 2000, concello a concello, nun mapa onde todos pesan igual. vótase o mesmo para a xunta, o concello e o estado? só en 198 concellos gañou o mesmo partido nas autonómicas de 2024 e nas municipais de 2023. política territorio">
+      <span class="linea-sup"><span class="num">34</span><span>Cartograma de hexágonos</span></span>
+      <div class="marco"><img src="v/hexagonos-electorais/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Galicia en hexágonos electorais</h2>
+        <p class="entradilla">Autonómicas, municipais e xerais dende 2000, concello a concello, nun mapa onde todos pesan igual. Vótase o mesmo para a Xunta, o concello e o Estado? Só en 198 concellos gañou o mesmo partido nas autonómicas de 2024 e nas municipais de 2023.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/centrais-galicia/" data-temas="Enerxía e sustentabilidade" data-busca="as centrais de galicia, en megavatios douscentos parques eólicos, encoros e ciclos combinados, cada un co tamaño dos seus mw, ao xeito de mega-what?, e as térmicas de carbón que xa pecharon. con canto cobren dos totais oficiais de ree. enerxía">
+      <span class="linea-sup"><span class="num">35</span><span>Círculos empaquetados</span></span>
+      <div class="marco"><img src="v/centrais-galicia/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>As centrais de Galicia, en megavatios</h2>
+        <p class="entradilla">Douscentos parques eólicos, encoros e ciclos combinados, cada un co tamaño dos seus MW, ao xeito de Mega-What?, e as térmicas de carbón que xa pecharon. Con canto cobren dos totais oficiais de REE.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/horas-transporte/" data-temas="Economía e vivenda|Territorio e clima" data-busca="galicia en horas de autobús e tren un martes pola mañá, saíndo de santiago en bus ou tren, chégase en menos de dúas horas a 96 dos 313 concellos. o mapa de galicia medido en horas de transporte público dende as sete cidades, e deformado polo tempo. mobilidade territorio">
+      <span class="linea-sup"><span class="num">36</span><span>Mapa e mapa do tempo</span></span>
+      <div class="marco"><img src="v/horas-transporte/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Galicia en horas de autobús e tren</h2>
+        <p class="entradilla">Un martes pola mañá, saíndo de Santiago en bus ou tren, chégase en menos de dúas horas a 96 dos 313 concellos. O mapa de Galicia medido en horas de transporte público dende as sete cidades, e deformado polo tempo.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/encoros/" data-temas="Enerxía e sustentabilidade|Territorio e clima" data-busca="os encoros, vaso a vaso corenta encoros das concas galegas debuxados coma vasos que se enchen e se baleiran, semana a semana dende 1988. move a data ou dálle ao play: o inverno énchea, o verán e as turbinas baleírana. auga enerxía">
+      <span class="linea-sup"><span class="num">37</span><span>Pictogramas animados</span></span>
+      <div class="marco"><img src="v/encoros/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Os encoros, vaso a vaso</h2>
+        <p class="entradilla">Corenta encoros das concas galegas debuxados coma vasos que se enchen e se baleiran, semana a semana dende 1988. Move a data ou dálle ao play: o inverno énchea, o verán e as turbinas baleírana.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/espera-sergas/" data-temas="Poboación e sociedade" data-busca="canto esperas no sergas 55.348 persoas agardaban por unha operación en xuño de 2026, cunha espera media de 91 días. hospital a hospital e especialidade a especialidade, canto cambia segundo onde vivas, e a serie dende 2014. saúde">
+      <span class="linea-sup"><span class="num">38</span><span>Enxame de puntos</span></span>
+      <div class="marco"><img src="v/espera-sergas/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Canto esperas no Sergas</h2>
+        <p class="entradilla">55.348 persoas agardaban por unha operación en xuño de 2026, cunha espera media de 91 días. Hospital a hospital e especialidade a especialidade, canto cambia segundo onde vivas, e a serie dende 2014.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/casas-baleiras/" data-temas="Economía e vivenda|Rural e alimentación" data-busca="as casas baleiras catro de cada dez vivendas galegas non teñen ninguén empadroado. concello a concello, cantas casas están apagadas, e onde son abandono (sen xente e sen luz) ou segundas residencias. vivenda rural">
+      <span class="linea-sup"><span class="num">39</span><span>Mapa e pictogramas</span></span>
+      <div class="marco"><img src="v/casas-baleiras/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>As casas baleiras</h2>
+        <p class="entradilla">Catro de cada dez vivendas galegas non teñen ninguén empadroado. Concello a concello, cantas casas están apagadas, e onde son abandono (sen xente e sen luz) ou segundas residencias.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/castros/" data-temas="Patrimonio e cultura|Territorio e clima" data-busca="os castros: unha constelación 1.880 castros de openstreetmap debuxados como estrelas: galicia aparece coma un ceo cheo. cada castro ten outro a 1,6 km de media, e case a metade do país está a menos de 2 km dun deles. patrimonio territorio">
+      <span class="linea-sup"><span class="num">40</span><span>Mapa de puntos</span></span>
+      <div class="marco"><img src="v/castros/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Os castros: unha constelación</h2>
+        <p class="entradilla">1.880 castros de OpenStreetMap debuxados como estrelas: Galicia aparece coma un ceo cheo. Cada castro ten outro a 1,6 km de media, e case a metade do país está a menos de 2 km dun deles.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/ondas-atlantico/" data-temas="Territorio e clima" data-busca="as ondas do atlántico a temperatura do mar fronte ás rías baixas, unha onda por ano dende 1982, ao xeito de unknown pleasures. as ondas fuxen cara á calor: a última década está 0,8 °c máis quente ca a primeira e 2023 foi o ano récord. clima mar">
+      <span class="linea-sup"><span class="num">41</span><span>Ridgeline</span></span>
+      <div class="marco"><img src="v/ondas-atlantico/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>As ondas do Atlántico</h2>
+        <p class="entradilla">A temperatura do mar fronte ás Rías Baixas, unha onda por ano dende 1982, ao xeito de Unknown Pleasures. As ondas fuxen cara á calor: a última década está 0,8 °C máis quente ca a primeira e 2023 foi o ano récord.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/apelidos-galegos/" data-temas="Poboación e sociedade" data-busca="os apelidos máis galegos galicia ten o 5,5 % da poboación de españa, pero 50 apelidos teñen tres de cada catro portadores aquí: souto, costas, rial, pose… un galicianómetro dos 4.410 primeiros apelidos máis comúns e un buscador para o teu. poboación lingua">
+      <span class="linea-sup"><span class="num">42</span><span>Buscador e dispersión</span></span>
+      <div class="marco"><img src="v/apelidos-galegos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Os apelidos máis galegos</h2>
+        <p class="entradilla">Galicia ten o 5,5 % da poboación de España, pero 50 apelidos teñen tres de cada catro portadores aquí: Souto, Costas, Rial, Pose… Un galicianómetro dos 4.410 primeiros apelidos máis comúns e un buscador para o teu.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/vida-semanas/" data-temas="Poboación e sociedade" data-busca="a túa vida en semanas unha vida galega cabe en arredor de 4.500 semanas. pon a túa data de nacemento e verás as que levas vividas, as que che quedan en media e en que se foron: durmindo, traballando, vendo a tele, lendo… poboación saúde">
+      <span class="linea-sup"><span class="num">43</span><span>Grella interactiva</span></span>
+      <div class="marco"><img src="v/vida-semanas/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>A túa vida en semanas</h2>
+        <p class="entradilla">Unha vida galega cabe en arredor de 4.500 semanas. Pon a túa data de nacemento e verás as que levas vividas, as que che quedan en media e en que se foron: durmindo, traballando, vendo a tele, lendo…</p>
+      </div>
+    </a>
+    <a class="peza" href="v/nomes-galicia/" data-temas="Poboación e sociedade" data-busca="de manuel a mateo os galegos dos anos cincuenta chámanse manuel e carmen; os bebés de hoxe, mateo e sofía. un río de rankings dos nomes de galicia década a década, dende antes de 1930, e ano a ano dende 2000. poboación lingua">
+      <span class="linea-sup"><span class="num">44</span><span>Río de rankings</span></span>
+      <div class="marco"><img src="v/nomes-galicia/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>De Manuel a Mateo</h2>
+        <p class="entradilla">Os galegos dos anos cincuenta chámanse Manuel e Carmen; os bebés de hoxe, Mateo e Sofía. Un río de rankings dos nomes de Galicia década a década, dende antes de 1930, e ano a ano dende 2000.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/reloxo-choiva/" data-temas="Territorio e clima" data-busca="o reloxo da choiva a que hora chove en galicia? dez anos de choiva, hora a hora, en seis cidades: na costa das rías baixas chove máis de noite e de madrugada; en lugo e ourense, pola tarde. clima choiva">
+      <span class="linea-sup"><span class="num">45</span><span>Reloxos radiais</span></span>
+      <div class="marco"><img src="v/reloxo-choiva/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O reloxo da choiva</h2>
+        <p class="entradilla">A que hora chove en Galicia? Dez anos de choiva, hora a hora, en seis cidades: na costa das Rías Baixas chove máis de noite e de madrugada; en Lugo e Ourense, pola tarde.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/galicia-minuto/" data-temas="Economía e vivenda|Poboación e sociedade" data-busca="galicia nun minuto cada minuto saen das farmacias 152 medicamentos, das granxas 5.690 litros de leite e das bateas 338 quilos de mexillón. un panel en directo con quince fluxos de galicia que empezan a sumar cando abres a páxina. economía sociedade">
+      <span class="linea-sup"><span class="num">46</span><span>Panel en directo</span></span>
+      <div class="marco"><img src="v/galicia-minuto/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Galicia nun minuto</h2>
+        <p class="entradilla">Cada minuto saen das farmacias 152 medicamentos, das granxas 5.690 litros de leite e das bateas 338 quilos de mexillón. Un panel en directo con quince fluxos de Galicia que empezan a sumar cando abres a páxina.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/fenda-rural/" data-temas="Poboación e sociedade|Rural e alimentación" data-busca="a fenda rural no rural declárase un 31 % menos de renda ca nas cidades, pero o risco de pobreza é o máis baixo e a esperanza de vida, case a mesma. 26 indicadores do ige para as zonas densamente poboadas, intermedias e pouco poboadas. rural poboación">
+      <span class="linea-sup"><span class="num">47</span><span>Gráfico de pesas</span></span>
+      <div class="marco"><img src="v/fenda-rural/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>A fenda rural</h2>
+        <p class="entradilla">No rural declárase un 31 % menos de renda ca nas cidades, pero o risco de pobreza é o máis baixo e a esperanza de vida, case a mesma. 26 indicadores do IGE para as zonas densamente poboadas, intermedias e pouco poboadas.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/migracions/" data-temas="Poboación e sociedade" data-busca="quen chega e quen marcha por cada persoa que marcha de galicia ao estranxeiro chegan case tres, sobre todo de venezuela e colombia. os fluxos de 2024 país a país e comunidade a comunidade, e o saldo dende 2002. poboación emigración">
+      <span class="linea-sup"><span class="num">48</span><span>Mapa de arcos</span></span>
+      <div class="marco"><img src="v/migracions/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Quen chega e quen marcha</h2>
+        <p class="entradilla">Por cada persoa que marcha de Galicia ao estranxeiro chegan case tres, sobre todo de Venezuela e Colombia. Os fluxos de 2024 país a país e comunidade a comunidade, e o saldo dende 2002.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/camino-compostela/" data-temas="Economía e vivenda|Patrimonio e cultura" data-busca="todos os camiños levan a compostela 530.844 peregrinos recolleron a compostela en 2025, un récord, e un de cada tres saíu de sarria. os camiños co grosor dos seus peregrinos, de onde veñen e a serie desde 2004. camiño de santiago turismo">
+      <span class="linea-sup"><span class="num">49</span><span>Mapa de fluxos</span></span>
       <div class="marco"><img src="v/camino-compostela/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>Todos os camiños levan a Compostela</h2>
         <p class="entradilla">530.844 peregrinos recolleron a Compostela en 2025, un récord, e un de cada tres saíu de Sarria. Os camiños co grosor dos seus peregrinos, de onde veñen e a serie desde 2004.</p>
       </div>
     </a>
-    <a class="peza" href="v/galego-xeracions/" data-temas="Lingua|Poboación">
-      <span class="linea-sup"><span class="num">02</span><span>Pirámide da lingua</span></span>
+    <a class="peza" href="v/galego-xeracions/" data-temas="Poboación e sociedade" data-busca="o galego por xeracións a pirámide da lingua: só 7 de cada 100 nenos falan sempre en galego, fronte a 40 dos maiores de 65. como cambiou de 2003 a 2023 e como pasa de nais a fillos. lingua poboación">
+      <span class="linea-sup"><span class="num">50</span><span>Pirámide da lingua</span></span>
       <div class="marco"><img src="v/galego-xeracions/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>O galego por xeracións</h2>
         <p class="entradilla">A pirámide da lingua: só 7 de cada 100 nenos falan sempre en galego, fronte a 40 dos maiores de 65. Como cambiou de 2003 a 2023 e como pasa de nais a fillos.</p>
       </div>
     </a>
-    <a class="peza" href="v/mar-prato/" data-temas="Mar|Alimentación">
-      <span class="linea-sup"><span class="num">03</span><span>Calendario e marea</span></span>
+    <a class="peza" href="v/mar-prato/" data-temas="Rural e alimentación|Territorio e clima" data-busca="o mar nun prato o calendario das lonxas galegas: que se vende cada mes, cando hai veda e cando sobe o prezo. o percebe vale case o dobre no nadal, e as lonxas venden a metade de quilos ca en 2017. mar alimentación">
+      <span class="linea-sup"><span class="num">51</span><span>Calendario e marea</span></span>
       <div class="marco"><img src="v/mar-prato/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>O mar nun prato</h2>
         <p class="entradilla">O calendario das lonxas galegas: que se vende cada mes, cando hai veda e cando sobe o prezo. O percebe vale case o dobre no Nadal, e as lonxas venden a metade de quilos ca en 2017.</p>
       </div>
     </a>
-    <a class="peza" href="v/monte-concellos/" data-temas="Monte|Sustentabilidade">
-      <span class="linea-sup"><span class="num">04</span><span>Mapa de árbores</span></span>
+    <a class="peza" href="v/monte-concellos/" data-temas="Enerxía e sustentabilidade|Territorio e clima" data-busca="o monte de cada concello o monte galego árbore a árbore: eucalipto, piñeiro ou frondosas, concello a concello. en 78 concellos o eucalipto xa é máis da metade do monte arborado. monte sustentabilidade">
+      <span class="linea-sup"><span class="num">52</span><span>Mapa de árbores</span></span>
       <div class="marco"><img src="v/monte-concellos/thumb.png" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>O monte de cada concello</h2>
         <p class="entradilla">O monte galego árbore a árbore: eucalipto, piñeiro ou frondosas, concello a concello. En 78 concellos o eucalipto xa é máis da metade do monte arborado.</p>
       </div>
     </a>
-    <a class="peza" href="v/luz-galicia/" data-temas="Enerxía">
-      <span class="linea-sup"><span class="num">05</span><span>Diagrama de fluxos</span></span>
+    <a class="peza" href="v/luz-galicia/" data-temas="Enerxía e sustentabilidade" data-busca="de onde vén a luz galicia xera un terzo máis de electricidade da que consome e xa non queima carbón: o 82 % vén da auga e do vento. os fluxos, ano a ano dende 2011. enerxía">
+      <span class="linea-sup"><span class="num">53</span><span>Diagrama de fluxos</span></span>
       <div class="marco"><img src="v/luz-galicia/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>De onde vén a luz</h2>
         <p class="entradilla">Galicia xera un terzo máis de electricidade da que consome e xa non queima carbón: o 82 % vén da auga e do vento. Os fluxos, ano a ano dende 2011.</p>
       </div>
     </a>
-    <a class="peza" href="v/vacas-persoas/" data-temas="Rural|Gandería|Poboación">
-      <span class="linea-sup"><span class="num">06</span><span>Cartograma de hexágonos</span></span>
+    <a class="peza" href="v/vacas-persoas/" data-temas="Poboación e sociedade|Rural e alimentación" data-busca="hai máis vacas ca persoas? en 68 concellos galegos, si, e son cada vez máis porque marcha a xente. se contamos tamén porcos, galiñas e ovellas en unidades gandeiras, son 128. rural gandería poboación">
+      <span class="linea-sup"><span class="num">54</span><span>Cartograma de hexágonos</span></span>
       <div class="marco"><img src="v/vacas-persoas/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>Hai máis vacas ca persoas?</h2>
         <p class="entradilla">En 68 concellos galegos, si, e son cada vez máis porque marcha a xente. Se contamos tamén porcos, galiñas e ovellas en unidades gandeiras, son 128.</p>
       </div>
     </a>
-    <a class="peza" href="v/raias-clima/" data-temas="Clima">
-      <span class="linea-sup"><span class="num">07</span><span>Raias climáticas</span></span>
+    <a class="peza" href="v/raias-clima/" data-temas="Territorio e clima" data-busca="as raias da calor e da choiva cada raia é un ano en seis observatorios galegos, dende 1931. na coruña, os catro anos máis quentes da serie son os catro últimos. descarga a raia da túa cidade. clima">
+      <span class="linea-sup"><span class="num">55</span><span>Raias climáticas</span></span>
       <div class="marco"><img src="v/raias-clima/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>As raias da calor e da choiva</h2>
         <p class="entradilla">Cada raia é un ano en seis observatorios galegos, dende 1931. Na Coruña, os catro anos máis quentes da serie son os catro últimos. Descarga a raia da túa cidade.</p>
       </div>
     </a>
-    <a class="peza" href="v/galicia-apagandose/" data-temas="Poboación|Rural">
-      <span class="linea-sup"><span class="num">08</span><span>Mapa de luces</span></span>
+    <a class="peza" href="v/galicia-apagandose/" data-temas="Poboación e sociedade|Rural e alimentación" data-busca="galicia apágase as 30.518 aldeas e lugares de galicia como puntos de luz, de 1999 a 2025. 1.070 quedaron sen ninguén e outras 5.039 teñen menos de cinco veciños. poboación rural">
+      <span class="linea-sup"><span class="num">56</span><span>Mapa de luces</span></span>
       <div class="marco"><img src="v/galicia-apagandose/thumb.png" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>Galicia apágase</h2>
         <p class="entradilla">As 30.518 aldeas e lugares de Galicia como puntos de luz, de 1999 a 2025. 1.070 quedaron sen ninguén e outras 5.039 teñen menos de cinco veciños.</p>
       </div>
     </a>
-    <a class="peza" href="v/espiral-lumes/" data-temas="Lumes|Monte">
-      <span class="linea-sup"><span class="num">09</span><span>Espiral</span></span>
+    <a class="peza" href="v/espiral-lumes/" data-temas="Territorio e clima" data-busca="a espiral dos lumes cada volta é un ano dende 1983 e cada brasa, un día de lume. en 44 anos ardeu o equivalente a case a metade de galicia, e 2025 xa é o segundo peor ano da serie. lumes monte">
+      <span class="linea-sup"><span class="num">57</span><span>Espiral</span></span>
       <div class="marco"><img src="v/espiral-lumes/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>A espiral dos lumes</h2>
         <p class="entradilla">Cada volta é un ano dende 1983 e cada brasa, un día de lume. En 44 anos ardeu o equivalente a case a metade de Galicia, e 2025 xa é o segundo peor ano da serie.</p>
       </div>
     </a>
-    <a class="peza" href="v/galicia-cero-neto/" data-temas="Clima|Enerxía">
-      <span class="linea-sup"><span class="num">10</span><span>Folla de ruta</span></span>
+    <a class="peza" href="v/galicia-cero-neto/" data-temas="Enerxía e sustentabilidade|Territorio e clima" data-busca="que precisaría galicia para chegar ao carbono neto cero? emitimos 16,6 millóns de toneladas de co₂ e o monte absorbe 9,6. folla de ruta por sectores para cumprir a lei do clima en 2040, adaptada de information is beautiful. clima enerxía">
+      <span class="linea-sup"><span class="num">58</span><span>Folla de ruta</span></span>
       <div class="marco"><img src="v/galicia-cero-neto/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>Que precisaría Galicia para chegar ao carbono neto cero?</h2>
         <p class="entradilla">Emitimos 16,6 millóns de toneladas de CO₂ e o monte absorbe 9,6. Folla de ruta por sectores para cumprir a Lei do clima en 2040, adaptada de Information is Beautiful.</p>
       </div>
     </a>
-    <a class="peza" href="v/habelos-hainos/" data-temas="Sustentabilidade|Mitos e datos">
-      <span class="linea-sup"><span class="num">11</span><span>Mosaico interactivo</span></span>
+    <a class="peza" href="v/habelos-hainos/" data-temas="Enerxía e sustentabilidade|Poboación e sociedade" data-busca="habelos, hainos: mitos sobre galicia e a sustentabilidade 17 ideas que repetimos sen comprobar, do «aquí chove sempre» aos pirómanos e ás renovables, contrastadas con datos oficiais. di se as crías e compara coa demais xente. sustentabilidade mitos e datos">
+      <span class="linea-sup"><span class="num">59</span><span>Mosaico interactivo</span></span>
       <div class="marco"><img src="v/habelos-hainos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>Habelos, hainos: mitos sobre Galicia e a sustentabilidade</h2>
         <p class="entradilla">17 ideas que repetimos sen comprobar, do «aquí chove sempre» aos pirómanos e ás renovables, contrastadas con datos oficiais. Di se as crías e compara coa demais xente.</p>
       </div>
     </a>
-    <a class="peza" href="v/poboacion-galicia/" data-temas="Poboación|Emigración">
-      <span class="linea-sup"><span class="num">12</span><span>Diagrama de Voronoi</span></span>
+    <a class="peza" href="v/poboacion-galicia/" data-temas="Poboación e sociedade" data-busca="a galicia de fóra xa é a terceira provincia os 313 concellos e os 563.303 galegos e galegas que viven no exterior, cada un do tamaño da súa poboación. só a coruña e pontevedra suman máis xente ca a diáspora. poboación emigración">
+      <span class="linea-sup"><span class="num">60</span><span>Diagrama de Voronoi</span></span>
       <div class="marco"><img src="v/poboacion-galicia/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>A Galicia de fóra xa é a terceira provincia</h2>
         <p class="entradilla">Os 313 concellos e os 563.303 galegos e galegas que viven no exterior, cada un do tamaño da súa poboación. Só A Coruña e Pontevedra suman máis xente ca a diáspora.</p>
       </div>
     </a>
-    <a class="peza" href="v/biblioteca-sustentable/" data-temas="Lecturas|Sustentabilidade">
-      <span class="linea-sup"><span class="num">13</span><span>Biblioteca</span></span>
+    <a class="peza" href="v/biblioteca-sustentable/" data-temas="Enerxía e sustentabilidade|Patrimonio e cultura" data-busca="biblioteca sustentable 41 libros para entender a crise ecosocial e pensar saídas, dos clásicos de carson e meadows ao postcrecemento, o clima e o mundo rural. unha lista viva que medra co tempo. lecturas sustentabilidade">
+      <span class="linea-sup"><span class="num">61</span><span>Biblioteca</span></span>
       <div class="marco"><img src="v/biblioteca-sustentable/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
       <div class="cap">
         <h2>Biblioteca Sustentable</h2>
@@ -291,6 +685,7 @@ footer.pe a:hover{color:var(--dv-acento)}
     <nav aria-label="Ligazóns institucionais">
       <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
       <a href="https://galiciasustentable.org">galiciasustentable.org</a>
+      <a href="https://github.com/fundaciongaliciasustentable/divulga">Código en GitHub</a>
       <a href="https://fundaciongaliciasustentable.gal/aviso-legal/">Aviso legal</a>
       <a href="https://fundaciongaliciasustentable.gal/privacidade/">Privacidade</a>
       <a href="https://fundaciongaliciasustentable.gal/cookies/">Cookies</a>
@@ -303,16 +698,25 @@ footer.pe a:hover{color:var(--dv-acento)}
   const botons = [...document.querySelectorAll('.tema')];
   const pezas = [...document.querySelectorAll('.peza')];
   const baleiro = document.getElementById('baleiro');
-  function filtrar(tema) {
-    botons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tema === tema)));
+  const campo = document.getElementById('busca');
+  let tema = '';
+  function aplicar() {
+    const texto = campo.value.trim().toLowerCase();
     let n = 0;
     pezas.forEach(p => {
-      const ok = !tema || p.dataset.temas.split('|').includes(tema);
+      const okTema = !tema || p.dataset.temas.split('|').includes(tema);
+      const okTexto = !texto || p.dataset.busca.includes(texto);
+      const ok = okTema && okTexto;
       p.hidden = !ok; if (ok) n++;
     });
     baleiro.hidden = n > 0;
   }
-  botons.forEach(b => b.addEventListener('click', () => filtrar(b.dataset.tema)));
+  botons.forEach(b => b.addEventListener('click', () => {
+    tema = b.dataset.tema;
+    botons.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    aplicar();
+  }));
+  campo.addEventListener('input', aplicar);
 })();
 </script>
 </body>

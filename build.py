@@ -5,7 +5,9 @@ Cada visualización vive en v/<slug>/index.html e ten unha miniatura en
 v/<slug>/thumb.svg (ou thumb.png). As pezas van da máis recente á máis
 antiga (a `data` do manifesto só ordena: a portada non amosa datas de
 publicación, para non confundilas coa temporalidade propia dos datos de
-cada peza) e os temas do manifesto fan de filtro. Uso: python3 build.py
+cada peza). Os temas do manifesto agrúpanse en poucas categorías amplas
+(ver CATEGORIAS) para o filtro de botóns, e tamén alimentan a busca de
+texto libre xunto co título e a entradilla. Uso: python3 build.py
 """
 import html
 import json
@@ -13,6 +15,29 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+
+# Agrupa os ~26 temas soltos do manifesto en categorías amplas para o filtro
+# da portada (á escala do menú de «Causas» da web institucional: un puñado de
+# opcións, non unha ringleira de etiquetas). O detalle de `temas` consérvase
+# igual no manifesto e na busca de texto libre, só o filtro por botóns usa
+# estas categorías.
+CATEGORIAS = {
+    "Poboación": "Poboación e sociedade", "Sociedade": "Poboación e sociedade",
+    "Emigración": "Poboación e sociedade", "Lingua": "Poboación e sociedade",
+    "Saúde": "Poboación e sociedade", "Mitos e datos": "Poboación e sociedade",
+    "Política": "Poboación e sociedade",
+    "Territorio": "Territorio e clima", "Clima": "Territorio e clima",
+    "Choiva": "Territorio e clima", "Auga": "Territorio e clima",
+    "Monte": "Territorio e clima", "Lumes": "Territorio e clima",
+    "Mar": "Territorio e clima",
+    "Rural": "Rural e alimentación", "Gandería": "Rural e alimentación",
+    "Alimentación": "Rural e alimentación",
+    "Economía": "Economía e vivenda", "Vivenda": "Economía e vivenda",
+    "Turismo": "Economía e vivenda", "Mobilidade": "Economía e vivenda",
+    "Enerxía": "Enerxía e sustentabilidade", "Sustentabilidade": "Enerxía e sustentabilidade",
+    "Patrimonio": "Patrimonio e cultura", "Camiño de Santiago": "Patrimonio e cultura",
+    "Lecturas": "Patrimonio e cultura",
+}
 
 
 def miniatura(slug):
@@ -22,14 +47,19 @@ def miniatura(slug):
     return None
 
 
+def categorias_de(v):
+    return sorted({CATEGORIAS[t] for t in v.get("temas", []) if t in CATEGORIAS}, key=str.casefold)
+
+
 def peza(v, i):
     e = html.escape
     href = f"v/{v['slug']}/"
     thumb = miniatura(v["slug"])
     img = (f'<img src="{thumb}" alt="" loading="lazy" width="600" height="750">'
            if thumb else "")
-    temas = "|".join(v.get("temas", []))
-    return f"""    <a class="peza" href="{href}" data-temas="{e(temas)}">
+    cats = "|".join(categorias_de(v))
+    busca = " ".join([v["titulo"], v["entradilla"], *v.get("temas", [])]).lower()
+    return f"""    <a class="peza" href="{href}" data-temas="{e(cats)}" data-busca="{e(busca)}">
       <span class="linea-sup"><span class="num">{i:02d}</span><span>{e(v.get('formato', ''))}</span></span>
       <div class="marco">{img}</div>
       <div class="cap">
@@ -45,7 +75,10 @@ def main():
     for v in vs:
         if not (ROOT / "v" / v["slug"] / "index.html").exists():
             raise SystemExit(f"Falta v/{v['slug']}/index.html")
-    temas = sorted({t for v in vs for t in v.get("temas", [])}, key=str.casefold)
+        descoñecidos = [t for t in v.get("temas", []) if t not in CATEGORIAS]
+        if descoñecidos:
+            raise SystemExit(f"{v['slug']}: temas sen categoría en CATEGORIAS: {descoñecidos}")
+    temas = sorted(set(CATEGORIAS.values()), key=str.casefold)
     filtros = "".join(f'<button type="button" class="tema" data-tema="{html.escape(t)}" aria-pressed="false">'
                       f'{html.escape(t)}</button>' for t in temas)
     n = len(vs)

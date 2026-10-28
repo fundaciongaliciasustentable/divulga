@@ -83,13 +83,19 @@ nav.topo-nav a:hover{color:#fff}
 
 /* filtro: liña de texto, non botóns con fondo */
 .filtro{border-top:1px solid var(--dv-liña);border-bottom:1px solid var(--dv-liña);position:sticky;top:69px;z-index:15;background:var(--dv-crema)}
-.filtro .inner{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;padding-block:14px}
+.filtro .inner{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding-block:14px}
 .filtro .rot{color:var(--dv-tinta-38)}
 .tema{font:700 .7rem/1 var(--dv-corpo);letter-spacing:.08em;text-transform:uppercase;background:none;border:0;color:var(--dv-tinta-60);cursor:pointer;padding:5px 0;position:relative}
 .tema::after{content:"";position:absolute;left:0;right:0;bottom:1px;height:1px;background:var(--dv-acento);transform:scaleX(0);transition:transform .2s ease}
 .tema:hover{color:var(--dv-tinta)}
 .tema[aria-pressed="true"]{color:var(--dv-acento)}
 .tema[aria-pressed="true"]::after{transform:scaleX(1)}
+.busca{margin-left:auto;display:flex;align-items:center;gap:7px;min-width:0}
+.busca svg{flex-shrink:0;color:var(--dv-tinta-38)}
+.busca input{font:400 .82rem/1 var(--dv-corpo);background:none;border:0;border-bottom:1px solid transparent;color:var(--dv-tinta);padding:4px 0;width:11em;min-width:0;transition:border-color .2s ease}
+.busca input::placeholder{color:var(--dv-tinta-38)}
+.busca input:focus{outline:0;border-bottom-color:var(--dv-acento)}
+@media (max-width:760px){.busca{margin-left:0;order:1;flex-basis:100%}.busca input{width:100%}}
 
 /* grella de pezas: sen tarxeta, sen sombra — só imaxe + lenda */
 main{padding-block:48px 80px}
@@ -163,6 +169,10 @@ footer.pe a:hover{color:var(--dv-acento)}
     <span class="rot tracked">Filtrar</span>
     <button type="button" class="tema" data-tema="" aria-pressed="true">Todas</button>
     {{FILTROS}}
+    <span class="busca">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="5.3"/><path d="M11 11l3.5 3.5"/></svg>
+      <input type="search" id="busca" placeholder="Buscar…" aria-label="Buscar visualizacións">
+    </span>
   </div>
 </nav>
 
@@ -188,6 +198,7 @@ footer.pe a:hover{color:var(--dv-acento)}
     <nav aria-label="Ligazóns institucionais">
       <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
       <a href="https://galiciasustentable.org">galiciasustentable.org</a>
+      <a href="https://github.com/fundaciongaliciasustentable/divulga">Código en GitHub</a>
       <a href="https://fundaciongaliciasustentable.gal/aviso-legal/">Aviso legal</a>
       <a href="https://fundaciongaliciasustentable.gal/privacidade/">Privacidade</a>
       <a href="https://fundaciongaliciasustentable.gal/cookies/">Cookies</a>
@@ -200,16 +211,25 @@ footer.pe a:hover{color:var(--dv-acento)}
   const botons = [...document.querySelectorAll('.tema')];
   const pezas = [...document.querySelectorAll('.peza')];
   const baleiro = document.getElementById('baleiro');
-  function filtrar(tema) {
-    botons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tema === tema)));
+  const campo = document.getElementById('busca');
+  let tema = '';
+  function aplicar() {
+    const texto = campo.value.trim().toLowerCase();
     let n = 0;
     pezas.forEach(p => {
-      const ok = !tema || p.dataset.temas.split('|').includes(tema);
+      const okTema = !tema || p.dataset.temas.split('|').includes(tema);
+      const okTexto = !texto || p.dataset.busca.includes(texto);
+      const ok = okTema && okTexto;
       p.hidden = !ok; if (ok) n++;
     });
     baleiro.hidden = n > 0;
   }
-  botons.forEach(b => b.addEventListener('click', () => filtrar(b.dataset.tema)));
+  botons.forEach(b => b.addEventListener('click', () => {
+    tema = b.dataset.tema;
+    botons.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    aplicar();
+  }));
+  campo.addEventListener('input', aplicar);
 })();
 </script>
 </body>

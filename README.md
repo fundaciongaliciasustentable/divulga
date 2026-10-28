@@ -116,7 +116,6 @@ recorte, e rexenera `og-divulga.jpg`.
 | slug | fontes | rexenerar |
 |---|---|---|
 | poboacion-galicia | INE Padrón municipal 2025 (táboas 2868, 2880, 2885, 2890) e PERE 2026 (táboa 71117) | `cd fontes/poboacion-galicia && npm i && python3 prep.py && node layout.js s51 && python3 render.py` |
-
 | biblioteca-sustentable | `fontes/biblioteca-sustentable/libros.json` (selección FGS) e portadas de Open Library | `python3 fontes/biblioteca-sustentable/render.py` |
 | espiral-lumes | FIRESPAIN-025 (EGIF diaria en grella, 1983-2016, Zenodo 14644902) e Copernicus EFFIS `modis.ba.poly` (WFS, 2017-) | `cd fontes/espiral-lumes && pip install netCDF4 numpy shapely && python3 prep.py && python3 render.py` (para actualizar, descarga de novo `data/effis_galicia.gml` co URL de `prep.py`) |
 | galicia-apagandose | IGE, Nomenclátor 1999-2025 (API `igeapi/csv/nomenc`), puntos de entidades de poboación do IET e concellos/parroquias de `galicia-agora` | `cd fontes/galicia-apagandose && pip install shapely pillow && python3 prep.py && python3 render.py` (prep.py descarga os CSV do IGE en `data/ige/` se faltan) |
@@ -145,24 +144,6 @@ recorte, e rexenera `og-divulga.jpg`.
 | migracions | INE táboas 69695 e 69710 (estranxeiro por país, 2021-2024); IGE 10614, 10613, 568 e 567 (por comunidade e serie dende 1992); Natural Earth (world-atlas) | `cd fontes/migracions && pip install shapely && python3 prep.py && python3 render.py` (prep.py descarga o que falte) |
 | habelos-hainos | AEMET, MeteoGalicia, IGE, INEGA, Xunta, ICCT e outras (fonte enlazada en cada mito) | editar o array `MITOS` de `v/habelos-hainos/index.html` a man; votos en `api/votos.php` |
 | galicia-cero-neto | Ogacli/MITECO (emisións 2024), INEGA, REE, DGT, Lei 1/2026 do clima; método en `fontes/galicia-cero-neto/README.md` | editar `SECTORS`, `SINK` e `ROADMAP` en `v/galicia-cero-neto/index.html` a man |
-
-### Engadir libros á Biblioteca Sustentable
-
-```bash
-python3 fontes/biblioteca-sustentable/engadir.py --titulo "Overshoot" \
-  --autoria "William R. Catton" --ano 1980 --eixo fund --descricion "..." [--comezar] [--isbn ...]
-```
-
-Engade o libro a `libros.json`, busca e descarga a portada en
-`v/biblioteca-sustentable/capas/`, e rexenera a páxina, a miniatura e a
-portada de Divulga. Eixos: `fund`, `eco`, `clima`, `bio`, `rural`, `etica`.
-Revisa a portada descargada: se é outra edición ou unha tapa de biblioteca,
-cámbiaa con `--so-capa --titulo "..." --isbn ...` (ou `--capa-id`).
-
-`prep.py` toma os nomes galegos dos concellos de
-`~/Proxectos/galicia-agora/data-out/perfil-concellos/data.geojson`.
-
-Contidos baixo licenza CC BY-NC-SA 4.0.
 | pib-rexions | Eurostat nama_10r_2gdp (PPS_HAB_EU27_2020, NUTS 2, 2000-2024), API JSON-stat | `cd fontes/pib-rexions && python3 prep.py && python3 render.py` (prep.py descarga a resposta da API se falta) |
 | estudos-rexions | Eurostat edat_lfse_16 (abandono temperán 18-24) e edat_lfse_04 (25-34 con ISCED 5-8) por NUTS 2, 2008-2025 | `cd fontes/estudos-rexions && python3 prep.py && python3 render.py` |
 | residuos-europa | Eurostat env_wasmun (GEN, kg/hab) e cei_wm011 (taxa de reciclaxe); INE táboas 32999 (per cápita por CCAA) e 32998 (toneladas por tipo e CCAA), 2023 | `cd fontes/residuos-europa && python3 prep.py && python3 render.py` |
@@ -195,3 +176,21 @@ Contidos baixo licenza CC BY-NC-SA 4.0.
 | debeda-concellos | Facenda, débeda viva dos concellos a 31/12/2025 e 31/12/2015 (Excel); INE Padrón 2025 e 2016 (2868, 2880, 2885, 2890) | `cd fontes/debeda-concellos && pip install openpyxl xlrd && python3 prep.py && python3 render.py` (prep.py descarga os ficheiros se faltan) |
 | paro-concellos | SEPE, MUNI_<provincia>_09AA.xls (setembro 2012-2026); IGE táboa 142 (poboación 15-64, Censo 2011 e 1/1/2025) | `cd fontes/paro-concellos && pip install xlrd && python3 prep.py && python3 render.py` (prep.py descarga os 60 Excel do SEPE se faltan) |
 | vivenda-salario | MIVAU 35101000.XLS (valor tasado por provincia, media dos 4 trimestres de 2024); AEAT Mercado de traballo e pensións 2024, salario medio por provincia | `cd fontes/vivenda-salario && pip install xlrd && python3 prep.py && python3 render.py` (prep.py descarga os ficheiros se faltan) |
+
+### Engadir libros á Biblioteca Sustentable
+
+```bash
+python3 fontes/biblioteca-sustentable/engadir.py --titulo "Overshoot" \
+  --autoria "William R. Catton" --ano 1980 --eixo fund --descricion "..." [--comezar] [--isbn ...]
+```
+
+Engade o libro a `libros.json`, busca e descarga a portada en
+`v/biblioteca-sustentable/capas/`, e rexenera a páxina, a miniatura e a
+portada de Divulga. Eixos: `fund`, `eco`, `clima`, `bio`, `rural`, `etica`.
+Revisa a portada descargada: se é outra edición ou unha tapa de biblioteca,
+cámbiaa con `--so-capa --titulo "..." --isbn ...` (ou `--capa-id`).
+
+`prep.py` toma os nomes galegos dos concellos de
+`~/Proxectos/galicia-agora/data-out/perfil-concellos/data.geojson`.
+
+Contidos baixo licenza CC BY-NC-SA 4.0.
