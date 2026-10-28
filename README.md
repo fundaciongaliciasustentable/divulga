@@ -4,29 +4,66 @@ Sitio estático de visualizacións de datos da Fundación Galicia Sustentable,
 pensado para `divulga.galiciasustentable.org`. Sen build de framework: o que
 hai na raíz é o que se publica.
 
+A portada (`index.html`) é deliberadamente **allea á estética institucional**
+da web da FGS na grella de pezas: lenzo crema, tipografía editorial, sen
+barra verde nin botóns de cor — deixa falar as propias pezas. A banda de
+enriba (`assets/img/heroe-1200/2400.jpg` con degradado, logo branco, «Divulga»
+e subtítulo) si segue o tratamento institucional, igual ca na vella portada e
+ca `og-divulga.jpg`. A marca FGS queda tamén ben visible no pé, co logotipo
+estendido. A portada non amosa datas de publicación: a
+`data` do manifesto só ordena as tarxetas, para non confundir esa data coa
+temporalidade propia de cada peza (que pode cubrir anos ou décadas distintos).
+Cada peza en `v/<slug>/`
+segue si os criterios FGS (cabeceira `.dv-bar`, pé `.dv-foot`) por tratarse de
+documentos propios da fundación — pero `.dv-bar`/`.dv-foot` van **transparentes
+e integrados no tema de cada peza** (len o fondo/cor que a propia peza xa
+resolveu, só cun símbolo «gs» pequeno e unha liña fina), non un bloque de cor
+fixo que rompa coa estética de cada visualización. O pé inclúe sempre o
+mínimo legal: nome, CIF, licenza e ligazóns a Aviso legal/Privacidade/Cookies
+da web institucional (non hai páxinas propias en Divulga para iso).
+
 ```
-index.html               portada (XERADA por build.py, non editar a man)
-visualizacions.json      manifesto: unha entrada por visualización
-templates/index.tpl.html modelo da portada
-assets/css/divulga.css   tokens FGS, barra superior e pé comúns
-assets/logos/            logos FGS (de fundaciongaliciasustentable.gal)
-v/<slug>/index.html      cada visualización, páxina autónoma
-v/<slug>/thumb.svg|png   miniatura cadrada para a portada
-fontes/<slug>/           datos e scripts que xeran v/<slug>/ (non se suben)
+index.html                 portada (XERADA por build.py, non editar a man)
+visualizacions.json        manifesto: unha entrada por visualización
+templates/index.tpl.html   modelo da portada
+build.py                   xera index.html desde o manifesto e o modelo
+assets/css/divulga.css     tokens FGS, barra superior e pé comúns (.dv-bar/.dv-foot)
+assets/css/viz-base.css    tipografía de gráfica compartida (--gs-font-chart-*) e
+                            compoñentes para pezas novas (.dv-stat/.dv-badge/.dv-tooltip/.dv-legend)
+assets/logos/               logos FGS (de fundaciongaliciasustentable.gal)
+assets/img/                 foto da banda (heroe-1200/2400.jpg) e og-divulga.jpg
+v/<slug>/index.html         cada visualización, páxina autónoma
+v/<slug>/thumb.svg|png      miniatura cadrada para a portada
+fontes/<slug>/               datos e scripts que xeran v/<slug>/ (non se suben)
+scripts/                     empaquetado (`empaquetar.sh`) e xeración do OG (`og.py`)
 ```
 
 ## Engadir unha visualización
 
 1. Crea `v/<slug>/index.html`. Enlaza `../../assets/css/divulga.css` e usa a
    barra `.dv-bar` (símbolo + «Divulga» + «← Todas as visualizacións») e o pé
-   `.dv-foot`, como en `v/poboacion-galicia/`.
+   `.dv-foot`, como en `v/poboacion-galicia/`. Define `--ink`/`--paper`/
+   `--muted` (e `--line` se queres unha liña separadora precisa) no `:root`
+   propio da peza: `.dv-bar`/`.dv-foot` adáptanse sós a eses valores, claros
+   ou escuros. Para o chrome denso (eixos,
+   cifras, controis) enlaza tamén `../../assets/css/viz-base.css` e define os
+   `--display`/`--num` locais como `var(--gs-font-chart-display)` /
+   `var(--gs-font-chart-num)` en vez de repetir o stack de fontes — e usa
+   `.dv-stat`/`.dv-badge`/`.dv-tooltip`/`.dv-legend` en vez de reinventar eses
+   compoñentes.
 2. Engade unha miniatura cadrada `v/<slug>/thumb.svg` (ou `.png`, 600×600).
+   Que pese pouco (idealmente <50 KB): é a imaxe que carga a portada das 13
+   pezas á vez. Se a peza ten moitos elementos (puntos, portadas...), simplifica
+   para o thumb (menos detalle, máis compresión) — ver `fontes/espiral-lumes/`
+   e `fontes/biblioteca-sustentable/` como exemplo.
 3. Engade a entrada en `visualizacions.json` (`slug`, `titulo`, `entradilla`,
    `data` AAAA-MM-DD, `temas`, `formato`, `fontes`).
-4. `python3 build.py` rexenera a portada: unha grella de tarxetas da máis
-   recente á máis antiga, ao xeito de informationisbeautiful.net. Os `temas`
-   do manifesto convértense en botóns de filtro.
-5. Garda os datos e scripts en `fontes/<slug>/` para poder reproducila.
+4. `python3 build.py` rexenera a portada: unha grella de pezas da máis
+   recente á máis antiga, numeradas, cunha liña de filtro por tema.
+5. Garda os datos e scripts en `fontes/<slug>/` para poder reproducila. Se a
+   peza se edita a man (sen `prep.py`/`render.py`), garda igualmente un
+   `datos.json` sincronizado en `fontes/<slug>/` — ver `fontes/habelos-hainos/`
+   ou `fontes/galicia-cero-neto/`.
 
 ## Vista previa local
 
@@ -57,10 +94,22 @@ exemplo, coa vista previa local) a páxina funciona e oculta a votación.
 
 ## Imaxe de marca
 
-A cabeceira usa a mesma foto (Unsplash) e o mesmo degradado que a portada de
-fundaciongaliciasustentable.gal. `assets/img/og-divulga.jpg` é a imaxe para
-compartir en redes; xérase con `fontes/_marca/og.py` (Pillow + Playfair
-Display e Lato).
+`assets/img/heroe-1200.jpg`/`heroe-2400.jpg` son a foto da banda da portada
+(srcset responsive): solpor en Cabo Fisterra, de
+[Arm.arte en Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Fisterra_ocaso_en_el_cabo.jpg),
+licenza CC BY-SA 3.0 — a atribución vai nun pequeno crédito na propia banda
+(`.heroe .credito`). `assets/img/og-divulga.jpg` é a imaxe para compartir en
+redes, xerada con `scripts/og.py` (Pillow + Playfair Display e Lato) a partir
+de `heroe-2400.jpg`, co mesmo tratamento que a portada de
+fundaciongaliciasustentable.gal:
+
+```bash
+python3 scripts/og.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf>
+```
+
+Ao cambiar a foto, actualiza tamén a ligazón e a autoría do crédito en
+`templates/index.tpl.html` (`.heroe .credito`) e en `og.py` se cambia o
+recorte, e rexenera `og-divulga.jpg`.
 
 ## Visualizacións
 

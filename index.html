@@ -16,76 +16,125 @@
 <link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap">
-<link rel="stylesheet" href="assets/css/divulga.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 <style>
-/* Portada ao xeito de informationisbeautiful.net: barra branca, frase-manifesto
-   centrada, banda a todo o ancho (aquí a foto da FGS), filtro de temas fixo
-   e grella de tarxetas. Identidade e tokens da FGS. */
-body{background:var(--gs-gris-10)}
+/* Portada-escaparate, á parte da estética institucional (acordado co equipo):
+   lenzo crema, tipografía editorial, sen tarxetas con sombra, sen banda
+   fotográfica, sen botóns verdes. A cor vén das propias pezas (thumbs).
+   A marca FGS queda como sutileza: símbolo pequeno + liña legal no pé. */
+:root{
+  --dv-crema:#F3F1EA; --dv-crema-2:#EAE7DC;
+  --dv-tinta:#1A1A17; --dv-tinta-60:rgba(26,26,23,.6); --dv-tinta-38:rgba(26,26,23,.38);
+  --dv-liña:rgba(26,26,23,.14);
+  --dv-acento:#4a5846; /* verde nato FGS, só en hover/foco: o único fío institucional */
+  --dv-display:'Playfair Display',Georgia,serif;
+  --dv-corpo:'Lato',system-ui,-apple-system,sans-serif;
+  --gutter:max(28px,env(safe-area-inset-left,0px));
+  --gutter-r:max(28px,env(safe-area-inset-right,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--dv-crema);color:var(--dv-tinta);font-family:var(--dv-corpo);line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--dv-acento);outline-offset:3px}
+.inner{max-width:1320px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.tracked{font-family:var(--dv-corpo);font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
 
-.topo{background:var(--gs-branco);border-bottom:1px solid var(--gs-gris-20)}
-.topo .inner{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:10px;flex-wrap:wrap}
-.marca{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--gs-verde-nato)}
-.marca img{height:44px;width:auto}
-.marca .sep{width:1px;height:30px;background:var(--gs-gris-20)}
-.marca b{font-family:var(--gs-font-display);font-weight:700;font-size:1.35rem;letter-spacing:.01em}
-.topo nav{display:flex;gap:4px 20px;flex-wrap:wrap;font-size:.92rem}
-.topo nav a{color:var(--gs-gris-80);text-decoration:none}
-.topo nav a:hover{color:var(--gs-verde-claro);text-decoration:underline}
+/* cabeceira: flutúa transparente POR RIBA da imaxe (a foto chega ao bordo
+   superior de todo); vai en branco porque só convive coa foto — baixa coa
+   páxina en vez de quedar fixa, así nunca pasa por riba do lenzo crema */
+header.topo{position:absolute;top:0;left:0;right:0;z-index:5;background:transparent;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+header.topo .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.ident-topo{display:flex;align-items:center;gap:16px}
+.ident-topo .logo-fgs{height:34px;width:auto;flex-shrink:0;filter:drop-shadow(0 1px 4px rgba(0,0,0,.35))}
+.ident-topo .sep{width:1px;height:28px;background:rgba(255,255,255,.4);flex-shrink:0}
+.marca-dv{display:flex;flex-direction:column;gap:2px}
+.marca-dv .tracked{color:#fff}
+.marca-dv .sub{font-size:.68rem;color:rgba(255,255,255,.75);letter-spacing:.02em}
+nav.topo-nav{display:flex;gap:22px}
+nav.topo-nav a{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:700}
+nav.topo-nav a:hover{color:#fff}
+@media (max-width:640px){nav.topo-nav{display:none}.ident-topo .logo-fgs{height:26px}.ident-topo .sep{height:22px}}
 
-.manifesto{text-align:center;padding-block:clamp(28px,5vw,48px) clamp(24px,4vw,40px)}
-.manifesto h1{font-family:var(--gs-font-display);font-weight:400;color:var(--gs-gris-80);font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.25;margin:0 auto;max-width:30ch;text-wrap:balance}
-.manifesto p{margin:14px auto 0;max-width:52ch;font-size:clamp(1rem,1.6vw,1.15rem);color:var(--gs-gris-80);text-wrap:balance}
-.k1{color:var(--gs-verde-claro)} .k2{color:var(--gs-terra)} .k3{color:var(--gs-azul)} .k4{color:var(--gs-viola)}
-.manifesto p b{font-weight:700}
+/* banda de imaxe: a portada de sempre — foto + degradado + logo branco +
+   titular, ao xeito da imaxe social (og-divulga.jpg) e da vella banda.
+   Vai a primeira do body (a cabeceira é absoluta, non ocupa espazo) para
+   que a foto chegue até arriba de todo. */
+.heroe{position:relative}
+.heroe .marco{position:relative;isolation:isolate;aspect-ratio:2.3/1;overflow:hidden;background:var(--dv-tinta)}
+.heroe .marco>img{width:100%;height:100%;object-fit:cover;object-position:60% 56%}
+.heroe .veo{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,26,23,.05) 0%,rgba(26,26,23,.2) 45%,rgba(26,26,23,.82) 100%),
+             linear-gradient(90deg,rgba(26,26,23,.6) 0%,rgba(26,26,23,0) 60%)}
+.heroe .contido{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);color:#fff;text-align:left}
+.heroe .kicker{display:flex;align-items:center;gap:10px;margin:0 0 8px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);font-weight:700}
+.heroe .kicker .barra{width:2px;height:15px;background:#E8EFE3}
+.heroe h1{margin:0;font-family:var(--dv-display);font-weight:700;font-size:clamp(2.6rem,9vw,5.2rem);line-height:1;color:#fff}
+.heroe .sub{margin:12px 0 4px;max-width:46ch;font-size:clamp(1rem,1.8vw,1.2rem);color:#fff}
+.heroe .url{margin:0;font-size:.82rem;color:rgba(255,255,255,.78)}
+.heroe .credito{position:absolute;right:14px;bottom:10px;margin:0;font-size:.68rem;color:rgba(255,255,255,.55)}
+.heroe .credito a{color:inherit;text-decoration:underline}
+.heroe .credito a:hover{color:#fff}
+@media (max-width:640px){.heroe .credito{display:none}}
+.meta-conta{padding-block:clamp(16px,3vw,24px);font-size:.78rem;color:var(--dv-tinta-60)}
+.meta-conta b{color:var(--dv-tinta);font-weight:700}
+@media (max-width:640px){.heroe .marco{aspect-ratio:3/4}}
 
-.banda{position:relative;isolation:isolate;color:var(--gs-branco);text-align:center;background:var(--gs-negro);overflow:hidden}
-.banda img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 58%;z-index:-2}
-.banda::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,26,23,.62),rgba(74,88,70,.45) 50%,rgba(26,26,23,.62))}
-.banda .inner{padding-block:clamp(36px,6vw,64px)}
-.banda h2{font-family:var(--gs-font-display);font-weight:400;font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.15;margin:0;text-wrap:balance}
-.banda p{margin:10px 0 18px;font-size:clamp(1rem,1.8vw,1.2rem);color:var(--gs-verde-moi-claro)}
-.selos{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;list-style:none;margin:0;padding:0}
-.selos li{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato);font-weight:700;font-size:.82rem;padding:5px 10px;border-radius:var(--gs-radius)}
+/* filtro: liña de texto, non botóns con fondo */
+.filtro{border-top:1px solid var(--dv-liña);border-bottom:1px solid var(--dv-liña);position:sticky;top:69px;z-index:15;background:var(--dv-crema)}
+.filtro .inner{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;padding-block:14px}
+.filtro .rot{color:var(--dv-tinta-38)}
+.tema{font:700 .7rem/1 var(--dv-corpo);letter-spacing:.08em;text-transform:uppercase;background:none;border:0;color:var(--dv-tinta-60);cursor:pointer;padding:5px 0;position:relative}
+.tema::after{content:"";position:absolute;left:0;right:0;bottom:1px;height:1px;background:var(--dv-acento);transform:scaleX(0);transition:transform .2s ease}
+.tema:hover{color:var(--dv-tinta)}
+.tema[aria-pressed="true"]{color:var(--dv-acento)}
+.tema[aria-pressed="true"]::after{transform:scaleX(1)}
 
-.filtro{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(245,245,240,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--gs-gris-20)}
-.filtro .inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;padding-block:12px}
-.filtro .rot{font-weight:700;font-size:.85rem;margin-right:4px}
-.tema{font:400 .85rem var(--gs-font-corpo);background:var(--gs-gris-20);color:var(--gs-gris-80);border:0;border-radius:var(--gs-radius);padding:6px 10px;cursor:pointer}
-.tema:hover{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato)}
-.tema[aria-pressed="true"]{background:var(--gs-verde-nato);color:var(--gs-branco)}
+/* grella de pezas: sen tarxeta, sen sombra — só imaxe + lenda */
+main{padding-block:48px 80px}
+.grella{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 32px}
+@media (max-width:980px){.grella{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.grella{grid-template-columns:1fr;gap:44px}}
+.peza{display:flex;flex-direction:column}
+.peza .linea-sup{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;color:var(--dv-tinta-38);font-size:.68rem;letter-spacing:.1em}
+.peza .num{font-variant-numeric:tabular-nums}
+.peza .marco{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--dv-crema-2)}
+.peza .marco img{width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.peza:hover .marco img{transform:scale(1.045)}
+.peza .cap{margin-top:14px}
+.peza h2{margin:0;font-family:var(--dv-display);font-weight:700;font-size:1.22rem;line-height:1.28;color:var(--dv-tinta);text-wrap:balance}
+.peza:hover h2{color:var(--dv-acento);text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px}
+.peza .entradilla{margin:7px 0 0;font-size:.86rem;line-height:1.5;color:var(--dv-tinta-60);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:46ch}
+.peza[hidden]{display:none}
+.baleiro{text-align:center;color:var(--dv-tinta-38);font-size:.9rem;padding-block:40px}
 
-main{padding-block:28px 64px}
-.grella{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:22px}
-.tarxeta{background:var(--gs-branco);border-radius:3px;box-shadow:0 1px 3px rgba(26,26,23,.08);transition:box-shadow .2s,transform .2s}
-.tarxeta:hover{box-shadow:0 8px 24px rgba(26,26,23,.14);transform:translateY(-2px)}
-.tarxeta a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
-.tarxeta .img{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--gs-gris-20);border-radius:3px 3px 0 0}
-.tarxeta .img img{width:100%;height:100%;object-fit:cover}
-.sen-img{width:100%;height:100%;background:var(--gs-verde-moi-claro)}
-.tarxeta .txt{display:flex;flex-direction:column;gap:6px;padding:14px 16px 18px}
-.tarxeta .titulo{font-family:var(--gs-font-display);font-weight:700;font-size:1.15rem;line-height:1.25;color:var(--gs-gris-80);text-wrap:balance}
-.tarxeta a:hover .titulo{color:var(--gs-verde-nato);text-decoration:underline;text-underline-offset:.2em}
-.tarxeta .sub{font-size:.85rem;color:var(--gs-gris-50)}
-.tarxeta[hidden]{display:none}
-.baleiro{text-align:center;color:var(--gs-gris-50)}
+/* pé: unha liña legal e un símbolo pequeno — a única marca FGS visible */
+footer.pe{border-top:1px solid var(--dv-liña)}
+footer.pe .inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding-block:26px}
+footer.pe .fgs{display:flex;align-items:center;gap:16px}
+footer.pe .fgs img{height:60px;width:auto;flex-shrink:0}
+footer.pe .fgs span{font-size:.72rem;color:var(--dv-tinta-60)}
+footer.pe nav{display:flex;gap:18px;flex-wrap:wrap}
+footer.pe a{font-size:.72rem;color:var(--dv-tinta-60)}
+footer.pe a:hover{color:var(--dv-acento)}
 
-.sobre{margin-top:64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;border-top:1px solid var(--gs-gris-20);padding-top:32px}
-.sobre h2{font-family:var(--gs-font-display);font-weight:700;color:var(--gs-verde-nato);font-size:1.4rem;margin:0}
-.sobre p{margin:0 0 10px;max-width:62ch}
-@media (max-width:760px){.sobre{grid-template-columns:1fr}.marca img{height:38px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
+
 <header class="topo">
   <div class="inner">
-    <a class="marca" href="./" aria-label="Divulga, Fundación Galicia Sustentable">
-      <img src="assets/logos/logo-fgs-horizontal.png" alt="" width="103" height="44">
+    <div class="ident-topo">
+      <a href="./"><img class="logo-fgs" src="assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="94" height="40"></a>
       <span class="sep" aria-hidden="true"></span>
-      <b>Divulga</b>
-    </a>
-    <nav aria-label="Ligazóns">
+      <a class="marca-dv" href="./">
+        <span class="tracked">Divulga</span>
+        <span class="sub">Datos para entender Galicia</span>
+      </a>
+    </div>
+    <nav class="topo-nav" aria-label="Ligazóns">
       <a href="#sobre">Sobre</a>
       <a href="https://fundaciongaliciasustentable.gal">A Fundación</a>
       <a href="https://galiciasustentable.org">Revista</a>
@@ -93,616 +142,173 @@ main{padding-block:28px 64px}
   </div>
 </header>
 
-<section class="manifesto">
-  <div class="inner">
-    <h1>Divulga é o espazo da Fundación Galicia Sustentable para entender Galicia con datos</h1>
-    <p><b>convertemos</b> <span class="k1">datos públicos</span> en <span class="k2">visualizacións interactivas</span>, <span class="k3">historias</span> e <span class="k4">listas de lectura</span> sobre o territorio</p>
+<section class="heroe">
+  <div class="marco">
+    <img src="assets/img/heroe-1200.jpg" srcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" sizes="100vw" alt="Solpor en Cabo Fisterra, Galicia" width="2400" height="1430" loading="eager">
+    <div class="veo" aria-hidden="true"></div>
+    <div class="contido inner">
+      <p class="kicker"><span class="barra" aria-hidden="true"></span>Visualizacións de datos</p>
+      <h1>Divulga</h1>
+      <p class="sub">Datos públicos para entender Galicia: poboación, territorio e sustentabilidade</p>
+      <p class="url">divulga.galiciasustentable.org</p>
+    </div>
+    <p class="credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:Fisterra_ocaso_en_el_cabo.jpg">Arm.arte</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></p>
   </div>
 </section>
 
-<section class="banda">
-  <img src="assets/img/heroe-1200.jpg" srcset="assets/img/heroe-1200.jpg 1200w, assets/img/heroe-2400.jpg 2400w" sizes="100vw" alt="" width="2400" height="1430">
-  <div class="inner">
-    <h2>Transformar Galicia nunha sociedade sustentable</h2>
-    <p>tamén é contala ben, con datos e sen ruído</p>
-    <ul class="selos">
-      <li>61 visualizacións</li>
-      <li>Fontes abertas</li>
-      <li>CC BY-NC-SA 4.0</li>
-    </ul>
-  </div>
-</section>
+<p class="meta-conta inner"><b>13 visualizacións</b> · fontes abertas · licenza CC BY-NC-SA 4.0</p>
 
 <nav class="filtro" aria-label="Filtrar por tema">
   <div class="inner">
-    <span class="rot">Temas</span>
-    <button type="button" class="tema" data-tema="" aria-pressed="true">todos</button>
-    <button type="button" class="tema" data-tema="Alimentación" aria-pressed="false">alimentación</button><button type="button" class="tema" data-tema="Auga" aria-pressed="false">auga</button><button type="button" class="tema" data-tema="Camiño de Santiago" aria-pressed="false">camiño de santiago</button><button type="button" class="tema" data-tema="Choiva" aria-pressed="false">choiva</button><button type="button" class="tema" data-tema="Clima" aria-pressed="false">clima</button><button type="button" class="tema" data-tema="Economía" aria-pressed="false">economía</button><button type="button" class="tema" data-tema="Emigración" aria-pressed="false">emigración</button><button type="button" class="tema" data-tema="Enerxía" aria-pressed="false">enerxía</button><button type="button" class="tema" data-tema="Gandería" aria-pressed="false">gandería</button><button type="button" class="tema" data-tema="Lecturas" aria-pressed="false">lecturas</button><button type="button" class="tema" data-tema="Lingua" aria-pressed="false">lingua</button><button type="button" class="tema" data-tema="Lumes" aria-pressed="false">lumes</button><button type="button" class="tema" data-tema="Mar" aria-pressed="false">mar</button><button type="button" class="tema" data-tema="Mitos e datos" aria-pressed="false">mitos e datos</button><button type="button" class="tema" data-tema="Mobilidade" aria-pressed="false">mobilidade</button><button type="button" class="tema" data-tema="Monte" aria-pressed="false">monte</button><button type="button" class="tema" data-tema="Patrimonio" aria-pressed="false">patrimonio</button><button type="button" class="tema" data-tema="Poboación" aria-pressed="false">poboación</button><button type="button" class="tema" data-tema="Política" aria-pressed="false">política</button><button type="button" class="tema" data-tema="Rural" aria-pressed="false">rural</button><button type="button" class="tema" data-tema="Saúde" aria-pressed="false">saúde</button><button type="button" class="tema" data-tema="Sociedade" aria-pressed="false">sociedade</button><button type="button" class="tema" data-tema="Sustentabilidade" aria-pressed="false">sustentabilidade</button><button type="button" class="tema" data-tema="Territorio" aria-pressed="false">territorio</button><button type="button" class="tema" data-tema="Turismo" aria-pressed="false">turismo</button><button type="button" class="tema" data-tema="Vivenda" aria-pressed="false">vivenda</button>
+    <span class="rot tracked">Filtrar</span>
+    <button type="button" class="tema" data-tema="" aria-pressed="true">Todas</button>
+    <button type="button" class="tema" data-tema="Alimentación" aria-pressed="false">Alimentación</button><button type="button" class="tema" data-tema="Camiño de Santiago" aria-pressed="false">Camiño de Santiago</button><button type="button" class="tema" data-tema="Clima" aria-pressed="false">Clima</button><button type="button" class="tema" data-tema="Emigración" aria-pressed="false">Emigración</button><button type="button" class="tema" data-tema="Enerxía" aria-pressed="false">Enerxía</button><button type="button" class="tema" data-tema="Gandería" aria-pressed="false">Gandería</button><button type="button" class="tema" data-tema="Lecturas" aria-pressed="false">Lecturas</button><button type="button" class="tema" data-tema="Lingua" aria-pressed="false">Lingua</button><button type="button" class="tema" data-tema="Lumes" aria-pressed="false">Lumes</button><button type="button" class="tema" data-tema="Mar" aria-pressed="false">Mar</button><button type="button" class="tema" data-tema="Mitos e datos" aria-pressed="false">Mitos e datos</button><button type="button" class="tema" data-tema="Monte" aria-pressed="false">Monte</button><button type="button" class="tema" data-tema="Poboación" aria-pressed="false">Poboación</button><button type="button" class="tema" data-tema="Rural" aria-pressed="false">Rural</button><button type="button" class="tema" data-tema="Sustentabilidade" aria-pressed="false">Sustentabilidade</button><button type="button" class="tema" data-tema="Turismo" aria-pressed="false">Turismo</button>
   </div>
 </nav>
 
 <main class="inner">
   <div class="grella" id="grella">
-
-    <article class="tarxeta" data-temas="Economía">
-      <a href="v/pib-rexions/">
-        <span class="img"><img src="v/pib-rexions/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Galicia na escaleira europea</span>
-          <span class="sub">Bump chart · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Sociedade">
-      <a href="v/estudos-rexions/">
-        <span class="img"><img src="v/estudos-rexions/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Menos abandono, máis títulos</span>
-          <span class="sub">Dispersión · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Sustentabilidade">
-      <a href="v/residuos-europa/">
-        <span class="img"><img src="v/residuos-europa/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O lixo de cada quen</span>
-          <span class="sub">Barras ordenadas · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Sociedade">
-      <a href="v/fecundidade-europa/">
-        <span class="img"><img src="v/fecundidade-europa/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Os berces de Europa</span>
-          <span class="sub">Barras ordenadas e liñas · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Saúde|Sociedade">
-      <a href="v/centenarios/">
-        <span class="img"><img src="v/centenarios/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Os que pasan dos cen</span>
-          <span class="sub">Gráfico de pesas e enxame · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Territorio|Sociedade">
-      <a href="v/envellecemento-europa/">
-        <span class="img"><img src="v/envellecemento-europa/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O mapa das canas</span>
-          <span class="sub">Mapa coroplético e ranking · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Lingua|Sociedade">
-      <a href="v/galego-concellos/">
-        <span class="img"><img src="v/galego-concellos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Onde se fala sempre galego</span>
-          <span class="sub">Mapa coroplético e dispersión · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Territorio|Lingua|Rural">
-      <a href="v/toponimos/">
-        <span class="img"><img src="v/toponimos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Os nomes que se repiten</span>
-          <span class="sub">Mosaico e mapa de puntos · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Sociedade|Rural">
-      <a href="v/bibliotecas-concellos/">
-        <span class="img"><img src="v/bibliotecas-concellos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O andel de cada concello</span>
-          <span class="sub">Andeis de lombos · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Mar|Economía">
-      <a href="v/mexillon-mundo/">
-        <span class="img"><img src="v/mexillon-mundo/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O mexillón do mundo</span>
-          <span class="sub">Círculos proporcionais · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Enerxía|Sustentabilidade">
-      <a href="v/eolica-europa/">
-        <span class="img"><img src="v/eolica-europa/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Vento por cabeza</span>
-          <span class="sub">Dispersión · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Monte|Territorio">
-      <a href="v/eucalipto-mundo/">
-        <span class="img"><img src="v/eucalipto-mundo/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Un país de árbores</span>
-          <span class="sub">Enxame, barras apiladas e perfil de concellos · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Saúde|Territorio|Rural">
-      <a href="v/minutos-hospital/">
-        <span class="img"><img src="v/minutos-hospital/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Canto queda o hospital</span>
-          <span class="sub">Mapa de isócronas e curva acumulada · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Sociedade|Rural|Territorio">
-      <a href="v/fibra-concellos/">
-        <span class="img"><img src="v/fibra-concellos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">A fibra, concello a concello</span>
-          <span class="sub">Liña de horizonte · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Vivenda|Turismo">
-      <a href="v/vivenda-turistica/">
-        <span class="img"><img src="v/vivenda-turistica/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Casas para turistas</span>
-          <span class="sub">Mapa coroplético e ranking · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Turismo|Economía">
-      <a href="v/prazas-turisticas/">
-        <span class="img"><img src="v/prazas-turisticas/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Camas para cada veciño</span>
-          <span class="sub">Dispersión con diagonais · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Territorio|Rural">
-      <a href="v/nucleos-espana/">
-        <span class="img"><img src="v/nucleos-espana/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">A metade dos lugares de España</span>
-          <span class="sub">Pictograma e barras · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Mar|Territorio">
-      <a href="v/costa-galicia/">
-        <span class="img"><img src="v/costa-galicia/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">A costa estirada</span>
-          <span class="sub">Fíos estirados · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Clima">
-      <a href="v/choiva-sol-europa/">
-        <span class="img"><img src="v/choiva-sol-europa/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Chove, pero hai sol</span>
-          <span class="sub">Dispersión e piruletas · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Mobilidade|Enerxía|Sustentabilidade">
-      <a href="v/coches-ccaa/">
-        <span class="img"><img src="v/coches-ccaa/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Moitos coches, poucos enchufes</span>
-          <span class="sub">Pendentes e barras apiladas · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Sustentabilidade|Territorio">
-      <a href="v/vidro-concellos/">
-        <span class="img"><img src="v/vidro-concellos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O vidro, concello a concello</span>
-          <span class="sub">Mapa coroplético e enxame · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Mobilidade|Enerxía|Sustentabilidade">
-      <a href="v/etiqueta-cero/">
-        <span class="img"><img src="v/etiqueta-cero/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">A etiqueta CERO chega aos concellos</span>
-          <span class="sub">Feixe de liñas e mapa de símbolos · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Mar|Turismo|Sustentabilidade">
-      <a href="v/bandeiras-azuis/">
-        <span class="img"><img src="v/bandeiras-azuis/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">As bandeiras azuis</span>
-          <span class="sub">Mapa de bandeiriñas e pictograma · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Territorio|Rural">
-      <a href="v/concellos-1950/">
-        <span class="img"><img src="v/concellos-1950/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Os que medran e os que se baleiran</span>
-          <span class="sub">Mapa diverxente e barras · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Rural|Sociedade">
-      <a href="v/idade-concellos/">
-        <span class="img"><img src="v/idade-concellos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Do concello máis novo ao máis vello</span>
-          <span class="sub">Enxame e pirámides · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Rural|Sociedade">
-      <a href="v/enterros-bautizos/">
-        <span class="img"><img src="v/enterros-bautizos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Máis enterros ca bautizos</span>
-          <span class="sub">Cartograma de hexágonos e pictograma · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Sociedade|Territorio">
-      <a href="v/nados-fora/">
-        <span class="img"><img src="v/nados-fora/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Nados fóra, veciños aquí</span>
-          <span class="sub">Mapa de círculos e barras apiladas · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Economía|Sociedade|Territorio">
-      <a href="v/renda-concellos/">
-        <span class="img"><img src="v/renda-concellos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Canto se gaña en cada concello</span>
-          <span class="sub">Mapa coroplético e enxame · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Economía|Poboación|Sociedade">
-      <a href="v/pensionistas-afiliados/">
-        <span class="img"><img src="v/pensionistas-afiliados/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Quen paga as pensións</span>
-          <span class="sub">Dispersión logarítmica e pictograma · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Economía|Territorio">
-      <a href="v/debeda-concellos/">
-        <span class="img"><img src="v/debeda-concellos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Os concellos que non deben nada</span>
-          <span class="sub">Histograma de unidades e pesas · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Economía|Sociedade">
-      <a href="v/paro-concellos/">
-        <span class="img"><img src="v/paro-concellos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O paro, concello a concello</span>
-          <span class="sub">Pendentes en pequenos múltiplos · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Vivenda|Economía">
-      <a href="v/vivenda-salario/">
-        <span class="img"><img src="v/vivenda-salario/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Canto custa unha casa en anos</span>
-          <span class="sub">Pictograma de filas · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Clima|Poboación|Economía">
-      <a href="v/calculadora-persoal/">
-        <span class="img"><img src="v/calculadora-persoal/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Dende que naciches</span>
-          <span class="sub">Calculadora persoal · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Política|Territorio">
-      <a href="v/hexagonos-electorais/">
-        <span class="img"><img src="v/hexagonos-electorais/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Galicia en hexágonos electorais</span>
-          <span class="sub">Cartograma de hexágonos · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Enerxía">
-      <a href="v/centrais-galicia/">
-        <span class="img"><img src="v/centrais-galicia/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">As centrais de Galicia, en megavatios</span>
-          <span class="sub">Círculos empaquetados · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Mobilidade|Territorio">
-      <a href="v/horas-transporte/">
-        <span class="img"><img src="v/horas-transporte/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Galicia en horas de autobús e tren</span>
-          <span class="sub">Mapa e mapa do tempo · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Auga|Enerxía">
-      <a href="v/encoros/">
-        <span class="img"><img src="v/encoros/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Os encoros, vaso a vaso</span>
-          <span class="sub">Pictogramas animados · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Saúde">
-      <a href="v/espera-sergas/">
-        <span class="img"><img src="v/espera-sergas/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Canto esperas no Sergas</span>
-          <span class="sub">Enxame de puntos · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Vivenda|Rural">
-      <a href="v/casas-baleiras/">
-        <span class="img"><img src="v/casas-baleiras/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">As casas baleiras</span>
-          <span class="sub">Mapa e pictogramas · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Patrimonio|Territorio">
-      <a href="v/castros/">
-        <span class="img"><img src="v/castros/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Os castros: unha constelación</span>
-          <span class="sub">Mapa de puntos · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Clima|Mar">
-      <a href="v/ondas-atlantico/">
-        <span class="img"><img src="v/ondas-atlantico/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">As ondas do Atlántico</span>
-          <span class="sub">Ridgeline · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Lingua">
-      <a href="v/apelidos-galegos/">
-        <span class="img"><img src="v/apelidos-galegos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Os apelidos máis galegos</span>
-          <span class="sub">Buscador e dispersión · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Saúde">
-      <a href="v/vida-semanas/">
-        <span class="img"><img src="v/vida-semanas/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">A túa vida en semanas</span>
-          <span class="sub">Grella interactiva · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Lingua">
-      <a href="v/nomes-galicia/">
-        <span class="img"><img src="v/nomes-galicia/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">De Manuel a Mateo</span>
-          <span class="sub">Río de rankings · <time datetime="2026-10-28">28 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Clima|Choiva">
-      <a href="v/reloxo-choiva/">
-        <span class="img"><img src="v/reloxo-choiva/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O reloxo da choiva</span>
-          <span class="sub">Reloxos radiais · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Economía|Sociedade">
-      <a href="v/galicia-minuto/">
-        <span class="img"><img src="v/galicia-minuto/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Galicia nun minuto</span>
-          <span class="sub">Panel en directo · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Rural|Poboación">
-      <a href="v/fenda-rural/">
-        <span class="img"><img src="v/fenda-rural/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">A fenda rural</span>
-          <span class="sub">Gráfico de pesas · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Emigración">
-      <a href="v/migracions/">
-        <span class="img"><img src="v/migracions/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Quen chega e quen marcha</span>
-          <span class="sub">Mapa de arcos · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Camiño de Santiago|Turismo">
-      <a href="v/camino-compostela/">
-        <span class="img"><img src="v/camino-compostela/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Todos os camiños levan a Compostela</span>
-          <span class="sub">Mapa de fluxos · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Lingua|Poboación">
-      <a href="v/galego-xeracions/">
-        <span class="img"><img src="v/galego-xeracions/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O galego por xeracións</span>
-          <span class="sub">Pirámide da lingua · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Mar|Alimentación">
-      <a href="v/mar-prato/">
-        <span class="img"><img src="v/mar-prato/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O mar nun prato</span>
-          <span class="sub">Calendario e marea · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Monte|Sustentabilidade">
-      <a href="v/monte-concellos/">
-        <span class="img"><img src="v/monte-concellos/thumb.png" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">O monte de cada concello</span>
-          <span class="sub">Mapa de árbores · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Enerxía">
-      <a href="v/luz-galicia/">
-        <span class="img"><img src="v/luz-galicia/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">De onde vén a luz</span>
-          <span class="sub">Diagrama de fluxos · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Rural|Gandería|Poboación">
-      <a href="v/vacas-persoas/">
-        <span class="img"><img src="v/vacas-persoas/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Hai máis vacas ca persoas?</span>
-          <span class="sub">Cartograma de hexágonos · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Clima">
-      <a href="v/raias-clima/">
-        <span class="img"><img src="v/raias-clima/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">As raias da calor e da choiva</span>
-          <span class="sub">Raias climáticas · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Rural">
-      <a href="v/galicia-apagandose/">
-        <span class="img"><img src="v/galicia-apagandose/thumb.png" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Galicia apágase</span>
-          <span class="sub">Mapa de luces · <time datetime="2026-10-27">27 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Lumes|Monte">
-      <a href="v/espiral-lumes/">
-        <span class="img"><img src="v/espiral-lumes/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">A espiral dos lumes</span>
-          <span class="sub">Espiral · <time datetime="2026-10-26">26 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Clima|Enerxía">
-      <a href="v/galicia-cero-neto/">
-        <span class="img"><img src="v/galicia-cero-neto/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Que precisaría Galicia para chegar ao carbono neto cero?</span>
-          <span class="sub">Folla de ruta · <time datetime="2026-10-26">26 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Sustentabilidade|Mitos e datos">
-      <a href="v/habelos-hainos/">
-        <span class="img"><img src="v/habelos-hainos/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Habelos, hainos: mitos sobre Galicia e a sustentabilidade</span>
-          <span class="sub">Mosaico interactivo · <time datetime="2026-10-26">26 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Poboación|Emigración">
-      <a href="v/poboacion-galicia/">
-        <span class="img"><img src="v/poboacion-galicia/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">A Galicia de fóra xa é a terceira provincia</span>
-          <span class="sub">Diagrama de Voronoi · <time datetime="2026-10-26">26 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
-    <article class="tarxeta" data-temas="Lecturas|Sustentabilidade">
-      <a href="v/biblioteca-sustentable/">
-        <span class="img"><img src="v/biblioteca-sustentable/thumb.svg" alt="" loading="lazy" width="600" height="600"></span>
-        <span class="txt">
-          <span class="titulo">Biblioteca Sustentable</span>
-          <span class="sub">Biblioteca · <time datetime="2026-10-26">26 de outubro de 2026</time></span>
-        </span>
-      </a>
-    </article>
+    <a class="peza" href="v/camino-compostela/" data-temas="Camiño de Santiago|Turismo">
+      <span class="linea-sup"><span class="num">01</span><span>Mapa de fluxos</span></span>
+      <div class="marco"><img src="v/camino-compostela/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Todos os camiños levan a Compostela</h2>
+        <p class="entradilla">530.844 peregrinos recolleron a Compostela en 2025, un récord, e un de cada tres saíu de Sarria. Os camiños co grosor dos seus peregrinos, de onde veñen e a serie desde 2004.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/galego-xeracions/" data-temas="Lingua|Poboación">
+      <span class="linea-sup"><span class="num">02</span><span>Pirámide da lingua</span></span>
+      <div class="marco"><img src="v/galego-xeracions/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O galego por xeracións</h2>
+        <p class="entradilla">A pirámide da lingua: só 7 de cada 100 nenos falan sempre en galego, fronte a 40 dos maiores de 65. Como cambiou de 2003 a 2023 e como pasa de nais a fillos.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/mar-prato/" data-temas="Mar|Alimentación">
+      <span class="linea-sup"><span class="num">03</span><span>Calendario e marea</span></span>
+      <div class="marco"><img src="v/mar-prato/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O mar nun prato</h2>
+        <p class="entradilla">O calendario das lonxas galegas: que se vende cada mes, cando hai veda e cando sobe o prezo. O percebe vale case o dobre no Nadal, e as lonxas venden a metade de quilos ca en 2017.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/monte-concellos/" data-temas="Monte|Sustentabilidade">
+      <span class="linea-sup"><span class="num">04</span><span>Mapa de árbores</span></span>
+      <div class="marco"><img src="v/monte-concellos/thumb.png" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>O monte de cada concello</h2>
+        <p class="entradilla">O monte galego árbore a árbore: eucalipto, piñeiro ou frondosas, concello a concello. En 78 concellos o eucalipto xa é máis da metade do monte arborado.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/luz-galicia/" data-temas="Enerxía">
+      <span class="linea-sup"><span class="num">05</span><span>Diagrama de fluxos</span></span>
+      <div class="marco"><img src="v/luz-galicia/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>De onde vén a luz</h2>
+        <p class="entradilla">Galicia xera un terzo máis de electricidade da que consome e xa non queima carbón: o 82 % vén da auga e do vento. Os fluxos, ano a ano dende 2011.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/vacas-persoas/" data-temas="Rural|Gandería|Poboación">
+      <span class="linea-sup"><span class="num">06</span><span>Cartograma de hexágonos</span></span>
+      <div class="marco"><img src="v/vacas-persoas/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Hai máis vacas ca persoas?</h2>
+        <p class="entradilla">En 68 concellos galegos, si, e son cada vez máis porque marcha a xente. Se contamos tamén porcos, galiñas e ovellas en unidades gandeiras, son 128.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/raias-clima/" data-temas="Clima">
+      <span class="linea-sup"><span class="num">07</span><span>Raias climáticas</span></span>
+      <div class="marco"><img src="v/raias-clima/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>As raias da calor e da choiva</h2>
+        <p class="entradilla">Cada raia é un ano en seis observatorios galegos, dende 1931. Na Coruña, os catro anos máis quentes da serie son os catro últimos. Descarga a raia da túa cidade.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/galicia-apagandose/" data-temas="Poboación|Rural">
+      <span class="linea-sup"><span class="num">08</span><span>Mapa de luces</span></span>
+      <div class="marco"><img src="v/galicia-apagandose/thumb.png" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Galicia apágase</h2>
+        <p class="entradilla">As 30.518 aldeas e lugares de Galicia como puntos de luz, de 1999 a 2025. 1.070 quedaron sen ninguén e outras 5.039 teñen menos de cinco veciños.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/espiral-lumes/" data-temas="Lumes|Monte">
+      <span class="linea-sup"><span class="num">09</span><span>Espiral</span></span>
+      <div class="marco"><img src="v/espiral-lumes/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>A espiral dos lumes</h2>
+        <p class="entradilla">Cada volta é un ano dende 1983 e cada brasa, un día de lume. En 44 anos ardeu o equivalente a case a metade de Galicia, e 2025 xa é o segundo peor ano da serie.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/galicia-cero-neto/" data-temas="Clima|Enerxía">
+      <span class="linea-sup"><span class="num">10</span><span>Folla de ruta</span></span>
+      <div class="marco"><img src="v/galicia-cero-neto/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Que precisaría Galicia para chegar ao carbono neto cero?</h2>
+        <p class="entradilla">Emitimos 16,6 millóns de toneladas de CO₂ e o monte absorbe 9,6. Folla de ruta por sectores para cumprir a Lei do clima en 2040, adaptada de Information is Beautiful.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/habelos-hainos/" data-temas="Sustentabilidade|Mitos e datos">
+      <span class="linea-sup"><span class="num">11</span><span>Mosaico interactivo</span></span>
+      <div class="marco"><img src="v/habelos-hainos/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Habelos, hainos: mitos sobre Galicia e a sustentabilidade</h2>
+        <p class="entradilla">17 ideas que repetimos sen comprobar, do «aquí chove sempre» aos pirómanos e ás renovables, contrastadas con datos oficiais. Di se as crías e compara coa demais xente.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/poboacion-galicia/" data-temas="Poboación|Emigración">
+      <span class="linea-sup"><span class="num">12</span><span>Diagrama de Voronoi</span></span>
+      <div class="marco"><img src="v/poboacion-galicia/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>A Galicia de fóra xa é a terceira provincia</h2>
+        <p class="entradilla">Os 313 concellos e os 563.303 galegos e galegas que viven no exterior, cada un do tamaño da súa poboación. Só A Coruña e Pontevedra suman máis xente ca a diáspora.</p>
+      </div>
+    </a>
+    <a class="peza" href="v/biblioteca-sustentable/" data-temas="Lecturas|Sustentabilidade">
+      <span class="linea-sup"><span class="num">13</span><span>Biblioteca</span></span>
+      <div class="marco"><img src="v/biblioteca-sustentable/thumb.svg" alt="" loading="lazy" width="600" height="750"></div>
+      <div class="cap">
+        <h2>Biblioteca Sustentable</h2>
+        <p class="entradilla">41 libros para entender a crise ecosocial e pensar saídas, dos clásicos de Carson e Meadows ao postcrecemento, o clima e o mundo rural. Unha lista viva que medra co tempo.</p>
+      </div>
+    </a>
   </div>
   <p class="baleiro" id="baleiro" hidden>Aínda non hai visualizacións con este tema.</p>
-
-  <section class="sobre" id="sobre" aria-labelledby="h-sobre">
-    <h2 id="h-sobre">Sobre Divulga</h2>
-    <div>
-      <p>Pezas puntuais da Fundación Galicia Sustentable feitas con datos públicos. Cada visualización indica as súas fontes e a data dos datos.</p>
-      <p>Os contidos publícanse baixo licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.gl">CC BY-NC-SA 4.0</a>. Podes reutilizalos citando a fonte.</p>
-    </div>
-  </section>
 </main>
 
-<footer class="dv-foot">
+<section class="inner" id="sobre" style="padding-bottom:60px;max-width:62ch">
+  <h2 style="font-family:var(--dv-display);font-weight:700;font-size:1.1rem;color:var(--dv-tinta);margin:0 0 10px">Sobre Divulga</h2>
+  <p style="margin:0 0 10px;color:var(--dv-tinta-60);font-size:.92rem">Pezas puntuais da Fundación Galicia Sustentable feitas con datos públicos. Cada visualización indica as súas fontes e a data dos datos.</p>
+  <p style="margin:0;color:var(--dv-tinta-60);font-size:.92rem">Os contidos publícanse baixo licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.gl" style="text-decoration:underline">CC BY-NC-SA 4.0</a>. Podes reutilizalos citando a fonte.</p>
+</section>
+
+<footer class="pe">
   <div class="inner">
-    <span>Fundación Galicia Sustentable · CIF G70193537</span>
-    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+    <div class="fgs">
+      <img src="assets/logos/logo-fgs-horizontal.png" alt="Fundación Galicia Sustentable" width="140" height="60">
+      <span>CIF G70193537 · CC BY-NC-SA 4.0</span>
+    </div>
+    <nav aria-label="Ligazóns institucionais">
+      <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+      <a href="https://galiciasustentable.org">galiciasustentable.org</a>
+      <a href="https://fundaciongaliciasustentable.gal/aviso-legal/">Aviso legal</a>
+      <a href="https://fundaciongaliciasustentable.gal/privacidade/">Privacidade</a>
+      <a href="https://fundaciongaliciasustentable.gal/cookies/">Cookies</a>
+    </nav>
   </div>
 </footer>
 
 <script>
 (() => {
   const botons = [...document.querySelectorAll('.tema')];
-  const tarxetas = [...document.querySelectorAll('.tarxeta')];
+  const pezas = [...document.querySelectorAll('.peza')];
   const baleiro = document.getElementById('baleiro');
   function filtrar(tema) {
     botons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tema === tema)));
     let n = 0;
-    tarxetas.forEach(t => {
-      const ok = !tema || t.dataset.temas.split('|').includes(tema);
-      t.hidden = !ok; if (ok) n++;
+    pezas.forEach(p => {
+      const ok = !tema || p.dataset.temas.split('|').includes(tema);
+      p.hidden = !ok; if (ok) n++;
     });
     baleiro.hidden = n > 0;
   }

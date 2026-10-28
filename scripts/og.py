@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Xera assets/img/og-divulga.jpg (1200×630), a imaxe para compartir en redes.
 
-Mesma foto e mesmo tratamento que a portada de fundaciongaliciasustentable.gal.
+Mesma foto (assets/img/heroe-2400.jpg, tamén usada na banda da portada) e
+mesmo tratamento que a portada de fundaciongaliciasustentable.gal.
 Precisa Pillow e as fontes Playfair Display e Lato (Google Fonts, OFL):
-  python3 og.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf>
+  python3 scripts/og.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf>
 """
 import sys
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 playfair, lato = sys.argv[1], sys.argv[2]
 W, H = 1200, 630
 

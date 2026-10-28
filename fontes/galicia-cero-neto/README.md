@@ -6,6 +6,12 @@ Information is Beautiful, 2022). Os datos van no propio
 para actualizalos edítanse alí a man. A miniatura `thumb.svg` debúxase cos
 mesmos valores de 2024.
 
+`datos.json` nesta carpeta é unha **instantánea sincronizada** dese bloque —
+para ter unha fonte lexible e versionada á parte do HTML, non para rexenerar a
+páxina (non hai script que a lea). Ao editar os datos na páxina, actualiza
+tamén este ficheiro a man (ou cun script curto que o extraia do `<script>` con
+Node, como se fixo para crealo).
+
 ## Datos de partida (2024)
 
 - Emisións brutas 16,59 Mt CO2eq e netas 7,02 Mt: Ogacli (ogacli.org), a partir

@@ -1,0 +1,51 @@
+/* Divulga · sistema compartido para pezas de datos (v/<slug>/)
+   Engade isto DESPOIS de divulga.css nas pezas. Non substitúe o tema propio
+   de cada peza (--ink, --paper, --muted, --card, --line, que cada viz.tpl.html
+   segue definindo no seu :root) — dálle só dous fíos comúns:
+
+   1. Tipografía de gráfica: --gs-font-chart-display (Raleway) e
+      --gs-font-chart-num (Barlow Condensed) son a parella aprobada para
+      chrome denso (eixos, cifras, controis). As pezas defínena localmente
+      como --display/--num; fano apuntando aquí (var(--gs-font-chart-display))
+      en vez de repetir o stack de fontes en cada ficheiro.
+   2. Catro compoñentes listos para reutilizar en pezas NOVAS en vez de
+      reinventar caixa de estatística / etiqueta / tooltip / lenda: .dv-stat,
+      .dv-badge, .dv-tooltip, .dv-legend. Adáptanse ao tema de cada peza
+      porque len --ink/--paper/--muted/--card/--line coa peza xa os defina.
+      As pezas existentes seguen coas súas clases propias (.fact, .tip...);
+      non se tocan para non arriscar os seus layouts axustados ao píxel. */
+
+:root{
+  --gs-font-chart-display:"Raleway",ui-sans-serif,system-ui,sans-serif;
+  --gs-font-chart-num:"Barlow Condensed","Arial Narrow",ui-sans-serif,sans-serif;
+}
+
+.dv-stat{
+  font-family:var(--gs-font-chart-num,var(--num));
+  display:inline-flex;flex-direction:column;gap:2px;
+}
+.dv-stat .v{font-size:2.1rem;font-weight:700;line-height:1;color:var(--ink)}
+.dv-stat .l{font-family:var(--gs-font-chart-display,var(--display));font-size:.75rem;font-weight:600;
+  letter-spacing:.04em;color:var(--muted,var(--ink))}
+
+.dv-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--gs-font-chart-display,var(--display));font-weight:700;font-size:.72rem;
+  letter-spacing:.06em;text-transform:uppercase;
+  background:var(--card,var(--paper));color:var(--ink);
+  border:1px solid var(--line,currentColor);border-radius:3px;padding:3px 9px;
+}
+
+.dv-tooltip{
+  position:absolute;pointer-events:none;z-index:10;max-width:240px;
+  background:var(--card,var(--paper));color:var(--ink);
+  border:1px solid var(--line,currentColor);border-radius:4px;
+  box-shadow:0 6px 20px rgba(0,0,0,.18);padding:10px 12px;
+  font-family:var(--gs-font-chart-display,var(--display));font-size:.8rem;line-height:1.35;
+}
+.dv-tooltip .big{display:block;font-family:var(--gs-font-chart-num,var(--num));font-weight:700;font-size:1.3rem;line-height:1.15}
+
+.dv-legend{display:flex;flex-wrap:wrap;gap:10px 16px;list-style:none;margin:0;padding:0;
+  font-family:var(--gs-font-chart-display,var(--display));font-size:.78rem;color:var(--muted,var(--ink))}
+.dv-legend li{display:flex;align-items:center;gap:6px}
+.dv-legend .sw{width:11px;height:11px;border-radius:2px;flex-shrink:0}
