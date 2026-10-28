@@ -1,23 +1,29 @@
 #!/usr/bin/env python3
 """Xera as imaxes para compartir de CADA visualización de
-visualizacions.json, co mesmo tratamento que assets/img/og-divulga.jpg
-(foto + degradado + logo) pero co título e a entradilla de cada peza:
+visualizacions.json, co mesmo tratamento (degradado + logo) que
+assets/img/og-divulga.jpg pero co título, a entradilla E O FONDO propios
+de cada peza — o fondo é a súa propia miniatura (v/<slug>/thumb.svg ou
+thumb.png, a mesma que amosa a tarxeta na portada) ampliada e difuminada,
+non unha foto xenérica repetida en todas. Así cada imaxe é recoñecible
+como a peza á que pertence:
 
   v/<slug>/og.jpg       1200×630  — redes con "link preview" (X, FB, WhatsApp...)
   v/<slug>/historia.jpg 1080×1920 — para descargar e subir a man a Instagram
                                     Stories ou TikTok (eses non len a ligazón)
 
-Precisa Pillow e as fontes Playfair Display e Lato (Google Fonts, OFL):
+Precisa Pillow, cairosvg e as fontes Playfair Display e Lato (Google Fonts, OFL):
   python3 scripts/og_pezas.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf> [slug...]
 
 Sen slugs, rexenera as imaxes de todas as pezas do manifesto.
 """
+import io
 import json
 import re
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+import cairosvg
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 playfair, lato = sys.argv[1], sys.argv[2]
@@ -46,19 +52,47 @@ FORMATOS = {
 }
 
 
-def fondo(w, h, recorte):
-    foto = Image.open(ROOT / "assets/img/heroe-2400.jpg").convert("RGB")
-    s = max(w / foto.width, h / foto.height)
-    foto = foto.resize((round(foto.width * s), round(foto.height * s)), Image.LANCZOS)
+LADO_MINIATURA = 2000  # raster de traballo; as miniaturas reais son vectoriais ou 600×600
+
+
+def imaxe_miniatura(v):
+    """A propia miniatura da peza (v/<slug>/thumb.svg ou thumb.png — a mesma
+    que amosa a súa tarxeta na portada), ampliada a un cadrado grande. É
+    vectorial case sempre, así que ampliar non perde nitidez; se non hai
+    miniatura (non debería pasar: build.py esíxea), devolve None e
+    xerar() cae na foto xenérica do hero."""
+    for ext in ("svg", "png"):
+        ruta = ROOT / "v" / v["slug"] / f"thumb.{ext}"
+        if not ruta.exists():
+            continue
+        if ext == "svg":
+            png = cairosvg.svg2png(
+                url=str(ruta), output_width=LADO_MINIATURA, output_height=LADO_MINIATURA,
+                background_color="white",
+            )
+            return Image.open(io.BytesIO(png)).convert("RGB")
+        img = Image.open(ruta).convert("RGBA")
+        branco = Image.new("RGB", img.size, "white")
+        branco.paste(img, mask=img.split()[-1])
+        return branco.resize((LADO_MINIATURA, LADO_MINIATURA), Image.LANCZOS)
+    return None
+
+
+def fondo(w, h, recorte, miniatura):
+    if miniatura is None:
+        miniatura = Image.open(ROOT / "assets/img/heroe-2400.jpg").convert("RGB")
+    s = max(w / miniatura.width, h / miniatura.height)
+    foto = miniatura.resize((round(miniatura.width * s), round(miniatura.height * s)), Image.LANCZOS)
     x0 = round((foto.width - w) * recorte[0])
     y0 = round((foto.height - h) * recorte[1])
     img = foto.crop((x0, y0, x0 + w, y0 + h))
+    img = img.filter(ImageFilter.GaussianBlur(6))
     capa = Image.new("RGBA", (w, h))
     px = capa.load()
     for y in range(h):
         for x in range(w):
-            a = 0.2 + 0.64 * (y / h) ** 1.3 + 0.32 * max(0, 1 - x / (w * 0.8))
-            px[x, y] = (*NEGRO, int(255 * min(a, 0.9)))
+            a = 0.52 + 0.38 * (y / h) ** 1.2 + 0.25 * max(0, 1 - x / (w * 0.8))
+            px[x, y] = (*NEGRO, int(255 * min(a, 0.93)))
     return Image.alpha_composite(img.convert("RGBA"), capa)
 
 
@@ -119,8 +153,8 @@ def copia_social(v):
     return copia
 
 
-def xerar(v, formato, l):
-    img = fondo(l["W"], l["H"], l["recorte"])
+def xerar(v, formato, l, miniatura):
+    img = fondo(l["W"], l["H"], l["recorte"], miniatura)
     d = ImageDraw.Draw(img)
     marxe, largo_max = l["marxe"], l["W"] - l["marxe"] * 2
     etiqueta = ImageFont.truetype(lato, l["kicker_tam"])
@@ -161,8 +195,11 @@ def main():
         vs = [v for v in vs if v["slug"] in so_slugs]
     for v in vs:
         v = copia_social(v)
+        miniatura = imaxe_miniatura(v)
+        if miniatura is None:
+            print(f"aviso: sen miniatura para {v['slug']}, uso a foto xenérica do hero")
         for formato, l in FORMATOS.items():
-            out = xerar(v, formato, l)
+            out = xerar(v, formato, l, miniatura)
             print("ok:", out.relative_to(ROOT))
     print(f"xeradas {len(vs)} peza(s) × {len(FORMATOS)} formato(s)")
 

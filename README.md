@@ -75,7 +75,10 @@ scripts/                     empaquetado (`empaquetar.sh`) e xeración das imaxe
    novo, engádeo primeiro a `CATEGORIAS` coa categoría que lle corresponda.
 4. `python3 scripts/og_pezas.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf> <slug>`
    xera `v/<slug>/og.jpg` e `v/<slug>/historia.jpg` (usa o `og:title`/
-   `og:description` que puxeches no paso 1, non o do manifesto).
+   `og:description` que puxeches no paso 1, non o do manifesto, e de fondo a
+   propia miniatura do paso 2 — ampliada e difuminada, así cada peza ten unha
+   imaxe distinta e recoñecible en vez de repetir unha foto xenérica).
+   Precisa tamén `cairosvg` (`pip install cairosvg`) para rasterizar o thumb.
 5. `python3 build.py` rexenera a portada: unha grella de pezas da máis
    recente á máis antiga, numeradas, cunha liña de filtro por categoría.
 6. Garda os datos e scripts en `fontes/<slug>/` para poder reproducila. Se a
