@@ -20,7 +20,9 @@ e integrados no tema de cada peza** (len o fondo/cor que a propia peza xa
 resolveu, só cun símbolo «gs» pequeno e unha liña fina), non un bloque de cor
 fixo que rompa coa estética de cada visualización. O pé inclúe sempre o
 mínimo legal: nome, CIF, licenza e ligazóns a Aviso legal/Privacidade/Cookies
-da web institucional (non hai páxinas propias en Divulga para iso).
+da web institucional (non hai páxinas propias en Divulga para iso). A
+cabeceira inclúe tamén un botón «Compartir» (ligazón, código para incrustar
+e redes sociais), inxectado por `assets/js/compartir.js` en todas as pezas.
 
 ```
 index.html                 portada (XERADA por build.py, non editar a man)
@@ -30,18 +32,23 @@ build.py                   xera index.html desde o manifesto e o modelo
 assets/css/divulga.css     tokens FGS, barra superior e pé comúns (.dv-bar/.dv-foot)
 assets/css/viz-base.css    tipografía de gráfica compartida (--gs-font-chart-*) e
                             compoñentes para pezas novas (.dv-stat/.dv-badge/.dv-tooltip/.dv-legend)
+assets/js/compartir.js      botón «Compartir» (ligazón, incrustar, redes) en todas as pezas
 assets/logos/               logos FGS (de fundaciongaliciasustentable.gal)
 assets/img/                 foto da banda (heroe-1200/2400.jpg) e og-divulga.jpg
 v/<slug>/index.html         cada visualización, páxina autónoma
 v/<slug>/thumb.svg|png      miniatura cadrada para a portada
+v/<slug>/og.jpg             imaxe propia para redes (xerada por scripts/og_pezas.py)
 fontes/<slug>/               datos e scripts que xeran v/<slug>/ (non se suben)
-scripts/                     empaquetado (`empaquetar.sh`) e xeración do OG (`og.py`)
+scripts/                     empaquetado (`empaquetar.sh`) e xeración das imaxes OG
+                            (`og.py` para a portada, `og_pezas.py` para cada peza)
 ```
 
 ## Engadir unha visualización
 
-1. Crea `v/<slug>/index.html`. Enlaza `../../assets/css/divulga.css` e usa a
-   barra `.dv-bar` (símbolo + «Divulga» + «← Todas as visualizacións») e o pé
+1. Crea `v/<slug>/index.html`. Enlaza `../../assets/css/divulga.css` e, xusto
+   despois, `<script defer src="../../assets/js/compartir.js"></script>`
+   (engade só o botón «Compartir»: ligazón, incrustar e redes). Usa a barra
+   `.dv-bar` (símbolo + «Divulga» + «← Todas as visualizacións») e o pé
    `.dv-foot`, como en `v/poboacion-galicia/`. Define `--ink`/`--paper`/
    `--muted` (e `--line` se queres unha liña separadora precisa) no `:root`
    propio da peza: `.dv-bar`/`.dv-foot` adáptanse sós a eses valores, claros
@@ -50,17 +57,25 @@ scripts/                     empaquetado (`empaquetar.sh`) e xeración do OG (`o
    `--display`/`--num` locais como `var(--gs-font-chart-display)` /
    `var(--gs-font-chart-num)` en vez de repetir o stack de fontes — e usa
    `.dv-stat`/`.dv-badge`/`.dv-tooltip`/`.dv-legend` en vez de reinventar eses
-   compoñentes.
+   compoñentes. Engade tamén `og:title`/`og:description` (o gancho social,
+   que pode ser distinto do título/entradilla da tarxeta) e `og:image`
+   apuntando a `v/<slug>/og.jpg` (ver punto 4).
 2. Engade unha miniatura cadrada `v/<slug>/thumb.svg` (ou `.png`, 600×600).
-   Que pese pouco (idealmente <50 KB): é a imaxe que carga a portada das 13
-   pezas á vez. Se a peza ten moitos elementos (puntos, portadas...), simplifica
-   para o thumb (menos detalle, máis compresión) — ver `fontes/espiral-lumes/`
-   e `fontes/biblioteca-sustentable/` como exemplo.
+   Que pese pouco (idealmente <50 KB): é a imaxe que carga a portada das
+   decenas de pezas á vez. Se a peza ten moitos elementos (puntos, portadas...),
+   simplifica para o thumb (menos detalle, máis compresión) — ver
+   `fontes/espiral-lumes/` e `fontes/biblioteca-sustentable/` como exemplo.
 3. Engade a entrada en `visualizacions.json` (`slug`, `titulo`, `entradilla`,
-   `data` AAAA-MM-DD, `temas`, `formato`, `fontes`).
-4. `python3 build.py` rexenera a portada: unha grella de pezas da máis
-   recente á máis antiga, numeradas, cunha liña de filtro por tema.
-5. Garda os datos e scripts en `fontes/<slug>/` para poder reproducila. Se a
+   `data` AAAA-MM-DD, `temas`, `formato`, `fontes`). Cada tema en `temas` ten
+   que existir xa no dicionario `CATEGORIAS` de `build.py` (agrupa os temas
+   soltos nas poucas categorías amplas do filtro da portada); se é un tema
+   novo, engádeo primeiro a `CATEGORIAS` coa categoría que lle corresponda.
+4. `python3 scripts/og_pezas.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf> <slug>`
+   xera `v/<slug>/og.jpg`, a imaxe para redes sociais (usa o `og:title`/
+   `og:description` que puxeches no paso 1, non o do manifesto).
+5. `python3 build.py` rexenera a portada: unha grella de pezas da máis
+   recente á máis antiga, numeradas, cunha liña de filtro por categoría.
+6. Garda os datos e scripts en `fontes/<slug>/` para poder reproducila. Se a
    peza se edita a man (sen `prep.py`/`render.py`), garda igualmente un
    `datos.json` sincronizado en `fontes/<slug>/` — ver `fontes/habelos-hainos/`
    ou `fontes/galicia-cero-neto/`.
