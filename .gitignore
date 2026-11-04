@@ -60,3 +60,6 @@ fontes/pensionistas-afiliados/data/raw/
 fontes/debeda-concellos/data/raw/
 fontes/paro-concellos/data/raw/
 fontes/vivenda-salario/data/raw/
+fontes/terreo/data/raw/
+fontes/terreo/data/*.mbtiles
+assets/terreo/*.pmtiles
