@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Filmoteca Sustentable — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="{{N}} documentais para entender a crise ecosocial e ver saídas: clima, biodiversidade, alimentación, consumo e economía.">
+<meta property="og:title" content="Filmoteca Sustentable">
+<meta property="og:description" content="{{N}} documentais sobre sustentabilidade que paga a pena ver, ordenados por eixo temático.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/filmoteca-sustentable/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://divulga.galiciasustentable.org/v/filmoteca-sustentable/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<style>
+/* Filmoteca: grella de carteis, filtros por eixo, ficha baixo cada cartel */
+:root{
+  --line:var(--gs-gris-20); --muted:var(--gs-gris-50); --head:var(--gs-verde-nato);
+  --c-fund:var(--gs-verde-nato); --c-eco:var(--gs-terra); --c-clima:var(--gs-azul);
+  --c-bio:var(--gs-verde-claro); --c-rural:var(--gs-oliva); --c-etica:var(--gs-viola);
+}
+main.inner{padding-block:40px 64px}
+h1{font-family:var(--gs-font-display);font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1.1;color:var(--head);margin:0;text-wrap:balance}
+.lede{max-width:64ch;margin:14px 0 0;font-size:1.05rem}
+.meta{font-size:.82rem;color:var(--muted);margin-top:8px}
+
+.controls{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;
+  border-block:1px solid var(--line);padding-block:14px;margin:28px 0 32px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--gs-gris-05);z-index:5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:700 12px/1 var(--gs-font-corpo);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);
+  background:transparent;color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.chip[aria-pressed="true"]{background:var(--gs-verde-moi-claro);color:var(--gs-verde-nato);border-color:transparent}
+.right{display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.right select{font:inherit;color:var(--gs-gris-80);background:var(--gs-branco);border:1px solid var(--line);border-radius:4px;padding:5px 8px}
+.toggle{display:flex;gap:6px;align-items:center;cursor:pointer}
+.count{font-variant-numeric:tabular-nums}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:40px 28px}
+.book{display:flex;flex-direction:column;gap:12px;min-width:0}
+.cover{position:relative;aspect-ratio:2/3;max-width:100%;border-radius:4px;background:var(--c);
+  color:#fff;padding:18px 16px 16px 26px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+  box-shadow:0 1px 0 rgba(0,0,0,.08),0 10px 24px -14px rgba(0,0,0,.5);transition:transform .25s ease}
+.cover::before{content:"";position:absolute;inset:0 auto 0 0;width:10px;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 70%,rgba(255,255,255,.18))}
+.cover::after{content:"";position:absolute;right:-30%;bottom:-18%;width:90%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.22)}
+.book:hover .cover{transform:translateY(-4px) rotate(-.6deg)}
+.cover .ct{font-family:var(--gs-font-display);font-weight:700;font-size:19px;line-height:1.15;text-wrap:balance;position:relative;z-index:1}
+.cover .ca{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.9;position:relative;z-index:1}
+.cover .cy{font-family:var(--gs-font-display);font-style:italic;font-size:30px;opacity:.35;position:relative;z-index:1;line-height:1}
+.cover.img{padding:0;background:var(--line)}
+.cover.img::after{display:none}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover img.ancho{object-fit:contain;background:#1A1A17}
+.star{position:absolute;top:10px;right:10px;z-index:2;background:#fff;color:var(--gs-verde-nato);font:900 10px/1 var(--gs-font-corpo);
+  letter-spacing:.1em;text-transform:uppercase;padding:5px 7px;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.info h2{font-family:var(--gs-font-display);font-weight:700;font-size:17px;line-height:1.25;color:var(--head);margin:0}
+.info .by{font-size:13px;color:var(--muted);margin:2px 0 6px}
+.info p{font-size:14px;line-height:1.55;margin:0}
+.tag{display:inline-block;margin-top:8px;font:700 11px/1 var(--gs-font-corpo);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tag i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:6px}
+.nota{margin-top:48px;font-size:.82rem;color:var(--muted)}
+@media (max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.cover .ct{font-size:15px}.cover{padding:14px 10px 12px 18px}}
+@media (prefers-reduced-motion:reduce){.book:hover .cover{transform:none}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+
+<main class="inner">
+  <h1>Filmoteca Sustentable</h1>
+  <p class="lede">{{N}} documentais para entender a crise ecosocial e ver as saídas que xa existen: clima, biodiversidade, alimentación, consumo e economía. Os marcados como <strong>Comezar aquí</strong> son un bo primeiro visionado. Fai parella coa <a href="../biblioteca-sustentable/">Biblioteca Sustentable</a>.</p>
+  <p class="meta">Selección da Fundación Galicia Sustentable · Actualizada o {{ACTUALIZADA}}</p>
+
+  <div class="controls">
+    <div class="chips" id="chips" role="group" aria-label="Filtrar por eixo"></div>
+    <div class="right">
+      <label class="toggle"><input type="checkbox" id="soloStart"> Só «Comezar aquí»</label>
+      <label>Ordenar <select id="sort"><option value="ano">por ano</option><option value="titulo">por título</option><option value="eixo">por eixo</option><option value="novos">últimos engadidos</option></select></label>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <p class="nota">Títulos na versión orixinal; moitos teñen versión dobrada ou subtitulada en castelán. Carteis: Wikipedia.</p>
+</main>
+
+<footer class="dv-foot">
+  <div class="inner">
+    <span class="simbolo"><svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>Fundación Galicia Sustentable · CIF G70193537 · CC BY-NC-SA 4.0</span>
+    <nav class="legal" aria-label="Ligazóns legais">
+      <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+      <a href="https://fundaciongaliciasustentable.gal/aviso-legal/">Aviso legal</a>
+      <a href="https://fundaciongaliciasustentable.gal/privacidade/">Privacidade</a>
+      <a href="https://fundaciongaliciasustentable.gal/cookies/">Cookies</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const EIXOS = {
+  fund:{n:"Fundamentos", c:"var(--c-fund)"},
+  eco:{n:"Economía e postcrecemento", c:"var(--c-eco)"},
+  clima:{n:"Clima e enerxía", c:"var(--c-clima)"},
+  bio:{n:"Biodiversidade e natureza", c:"var(--c-bio)"},
+  rural:{n:"Alimentación e rural", c:"var(--c-rural)"},
+  etica:{n:"Ética e pensamento", c:"var(--c-etica)"}
+};
+// Xerado por fontes/filmoteca-sustentable/render.py desde documentais.json
+const DOCS = {{DOCS}};
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const grid = document.getElementById('grid'), chips = document.getElementById('chips');
+let filtro = 'todos';
+const mk = (k,n,c) => { const b=document.createElement('button'); b.type='button'; b.className='chip'; b.dataset.k=k;
+  b.innerHTML=(c?`<i style="background:${c}"></i>`:'')+n; b.setAttribute('aria-pressed',k===filtro);
+  b.onclick=()=>{filtro=k; [...chips.children].forEach(x=>x.setAttribute('aria-pressed',x.dataset.k===k)); render()}; chips.append(b); };
+mk('todos','Todos');
+Object.entries(EIXOS).forEach(([k,v])=>mk(k,v.n,v.c));
+
+function render(){
+  const s = document.getElementById('sort').value, only = document.getElementById('soloStart').checked;
+  const ord = Object.keys(EIXOS);
+  const items = DOCS.map((b,i)=>({...b,i})).filter(b=>(filtro==='todos'||b.eixo===filtro)&&(!only||b.comezar))
+   .sort((a,b)=> s==='titulo'? a.titulo.localeCompare(b.titulo,'gl')
+               : s==='eixo'? (ord.indexOf(a.eixo)-ord.indexOf(b.eixo)||a.ano-b.ano)
+               : s==='novos'? (b.engadido.localeCompare(a.engadido)||b.i-a.i)
+               : a.ano-b.ano);
+  grid.innerHTML = items.map(b=>{
+    const e = EIXOS[b.eixo], star = b.comezar?'<span class="star">Comezar aquí</span>':'';
+    const cover = b.cartel
+      ? `<div class="cover img">${star}<img src="carteis/${b.cartel}" alt="Cartel de ${esc(b.titulo)}" loading="lazy" onload="if(this.naturalWidth>this.naturalHeight)this.classList.add('ancho')"></div>`
+      : `<div class="cover" aria-hidden="true">${star}<div class="ct">${esc(b.titulo)}</div><div><div class="cy">${b.ano}</div><div class="ca">${esc(b.direccion)}</div></div></div>`;
+    return `<article class="book" style="--c:${e.c}">${cover}
+     <div class="info"><h2>${esc(b.titulo)}</h2><div class="by">Dirección: ${esc(b.direccion)} · ${b.ano}</div><p>${esc(b.descricion)}</p>
+       <span class="tag"><i></i>${e.n}</span></div></article>`;
+  }).join('');
+  document.getElementById('count').textContent = items.length+' documentais';
+}
+document.getElementById('sort').onchange=render;
+document.getElementById('soloStart').onchange=render;
+render();
+</script>
+</body>
+</html>

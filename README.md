@@ -138,6 +138,7 @@ recorte, e rexenera `og-divulga.jpg`.
 |---|---|---|
 | poboacion-galicia | INE Padrón municipal 2025 (táboas 2868, 2880, 2885, 2890) e PERE 2026 (táboa 71117) | `cd fontes/poboacion-galicia && npm i && python3 prep.py && node layout.js s51 && python3 render.py` |
 | biblioteca-sustentable | `fontes/biblioteca-sustentable/libros.json` (selección FGS) e portadas de Open Library | `python3 fontes/biblioteca-sustentable/render.py` |
+| filmoteca-sustentable | `fontes/filmoteca-sustentable/documentais.json` (selección FGS) e carteis da Wikipedia | `python3 fontes/filmoteca-sustentable/render.py` |
 | espiral-lumes | FIRESPAIN-025 (EGIF diaria en grella, 1983-2016, Zenodo 14644902) e Copernicus EFFIS `modis.ba.poly` (WFS, 2017-) | `cd fontes/espiral-lumes && pip install netCDF4 numpy shapely && python3 prep.py && python3 render.py` (para actualizar, descarga de novo `data/effis_galicia.gml` co URL de `prep.py`) |
 | galicia-apagandose | IGE, Nomenclátor 1999-2025 (API `igeapi/csv/nomenc`), puntos de entidades de poboación do IET e concellos/parroquias de `galicia-agora` | `cd fontes/galicia-apagandose && pip install shapely pillow && python3 prep.py && python3 render.py` (prep.py descarga os CSV do IGE en `data/ige/` se faltan) |
 | raias-clima | Observatorios de AEMET (A Coruña, Santiago, Vigo, Pontevedra, Ourense, Lugo) vía NOAA GHCN-Daily | `cd fontes/raias-clima && python3 prep.py && python3 render.py` (prep.py descarga os CSV das estacións se faltan) |
@@ -210,6 +211,25 @@ Engade o libro a `libros.json`, busca e descarga a portada en
 portada de Divulga. Eixos: `fund`, `eco`, `clima`, `bio`, `rural`, `etica`.
 Revisa a portada descargada: se é outra edición ou unha tapa de biblioteca,
 cámbiaa con `--so-capa --titulo "..." --isbn ...` (ou `--capa-id`).
+
+O modelo `viz.tpl.html` ten que levar a mesma cabeceira, pé e metadatos ca
+as demais pezas: se cambian en todo o sitio, cámbiaos tamén alí, ou o
+seguinte `engadir.py` volverá deixar a páxina coa versión vella.
+
+### Engadir documentais á Filmoteca Sustentable
+
+```bash
+python3 fontes/filmoteca-sustentable/engadir.py --titulo "Honeyland" \
+  --direccion "Ljubomir Stefanov e Tamara Kotevska" --ano 2019 --eixo rural \
+  --descricion "..." [--comezar] [--wiki "Honeyland"] [--lingua en]
+```
+
+Igual ca a biblioteca, pero co cartel da imaxe principal do artigo da
+Wikipedia (`--wiki`, por defecto o título; `--lingua` para outra edición, ou
+`--wiki "fr:Título"`). Revisa o cartel: ás veces é unha foto ou a portada dun
+libro. Cámbiao con `--so-cartel --titulo "..." --wiki ...` ou `--cartel-url`;
+`--pendentes` volve buscar os que aínda non teñen. Sen cartel, a páxina debuxa
+unha capa de cor co título.
 
 `prep.py` toma os nomes galegos dos concellos de
 `~/Proxectos/galicia-agora/data-out/perfil-concellos/data.geojson`.
