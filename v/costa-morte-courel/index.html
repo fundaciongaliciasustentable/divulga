@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Da Costa da Morte ao Courel — Divulga · Fundación Galicia Sustentable</title>
-<meta name="description" content="Un voo sobre o relevo de Galicia, do cabo de Fisterra ao cumio do Courel, pasando polos canóns da Ribeira Sacra.">
-<meta name="robots" content="noindex">
+<meta name="description" content="Un voo de oeste a leste sobre o relevo de Galicia, do cabo de Fisterra ao cumio do Courel: vento, ríos, aldeas, cidade, gando, calor e lume, cun dato en cada parada.">
 <meta property="og:title" content="Da Costa da Morte ao Courel">
-<meta property="og:description" content="Un voo sobre o relevo de Galicia: de 237 metros sobre o mar en Fisterra aos 1.639 dos Formigueiros.">
+<meta property="og:description" content="Once paradas sobre o relevo de Galicia, dos 237 metros de Fisterra aos 1.639 dos Formigueiros: o país que traballa, que se baleira e que arde, visto desde o aire.">
 <meta property="og:image" content="https://divulga.galiciasustentable.org/v/costa-morte-courel/og.jpg">
 <meta property="og:url" content="https://divulga.galiciasustentable.org/v/costa-morte-courel/">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,6 +18,7 @@
 <script defer src="../../assets/js/compartir.js"></script>
 <link rel="stylesheet" href="../../assets/css/viz-base.css">
 <link rel="stylesheet" href="../../assets/vendor/maplibre-gl-6.14.0/maplibre-gl.css">
+<link rel="stylesheet" href="../../assets/css/voo.css">
 <style>
 /* Voo de cámara: mapa 3D fixo detrás (sticky) e unha columna de pasos; cada paso move a cámara.
    Instrucións en mapasgs/docs/divulga-voos-de-camara.md */
@@ -28,33 +28,9 @@
   --num:var(--gs-font-chart-num);
 }
 body{background:var(--paper);color:var(--ink)}
-.voo{position:relative}
-.voo-mapa{position:sticky;top:0;height:100vh;height:100svh;width:100%}
-.voo-pasos{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;pointer-events:none;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.paso{min-height:95vh;display:flex;align-items:center}
-.paso:first-child{min-height:100vh}
-.paso:last-child{min-height:110vh}
-.paso > div{pointer-events:auto;max-width:26rem;padding:1.3rem 1.5rem 1.4rem;background:var(--cadro);
-  border-radius:6px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--line)}
-.paso .onde{font:700 .72rem/1 var(--gs-font-corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--acento);margin:0 0 .6rem}
-.paso h1,.paso h2{font-family:var(--gs-font-display);font-weight:700;line-height:1.1;margin:0 0 .6rem;text-wrap:balance}
-.paso h1{font-size:clamp(2rem,4.6vw,3rem)}
-.paso h1 em{font-weight:400}
-.paso h2{font-size:1.6rem}
-.paso .dato{font:700 2.6rem/1 var(--num);margin:.2rem 0 .1rem;font-variant-numeric:tabular-nums}
-.paso .dato small{font-size:1rem;font-weight:600;color:var(--muted);margin-left:.25rem}
-.paso .dato-l{font-size:.8rem;color:var(--muted);margin:0 0 .8rem}
-.paso p{margin:0 0 .6rem;line-height:1.6}
-.paso p:last-child{margin-bottom:0}
-.paso .fonte{font-size:.78rem;color:var(--muted)}
-.borrador{display:inline-block;font:700 .68rem/1 var(--gs-font-corpo);letter-spacing:.12em;text-transform:uppercase;
-  color:var(--paper);background:var(--acento);padding:4px 7px;border-radius:3px;margin-bottom:.8rem}
-.maplibregl-ctrl-attrib{font-size:11px}
-@media (max-width:700px){
-  .paso{align-items:flex-end;min-height:100vh}
-  .paso > div{max-width:none;margin-bottom:1.5rem}
-}
+.paso .lenda .escala{display:inline-block;width:80px;height:8px;border-radius:2px;margin:0 6px;vertical-align:0}
+.peche a{color:var(--ink)}
+.peche ul{margin:.1rem 0 .7rem;padding-left:1.1rem;line-height:1.6}
 </style>
 </head>
 <body>
@@ -71,60 +47,191 @@ body{background:var(--paper);color:var(--ink)}
 <main class="voo">
   <div class="voo-mapa" aria-hidden="true"></div>
   <div class="voo-pasos">
-    <section class="paso" data-centro="-8.05,42.75" data-zoom="7.4" data-inclinacion="40" data-rumbo="0">
+    <section class="paso" data-centro="-8.05,42.75" data-zoom="7.1" data-zoom-movil="6.1" data-inclinacion="40" data-rumbo="0" data-capa="ruta">
       <div>
-        <span class="borrador">Borrador · proba de cámara</span>
         <h1>Da Costa da Morte <em>ao Courel</em></h1>
-        <p>Un voo de oeste a leste sobre o relevo de Galicia, desde o cabo onde remata a terra ata o cumio máis alto da serra do Courel.</p>
-        <p class="fonte">Baixa para comezar.</p>
+        <p>Un voo de oeste a leste sobre o relevo de Galicia, desde o cabo onde remata a terra ata o cumio máis alto da serra do Courel. Once paradas e un dato en cada unha: vento, ríos, aldeas, cidade, gando, calor e lume.</p>
+        <p class="fonte">Baixa para comezar. O relevo está exaxerado unha vez e media.</p>
       </div>
     </section>
 
-    <section class="paso" data-centro="-9.272,42.882" data-zoom="12" data-inclinacion="65" data-rumbo="-30">
+    <section class="paso" data-centro="-9.272,42.882" data-zoom="12" data-inclinacion="65" data-rumbo="-30" data-marca="-9.2741,42.8937|Monte Facho">
       <div>
         <p class="onde">Fisterra · A Coruña</p>
         <h2>Onde remata a terra</h2>
         <p class="dato">237<small>m</small></p>
         <p class="dato-l">altura máxima do Monte Facho sobre o mar</p>
-        <p>O cabo é unha lingua de granito que entra no Atlántico. En menos de dous quilómetros pásase da beira do mar ao cumio do Facho, onde estaba o faro antigo.</p>
-        <p class="fonte">Altura: MDT de 25 m do IGN.</p>
+        <p>O cabo é unha lingua de granito que entra no Atlántico. En menos de dous quilómetros pásase da beira do mar ao cumio do Facho. Desde aquí, o voo vai sempre cara ao leste e cara a arriba.</p>
+        <p class="fonte">Altura: MDT de 25 m do IGN (PNOA-LiDAR).</p>
       </div>
     </section>
 
-    <section class="paso" data-centro="-7.70,42.59" data-zoom="12" data-inclinacion="72" data-rumbo="150">
+    <section class="paso" data-centro="-9.19,43.09" data-zoom="10.2" data-inclinacion="55" data-rumbo="20" data-capa="vento"
+      data-marca="-9.2973,43.0524|Cabo Touriñán;-9.2235,43.1606|Cabo Vilán;-9.2168,43.1044|Muxía">
+      <div>
+        <p class="onde">Costa da Morte · Muxía e Camariñas</p>
+        <h2>A costa do vento</h2>
+        <p class="dato">4,3<small>m/s</small></p>
+        <p class="dato-l">vento medio previsto en Cabo Touriñán do 4 ao 7 de novembro de 2026; en Santiago, 2,4</p>
+        <p>Os cabos reciben o vento do Atlántico sen nada que o free. Nesta predición de tres días, Touriñán case duplicaba o vento de Santiago, e a cor do mapa amosa como a franxa da costa sopra máis ca o interior. Ese vento é tamén un recurso: enerxía que se colle nas serras de toda Galicia.</p>
+        <p class="lenda">vento medio <span class="escala" style="background:linear-gradient(90deg,#2b3f63,#2f7f9e,#6fcfb0,#e9f0a6)"></span> 1 → 6 m/s</p>
+        <p class="fonte">Modelo WRF de MeteoGalicia, execución do 4/11/2026 ás 00 UTC, media de 25 pasos de 3 h. Cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-9.04,42.95" data-zoom="10.4" data-inclinacion="60" data-rumbo="15" data-capa="xallas"
+      data-marca="-9.1134,42.8886|Monte Pindo (627 m);-9.0184,42.9621|Aforo de Mazaricos">
+      <div>
+        <p class="onde">Monte Pindo e o Xallas · Carnota, Dumbría e Mazaricos</p>
+        <h2>Un río que cae ao mar</h2>
+        <p class="dato">×5,3</p>
+        <p class="dato-l">o caudal do Xallas en Mazaricos no temporal de outubro de 2026: de 3,0 a 16,1 m³/s</p>
+        <p>O Pindo ergue 627 metros de granito a carón da praia. Ao seu norte, o Xallas baixa por unha escaleira de encoros (Castrelo, A Fervenza, Santa Uxía) e remata nunha fervenza que cae directa ao mar no Ézaro. Coa choiva do temporal, o 6 de outubro o seu caudal en Mazaricos multiplicouse por cinco.</p>
+        <p class="lenda"><span><i class="l" style="background:#5fc4f0"></i>río Xallas</span><span><i class="c" style="background:#2f7f9e"></i>encoros</span><span><i style="background:#f2f0e8"></i>estacións de aforo</span></p>
+        <p class="fonte">Augas de Galicia e MeteoGalicia, caudais de 10 minutos non validados, episodio do 5 ao 11/10/2026. Masas de auga: Augas de Galicia. Altura: MDT do IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.99,43.06" data-zoom="9.8" data-inclinacion="50" data-rumbo="90" data-capa="aldeas-soneira"
+      data-marca="-9.0372,43.0957|Vimianzo;-8.9255,43.0910|Zas;-8.8068,43.0454|Santa Comba">
+      <div>
+        <p class="onde">Terra de Soneira e Xallas · A Coruña</p>
+        <h2>Aldeas con xente, pero menos</h2>
+        <p class="dato">426<small>de 463</small></p>
+        <p class="dato-l">lugares de Camariñas, Vimianzo, Zas, Santa Comba e Mazaricos que perderon veciños entre 2000 e 2025</p>
+        <p>Aquí case ningunha aldea quedou baleira: só catro. O que mudou é o tamaño. Os lugares destes cinco concellos pasaron de 38.906 a 29.185 habitantes, un 25 % menos. O campo segue habitado e traballado, con menos mans.</p>
+        <p class="lenda"><span><i style="background:#c9a86a"></i>perdeu poboación</span><span><i style="background:#7fd1c7"></i>mantívose ou gañou</span><span><i style="background:#e4572e"></i>baleira en 2025</span></p>
+        <p class="fonte">INE, Nomenclátor (padrón continuo por unidade poboacional), 2000 e 2025; posicións do IET. Cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.56,42.87" data-zoom="9.9" data-inclinacion="50" data-rumbo="100" data-capa="santiago"
+      data-marca="-8.5448,42.8806|Santiago;-8.6461,42.8910|Ames;-8.5649,42.7972|Teo">
+      <div>
+        <p class="onde">Santiago e o val do Sar · A Coruña</p>
+        <h2>A cidade sae do seu concello</h2>
+        <p class="dato">×3,2</p>
+        <p class="dato-l">poboación de Ames entre os censos de 1991 (10.011) e 2021 (32.062)</p>
+        <p>Santiago medrou un 11 % neses trinta anos, ata 97.798 habitantes. O crecemento grande foi arredor: Ames triplicouse e Teo gañou un 49 %. A cidade real é xa unha área de vales e urbanizacións que non coincide co mapa municipal.</p>
+        <p class="lenda">variación 1991–2021 <span class="escala" style="background:linear-gradient(90deg,#8c5a3c,#3a3d40,#3f8f8a,#9fe3d1)"></span> −30 % → +200 %</p>
+        <p class="fonte">INE, poboación dos concellos nos censos, harmonizada aos concellos actuais. Cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.44,42.79" data-zoom="11.2" data-inclinacion="65" data-rumbo="120" data-capa="ulla"
+      data-marca="-8.4467,42.8071|Pico Sacro (527 m);-8.4035,42.7781|A Ponte Ulla">
+      <div>
+        <p class="onde">Pico Sacro e o Ulla · Boqueixón e Vedra</p>
+        <h2>O río como corredor</h2>
+        <p class="dato">1.633<small>ha</small></p>
+        <p class="dato-l">protexidas no Sistema Fluvial Ulla-Deza, unha fita estreita ao longo dos dous ríos</p>
+        <p>O Pico Sacro, 527 metros, vixía o val do Ulla. A protección aquí non é un gran parque senón un corredor de ribeiras que segue o río entre leiras, prados e aldeas: a forma que toma a natureza nun val habitado e cultivado.</p>
+        <p class="lenda"><span><i class="c" style="background:#5fc4f0"></i>Sistema Fluvial Ulla-Deza (zona de especial protección)</span></p>
+        <p class="fonte">Espazos naturais protexidos: © Instituto de Estudos do Territorio, Xunta de Galicia. Altura: MDT do IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.12,42.72" data-zoom="8.9" data-inclinacion="50" data-rumbo="20" data-capa="vacas"
+      data-marca="-8.1310,42.6617|Lalín;-8.2762,42.6943|Silleda">
+      <div>
+        <p class="onde">O Deza e a Dorsal · Pontevedra</p>
+        <h2>Terra de leite</h2>
+        <p class="dato">45<small>vacas/km²</small></p>
+        <p class="dato-l">en Lalín en 2025 (14.794 vacas); a media de Galicia é de 17</p>
+        <p>A meseta do Deza é país de prado e gando. A cor de cada concello marca as súas vacas por quilómetro cadrado. As máis altas quedan algo máis ao norte, en Frades (122) e Mesía (71), nas terras de Ordes, e en Pastoriza (87).</p>
+        <p class="lenda">vacas por km² <span class="escala" style="background:linear-gradient(90deg,#2a2d30,#6b5b3a,#c9a86a,#f2e3b3)"></span> 0 → 80 ou máis</p>
+        <p class="fonte">IGE, táboa 62 (efectivos de gando bovino, Consellería do Medio Rural), 2025; superficie municipal do IGE. Cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.70,42.59" data-zoom="12" data-inclinacion="72" data-rumbo="150" data-marca="-7.7217,42.6035|Belesar">
       <div>
         <p class="onde">Ribeira Sacra · Chantada e Taboada</p>
         <h2>O Miño cava o seu canón</h2>
         <p class="dato">460<small>m</small></p>
         <p class="dato-l">de desnivel entre o río en Belesar (207 m) e o bordo do canón (669 m)</p>
-        <p>Ao entrar na Ribeira Sacra o Miño deixa as chairas de Lugo e encáixase entre ladeiras tan pendentes que as viñas teñen que subir en socalcos.</p>
+        <p>Ao entrar na Ribeira Sacra o Miño deixa as chairas de Lugo e encáixase entre ladeiras tan pendentes que as viñas teñen que subir en socalcos. É agricultura de muro de pedra e traballo a man.</p>
         <p class="fonte">Alturas: MDT de 25 m do IGN, nun cadrado de 8 × 9 km arredor de Belesar.</p>
       </div>
     </section>
 
-    <section class="paso" data-centro="-7.12,42.60" data-zoom="12.2" data-inclinacion="72" data-rumbo="200">
+    <section class="paso" data-centro="-7.51,42.52" data-zoom="9" data-inclinacion="55" data-rumbo="120" data-capa="tmax"
+      data-marca="-7.4933,42.5181|Monforte de Lemos">
       <div>
-        <p class="onde">Serra do Courel · Lugo</p>
-        <h2>O teito do voo</h2>
-        <p class="dato">1.639<small>m</small></p>
-        <p class="dato-l">Pico dos Formigueiros, o cumio máis alto da serra</p>
-        <p>Desde Fisterra subimos máis de 1.400 metros. Nas abas do norte do Courel resiste a Devesa da Rogueira, un dos bosques caducifolios mellor conservados de Galicia.</p>
-        <p class="fonte">Altura: MDT de 25 m do IGN.</p>
+        <p class="onde">Terra de Lemos · Lugo</p>
+        <h2>A cunca que acumula calor</h2>
+        <p class="dato">27<small>días</small></p>
+        <p class="dato-l">de 35 °C ou máis na estación de Monforte en 2025; en Camariñas, ningún</p>
+        <p>Lemos é unha depresión pechada por serras. En 2025 a estación de Monforte chegou a 40,5 °C o 10 de agosto; ese mesmo día, a máxima en Camariñas foi de 27 °C. O mar suaviza, o interior acumula.</p>
+        <p class="lenda"><span><i style="background:#3f6e8c"></i>ningún día</span><span><i style="background:#c9a86a"></i>10</span><span><i style="background:#e4572e"></i>30</span><span><i style="background:#ff4d6d"></i>45 ou máis</span></p>
+        <p class="fonte">MeteoGalicia, datos diarios das estacións, 2025 (só as que teñen 330 días ou máis con dato). Cálculo FGS.</p>
       </div>
     </section>
 
-    <section class="paso" data-centro="-8.05,42.75" data-zoom="7.4" data-inclinacion="50" data-rumbo="-15">
+    <section class="paso" data-centro="-7.11,42.60" data-zoom="11.1" data-inclinacion="64" data-rumbo="190" data-capa="lume"
+      data-marca="-7.0999,42.6057|Formigueiros (1.639 m)">
       <div>
-        <h2>Seguirá</h2>
-        <p>Este é un primeiro voo de proba con tres paradas, só texto e cámara. A peza completa terá once paradas, cos datos de vento, crecidas, aldeas baleiras, calor e lume en cada lugar.</p>
+        <p class="onde">Serra do Courel · Folgoso do Courel e Quiroga</p>
+        <h2>O teito do voo</h2>
+        <p class="dato">1.639<small>m</small></p>
+        <p class="dato-l">Pico dos Formigueiros, o cumio máis alto da serra</p>
+        <p>Desde Fisterra subimos máis de 1.400 metros. Sobre Moreda, nas abas do norte, resiste a Devesa da Rogueira, un dos bosques caducifolios mellor conservados de Galicia. En xullo de 2022 un lume queimou 13.612 hectáreas na serra, o 73 % dentro da Rede Natura.</p>
+        <p class="lenda"><span><i class="c" style="background:#e4572e"></i>queimado en 2022</span><span><i class="c" style="background:#c9a86a"></i>outros anos, 2016–2025</span></p>
+        <p class="fonte">Altura: MDT do IGN. Perímetros queimados: Copernicus EFFIS (JRC), 2016–2025.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.20,42.63" data-zoom="11.4" data-inclinacion="62" data-rumbo="230" data-capa="aldeas-courel"
+      data-marca="-7.1745,42.6126|Folgoso do Courel">
+      <div>
+        <p class="onde">Seoane e as aldeas · Folgoso do Courel</p>
+        <h2>Un concello de maiores</h2>
+        <p class="dato">45<small>%</small></p>
+        <p class="dato-l">da poboación de Folgoso do Courel ten 65 anos ou máis (2025); en Galicia, o 27 %</p>
+        <p>Folgoso tiña 5.659 habitantes no censo de 1950 e 988 no de 2021. Seoane, a capital, pasou de 149 veciños en 2000 a 87 en 2025. Dos 47 lugares, 39 perderon xente e dous quedaron baleiros. O monte que se coida, ou que arde, depende de quen siga vivindo e traballando nel.</p>
+        <p class="lenda"><span><i style="background:#c9a86a"></i>perdeu poboación</span><span><i style="background:#7fd1c7"></i>mantívose ou gañou</span><span><i style="background:#e4572e"></i>baleiro en 2025</span></p>
+        <p class="fonte">IGE (poboación por idade, 2025); INE, censos e Nomenclátor 2000–2025; posicións do IET. Cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso peche" data-centro="-8.05,42.75" data-zoom="7.1" data-zoom-movil="6.1" data-inclinacion="50" data-rumbo="-15" data-capa="ruta">
+      <div>
+        <h2>Un país en pendente</h2>
+        <p>En 180 quilómetros en liña recta pasamos dun litoral de vento, cidades que medran e aldeas que aguantan a un interior alto, leiteiro, quente no verán e con cada vez menos xente para coidar o monte. As dúas Galicias dependen unha da outra: a auga, a enerxía e boa parte do alimento baixan desde as serras.</p>
+        <p>Para ir máis fondo en cada tema:</p>
+        <ul>
+          <li><a href="../veran-que-ardeu/">O verán que ardeu</a></li>
+          <li><a href="../aldeas-que-quedaron/">As aldeas que quedaron</a></li>
+          <li><a href="../vento-galicia/">O vento de Galicia</a></li>
+          <li><a href="../rios-fora-do-leito/">Ríos fóra do leito</a></li>
+          <li><a href="../calor-nos-canons/">Calor nos canóns</a></li>
+        </ul>
+        <p class="fonte">Todas as capas, ao día, en <a href="https://mapas.galiciasustentable.org/">Mapas Galicia Sustentable</a>.</p>
       </div>
     </section>
   </div>
 </main>
 
+<section class="voo-fontes">
+  <h2>Fontes e notas</h2>
+  <ul>
+    <li><strong>Relevo e alturas</strong>: © Instituto Geográfico Nacional, MDT de 25 m (PNOA-LiDAR), CC BY 4.0, descargado o 4/11/2026. Alturas e desniveis calculados pola FGS sobre esa malla; poden diferir uns metros das cotas oficiais.</li>
+    <li><strong>Vento</strong>: MeteoGalicia e Consellería de Medio Ambiente e Cambio Climático (Xunta de Galicia), modelo WRF de 4 km, execución do 4/11/2026 00 UTC (predición do 4 ao 7 de novembro). Remostraxe e media: FGS. É unha predición concreta, non un valor climatolóxico.</li>
+    <li><strong>Caudais</strong>: Augas de Galicia e MeteoGalicia, caudais de 10 minutos non validados, episodio do 5 ao 11/10/2026. Rede fluvial: masas de auga de Augas de Galicia.</li>
+    <li><strong>Aldeas</strong>: elaboración propia con datos extraídos do sitio web do INE (Nomenclátor: poboación do padrón continuo por unidade poboacional, 2000 e 2025). Posicións: © Instituto de Estudos do Territorio, Xunta de Galicia. Capa <em>aldeas-baleiras</em> de Mapas Galicia Sustentable, CC BY-SA 4.0. Hai 48 lugares de Soneira e Xallas e 5 do Courel sen posición: contan nas cifras pero non aparecen no mapa.</li>
+    <li><strong>Censos</strong>: elaboración propia con datos do INE (Alteraciones de los municipios en los Censos de Población desde 1842), harmonizados aos concellos actuais. Límites municipais: © IET, Xunta de Galicia, CC BY-SA 4.0.</li>
+    <li><strong>Idade</strong>: IGE, porcentaxe de poboación de 65 e máis anos, 2025. Este produto emprega a API do IGE, pero non está certificado nin aprobado polo IGE.</li>
+    <li><strong>Gando</strong>: IGE, táboa 62, efectivos de gando bovino por concello (Consellería do Medio Rural), 2025, consultada o 4/11/2026; superficie municipal do IGE.</li>
+    <li><strong>Espazos protexidos</strong>: © Instituto de Estudos do Territorio, Xunta de Galicia (IDEG), CC BY-SA 4.0.</li>
+    <li><strong>Temperaturas</strong>: MeteoGalicia, datos diarios das estacións, 2025.</li>
+    <li><strong>Lume</strong>: © Unión Europea, Copernicus EFFIS (JRC), perímetros de área queimada 2016–2025, CC BY 4.0. O lume do Courel data da primeira detección, o 14/7/2022.</li>
+    <li>Datos consultados o 4 de novembro de 2026 a través de <a href="https://mapas.galiciasustentable.org/">Mapas Galicia Sustentable</a>. Esta peza publícase con licenza CC BY-SA 4.0 por usar capas con esa licenza.</li>
+  </ul>
+</section>
+
 <footer class="dv-foot">
   <div class="inner">
-    <span class="simbolo"><svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>Fundación Galicia Sustentable · CIF G70193537 · CC BY-NC-SA 4.0 · Relevo: © Instituto Geográfico Nacional, MDT (PNOA-LiDAR), CC BY 4.0</span>
+    <span class="simbolo"><svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>Fundación Galicia Sustentable · CIF G70193537 · CC BY-SA 4.0 · Relevo: © IGN, MDT (PNOA-LiDAR), CC BY 4.0 · Datos: MeteoGalicia, Augas de Galicia, INE, IGE, © IET (Xunta de Galicia), © UE Copernicus EFFIS</span>
     <nav class="legal" aria-label="Ligazóns legais">
       <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
       <a href="https://fundaciongaliciasustentable.gal/aviso-legal/">Aviso legal</a>
@@ -136,69 +243,59 @@ body{background:var(--paper);color:var(--ink)}
 
 <script src="../../assets/vendor/pmtiles-4.5.0/pmtiles.js"></script>
 <script type="module">
-import * as maplibregl from '../../assets/vendor/maplibre-gl-6.14.0/maplibre-gl.mjs';
-
-maplibregl.setWorkerUrl(new URL('../../assets/vendor/maplibre-gl-6.14.0/maplibre-gl-worker.mjs', location.href).href);
-maplibregl.addProtocol('pmtiles', new pmtiles.Protocol().tile);
-
-const terreo = new URL('../../assets/terreo/galicia-terreo.pmtiles', location.href).href;
-const primeiro = document.querySelector('.paso').dataset;
-// O centro da parada vai á dereita do cadro de texto (escritorio) ou por riba del (móbil)
-const marxe = () => (innerWidth > 700
-  ? { left: Math.min(460, innerWidth * 0.4), right: 0, top: 0, bottom: 0 }
-  : { left: 0, right: 0, top: 0, bottom: Math.round(innerHeight * 0.4) });
-const camara = (d) => ({
-  center: d.centro.split(',').map(Number), zoom: +d.zoom, pitch: +d.inclinacion, bearing: +d.rumbo,
-  padding: marxe(),
-});
-
-const map = new maplibregl.Map({
-  container: document.querySelector('.voo-mapa'),
-  style: {
-    version: 8,
-    sources: {
-      terreo: { type: 'raster-dem', url: `pmtiles://${terreo}`, encoding: 'mapbox', tileSize: 256,
-                attribution: '© Instituto Geográfico Nacional, MDT (PNOA-LiDAR), CC BY 4.0' },
-      sombra: { type: 'raster-dem', url: `pmtiles://${terreo}`, encoding: 'mapbox', tileSize: 256 },
-    },
-    layers: [
-      { id: 'fondo', type: 'background', paint: { 'background-color': '#0e1012' } },
-      { id: 'altitude', type: 'color-relief', source: 'sombra', paint: {
-          'color-relief-color': ['interpolate', ['linear'], ['elevation'],
-            0, '#0e1418', 1, '#1f2a22', 200, '#2c3a2b', 500, '#3f4a33', 900, '#5a5a3e', 1300, '#7a6e52', 1700, '#a39478'],
-      } },
-      { id: 'relevo', type: 'hillshade', source: 'sombra', paint: {
-          'hillshade-exaggeration': 0.55, 'hillshade-shadow-color': '#000000',
-          'hillshade-highlight-color': '#f2f0e8', 'hillshade-accent-color': '#0e1012',
-      } },
-    ],
+import { iniciarVoo } from '../../assets/js/voo.js';
+const aldeas = {
+  type: 'circle',
+  paint: {
+    'circle-radius': ['interpolate', ['linear'], ['zoom'],
+      9, ['+', ['case', ['==', ['get', 'e'], 0], 3, 1.5], ['*', 0.35, ['sqrt', ['get', 'p']]]],
+      12, ['+', ['case', ['==', ['get', 'e'], 0], 6, 3], ['*', 0.8, ['sqrt', ['get', 'p']]]]],
+    'circle-color': ['match', ['get', 'e'], 0, '#e4572e', 1, '#c9a86a', '#7fd1c7'],
+    'circle-stroke-color': '#0e1012', 'circle-stroke-width': 0.8, 'circle-opacity': 0.9,
   },
-  ...camara(primeiro),
-  interactive: false,
-  maxPitch: 80,
-  pixelRatio: Math.min(2, devicePixelRatio),
-  attributionControl: { compact: true },
+};
+iniciarVoo({
+  atribucion: 'MeteoGalicia · Augas de Galicia · INE · IGE · © IET, Xunta de Galicia (CC BY-SA 4.0) · © UE, Copernicus EFFIS',
+  capas: [
+    { id: 'ruta', fonte: 'capas/ruta.geojson', estilos: [
+      { type: 'line', filter: ['==', ['geometry-type'], 'LineString'], layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: { 'line-color': '#c9a86a', 'line-width': 2.5, 'line-dasharray': [2, 1.5] } },
+      { type: 'circle', filter: ['==', ['geometry-type'], 'Point'],
+        paint: { 'circle-radius': 5, 'circle-color': '#c9a86a', 'circle-stroke-color': '#0e1012', 'circle-stroke-width': 1.5 } }] },
+    { id: 'vento', fonte: 'capas/vento.geojson', estilos: [{ type: 'circle', paint: {
+      'circle-radius': ['interpolate', ['exponential', 2], ['zoom'], 8, 16, 10, 66, 12, 264],
+      'circle-pitch-alignment': 'map', 'circle-pitch-scale': 'map',
+      'circle-blur': 1,
+      'circle-color': ['interpolate', ['linear'], ['get', 'v'], 1, '#2b3f63', 2.5, '#2f7f9e', 4, '#6fcfb0', 5.5, '#e9f0a6'],
+      'circle-opacity': 0.28 } }] },
+    { id: 'xallas', fonte: 'capas/xallas.geojson', estilos: [
+      { type: 'fill', filter: ['==', ['get', 't'], 'encoro'], paint: { 'fill-color': '#2f7f9e', 'fill-opacity': 0.9 } },
+      { type: 'line', filter: ['==', ['get', 't'], 'rio'], layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: { 'line-color': '#5fc4f0', 'line-width': ['interpolate', ['linear'], ['zoom'], 9, 2, 12, 5] } },
+      { type: 'circle', filter: ['==', ['get', 't'], 'estacion'],
+        paint: { 'circle-radius': 7, 'circle-color': '#f2f0e8', 'circle-stroke-color': '#0e1012', 'circle-stroke-width': 2 } }] },
+    { id: 'aldeas-soneira', fonte: 'capas/aldeas-soneira.geojson', estilos: [aldeas] },
+    { id: 'santiago', fonte: 'capas/santiago.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': ['interpolate', ['linear'], ['get', 'v'], -30, '#8c5a3c', 0, '#3a3d40', 50, '#3f8f8a', 200, '#9fe3d1'], 'fill-opacity': 0.6 } },
+      { type: 'line', paint: { 'line-color': '#0e1012', 'line-width': 1 } }] },
+    { id: 'ulla', fonte: 'capas/ulla.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': '#5fc4f0', 'fill-opacity': 0.75 } },
+      { type: 'line', paint: { 'line-color': '#bfe9fb', 'line-width': 1.2 } }] },
+    { id: 'vacas', fonte: 'capas/vacas.geojson', estilos: [
+      { type: 'fill', paint: {
+        'fill-color': ['interpolate', ['linear'], ['get', 'v'], 0, '#2a2d30', 15, '#6b5b3a', 40, '#c9a86a', 80, '#f2e3b3'],
+        'fill-opacity': 0.72 } },
+      { type: 'line', paint: { 'line-color': '#0e1012', 'line-width': 0.8 } }] },
+    { id: 'tmax', fonte: 'capas/tmax.geojson', estilos: [{ type: 'circle', paint: {
+      'circle-radius': ['interpolate', ['linear'], ['zoom'], 8, 4, 11, 8],
+      'circle-color': ['interpolate', ['linear'], ['get', 'd'], 0, '#3f6e8c', 10, '#c9a86a', 30, '#e4572e', 45, '#ff4d6d'],
+      'circle-stroke-color': '#0e1012', 'circle-stroke-width': 1.2 } }] },
+    { id: 'lume', fonte: 'capas/lume.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': ['case', ['==', ['get', 'a'], 2022], '#e4572e', '#c9a86a'], 'fill-opacity': 0.5 } },
+      { type: 'line', paint: { 'line-color': ['case', ['==', ['get', 'a'], 2022], '#ff8a5c', '#e0c48a'], 'line-width': 1 } }] },
+    { id: 'aldeas-courel', fonte: 'capas/aldeas-courel.geojson', estilos: [aldeas] },
+  ],
 });
-map.on('load', () => map.setTerrain({ source: 'terreo', exaggeration: 1.5 }));
-
-const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
-let xiro = null;
-function ir(paso) {
-  const c = camara(paso.dataset);
-  if (xiro) { map.off('moveend', xiro); xiro = null; }
-  if (quieto) { map.jumpTo(c); return; }
-  map.flyTo({ ...c, duration: 4000, curve: 1.2, essential: false });
-  // ao chegar, un xiro lento mentres se le o paso
-  xiro = () => { xiro = null; map.easeTo({ bearing: c.bearing + 18, duration: 14000, easing: (t) => t }); };
-  map.once('moveend', xiro);
-}
-
-const obs = new IntersectionObserver(
-  (entradas) => entradas.filter((e) => e.isIntersecting).forEach((e) => ir(e.target)),
-  { rootMargin: '-45% 0px -45% 0px' },
-);
-document.querySelectorAll('.paso').forEach((p) => obs.observe(p));
-window.__voo = map;
 </script>
 </body>
 </html>

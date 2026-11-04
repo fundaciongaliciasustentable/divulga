@@ -1,0 +1,185 @@
+{
+ "slug": "rias-que-traballan",
+ "paradas": [
+  {
+   "onde": "Costa de Galicia",
+   "titulo": "As rías que traballan",
+   "camara": {
+    "centro": "-8.35,43.05",
+    "zoom": "7.3",
+    "inclinacion": "40",
+    "rumbo": "0"
+   },
+   "capas": "zonas,bateas",
+   "marcas": null,
+   "cifra": "",
+   "cifra_texto": "",
+   "fonte": "Baixa para comezar."
+  },
+  {
+   "onde": "Costa galega · Rías Baixas na imaxe",
+   "titulo": "O mar tamén ten parcelas",
+   "camara": {
+    "centro": "-8.88,42.48",
+    "zoom": "8.7",
+    "inclinacion": "50",
+    "rumbo": "60"
+   },
+   "capas": "zonas",
+   "marcas": null,
+   "cifra": "84zonas",
+   "cifra_texto": "de produción de moluscos clasificadas na costa: 9 de clase A, 64 de clase B e 11 de clase C",
+   "fonte": "Augas de Galicia, plan hidrolóxico Galicia-Costa 2021–2027 (zonas protexidas), consultado o 1/11/2026."
+  },
+  {
+   "onde": "Ría de Arousa · A Coruña e Pontevedra",
+   "titulo": "A ría das bateas",
+   "camara": {
+    "centro": "-8.90,42.56",
+    "zoom": "10.6",
+    "inclinacion": "55",
+    "rumbo": "40"
+   },
+   "capas": "bateas",
+   "marcas": "-8.7666,42.5960|Vilagarcía;-8.9350,42.6050|A Pobra do Caramiñal;-8.8147,42.5155|Cambados;-8.8650,42.4950|O Grove",
+   "cifra": "69%",
+   "cifra_texto": "da superficie dos polígonos de bateas de Galicia está en Arousa: 43,1 dos 62,7 km²",
+   "fonte": "Superficie: cálculo FGS a partir dos polígonos de Augas de Galicia (PHGC 2021–2027). Mexillón: Pesca de Galicia, produción de acuicultura 2025, consultado o 4/11/2026."
+  },
+  {
+   "onde": "Fondo da ría de Arousa · Vilagarcía",
+   "titulo": "A area que dá ameixa",
+   "camara": {
+    "centro": "-8.80,42.60",
+    "zoom": "11.3",
+    "inclinacion": "60",
+    "rumbo": "20"
+   },
+   "capas": "lonxasb,bateas",
+   "marcas": "-8.7776,42.6147|Carril;-8.8266,42.5621|Vilanova;-8.8880,42.6147|Cabo de Cruz;-8.8224,42.6473|Rianxo",
+   "cifra": "6,16M€",
+   "cifra_texto": "de ameixa xaponesa vendida na lonxa de Carril en 2025, a primeira de Galicia nesta especie",
+   "fonte": "Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia, Consellería do Mar)."
+  },
+  {
+   "onde": "Ría de Vigo · Pontevedra",
+   "titulo": "A lonxa máis grande",
+   "camara": {
+    "centro": "-8.72,42.25",
+    "zoom": "10.9",
+    "inclinacion": "58",
+    "rumbo": "75"
+   },
+   "capas": "lonxas,bateas",
+   "marcas": "-8.7268,42.2359|Vigo;-8.7804,42.2637|Cangas;-8.6585,42.2878|Rande;-8.7333,42.2872|Moaña",
+   "cifra": "82,1M€",
+   "cifra_texto": "de primeira venda na lonxa de Vigo en 2025, a primeira das 60 lonxas galegas",
+   "fonte": "Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); polígonos de Augas de Galicia."
+  },
+  {
+   "onde": "Ría de Pontevedra · Bueu, Marín e Poio",
+   "titulo": "O polbo de Bueu",
+   "camara": {
+    "centro": "-8.76,42.37",
+    "zoom": "11",
+    "inclinacion": "58",
+    "rumbo": "70"
+   },
+   "capas": "lonxas,bateas",
+   "marcas": "-8.7846,42.3266|Bueu;-8.6990,42.3928|Marín;-8.6863,42.4267|Campelo;-8.8222,42.3945|Portonovo",
+   "cifra": "1,39M€",
+   "cifra_texto": "de polbo vendido na lonxa de Bueu en 2025, o 44 % de todo o que alí se vendeu",
+   "fonte": "Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); polígonos de Augas de Galicia."
+  },
+  {
+   "onde": "Ría de Muros e Noia · A Coruña",
+   "titulo": "Berberecho na boca do Tambre",
+   "camara": {
+    "centro": "-8.97,42.77",
+    "zoom": "11",
+    "inclinacion": "58",
+    "rumbo": "60"
+   },
+   "capas": "lonxasb,bateas,augas",
+   "marcas": "-8.8878,42.7852|Noia;-9.0577,42.7743|Muros;-8.9494,42.7571|Portosín",
+   "cifra": "58%",
+   "cifra_texto": "do berberecho vendido nas lonxas galegas en 2025 pasou pola de Noia: 1,74 millóns de euros",
+   "fonte": "Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); estado: Augas de Galicia, PHGC 2021–2027."
+  },
+  {
+   "onde": "Costa da Morte · Laxe e Camariñas",
+   "titulo": "Onde a costa se abre",
+   "camara": {
+    "centro": "-9.10,43.16",
+    "zoom": "10.9",
+    "inclinacion": "60",
+    "rumbo": "115"
+   },
+   "capas": "lonxas,bateas",
+   "marcas": "-9.1829,43.1271|Camariñas;-9.0042,43.2173|Laxe;-9.0921,43.1825|Camelle;-9.2168,43.1044|Muxía",
+   "cifra": "87%",
+   "cifra_texto": "do que se vendeu na lonxa de Camariñas en 2025 foi peixe: xurelo, bocarte, lirio e sardiña",
+   "fonte": "Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); polígonos de Augas de Galicia."
+  },
+  {
+   "onde": "Rías de Ferrol, Ares e Betanzos · A Coruña",
+   "titulo": "Onde entra o mar",
+   "camara": {
+    "centro": "-8.18,43.45",
+    "zoom": "10.3",
+    "inclinacion": "55",
+    "rumbo": "185"
+   },
+   "capas": "inundacion,augas,bateas",
+   "marcas": "-8.2331,43.4847|Ferrol;-8.1600,43.4990|Neda;-8.2134,43.2862|Betanzos;-8.2495,43.3577|Sada",
+   "cifra": "5,26km²",
+   "cifra_texto": "inundables polo mar en Neda nun episodio de período de retorno de 100 anos, o tramo máis extenso de Galicia",
+   "fonte": "Augas de Galicia, mapas de zonas inundables costeiras (estudo SNCZI de 2014) e PHGC 2021–2027; superficies: cálculo FGS."
+  },
+  {
+   "onde": "A Mariña lucense · Viveiro e Burela",
+   "titulo": "A pescada do norte",
+   "camara": {
+    "centro": "-7.48,43.66",
+    "zoom": "10",
+    "inclinacion": "58",
+    "rumbo": "115"
+   },
+   "capas": "lonxas,augas",
+   "marcas": "-7.5976,43.6771|Celeiro;-7.3548,43.6575|Burela",
+   "cifra": "75%",
+   "cifra_texto": "da pescada vendida en Galicia en 2025 entrou polas lonxas de Celeiro e Burela: 73,9 millóns de euros",
+   "fonte": "Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); estado: Augas de Galicia, PHGC 2021–2027."
+  },
+  {
+   "onde": "Augas costeiras e de transición · Galicia-Costa",
+   "titulo": "Os esteiros, o punto débil",
+   "camara": {
+    "centro": "-8.30,43.00",
+    "zoom": "7.6",
+    "inclinacion": "45",
+    "rumbo": "0"
+   },
+   "capas": "augas",
+   "marcas": null,
+   "cifra": "14de 22",
+   "cifra_texto": "augas de transición (esteiros) en estado peor que bo; nas costeiras naturais son 4 de 22",
+   "fonte": "Augas de Galicia, plan hidrolóxico Galicia-Costa 2021–2027 (estado das masas de auga), consultado o 1/11/2026."
+  },
+  {
+   "onde": "Peche",
+   "titulo": "Coidar a auga para seguir traballando",
+   "camara": {
+    "centro": "-8.40,42.95",
+    "zoom": "7.5",
+    "inclinacion": "40",
+    "rumbo": "0"
+   },
+   "capas": "bateas,lonxas,inundacion",
+   "marcas": null,
+   "cifra": "19,8km²",
+   "cifra_texto": "de costa que o mar pode inundar nun episodio de período de retorno de 100 anos, repartidos en 28 tramos",
+   "fonte": ""
+  }
+ ]
+}

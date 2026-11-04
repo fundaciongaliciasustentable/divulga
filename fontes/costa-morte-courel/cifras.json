@@ -1,0 +1,285 @@
+{
+ "mdt": {
+  "monte_facho": [
+   237,
+   -9.274,
+   42.8936
+  ],
+  "pindo_a_moa": [
+   627,
+   -9.1134,
+   42.8886
+  ],
+  "pico_sacro": [
+   527,
+   -8.4467,
+   42.8071
+  ],
+  "belesar_rio": [
+   207,
+   -7.7217,
+   42.6035
+  ],
+  "belesar_bordo": [
+   669,
+   -7.6654,
+   42.5803
+  ],
+  "formigueiros": [
+   1639,
+   -7.0999,
+   42.6057
+  ]
+ },
+ "vento": {
+  "execucion": "2026-11-04T00:00:00.000Z",
+  "desde": "2026-11-04T00:00:00.000Z",
+  "ata": "2026-11-07T00:00:00.000Z",
+  "pasos": 25,
+  "ficheiro": "wrf_2d_04km/fmrc/files/20261104/wrf_arw_det_history_d03_20261104_0000.nc4",
+  "tourinan_ms": 4.3,
+  "vilan_ms": 3.3,
+  "santiago_ms": 2.4
+ },
+ "xallas_masas": [
+  [
+   "ES-014-MR-184-000-03-01",
+   "Encoro Santa Uxía"
+  ],
+  [
+   "ES-014-MR-184-000-03-03",
+   "Encoro da Ponte Olveira e Encoro de Castrelo"
+  ],
+  [
+   "ES-014-MR-184-000-03-04",
+   "Encoro da Fervenza"
+  ],
+  [
+   "ES-014-MR-184-000-03-05",
+   "Río Xallas"
+  ],
+  [
+   "ES-014-NR-184-000-01-00",
+   "Río Xallas"
+  ],
+  [
+   "ES-014-NR-184-000-02-00",
+   "Río Xallas"
+  ]
+ ],
+ "xallas": {
+  "Xallas - Mazaricos": {
+   "episodio": "2026-10-05T0000_2026-10-11T0000",
+   "caudal_base": 3.049,
+   "caudal_pico": 16.127,
+   "hora_pico": "2026-10-06T20:00:00.000Z",
+   "veces": 5.3
+  },
+  "Xallas - Santa Comba": {
+   "episodio": "2026-10-05T0000_2026-10-11T0000",
+   "caudal_base": 3.44,
+   "caudal_pico": 5.472,
+   "hora_pico": "2026-10-08T18:00:00.000Z",
+   "veces": 1.6
+  }
+ },
+ "aldeas_soneira_xallas": {
+  "codigos": [
+   "15016",
+   "15092",
+   "15093",
+   "15077",
+   "15045"
+  ],
+  "entidades": 463,
+  "sen_posicion": 48,
+  "pob_2000": 38906,
+  "pob_2025": 29185,
+  "perderon": 426,
+  "baleiras_2025": 4
+ },
+ "aldeas_courel": {
+  "codigos": [
+   "27017"
+  ],
+  "entidades": 47,
+  "sen_posicion": 5,
+  "pob_2000": 1593,
+  "pob_2025": 924,
+  "perderon": 39,
+  "baleiras_2025": 2
+ },
+ "seoane": [
+  [
+   "Seoane Do Courel",
+   149,
+   87
+  ]
+ ],
+ "censos": {
+  "Santiago de Compostela": {
+   "1950": 59178,
+   "1991": 87807,
+   "2021": 97798
+  },
+  "Ames": {
+   "1950": 10074,
+   "1991": 10011,
+   "2021": 32062
+  },
+  "Teo": {
+   "1950": 10891,
+   "1991": 12607,
+   "2021": 18846
+  }
+ },
+ "ulla_deza": [
+  {
+   "figura": "Zona de especial protección dos valores naturais",
+   "nome": "Sistema Fluvial Ulla-Deza",
+   "superficie_ha": 1633
+  },
+  {
+   "figura": "Zona de especial protección dos valores naturais",
+   "nome": "Os Ancares-O Courel",
+   "superficie_ha": 102562
+  }
+ ],
+ "vacas_2025": {
+  "galicia": 511138.0,
+  "galicia_km2": 29540.9,
+  "galicia_por_km2": 17.3,
+  "lalin": 14794.0,
+  "lalin_km2": 326.8,
+  "lalin_por_km2": 45.3,
+  "deza": 39598.0,
+  "deza_km2": 1025.2,
+  "deza_por_km2": 38.6,
+  "top5": [
+   [
+    122.1,
+    "Frades"
+   ],
+   [
+    87.0,
+    "Pastoriza"
+   ],
+   [
+    74.1,
+    "Mazaricos"
+   ],
+   [
+    70.8,
+    "Mesía"
+   ],
+   [
+    70.5,
+    "Trazo"
+   ]
+  ]
+ },
+ "tmax_2025": {
+  "Courel": {
+   "altitude": 777,
+   "dias_con_dato": 365,
+   "dias_35": 12,
+   "maxima": 39,
+   "data_maxima": "2025-08-10"
+  },
+  "Santiago-EOAS": {
+   "altitude": 255,
+   "dias_con_dato": 365,
+   "dias_35": 4,
+   "maxima": 35.7,
+   "data_maxima": "2025-08-04"
+  },
+  "Ourense": {
+   "altitude": 143,
+   "dias_con_dato": 365,
+   "dias_35": 48,
+   "maxima": 42.9,
+   "data_maxima": "2025-06-29"
+  },
+  "Lalín": {
+   "altitude": 601,
+   "dias_con_dato": 365,
+   "dias_35": 3,
+   "maxima": 36.7,
+   "data_maxima": "2025-08-10"
+  },
+  "Monforte": {
+   "altitude": 286,
+   "dias_con_dato": 365,
+   "dias_35": 27,
+   "maxima": 40.5,
+   "data_maxima": "2025-08-10"
+  },
+  "Camariñas": {
+   "altitude": 5,
+   "dias_con_dato": 365,
+   "dias_35": 0,
+   "maxima": 27,
+   "data_maxima": "2025-08-10"
+  },
+  "San Clodio": {
+   "altitude": 257,
+   "dias_con_dato": 365,
+   "dias_35": 37,
+   "maxima": 43,
+   "data_maxima": "2025-08-10"
+  }
+ },
+ "lume_courel_2022": [
+  {
+   "id": "208875",
+   "ano": 2022,
+   "data_lume": "2022-08-04",
+   "provincia": "Lugo",
+   "concello": "Folgoso do Courel",
+   "area_ha": 6,
+   "pct_frondosas": 0,
+   "pct_coniferas": 0,
+   "pct_mixto": 0,
+   "pct_esclerofilas": 0,
+   "pct_transicion": 29,
+   "pct_agricola": 0,
+   "pct_natura2000": 100
+  },
+  {
+   "id": "206702",
+   "ano": 2022,
+   "data_lume": "2022-07-14",
+   "provincia": "Lugo",
+   "concello": "Folgoso do Courel",
+   "area_ha": 13612,
+   "pct_frondosas": 19,
+   "pct_coniferas": 23,
+   "pct_mixto": 1,
+   "pct_esclerofilas": 0,
+   "pct_transicion": 7,
+   "pct_agricola": 1,
+   "pct_natura2000": 73
+  }
+ ],
+ "folgoso": {
+  "maiores_65_pct": 45.02,
+  "periodo": "2025",
+  "galicia": 26.88,
+  "censos": {
+   "1900": 6454,
+   "1910": 6673,
+   "1920": 6706,
+   "1930": 6631,
+   "1940": 6749,
+   "1950": 5659,
+   "1960": 4916,
+   "1970": 3682,
+   "1981": 2457,
+   "1991": 1924,
+   "2001": 1498,
+   "2011": 1170,
+   "2021": 988
+  }
+ },
+ "consulta": "2026-11-04"
+}

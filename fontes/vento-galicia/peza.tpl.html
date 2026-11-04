@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O vento que move Galicia — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Un voo sobre o relevo de Galicia polas serras dos parques eólicos: onde están, por que alí, que conflitos abren e que se prepara no mar.">
+<meta property="og:title" content="O vento que move Galicia">
+<meta property="og:description" content="4.077 aeroxeradores seguen as cristas de Galicia: alí o vento sopra a 8,8 m/s de media, fronte a 6,0 no conxunto do país.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/vento-galicia/og.jpg">
+<meta property="og:url" content="https://divulga.galiciasustentable.org/v/vento-galicia/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow+Condensed:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<link rel="stylesheet" href="../../assets/vendor/maplibre-gl-6.14.0/maplibre-gl.css">
+<link rel="stylesheet" href="../../assets/css/voo.css">
+<style>
+/* Voo de cámara sobre o relevo (motor común: assets/js/voo.js). Datos: fontes/vento-galicia/ */
+:root{
+  --ink:#f2f0e8; --paper:#0e1012; --muted:#a7a59c; --line:#2a2d30;
+  --cadro:rgba(14,16,18,.84); --acento:#e9d58a;
+  --num:var(--gs-font-chart-num);
+}
+body{background:var(--paper);color:var(--ink)}
+.escala{display:flex;height:8px;border-radius:2px;overflow:hidden;margin:.3rem 0 .2rem;max-width:16rem}
+.escala span{flex:1}
+.escala-l{display:flex;justify-content:space-between;max-width:16rem;font-size:.72rem;color:var(--muted);margin-bottom:.7rem}
+.paso .ligazons a{color:var(--ink)}
+</style>
+</head>
+<body>
+{{BAR}}
+
+<main class="voo">
+  <div class="voo-mapa" aria-hidden="true"></div>
+  <div class="voo-pasos">
+
+    <section class="paso" data-centro="-7.95,42.80" data-zoom="7.3" data-inclinacion="40" data-rumbo="0" data-capa="aeroxeradores">
+      <div>
+        <h1>O vento que <em>move Galicia</em></h1>
+        <p>Máis de 4.000 aeroxeradores coroan os montes galegos. Un voo polas serras onde se colleita o vento: onde están os parques, por que alí e que discusións abren.</p>
+        <p class="lenda"><span><i style="background:#f6e7a8"></i>aeroxerador</span></p>
+        <p class="fonte">Baixa para comezar.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.95,42.85" data-zoom="7.5" data-inclinacion="50" data-rumbo="-12" data-capa="vento,aeroxeradores">
+      <div>
+        <p class="onde">Galicia</p>
+        <h2>Onde sopra máis forte</h2>
+        <p class="dato">8,8<small>m/s</small></p>
+        <p class="dato-l">vento medio a 100 m de altura onde hai aeroxeradores; a media de Galicia é de 6,0 m/s</p>
+        <p>O vento acelérase ao cruzar os cumes e nas puntas da costa. Por iso os parques non se espallan polo mapa: seguen as cristas. O 98,6 % dos aeroxeradores está en lugares cun vento medio de 7 m/s ou máis, algo que só ocorre no 22,4 % do territorio.</p>
+        <p>Tamén están no alto: a súa altitude media é de 691 m, cando a de Galicia é de 501 m.</p>
+        <div class="escala" aria-hidden="true"><span style="background:#26364a"></span><span style="background:#2f5f7a"></span><span style="background:#3f8f9a"></span><span style="background:#77c1a8"></span><span style="background:#c8e6a0"></span><span style="background:#f6f2b5"></span></div>
+        <p class="escala-l"><span>4 m/s</span><span>vento medio a 100 m</span><span>9+ m/s</span></p>
+        <p class="fonte">Global Wind Atlas 3, OpenStreetMap (4/11/2026) e MDT 25 m do IGN. Cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-9.08,43.13" data-zoom="10.6" data-inclinacion="62" data-rumbo="40" data-capa="aeroxeradores"
+             data-marca="-9.1920,43.1490|Cabo Vilán;-9.0800,43.1180|Monte Redondo">
+      <div>
+        <p class="onde">Costa da Morte · Camariñas e Vimianzo</p>
+        <h2>Onde empezou todo</h2>
+        <p class="dato">1989</p>
+        <p class="dato-l">entran en servizo os primeiros aeroxeradores de Cabo Vilán</p>
+        <p>O primeiro parque de certa entidade de Galicia foi o de Estaca de Bares, en 1987, con doce máquinas de 30 kW. A finais de 1989 chegaron as de Cabo Vilán, en Camariñas, de 100 e 200 kW.</p>
+        <p>En 2016 os 22 muíños vellos de Vilán substituíronse por dous de 3 MW, con máis potencia ca todos eles xuntos.</p>
+        <p class="lenda"><span><i style="background:#f6e7a8"></i>aeroxerador</span></p>
+        <p class="fonte">INEGA, memoria da Modificación do Plan Sectorial Eólico de Galicia. Repotenciación: Ecoticias, 15/9/2016.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-9.02,42.92" data-zoom="10.4" data-inclinacion="64" data-rumbo="-25" data-capa="aeroxeradores"
+             data-marca="-9.0508,42.9224|Paxareiras">
+      <div>
+        <p class="onde">Paxareiras e serra de Outes · Mazaricos, Dumbría e Carnota</p>
+        <h2>As serras detrás da costa</h2>
+        <p class="dato">419</p>
+        <p class="dato-l">aeroxeradores entre Mazaricos, Dumbría, Cee, Carnota, Outes e Muros</p>
+        <p>Detrás de Fisterra, as serras das Paxareiras e de Outes concentran boa parte dos parques do oeste. A altitude media dos aeroxeradores é de 472 m e o vento medio a 100 m, de 9,0 m/s.</p>
+        <p>Estes parques naceron co Plan Eólico de Galicia, aprobado en 1997, que repartiu as áreas de vento entre empresas a cambio de plans industriais. A finais de 2000 Galicia xa tiña 660 MW eólicos.</p>
+        <p class="fonte">Aeroxeradores: OpenStreetMap, cálculo FGS nun recadro de 33 × 24 km. Historia: INEGA.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.60,43.49" data-zoom="10.5" data-inclinacion="66" data-rumbo="160" data-capa="aeroxeradores,rede-natura"
+             data-marca="-7.5488,43.4704|Cadramón · 1.055 m">
+      <div>
+        <p class="onde">Serra do Xistral · Abadín, Muras, Xermade e Ourol</p>
+        <h2>O gran campo de vento</h2>
+        <p class="dato">1.068</p>
+        <p class="dato-l">aeroxeradores nun recadro de 34 × 20 km arredor do Xistral</p>
+        <p>É a maior concentración de Galicia: un de cada catro aeroxeradores do país está nesta serra entre a Mariña e a Terra Chá. A súa altitude media é de 749 m, á sombra do Cadramón (1.055 m), cun vento medio de 9,5 m/s.</p>
+        <p>O Xistral é tamén zona especial de conservación da Rede Natura polas súas turbeiras de cobertor. Dentro do espazo protexido hai 650 aeroxeradores.</p>
+        <p class="lenda"><span><i style="background:#f6e7a8"></i>aeroxerador</span><span><i class="c" style="background:#5fae6e"></i>Rede Natura 2000</span></p>
+        <p class="fonte">OpenStreetMap e Rede Natura (MITECO, edición 2024). Cálculo FGS. Altura: MDT 25 m do IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.86,43.64" data-zoom="10.7" data-inclinacion="64" data-rumbo="205" data-capa="aeroxeradores,rede-natura"
+             data-marca="-7.7983,43.5740|A Faladoira · 613 m;-7.9500,43.7100|A Capelada">
+      <div>
+        <p class="onde">Serra da Faladoira e A Capelada · Cedeira, Mañón e Ortigueira</p>
+        <h2>Entre o Cantábrico e As Pontes</h2>
+        <p class="dato">288</p>
+        <p class="dato-l">aeroxeradores entre a Capelada e a Faladoira</p>
+        <p>Da serra da Capelada, sobre os cantís máis altos da costa, ata a Faladoira (613 m), os parques ocupan as chairas altas que separan o mar do val das Pontes. O vento medio a 100 m chega aos 9,5 m/s; 83 aeroxeradores están no espazo Costa Ártabra da Rede Natura.</p>
+        <p>Ao sur, a central de carbón das Pontes, de 1.403 MW, saíu das estatísticas de potencia en 2024.</p>
+        <p class="lenda"><span><i style="background:#f6e7a8"></i>aeroxerador</span><span><i class="c" style="background:#5fae6e"></i>Rede Natura 2000</span></p>
+        <p class="fonte">OpenStreetMap e Rede Natura (MITECO). Cálculo FGS. Central das Pontes: INEGA, potencia instalada (xuño 2026).</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.24,42.43" data-zoom="9.7" data-inclinacion="60" data-rumbo="15" data-capa="aeroxeradores,rede-natura"
+             data-marca="-8.2030,42.5490|Montes do Testeiro;-8.2589,42.3060|Serra do Suído">
+      <div>
+        <p class="onde">Montes do Testeiro e Serra do Suído · Pontevedra e Ourense</p>
+        <h2>No espiñazo do sur</h2>
+        <p class="dato">1.001<small>m</small></p>
+        <p class="dato-l">altitude media dos aeroxeradores do Suído, a máis alta das serras deste voo</p>
+        <p>Terra adentro, os parques soben máis: nos Montes do Testeiro hai 165 aeroxeradores a 874 m de altitude media; no Suído, 158 a 1.001 m. Aquí o vento medio a 100 m é de 8,6 m/s.</p>
+        <p>Moito deste monte é veciñal, en man común: son as comunidades de montes as que negocian a cesión dos terreos, e entre elas hai acordos e rexeitamentos. 150 aeroxeradores do Testeiro están na ZEC Serra do Candán.</p>
+        <p class="lenda"><span><i style="background:#f6e7a8"></i>aeroxerador</span><span><i class="c" style="background:#5fae6e"></i>Rede Natura 2000</span></p>
+        <p class="fonte">OpenStreetMap, Rede Natura (MITECO) e MDT 25 m do IGN. Cálculo FGS en recadros arredor de cada serra.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.95,42.85" data-zoom="7.6" data-inclinacion="45" data-rumbo="10" data-capa="rede-natura,conflito,aeroxeradores-tenue">
+      <div>
+        <p class="onde">Galicia</p>
+        <h2>Vento, paisaxe e espazos protexidos</h2>
+        <p class="dato">29,7<small>%</small></p>
+        <p class="dato-l">dos aeroxeradores está dentro da Rede Natura 2000, que ocupa o 12,0 % da superficie de Galicia</p>
+        <p>As cristas con máis vento adoitan ser tamén as de máis valor natural: turbeiras, brañas e matogueiras de montaña. Para unha parte da veciñanza os parques son renda e enerxía limpa; para outra, perda de paisaxe e hábitats con pouco retorno.</p>
+        <p>A discusión chegou aos tribunais. O Tribunal Superior de Xustiza de Galicia suspendeu e anulou autorizacións, e preguntou ao Tribunal de Xustiza da UE pola tramitación ambiental; a sentenza do 1 de agosto de 2025 (asunto C-461/24) avalou o procedemento galego.</p>
+        <p class="lenda"><span><i style="background:#ff7a59"></i>aeroxerador en Rede Natura</span><span><i style="background:#b9b29c"></i>fóra</span><span><i class="c" style="background:#5fae6e"></i>Rede Natura 2000</span></p>
+        <p class="fonte">OpenStreetMap e Rede Natura (MITECO, Banco de Datos de la Naturaleza). Cálculo FGS. TJUE, sentenza C-461/24.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.90,43.53" data-zoom="11.6" data-inclinacion="66" data-rumbo="-35" data-capa="aeroxeradores"
+             data-marca="-7.8990,43.5340|Parque das Somozas">
+      <div>
+        <p class="onde">As Somozas · A Coruña</p>
+        <h2>Menos muíños, máis enerxía</h2>
+        <p class="dato">81 → 9</p>
+        <p class="dato-l">aeroxeradores no parque das Somozas tras a súa repotenciación</p>
+        <p>Os primeiros parques teñen xa máis de 25 anos. Ao renovalos, poucas máquinas grandes substitúen moitas pequenas: o das Somozas pasa de 81 a 9 e producirá 168 GWh ao ano; o de Monte Redondo, en Vimianzo, de 66 a 11.</p>
+        <p>En maio de 2026 a Xunta tramitaba unha vintena destas repotenciacións, que retirarán 626 aeroxeradores. Nas nove autorizadas en 2025, a produción sobe un 35 % con practicamente a mesma potencia.</p>
+        <p class="fonte">Xunta de Galicia, notas de prensa do 6/6/2025 e do 19/5/2026.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.45,43.05" data-zoom="6.9" data-inclinacion="42" data-rumbo="-8" data-capa="zaper,aeroxeradores-tenue"
+             data-marca="-8.8400,43.9190|NOR-2;-7.2680,43.9360|NOR-5;-9.2110,41.8830|NOR-1">
+      <div>
+        <p class="onde">Mar de Galicia</p>
+        <h2>O vento do mar, aínda no papel</h2>
+        <p class="dato">2.351<small>km²</small></p>
+        <p class="dato-l">de zonas de alto potencial para a eólica mariña fronte a Galicia</p>
+        <p>Os plans de ordenación do espazo marítimo (RD 150/2023) sinalan cinco polígonos fronte a Galicia, do NOR-1 ao NOR-5: catro no norte, fronte ás costas da Coruña e de Lugo, e un fronte á desembocadura do Miño. Todos están a máis de 20 km da costa, onde o vento medio supera os 7,5 m/s a 100 m.</p>
+        <p>Non son parques, senón zonas onde se poderían tramitar. O plan rexistra interaccións coa pesca de arrastre e pide estudar o efecto nas aves mariñas. Vence ao final de 2027.</p>
+        <p class="lenda"><span><i class="c" style="background:#6fb7ff"></i>zona de alto potencial (ZAPER)</span></p>
+        <p class="fonte">BOE-A-2023-5704, táboa 27. Polígonos: MITECO vía EMODnet Human Activities, CC BY 4.0.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.95,42.85" data-zoom="7.4" data-inclinacion="55" data-rumbo="25" data-capa="aeroxeradores">
+      <div>
+        <h2>Un recurso, moitas decisións</h2>
+        <p class="dato">4.027<small>MW</small></p>
+        <p class="dato-l">de potencia eólica instalada en Galicia en 2025</p>
+        <p>O vento é a primeira fonte renovable de Galicia en potencia, o 48,4 % da renovable, e en 2025 xerou o 40,4 % da electricidade producida no país. Desde 2005 a potencia creceu un 70 %, sobre todo nas mesmas serras.</p>
+        <p>Queda por decidir onde e para quen: canto monte, que paisaxe, que retorno para as parroquias e que lugar para a conservación.</p>
+        <p class="ligazons">Segue en Divulga: <a href="../luz-galicia/">De onde vén a luz</a> · <a href="../centrais-galicia/">As centrais de Galicia, en megavatios</a> · <a href="../eolica-europa/">Vento por cabeza</a> · <a href="../galicia-cero-neto/">Galicia cara ao carbono neto cero</a>. E en Mapas Galicia Sustentable: <a href="https://mapas.galiciasustentable.org/pulso/vento/">Vento visible</a> e a <a href="https://mapas.galiciasustentable.org/#map=8.00/43.0000/-8.0000&amp;capas=rede-natura">Rede Natura</a>.</p>
+        <p class="fonte">INEGA, potencia instalada en Galicia (xuño 2026). Xeración: Red Eléctrica, REData 2025; cálculo FGS.</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="voo-fontes">
+  <h2>Fontes e método</h2>
+  <ul>
+    <li>Aeroxeradores e parques: © colaboradores de <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, ODbL 1.0. Consulta Overpass do 4 de novembro de 2026: 4.077 aeroxeradores (<code>generator:source=wind</code>, <code>power=generator</code>) dentro do contorno de Galicia. OpenStreetMap non é un rexistro oficial: pode faltar algún aeroxerador ou quedar algún xa desmontado. As contas por serra fanse en recadros declarados en <code>fontes/vento-galicia/README.md</code>.</li>
+    <li>Vento: <a href="https://globalwindatlas.info">Global Wind Atlas 3</a> (DTU Wind Energy e Banco Mundial), velocidade media a 100 m, celas de 250 m, CC BY 4.0. No mapa, media en celas de 0,04°. É un modelo de longo prazo, non unha medición nin unha predición dun día.</li>
+    <li>Potencia instalada: <a href="https://www.inega.gal/sites/default/files/publicacions/evolucion_potencia-202606.pdf">INEGA, Potencia instalada en Galicia (xuño 2026)</a>. Historia: INEGA, memoria da Modificación do Plan Sectorial Eólico de Galicia. Xeración de 2025: Red Eléctrica, REData (sistema eléctrico de Galicia).</li>
+    <li>Rede Natura 2000: MITECO, Banco de Datos de la Naturaleza (edición 2024), copia de Mapas Galicia Sustentable. Polígonos simplificados para o mapa; as contas fanse coa xeometría completa.</li>
+    <li>Eólica mariña: Real decreto 150/2023 (<a href="https://www.boe.es/eli/es/rd/2023/02/28/150">BOE-A-2023-5704</a>), táboa 27. Polígonos ZAPER: MITECO, distribuídos por <a href="https://emodnet.ec.europa.eu/en/human-activities">EMODnet Human Activities</a>, CC BY 4.0.</li>
+    <li>Repotenciacións: Xunta de Galicia, notas de prensa do 6 de xuño de 2025 e do 19 de maio de 2026. Cabo Vilán: Ecoticias, 15 de setembro de 2016. Tribunal de Xustiza da UE, sentenza do 1 de agosto de 2025, asunto C-461/24.</li>
+    <li>Relevo e contorno: © Instituto Geográfico Nacional, MDT de 25 m (PNOA-LiDAR), CC BY 4.0. Altitudes e porcentaxes: cálculo FGS.</li>
+  </ul>
+</section>
+
+{{FOOT}}
+
+<script src="../../assets/vendor/pmtiles-4.5.0/pmtiles.js"></script>
+<script type="module">
+import { iniciarVoo } from '../../assets/js/voo.js';
+const radio = ['interpolate', ['linear'], ['zoom'], 7, 1.1, 10, 2.4, 13, 5];
+iniciarVoo({
+  atribucion: 'Aeroxeradores © colaboradores de OpenStreetMap (ODbL) · Vento: Global Wind Atlas 3 (DTU), CC BY 4.0 · Rede Natura: MITECO · ZAPER: MITECO/EMODnet, CC BY 4.0',
+  capas: [
+    { id: 'vento', fonte: 'capas/vento.geojson', estilos: [{ type: 'circle', paint: {
+      'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 2.3, 9, 5.5],
+      'circle-blur': 0.4, 'circle-opacity': 0.7,
+      'circle-color': ['interpolate', ['linear'], ['get', 'v'],
+        4, '#26364a', 5, '#2f5f7a', 6, '#3f8f9a', 7, '#77c1a8', 8, '#c8e6a0', 9, '#f6f2b5'] } }] },
+    { id: 'rede-natura', fonte: 'capas/rede-natura.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': '#5fae6e', 'fill-opacity': 0.22 } },
+      { type: 'line', paint: { 'line-color': '#7fcf8e', 'line-width': 1, 'line-opacity': 0.7 } }] },
+    { id: 'zaper', fonte: 'capas/zaper.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': '#6fb7ff', 'fill-opacity': 0.55 } },
+      { type: 'line', paint: { 'line-color': '#cfe6ff', 'line-width': 1.5, 'line-opacity': 1 } }] },
+    { id: 'aeroxeradores-tenue', fonte: 'capas/aeroxeradores.geojson', estilos: [{ type: 'circle',
+      filter: ['==', ['get', 'rn'], 0],
+      paint: { 'circle-radius': radio, 'circle-color': '#b9b29c', 'circle-opacity': 0.75 } }] },
+    { id: 'aeroxeradores', fonte: 'capas/aeroxeradores.geojson', estilos: [{ type: 'circle', paint: {
+      'circle-radius': radio, 'circle-color': '#f6e7a8', 'circle-opacity': 0.92,
+      'circle-stroke-color': '#0e1012', 'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 9, 0, 12, 0.6] } }] },
+    { id: 'conflito', fonte: 'capas/aeroxeradores.geojson', estilos: [{ type: 'circle',
+      filter: ['==', ['get', 'rn'], 1],
+      paint: { 'circle-radius': radio, 'circle-color': '#ff7a59', 'circle-opacity': 0.95 } }] },
+  ],
+});
+</script>
+</body>
+</html>

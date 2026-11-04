@@ -63,3 +63,12 @@ fontes/vivenda-salario/data/raw/
 fontes/terreo/data/raw/
 fontes/terreo/data/*.mbtiles
 assets/terreo/*.pmtiles
+fontes/veran-que-ardeu/data/raw/
+fontes/aldeas-que-quedaron/data/raw/
+fontes/vento-galicia/data/raw/
+fontes/rios-fora-do-leito/data/raw/
+fontes/calor-nos-canons/data/raw/
+fontes/rias-que-traballan/data/raw/
+fontes/rural-sen-transporte/data/raw/
+fontes/costa-morte-courel/data/raw/
+fontes/calor-nos-canons/data/*.npy

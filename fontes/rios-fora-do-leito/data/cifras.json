@@ -1,0 +1,816 @@
+{
+ "choiva": {
+  "estacions": 150,
+  "mediana_mm": 13.0,
+  "maximas": [
+   {
+    "mm": 65.6,
+    "id": 10167,
+    "nome": "Santa Cruz",
+    "concello": "O VALADOURO",
+    "dias": [
+     0,
+     36.4,
+     28.7,
+     0.5,
+     0,
+     0
+    ]
+   },
+   {
+    "mm": 61.3,
+    "id": 10169,
+    "nome": "Baiona",
+    "concello": "BAIONA",
+    "dias": [
+     0,
+     61.3,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "mm": 61,
+    "id": 10103,
+    "nome": "Foz",
+    "concello": "FOZ",
+    "dias": [
+     0,
+     45,
+     16,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "mm": 52.1,
+    "id": 10129,
+    "nome": "Sanxenxo",
+    "concello": "SANXENXO",
+    "dias": [
+     0,
+     52.1,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "mm": 51.7,
+    "id": 10088,
+    "nome": "Fragavella",
+    "concello": "ABADÍN",
+    "dias": [
+     0,
+     4.1,
+     45.7,
+     1.9,
+     0,
+     0
+    ]
+   },
+   {
+    "mm": 48.6,
+    "id": 10097,
+    "nome": "Serra da Faladoira",
+    "concello": "ORTIGUEIRA",
+    "dias": [
+     0,
+     1.8,
+     46.4,
+     0.4,
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ "estacions": {
+  "Barcés - Abegondo": {
+   "base": 0.424,
+   "pico": 0.471,
+   "razon": 1.11,
+   "hora_pico_utc": "2026-10-07T17:00:00.000Z",
+   "marea": false
+  },
+  "Sar - Ames": {
+   "base": 0.531,
+   "pico": 2.68,
+   "razon": 5.05,
+   "hora_pico_utc": "2026-10-06T15:00:00.000Z",
+   "marea": false
+  },
+  "Mandeo - Irixoa": {
+   "base": 0.339,
+   "pico": 0.359,
+   "razon": 1.06,
+   "hora_pico_utc": "2026-10-07T04:00:00.000Z",
+   "marea": false
+  },
+  "Arteixo - Arteixo": {
+   "base": 0.011,
+   "pico": 0.066,
+   "razon": 6.0,
+   "hora_pico_utc": "2026-10-07T03:00:00.000Z",
+   "marea": false
+  },
+  "Eume - As Pontes": {
+   "base": 1.477,
+   "pico": 1.553,
+   "razon": 1.05,
+   "hora_pico_utc": "2026-10-06T12:00:00.000Z",
+   "marea": false
+  },
+  "Maciñeira - As Pontes": {
+   "base": 0.092,
+   "pico": 0.099,
+   "razon": 1.08,
+   "hora_pico_utc": "2026-10-07T22:00:00.000Z",
+   "marea": false
+  },
+  "Mendo - Barallobre - Betanzos": {
+   "base": 0.202,
+   "pico": 0.534,
+   "razon": 2.64,
+   "hora_pico_utc": "2026-10-06T18:00:00.000Z",
+   "marea": false
+  },
+  "Mero - Betanzos": {
+   "base": 0.385,
+   "pico": 0.424,
+   "razon": 1.1,
+   "hora_pico_utc": "2026-10-07T15:00:00.000Z",
+   "marea": false
+  },
+  "Sar - Brión": {
+   "base": 0.535,
+   "pico": 3.191,
+   "razon": 5.96,
+   "hora_pico_utc": "2026-10-06T17:00:00.000Z",
+   "marea": false
+  },
+  "Cundíns - Cabana Bergantiños": {
+   "base": 0.097,
+   "pico": 0.135,
+   "razon": 1.39,
+   "hora_pico_utc": "2026-10-07T21:00:00.000Z",
+   "marea": false
+  },
+  "Balsa - Cabana Bergantiños": {
+   "base": 0.516,
+   "pico": 1.443,
+   "razon": 2.8,
+   "hora_pico_utc": "2026-10-06T23:00:00.000Z",
+   "marea": false
+  },
+  "Mero - Cambre": {
+   "base": 1.841,
+   "pico": 2.183,
+   "razon": 1.19,
+   "hora_pico_utc": "2026-10-07T11:00:00.000Z",
+   "marea": false
+  },
+  "Anllóns - Carballo": {
+   "base": 0.166,
+   "pico": 0.67,
+   "razon": 4.04,
+   "hora_pico_utc": "2026-10-07T14:00:00.000Z",
+   "marea": false
+  },
+  "Condomiñas - Cedeira": {
+   "base": 0.063,
+   "pico": 0.181,
+   "razon": 2.87,
+   "hora_pico_utc": "2026-10-07T06:00:00.000Z",
+   "marea": false
+  },
+  "Cee - Cee": {
+   "base": 0.047,
+   "pico": 0.055,
+   "razon": 1.17,
+   "hora_pico_utc": "2026-10-07T05:00:00.000Z",
+   "marea": false
+  },
+  "Castro - Cee": {
+   "base": 0.272,
+   "pico": 0.281,
+   "razon": 1.03,
+   "hora_pico_utc": "2026-10-05T13:00:00.000Z",
+   "marea": false
+  },
+  "Barcés - Cerceda": {
+   "base": 0.152,
+   "pico": 0.233,
+   "razon": 1.53,
+   "hora_pico_utc": "2026-10-07T21:00:00.000Z",
+   "marea": false
+  },
+  "Cádavo - Fene": {
+   "base": 0.019,
+   "pico": 0.1,
+   "razon": 5.26,
+   "hora_pico_utc": "2026-10-07T03:00:00.000Z",
+   "marea": false
+  },
+  "Xallas - Mazaricos": {
+   "base": 3.049,
+   "pico": 16.127,
+   "razon": 5.29,
+   "hora_pico_utc": "2026-10-06T20:00:00.000Z",
+   "marea": false
+  },
+  "Eume - Monfero": {
+   "base": 2.011,
+   "pico": 16.604,
+   "razon": 8.26,
+   "hora_pico_utc": "2026-10-07T06:00:00.000Z",
+   "marea": false
+  },
+  "Belelle - Neda": {
+   "base": 0.067,
+   "pico": 0.158,
+   "razon": 2.36,
+   "hora_pico_utc": "2026-10-07T04:00:00.000Z",
+   "marea": false
+  },
+  "Barcala - Negreira": {
+   "base": 0.503,
+   "pico": 0.524,
+   "razon": 1.04,
+   "hora_pico_utc": "2026-10-06T13:00:00.000Z",
+   "marea": false
+  },
+  "Tambre - Oroso": {
+   "base": 1.068,
+   "pico": 1.144,
+   "razon": 1.07,
+   "hora_pico_utc": "2026-10-09T07:00:00.000Z",
+   "marea": false
+  },
+  "Cabeceiro - Oroso": {
+   "base": 0.09,
+   "pico": 0.173,
+   "razon": 1.92,
+   "hora_pico_utc": "2026-10-07T03:00:00.000Z",
+   "marea": false
+  },
+  "Lengüelle - Oroso": {
+   "base": 2.488,
+   "pico": 3.507,
+   "razon": 1.41,
+   "hora_pico_utc": "2026-10-08T07:00:00.000Z",
+   "marea": false
+  },
+  "Mera - Ortigueira": {
+   "base": 0.452,
+   "pico": 1.055,
+   "razon": 2.33,
+   "hora_pico_utc": "2026-10-08T02:00:00.000Z",
+   "marea": false
+  },
+  "Tines - Outes": {
+   "base": 0.18,
+   "pico": 0.181,
+   "razon": 1.01,
+   "hora_pico_utc": "2026-10-07T11:00:00.000Z",
+   "marea": false
+  },
+  "Sar - Padrón": {
+   "base": 0.462,
+   "pico": 2.148,
+   "razon": 4.65,
+   "hora_pico_utc": "2026-10-10T15:00:00.000Z",
+   "marea": true
+  },
+  "Ulla - Padrón": {
+   "base": 18.351,
+   "pico": 84.683,
+   "razon": 4.61,
+   "hora_pico_utc": "2026-10-10T15:00:00.000Z",
+   "marea": true
+  },
+  "Xundarana - A Pobra": {
+   "base": 0.012,
+   "pico": 0.023,
+   "razon": 1.92,
+   "hora_pico_utc": "2026-10-08T04:00:00.000Z",
+   "marea": false
+  },
+  "Anllóns - Ponteceso": {
+   "base": 1.023,
+   "pico": 1.598,
+   "razon": 1.56,
+   "hora_pico_utc": "2026-10-07T12:00:00.000Z",
+   "marea": false
+  },
+  "Xubia - San Sadurniño": {
+   "base": 0.26,
+   "pico": 1.073,
+   "razon": 4.13,
+   "hora_pico_utc": "2026-10-08T04:00:00.000Z",
+   "marea": false
+  },
+  "Xallas - Santa Comba": {
+   "base": 3.44,
+   "pico": 5.472,
+   "razon": 1.59,
+   "hora_pico_utc": "2026-10-08T18:00:00.000Z",
+   "marea": false
+  },
+  "Ulla - Santiso": {
+   "base": 0.492,
+   "pico": 0.584,
+   "razon": 1.19,
+   "hora_pico_utc": "2026-10-07T00:00:00.000Z",
+   "marea": false
+  },
+  "Ulla - Teo": {
+   "base": 8.6,
+   "pico": 16.741,
+   "razon": 1.95,
+   "hora_pico_utc": "2026-10-07T12:00:00.000Z",
+   "marea": false
+  },
+  "Ulla - Touro": {
+   "base": 12.243,
+   "pico": 12.451,
+   "razon": 1.02,
+   "hora_pico_utc": "2026-10-05T15:00:00.000Z",
+   "marea": false
+  },
+  "Tambre - Trazo": {
+   "base": 1.931,
+   "pico": 2.003,
+   "razon": 1.04,
+   "hora_pico_utc": "2026-10-06T16:00:00.000Z",
+   "marea": false
+  },
+  "Dubra - Val do Dubra": {
+   "base": 0.387,
+   "pico": 0.485,
+   "razon": 1.25,
+   "hora_pico_utc": "2026-10-08T01:00:00.000Z",
+   "marea": false
+  },
+  "Grande - Vimianzo": {
+   "base": 0.186,
+   "pico": 1.164,
+   "razon": 6.26,
+   "hora_pico_utc": "2026-10-07T08:00:00.000Z",
+   "marea": false
+  },
+  "Cambeda - Vimianzo": {
+   "base": 0.032,
+   "pico": 0.038,
+   "razon": 1.19,
+   "hora_pico_utc": "2026-10-07T13:00:00.000Z",
+   "marea": false
+  },
+  "Grande - Zas": {
+   "base": 1.876,
+   "pico": 3.319,
+   "razon": 1.77,
+   "hora_pico_utc": "2026-10-07T06:00:00.000Z",
+   "marea": false
+  },
+  "Covo - Cervo": {
+   "base": 0.207,
+   "pico": 0.28,
+   "razon": 1.35,
+   "hora_pico_utc": "2026-10-07T04:00:00.000Z",
+   "marea": false
+  },
+  "Ouro - Foz": {
+   "base": 1.649,
+   "pico": 7.093,
+   "razon": 4.3,
+   "hora_pico_utc": "2026-10-08T02:00:00.000Z",
+   "marea": false
+  },
+  "Batán - Lourenzá": {
+   "base": 0.422,
+   "pico": 0.956,
+   "razon": 2.27,
+   "hora_pico_utc": "2026-10-07T22:00:00.000Z",
+   "marea": false
+  },
+  "Valiñadares - Mondoñedo": {
+   "base": 0.2,
+   "pico": 1.039,
+   "razon": 5.19,
+   "hora_pico_utc": "2026-10-07T23:00:00.000Z",
+   "marea": false
+  },
+  "Masma - Mondoñedo": {
+   "base": 2.663,
+   "pico": 9.182,
+   "razon": 3.45,
+   "hora_pico_utc": "2026-10-08T03:00:00.000Z",
+   "marea": false
+  },
+  "Sor - Vicedo": {
+   "base": 1.458,
+   "pico": 3.265,
+   "razon": 2.24,
+   "hora_pico_utc": "2026-10-08T09:00:00.000Z",
+   "marea": false
+  },
+  "Landro - Viveiro": {
+   "base": 2.046,
+   "pico": 8.791,
+   "razon": 4.3,
+   "hora_pico_utc": "2026-10-08T01:00:00.000Z",
+   "marea": false
+  },
+  "Arnego - Agolada": {
+   "base": 0.252,
+   "pico": 0.316,
+   "razon": 1.25,
+   "hora_pico_utc": "2026-10-07T11:00:00.000Z",
+   "marea": false
+  },
+  "Groba - Baiona": {
+   "base": 0.169,
+   "pico": 0.801,
+   "razon": 4.74,
+   "hora_pico_utc": "2026-10-06T10:00:00.000Z",
+   "marea": false
+  },
+  "Bispo - Bueu": {
+   "base": 0.016,
+   "pico": 0.197,
+   "razon": 12.31,
+   "hora_pico_utc": "2026-10-06T12:00:00.000Z",
+   "marea": false
+  },
+  "Bermaña - Caldas": {
+   "base": 0.058,
+   "pico": 0.064,
+   "razon": 1.1,
+   "hora_pico_utc": "2026-10-06T12:00:00.000Z",
+   "marea": false
+  },
+  "Presa - Cangas": {
+   "base": 0.011,
+   "pico": 0.264,
+   "razon": 24.0,
+   "hora_pico_utc": "2026-10-06T10:00:00.000Z",
+   "marea": false
+  },
+  "Gallo - Cuntis": {
+   "base": 0.11,
+   "pico": 0.115,
+   "razon": 1.05,
+   "hora_pico_utc": "2026-10-06T11:00:00.000Z",
+   "marea": false
+  },
+  "Miñor - Gondomar": {
+   "base": 0.205,
+   "pico": 0.513,
+   "razon": 2.5,
+   "hora_pico_utc": "2026-10-06T19:00:00.000Z",
+   "marea": false
+  },
+  "Mougás - Oia": {
+   "base": 0.009,
+   "pico": 1.01,
+   "razon": 112.22,
+   "hora_pico_utc": "2026-10-06T11:00:00.000Z",
+   "marea": false
+  },
+  "Verdugo - Pontecaldelas": {
+   "base": 0.358,
+   "pico": 0.567,
+   "razon": 1.58,
+   "hora_pico_utc": "2026-10-09T09:00:00.000Z",
+   "marea": false
+  },
+  "Lérez - Pontevedra": {
+   "base": 0.782,
+   "pico": 1.464,
+   "razon": 1.87,
+   "hora_pico_utc": "2026-10-08T01:00:00.000Z",
+   "marea": false
+  },
+  "Fondón - Redondela": {
+   "base": 0.017,
+   "pico": 0.046,
+   "razon": 2.71,
+   "hora_pico_utc": "2026-10-06T11:00:00.000Z",
+   "marea": false
+  },
+  "Cabeiro - Redondela": {
+   "base": 0.199,
+   "pico": 0.296,
+   "razon": 1.49,
+   "hora_pico_utc": "2026-10-06T12:00:00.000Z",
+   "marea": false
+  },
+  "Baltar - Sanxenxo": {
+   "base": 0.009,
+   "pico": 21.082,
+   "razon": 2342.44,
+   "hora_pico_utc": "2026-10-06T13:00:00.000Z",
+   "marea": false
+  },
+  "Deza - Silleda": {
+   "base": 1.115,
+   "pico": 1.71,
+   "razon": 1.53,
+   "hora_pico_utc": "2026-10-07T05:00:00.000Z",
+   "marea": false
+  },
+  "Oitavén - Soutomaior": {
+   "base": 0.553,
+   "pico": 0.601,
+   "razon": 1.09,
+   "hora_pico_utc": "2026-10-06T17:00:00.000Z",
+   "marea": false
+  },
+  "Lagares -  Cabral - Vigo": {
+   "base": 0.04,
+   "pico": 0.135,
+   "razon": 3.38,
+   "hora_pico_utc": "2026-10-06T12:00:00.000Z",
+   "marea": false
+  },
+  "Lagares - Vigo": {
+   "base": 0.029,
+   "pico": 0.415,
+   "razon": 14.31,
+   "hora_pico_utc": "2026-10-06T11:00:00.000Z",
+   "marea": false
+  },
+  "Eifonso - Vigo": {
+   "base": 0.054,
+   "pico": 0.247,
+   "razon": 4.57,
+   "hora_pico_utc": "2026-10-06T11:00:00.000Z",
+   "marea": false
+  },
+  "Pousada - Vilaboa": {
+   "base": 0.001,
+   "pico": 0.004,
+   "razon": 4.0,
+   "hora_pico_utc": "2026-10-06T11:00:00.000Z",
+   "marea": false
+  }
+ },
+ "zi": {
+  "betanzos": {
+   "t10": {
+    "ha": 98.6,
+    "caudais_m3s": [
+     "Regato das Angustias: 1,35",
+     "Regato de Infiesta: 2,08",
+     "Regato del Pasatiempos: 2,62",
+     "Río Mandeo: 333,7-405,90",
+     "Río Mendo: 88,97-89,01",
+     "Río Xerpe: 4,53-6,73"
+    ],
+    "habitantes_por_concello": {
+     "Betanzos": 1327,
+     "Coirós": 2,
+     "Paderne": 4,
+     "Oza-Cesuras": 3
+    },
+    "ano_poboacion": [
+     2019
+    ]
+   },
+   "t100": {
+    "ha": 111.3,
+    "caudais_m3s": [
+     "Regato das Angustias: 3,17",
+     "Regato de Infiesta: 4,58",
+     "Regato del Pasatiempos: 2,62",
+     "Río Mandeo: 503,63-611,98",
+     "Río Mendo: 134,20-134,91",
+     "Río Xerpe: 6,73-10,05"
+    ],
+    "habitantes_por_concello": {
+     "Betanzos": 1600,
+     "Coirós": 5,
+     "Paderne": 4,
+     "Oza-Cesuras": 3
+    },
+    "ano_poboacion": [
+     2019
+    ]
+   },
+   "t500": {
+    "ha": 118.6,
+    "caudais_m3s": [
+     "Regato das Angustias: 4,84",
+     "Regato de Infiesta: 6,83",
+     "Regato del Pasatiempos: 3,87",
+     "Río Mandeo: 632,20-768,11",
+     "Río Mendo: 168,40-170,11",
+     "Río Xerpe: 8,34-12,53"
+    ],
+    "habitantes_por_concello": {
+     "Betanzos": 1752,
+     "Oza-Cesuras": 3,
+     "Paderne": 6,
+     "Coirós": 8
+    },
+    "ano_poboacion": [
+     2019
+    ]
+   }
+  },
+  "padron": {
+   "t10": {
+    "ha": 1258.3,
+    "caudais_m3s": [
+     "Canal derivación río Sar: 339,75 (caudal generador del Sar en la bifurcación)",
+     "Qintans: 13,44-14,02",
+     "Rego Avelenda: 4,19-5,06",
+     "Rego Castrelo: 0,84-1,81",
+     "Rego Pasteriza: 3,24-3,59",
+     "Rego Ruibal: 24,88-25,42",
+     "Rego das Pozas: 5,78-5,78",
+     "Rego de Gondomil: 7,65-20,54",
+     "Rego de Herbón: 0,94-2,34",
+     "Rego de Tarrío: 15,03-15,39",
+     "Rego do Agro Lamego: 0,41-2,81",
+     "Rego do Bacelo: 2,45-5,35",
+     "Rego: 3,50-3,84",
+     "Río Catoira: 12,33-22,07",
+     "Río Louro: 15,61-26,08",
+     "Río Sar: 233,57-339,75",
+     "Río Ulla: 7,45-7,45",
+     "Río Valga: 27,82-34,53"
+    ],
+    "habitantes_por_concello": {
+     "Rois": 0,
+     "Padrón": 202,
+     "Valga": 124,
+     "Rianxo": 0,
+     "Catoira": 61,
+     "Dodro": 0,
+     "Vilagarcía de Arousa": 0,
+     "Pontecesures": 33
+    },
+    "ano_poboacion": [
+     2019
+    ]
+   },
+   "t100": {
+    "ha": 1631.2,
+    "caudais_m3s": [
+     "Canal derivación río Sar: 499,34 (caudal generador del Sar en la bifurcación)",
+     "Qintans: 26,51-27,46",
+     "Rego Avelenda: 8,87-10,65",
+     "Rego Castrelo: 1,83-3,81",
+     "Rego Pasteriza: 6,94-7,67",
+     "Rego Ruibal: 46,87-47,88",
+     "Rego das Pozas: 11,33-11,33",
+     "Rego de Gondomil: 14,47-39,31",
+     "Rego de Herbón: 1,93-4,78",
+     "Rego de Tarrío: 30,79-31,45",
+     "Rego do Agro Lamego: 0,74-5,16",
+     "Rego do Bacelo: 4,88-10,48",
+     "Rego: 7,58-8,23",
+     "Río Catoira: 18,37-32,54",
+     "Río Louro: 23,44-38,62",
+     "Río Sar: 348,81-499,34",
+     "Río Ulla: 1861,6-1861,6",
+     "Río Valga: 41,20-51,49"
+    ],
+    "habitantes_por_concello": {
+     "Valga": 254,
+     "Rianxo": 1,
+     "Catoira": 72,
+     "Dodro": 37,
+     "Padrón": 2417,
+     "Vilagarcía de Arousa": 0,
+     "Pontecesures": 178,
+     "Rois": 2
+    },
+    "ano_poboacion": [
+     2019
+    ]
+   },
+   "t500": {
+    "ha": 1781.9,
+    "caudais_m3s": [
+     "Canal derivación río Sar: 615,32 (caudal generador del Sar en la bifurcación)",
+     "Qintans: 37,88-39,13",
+     "Rego Avelenda: 13,11-15,71",
+     "Rego Castrelo: 2,74-5,61",
+     "Rego Pasteriza: 10,30-11,38",
+     "Rego Ruibal: 65,49-66,89",
+     "Rego das Pozas: 16,15-16,15",
+     "Rego de Gondomil: 20,26-55,36",
+     "Rego de Herbón: 2,80-6,69",
+     "Rego de Tarrío: 44,81-45,71",
+     "Rego do Agro de Lamego: 1,02-7,12",
+     "Rego do Bacelo: 7,00-14,92",
+     "Rego: 11,31-12,23",
+     "Río Catoira: 22,89-40,24",
+     "Río Louro: 29,34-47,86",
+     "Río Sar: 435,26-615,32",
+     "Río Ulla: 2438,7-2438,7",
+     "Río Valga: 51,13-64,23"
+    ],
+    "habitantes_por_concello": {
+     "Valga": 389,
+     "Pontecesures": 359,
+     "Rois": 2,
+     "Padrón": 3410,
+     "Catoira": 81,
+     "Vilagarcía de Arousa": 0,
+     "Rianxo": 2,
+     "Dodro": 63
+    },
+    "ano_poboacion": [
+     2019
+    ]
+   }
+  },
+  "pontevea": {
+   "t10": {
+    "ha": 45.1,
+    "caudais_m3s": [
+     "Rego da Ribeira ou Regato Freiría: 5,60-6,86",
+     "Río Ulla: 794,00-794,00",
+     "Río de Sta Lucia ou Arimes: 92,80-99,66"
+    ],
+    "habitantes_por_concello": {
+     "Teo": 2,
+     "Estrada, A": 0
+    },
+    "ano_poboacion": [
+     2019
+    ]
+   },
+   "t100": {
+    "ha": 83.0,
+    "caudais_m3s": [
+     "Rego da Ribeira ou Regato Freiría: 10,89-13,19",
+     "Río Ulla: 1622,2-1622,2",
+     "Río de Sta Lucia ou Arimes: 137,61-150,80"
+    ],
+    "habitantes_por_concello": {
+     "Teo": 7,
+     "Estrada, A": 0
+    },
+    "ano_poboacion": [
+     2019
+    ]
+   },
+   "t500": {
+    "ha": 101.7,
+    "caudais_m3s": [
+     "Rego da Ribeira ou Regato Freiría: 15,47-18,61",
+     "Río Ulla: 2486,7-2486,7",
+     "Río de Sta Lucia ou Arimes: 171,43-190,04"
+    ],
+    "habitantes_por_concello": {
+     "Estrada, A": 0,
+     "Teo": 12
+    },
+    "ano_poboacion": [
+     2019
+    ]
+   }
+  },
+  "ourense": {
+   "t10": {
+    "ha": 183.3,
+    "metodo": "teselas z13 do SNCZI vectorizadas"
+   },
+   "t100": {
+    "ha": 259.2,
+    "metodo": "teselas z13 do SNCZI vectorizadas"
+   },
+   "t500": {
+    "ha": 320.7,
+    "metodo": "teselas z13 do SNCZI vectorizadas"
+   }
+  },
+  "obarco": {
+   "t10": {
+    "ha": 305.8,
+    "metodo": "teselas z13 do SNCZI vectorizadas"
+   },
+   "t100": {
+    "ha": 426.6,
+    "metodo": "teselas z13 do SNCZI vectorizadas"
+   },
+   "t500": {
+    "ha": 525.0,
+    "metodo": "teselas z13 do SNCZI vectorizadas"
+   }
+  }
+ },
+ "alturas": {
+  "ourense_ponte_romana_rio": 106,
+  "obarco_rio": 315
+ }
+}

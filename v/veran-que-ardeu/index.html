@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O verán que ardeu — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Os grandes lumes de agosto de 2025 en Ourense e no resto de Galicia, vistos sobre o relevo: onde, canto e que significan para o sumidoiro de carbono do monte.">
+<meta property="og:title" content="O verán que ardeu">
+<meta property="og:description" content="En 2025 ardeu en Galicia case tanto monte coma nos nove anos anteriores xuntos, e case todo en agosto. Un voo sobre os grandes lumes de Ourense.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/veran-que-ardeu/og.jpg">
+<meta property="og:url" content="https://divulga.galiciasustentable.org/v/veran-que-ardeu/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow+Condensed:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<link rel="stylesheet" href="../../assets/vendor/maplibre-gl-6.14.0/maplibre-gl.css">
+<link rel="stylesheet" href="../../assets/css/voo.css">
+<style>
+/* Voo de cámara sobre os lumes de agosto de 2025. Datos e scripts en fontes/veran-que-ardeu/ */
+:root{
+  --ink:#f2f0e8; --paper:#0e1012; --muted:#a7a59c; --line:#2a2d30;
+  --cadro:rgba(14,16,18,.86); --acento:#ff8a4c;
+  --num:var(--gs-font-chart-num);
+  --f-cedo:#ffd166; --f-pico:#ff4d1f; --f-tarde:#e0568a; --queimado:#ff7a45; --anos:#8fb3c9;
+}
+body{background:var(--paper);color:var(--ink)}
+.paso .contador{font:700 1rem/1 var(--gs-font-chart-num,system-ui);color:var(--f-pico);margin:0 0 .7rem;
+  font-variant-numeric:tabular-nums;min-height:1em}
+.paso .lenda i.cedo{background:var(--f-cedo)} .paso .lenda i.pico{background:var(--f-pico)}
+.paso .lenda i.tarde{background:var(--f-tarde)}
+.paso .lenda i.q{background:var(--queimado);border-radius:2px}
+.paso .lenda i.a{background:var(--anos);border-radius:2px}
+.serie{display:grid;grid-template-columns:auto 1fr auto;gap:3px 8px;align-items:center;font-size:.78rem;
+  color:var(--muted);margin:.3rem 0 .8rem;font-variant-numeric:tabular-nums}
+.serie span:nth-child(3n+2){justify-self:start;height:8px;background:var(--anos);border-radius:1px;min-width:1px}
+.serie span.m{background:var(--queimado)}
+.serie b{color:var(--ink);font-weight:700}
+.paso a{color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+
+<main class="voo">
+  <div class="voo-mapa" aria-hidden="true"></div>
+  <div class="voo-pasos">
+
+    <section class="paso" data-centro="-7.75,42.55" data-zoom="7.2" data-inclinacion="35" data-rumbo="0" data-capa="focos">
+      <div>
+        <p class="onde">Galicia · agosto de 2025</p>
+        <h1>O verán <em>que ardeu</em></h1>
+        <p>En agosto de 2025 Galicia viviu o peor verán de lumes desde polo menos 2016. Os satélites viron arder o sueste de Ourense durante dúas semanas. Este voo percorre os grandes incendios sobre o relevo e mide o que deixaron.</p>
+        <p class="fonte">Baixa para comezar.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.45,42.3" data-zoom="7.9" data-inclinacion="45" data-rumbo="0" data-capa="focos" data-anim="dias">
+      <div>
+        <p class="onde">Galicia · 1–31 de agosto</p>
+        <h2>Cinco días que concentraron o lume</h2>
+        <p class="dato">10.427<small>focos</small></p>
+        <p class="dato-l">detectados polos satélites en agosto, o 96,8 % de toda a tempada de xuño a outubro</p>
+        <p class="contador" aria-hidden="true"></p>
+        <p class="lenda"><span><i class="cedo"></i>1–12 ago.</span><span><i class="pico"></i>13–17 ago.</span><span><i class="tarde"></i>18–31 ago.</span></p>
+        <p>Entre o 13 e o 17 de agosto apareceron 7.345 focos, o 70 % do mes; o día 15 foi o peor, con 1.613. O 85 % dos focos de agosto caeron en concellos de Ourense.</p>
+        <p class="fonte">Cálculo FGS a partir de NASA FIRMS (VIIRS e MODIS), capa <i>focos-tempada-2025</i> de Mapas Galicia Sustentable. Cada punto é unha cela de ~500 m na súa primeira detección.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.33,42.2" data-zoom="10.4" data-inclinacion="60" data-rumbo="15" data-capa="lumes" data-marca="-7.3365,42.2142|Chandrexa e Vilariño">
+      <div>
+        <p class="onde">Chandrexa de Queixa · Ourense</p>
+        <h2>Dúas frontes nun mesmo lume</h2>
+        <p class="dato">23.036,6<small>ha</small></p>
+        <p class="dato-l">superficie do lume de Chandrexa de Queixa e Vilariño de Conso no balance final da Xunta</p>
+        <p class="lenda"><span><i class="q"></i>área queimada en 2025 (EFFIS)</span></p>
+        <p>Comezou o venres 8 de agosto en Requeixo e o 12 abriuse outra fronte en Parafita, ambas en Chandrexa. A estatística do Ministerio rexistra só neses dous focos 19.172 ha forestais.</p>
+        <p class="fonte">Xunta, Medio Rural, nota do 31/08/2025; MITECO, <i>Avance informativo 2025</i>, táboa 3 (6.320,29 + 12.851,81 ha).</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.27,42.24" data-zoom="11.4" data-inclinacion="70" data-rumbo="200" data-capa="lumes" data-marca="-7.2981,42.2569|Cabeza de Manzaneda">
+      <div>
+        <p class="onde">Vilariño de Conso e Manzaneda · Ourense</p>
+        <h2>Ata o cumio de Manzaneda</h2>
+        <p class="dato">1.778<small>m</small></p>
+        <p class="dato-l">altura máxima dentro do perímetro queimado: a Cabeza de Manzaneda</p>
+        <p>O xoves 14 o lume reactivouse en Mormentelos, Vilariño de Conso; esa fronte sumou 5.490 ha. O perímetro vai dos 591 metros ata o cumio, e o conxunto do incendio chegou a Manzaneda, Montederramo, A Pobra de Trives, O Bolo e Laza.</p>
+        <p class="fonte">Alturas: cálculo FGS co MDT de 25 m do IGN dentro do perímetro EFFIS. Superficie: MITECO, táboa 3. Concellos: Xunta, nota do 25/08/2025.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.11,42.43" data-zoom="10.1" data-inclinacion="58" data-rumbo="5" data-capa="lumes" data-marca="-7.2152,42.453|269 m;-7.0017,42.5053|1.605 m;-7.162,42.347|Larouco">
+      <div>
+        <p class="onde">Larouco · Ourense</p>
+        <h2>O maior incendio de España en 2025</h2>
+        <p class="dato">37.765<small>ha</small></p>
+        <p class="dato-l">forestais entre Ourense, Lugo e León, segundo a estatística do Ministerio</p>
+        <p>Prendeu en Seadur o mércores 13 ás 18.55. O seu perímetro vai dos 269 metros, no val do Sil, ata os 1.605: máis de 1.300 metros de desnivel. A Xunta pechou 31.778,18 ha no lado galego.</p>
+        <p class="fonte">MITECO, táboa 3; Xunta, nota do 31/08/2025. Alturas: cálculo FGS co MDT do IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-6.9,42.33" data-zoom="9.9" data-inclinacion="62" data-rumbo="35" data-capa="lumes" data-marca="-6.981,42.416|O Barco;-6.7967,42.2422|Pena Trevinca">
+      <div>
+        <p class="onde">O Barco e Valdeorras · Ourense</p>
+        <h2>Unha comarca queimada</h2>
+        <p class="dato">49.532<small>ha</small></p>
+        <p class="dato-l">queimadas en 2025 no distrito forestal Valdeorras-Trives; en 2024 foran 58</p>
+        <p>O lume de Larouco chegou ao Barco, Rubiá, Petín, A Rúa, Vilamartín e A Veiga. Polo leste entrou desde Zamora e León o incendio de Porto, Encinedo e Carballeda de Valdeorras (21.373 ha en total), e o perímetro do satélite nesa zona sobe polas ladeiras de Pena Trevinca por riba dos 2.100 metros.</p>
+        <p class="fonte">Xunta, Medio Rural, <i>Lumes 2024 e 2025 por distrito</i>; nota do 25/08/2025; MITECO, táboa 3. Altura: MDT do IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.55,41.97" data-zoom="10.2" data-inclinacion="58" data-rumbo="10" data-capa="lumes" data-marca="-7.541,41.961|Oímbra;-7.437,41.941|Verín">
+      <div>
+        <p class="onde">Oímbra e Xinzo de Limia · Ourense</p>
+        <h2>Dous lumes que se xuntaron</h2>
+        <p class="dato">23.763,65<small>ha</small></p>
+        <p class="dato-l">lume de Oímbra–A Granxa e Xinzo de Limia–Gudín, balance final da Xunta</p>
+        <p>O de Oímbra comezou o martes 12; o de Gudín, o venres 15. Unidos, afectaron a Monterrei, Cualedro, Verín, Laza, Trasmiras, Castrelo do Val e Baltar.</p>
+        <p class="fonte">Xunta, notas do 25 e do 31/08/2025. MITECO rexistra 22.414 ha en Oímbra e 1.023,35 en Xinzo.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.07,42.06" data-zoom="10.4" data-inclinacion="60" data-rumbo="-15" data-capa="lumes" data-marca="-7.064,42.058|A Mezquita">
+      <div>
+        <p class="onde">A Mezquita · Ourense</p>
+        <h2>Na raia con Zamora</h2>
+        <p class="dato">10.743<small>ha</small></p>
+        <p class="dato-l">forestais no lume da Mezquita, que comezou o martes 12 ás 21.20</p>
+        <p>Pasou a Zamora e chegou á Gudiña e a Viana do Bolo. Ao sur, Vilardevós sumou tres incendios de máis de 500 ha: Terroso, Moialde e Vilar de Cervos, con 3.478 ha entre os tres.</p>
+        <p class="fonte">MITECO, táboa 3 (563,62 + 1.106,12 + 1.807,94 ha); Xunta, nota do 25/08/2025.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.7,42.38" data-zoom="8.4" data-inclinacion="45" data-rumbo="-15" data-capa="lumes" data-marca="-7.523,42.239|Maceda;-8.2,42.326|Carballeda de Avia;-7.356,42.476|A Pobra do Brollón;-8.068,42.833|Agolada">
+      <div>
+        <p class="onde">Ourense, Lugo e Pontevedra</p>
+        <h2>Os outros grandes lumes</h2>
+        <p class="dato">16<small>grandes lumes</small></p>
+        <p class="dato-l">de máis de 500 ha forestais que arderon en Galicia en agosto, segundo o Ministerio</p>
+        <p>Ademais dos xa vistos, Maceda (4.506 ha en dous focos), Carballeda de Avia (3.018), A Pobra do Brollón (1.015), en Lugo, e Agolada (522), en Pontevedra.</p>
+        <p class="fonte">MITECO, <i>Avance informativo 2025</i>, táboa 3 (inclúe os lumes compartidos con León e Zamora).</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.55,42.2" data-zoom="8.4" data-inclinacion="30" data-rumbo="0" data-capa="lumes">
+      <div>
+        <p class="onde">Provincia de Ourense</p>
+        <h2>Ourense, o 85 % do queimado</h2>
+        <p class="dato">101.584<small>ha</small></p>
+        <p class="dato-l">queimadas en Ourense en 2025, de 118.764 en toda Galicia</p>
+        <p>Dous distritos forestais, Valdeorras-Trives e Verín-Viana, suman 92.067 ha: tres de cada catro hectáreas queimadas no país.</p>
+        <p class="lenda"><span><i class="q"></i>perímetros de 2025 (EFFIS)</span></p>
+        <p class="fonte">Xunta, Medio Rural, <i>Lumes 2025 por distrito</i> (118.763,65 ha, 1.475 lumes).</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.9,42.75" data-zoom="7.3" data-inclinacion="35" data-rumbo="0" data-capa="anos,lumes">
+      <div>
+        <p class="onde">Galicia · 2016–2025</p>
+        <h2>Un ano case coma nove</h2>
+        <p class="dato">122.685<small>ha</small></p>
+        <p class="dato-l">queimadas en Galicia en 2025 segundo o satélite, fronte a 150.235 nos nove anos anteriores xuntos</p>
+        <div class="serie" aria-label="Hectáreas queimadas por ano segundo EFFIS"><span>2016</span><span style="width:14.8%"></span><span>18.110</span><span>2017</span><span style="width:39.0%"></span><span>47.864</span><span>2018</span><span style="width:1.0%"></span><span>1.273</span><span>2019</span><span style="width:3.7%"></span><span>4.550</span><span>2020</span><span style="width:11.8%"></span><span>14.533</span><span>2021</span><span style="width:3.3%"></span><span>3.988</span><span>2022</span><span style="width:42.3%"></span><span>51.873</span><span>2023</span><span style="width:4.8%"></span><span>5.850</span><span>2024</span><span style="width:1.8%"></span><span>2.194</span><span>2025</span><span class="m" style="width:100.0%"></span><span><b>122.685</b></span></div>
+        <p class="lenda"><span><i class="a"></i>2016–2024</span><span><i class="q"></i>2025</span></p>
+        <p class="fonte">Cálculo FGS a partir de Copernicus EFFIS (os lumes medianos e grandes que mapea o satélite, recortados ao contorno de Galicia). A Xunta contabiliza 2.644,7 ha en 2024 e 118.763,65 en 2025.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.75,42.55" data-zoom="7.2" data-inclinacion="40" data-rumbo="-10" data-capa="lumes">
+      <div>
+        <p class="onde">O monte como sumidoiro</p>
+        <h2>Un ano de absorción en dúas semanas</h2>
+        <p class="dato">≈9,6<small>Mt</small></p>
+        <p class="dato-l">de gases de efecto invernadoiro emitidos polos lumes do verán de 2025 en Galicia</p>
+        <p>É o mesmo que o monte e os solos galegos retiran da atmosfera nun ano. O sumidoiro existe se o monte non arde, e iso depende dun rural con xente que o traballe: pastoreo, aproveitamentos, mosaico agroforestal e xestión activa.</p>
+        <p>Segue en <a href="../galicia-cero-neto/">Galicia cero neto</a>, <a href="../espiral-lumes/">a espiral dos lumes</a> e <a href="../monte-concellos/">o monte de cada concello</a>, ou revive a tempada pasada a pasada en <a href="https://mapas.galiciasustentable.org/pulso/lume/">Mapas Galicia Sustentable</a>.</p>
+        <p class="fonte">Copernicus, citado polo Observatorio Galego de Acción Climática (Ogacli), agosto de 2026. Absorción de 2024: emisións brutas menos netas, Ogacli.</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="voo-fontes">
+  <h2>Fontes</h2>
+  <ul>
+    <li>Focos de calor: NASA FIRMS (LANCE, NASA/GSFC/ESDIS), VIIRS S-NPP e MODIS, xuño–outubro de 2025, a través da capa <a href="https://mapas.galiciasustentable.org/data/focos-tempada-2025/data.geojson">focos-tempada-2025</a> de Mapas Galicia Sustentable (CC BY-SA 4.0), consultada o 04/11/2026.</li>
+    <li>Perímetros queimados: Copernicus EFFIS (JRC, © Unión Europea), CC BY 4.0, capa <a href="https://mapas.galiciasustentable.org/data/historial-queimados/data.geojson">historial-queimados</a>, consultada o 04/11/2026.</li>
+    <li>Grandes incendios: MITECO, <a href="https://www.miteco.gob.es/content/dam/miteco/es/biodiversidad/temas/incendios-forestales/Avance_IIFF_2025_.pdf"><i>Incendios forestales 01/01/2025–31/12/2025. Avance informativo</i></a>, táboa 3 (estatística provisional EGIF).</li>
+    <li>Xunta de Galicia, Consellería do Medio Rural: notas sobre a situación dos lumes do <a href="https://www.xunta.gal/notas-de-prensa/-/nova/016023/medio-rural-informa-situacion-dos-lumes-forestais-con-datos-recollidos-ata-14">25/08/2025</a> e do <a href="https://www.xunta.gal/notas-de-prensa/-/nova/016163/medio-rural-informa-situacion-dos-lumes-forestais-con-datos-recollidos-ata-14">31/08/2025</a>; estatística <a href="https://mediorural.xunta.gal/sites/default/files/estatisticas/2025/Lumes-2025-por-Distrito.xlsx">Lumes 2025 por distrito</a> e <a href="https://mediorural.xunta.gal/sites/default/files/estatisticas/2024/Lumes-2024-por-Distrito.xlsx">2024</a>.</li>
+    <li>Emisións e absorción: Observatorio Galego de Acción Climática (<a href="https://ogacli.org/emisions-gei-totais/">Ogacli</a>), a partir do inventario do MITECO; emisións dos lumes segundo Copernicus, recollidas en <a href="https://www.ecoticias.com/co2/galicia-reduce-sus-emisiones-pero-el-transporte-frena-la-transicion-climatica">Ecoticias</a> (18/08/2026).</li>
+    <li>Relevo e alturas: MDT de 25 m do Instituto Geográfico Nacional (PNOA-LiDAR), CC BY 4.0.</li>
+    <li>As cifras da Xunta, do Ministerio e do satélite non coinciden: miden cousas distintas (superficie forestal declarada, perímetro observado) e os balances de agosto eran provisionais. Cada cifra leva a súa fonte.</li>
+  </ul>
+</section>
+
+<footer class="dv-foot">
+  <div class="inner">
+    <span class="simbolo"><svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>Fundación Galicia Sustentable · CIF G70193537 · CC BY-SA 4.0 · Focos: NASA FIRMS vía Mapas Galicia Sustentable · Áreas queimadas: © UE, Copernicus EFFIS, CC BY 4.0 · Relevo: © Instituto Geográfico Nacional, MDT (PNOA-LiDAR), CC BY 4.0</span>
+    <nav class="legal" aria-label="Ligazóns legais">
+      <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+      <a href="https://fundaciongaliciasustentable.gal/aviso-legal/">Aviso legal</a>
+      <a href="https://fundaciongaliciasustentable.gal/privacidade/">Privacidade</a>
+      <a href="https://fundaciongaliciasustentable.gal/cookies/">Cookies</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/vendor/pmtiles-4.5.0/pmtiles.js"></script>
+<script type="module">
+import { iniciarVoo } from '../../assets/js/voo.js';
+
+// En pantallas estreitas abrimos un pouco o plano (o motor usa o mesmo zoom en todas)
+if (innerWidth <= 700) {
+  document.querySelectorAll('.paso').forEach((p) => { p.dataset.zoom = (+p.dataset.zoom - 1.1).toFixed(2); });
+}
+
+const COR_DIA = ['step', ['get', 'd'], '#ffd166', 13, '#ff4d1f', 18, '#e0568a'];
+const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let animacion = null;
+
+function animarDias(paso, map) {
+  clearInterval(animacion); animacion = null;
+  const ids = ['focos-0', 'focos-1'].filter((id) => map.getLayer(id));
+  const contador = paso.querySelector('.contador');
+  const filtro = (f) => ids.forEach((id) => map.setFilter(id, f));
+  if (paso.dataset.anim !== 'dias') { filtro(null); return; }
+  if (quieto) { filtro(null); contador.textContent = '1–31 de agosto'; return; }
+  let dia = 1;
+  const debuxar = () => {
+    filtro(['<=', ['get', 'd'], dia]);
+    contador.textContent = `${dia} de agosto`;
+  };
+  debuxar();
+  animacion = setInterval(() => {
+    dia += 1;
+    if (dia > 31) { clearInterval(animacion); animacion = null; filtro(null); contador.textContent = '1–31 de agosto'; return; }
+    debuxar();
+  }, 380);
+}
+
+iniciarVoo({
+  atribucion: 'Focos: NASA FIRMS vía Mapas Galicia Sustentable (CC BY-SA 4.0) · Áreas queimadas: © UE, Copernicus EFFIS (CC BY 4.0)',
+  capas: [
+    { id: 'anos', fonte: 'capas/anos.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': '#8fb3c9', 'fill-opacity': 0.4 } },
+      { type: 'line', paint: { 'line-color': '#b9d3e3', 'line-width': 0.6, 'line-opacity': 0.7 } },
+    ] },
+    { id: 'lumes', fonte: 'capas/lumes.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': '#ff7a45', 'fill-opacity': 0.42 } },
+      { type: 'line', paint: { 'line-color': '#ffb08a', 'line-width': ['interpolate', ['linear'], ['zoom'], 7, 0.6, 11, 1.6], 'line-opacity': 0.9 } },
+    ] },
+    { id: 'focos', fonte: 'capas/focos.geojson', estilos: [
+      { type: 'circle', paint: {
+        'circle-color': COR_DIA, 'circle-blur': 0.9, 'circle-opacity': 0.35,
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 3, 11, 9] } },
+      { type: 'circle', paint: {
+        'circle-color': COR_DIA, 'circle-opacity': 0.9,
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 0.9, 11, 2.6] } },
+    ] },
+  ],
+  aoPaso: (paso, map) => {
+    if (map.loaded() || map.isStyleLoaded()) animarDias(paso, map);
+    else map.once('load', () => animarDias(paso, map));
+  },
+});
+</script>
+</body>
+</html>

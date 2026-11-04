@@ -1,0 +1,405 @@
+{
+ "slug": "vento-galicia",
+ "paradas": [
+  {
+   "nome": "O vento que move Galicia",
+   "onde": null,
+   "camara": {
+    "centro": [
+     -7.95,
+     42.8
+    ],
+    "zoom": 7.3,
+    "inclinacion": 40.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "aeroxeradores"
+   ],
+   "marcas": [],
+   "dato": null,
+   "dato_l": null,
+   "fonte": "Baixa para comezar."
+  },
+  {
+   "nome": "Onde sopra máis forte",
+   "onde": "Galicia",
+   "camara": {
+    "centro": [
+     -7.95,
+     42.85
+    ],
+    "zoom": 7.5,
+    "inclinacion": 50.0,
+    "rumbo": -12.0
+   },
+   "capas": [
+    "vento",
+    "aeroxeradores"
+   ],
+   "marcas": [],
+   "dato": "8,8m/s",
+   "dato_l": "vento medio a 100 m de altura onde hai aeroxeradores; a media de Galicia é de 6,0 m/s",
+   "fonte": "Global Wind Atlas 3, OpenStreetMap (4/11/2026) e MDT 25 m do IGN. Cálculo FGS."
+  },
+  {
+   "nome": "Onde empezou todo",
+   "onde": "Costa da Morte · Camariñas e Vimianzo",
+   "camara": {
+    "centro": [
+     -9.08,
+     43.13
+    ],
+    "zoom": 10.6,
+    "inclinacion": 62.0,
+    "rumbo": 40.0
+   },
+   "capas": [
+    "aeroxeradores"
+   ],
+   "marcas": [
+    "Cabo Vilán",
+    "Monte Redondo"
+   ],
+   "dato": "1989",
+   "dato_l": "entran en servizo os primeiros aeroxeradores de Cabo Vilán",
+   "fonte": "INEGA, memoria da Modificación do Plan Sectorial Eólico de Galicia. Repotenciación: Ecoticias, 15/9/2016."
+  },
+  {
+   "nome": "As serras detrás da costa",
+   "onde": "Paxareiras e serra de Outes · Mazaricos, Dumbría e Carnota",
+   "camara": {
+    "centro": [
+     -9.02,
+     42.92
+    ],
+    "zoom": 10.4,
+    "inclinacion": 64.0,
+    "rumbo": -25.0
+   },
+   "capas": [
+    "aeroxeradores"
+   ],
+   "marcas": [
+    "Paxareiras"
+   ],
+   "dato": "419",
+   "dato_l": "aeroxeradores entre Mazaricos, Dumbría, Cee, Carnota, Outes e Muros",
+   "fonte": "Aeroxeradores: OpenStreetMap, cálculo FGS nun recadro de 33 × 24 km. Historia: INEGA."
+  },
+  {
+   "nome": "O gran campo de vento",
+   "onde": "Serra do Xistral · Abadín, Muras, Xermade e Ourol",
+   "camara": {
+    "centro": [
+     -7.6,
+     43.49
+    ],
+    "zoom": 10.5,
+    "inclinacion": 66.0,
+    "rumbo": 160.0
+   },
+   "capas": [
+    "aeroxeradores",
+    "rede-natura"
+   ],
+   "marcas": [
+    "Cadramón · 1.055 m"
+   ],
+   "dato": "1.068",
+   "dato_l": "aeroxeradores nun recadro de 34 × 20 km arredor do Xistral",
+   "fonte": "OpenStreetMap e Rede Natura (MITECO, edición 2024). Cálculo FGS. Altura: MDT 25 m do IGN."
+  },
+  {
+   "nome": "Entre o Cantábrico e As Pontes",
+   "onde": "Serra da Faladoira e A Capelada · Cedeira, Mañón e Ortigueira",
+   "camara": {
+    "centro": [
+     -7.86,
+     43.64
+    ],
+    "zoom": 10.7,
+    "inclinacion": 64.0,
+    "rumbo": 205.0
+   },
+   "capas": [
+    "aeroxeradores",
+    "rede-natura"
+   ],
+   "marcas": [
+    "A Faladoira · 613 m",
+    "A Capelada"
+   ],
+   "dato": "288",
+   "dato_l": "aeroxeradores entre a Capelada e a Faladoira",
+   "fonte": "OpenStreetMap e Rede Natura (MITECO). Cálculo FGS. Central das Pontes: INEGA, potencia instalada (xuño 2026)."
+  },
+  {
+   "nome": "No espiñazo do sur",
+   "onde": "Montes do Testeiro e Serra do Suído · Pontevedra e Ourense",
+   "camara": {
+    "centro": [
+     -8.24,
+     42.43
+    ],
+    "zoom": 9.7,
+    "inclinacion": 60.0,
+    "rumbo": 15.0
+   },
+   "capas": [
+    "aeroxeradores",
+    "rede-natura"
+   ],
+   "marcas": [
+    "Montes do Testeiro",
+    "Serra do Suído"
+   ],
+   "dato": "1.001m",
+   "dato_l": "altitude media dos aeroxeradores do Suído, a máis alta das serras deste voo",
+   "fonte": "OpenStreetMap, Rede Natura (MITECO) e MDT 25 m do IGN. Cálculo FGS en recadros arredor de cada serra."
+  },
+  {
+   "nome": "Vento, paisaxe e espazos protexidos",
+   "onde": "Galicia",
+   "camara": {
+    "centro": [
+     -7.95,
+     42.85
+    ],
+    "zoom": 7.6,
+    "inclinacion": 45.0,
+    "rumbo": 10.0
+   },
+   "capas": [
+    "rede-natura",
+    "conflito",
+    "aeroxeradores-tenue"
+   ],
+   "marcas": [],
+   "dato": "29,7%",
+   "dato_l": "dos aeroxeradores está dentro da Rede Natura 2000, que ocupa o 12,0 % da superficie de Galicia",
+   "fonte": "OpenStreetMap e Rede Natura (MITECO, Banco de Datos de la Naturaleza). Cálculo FGS. TJUE, sentenza C-461/24."
+  },
+  {
+   "nome": "Menos muíños, máis enerxía",
+   "onde": "As Somozas · A Coruña",
+   "camara": {
+    "centro": [
+     -7.9,
+     43.53
+    ],
+    "zoom": 11.6,
+    "inclinacion": 66.0,
+    "rumbo": -35.0
+   },
+   "capas": [
+    "aeroxeradores"
+   ],
+   "marcas": [
+    "Parque das Somozas"
+   ],
+   "dato": "81 → 9",
+   "dato_l": "aeroxeradores no parque das Somozas tras a súa repotenciación",
+   "fonte": "Xunta de Galicia, notas de prensa do 6/6/2025 e do 19/5/2026."
+  },
+  {
+   "nome": "O vento do mar, aínda no papel",
+   "onde": "Mar de Galicia",
+   "camara": {
+    "centro": [
+     -8.45,
+     43.05
+    ],
+    "zoom": 6.9,
+    "inclinacion": 42.0,
+    "rumbo": -8.0
+   },
+   "capas": [
+    "zaper",
+    "aeroxeradores-tenue"
+   ],
+   "marcas": [
+    "NOR-2",
+    "NOR-5",
+    "NOR-1"
+   ],
+   "dato": "2.351km²",
+   "dato_l": "de zonas de alto potencial para a eólica mariña fronte a Galicia",
+   "fonte": "BOE-A-2023-5704, táboa 27. Polígonos: MITECO vía EMODnet Human Activities, CC BY 4.0."
+  },
+  {
+   "nome": "Un recurso, moitas decisións",
+   "onde": null,
+   "camara": {
+    "centro": [
+     -7.95,
+     42.85
+    ],
+    "zoom": 7.4,
+    "inclinacion": 55.0,
+    "rumbo": 25.0
+   },
+   "capas": [
+    "aeroxeradores"
+   ],
+   "marcas": [],
+   "dato": "4.027MW",
+   "dato_l": "de potencia eólica instalada en Galicia en 2025",
+   "fonte": "INEGA, potencia instalada en Galicia (xuño 2026). Xeración: Red Eléctrica, REData 2025; cálculo FGS."
+  }
+ ],
+ "cifras_calculadas": {
+  "n_aeroxeradores": 4077,
+  "n_parques_osm": 174,
+  "altura_media_aero_m": 691,
+  "altura_mediana_aero_m": 676,
+  "pc_aero_sobre_500m": 78.5,
+  "altura_media_galicia_m": 501,
+  "pc_galicia_sobre_500m": 45.0,
+  "vento_medio_aero_ms": 8.8,
+  "vento_medio_galicia_ms": 6.0,
+  "pc_galicia_vento_ge_7": 22.4,
+  "pc_aero_vento_ge_7": 98.6,
+  "aero_en_rede_natura": 1210,
+  "pc_aero_en_rede_natura": 29.7,
+  "pc_galicia_rede_natura": 12.0,
+  "zaper_galicia_km2_emodnet": 2352.7,
+  "zonas": {
+   "costa_morte": {
+    "caixa": [
+     -9.25,
+     43.03,
+     -8.8,
+     43.33
+    ],
+    "aeroxeradores": 211,
+    "altura_media_aero_m": 279,
+    "vento_medio_aero_ms": 8.6,
+    "en_rede_natura": 12,
+    "altura_max_m": 557,
+    "altura_max_onde": [
+     -8.8675,
+     43.1132
+    ]
+   },
+   "paxareiras": {
+    "caixa": [
+     -9.2,
+     42.8,
+     -8.8,
+     43.02
+    ],
+    "aeroxeradores": 419,
+    "altura_media_aero_m": 472,
+    "vento_medio_aero_ms": 9.0,
+    "en_rede_natura": 58,
+    "altura_max_m": 643,
+    "altura_max_onde": [
+     -9.0508,
+     42.9224
+    ]
+   },
+   "xistral": {
+    "caixa": [
+     -7.8,
+     43.4,
+     -7.38,
+     43.58
+    ],
+    "aeroxeradores": 1068,
+    "altura_media_aero_m": 749,
+    "vento_medio_aero_ms": 9.5,
+    "en_rede_natura": 583,
+    "altura_max_m": 1055,
+    "altura_max_onde": [
+     -7.5488,
+     43.4704
+    ]
+   },
+   "faladoira": {
+    "caixa": [
+     -8.0,
+     43.56,
+     -7.73,
+     43.73
+    ],
+    "aeroxeradores": 288,
+    "altura_media_aero_m": 514,
+    "vento_medio_aero_ms": 9.5,
+    "en_rede_natura": 83,
+    "altura_max_m": 613,
+    "altura_max_onde": [
+     -7.7983,
+     43.574
+    ]
+   },
+   "testeiro": {
+    "caixa": [
+     -8.3,
+     42.48,
+     -8.0,
+     42.62
+    ],
+    "aeroxeradores": 165,
+    "altura_media_aero_m": 874,
+    "vento_medio_aero_ms": 8.6,
+    "en_rede_natura": 150,
+    "altura_max_m": 1011,
+    "altura_max_onde": [
+     -8.2641,
+     42.5963
+    ]
+   },
+   "suido": {
+    "caixa": [
+     -8.4,
+     42.24,
+     -8.2,
+     42.4
+    ],
+    "aeroxeradores": 158,
+    "altura_media_aero_m": 1001,
+    "vento_medio_aero_ms": 8.6,
+    "en_rede_natura": 0,
+    "altura_max_m": 1152,
+    "altura_max_onde": [
+     -8.2589,
+     42.306
+    ]
+   },
+   "somozas": {
+    "caixa": [
+     -7.95,
+     43.5,
+     -7.84,
+     43.56
+    ],
+    "aeroxeradores": 95,
+    "altura_media_aero_m": 542,
+    "vento_medio_aero_ms": 8.7,
+    "en_rede_natura": 13,
+    "altura_max_m": 649,
+    "altura_max_onde": [
+     -7.8427,
+     43.5233
+    ]
+   }
+  },
+  "aero_por_espazo_rn": {
+   "Serra do Xistral (LIC/ZEC)": 650,
+   "Serra do Candán (LIC/ZEC)": 150,
+   "Serra do Cando (LIC/ZEC)": 87,
+   "Costa Ártabra (LIC/ZEC)": 83,
+   "Carnota - Monte Pindo (LIC/ZEC)": 58,
+   "Xubia - Castro (LIC/ZEC)": 37,
+   "Monte Maior (LIC/ZEC)": 36,
+   "Monte Faro (LIC/ZEC)": 35,
+   "Serra do Careón (LIC/ZEC)": 29,
+   "Ortigueira - Mera (LIC/ZEC)": 13,
+   "Costa da Morte (LIC/ZEC)": 12,
+   "Fragas do Eume (LIC/ZEC)": 11,
+   "Brañas de Xestoso (LIC/ZEC)": 9,
+   "Costa da Morte (Norte) (ZEPA)": 9
+  }
+ }
+}

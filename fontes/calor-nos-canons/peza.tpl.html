@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A calor que baixa aos vales — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Un voo sobre o relevo de Galicia para entender por que os vales encaixados do Miño, o Sil e o Támega foron os lugares máis quentes de 2025.">
+<meta property="og:title" content="A calor que baixa aos vales">
+<meta property="og:description" content="O 10 de agosto de 2025 o fondo do canón do Sil chegou a 43 °C. Tres quilómetros ao norte e 440 metros máis arriba, a 39. Un voo pola calor de Galicia.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/calor-nos-canons/og.jpg">
+<meta property="og:url" content="https://divulga.galiciasustentable.org/v/calor-nos-canons/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow+Condensed:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<link rel="stylesheet" href="../../assets/vendor/maplibre-gl-6.14.0/maplibre-gl.css">
+<link rel="stylesheet" href="../../assets/css/voo.css">
+<style>
+/* Voo de cámara: instrucións en mapasgs/docs/divulga-voos-de-camara.md */
+:root{
+  --ink:#f2f0e8; --paper:#0e1012; --muted:#a7a59c; --line:#2a2d30;
+  --cadro:rgba(14,16,18,.86); --acento:#f08c3c;
+  --num:var(--gs-font-chart-num);
+}
+body{background:var(--paper);color:var(--ink)}
+.escala{display:flex;height:8px;border-radius:2px;overflow:hidden;margin:.3rem 0 .2rem}
+.escala span{flex:1}
+.escala-l{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin:0 0 .7rem}
+.paso .lenda i.l{background:#f2f0e8}
+.paso a{color:var(--ink);text-decoration-color:var(--acento);text-underline-offset:2px}
+</style>
+</head>
+<body>
+{{BAR}}
+
+<main class="voo">
+  <div class="voo-mapa" aria-hidden="true"></div>
+  <div class="voo-pasos">
+
+    <section class="paso" data-centro="-7.85,42.55" data-zoom="7.3" data-inclinacion="45" data-rumbo="-10" data-superficie="1" data-xiro="8">
+      <div>
+        <p class="onde">Galicia · verán de 2025</p>
+        <h1>A calor que baixa <em>aos vales</em></h1>
+        <p>Os lugares máis quentes de Galicia non están no sur nin lonxe do mar, senón no fondo dos vales do interior: o Miño en Ourense e no Ribeiro, o Sil na Ribeira Sacra e en Valdeorras, a depresión de Lemos e a veiga de Verín. Un voo polo relevo para ver por que.</p>
+        <p class="fonte">Baixa para comezar.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.9,42.62" data-zoom="7.6" data-inclinacion="50" data-rumbo="0" data-superficie="1" data-capa="estacions">
+      <div>
+        <p class="onde">169 estacións de MeteoGalicia</p>
+        <h2>Dous veráns nun mesmo país</h2>
+        <p class="dato">33,6<small>°C</small></p>
+        <p class="dato-l">media das máximas de xuño a agosto de 2025 en Ourense, a máis alta da rede</p>
+        <p>No Xistral, na mesma rede, esa media quedou en 18,9 °C, e en Camariñas en 20,7. A cor do mapa estende as medidas das estacións a todo o territorio tendo en conta a altura de cada lugar: o vermello segue os ríos.</p>
+        <div class="escala" aria-hidden="true"><span style="background:#3c5f78"></span><span style="background:#969670"></span><span style="background:#e9c46a"></span><span style="background:#f08c3c"></span><span style="background:#dc462d"></span><span style="background:#a51432"></span></div>
+        <p class="escala-l"><span>20 °C</span><span>media das máximas xuño–agosto</span><span>33 °C</span></p>
+        <p class="fonte">MeteoGalicia, máximas diarias validadas de 2025. Superficie: cálculo FGS (inverso da distancia e 6,5 °C por km de altura).</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.865,42.335" data-zoom="11.2" data-inclinacion="62" data-rumbo="20" data-superficie="1" data-capa="estacions" data-marca="-7.8489,42.3435|Ourense">
+      <div>
+        <p class="onde">Ourense · val do Miño</p>
+        <h2>Unha cidade nunha cunca</h2>
+        <p class="dato">42,9<small>°C</small></p>
+        <p class="dato-l">máxima da estación de Ourense o 29 de xuño de 2025, a 143 m de altitude</p>
+        <p>Ourense está no fondo do val, a pouco máis de cen metros sobre o mar, rodeada de serras que pasan dos 700. Esa estación sumou 93 días de 30 °C ou máis en 2025 e 48 de 35 °C ou máis.</p>
+        <p>O observatorio de AEMET na cidade bateu o seu récord de xuño, de 2011, cos 41,3 e 41,6 °C do 29 e o 30.</p>
+        <p class="fonte">MeteoGalicia (estación Ourense); AEMET, avance climatolóxico de Galicia, xuño de 2025. Alturas: MDT do IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.13,42.31" data-zoom="11.4" data-inclinacion="64" data-rumbo="-30" data-superficie="1" data-capa="estacions" data-marca="-8.1185,42.3592|Leiro;-8.1442,42.2878|Ribadavia;-8.1309,42.2399|A Arnoia">
+      <div>
+        <p class="onde">O Ribeiro · Leiro, Ribadavia e A Arnoia</p>
+        <h2>Cincuenta días por riba de 35</h2>
+        <p class="dato">50<small>días</small></p>
+        <p class="dato-l">con máxima de 35 °C ou máis en 2025 na estación EVEGA de Leiro (105 m)</p>
+        <p>Ningunha outra estación da rede contou tantos. Aquí o Miño corre a uns 65 metros de altitude, entre ladeiras de viña. Leiro chegou a 41,8 °C o 30 de xuño; Remuíño, na Arnoia, ao mesmo valor o 4 de agosto.</p>
+        <p>Ese 4 de agosto, a estación de AEMET en Ribadavia marcou 42,8 °C, a máis alta da súa rede en Galicia nese mes.</p>
+        <p class="fonte">MeteoGalicia; AEMET, avance climatolóxico de Galicia, agosto de 2025 (datos provisionais).</p>
+      </div>
+    </section>
+
+    <section class="paso alto" data-centro="-7.56,42.385" data-zoom="12.3" data-inclinacion="72" data-rumbo="80" data-superficie="1" data-xiro="12">
+      <div>
+        <p class="onde">Canón do Sil · Parada de Sil e Nogueira de Ramuín</p>
+        <h2>Un río 600 metros por debaixo</h2>
+        <p class="dato">586<small>m</small></p>
+        <p class="dato-l">de desnivel entre o Sil (226 m) e o bordo do canón (812 m)</p>
+        <p>O Sil cava aquí un canón estreito de paredes de granito. O fondo queda abrigado do vento do mar, e nas ladeiras máis pendentes a viña sobe en socalcos.</p>
+        <p class="fonte">Alturas: MDT de 25 m do IGN, mínimo e máximo nun rectángulo de 5 × 3 km arredor do río (cálculo FGS).</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.295,42.462" data-zoom="12.6" data-inclinacion="66" data-rumbo="75" data-superficie="1" data-capa="estacions,perfil" data-marca="-7.2872,42.4631|San Clodio">
+      <div>
+        <p class="onde">San Clodio · Ribas de Sil, Lugo</p>
+        <h2>O lugar máis quente de 2025</h2>
+        <p class="dato">43,0<small>°C</small></p>
+        <p class="dato-l">máxima de San Clodio o 10 de agosto de 2025 (42,95 °C medidos), a 257 m</p>
+        <p>Ningunha estación de MeteoGalicia rexistrou máis en todo o ano. San Clodio está na beira do Sil, no fondo do val, entre Ribas de Sil e Quiroga.</p>
+        <p class="fonte">MeteoGalicia, datos diarios validados.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.28,42.485" data-zoom="12.2" data-inclinacion="55" data-rumbo="200" data-superficie="1" data-capa="estacions,perfil" data-marca="-7.2758,42.4924|Conchada;-7.2872,42.4631|San Clodio">
+      <div>
+        <p class="onde">Conchada · Quiroga, Lugo</p>
+        <h2>Subir ao bordo</h2>
+        <p class="dato">−4,0<small>°C</small></p>
+        <p class="dato-l">diferenza o mesmo 10 de agosto entre San Clodio (43,0) e Conchada (39,0), 440 m máis arriba</p>
+        <p>As dúas estacións están a 3,4 km en liña recta. Coa regra habitual de 6,5 °C por quilómetro de altura, a diferenza tería que ser de 2,9 °C: o fondo do val quentou máis do que explica a altitude soa.</p>
+        <div class="lenda"><span><i class="l"></i>perfil entre as dúas estacións</span></div>
+        <p class="fonte">MeteoGalicia; distancias e alturas, cálculo FGS sobre o MDT do IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.55,42.515" data-zoom="10.8" data-inclinacion="58" data-rumbo="-40" data-superficie="1" data-capa="estacions" data-marca="-7.5014,42.5069|Monforte;-7.7049,42.5354|Míllara (Pantón)">
+      <div>
+        <p class="onde">Depresión de Lemos · Monforte e Pantón</p>
+        <h2>Unha chaira pechada</h2>
+        <p class="dato">41,0<small>°C</small></p>
+        <p class="dato-l">no CFEA de Monforte o 29 de xuño e en Míllara (Pantón) o 10 de agosto</p>
+        <p>A Terra de Lemos é unha cunca chan a uns 300 m, rodeada de serras. Non ten un canón, pero si está pechada: Monforte-CFEA sumou 72 días de 30 °C ou máis e Míllara, 73.</p>
+        <p class="fonte">MeteoGalicia, datos diarios validados de 2025.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-6.95,42.39" data-zoom="10.6" data-inclinacion="66" data-rumbo="140" data-superficie="1" data-capa="estacions" data-marca="-7.0271,42.4203|A Portela;-6.7834,42.3752|Lardeira">
+      <div>
+        <p class="onde">Valdeorras · Vilamartín e Carballeda</p>
+        <h2>O Sil antes de entrar en Lugo</h2>
+        <p class="dato">41,3<small>°C</small></p>
+        <p class="dato-l">en A Portela (Vilamartín de Valdeorras, 408 m) o 9 de agosto de 2025</p>
+        <p>A Portela sumou 41 días de 35 °C ou máis. Ao día seguinte marcou 41,2 °C, mentres Lardeira, a 1.620 m na serra que pecha o val polo sur e a 20,6 km, quedou en 30,3.</p>
+        <p class="fonte">MeteoGalicia, datos diarios validados de 2025.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.43,41.95" data-zoom="11.2" data-inclinacion="60" data-rumbo="-10" data-superficie="1" data-capa="estacions" data-marca="-7.4392,41.953|Verín">
+      <div>
+        <p class="onde">Verín · val do Támega</p>
+        <h2>A veiga do Támega</h2>
+        <p class="dato">73<small>días</small></p>
+        <p class="dato-l">con máxima de 30 °C ou máis en 2025 na estación Verín-Vilela (392 m)</p>
+        <p>O Támega corre cara a Portugal por unha veiga ancha entre serras. Verín-Vilela chegou a 40,2 °C o 9 de agosto; Verín-Vilamaior, uns 150 m máis arriba, a 38,9 o mesmo día.</p>
+        <p class="fonte">MeteoGalicia, datos diarios validados de 2025.</p>
+      </div>
+    </section>
+
+    <section class="paso alto" data-centro="-7.75,42.75" data-zoom="7.5" data-inclinacion="40" data-rumbo="0" data-capa="dia10" data-marca="-7.2872,42.4631|San Clodio 43,0;-7.2983,42.2602|Manzaneda 29,1;-9.1783,43.1245|Camariñas 27,0">
+      <div>
+        <p class="onde">10 de agosto de 2025 · toda a rede</p>
+        <h2>O mesmo día, case 14 graos de diferenza</h2>
+        <p class="dato">29,1<small>°C</small></p>
+        <p class="dato-l">en Cabeza de Manzaneda (1.758 m), a 22,5 km de San Clodio, que marcaba 43,0</p>
+        <p>Ese día dez estacións chegaron aos 40 °C ou máis, todas en vales do interior de Ourense e Lugo. Na costa, Camariñas quedou en 27,0 °C e Foz en 21,9.</p>
+        <div class="lenda"><span><i style="background:#3c5f78"></i>menos de 25 °C</span><span><i style="background:#969670"></i>25–30</span><span><i style="background:#e9c46a"></i>30–35</span><span><i style="background:#f08c3c"></i>35–40</span><span><i style="background:#a51432"></i>40 ou máis</span></div>
+        <p class="fonte">MeteoGalicia, temperatura máxima do 10/08/2025 en 168 estacións.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.35,42.3" data-zoom="9.0" data-inclinacion="55" data-rumbo="-20" data-superficie="1" data-capa="lumes" data-xiro="10">
+      <div>
+        <p class="onde">Peche · os vales do interior</p>
+        <h2>Vivir coa calor dos vales</h2>
+        <p class="dato">139.735<small>ha</small></p>
+        <p class="dato-l">queimadas na provincia de Ourense en agosto de 2025, segundo os perímetros de EFFIS</p>
+        <p>Os grandes lumes daquel mes prenderon entre o 8 e o 15 de agosto, na mesma vaga de calor. A mesma calor fai o viño das catro denominacións de orixe do interior (Ribeiro, Ribeira Sacra, Valdeorras e Monterrei) e pesa sobre a saúde de quen vive nestes vales: cincuenta días por riba de 35 °C piden plans de calor pensados para eles, non para a media de Galicia.</p>
+        <div class="lenda"><span><i class="c" style="background:#ff6a3d"></i>lumes de agosto de 2025 de máis de 1.000 ha</span></div>
+        <p>Máis: <a href="../raias-clima/">As raias da calor e da choiva</a> · <a href="../choiva-sol-europa/">Chove, pero hai sol</a> · <a href="../habelos-hainos/">Habelos, hainos</a> · <a href="https://mapas.galiciasustentable.org/pulso/calor/">a calor, estación a estación, en Mapas Galicia Sustentable</a>.</p>
+        <p class="fonte">Copernicus EFFIS (cálculo FGS); MeteoGalicia; Consellería do Medio Rural (denominacións de orixe).</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="voo-fontes">
+  <h2>Fontes e método</h2>
+  <ul>
+    <li>Temperaturas: MeteoGalicia e Consellería de Medio Ambiente e Cambio Climático (Xunta de Galicia), temperatura máxima diaria a 1,5 m de 169 estacións en 2025, só valores validados. Foto da capa <code>tmax-ano</code> de Mapas Galicia Sustentable (CC BY-SA 4.0) do 4 de novembro de 2026, contrastada co servizo <code>datosDiariosEstacionsMeteo</code> para xuño e agosto.</li>
+    <li>Superficie do mapa: cálculo da Fundación Galicia Sustentable. Media das máximas de xuño a agosto en cada estación (con 85 días ou máis de dato), levada ao nivel do mar con 6,5 °C por km, interpolada polo inverso do cadrado da distancia (8 estacións máis próximas) e devolta á altura media de cada cela de ~330 m. É unha aproximación: non recolle inversións térmicas nin efectos locais.</li>
+    <li>AEMET, avances climatolóxicos mensuais de Galicia de xuño (4/7/2025) e agosto de 2025 (3/9/2025), datos provisionais.</li>
+    <li>Lumes: perímetros de Copernicus EFFIS (JRC), CC BY 4.0, vía Mapas Galicia Sustentable; suma de agosto de 2025 na provincia de Ourense, cálculo FGS.</li>
+    <li>Relevo, alturas e desniveis: © Instituto Geográfico Nacional, MDT de 25 m (PNOA-LiDAR) e contorno, CC BY 4.0.</li>
+    <li>Datos e scripts: <code>fontes/calor-nos-canons/</code>. Consulta: 4 de novembro de 2026.</li>
+  </ul>
+</section>
+
+{{FOOT}}
+
+<script src="../../assets/vendor/pmtiles-4.5.0/pmtiles.js"></script>
+<script type="module">
+import { iniciarVoo } from '../../assets/js/voo.js';
+
+// mesma escala ca a superficie (prep.py, ESCALA)
+const COR = (campo) => ['interpolate', ['linear'], ['get', campo],
+  20, '#3c5f78', 25, '#969670', 27, '#e9c46a', 29, '#f08c3c', 31, '#dc462d', 33, '#a51432'];
+const COR_DIA = ['step', ['get', 't10'], '#3c5f78', 25, '#969670', 30, '#e9c46a', 35, '#f08c3c', 40, '#a51432'];
+const RAIO = (a, b) => ['interpolate', ['linear'], ['zoom'], 7, a, 12, b];
+
+const BBOX = [-9.36, 41.80, -6.70, 43.80];
+let pasoActual = null;
+let superficie = false;
+function amosarSuperficie(map) {
+  if (!superficie) return;
+  const on = pasoActual?.dataset.superficie === '1';
+  map.setPaintProperty('superficie', 'raster-opacity', on ? 0.88 : 0);
+}
+
+iniciarVoo({
+  atribucion: 'Temperaturas: MeteoGalicia e Consellería de Medio Ambiente e Cambio Climático · Superficie: FGS · Lumes: Copernicus EFFIS',
+  capas: [
+    { id: 'estacions', fonte: 'capas/estacions.geojson', estilos: [
+      { type: 'circle', filter: ['!=', ['get', 'xja'], null], paint: {
+        'circle-radius': RAIO(3, 7), 'circle-color': COR('xja'),
+        'circle-stroke-color': '#0e1012', 'circle-stroke-width': 1.2 } },
+    ] },
+    { id: 'dia10', fonte: 'capas/estacions.geojson', estilos: [
+      { type: 'circle', filter: ['!=', ['get', 't10'], null], paint: {
+        'circle-radius': ['interpolate', ['linear'], ['get', 't10'], 22, 3, 43, 9],
+        'circle-color': COR_DIA, 'circle-stroke-color': '#0e1012', 'circle-stroke-width': 1 } },
+    ] },
+    { id: 'perfil', fonte: 'capas/perfil.geojson', estilos: [
+      { type: 'line', paint: { 'line-color': '#f2f0e8', 'line-width': 2.5, 'line-dasharray': [2, 1.5] } },
+    ] },
+    { id: 'lumes', fonte: 'capas/lumes2025.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': '#ff6a3d', 'fill-opacity': 0.35 } },
+      { type: 'line', paint: { 'line-color': '#ff6a3d', 'line-width': 1.2, 'line-opacity': 0.9 } },
+    ] },
+  ],
+  aoCargar(map) {
+    map.addSource('superficie', { type: 'image', url: new URL('capas/calor-xja.png', location.href).href,
+      coordinates: [[BBOX[0], BBOX[3]], [BBOX[2], BBOX[3]], [BBOX[2], BBOX[1]], [BBOX[0], BBOX[1]]] });
+    map.addLayer({ id: 'superficie', type: 'raster', source: 'superficie',
+      paint: { 'raster-opacity': 0, 'raster-opacity-transition': { duration: 800 }, 'raster-resampling': 'linear' } },
+    'relevo');
+    superficie = true;
+    amosarSuperficie(map);
+  },
+  aoPaso(paso, map) { pasoActual = paso; amosarSuperficie(map); },
+});
+</script>
+</body>
+</html>

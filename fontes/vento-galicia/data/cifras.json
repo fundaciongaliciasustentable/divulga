@@ -1,0 +1,154 @@
+{
+ "n_aeroxeradores": 4077,
+ "n_parques_osm": 174,
+ "altura_media_aero_m": 691,
+ "altura_mediana_aero_m": 676,
+ "pc_aero_sobre_500m": 78.5,
+ "altura_media_galicia_m": 501,
+ "pc_galicia_sobre_500m": 45.0,
+ "vento_medio_aero_ms": 8.8,
+ "vento_medio_galicia_ms": 6.0,
+ "pc_galicia_vento_ge_7": 22.4,
+ "pc_aero_vento_ge_7": 98.6,
+ "aero_en_rede_natura": 1210,
+ "pc_aero_en_rede_natura": 29.7,
+ "pc_galicia_rede_natura": 12.0,
+ "zaper_galicia_km2_emodnet": 2352.7,
+ "zonas": {
+  "costa_morte": {
+   "caixa": [
+    -9.25,
+    43.03,
+    -8.8,
+    43.33
+   ],
+   "aeroxeradores": 211,
+   "altura_media_aero_m": 279,
+   "vento_medio_aero_ms": 8.6,
+   "en_rede_natura": 12,
+   "altura_max_m": 557,
+   "altura_max_onde": [
+    -8.8675,
+    43.1132
+   ]
+  },
+  "paxareiras": {
+   "caixa": [
+    -9.2,
+    42.8,
+    -8.8,
+    43.02
+   ],
+   "aeroxeradores": 419,
+   "altura_media_aero_m": 472,
+   "vento_medio_aero_ms": 9.0,
+   "en_rede_natura": 58,
+   "altura_max_m": 643,
+   "altura_max_onde": [
+    -9.0508,
+    42.9224
+   ]
+  },
+  "xistral": {
+   "caixa": [
+    -7.8,
+    43.4,
+    -7.38,
+    43.58
+   ],
+   "aeroxeradores": 1068,
+   "altura_media_aero_m": 749,
+   "vento_medio_aero_ms": 9.5,
+   "en_rede_natura": 583,
+   "altura_max_m": 1055,
+   "altura_max_onde": [
+    -7.5488,
+    43.4704
+   ]
+  },
+  "faladoira": {
+   "caixa": [
+    -8.0,
+    43.56,
+    -7.73,
+    43.73
+   ],
+   "aeroxeradores": 288,
+   "altura_media_aero_m": 514,
+   "vento_medio_aero_ms": 9.5,
+   "en_rede_natura": 83,
+   "altura_max_m": 613,
+   "altura_max_onde": [
+    -7.7983,
+    43.574
+   ]
+  },
+  "testeiro": {
+   "caixa": [
+    -8.3,
+    42.48,
+    -8.0,
+    42.62
+   ],
+   "aeroxeradores": 165,
+   "altura_media_aero_m": 874,
+   "vento_medio_aero_ms": 8.6,
+   "en_rede_natura": 150,
+   "altura_max_m": 1011,
+   "altura_max_onde": [
+    -8.2641,
+    42.5963
+   ]
+  },
+  "suido": {
+   "caixa": [
+    -8.4,
+    42.24,
+    -8.2,
+    42.4
+   ],
+   "aeroxeradores": 158,
+   "altura_media_aero_m": 1001,
+   "vento_medio_aero_ms": 8.6,
+   "en_rede_natura": 0,
+   "altura_max_m": 1152,
+   "altura_max_onde": [
+    -8.2589,
+    42.306
+   ]
+  },
+  "somozas": {
+   "caixa": [
+    -7.95,
+    43.5,
+    -7.84,
+    43.56
+   ],
+   "aeroxeradores": 95,
+   "altura_media_aero_m": 542,
+   "vento_medio_aero_ms": 8.7,
+   "en_rede_natura": 13,
+   "altura_max_m": 649,
+   "altura_max_onde": [
+    -7.8427,
+    43.5233
+   ]
+  }
+ },
+ "aero_por_espazo_rn": {
+  "Serra do Xistral (LIC/ZEC)": 650,
+  "Serra do Candán (LIC/ZEC)": 150,
+  "Serra do Cando (LIC/ZEC)": 87,
+  "Costa Ártabra (LIC/ZEC)": 83,
+  "Carnota - Monte Pindo (LIC/ZEC)": 58,
+  "Xubia - Castro (LIC/ZEC)": 37,
+  "Monte Maior (LIC/ZEC)": 36,
+  "Monte Faro (LIC/ZEC)": 35,
+  "Serra do Careón (LIC/ZEC)": 29,
+  "Ortigueira - Mera (LIC/ZEC)": 13,
+  "Costa da Morte (LIC/ZEC)": 12,
+  "Fragas do Eume (LIC/ZEC)": 11,
+  "Brañas de Xestoso (LIC/ZEC)": 9,
+  "Costa da Morte (Norte) (ZEPA)": 9
+ }
+}

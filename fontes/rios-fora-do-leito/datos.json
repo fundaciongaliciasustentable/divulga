@@ -1,0 +1,253 @@
+{
+ "slug": "rios-fora-do-leito",
+ "titulo": "Cando os ríos saen do leito",
+ "data": "2026-11-04",
+ "cifras_calculadas": "data/cifras.json (saída de prep.py)",
+ "paradas": [
+  {
+   "n": 0,
+   "onde": null,
+   "titulo": "Cando os ríos saen do leito",
+   "camara": {
+    "centro": [
+     -7.95,
+     42.78
+    ],
+    "zoom": 7.2,
+    "inclinacion": 35.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "rede"
+   ],
+   "marcas": null,
+   "dato": null,
+   "dato_l": null,
+   "fonte": "Baixa para comezar."
+  },
+  {
+   "n": 1,
+   "onde": "Toda Galicia · 5–10 de outubro de 2026",
+   "titulo": "Dous días de choiva",
+   "camara": {
+    "centro": [
+     -7.95,
+     42.85
+    ],
+    "zoom": 7.3,
+    "inclinacion": 40.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "rede",
+    "choiva"
+   ],
+   "marcas": "-7.4519,43.5442|Santa Cruz (O Valadouro);-8.8372,42.1155|Baiona",
+   "dato": "65,6mm",
+   "dato_l": "choiva en seis días na estación de Santa Cruz (O Valadouro), a máis alta de 150",
+   "fonte": "MeteoGalicia, choiva diaria das estacións (5–10/10/2026), vía Mapas Galicia Sustentable. Mediana: cálculo FGS."
+  },
+  {
+   "n": 2,
+   "onde": "Ríos de Galicia-Costa · 5–11 de outubro",
+   "titulo": "Os ríos responden",
+   "camara": {
+    "centro": [
+     -8.25,
+     43.0
+    ],
+    "zoom": 7.7,
+    "inclinacion": 45.0,
+    "rumbo": -10.0
+   },
+   "capas": [
+    "rios-crecida",
+    "estacions"
+   ],
+   "marcas": null,
+   "dato": "18de 45",
+   "dato_l": "estacións de aforo onde o caudal máximo foi polo menos o dobre do de antes da choiva",
+   "fonte": "Augas de Galicia e MeteoGalicia, caudais de 10 min non validados. Razón entre o pico horario e a mediana das primeiras 24 h; só estacións con caudal base ≥ 0,1 m³/s e sen marea. Cálculo FGS."
+  },
+  {
+   "n": 3,
+   "onde": "Fragas do Eume · Monfero, A Coruña",
+   "titulo": "O Eume, oito veces máis",
+   "camara": {
+    "centro": [
+     -8.1,
+     43.415
+    ],
+    "zoom": 11.2,
+    "inclinacion": 65.0,
+    "rumbo": -35.0
+   },
+   "capas": [
+    "rios-crecida",
+    "estacions"
+   ],
+   "marcas": "-8.065,43.4145|Estación do Eume (Monfero)",
+   "dato": "16,6m³/s",
+   "dato_l": "caudal máximo do Eume en Monfero, o 7 de outubro ás 8 h; antes da choiva levaba 2,0",
+   "fonte": "Augas de Galicia e MeteoGalicia, caudal medio horario (datos non validados). Hora oficial de Galicia."
+  },
+  {
+   "n": 4,
+   "onde": "Pontevea · Teo e A Estrada",
+   "titulo": "O Ulla, lonxe do seu límite",
+   "camara": {
+    "centro": [
+     -8.552,
+     42.761
+    ],
+    "zoom": 13.0,
+    "inclinacion": 62.0,
+    "rumbo": 20.0
+   },
+   "capas": [
+    "zi-t100",
+    "estacions",
+    "rios-crecida"
+   ],
+   "marcas": "-8.5477,42.7595|Estación do Ulla (Teo)",
+   "dato": "16,7m³/s",
+   "dato_l": "pico do Ulla en Teo o 7 de outubro; a crecida de 100 anos do estudo de Pontevea é de 1.622,2 m³/s",
+   "fonte": "Augas de Galicia, mapas de zonas inundables, ciclo 2021–2027 (ARPSI ES014-CP-05-03-12). Área: cálculo FGS."
+  },
+  {
+   "n": 5,
+   "onde": "Padrón · A Coruña",
+   "titulo": "Onde o Sar se xunta co Ulla",
+   "camara": {
+    "centro": [
+     -8.665,
+     42.725
+    ],
+    "zoom": 12.2,
+    "inclinacion": 60.0,
+    "rumbo": -25.0
+   },
+   "capas": [
+    "zi-t10",
+    "zi-t100",
+    "rios-crecida"
+   ],
+   "marcas": "-8.6613,42.7393|Padrón;-8.6510,42.7480|Río Sar",
+   "dato": "2.417persoas",
+   "dato_l": "habitantes do concello de Padrón dentro da zona inundable de 100 anos; na de 10 anos, 202",
+   "fonte": "Augas de Galicia, mapas de risco para a poboación (ARPSI ES014-CP-05-02-11, poboación de 2019); caudais de MeteoGalicia e Augas de Galicia."
+  },
+  {
+   "n": 6,
+   "onde": "Xallas · Mazaricos e Dumbría",
+   "titulo": "Un río que remata nunha fervenza",
+   "camara": {
+    "centro": [
+     -9.07,
+     42.937
+    ],
+    "zoom": 11.1,
+    "inclinacion": 62.0,
+    "rumbo": 35.0
+   },
+   "capas": [
+    "rios-crecida",
+    "estacions"
+   ],
+   "marcas": "-9.018,42.9621|Estación do Xallas (Mazaricos);-9.124,42.912|Ézaro",
+   "dato": "16,1m³/s",
+   "dato_l": "pico do Xallas en Mazaricos o 6 de outubro ás 22 h; antes levaba 3,0",
+   "fonte": "Augas de Galicia e MeteoGalicia, caudal medio horario (datos non validados)."
+  },
+  {
+   "n": 7,
+   "onde": "Ourense · Miño",
+   "titulo": "O Miño atravesa unha cidade",
+   "camara": {
+    "centro": [
+     -7.865,
+     42.338
+    ],
+    "zoom": 12.6,
+    "inclinacion": 60.0,
+    "rumbo": 40.0
+   },
+   "capas": [
+    "zi-t500",
+    "zi-t100",
+    "zi-t10"
+   ],
+   "marcas": "-7.8706,42.3433|Ponte Romana;-7.8640,42.3360|Ourense",
+   "dato": "259ha",
+   "dato_l": "zona inundable de 100 anos no tramo urbano do Miño e dos seus afluentes en Ourense",
+   "fonte": "MITECO, SNCZI (CC BY 4.0), teselas de Mapas Galicia Sustentable. Área no recadro da cidade: cálculo FGS sobre as teselas vectorizadas, aproximada."
+  },
+  {
+   "n": 8,
+   "onde": "Valdeorras · Ourense",
+   "titulo": "O Sil abre o val",
+   "camara": {
+    "centro": [
+     -6.995,
+     42.413
+    ],
+    "zoom": 12.0,
+    "inclinacion": 65.0,
+    "rumbo": -20.0
+   },
+   "capas": [
+    "zi-t500",
+    "zi-t100",
+    "zi-t10"
+   ],
+   "marcas": "-6.9826,42.4163|O Barco de Valdeorras",
+   "dato": "427ha",
+   "dato_l": "zona inundable de 100 anos nun tramo duns 17 km do Sil arredor de O Barco",
+   "fonte": "MITECO, SNCZI (CC BY 4.0). Área: cálculo FGS sobre as teselas vectorizadas, aproximada."
+  },
+  {
+   "n": 9,
+   "onde": "Betanzos · A Coruña",
+   "titulo": "Tres mapas para unha vila",
+   "camara": {
+    "centro": [
+     -8.208,
+     43.279
+    ],
+    "zoom": 13.1,
+    "inclinacion": 58.0,
+    "rumbo": 160.0
+   },
+   "capas": [
+    "zi-t500",
+    "zi-t100",
+    "zi-t10"
+   ],
+   "marcas": "-8.2116,43.2800|Betanzos;-8.2205,43.2745|Río Mendo;-8.2005,43.2860|Río Mandeo",
+   "dato": "1.327persoas",
+   "dato_l": "habitantes de Betanzos dentro da zona inundable de 10 anos; 1.600 na de 100 e 1.752 na de 500",
+   "fonte": "Augas de Galicia, mapas de perigo e de risco para a poboación, ciclo 2021–2027 (ARPSI ES014-CO-12-01-01, poboación de 2019). Áreas: cálculo FGS."
+  },
+  {
+   "n": 10,
+   "onde": null,
+   "titulo": "Vivir na chaira",
+   "camara": {
+    "centro": [
+     -7.95,
+     42.78
+    ],
+    "zoom": 7.2,
+    "inclinacion": 40.0,
+    "rumbo": -10.0
+   },
+   "capas": [
+    "rede"
+   ],
+   "marcas": null,
+   "dato": null,
+   "dato_l": null,
+   "fonte": null
+  }
+ ]
+}

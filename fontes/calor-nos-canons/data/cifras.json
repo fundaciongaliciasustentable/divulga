@@ -1,0 +1,921 @@
+{
+ "ano": 2025,
+ "consulta": "2026-11-04",
+ "estacions": 169,
+ "top_max": [
+  {
+   "n": "San Clodio",
+   "c": "RIBAS DE SIL",
+   "alt": 257,
+   "max": 43,
+   "data_max": "2025-08-10"
+  },
+  {
+   "n": "Ourense",
+   "c": "OURENSE",
+   "alt": 143,
+   "max": 42.9,
+   "data_max": "2025-06-29"
+  },
+  {
+   "n": "EVEGA Leiro",
+   "c": "LEIRO",
+   "alt": 105,
+   "max": 41.8,
+   "data_max": "2025-06-30"
+  },
+  {
+   "n": "Remuíño",
+   "c": "A ARNOIA",
+   "alt": 120,
+   "max": 41.8,
+   "data_max": "2025-08-04"
+  },
+  {
+   "n": "A Portela",
+   "c": "VILAMARTÍN DE VALDEORRAS",
+   "alt": 408,
+   "max": 41.3,
+   "data_max": "2025-08-09"
+  },
+  {
+   "n": "Míllara",
+   "c": "PANTÓN",
+   "alt": 340,
+   "max": 41,
+   "data_max": "2025-08-10"
+  },
+  {
+   "n": "Monforte-CFEA",
+   "c": "MONFORTE DE LEMOS",
+   "alt": 320,
+   "max": 41,
+   "data_max": "2025-06-29"
+  },
+  {
+   "n": "As Petarelas",
+   "c": "RUBIÁ",
+   "alt": 577,
+   "max": 40.9,
+   "data_max": "2025-08-10"
+  },
+  {
+   "n": "Ourense-Estacións",
+   "c": "OURENSE",
+   "alt": 139,
+   "max": 40.6,
+   "data_max": "2025-08-04"
+  },
+  {
+   "n": "Monforte",
+   "c": "MONFORTE DE LEMOS",
+   "alt": 286,
+   "max": 40.5,
+   "data_max": "2025-08-10"
+  }
+ ],
+ "top_d35": [
+  {
+   "n": "EVEGA Leiro",
+   "c": "LEIRO",
+   "alt": 105,
+   "d30": 89,
+   "d35": 50
+  },
+  {
+   "n": "Ourense",
+   "c": "OURENSE",
+   "alt": 143,
+   "d30": 93,
+   "d35": 48
+  },
+  {
+   "n": "Ourense-Estacións",
+   "c": "OURENSE",
+   "alt": 139,
+   "d30": 84,
+   "d35": 42
+  },
+  {
+   "n": "Remuíño",
+   "c": "A ARNOIA",
+   "alt": 120,
+   "d30": 79,
+   "d35": 41
+  },
+  {
+   "n": "A Portela",
+   "c": "VILAMARTÍN DE VALDEORRAS",
+   "alt": 408,
+   "d30": 79,
+   "d35": 41
+  },
+  {
+   "n": "As Petarelas",
+   "c": "RUBIÁ",
+   "alt": 577,
+   "d30": 65,
+   "d35": 38
+  },
+  {
+   "n": "San Clodio",
+   "c": "RIBAS DE SIL",
+   "alt": 257,
+   "d30": 74,
+   "d35": 37
+  },
+  {
+   "n": "Verín-Vilela",
+   "c": "VERÍN",
+   "alt": 392,
+   "d30": 73,
+   "d35": 35
+  },
+  {
+   "n": "Míllara",
+   "c": "PANTÓN",
+   "alt": 340,
+   "d30": 73,
+   "d35": 33
+  },
+  {
+   "n": "Prado",
+   "c": "CASTRELO DE MIÑO",
+   "alt": 122,
+   "d30": 70,
+   "d35": 32
+  }
+ ],
+ "top_xja": [
+  {
+   "n": "Ourense",
+   "c": "OURENSE",
+   "alt": 143,
+   "xja": 33.6
+  },
+  {
+   "n": "EVEGA Leiro",
+   "c": "LEIRO",
+   "alt": 105,
+   "xja": 33.5
+  },
+  {
+   "n": "Remuíño",
+   "c": "A ARNOIA",
+   "alt": 120,
+   "xja": 32.8
+  },
+  {
+   "n": "A Portela",
+   "c": "VILAMARTÍN DE VALDEORRAS",
+   "alt": 408,
+   "xja": 32.7
+  },
+  {
+   "n": "Ourense-Estacións",
+   "c": "OURENSE",
+   "alt": 139,
+   "xja": 32.7
+  },
+  {
+   "n": "San Clodio",
+   "c": "RIBAS DE SIL",
+   "alt": 257,
+   "xja": 32.2
+  },
+  {
+   "n": "Verín-Vilela",
+   "c": "VERÍN",
+   "alt": 392,
+   "xja": 32.1
+  },
+  {
+   "n": "Prado",
+   "c": "CASTRELO DE MIÑO",
+   "alt": 122,
+   "xja": 31.8
+  },
+  {
+   "n": "Monforte-CFEA",
+   "c": "MONFORTE DE LEMOS",
+   "alt": 320,
+   "xja": 31.7
+  },
+  {
+   "n": "Míllara",
+   "c": "PANTÓN",
+   "alt": 340,
+   "xja": 31.6
+  }
+ ],
+ "baixo_xja": [
+  {
+   "n": "O Xistral",
+   "c": "MURAS",
+   "alt": 1031,
+   "xja": 18.9
+  },
+  {
+   "n": "Penedo do Galo",
+   "c": "VIVEIRO",
+   "alt": 545,
+   "xja": 19.5
+  },
+  {
+   "n": "Punta Langosteira",
+   "c": "ARTEIXO",
+   "alt": 5,
+   "xja": 19.7
+  },
+  {
+   "n": "Fragavella",
+   "c": "ABADÍN",
+   "alt": 595,
+   "xja": 20.0
+  },
+  {
+   "n": "Burela",
+   "c": "BURELA",
+   "alt": 268,
+   "xja": 20.0
+  },
+  {
+   "n": "Serra da Faladoira",
+   "c": "ORTIGUEIRA",
+   "alt": 576,
+   "xja": 20.1
+  },
+  {
+   "n": "Punta Candieira",
+   "c": "CEDEIRA",
+   "alt": 254,
+   "xja": 20.7
+  },
+  {
+   "n": "Camariñas",
+   "c": "CAMARIÑAS",
+   "alt": 5,
+   "xja": 20.7
+  }
+ ],
+ "sel": {
+  "Ourense": {
+   "n": "Ourense",
+   "c": "OURENSE",
+   "alt": 143,
+   "lon": -7.84885,
+   "lat": 42.34349,
+   "max": 42.9,
+   "data_max": "2025-06-29",
+   "d30": 93,
+   "d35": 48,
+   "xja": 33.6,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 40.2,
+   "t29x": 42.9
+  },
+  "Ourense-Estacións": {
+   "n": "Ourense-Estacións",
+   "c": "OURENSE",
+   "alt": 139,
+   "lon": -7.8779,
+   "lat": 42.353,
+   "max": 40.6,
+   "data_max": "2025-08-04",
+   "d30": 84,
+   "d35": 42,
+   "xja": 32.7,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 38.9,
+   "t29x": 40
+  },
+  "EVEGA Leiro": {
+   "n": "EVEGA Leiro",
+   "c": "LEIRO",
+   "alt": 105,
+   "lon": -8.11845,
+   "lat": 42.35921,
+   "max": 41.8,
+   "data_max": "2025-06-30",
+   "d30": 89,
+   "d35": 50,
+   "xja": 33.5,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 40.5,
+   "t29x": 40.8
+  },
+  "Remuíño": {
+   "n": "Remuíño",
+   "c": "A ARNOIA",
+   "alt": 120,
+   "lon": -8.13086,
+   "lat": 42.23986,
+   "max": 41.8,
+   "data_max": "2025-08-04",
+   "d30": 79,
+   "d35": 41,
+   "xja": 32.8,
+   "dias_xja": 92,
+   "dias": 343,
+   "t10a": 38.9,
+   "t29x": 41
+  },
+  "Prado": {
+   "n": "Prado",
+   "c": "CASTRELO DE MIÑO",
+   "alt": 122,
+   "lon": -8.06676,
+   "lat": 42.31235,
+   "max": 40.4,
+   "data_max": "2025-08-04",
+   "d30": 70,
+   "d35": 32,
+   "xja": 31.8,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 38.4,
+   "t29x": 38.4
+  },
+  "San Clodio": {
+   "n": "San Clodio",
+   "c": "RIBAS DE SIL",
+   "alt": 257,
+   "lon": -7.28717,
+   "lat": 42.46311,
+   "max": 43,
+   "data_max": "2025-08-10",
+   "d30": 74,
+   "d35": 37,
+   "xja": 32.2,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 43,
+   "t29x": 40.8
+  },
+  "Conchada": {
+   "n": "Conchada",
+   "c": "QUIROGA",
+   "alt": 697,
+   "lon": -7.27582,
+   "lat": 42.4924,
+   "max": 39,
+   "data_max": "2025-08-10",
+   "d30": 48,
+   "d35": 10,
+   "xja": 28.6,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 39,
+   "t29x": 37.2
+  },
+  "Xabrega": {
+   "n": "Xabrega",
+   "c": "SOBER",
+   "alt": 319,
+   "lon": -7.63442,
+   "lat": 42.41114,
+   "max": 39.7,
+   "data_max": "2025-08-10",
+   "d30": 66,
+   "d35": 26,
+   "xja": 31.1,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 39.7,
+   "t29x": 39.7
+  },
+  "Míllara": {
+   "n": "Míllara",
+   "c": "PANTÓN",
+   "alt": 340,
+   "lon": -7.70489,
+   "lat": 42.53537,
+   "max": 41,
+   "data_max": "2025-08-10",
+   "d30": 73,
+   "d35": 33,
+   "xja": 31.6,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 41,
+   "t29x": 40.3
+  },
+  "Monforte": {
+   "n": "Monforte",
+   "c": "MONFORTE DE LEMOS",
+   "alt": 286,
+   "lon": -7.52314,
+   "lat": 42.51378,
+   "max": 40.5,
+   "data_max": "2025-08-10",
+   "d30": 65,
+   "d35": 27,
+   "xja": 31.1,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 40.5,
+   "t29x": 39.9
+  },
+  "Monforte-CFEA": {
+   "n": "Monforte-CFEA",
+   "c": "MONFORTE DE LEMOS",
+   "alt": 320,
+   "lon": -7.50143,
+   "lat": 42.50691,
+   "max": 41,
+   "data_max": "2025-06-29",
+   "d30": 72,
+   "d35": 30,
+   "xja": 31.7,
+   "dias_xja": 92,
+   "dias": 364,
+   "t10a": 40.3,
+   "t29x": 41
+  },
+  "A Portela": {
+   "n": "A Portela",
+   "c": "VILAMARTÍN DE VALDEORRAS",
+   "alt": 408,
+   "lon": -7.02708,
+   "lat": 42.42026,
+   "max": 41.3,
+   "data_max": "2025-08-09",
+   "d30": 79,
+   "d35": 41,
+   "xja": 32.7,
+   "dias_xja": 92,
+   "dias": 361,
+   "t10a": 41.2,
+   "t29x": 41
+  },
+  "As Petarelas": {
+   "n": "As Petarelas",
+   "c": "RUBIÁ",
+   "alt": 577,
+   "lon": -6.92948,
+   "lat": 42.46311,
+   "max": 40.9,
+   "data_max": "2025-08-10",
+   "d30": 65,
+   "d35": 38,
+   "xja": null,
+   "dias_xja": 77,
+   "dias": 347,
+   "t10a": 40.9,
+   "t29x": 39.8
+  },
+  "Larouco": {
+   "n": "Larouco",
+   "c": "LAROUCO",
+   "alt": 522,
+   "lon": -7.153,
+   "lat": 42.346,
+   "max": 40.3,
+   "data_max": "2025-08-10",
+   "d30": 64,
+   "d35": 25,
+   "xja": 31.2,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 40.3,
+   "t29x": 39.2
+  },
+  "Lardeira": {
+   "n": "Lardeira",
+   "c": "CARBALLEDA DE VALDEORRAS",
+   "alt": 1620,
+   "lon": -6.78336,
+   "lat": 42.37519,
+   "max": 30.8,
+   "data_max": "2025-08-07",
+   "d30": 5,
+   "d35": 0,
+   "xja": 22.7,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 30.3,
+   "t29x": 29.1
+  },
+  "Verín-Vilela": {
+   "n": "Verín-Vilela",
+   "c": "VERÍN",
+   "alt": 392,
+   "lon": -7.43918,
+   "lat": 41.95301,
+   "max": 40.2,
+   "data_max": "2025-08-09",
+   "d30": 73,
+   "d35": 35,
+   "xja": 32.1,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 39.6,
+   "t29x": 38.7
+  },
+  "Verín-Vilamaior": {
+   "n": "Verín-Vilamaior",
+   "c": "VERÍN",
+   "alt": 546,
+   "lon": -7.39877,
+   "lat": 41.97433,
+   "max": 38.9,
+   "data_max": "2025-08-09",
+   "d30": 63,
+   "d35": 23,
+   "xja": 30.9,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 38.7,
+   "t29x": 38.1
+  },
+  "Cabeza de Manzaneda": {
+   "n": "Cabeza de Manzaneda",
+   "c": "MANZANEDA",
+   "alt": 1758,
+   "lon": -7.29831,
+   "lat": 42.26016,
+   "max": 29.1,
+   "data_max": "2025-08-10",
+   "d30": 0,
+   "d35": 0,
+   "xja": 20.9,
+   "dias_xja": 92,
+   "dias": 357,
+   "t10a": 29.1,
+   "t29x": 28.4
+  },
+  "Xares": {
+   "n": "Xares",
+   "c": "A VEIGA",
+   "alt": 1762,
+   "lon": -6.89256,
+   "lat": 42.20781,
+   "max": 29.4,
+   "data_max": "2025-08-10",
+   "d30": 0,
+   "d35": 0,
+   "xja": 21.8,
+   "dias_xja": 87,
+   "dias": 344,
+   "t10a": 29.4,
+   "t29x": 27.7
+  },
+  "Camariñas": {
+   "n": "Camariñas",
+   "c": "CAMARIÑAS",
+   "alt": 5,
+   "lon": -9.17832,
+   "lat": 43.12445,
+   "max": 27,
+   "data_max": "2025-08-10",
+   "d30": 0,
+   "d35": 0,
+   "xja": 20.7,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 27,
+   "t29x": 21.9
+  },
+  "Coruña-Torre de Hércules": {
+   "n": "Coruña-Torre de Hércules",
+   "c": "A CORUÑA",
+   "alt": 21,
+   "lon": -8.4092,
+   "lat": 43.38276,
+   "max": 28.9,
+   "data_max": "2025-06-17",
+   "d30": 0,
+   "d35": 0,
+   "xja": 23.2,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 26.7,
+   "t29x": 24.3
+  },
+  "Vigo-Navia": {
+   "n": "Vigo-Navia",
+   "c": "VIGO",
+   "alt": 32,
+   "lon": -8.75626,
+   "lat": 42.2139,
+   "max": 36.5,
+   "data_max": "2025-08-05",
+   "d30": 18,
+   "d35": 1,
+   "xja": 25.5,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 26.9,
+   "t29x": 27.8
+  },
+  "Corrubedo": {
+   "n": "Corrubedo",
+   "c": "RIBEIRA",
+   "alt": 30,
+   "lon": -9.0286,
+   "lat": 42.55516,
+   "max": 33.7,
+   "data_max": "2025-08-02",
+   "d30": 14,
+   "d35": 0,
+   "xja": 25.1,
+   "dias_xja": 92,
+   "dias": 365,
+   "t10a": 26.7,
+   "t29x": 27.3
+  }
+ },
+ "dia_10a": {
+  "estacions": 168,
+  "max": [
+   [
+    "San Clodio",
+    43
+   ],
+   [
+    "A Portela",
+    41.2
+   ],
+   [
+    "Míllara",
+    41
+   ],
+   [
+    "As Petarelas",
+    40.9
+   ],
+   [
+    "EVEGA Leiro",
+    40.5
+   ]
+  ],
+  "min": [
+   [
+    "Pedro Murias",
+    51,
+    23.5
+   ],
+   [
+    "Punta Langosteira",
+    5,
+    23.3
+   ],
+   [
+    "Sálvora-Pazo",
+    21,
+    23.2
+   ],
+   [
+    "Fragavella",
+    595,
+    23.1
+   ],
+   [
+    "Foz",
+    73,
+    21.9
+   ]
+  ],
+  "ge40": 10
+ },
+ "dia_29x": {
+  "max": [
+   [
+    "Ourense",
+    42.9
+   ],
+   [
+    "Remuíño",
+    41
+   ],
+   [
+    "A Portela",
+    41
+   ],
+   [
+    "Monforte-CFEA",
+    41
+   ],
+   [
+    "San Clodio",
+    40.8
+   ]
+  ],
+  "ge40": 8
+ },
+ "rede_ge35_algun_dia": 114,
+ "rede_ge40_algun_dia": 15,
+ "relevo": {
+  "san_clodio_mdt": 257.0,
+  "conchada_mdt": 693.0,
+  "san_clodio_conchada_km": 3.4,
+  "perfil_min": 230.0,
+  "perfil_max": 693.0,
+  "sil_san_clodio": [
+   [
+    226.0,
+    [
+     -7.3007,
+     42.4669
+    ]
+   ],
+   [
+    701.0,
+    [
+     -7.2674,
+     42.443
+    ]
+   ]
+  ],
+  "canon_sil": [
+   [
+    226.0,
+    [
+     -7.5333,
+     42.3827
+    ]
+   ],
+   [
+    812.0,
+    [
+     -7.59,
+     42.3759
+    ]
+   ]
+  ],
+  "ourense": [
+   [
+    86.0,
+    [
+     -7.9332,
+     42.3405
+    ]
+   ],
+   [
+    728.0,
+    [
+     -7.75,
+     42.4071
+    ]
+   ]
+  ],
+  "lemos": [
+   [
+    223.0,
+    [
+     -7.62,
+     42.4733
+    ]
+   ],
+   [
+    773.0,
+    [
+     -7.4548,
+     42.44
+    ]
+   ]
+  ],
+  "valdeorras": [
+   [
+    289.0,
+    [
+     -7.0996,
+     42.384
+    ]
+   ],
+   [
+    2119.0,
+    [
+     -6.7958,
+     42.2423
+    ]
+   ]
+  ],
+  "verin": [
+   [
+    365.0,
+    [
+     -7.4479,
+     41.8914
+    ]
+   ],
+   [
+    1076.0,
+    [
+     -7.3502,
+     41.9931
+    ]
+   ]
+  ],
+  "ribeiro": [
+   [
+    65.0,
+    [
+     -8.1244,
+     42.2884
+    ]
+   ],
+   [
+    710.0,
+    [
+     -8.1136,
+     42.265
+    ]
+   ]
+  ],
+  "mdt_Cabeza de Manzaneda": 1749.0,
+  "mdt_Lardeira": 1611.0,
+  "mdt_Xares": 1756.0,
+  "mdt_A Portela": 404.0,
+  "mdt_Ourense": 150.0,
+  "mdt_EVEGA Leiro": 102.0,
+  "mdt_Monforte-CFEA": 329.0,
+  "mdt_Verín-Vilela": 386.0,
+  "mdt_Camariñas": 2.0,
+  "sc_manzaneda_km": 22.5,
+  "sc_camarinas_km": 170.9,
+  "portela_lardeira_km": 20.6
+ },
+ "perfil": [
+  257.0,
+  248.0,
+  242.0,
+  239.0,
+  238.0,
+  235.0,
+  231.0,
+  261.0,
+  327.0,
+  379.0,
+  450.0,
+  504.0,
+  528.0,
+  501.0,
+  509.0,
+  573.0,
+  592.0,
+  576.0,
+  622.0,
+  661.0,
+  693.0
+ ],
+ "effis_ourense_agosto_2025_ha": 139735,
+ "effis_lumes_maiores": [
+  [
+   "A Rúa",
+   37179,
+   "2025-08-14"
+  ],
+  [
+   "A Veiga",
+   25953,
+   "2025-08-15"
+  ],
+  [
+   "Manzaneda",
+   24583,
+   "2025-08-08"
+  ],
+  [
+   "Oímbra",
+   24471,
+   "2025-08-13"
+  ],
+  [
+   "A Mezquita",
+   12026,
+   "2025-08-12"
+  ],
+  [
+   "Maceda",
+   4725,
+   "2025-08-10"
+  ],
+  [
+   "Carballeda de Avia",
+   3096,
+   "2025-08-15"
+  ],
+  [
+   "Vilardevós",
+   1825,
+   "2025-08-14"
+  ]
+ ],
+ "superficie": {
+  "nx": 665,
+  "ny": 667,
+  "bbox": [
+   -9.36,
+   41.8,
+   -6.7,
+   43.8
+  ],
+  "min": 18.3,
+  "max": 33.7,
+  "kb": 78
+ }
+}

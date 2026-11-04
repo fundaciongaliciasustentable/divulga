@@ -1,0 +1,660 @@
+{
+ "dia_laborable": "2026-11-04",
+ "dia_domingo": "2026-11-08",
+ "viaxes_bus_laborable": 10258,
+ "viaxes_bus_domingo": 1705,
+ "viaxes_tren_laborable": 178,
+ "viaxes_tren_domingo": 122,
+ "paradas_bus": 25118,
+ "poboacion_galicia_2025": 2713169,
+ "concellos_sen_bus_domingo": [
+  "A Arnoia",
+  "A Bola",
+  "A Gudiña",
+  "A Mezquita",
+  "A Ribeira de Piquín",
+  "A Veiga",
+  "Alfoz do Castrodouro",
+  "Amoeiro",
+  "Avión",
+  "Baltar",
+  "Baños de Molgas",
+  "Beade",
+  "Calvos de Randín",
+  "Carballeda de Avia",
+  "Carballeda de Valdeorras",
+  "Castrelo de Miño",
+  "Castrelo do Val",
+  "Chandrexa de Queixa",
+  "Cortegada",
+  "Cospeito",
+  "Folgoso do Courel",
+  "Gomesende",
+  "Irixoa",
+  "Larouco",
+  "Laza",
+  "Leiro",
+  "Monfero",
+  "Moraña",
+  "Muíños",
+  "Negueira de Muñiz",
+  "Nogueira de Ramuín",
+  "O Bolo",
+  "O Campo Lameiro",
+  "O Riós",
+  "O Valadouro",
+  "Os Blancos",
+  "Oímbra",
+  "Padrenda",
+  "Parada de Sil",
+  "Petín",
+  "Pontedeva",
+  "Porqueira",
+  "Portas",
+  "Quintela de Leirado",
+  "Rairiz de Veiga",
+  "Ramirás",
+  "Rubiá",
+  "San Amaro",
+  "Santiso",
+  "Sarreaus",
+  "Sober",
+  "Taboadela",
+  "Trazo",
+  "Vilar de Barrio",
+  "Vilar de Santos",
+  "Vilardevós",
+  "Vilariño de Conso",
+  "Vilarmaior"
+ ],
+ "n_concellos_sen_bus_domingo": 58,
+ "concellos_sen_bus_laborable": [
+  "Folgoso do Courel",
+  "Negueira de Muñiz"
+ ],
+ "pob_concellos_sen_bus_domingo": 75795,
+ "concellos_sen_tren": 241,
+ "pob_concellos_con_tren": 1569921,
+ "corredores_laborable": {
+  "A Coruña–Santiago": 57,
+  "Santiago–Vigo Urzaiz": 32,
+  "Santiago–Pontevedra": 47,
+  "Santiago–Ourense": 43,
+  "Lugo–Monforte": 10,
+  "Monforte–Ourense": 16,
+  "Lugo–Ourense": 9,
+  "A Coruña–Lugo": 4
+ },
+ "corredores_domingo": {
+  "A Coruña–Santiago": 45,
+  "Lugo–Monforte": 10
+ },
+ "trens_estacion_laborable": {
+  "Lugo": 13,
+  "Santiago de Compostela-Daniel Castelao": 140,
+  "A Coruña": 70,
+  "Ourense": 80,
+  "Vigo Urzaiz": 33,
+  "Monforte de Lemos": 30
+ },
+ "estacions_servizos_dia": {
+  "A Coruña": 84,
+  "Santiago de Compostela-Daniel Castelao": 100,
+  "Vigo Urzaiz": 44,
+  "Pontevedra": 59,
+  "Ourense": 91,
+  "Lugo": 12,
+  "Monforte de Lemos": 24,
+  "Sarria": 12
+ },
+ "comarcas": {
+  "A Fonsagrada": {
+   "poboacion": 3858,
+   "viaxes_bus_laborable": 23,
+   "viaxes_bus_domingo": 4,
+   "paradas": 114,
+   "tren": 0,
+   "superficie_km2": 582.7,
+   "concellos": {
+    "A Fonsagrada": {
+     "poboacion": 3073,
+     "bus_laborable": 21,
+     "bus_domingo": 4,
+     "paradas": 98
+    },
+    "Negueira de Muñiz": {
+     "poboacion": 236,
+     "bus_laborable": 0,
+     "bus_domingo": 0,
+     "paradas": 3
+    },
+    "A Ribeira de Piquín": {
+     "poboacion": 549,
+     "bus_laborable": 2,
+     "bus_domingo": 0,
+     "paradas": 13
+    }
+   }
+  },
+  "Os Ancares": {
+   "poboacion": 9127,
+   "viaxes_bus_laborable": 58,
+   "viaxes_bus_domingo": 6,
+   "paradas": 199,
+   "tren": 0,
+   "superficie_km2": 1047.9,
+   "concellos": {
+    "Baralla": {
+     "poboacion": 2396,
+     "bus_laborable": 24,
+     "bus_domingo": 4,
+     "paradas": 59
+    },
+    "Becerreá": {
+     "poboacion": 2836,
+     "bus_laborable": 14,
+     "bus_domingo": 4,
+     "paradas": 30
+    },
+    "Cervantes": {
+     "poboacion": 1142,
+     "bus_laborable": 19,
+     "bus_domingo": 2,
+     "paradas": 49
+    },
+    "Navia de Suarna": {
+     "poboacion": 971,
+     "bus_laborable": 5,
+     "bus_domingo": 2,
+     "paradas": 9
+    },
+    "As Nogais": {
+     "poboacion": 914,
+     "bus_laborable": 10,
+     "bus_domingo": 2,
+     "paradas": 15
+    },
+    "Pedrafita do Cebreiro": {
+     "poboacion": 868,
+     "bus_laborable": 20,
+     "bus_domingo": 4,
+     "paradas": 37
+    }
+   }
+  },
+  "Quiroga": {
+   "poboacion": 4855,
+   "viaxes_bus_laborable": 33,
+   "viaxes_bus_domingo": 7,
+   "paradas": 100,
+   "tren": 10,
+   "superficie_km2": 578.3,
+   "concellos": {
+    "Folgoso do Courel": {
+     "poboacion": 921,
+     "bus_laborable": 0,
+     "bus_domingo": 0,
+     "paradas": 6
+    },
+    "Quiroga": {
+     "poboacion": 3040,
+     "bus_laborable": 31,
+     "bus_domingo": 7,
+     "paradas": 79
+    },
+    "Ribas de Sil": {
+     "poboacion": 894,
+     "bus_laborable": 21,
+     "bus_domingo": 7,
+     "paradas": 15
+    }
+   }
+  }
+ },
+ "concellos": {
+  "Santiago de Compostela": {
+   "poboacion": 100965,
+   "bus_laborable": 829,
+   "bus_domingo": 276,
+   "tren_laborable": 93,
+   "paradas": 214,
+   "paradas_1000hab": 2.1,
+   "bus_1000hab": 8.2
+  },
+  "A Coruña": {
+   "poboacion": 251543,
+   "bus_laborable": 945,
+   "bus_domingo": 404,
+   "tren_laborable": 81,
+   "paradas": 123,
+   "paradas_1000hab": 0.5,
+   "bus_1000hab": 3.8
+  },
+  "Vigo": {
+   "poboacion": 294489,
+   "bus_laborable": 698,
+   "bus_domingo": 184,
+   "tren_laborable": 60,
+   "paradas": 158,
+   "paradas_1000hab": 0.5,
+   "bus_1000hab": 2.4
+  },
+  "Lugo": {
+   "poboacion": 100143,
+   "bus_laborable": 263,
+   "bus_domingo": 76,
+   "tren_laborable": 12,
+   "paradas": 370,
+   "paradas_1000hab": 3.7,
+   "bus_1000hab": 2.6
+  },
+  "Monforte de Lemos": {
+   "poboacion": 18933,
+   "bus_laborable": 103,
+   "bus_domingo": 19,
+   "tren_laborable": 20,
+   "paradas": 151,
+   "paradas_1000hab": 8.0,
+   "bus_1000hab": 5.4
+  },
+  "Ourense": {
+   "poboacion": 105769,
+   "bus_laborable": 429,
+   "bus_domingo": 100,
+   "tren_laborable": 76,
+   "paradas": 197,
+   "paradas_1000hab": 1.9,
+   "bus_1000hab": 4.1
+  },
+  "Ames": {
+   "poboacion": 33276,
+   "bus_laborable": 451,
+   "bus_domingo": 151,
+   "tren_laborable": 0,
+   "paradas": 78,
+   "paradas_1000hab": 2.3,
+   "bus_1000hab": 13.6
+  },
+  "Folgoso do Courel": {
+   "poboacion": 921,
+   "bus_laborable": 0,
+   "bus_domingo": 0,
+   "tren_laborable": 0,
+   "paradas": 6,
+   "paradas_1000hab": 6.5,
+   "bus_1000hab": 0.0
+  },
+  "Negueira de Muñiz": {
+   "poboacion": 236,
+   "bus_laborable": 0,
+   "bus_domingo": 0,
+   "tren_laborable": 0,
+   "paradas": 3,
+   "paradas_1000hab": 12.7,
+   "bus_1000hab": 0.0
+  },
+  "Navia de Suarna": {
+   "poboacion": 971,
+   "bus_laborable": 5,
+   "bus_domingo": 2,
+   "tren_laborable": 0,
+   "paradas": 9,
+   "paradas_1000hab": 9.3,
+   "bus_1000hab": 5.1
+  },
+  "Cervantes": {
+   "poboacion": 1142,
+   "bus_laborable": 19,
+   "bus_domingo": 2,
+   "tren_laborable": 0,
+   "paradas": 49,
+   "paradas_1000hab": 42.9,
+   "bus_1000hab": 16.6
+  },
+  "A Fonsagrada": {
+   "poboacion": 3073,
+   "bus_laborable": 21,
+   "bus_domingo": 4,
+   "tren_laborable": 0,
+   "paradas": 98,
+   "paradas_1000hab": 31.9,
+   "bus_1000hab": 6.8
+  },
+  "Ramirás": {
+   "poboacion": 1485,
+   "bus_laborable": 12,
+   "bus_domingo": 0,
+   "tren_laborable": 0,
+   "paradas": 48,
+   "paradas_1000hab": 32.3,
+   "bus_1000hab": 8.1
+  }
+ },
+ "concellos_menos_2000": {
+  "n": 121,
+  "poboacion": 144594,
+  "paradas": 4375,
+  "paradas_1000hab": 30.3
+ },
+ "concellos_mais_50000": {
+  "n": 7,
+  "poboacion": 1000592,
+  "paradas": 1711,
+  "paradas_1000hab": 1.7
+ },
+ "horario_laborable": {
+  "Navia de Suarna": [
+   [
+    "07:15",
+    "Navia de Suarna-Hospital HULA"
+   ],
+   [
+    "10:00",
+    "A POBRA DE NAVIA DE SUARNA-A FONSAGRADA"
+   ],
+   [
+    "13:45",
+    "Navia de Suarna-Hospital Hula"
+   ],
+   [
+    "14:18",
+    "A Pobra de Navia de Suarna-A Fonsagrada"
+   ],
+   [
+    "19:45",
+    "Navia de Suarna-Hospital Hula"
+   ]
+  ],
+  "A Ribeira de Piquín": [
+   [
+    "08:24",
+    "IES Pedregal de Irimia-Barangón"
+   ],
+   [
+    "15:58",
+    "IES Pedregal de Irimia-Barangón"
+   ]
+  ],
+  "Cervantes": [
+   [
+    "07:28",
+    "Navia de Suarna-Hospital HULA"
+   ],
+   [
+    "08:26",
+    "Castelo (San Pedro)-Santa Xusta"
+   ],
+   [
+    "08:52",
+    "San Román-Robledo (Donís)"
+   ],
+   [
+    "09:00",
+    "San Román-A Degrada"
+   ],
+   [
+    "09:02",
+    "CPI de Cervantes-Savane"
+   ],
+   [
+    "09:03",
+    "CPI de Cervantes-Xantes"
+   ],
+   [
+    "09:05",
+    "A Ponte de Doiras-Vilarello II"
+   ],
+   [
+    "09:05",
+    "Quindous-Vilarnovo"
+   ],
+   [
+    "09:05",
+    "San Román-Vilaspasantes"
+   ],
+   [
+    "13:35",
+    "Navia de Suarna-Hospital Hula"
+   ],
+   [
+    "16:25",
+    "CPI de Cervantes-Savane"
+   ],
+   [
+    "16:25",
+    "CPI de Cervantes-Xantes"
+   ],
+   [
+    "16:25",
+    "Castelo (San Pedro)-Santa Xusta"
+   ],
+   [
+    "16:25",
+    "San Román-A Degrada"
+   ],
+   [
+    "16:25",
+    "San Román-Robledo (Donís)"
+   ],
+   [
+    "16:25",
+    "San Román-Vilaspasantes"
+   ],
+   [
+    "16:50",
+    "A Ponte de Doiras-Vilarello II"
+   ],
+   [
+    "16:50",
+    "Quindous-Vilarnovo"
+   ],
+   [
+    "19:35",
+    "Navia de Suarna-Hospital Hula"
+   ]
+  ]
+ },
+ "liñas_paradas_courel": [
+  "Quiroga-Seoane do Caurel · Seoane do Courel-Pedrafita do Cebreiro · Seoane do Courel-Quiroga",
+  "Quiroga-Seoane do Caurel · Seoane do Courel-Quiroga",
+  "Seoane do Courel-Pedrafita do Cebreiro"
+ ],
+ "lugares": 36190,
+ "lugares_hospital_mediana_km": 16.4,
+ "lugares_hospital_mais_30km": 4533,
+ "lugares_hospital_mais_40km": 517,
+ "lugares_mais_lonxe_hospital": [
+  {
+   "nome": "Escanlar",
+   "concello": "Negueira de Muñiz",
+   "poboacion_2024": 1,
+   "dist_hospital_km": 58.7,
+   "dist_centro_saude_km": 5.3,
+   "lonlat": [
+    -6.83221,
+    43.14888
+   ]
+  },
+  {
+   "nome": "Boelle",
+   "concello": "Negueira de Muñiz",
+   "poboacion_2024": 0,
+   "dist_hospital_km": 58.5,
+   "dist_centro_saude_km": 5.4,
+   "lonlat": [
+    -6.83941,
+    43.15966
+   ]
+  },
+  {
+   "nome": "Peliceira",
+   "concello": "Navia de Suarna",
+   "poboacion_2024": 0,
+   "dist_hospital_km": 57.4,
+   "dist_centro_saude_km": 14,
+   "lonlat": [
+    -6.8352,
+    42.94202
+   ]
+  },
+  {
+   "nome": "Entralgo",
+   "concello": "Negueira de Muñiz",
+   "poboacion_2024": 9,
+   "dist_hospital_km": 56.6,
+   "dist_centro_saude_km": 4.3,
+   "lonlat": [
+    -6.86486,
+    43.16322
+   ]
+  },
+  {
+   "nome": "Vilagudín",
+   "concello": "Negueira de Muñiz",
+   "poboacion_2024": 0,
+   "dist_hospital_km": 56.3,
+   "dist_centro_saude_km": 5,
+   "lonlat": [
+    -6.87242,
+    43.17289
+   ]
+  },
+  {
+   "nome": "Vilar",
+   "concello": "Negueira de Muñiz",
+   "poboacion_2024": 16,
+   "dist_hospital_km": 55.9,
+   "dist_centro_saude_km": 2.5,
+   "lonlat": [
+    -6.86525,
+    43.14132
+   ]
+  },
+  {
+   "nome": "Sanformar",
+   "concello": "Negueira de Muñiz",
+   "poboacion_2024": 0,
+   "dist_hospital_km": 55.8,
+   "dist_centro_saude_km": 3.4,
+   "lonlat": [
+    -6.87317,
+    43.15752
+   ]
+  },
+  {
+   "nome": "A Madalena",
+   "concello": "Lobios",
+   "poboacion_2024": 1,
+   "dist_hospital_km": 55.7,
+   "dist_centro_saude_km": 7.4,
+   "lonlat": [
+    -8.16828,
+    41.87346
+   ]
+  },
+  {
+   "nome": "Castelo",
+   "concello": "Negueira de Muñiz",
+   "poboacion_2024": 3,
+   "dist_hospital_km": 55.5,
+   "dist_centro_saude_km": 2.3,
+   "lonlat": [
+    -6.86503,
+    43.12401
+   ]
+  },
+  {
+   "nome": "Torneiros",
+   "concello": "Lobios",
+   "poboacion_2024": 62,
+   "dist_hospital_km": 55.5,
+   "dist_centro_saude_km": 4.8,
+   "lonlat": [
+    -8.111,
+    41.85858
+   ]
+  },
+  {
+   "nome": "Río da Raseda",
+   "concello": "Negueira de Muñiz",
+   "poboacion_2024": 0,
+   "dist_hospital_km": 55.3,
+   "dist_centro_saude_km": 4.2,
+   "lonlat": [
+    -6.8828,
+    43.16681
+   ]
+  },
+  {
+   "nome": "Os Baños",
+   "concello": "Lobios",
+   "poboacion_2024": 23,
+   "dist_hospital_km": 55,
+   "dist_centro_saude_km": 4.3,
+   "lonlat": [
+    -8.10617,
+    41.86249
+   ]
+  }
+ ],
+ "distancias_concello": {
+  "Folgoso do Courel": {
+   "lugares": 50,
+   "hospital_mediana_km": 26.05,
+   "hospital_max_km": 34.2,
+   "centro_saude_max_km": 10.6,
+   "instituto_mediana_km": 5.050000000000001
+  },
+  "Navia de Suarna": {
+   "lugares": 93,
+   "hospital_mediana_km": 45.0,
+   "hospital_max_km": 57.4,
+   "centro_saude_max_km": 14,
+   "instituto_mediana_km": 5.4
+  },
+  "Negueira de Muñiz": {
+   "lugares": 26,
+   "hospital_mediana_km": 53.1,
+   "hospital_max_km": 58.7,
+   "centro_saude_max_km": 5.4,
+   "instituto_mediana_km": 14.55
+  }
+ },
+ "alturas_m": {
+  "Escanlar (Negueira de Muñiz)": 679,
+  "Peliceira (Navia de Suarna)": 1154,
+  "Teixeira (Folgoso do Courel)": 1141,
+  "A Fonsagrada (vila)": 961,
+  "Murias de Rao (Navia de Suarna)": 727,
+  "Entralgo (Negueira de Muñiz)": 241,
+  "A Pobra de Navia (parada do bus)": 296,
+  "Seoane do Courel": 701
+ },
+ "parada_mais_proxima": {
+  "Murias de Rao": {
+   "parada": "Xantes",
+   "km_linea_recta": 8.3,
+   "viaxes_mercores": 2,
+   "concello": "Cervantes"
+  },
+  "Escanlar": {
+   "parada": "Negueira de Muñiz (concello)",
+   "km_linea_recta": 5.2,
+   "viaxes_mercores": 0,
+   "concello": "Negueira de Muñiz"
+  },
+  "Entralgo": {
+   "parada": "Negueira de Muñiz (concello)",
+   "km_linea_recta": 3.9,
+   "viaxes_mercores": 0,
+   "concello": "Negueira de Muñiz"
+  },
+  "Teixeira": {
+   "parada": "LOUZARELA I",
+   "km_linea_recta": 2.0,
+   "viaxes_mercores": 2,
+   "concello": "Pedrafita do Cebreiro"
+  }
+ },
+ "km_murias_rao_pobra_navia": 11.7
+}

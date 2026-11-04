@@ -1,0 +1,271 @@
+{
+ "slug": "costa-morte-courel",
+ "consulta": "2026-11-04",
+ "paradas": [
+  {
+   "nome": "Da Costa da Morte ao Courel",
+   "onde": null,
+   "camara": {
+    "centro": [
+     -8.05,
+     42.75
+    ],
+    "zoom": 7.1,
+    "inclinacion": 40.0,
+    "rumbo": 0.0
+   },
+   "capa": "ruta",
+   "marcas": [],
+   "dato": null,
+   "dato_l": null,
+   "fonte": "Baixa para comezar. O relevo está exaxerado unha vez e media."
+  },
+  {
+   "nome": "Onde remata a terra",
+   "onde": "Fisterra · A Coruña",
+   "camara": {
+    "centro": [
+     -9.272,
+     42.882
+    ],
+    "zoom": 12.0,
+    "inclinacion": 65.0,
+    "rumbo": -30.0
+   },
+   "capa": null,
+   "marcas": [
+    "Monte Facho"
+   ],
+   "dato": "237 m",
+   "dato_l": "altura máxima do Monte Facho sobre o mar",
+   "fonte": "Altura: MDT de 25 m do IGN (PNOA-LiDAR)."
+  },
+  {
+   "nome": "A costa do vento",
+   "onde": "Costa da Morte · Muxía e Camariñas",
+   "camara": {
+    "centro": [
+     -9.19,
+     43.09
+    ],
+    "zoom": 10.2,
+    "inclinacion": 55.0,
+    "rumbo": 20.0
+   },
+   "capa": "vento",
+   "marcas": [
+    "Cabo Touriñán",
+    "Cabo Vilán",
+    "Muxía"
+   ],
+   "dato": "4,3 m/s",
+   "dato_l": "vento medio previsto en Cabo Touriñán do 4 ao 7 de novembro de 2026; en Santiago, 2,4",
+   "fonte": "Modelo WRF de MeteoGalicia, execución do 4/11/2026 ás 00 UTC, media de 25 pasos de 3 h. Cálculo FGS."
+  },
+  {
+   "nome": "Un río que cae ao mar",
+   "onde": "Monte Pindo e o Xallas · Carnota, Dumbría e Mazaricos",
+   "camara": {
+    "centro": [
+     -9.04,
+     42.95
+    ],
+    "zoom": 10.4,
+    "inclinacion": 60.0,
+    "rumbo": 15.0
+   },
+   "capa": "xallas",
+   "marcas": [
+    "Monte Pindo (627 m)",
+    "Aforo de Mazaricos"
+   ],
+   "dato": "×5,3",
+   "dato_l": "o caudal do Xallas en Mazaricos no temporal de outubro de 2026: de 3,0 a 16,1 m³/s",
+   "fonte": "Augas de Galicia e MeteoGalicia, caudais de 10 minutos non validados, episodio do 5 ao 11/10/2026. Masas de auga: Augas de Galicia. Altura: MDT do IGN."
+  },
+  {
+   "nome": "Aldeas con xente, pero menos",
+   "onde": "Terra de Soneira e Xallas · A Coruña",
+   "camara": {
+    "centro": [
+     -8.99,
+     43.06
+    ],
+    "zoom": 9.8,
+    "inclinacion": 50.0,
+    "rumbo": 90.0
+   },
+   "capa": "aldeas-soneira",
+   "marcas": [
+    "Vimianzo",
+    "Zas",
+    "Santa Comba"
+   ],
+   "dato": "426 de 463",
+   "dato_l": "lugares de Camariñas, Vimianzo, Zas, Santa Comba e Mazaricos que perderon veciños entre 2000 e 2025",
+   "fonte": "INE, Nomenclátor (padrón continuo por unidade poboacional), 2000 e 2025; posicións do IET. Cálculo FGS."
+  },
+  {
+   "nome": "A cidade sae do seu concello",
+   "onde": "Santiago e o val do Sar · A Coruña",
+   "camara": {
+    "centro": [
+     -8.56,
+     42.87
+    ],
+    "zoom": 9.9,
+    "inclinacion": 50.0,
+    "rumbo": 100.0
+   },
+   "capa": "santiago",
+   "marcas": [
+    "Santiago",
+    "Ames",
+    "Teo"
+   ],
+   "dato": "×3,2",
+   "dato_l": "poboación de Ames entre os censos de 1991 (10.011) e 2021 (32.062)",
+   "fonte": "INE, poboación dos concellos nos censos, harmonizada aos concellos actuais. Cálculo FGS."
+  },
+  {
+   "nome": "O río como corredor",
+   "onde": "Pico Sacro e o Ulla · Boqueixón e Vedra",
+   "camara": {
+    "centro": [
+     -8.44,
+     42.79
+    ],
+    "zoom": 11.2,
+    "inclinacion": 65.0,
+    "rumbo": 120.0
+   },
+   "capa": "ulla",
+   "marcas": [
+    "Pico Sacro (527 m)",
+    "A Ponte Ulla"
+   ],
+   "dato": "1.633 ha",
+   "dato_l": "protexidas no Sistema Fluvial Ulla-Deza, unha fita estreita ao longo dos dous ríos",
+   "fonte": "Espazos naturais protexidos: © Instituto de Estudos do Territorio, Xunta de Galicia. Altura: MDT do IGN."
+  },
+  {
+   "nome": "Terra de leite",
+   "onde": "O Deza e a Dorsal · Pontevedra",
+   "camara": {
+    "centro": [
+     -8.12,
+     42.72
+    ],
+    "zoom": 8.9,
+    "inclinacion": 50.0,
+    "rumbo": 20.0
+   },
+   "capa": "vacas",
+   "marcas": [
+    "Lalín",
+    "Silleda"
+   ],
+   "dato": "45 vacas/km²",
+   "dato_l": "en Lalín en 2025 (14.794 vacas); a media de Galicia é de 17",
+   "fonte": "IGE, táboa 62 (efectivos de gando bovino, Consellería do Medio Rural), 2025; superficie municipal do IGE. Cálculo FGS."
+  },
+  {
+   "nome": "O Miño cava o seu canón",
+   "onde": "Ribeira Sacra · Chantada e Taboada",
+   "camara": {
+    "centro": [
+     -7.7,
+     42.59
+    ],
+    "zoom": 12.0,
+    "inclinacion": 72.0,
+    "rumbo": 150.0
+   },
+   "capa": null,
+   "marcas": [
+    "Belesar"
+   ],
+   "dato": "460 m",
+   "dato_l": "de desnivel entre o río en Belesar (207 m) e o bordo do canón (669 m)",
+   "fonte": "Alturas: MDT de 25 m do IGN, nun cadrado de 8 × 9 km arredor de Belesar."
+  },
+  {
+   "nome": "A cunca que acumula calor",
+   "onde": "Terra de Lemos · Lugo",
+   "camara": {
+    "centro": [
+     -7.51,
+     42.52
+    ],
+    "zoom": 9.0,
+    "inclinacion": 55.0,
+    "rumbo": 120.0
+   },
+   "capa": "tmax",
+   "marcas": [
+    "Monforte de Lemos"
+   ],
+   "dato": "27 días",
+   "dato_l": "de 35 °C ou máis na estación de Monforte en 2025; en Camariñas, ningún",
+   "fonte": "MeteoGalicia, datos diarios das estacións, 2025 (só as que teñen 330 días ou máis con dato). Cálculo FGS."
+  },
+  {
+   "nome": "O teito do voo",
+   "onde": "Serra do Courel · Folgoso do Courel e Quiroga",
+   "camara": {
+    "centro": [
+     -7.11,
+     42.6
+    ],
+    "zoom": 11.1,
+    "inclinacion": 64.0,
+    "rumbo": 190.0
+   },
+   "capa": "lume",
+   "marcas": [
+    "Formigueiros (1.639 m)"
+   ],
+   "dato": "1.639 m",
+   "dato_l": "Pico dos Formigueiros, o cumio máis alto da serra",
+   "fonte": "Altura: MDT do IGN. Perímetros queimados: Copernicus EFFIS (JRC), 2016–2025."
+  },
+  {
+   "nome": "Un concello de maiores",
+   "onde": "Seoane e as aldeas · Folgoso do Courel",
+   "camara": {
+    "centro": [
+     -7.2,
+     42.63
+    ],
+    "zoom": 11.4,
+    "inclinacion": 62.0,
+    "rumbo": 230.0
+   },
+   "capa": "aldeas-courel",
+   "marcas": [
+    "Folgoso do Courel"
+   ],
+   "dato": "45 %",
+   "dato_l": "da poboación de Folgoso do Courel ten 65 anos ou máis (2025); en Galicia, o 27 %",
+   "fonte": "IGE (poboación por idade, 2025); INE, censos e Nomenclátor 2000–2025; posicións do IET. Cálculo FGS."
+  },
+  {
+   "nome": "Un país en pendente",
+   "onde": null,
+   "camara": {
+    "centro": [
+     -8.05,
+     42.75
+    ],
+    "zoom": 7.1,
+    "inclinacion": 50.0,
+    "rumbo": -15.0
+   },
+   "capa": "ruta",
+   "marcas": [],
+   "dato": null,
+   "dato_l": null,
+   "fonte": "Todas as capas, ao día, en Mapas Galicia Sustentable ."
+  }
+ ]
+}

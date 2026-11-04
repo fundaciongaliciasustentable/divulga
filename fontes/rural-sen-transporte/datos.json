@@ -1,0 +1,323 @@
+{
+ "slug": "rural-sen-transporte",
+ "dia_laborable": "2026-11-04",
+ "dia_domingo": "2026-11-08",
+ "paradas": [
+  {
+   "onde": null,
+   "titulo": "Ata onde chega o bus",
+   "camara": {
+    "centro": [
+     -7.95,
+     42.78
+    ],
+    "zoom": 7.2,
+    "inclinacion": 35.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "bus",
+    "tren"
+   ],
+   "marcas": [],
+   "dato": null,
+   "dato_l": null,
+   "texto": [
+    "Todos os autobuses da Xunta e todos os trens de Renfe dun mércores e dun domingo de novembro de 2026, sobre o relevo de Galicia. Onde pasan moitos, onde pasan poucos e que queda lonxe cando non pasa ningún."
+   ],
+   "fonte": "Baixa para comezar."
+  },
+  {
+   "onde": "Galicia · mércores 4 de novembro de 2026",
+   "titulo": "Un día laborable",
+   "camara": {
+    "centro": [
+     -8.0,
+     42.75
+    ],
+    "zoom": 7.6,
+    "inclinacion": 50.0,
+    "rumbo": -10.0
+   },
+   "capas": [
+    "bus",
+    "tren",
+    "estacions"
+   ],
+   "marcas": [],
+   "dato": "10.258 viaxes de bus",
+   "dato_l": "programadas na rede autonómica da Xunta, e 178 de tren",
+   "texto": [
+    "Cada liña une paradas consecutivas e o groso indica cantas viaxes pasan por ese tramo ese día. A rede chega a case todo o país, pero a frecuencia xúntase no eixo atlántico e arredor das cidades."
+   ],
+   "fonte": "Cálculo FGS a partir dos horarios publicados (GTFS) da Xunta no Punto de Acceso Nacional e de Renfe, capas «pulso» de Mapas Galicia Sustentable. Non inclúe os buses urbanos dos concellos. Paradas agrupadas nunha grella de ~2 km."
+  },
+  {
+   "onde": "Galicia · domingo 8 de novembro de 2026",
+   "titulo": "O domingo, a rede encolle",
+   "camara": {
+    "centro": [
+     -7.75,
+     42.5
+    ],
+    "zoom": 7.75,
+    "inclinacion": 50.0,
+    "rumbo": 10.0
+   },
+   "capas": [
+    "bus-domingo",
+    "sendomingo"
+   ],
+   "marcas": [
+    "Ourense"
+   ],
+   "dato": "1.705 viaxes de bus",
+   "dato_l": "un 83 % menos ca o mércores; o tren pasa de 178 a 122",
+   "texto": [
+    "En 58 concellos, onde viven 75.795 persoas, non para ningún bus da Xunta en todo o domingo. 43 deles están na provincia de Ourense."
+   ],
+   "fonte": "Cálculo FGS a partir do GTFS da Xunta (NAP) e do Padrón do INE a 1/1/2025. Un bus conta nun concello se ten algunha parada nel."
+  },
+  {
+   "onde": "Eixo Atlántico · da Coruña a Vigo",
+   "titulo": "O corredor ben servido",
+   "camara": {
+    "centro": [
+     -8.62,
+     42.8
+    ],
+    "zoom": 8.2,
+    "inclinacion": 60.0,
+    "rumbo": -8.0
+   },
+   "capas": [
+    "tren",
+    "estacions",
+    "bus"
+   ],
+   "marcas": [
+    "A Coruña",
+    "Santiago",
+    "Pontevedra",
+    "Vigo"
+   ],
+   "dato": "57 trens",
+   "dato_l": "entre A Coruña e Santiago nun mércores; 32 entre Santiago e Vigo",
+   "texto": [
+    "Pola liña atlántica pasan a alta velocidade, os Avant e os media distancia. Arredor de Santiago o bus interurbano é case unha rede de cidade: 829 viaxes paran no concello de Santiago e 451 no de Ames."
+   ],
+   "fonte": "Cálculo FGS a partir do GTFS de Renfe e da Xunta. Dous trens coa mesma hora nas dúas estacións (acoplados) contan como un."
+  },
+  {
+   "onde": "Lugo · Monforte de Lemos · Ourense",
+   "titulo": "A liña do interior",
+   "camara": {
+    "centro": [
+     -7.62,
+     42.66
+    ],
+    "zoom": 8.6,
+    "inclinacion": 58.0,
+    "rumbo": -25.0
+   },
+   "capas": [
+    "tren",
+    "estacions"
+   ],
+   "marcas": [
+    "Lugo",
+    "Monforte",
+    "Ourense"
+   ],
+   "dato": "10 trens",
+   "dato_l": "entre Lugo e Monforte nun mércores, cinco en cada sentido; entre A Coruña e Lugo, 4",
+   "texto": [
+    "Lugo ten 100.143 habitantes, case os mesmos ca Santiago. Pero se entre Santiago e A Coruña circulan 57 trens nun mércores, entre Lugo e A Coruña son 4. De Monforte a Ourense hai 16."
+   ],
+   "fonte": "Cálculo FGS a partir do GTFS de Renfe: trens distintos que paran nas dúas estacións. O tamaño de cada estación, servizos ao día da capa «estacions-tren» de Mapas Galicia Sustentable. Poboación: INE, Padrón a 1/1/2025."
+  },
+  {
+   "onde": "Terra de Celanova · Ourense",
+   "titulo": "Paradas hai; faltan viaxes",
+   "camara": {
+    "centro": [
+     -8.02,
+     42.13
+    ],
+    "zoom": 9.6,
+    "inclinacion": 55.0,
+    "rumbo": 5.0
+   },
+   "capas": [
+    "viaxes"
+   ],
+   "marcas": [
+    "Ramirás",
+    "Celanova",
+    "Pontedeva"
+   ],
+   "dato": "30,3 paradas por 1.000 hab.",
+   "dato_l": "nos 121 concellos de menos de 2.000 habitantes; 1,7 nas sete cidades, que teñen ademais bus urbano propio",
+   "texto": [
+    "Ramirás ten 48 paradas para 1.485 veciños. O mércores pararon alí 12 viaxes; o domingo, ningunha. O mapa colorea cada concello polas viaxes de bus que tivo ese mércores."
+   ],
+   "fonte": "Paradas por habitante e viaxes por concello: cálculo FGS a partir do GTFS da Xunta (25.118 paradas) e do Padrón do INE a 1/1/2025."
+  },
+  {
+   "onde": "A Fonsagrada · Lugo",
+   "titulo": "Unha comarca sen tren",
+   "camara": {
+    "centro": [
+     -7.02,
+     43.16
+    ],
+    "zoom": 10.1,
+    "inclinacion": 60.0,
+    "rumbo": -35.0
+   },
+   "capas": [
+    "paradas",
+    "viaxes"
+   ],
+   "marcas": [
+    "A Fonsagrada",
+    "Negueira de Muñiz",
+    "A Ribeira de Piquín"
+   ],
+   "dato": "23 viaxes de bus",
+   "dato_l": "pararon o mércores na comarca da Fonsagrada (3.858 habitantes en 583 km²); o domingo, 4",
+   "texto": [
+    "Ningún dos tres concellos ten estación. As dúas viaxes que pararon na Ribeira de Piquín eran da liña do instituto Pedregal de Irimia: unha ás 8:24 e outra ás 15:58."
+   ],
+   "fonte": "Cálculo FGS a partir do GTFS da Xunta (NAP); superficie, Mapas Galicia Sustentable (perfil-concellos)."
+  },
+  {
+   "onde": "Negueira de Muñiz · Lugo",
+   "titulo": "O lugar máis lonxe dun hospital",
+   "camara": {
+    "centro": [
+     -6.87,
+     43.15
+    ],
+    "zoom": 11.6,
+    "inclinacion": 66.0,
+    "rumbo": 40.0
+   },
+   "capas": [
+    "lonxe",
+    "paradas"
+   ],
+   "marcas": [
+    "Escanlar",
+    "Entralgo",
+    "Negueira"
+   ],
+   "dato": "58,7 km",
+   "dato_l": "en liña recta desde Escanlar ao hospital máis próximo, a maior distancia dos 36.190 lugares de Galicia",
+   "texto": [
+    "Negueira, 236 veciños, ten tres paradas de bus; nin o mércores nin o domingo tiñan viaxe ningunha. Os seus 26 lugares están, de mediana, a 53 km en liña recta dun hospital. Por estrada, polo val encaixado do Navia, son bastantes máis."
+   ],
+   "fonte": "Distancia en liña recta: capa «distancia-servizos» de Mapas Galicia Sustentable (cálculo FGS con lugares do IET e hospitais do SERGAS). Escanlar tiña 1 habitante en 2024."
+  },
+  {
+   "onde": "Os Ancares · Navia de Suarna",
+   "titulo": "Unha mañá para ir ao hospital",
+   "camara": {
+    "centro": [
+     -6.94,
+     42.945
+    ],
+    "zoom": 11.2,
+    "inclinacion": 50.0,
+    "rumbo": -5.0
+   },
+   "capas": [
+    "paradas"
+   ],
+   "marcas": [
+    "A Pobra de Navia",
+    "Murias de Rao"
+   ],
+   "dato": "1 h 40 min",
+   "dato_l": "dura o bus da Pobra de Navia ao Hospital Lucus Augusti de Lugo: sae ás 7:15 e volve ás 12:15 ou ás 18:15",
+   "texto": [
+    "Navia de Suarna, 971 veciños, tivo cinco viaxes de bus o mércores. Murias de Rao, 26 habitantes, está a 727 metros de altura e a 11,7 km en liña recta da Pobra, onde para o bus, 431 metros máis abaixo."
+   ],
+   "fonte": "Horarios: GTFS da Xunta (NAP), mércores 4/11/2026. Alturas: MDT de 25 m do IGN. Habitantes: INE (2025) e, do lugar, padrón 2024 vía IET."
+  },
+  {
+   "onde": "Serra do Courel · Lugo",
+   "titulo": "Seis paradas, ningún bus",
+   "camara": {
+    "centro": [
+     -7.13,
+     42.64
+    ],
+    "zoom": 11.0,
+    "inclinacion": 68.0,
+    "rumbo": 160.0
+   },
+   "capas": [
+    "paradas"
+   ],
+   "marcas": [
+    "Seoane do Courel",
+    "Teixeira",
+    "Folgoso"
+   ],
+   "dato": "0 viaxes",
+   "dato_l": "de bus o mércores 4 e o domingo 8 de novembro en Folgoso do Courel (921 habitantes)",
+   "texto": [
+    "As súas paradas son das liñas Quiroga–Seoane do Courel e Seoane–Pedrafita do Cebreiro, pero ningunha tiña viaxes eses dous días no horario publicado. Os 50 lugares do concello están, de mediana, a 26 km en liña recta dun hospital; Teixeira, a 1.141 metros, a 34."
+   ],
+   "fonte": "GTFS da Xunta (NAP); distancias, capa «distancia-servizos» (cálculo FGS); altura, MDT de 25 m do IGN."
+  },
+  {
+   "onde": "Galicia",
+   "titulo": "Onde o hospital queda lonxe",
+   "camara": {
+    "centro": [
+     -7.75,
+     42.72
+    ],
+    "zoom": 7.5,
+    "inclinacion": 42.0,
+    "rumbo": -5.0
+   },
+   "capas": [
+    "lonxe"
+   ],
+   "marcas": [],
+   "dato": "4.533 lugares",
+   "dato_l": "a máis de 30 km en liña recta do hospital máis próximo; a mediana galega é de 16,4 km",
+   "texto": [
+    "Máis da metade (2.501) están na provincia de Lugo: na Terra Chá, no Ortegal e na montaña oriental; outros, na Paradanta e na Baixa Limia. Os concellos sen bus o domingo están sobre todo en Ourense: son dúas formas distintas de quedar lonxe."
+   ],
+   "fonte": "Capa «distancia-servizos» de Mapas Galicia Sustentable: cálculo FGS sobre 36.190 lugares da toponimia oficial (IET) e os hospitais do SERGAS. Non é distancia por estrada."
+  },
+  {
+   "onde": null,
+   "titulo": "O transporte, condición para vivir no rural",
+   "camara": {
+    "centro": [
+     -7.95,
+     42.78
+    ],
+    "zoom": 7.2,
+    "inclinacion": 40.0,
+    "rumbo": 10.0
+   },
+   "capas": [
+    "bus",
+    "tren"
+   ],
+   "marcas": [],
+   "dato": "30 %",
+   "dato_l": "das emisións brutas de Galicia en 2024 viñeron do transporte, o primeiro sector emisor",
+   "texto": [
+    "Onde o bus pasa dúas veces ao día, ou ningunha, o coche é obrigatorio para traballar, estudar ou ir ao médico. Un rural produtivo e habitado precisa horarios que encaixen coa vida de quen o habita: rutas escolares abertas a todos, transporte á demanda e enlaces co tren e co hospital. Ese mesmo transporte é a vía para baixar as emisións do sector que máis emite."
+   ],
+   "fonte": "Emisións: Ogacli (ogacli.org), a partir do inventario do MITECO, 5,03 de 16,59 Mt CO₂eq en 2024."
+  }
+ ]
+}
