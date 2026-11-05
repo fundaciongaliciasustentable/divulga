@@ -46,7 +46,7 @@ CATEGORIAS = {
     "Turismo": "Economía e vivenda", "Mobilidade": "Economía e vivenda",
     "Enerxía": "Enerxía e sustentabilidade", "Sustentabilidade": "Enerxía e sustentabilidade",
     "Patrimonio": "Patrimonio e cultura", "Camiño de Santiago": "Patrimonio e cultura",
-    "Lecturas": "Patrimonio e cultura",
+    "Lecturas": "Patrimonio e cultura", "Documentais": "Patrimonio e cultura",
 }
 
 

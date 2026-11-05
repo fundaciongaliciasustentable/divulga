@@ -739,5 +739,17 @@
     ],
     "formato": "Biblioteca",
     "fontes": "Selección FGS · portadas de Open Library"
+  },
+  {
+    "slug": "filmoteca-sustentable",
+    "titulo": "Filmoteca Sustentable",
+    "entradilla": "36 documentais para entender a crise ecosocial e ver saídas, de Koyaanisqatsi e Home a Demain e Honeyland. Fai parella coa Biblioteca Sustentable e medra co tempo.",
+    "data": "2026-11-04",
+    "temas": [
+      "Documentais",
+      "Sustentabilidade"
+    ],
+    "formato": "Filmoteca",
+    "fontes": "Selección FGS · carteis da Wikipedia"
   }
 ]
