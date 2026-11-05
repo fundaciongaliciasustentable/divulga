@@ -1,0 +1,46 @@
+/* Divulga · estilos comúns dos voos de cámara (vai con assets/js/voo.js).
+   A peza define --ink, --paper, --muted, --line e --acento no seu :root. */
+.voo{position:relative}
+.voo-mapa{position:sticky;top:0;height:100vh;height:100svh;width:100%}
+.voo-pasos{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;pointer-events:none;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.paso{min-height:95vh;display:flex;align-items:center}
+.paso:first-child{min-height:100vh}
+.paso:last-child{min-height:110vh}
+.paso.alto{min-height:140vh}
+.paso > div{pointer-events:auto;max-width:27rem;padding:1.3rem 1.5rem 1.4rem;
+  background:var(--cadro,rgba(14,16,18,.86));color:var(--ink);border-radius:6px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--line,#2a2d30)}
+.paso .onde{font:700 .72rem/1 var(--gs-font-corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--acento,#c9a86a);margin:0 0 .6rem}
+.paso h1,.paso h2{font-family:var(--gs-font-display);font-weight:700;line-height:1.1;margin:0 0 .6rem;text-wrap:balance}
+.paso h1{font-size:clamp(2rem,4.6vw,3rem)}
+.paso h1 em{font-weight:400}
+.paso h2{font-size:1.6rem}
+.paso .dato{font:700 2.6rem/1 var(--gs-font-chart-num,system-ui);margin:.2rem 0 .1rem;font-variant-numeric:tabular-nums}
+.paso .dato small{font-size:1rem;font-weight:600;color:var(--muted);margin-left:.25rem}
+.paso .dato-l{font-size:.8rem;color:var(--muted);margin:0 0 .8rem}
+.paso p{margin:0 0 .6rem;line-height:1.6}
+.paso p:last-child{margin-bottom:0}
+.paso a{color:var(--ink);text-underline-offset:.2em}
+.paso ul{margin:.2rem 0 .6rem;padding-left:1.1rem}
+.paso li{margin-bottom:.3rem;line-height:1.5}
+.paso .fonte{font-size:.78rem;color:var(--muted)}
+.paso .fonte a{color:inherit}
+.paso .lenda{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.78rem;color:var(--muted);margin:.2rem 0 .7rem}
+.paso .lenda i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.paso .lenda i.l{border-radius:1px;height:3px;width:14px;vertical-align:3px}
+.paso .lenda i.c{border-radius:2px}
+.voo-marca{font:700 12px/1 var(--gs-font-corpo);color:#f2f0e8;background:rgba(14,16,18,.78);
+  padding:4px 7px;border-radius:3px;white-space:nowrap;pointer-events:none;
+  border-bottom:2px solid var(--acento,#c9a86a);transform:translateY(-6px)}
+.voo-fontes{max-width:62rem;margin:0 auto;padding-block:48px;color:var(--ink);font-size:.85rem;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.voo-fontes h2{font-family:var(--gs-font-display);font-size:1.4rem;margin:0 0 .8rem}
+.voo-fontes ul{padding-left:1.1rem;margin:0}
+.voo-fontes li{margin-bottom:.4rem;color:var(--muted)}
+.voo-fontes a{color:var(--ink)}
+.maplibregl-ctrl-attrib{font-size:11px}
+@media (max-width:700px){
+  .paso{align-items:flex-end;min-height:100vh}
+  .paso > div{max-width:none;margin-bottom:1.5rem}
+}

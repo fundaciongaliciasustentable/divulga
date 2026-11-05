@@ -1,0 +1,850 @@
+{
+ "zonas_producion": 84,
+ "zonas_por_clase": {
+  "A": 9,
+  "B": 64,
+  "C": 11
+ },
+ "poligonos_bateas": 71,
+ "poligonos_por_ria": {
+  "Vigo": 12,
+  "Cedeira": 1,
+  "Ares": 1,
+  "Corme": 1,
+  "Muros-Noia": 4,
+  "Arousa": 26,
+  "Pontevedra": 8,
+  "Barqueiro": 2,
+  "Viveiro": 3,
+  "Ares-Betanzos": 4,
+  "Barizo": 1,
+  "Corcubion": 2,
+  "Camariñas": 2,
+  "Ortigueira": 1,
+  "Ferrol": 2,
+  "Baiona": 1
+ },
+ "bateas_km2_total": 62.7,
+ "bateas_km2_por_ria": {
+  "Arousa": 43.1,
+  "Vigo": 6.46,
+  "Pontevedra": 5.24,
+  "Muros-Noia": 2.32,
+  "Ares-Betanzos": 2.08,
+  "Camariñas": 0.96,
+  "Ferrol": 0.61,
+  "Corcubion": 0.55,
+  "Viveiro": 0.37,
+  "Barqueiro": 0.22,
+  "Cedeira": 0.21,
+  "Baiona": 0.14,
+  "Ortigueira": 0.13,
+  "Barizo": 0.11,
+  "Corme": 0.11,
+  "Ares": 0.08
+ },
+ "primeira_venda_total_eur": 407783173,
+ "lonxas_con_vendas": 60,
+ "dias_con_vendas": 327,
+ "grupos_galicia_eur": {
+  "Peixes": 300451849,
+  "Bivalvos": 47754165,
+  "Cefalópodos": 29375683,
+  "Crustáceos": 21375727,
+  "Equinodermos": 6850330,
+  "Resto das descargas": 1346296,
+  "Algas": 322472,
+  "Poliquetos": 293987,
+  "Gasterópodos": 12665
+ },
+ "especies_galicia_top": {
+  "Pescada": 99016256,
+  "Peixe sapo": 25883823,
+  "Sardiña": 21810179,
+  "Ameixa xaponesa": 20386934,
+  "Lirio": 19898995,
+  "Xuliana": 18168400,
+  "Xurelo": 17317093,
+  "Polbo": 14061607,
+  "Bocarte": 11783080,
+  "Rapante": 9285954,
+  "Percebe": 8848252,
+  "Bonito do norte": 8227444
+ },
+ "zona_bivalvos_eur": {
+  "Zona I - Vigo": 6768816,
+  "Zona II - Pontevedra": 4242530,
+  "Zona III - Arousa": 25589731,
+  "Zona IV - Muros": 8175389,
+  "Zona IX - Mariña": 44985,
+  "Zona V - Fisterra": 624365,
+  "Zona VI - Costa da Morte": 362665,
+  "Zona VII - Coruña-Ferrol": 1902036,
+  "Zona VIII - Cedeira": 43647
+ },
+ "lonxas": {
+  "Vigo": {
+   "total_eur": 82134526,
+   "bivalvos_eur": 421242,
+   "peixes_eur": 75211247,
+   "especies_top": {
+    "Peixe sapo": 22960065,
+    "Xuliana": 12314170,
+    "Rapante": 7404417,
+    "Peixe espada": 5695957
+   }
+  },
+  "A Coruña (Lonja Coruña, S.A.)": {
+   "total_eur": 72051487,
+   "bivalvos_eur": 0,
+   "peixes_eur": 59784639,
+   "especies_top": {
+    "Pescada": 14542638,
+    "Xurelo": 8535624,
+    "Lirio": 6618734,
+    "Bocarte": 5272393
+   }
+  },
+  "Burela": {
+   "total_eur": 57790232,
+   "bivalvos_eur": 0,
+   "peixes_eur": 55750420,
+   "especies_top": {
+    "Pescada": 36056270,
+    "Bonito do norte": 5897396,
+    "Xarda": 2135608,
+    "Cabra de altura": 1026234
+   }
+  },
+  "Celeiro": {
+   "total_eur": 47025987,
+   "bivalvos_eur": 7932,
+   "peixes_eur": 45934211,
+   "especies_top": {
+    "Pescada": 37819908,
+    "Xarda": 1427459,
+    "Lirio": 1397419,
+    "Bonito do norte": 582353
+   }
+  },
+  "Ribeira.": {
+   "total_eur": 43571632,
+   "bivalvos_eur": 3209995,
+   "peixes_eur": 32370371,
+   "especies_top": {
+    "Lirio": 10391579,
+    "Sardiña": 8123014,
+    "Polbo": 3268778,
+    "Pescada": 2116866
+   }
+  },
+  "Cedeira": {
+   "total_eur": 8075675,
+   "bivalvos_eur": 3265,
+   "peixes_eur": 5773257,
+   "especies_top": {
+    "Pescada": 3497650,
+    "Percebe": 1843644,
+    "Bonito do norte": 461327,
+    "Sanmartiño": 250974
+   }
+  },
+  "Carril": {
+   "total_eur": 7027628,
+   "bivalvos_eur": 6799715,
+   "peixes_eur": 227258,
+   "especies_top": {
+    "Ameixa xaponesa": 6160961,
+    "Berberecho": 336264,
+    "Ameixa fina": 299223,
+    "Anguías": 211248
+   }
+  },
+  "Cambados": {
+   "total_eur": 7018662,
+   "bivalvos_eur": 4577318,
+   "peixes_eur": 750508,
+   "especies_top": {
+    "Ameixa xaponesa": 2391576,
+    "Volandeira": 1190430,
+    "Choco": 739487,
+    "Centola ou centolo": 457962
+   }
+  },
+  "O Grove": {
+   "total_eur": 5649823,
+   "bivalvos_eur": 1579166,
+   "peixes_eur": 820280,
+   "especies_top": {
+    "Centola ou centolo": 1576525,
+    "Ameixa xaponesa": 1206926,
+    "Ourizo": 348062,
+    "Nécora": 292647
+   }
+  },
+  "Noia": {
+   "total_eur": 5621893,
+   "bivalvos_eur": 5581524,
+   "peixes_eur": 5401,
+   "especies_top": {
+    "Ameixa xaponesa": 2564426,
+    "Berberecho": 1740062,
+    "Ameixa fina": 811793,
+    "Ameixa babosa": 387025
+   }
+  },
+  "Muros": {
+   "total_eur": 4653071,
+   "bivalvos_eur": 2028698,
+   "peixes_eur": 1098174,
+   "especies_top": {
+    "Polbo": 897216,
+    "Xurelo": 476531,
+    "Ameixón": 470391,
+    "Navalla": 466866
+   }
+  },
+  "Cangas": {
+   "total_eur": 4572024,
+   "bivalvos_eur": 2228777,
+   "peixes_eur": 295363,
+   "especies_top": {
+    "Navalla": 1405198,
+    "Polbo": 567835,
+    "Percebe": 498683,
+    "Centola ou centolo": 363476
+   }
+  },
+  "Portosín": {
+   "total_eur": 3987686,
+   "bivalvos_eur": 0,
+   "peixes_eur": 3982589,
+   "especies_top": {
+    "Sardiña": 1514525,
+    "Bocarte": 1137452,
+    "Xurelo": 1100447,
+    "Xarda": 162307
+   }
+  },
+  "Camariñas": {
+   "total_eur": 3942464,
+   "bivalvos_eur": 58590,
+   "peixes_eur": 3446070,
+   "especies_top": {
+    "Xurelo": 1067927,
+    "Bocarte": 1013900,
+    "Lirio": 772020,
+    "Sardiña": 365473
+   }
+  },
+  "Marín": {
+   "total_eur": 3790160,
+   "bivalvos_eur": 60174,
+   "peixes_eur": 2609692,
+   "especies_top": {
+    "Pota común": 660313,
+    "Rapantes": 604849,
+    "Peixe sapo": 498015,
+    "Pescada": 313808
+   }
+  },
+  "Malpica": {
+   "total_eur": 3594374,
+   "bivalvos_eur": 0,
+   "peixes_eur": 2227579,
+   "especies_top": {
+    "Ourizo": 549351,
+    "Polbo": 537968,
+    "Sardiña": 311604,
+    "Bocarte": 236680
+   }
+  },
+  "Fisterra": {
+   "total_eur": 3305825,
+   "bivalvos_eur": 346047,
+   "peixes_eur": 1604560,
+   "especies_top": {
+    "Polbo": 708500,
+    "Ourizo": 393179,
+    "Robaliza": 197444,
+    "Longueirón": 182182
+   }
+  },
+  "Corcubión": {
+   "total_eur": 3263091,
+   "bivalvos_eur": 274544,
+   "peixes_eur": 1957220,
+   "especies_top": {
+    "Sardiña": 1233383,
+    "Polbo": 702429,
+    "Xurelo": 422851,
+    "Bocarte": 224054
+   }
+  },
+  "Bueu": {
+   "total_eur": 3180397,
+   "bivalvos_eur": 715096,
+   "peixes_eur": 180918,
+   "especies_top": {
+    "Polbo": 1387962,
+    "Ourizo": 405536,
+    "Navalla": 333995,
+    "Ameixa rubia": 239084
+   }
+  },
+  "A Illa de Arousa": {
+   "total_eur": 3081748,
+   "bivalvos_eur": 2296729,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa rubia": 932069,
+    "Camarón común": 431187,
+    "Ameixa xaponesa": 362550,
+    "Ameixa babosa": 256317
+   }
+  },
+  "Campelo": {
+   "total_eur": 3047555,
+   "bivalvos_eur": 2978976,
+   "peixes_eur": 15,
+   "especies_top": {
+    "Ameixa xaponesa": 1974047,
+    "Ameixa fina": 423987,
+    "Navalla": 349854,
+    "Berberecho": 107993
+   }
+  },
+  "Portonovo": {
+   "total_eur": 2959272,
+   "bivalvos_eur": 213284,
+   "peixes_eur": 1892019,
+   "especies_top": {
+    "Sardiña": 1122257,
+    "Polbo": 404501,
+    "Xurelo": 395998,
+    "Ourizo": 234625
+   }
+  },
+  "Baiona": {
+   "total_eur": 2842176,
+   "bivalvos_eur": 280149,
+   "peixes_eur": 279152,
+   "especies_top": {
+    "Percebe": 1289975,
+    "Ourizo": 597217,
+    "Cornicha": 218436,
+    "Polbo": 151625
+   }
+  },
+  "Aguiño": {
+   "total_eur": 2808522,
+   "bivalvos_eur": 1139711,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Percebe": 948263,
+    "Ourizo": 691290,
+    "Navalla": 532010,
+    "Ameixa babosa": 443776
+   }
+  },
+  "Vilanova": {
+   "total_eur": 1977021,
+   "bivalvos_eur": 1833877,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa xaponesa": 1543072,
+    "Ortiguilla de mar": 134907,
+    "Ameixa rubia": 83716,
+    "Ameixa fina": 80613
+   }
+  },
+  "Porto do Son": {
+   "total_eur": 1648813,
+   "bivalvos_eur": 6075,
+   "peixes_eur": 1103601,
+   "especies_top": {
+    "Bocarte": 481390,
+    "Xurelo": 452632,
+    "Polbo": 298369,
+    "Sardiña": 118117
+   }
+  },
+  "Laxe": {
+   "total_eur": 1633788,
+   "bivalvos_eur": 90549,
+   "peixes_eur": 1033316,
+   "especies_top": {
+    "Polbo": 242287,
+    "Sardiña": 217316,
+    "Ourizo": 157644,
+    "Xurelo": 152601
+   }
+  },
+  "Cabo de Cruz": {
+   "total_eur": 1469213,
+   "bivalvos_eur": 1469213,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa xaponesa": 959915,
+    "Ameixa fina": 205915,
+    "Berberecho": 106127,
+    "Ameixa babosa": 79676
+   }
+  },
+  "Moaña": {
+   "total_eur": 1385783,
+   "bivalvos_eur": 1385783,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa rubia": 381307,
+    "Ameixa xaponesa": 366669,
+    "Ameixa babosa": 260694,
+    "Cornicha": 147435
+   }
+  },
+  "Rianxo": {
+   "total_eur": 1373533,
+   "bivalvos_eur": 1104018,
+   "peixes_eur": 158066,
+   "especies_top": {
+    "Ameixa xaponesa": 632925,
+    "Volandeira": 315268,
+    "Ameixa fina": 118898,
+    "Sardiña": 118298
+   }
+  },
+  "Vigo (Canido)": {
+   "total_eur": 1236899,
+   "bivalvos_eur": 675165,
+   "peixes_eur": 39311,
+   "especies_top": {
+    "Navalla": 324893,
+    "Ourizo": 263520,
+    "Cornicha": 143546,
+    "Polbo": 108556
+   }
+  },
+  "A Guarda": {
+   "total_eur": 1168326,
+   "bivalvos_eur": 0,
+   "peixes_eur": 428432,
+   "especies_top": {
+    "Percebe": 438729,
+    "Ourizo": 241690,
+    "Anguías": 204142,
+    "Lamprea de mar": 130990
+   }
+  },
+  "Vilaxoán": {
+   "total_eur": 1082784,
+   "bivalvos_eur": 1082748,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa xaponesa": 931892,
+    "Ameixa fina": 64700,
+    "Longueirón vello": 63821,
+    "Berberecho": 20988
+   }
+  },
+  "Ferrol": {
+   "total_eur": 1081648,
+   "bivalvos_eur": 669209,
+   "peixes_eur": 88222,
+   "especies_top": {
+    "Navalla": 230705,
+    "Carneiro": 123356,
+    "Vieira": 118355,
+    "Centola ou centolo": 88322
+   }
+  },
+  "Carnota (Lira)": {
+   "total_eur": 1055199,
+   "bivalvos_eur": 3774,
+   "peixes_eur": 7775,
+   "especies_top": {
+    "Ourizo": 481815,
+    "Polbo": 362270,
+    "Percebe": 94984,
+    "Centola ou centolo": 32192
+   }
+  },
+  "Sada": {
+   "total_eur": 978469,
+   "bivalvos_eur": 0,
+   "peixes_eur": 933324,
+   "especies_top": {
+    "Sardiña": 488416,
+    "Xurelo": 217495,
+    "Xarda pintada": 78186,
+    "Bocarte": 60046
+   }
+  },
+  "Aldán-Hio": {
+   "total_eur": 922045,
+   "bivalvos_eur": 274999,
+   "peixes_eur": 27361,
+   "especies_top": {
+    "Polbo": 467981,
+    "Navalla": 272680,
+    "Ourizo": 43823,
+    "Centola ou centolo": 40189
+   }
+  },
+  "Vilaboa": {
+   "total_eur": 906991,
+   "bivalvos_eur": 860657,
+   "peixes_eur": 1478,
+   "especies_top": {
+    "Cornicha": 462005,
+    "Ameixa xaponesa": 319594,
+    "Ameixa fina": 48791,
+    "Choco": 44857
+   }
+  },
+  "Redondela": {
+   "total_eur": 797767,
+   "bivalvos_eur": 548841,
+   "peixes_eur": 29645,
+   "especies_top": {
+    "Ameixa xaponesa": 232961,
+    "Choco": 200034,
+    "Cornicha": 156377,
+    "Ameixa rubia": 56715
+   }
+  },
+  "Barallobre": {
+   "total_eur": 796216,
+   "bivalvos_eur": 683841,
+   "peixes_eur": 18359,
+   "especies_top": {
+    "Vieira": 266044,
+    "Carneiro": 103528,
+    "Navalla": 103513,
+    "Ourizo": 55785
+   }
+  },
+  "Arcade": {
+   "total_eur": 724580,
+   "bivalvos_eur": 368203,
+   "peixes_eur": 330153,
+   "especies_top": {
+    "Anguías": 328168,
+    "Cornicha": 162287,
+    "Ameixa rubia": 126793,
+    "Ameixa babosa": 39111
+   }
+  },
+  "Esteiro": {
+   "total_eur": 559151,
+   "bivalvos_eur": 559091,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa babosa": 158219,
+    "Ameixón": 128787,
+    "Ameixa rubia": 110566,
+    "Cornicha": 99391
+   }
+  },
+  "Pobra do Caramiñal": {
+   "total_eur": 431471,
+   "bivalvos_eur": 429755,
+   "peixes_eur": 1202,
+   "especies_top": {
+    "Navalla": 181808,
+    "Ameixa xaponesa": 111558,
+    "Cadelucha": 94339,
+    "Ameixa fina": 22923
+   }
+  },
+  "Muxía": {
+   "total_eur": 295673,
+   "bivalvos_eur": 3681,
+   "peixes_eur": 17156,
+   "especies_top": {
+    "Ourizo": 197287,
+    "Percebe": 67109,
+    "Robaliza": 14443,
+    "Polbo": 3452
+   }
+  },
+  "Mugardos": {
+   "total_eur": 264146,
+   "bivalvos_eur": 264146,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa fina": 133856,
+    "Ameixa babosa": 55933,
+    "Ameixa xaponesa": 41331,
+    "Ostra": 28326
+   }
+  },
+  "Río Anllóns": {
+   "total_eur": 172900,
+   "bivalvos_eur": 172900,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Berberecho": 172900
+   }
+  },
+  "Pontedeume": {
+   "total_eur": 137504,
+   "bivalvos_eur": 137504,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ostra rizada": 81725,
+    "Ameixa fina": 47179,
+    "Ameixa xaponesa": 8239,
+    "Ameixa babosa": 357
+   }
+  },
+  "A Coruña (Confraría)": {
+   "total_eur": 121720,
+   "bivalvos_eur": 121720,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa fina": 59381,
+    "Ameixa babosa": 41264,
+    "Ostra": 9991,
+    "Ameixa xaponesa": 6970
+   }
+  },
+  "Panxón": {
+   "total_eur": 120668,
+   "bivalvos_eur": 0,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Polbo": 119990,
+    "Nécora": 677
+   }
+  },
+  "Camelle": {
+   "total_eur": 88235,
+   "bivalvos_eur": 0,
+   "peixes_eur": 50,
+   "especies_top": {
+    "Gavilán": 48604,
+    "Algas vermellas": 27482,
+    "Percebe": 5809,
+    "Polbo": 3280
+   }
+  },
+  "Coop. Ría de Arosa": {
+   "total_eur": 67486,
+   "bivalvos_eur": 67486,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa xaponesa": 54050,
+    "Ameixa fina": 12760,
+    "Berberecho": 676
+   }
+  },
+  "Ribadeo": {
+   "total_eur": 56708,
+   "bivalvos_eur": 6733,
+   "peixes_eur": 230,
+   "especies_top": {
+    "Percebe": 33762,
+    "Ourizo": 7578,
+    "Polbo": 4454,
+    "Ameixa fina": 4033
+   }
+  },
+  "O Barqueiro": {
+   "total_eur": 47284,
+   "bivalvos_eur": 30320,
+   "peixes_eur": 16514,
+   "especies_top": {
+    "Ostra rizada": 22260,
+    "Ameixa xaponesa": 7330,
+    "Xuliana": 4757,
+    "Rodaballo": 3686
+   }
+  },
+  "Ortigueira": {
+   "total_eur": 41948,
+   "bivalvos_eur": 40382,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Berberecho": 34500,
+    "Ameixa fina": 3030,
+    "Ostra rizada": 2827,
+    "Percebe": 1566
+   }
+  },
+  "Baldaio": {
+   "total_eur": 36946,
+   "bivalvos_eur": 36946,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Berberecho": 33402,
+    "Ameixa fina": 3426,
+    "Ameixa xaponesa": 117
+   }
+  },
+  "Carnota (O Pindo)": {
+   "total_eur": 34210,
+   "bivalvos_eur": 0,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Gavilán": 33880,
+    "Miñoca de area": 330
+   }
+  },
+  "Miño": {
+   "total_eur": 25616,
+   "bivalvos_eur": 25616,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Ameixa fina": 21533,
+    "Ameixa xaponesa": 4083
+   }
+  },
+  "Corme": {
+   "total_eur": 24341,
+   "bivalvos_eur": 0,
+   "peixes_eur": 1125,
+   "especies_top": {
+    "Percebe": 10874,
+    "Gavilán": 10303,
+    "Polbo": 1990,
+    "Sardiña": 1125
+   }
+  },
+  "Cariño.": {
+   "total_eur": 20231,
+   "bivalvos_eur": 0,
+   "peixes_eur": 15587,
+   "especies_top": {
+    "Xurelo": 8141,
+    "Alcrique": 7446,
+    "Percebe": 4644
+   }
+  },
+  "Foz-San Cosme": {
+   "total_eur": 1949,
+   "bivalvos_eur": 0,
+   "peixes_eur": 0,
+   "especies_top": {
+    "Miñoca de area": 1949
+   }
+  }
+ },
+ "especie_Percebe": {
+  "galicia_eur": 8848252,
+  "top": {
+   "A Coruña (Lonja Coruña, S.A.)": 2694804,
+   "Cedeira": 1843644,
+   "Baiona": 1289975,
+   "Aguiño": 948263,
+   "Cangas": 498683
+  }
+ },
+ "especie_Polbo": {
+  "galicia_eur": 14061607,
+  "top": {
+   "Ribeira.": 3268778,
+   "Vigo": 1552976,
+   "Bueu": 1387962,
+   "A Coruña (Lonja Coruña, S.A.)": 1035408,
+   "Muros": 897216
+  }
+ },
+ "especie_Pescada": {
+  "galicia_eur": 99016256,
+  "top": {
+   "Celeiro": 37819908,
+   "Burela": 36056270,
+   "A Coruña (Lonja Coruña, S.A.)": 14542638,
+   "Vigo": 4140691,
+   "Cedeira": 3497650
+  }
+ },
+ "especie_Ameixa xaponesa": {
+  "galicia_eur": 20386934,
+  "top": {
+   "Carril": 6160961,
+   "Noia": 2564426,
+   "Cambados": 2391576,
+   "Campelo": 1974047,
+   "Vilanova": 1543072
+  }
+ },
+ "especie_Berberecho": {
+  "galicia_eur": 3023134,
+  "top": {
+   "Noia": 1740062,
+   "Carril": 336264,
+   "Muros": 288787,
+   "Río Anllóns": 172900,
+   "Campelo": 107993
+  }
+ },
+ "mexillon_2025_kg": 177638577,
+ "mexillon_2025_eur": 124126073,
+ "augas_naturais": {
+  "costeira": {
+   "bo ou mellor": 18,
+   "peor que bo": 4
+  },
+  "transicion": {
+   "peor que bo": 14,
+   "bo ou mellor": 8
+  }
+ },
+ "augas_peor_que_bo": [
+  "A Coruña",
+  "Anllóns",
+  "Ares",
+  "Corrubedo (Artes-Carregal)",
+  "Grande",
+  "Grande de Xubia",
+  "Lérez (Pontevedra)",
+  "Mendo-Mandeo (Betanzos)",
+  "Mero (Ría do Burgo)",
+  "Miñor (A Ramallosa)",
+  "Moaña",
+  "Oitavén-Verdugo (San Simón)",
+  "Porto do Cabo (Enseada de Esteiro)",
+  "Rande",
+  "Río O Castro (Ría de Lires)",
+  "Tambre (Noia)",
+  "Ulla",
+  "Umia"
+ ],
+ "inundacion_t100_tramos": 28,
+ "inundacion_t100_km2": 19.8,
+ "inundacion_t100_km2_por_zona": {
+  "Neda": 5.259,
+  "Betanzos": 3.892,
+  "Desde Baiona hasta Panxón": 1.694,
+  "Viveiro": 1.537,
+  "Santa Cristina": 1.368,
+  "Camelle": 0.729,
+  "San Cibrao": 0.721,
+  "Vilanova de Arousa": 0.702,
+  "Praia de Patos": 0.454,
+  "Fisterra": 0.357,
+  "A Guarda": 0.357,
+  "Laxe": 0.31,
+  "Muxía": 0.293,
+  "Corrubedo": 0.265,
+  "A Pobra do Caramiñal": 0.223,
+  "Marín": 0.219,
+  "Vigo": 0.184,
+  "O Grove": 0.175,
+  "Burela": 0.152,
+  "A Coruña": 0.152,
+  "Cedeira": 0.148,
+  "Porto do Son": 0.142,
+  "Ézaro": 0.141,
+  "O Pindo (Carnota)": 0.096,
+  "Cee": 0.091,
+  "Malpica": 0.083,
+  "Camariñas": 0.062,
+  "Rinlo (Ribadeo)": 0.021
+ },
+ "inundacion_cota_max_m": [
+  2.66,
+  2.88
+ ]
+}

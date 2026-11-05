@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ata onde chega o bus — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Tren e autobús público en Galicia nun mércores e nun domingo de novembro de 2026, sobre o relevo: o corredor ben servido, as comarcas sen tren e os lugares que quedan lonxe.">
+<meta property="og:title" content="Ata onde chega o bus">
+<meta property="og:description" content="Un mércores circulan 10.258 viaxes de bus da Xunta; o domingo, 1.705. En Negueira de Muñiz e no Courel, ningunha. Un voo polo transporte público galego.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/rural-sen-transporte/og.jpg">
+<meta property="og:url" content="https://divulga.galiciasustentable.org/v/rural-sen-transporte/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow+Condensed:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<link rel="stylesheet" href="../../assets/vendor/maplibre-gl-6.14.0/maplibre-gl.css">
+<link rel="stylesheet" href="../../assets/css/voo.css">
+<style>
+/* Voo de cámara: mapa 3D fixo detrás e unha columna de pasos; cada paso move a cámara.
+   Instrucións en mapasgs/docs/divulga-voos-de-camara.md · datos en fontes/rural-sen-transporte/ */
+:root{
+  --ink:#f2f0e8; --paper:#0e1012; --muted:#a7a59c; --line:#2a2d30;
+  --cadro:rgba(14,16,18,.86); --acento:#f2b134;
+  --num:var(--gs-font-chart-num);
+  --bus:#f2b134; --tren:#7fd3f0; --sen:#e4572e;
+}
+body{background:var(--paper);color:var(--ink)}
+.paso a{color:var(--ink)}
+.paso .lenda i.bus{background:var(--bus)}
+.paso .lenda i.tren{background:var(--tren)}
+.paso .lenda i.oco{background:transparent;border:2px solid var(--sen);width:8px;height:8px}
+.paso ul.mais{margin:.2rem 0 .7rem;padding-left:1.1rem;line-height:1.6}
+</style>
+</head>
+<body>
+{{BAR}}
+
+<main class="voo">
+  <div class="voo-mapa" aria-hidden="true"></div>
+  <div class="voo-pasos">
+
+    <section class="paso" data-centro="-7.95,42.78" data-zoom="7.2" data-inclinacion="35" data-rumbo="0" data-capa="bus,tren" data-xiro="8">
+      <div>
+        <h1>Ata onde <em>chega o bus</em></h1>
+        <p>Todos os autobuses da Xunta e todos os trens de Renfe dun mércores e dun domingo de novembro de 2026, sobre o relevo de Galicia. Onde pasan moitos, onde pasan poucos e que queda lonxe cando non pasa ningún.</p>
+        <p class="fonte">Baixa para comezar.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.0,42.75" data-zoom="7.6" data-inclinacion="50" data-rumbo="-10" data-capa="bus,tren,estacions">
+      <div>
+        <p class="onde">Galicia · mércores 4 de novembro de 2026</p>
+        <h2>Un día laborable</h2>
+        <p class="dato">10.258<small>viaxes de bus</small></p>
+        <p class="dato-l">programadas na rede autonómica da Xunta, e 178 de tren</p>
+        <p>Cada liña une paradas consecutivas e o groso indica cantas viaxes pasan por ese tramo ese día. A rede chega a case todo o país, pero a frecuencia xúntase no eixo atlántico e arredor das cidades.</p>
+        <p class="lenda"><span><i class="l bus" style="height:1px"></i>1–3 viaxes</span><span><i class="l bus"></i>4–30</span><span><i class="l bus" style="height:5px"></i>máis de 30</span><span><i class="l tren"></i>tren</span><span><i class="tren"></i>estación</span></p>
+        <p class="fonte">Cálculo FGS a partir dos horarios publicados (GTFS) da Xunta no Punto de Acceso Nacional e de Renfe, capas «pulso» de Mapas Galicia Sustentable. Non inclúe os buses urbanos dos concellos. Paradas agrupadas nunha grella de ~2 km.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.75,42.5" data-zoom="7.75" data-inclinacion="50" data-rumbo="10" data-capa="bus-domingo,sendomingo" data-marca="-7.8899,42.3507|Ourense">
+      <div>
+        <p class="onde">Galicia · domingo 8 de novembro de 2026</p>
+        <h2>O domingo, a rede encolle</h2>
+        <p class="dato">1.705<small>viaxes de bus</small></p>
+        <p class="dato-l">un 83 % menos ca o mércores; o tren pasa de 178 a 122</p>
+        <p>En 58 concellos, onde viven 75.795 persoas, non para ningún bus da Xunta en todo o domingo. 43 deles están na provincia de Ourense.</p>
+        <p class="lenda"><span><i class="c" style="background:var(--sen)"></i>concello sen bus o domingo</span><span><i class="l bus"></i>viaxes do domingo</span></p>
+        <p class="fonte">Cálculo FGS a partir do GTFS da Xunta (NAP) e do Padrón do INE a 1/1/2025. Un bus conta nun concello se ten algunha parada nel.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.62,42.80" data-zoom="8.2" data-inclinacion="60" data-rumbo="-8" data-capa="tren,estacions,bus" data-marca="-8.4156,43.3497|A Coruña;-8.5447,42.8708|Santiago;-8.6356,42.4220|Pontevedra;-8.7137,42.2342|Vigo">
+      <div>
+        <p class="onde">Eixo Atlántico · da Coruña a Vigo</p>
+        <h2>O corredor ben servido</h2>
+        <p class="dato">57<small>trens</small></p>
+        <p class="dato-l">entre A Coruña e Santiago nun mércores; 32 entre Santiago e Vigo</p>
+        <p>Pola liña atlántica pasan a alta velocidade, os Avant e os media distancia. Arredor de Santiago o bus interurbano é case unha rede de cidade: 829 viaxes paran no concello de Santiago e 451 no de Ames.</p>
+        <p class="fonte">Cálculo FGS a partir do GTFS de Renfe e da Xunta. Dous trens coa mesma hora nas dúas estacións (acoplados) contan como un.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.62,42.66" data-zoom="8.6" data-inclinacion="58" data-rumbo="-25" data-capa="tren,estacions" data-marca="-7.5522,43.0152|Lugo;-7.5036,42.5297|Monforte;-7.8728,42.3504|Ourense">
+      <div>
+        <p class="onde">Lugo · Monforte de Lemos · Ourense</p>
+        <h2>A liña do interior</h2>
+        <p class="dato">10<small>trens</small></p>
+        <p class="dato-l">entre Lugo e Monforte nun mércores, cinco en cada sentido; entre A Coruña e Lugo, 4</p>
+        <p>Lugo ten 100.143 habitantes, case os mesmos ca Santiago. Pero se entre Santiago e A Coruña circulan 57 trens nun mércores, entre Lugo e A Coruña son 4. De Monforte a Ourense hai 16.</p>
+        <p class="fonte">Cálculo FGS a partir do GTFS de Renfe: trens distintos que paran nas dúas estacións. O tamaño de cada estación, servizos ao día da capa «estacions-tren» de Mapas Galicia Sustentable. Poboación: INE, Padrón a 1/1/2025.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.02,42.13" data-zoom="9.6" data-inclinacion="55" data-rumbo="5" data-capa="viaxes" data-marca="-8.0375,42.1827|Ramirás;-7.9734,42.1588|Celanova;-8.1395,42.1686|Pontedeva">
+      <div>
+        <p class="onde">Terra de Celanova · Ourense</p>
+        <h2>Paradas hai; faltan viaxes</h2>
+        <p class="dato">30,3<small>paradas por 1.000 hab.</small></p>
+        <p class="dato-l">nos 121 concellos de menos de 2.000 habitantes; 1,7 nas sete cidades, que teñen ademais bus urbano propio</p>
+        <p>Ramirás ten 48 paradas para 1.485 veciños. O mércores pararon alí 12 viaxes; o domingo, ningunha. O mapa colorea cada concello polas viaxes de bus que tivo ese mércores.</p>
+        <p class="lenda"><span><i class="c" style="background:#d64933"></i>0</span><span><i class="c" style="background:#e8833a"></i>1–10</span><span><i class="c" style="background:#f2c46b"></i>11–30</span><span><i class="c" style="background:#9cc59a"></i>31–100</span><span><i class="c" style="background:#4f9fbf"></i>máis de 100 viaxes</span></p>
+        <p class="fonte">Paradas por habitante e viaxes por concello: cálculo FGS a partir do GTFS da Xunta (25.118 paradas) e do Padrón do INE a 1/1/2025.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.02,43.16" data-zoom="10.1" data-inclinacion="60" data-rumbo="-35" data-capa="paradas,viaxes" data-marca="-7.0675,43.1235|A Fonsagrada;-6.8903,43.1261|Negueira de Muñiz;-7.196,43.1911|A Ribeira de Piquín">
+      <div>
+        <p class="onde">A Fonsagrada · Lugo</p>
+        <h2>Unha comarca sen tren</h2>
+        <p class="dato">23<small>viaxes de bus</small></p>
+        <p class="dato-l">pararon o mércores na comarca da Fonsagrada (3.858 habitantes en 583 km²); o domingo, 4</p>
+        <p>Ningún dos tres concellos ten estación. As dúas viaxes que pararon na Ribeira de Piquín eran da liña do instituto Pedregal de Irimia: unha ás 8:24 e outra ás 15:58.</p>
+        <p class="lenda"><span><i class="bus"></i>parada con viaxes (máis grande, máis viaxes)</span><span><i class="oco"></i>parada sen ningunha viaxe ese día</span></p>
+        <p class="fonte">Cálculo FGS a partir do GTFS da Xunta (NAP); superficie, Mapas Galicia Sustentable (perfil-concellos).</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-6.87,43.15" data-zoom="11.6" data-inclinacion="66" data-rumbo="40" data-capa="lonxe,paradas" data-marca="-6.83221,43.14888|Escanlar;-6.86486,43.16322|Entralgo;-6.8903,43.1261|Negueira">
+      <div>
+        <p class="onde">Negueira de Muñiz · Lugo</p>
+        <h2>O lugar máis lonxe dun hospital</h2>
+        <p class="dato">58,7<small>km</small></p>
+        <p class="dato-l">en liña recta desde Escanlar ao hospital máis próximo, a maior distancia dos 36.190 lugares de Galicia</p>
+        <p>Negueira, 236 veciños, ten tres paradas de bus; nin o mércores nin o domingo tiñan viaxe ningunha. Os seus 26 lugares están, de mediana, a 53 km en liña recta dun hospital. Por estrada, polo val encaixado do Navia, son bastantes máis.</p>
+        <p class="lenda"><span><i style="background:#f4a6c6"></i>30–40 km do hospital</span><span><i style="background:#e0679b"></i>40–50</span><span><i style="background:#b8336a"></i>máis de 50</span></p>
+        <p class="fonte">Distancia en liña recta: capa «distancia-servizos» de Mapas Galicia Sustentable (cálculo FGS con lugares do IET e hospitais do SERGAS). Escanlar tiña 1 habitante en 2024.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-6.94,42.945" data-zoom="11.2" data-inclinacion="50" data-rumbo="-5" data-capa="paradas" data-marca="-7.0056,42.9636|A Pobra de Navia;-6.87171,42.92511|Murias de Rao">
+      <div>
+        <p class="onde">Os Ancares · Navia de Suarna</p>
+        <h2>Unha mañá para ir ao hospital</h2>
+        <p class="dato">1 h 40<small>min</small></p>
+        <p class="dato-l">dura o bus da Pobra de Navia ao Hospital Lucus Augusti de Lugo: sae ás 7:15 e volve ás 12:15 ou ás 18:15</p>
+        <p>Navia de Suarna, 971 veciños, tivo cinco viaxes de bus o mércores. Murias de Rao, 26 habitantes, está a 727 metros de altura e a 11,7 km en liña recta da Pobra, onde para o bus, 431 metros máis abaixo.</p>
+        <p class="fonte">Horarios: GTFS da Xunta (NAP), mércores 4/11/2026. Alturas: MDT de 25 m do IGN. Habitantes: INE (2025) e, do lugar, padrón 2024 vía IET.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.13,42.64" data-zoom="11" data-inclinacion="68" data-rumbo="160" data-capa="paradas" data-marca="-7.0985,42.6612|Seoane do Courel;-7.16725,42.69642|Teixeira;-7.1745,42.6126|Folgoso">
+      <div>
+        <p class="onde">Serra do Courel · Lugo</p>
+        <h2>Seis paradas, ningún bus</h2>
+        <p class="dato">0<small>viaxes</small></p>
+        <p class="dato-l">de bus o mércores 4 e o domingo 8 de novembro en Folgoso do Courel (921 habitantes)</p>
+        <p>As súas paradas son das liñas Quiroga–Seoane do Courel e Seoane–Pedrafita do Cebreiro, pero ningunha tiña viaxes eses dous días no horario publicado. Os 50 lugares do concello están, de mediana, a 26 km en liña recta dun hospital; Teixeira, a 1.141 metros, a 34.</p>
+        <p class="fonte">GTFS da Xunta (NAP); distancias, capa «distancia-servizos» (cálculo FGS); altura, MDT de 25 m do IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.75,42.72" data-zoom="7.5" data-inclinacion="42" data-rumbo="-5" data-capa="lonxe">
+      <div>
+        <p class="onde">Galicia</p>
+        <h2>Onde o hospital queda lonxe</h2>
+        <p class="dato">4.533<small>lugares</small></p>
+        <p class="dato-l">a máis de 30 km en liña recta do hospital máis próximo; a mediana galega é de 16,4 km</p>
+        <p>Máis da metade (2.501) están na provincia de Lugo: na Terra Chá, no Ortegal e na montaña oriental; outros, na Paradanta e na Baixa Limia. Os concellos sen bus o domingo están sobre todo en Ourense: son dúas formas distintas de quedar lonxe.</p>
+        <p class="lenda"><span><i style="background:#f4a6c6"></i>30–40 km</span><span><i style="background:#e0679b"></i>40–50</span><span><i style="background:#b8336a"></i>máis de 50</span></p>
+        <p class="fonte">Capa «distancia-servizos» de Mapas Galicia Sustentable: cálculo FGS sobre 36.190 lugares da toponimia oficial (IET) e os hospitais do SERGAS. Non é distancia por estrada.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.95,42.78" data-zoom="7.2" data-inclinacion="40" data-rumbo="10" data-capa="bus,tren">
+      <div>
+        <h2>O transporte, condición para vivir no rural</h2>
+        <p class="dato">30<small>%</small></p>
+        <p class="dato-l">das emisións brutas de Galicia en 2024 viñeron do transporte, o primeiro sector emisor</p>
+        <p>Onde o bus pasa dúas veces ao día, ou ningunha, o coche é obrigatorio para traballar, estudar ou ir ao médico. Un rural produtivo e habitado precisa horarios que encaixen coa vida de quen o habita: rutas escolares abertas a todos, transporte á demanda e enlaces co tren e co hospital. Ese mesmo transporte é a vía para baixar as emisións do sector que máis emite.</p>
+        <ul class="mais">
+          <li><a href="../horas-transporte/">Galicia en horas de autobús e tren</a></li>
+          <li><a href="../minutos-hospital/">Canto queda o hospital</a></li>
+          <li><a href="../fenda-rural/">A fenda rural</a></li>
+          <li><a href="../coches-ccaa/">Moitos coches, poucos enchufes</a></li>
+          <li><a href="../galicia-cero-neto/">Que precisaría Galicia para chegar ao carbono neto cero?</a></li>
+          <li><a href="https://mapas.galiciasustentable.org/pulso/">O pulso de Galicia</a>, todos os buses e trens do día en movemento, en Mapas Galicia Sustentable</li>
+        </ul>
+        <p class="fonte">Emisións: Ogacli (ogacli.org), a partir do inventario do MITECO, 5,03 de 16,59 Mt CO₂eq en 2024.</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="voo-fontes">
+  <h2>Fontes e método</h2>
+  <ul>
+    <li><b>Autobuses:</b> horarios do transporte público autonómico da Xunta de Galicia (GTFS) publicados no Punto de Acceso Nacional do Ministerio de Transportes, licenza de datos abertos do MITRAMS. Powered by MITRAMS. Capas «pulso-bus» (viaxes do mércores 4 e do domingo 8 de novembro de 2026; descarga do 3/11/2026) e «buses-xunta» (25.118 paradas) de Mapas Galicia Sustentable.</li>
+    <li><b>Trens:</b> Renfe Operadora, GTFS de AV/LD/MD e Cercanías, CC BY 4.0. Capas «pulso-tren» e «estacions-tren» (mércores 4/11/2026) de Mapas Galicia Sustentable, consultadas o 4/11/2026.</li>
+    <li><b>Cálculos FGS:</b> unha viaxe conta nun concello se ten algunha parada dentro del; dous trens coa mesma hora nas dúas estacións contan como un; paradas por 1.000 habitantes = paradas da Xunta no concello ÷ poboación × 1.000. Son horarios programados, non circulacións reais, e non inclúen buses urbanos nin servizos á demanda sen horario publicado.</li>
+    <li><b>Distancias:</b> capa «distancia-servizos» de Mapas Galicia Sustentable (CC BY SA 4.0): liña recta desde cada lugar da toponimia oficial (IET, padrón 2024) ao hospital do SERGAS máis próximo.</li>
+    <li><b>Poboación:</b> INE, Padrón municipal a 1 de xaneiro de 2025. <b>Límites:</b> Instituto de Estudos do Territorio, Xunta de Galicia (CC BY-SA 4.0). <b>Relevo e alturas:</b> MDT de 25 m do IGN (PNOA-LiDAR), CC BY 4.0.</li>
+    <li><b>Emisións:</b> Ogacli, a partir do inventario do MITECO (2024), como na peza <a href="../galicia-cero-neto/">Galicia cero neto</a>.</li>
+  </ul>
+</section>
+
+{{FOOT}}
+
+<script src="../../assets/vendor/pmtiles-4.5.0/pmtiles.js"></script>
+<script type="module">
+import { iniciarVoo } from '../../assets/js/voo.js';
+
+const BUS = '#f2b134', TREN = '#7fd3f0', SEN = '#e4572e';
+const groso = (k) => ['interpolate', ['linear'], ['zoom'],
+  7, ['match', ['get', 'c'], 0, 0.35, 1, 0.7, 2, 1.2, 3, 2, 3],
+  10, ['match', ['get', 'c'], 0, 0.9, 1, 1.6, 2, 2.6, 3, 4, 5.5]];
+const liñaBus = { type: 'line', layout: { 'line-cap': 'round', 'line-join': 'round' },
+  paint: { 'line-color': BUS, 'line-width': groso(), 'line-opacity': 0.8 } };
+const viaxes = ['step', ['get', 'b'], '#d64933', 1, '#e8833a', 11, '#f2c46b', 31, '#9cc59a', 101, '#4f9fbf'];
+const lonxe = ['match', ['get', 'c'], 0, '#f4a6c6', 1, '#e0679b', '#b8336a'];
+
+// en móbil o mapa só ocupa a metade de enriba da pantalla: abre un pouco máis as vistas
+if (innerWidth <= 700) {
+  for (const p of document.querySelectorAll('.paso')) {
+    const z = +p.dataset.zoom;
+    p.dataset.zoom = (z - (z < 9 ? 0.9 : 0.5)).toFixed(2);
+  }
+}
+
+iniciarVoo({
+  atribucion: 'Buses: Xunta vía NAP, Powered by MITRAMS · Trens: Renfe, CC BY 4.0 · Cálculos FGS, CC BY-SA 4.0',
+  capas: [
+    { id: 'bus', fonte: 'capas/bus.geojson', estilos: [liñaBus] },
+    { id: 'bus-domingo', fonte: 'capas/bus-domingo.geojson', estilos: [liñaBus] },
+    { id: 'tren', fonte: 'capas/tren.geojson', estilos: [
+      { type: 'line', layout: { 'line-cap': 'round' }, paint: { 'line-color': TREN, 'line-opacity': 0.95,
+        'line-width': ['interpolate', ['linear'], ['get', 'n'], 1, 1.4, 20, 3, 60, 6] } }] },
+    { id: 'estacions', fonte: 'capas/estacions.geojson', estilos: [
+      { type: 'circle', paint: { 'circle-color': TREN, 'circle-stroke-color': '#0e1012', 'circle-stroke-width': 1,
+        'circle-radius': ['interpolate', ['linear'], ['get', 's'], 1, 2.2, 20, 4, 100, 8] } }] },
+    { id: 'sendomingo', fonte: 'capas/concellos.geojson', estilos: [
+      { type: 'fill', filter: ['==', ['get', 'd'], 0], paint: { 'fill-color': SEN, 'fill-opacity': 0.5 } },
+      { type: 'line', filter: ['==', ['get', 'd'], 0], paint: { 'line-color': SEN, 'line-width': 0.8, 'line-opacity': 0.9 } }] },
+    { id: 'viaxes', fonte: 'capas/concellos.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': viaxes, 'fill-opacity': 0.5 } },
+      { type: 'line', paint: { 'line-color': '#0e1012', 'line-width': 0.8, 'line-opacity': 0.7 } }] },
+    { id: 'paradas', fonte: 'capas/paradas-montana.geojson', estilos: [
+      { type: 'circle', paint: {
+        'circle-color': ['case', ['==', ['get', 'v'], 0], 'rgba(0,0,0,0)', BUS],
+        'circle-stroke-color': ['case', ['==', ['get', 'v'], 0], SEN, '#0e1012'],
+        'circle-stroke-width': ['case', ['==', ['get', 'v'], 0], 2, 1],
+        'circle-radius': ['case', ['==', ['get', 'v'], 0], 4,
+          ['interpolate', ['linear'], ['get', 'v'], 1, 3.5, 10, 6, 30, 9]] } }] },
+    { id: 'lonxe', fonte: 'capas/lonxe.geojson', estilos: [
+      { type: 'circle', paint: { 'circle-color': lonxe, 'circle-opacity': 0.85,
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 1.3, 9, 2.2, 12, 5] } }] },
+  ],
+});
+</script>
+</body>
+</html>

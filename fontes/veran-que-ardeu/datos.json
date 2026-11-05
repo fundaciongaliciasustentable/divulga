@@ -1,0 +1,441 @@
+{
+ "paradas": [
+  {
+   "paso": 0,
+   "onde": "Galicia · agosto de 2025",
+   "titulo": "O verán que ardeu",
+   "camara": {
+    "centro": [
+     -7.75,
+     42.55
+    ],
+    "zoom": 7.2,
+    "inclinacion": 35.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "focos"
+   ],
+   "marcas": [],
+   "dato": null,
+   "dato_l": null,
+   "fonte": "Baixa para comezar."
+  },
+  {
+   "paso": 1,
+   "onde": "Galicia · 1–31 de agosto",
+   "titulo": "Cinco días que concentraron o lume",
+   "camara": {
+    "centro": [
+     -7.45,
+     42.3
+    ],
+    "zoom": 7.9,
+    "inclinacion": 45.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "focos"
+   ],
+   "marcas": [],
+   "dato": "10.427 focos",
+   "dato_l": "detectados polos satélites en agosto, o 96,8 % de toda a tempada de xuño a outubro",
+   "fonte": "Cálculo FGS a partir de NASA FIRMS (VIIRS e MODIS), capa focos-tempada-2025 de Mapas Galicia Sustentable. Cada punto é unha cela de ~500 m na súa primeira detección."
+  },
+  {
+   "paso": 2,
+   "onde": "Chandrexa de Queixa · Ourense",
+   "titulo": "Dúas frontes nun mesmo lume",
+   "camara": {
+    "centro": [
+     -7.33,
+     42.2
+    ],
+    "zoom": 10.4,
+    "inclinacion": 60.0,
+    "rumbo": 15.0
+   },
+   "capas": [
+    "lumes"
+   ],
+   "marcas": [
+    "Chandrexa e Vilariño"
+   ],
+   "dato": "23.036,6 ha",
+   "dato_l": "superficie do lume de Chandrexa de Queixa e Vilariño de Conso no balance final da Xunta",
+   "fonte": "Xunta, Medio Rural, nota do 31/08/2025; MITECO, Avance informativo 2025 , táboa 3 (6.320,29 + 12.851,81 ha)."
+  },
+  {
+   "paso": 3,
+   "onde": "Vilariño de Conso e Manzaneda · Ourense",
+   "titulo": "Ata o cumio de Manzaneda",
+   "camara": {
+    "centro": [
+     -7.27,
+     42.24
+    ],
+    "zoom": 11.4,
+    "inclinacion": 70.0,
+    "rumbo": 200.0
+   },
+   "capas": [
+    "lumes"
+   ],
+   "marcas": [
+    "Cabeza de Manzaneda"
+   ],
+   "dato": "1.778 m",
+   "dato_l": "altura máxima dentro do perímetro queimado: a Cabeza de Manzaneda",
+   "fonte": "Alturas: cálculo FGS co MDT de 25 m do IGN dentro do perímetro EFFIS. Superficie: MITECO, táboa 3. Concellos: Xunta, nota do 25/08/2025."
+  },
+  {
+   "paso": 4,
+   "onde": "Larouco · Ourense",
+   "titulo": "O maior incendio de España en 2025",
+   "camara": {
+    "centro": [
+     -7.11,
+     42.43
+    ],
+    "zoom": 10.1,
+    "inclinacion": 58.0,
+    "rumbo": 5.0
+   },
+   "capas": [
+    "lumes"
+   ],
+   "marcas": [
+    "269 m",
+    "1.605 m",
+    "Larouco"
+   ],
+   "dato": "37.765 ha",
+   "dato_l": "forestais entre Ourense, Lugo e León, segundo a estatística do Ministerio",
+   "fonte": "MITECO, táboa 3; Xunta, nota do 31/08/2025. Alturas: cálculo FGS co MDT do IGN."
+  },
+  {
+   "paso": 5,
+   "onde": "O Barco e Valdeorras · Ourense",
+   "titulo": "Unha comarca queimada",
+   "camara": {
+    "centro": [
+     -6.9,
+     42.33
+    ],
+    "zoom": 9.9,
+    "inclinacion": 62.0,
+    "rumbo": 35.0
+   },
+   "capas": [
+    "lumes"
+   ],
+   "marcas": [
+    "O Barco",
+    "Pena Trevinca"
+   ],
+   "dato": "49.532 ha",
+   "dato_l": "queimadas en 2025 no distrito forestal Valdeorras-Trives; en 2024 foran 58",
+   "fonte": "Xunta, Medio Rural, Lumes 2024 e 2025 por distrito ; nota do 25/08/2025; MITECO, táboa 3. Altura: MDT do IGN."
+  },
+  {
+   "paso": 6,
+   "onde": "Oímbra e Xinzo de Limia · Ourense",
+   "titulo": "Dous lumes que se xuntaron",
+   "camara": {
+    "centro": [
+     -7.55,
+     41.97
+    ],
+    "zoom": 10.2,
+    "inclinacion": 58.0,
+    "rumbo": 10.0
+   },
+   "capas": [
+    "lumes"
+   ],
+   "marcas": [
+    "Oímbra",
+    "Verín"
+   ],
+   "dato": "23.763,65 ha",
+   "dato_l": "lume de Oímbra–A Granxa e Xinzo de Limia–Gudín, balance final da Xunta",
+   "fonte": "Xunta, notas do 25 e do 31/08/2025. MITECO rexistra 22.414 ha en Oímbra e 1.023,35 en Xinzo."
+  },
+  {
+   "paso": 7,
+   "onde": "A Mezquita · Ourense",
+   "titulo": "Na raia con Zamora",
+   "camara": {
+    "centro": [
+     -7.07,
+     42.06
+    ],
+    "zoom": 10.4,
+    "inclinacion": 60.0,
+    "rumbo": -15.0
+   },
+   "capas": [
+    "lumes"
+   ],
+   "marcas": [
+    "A Mezquita"
+   ],
+   "dato": "10.743 ha",
+   "dato_l": "forestais no lume da Mezquita, que comezou o martes 12 ás 21.20",
+   "fonte": "MITECO, táboa 3 (563,62 + 1.106,12 + 1.807,94 ha); Xunta, nota do 25/08/2025."
+  },
+  {
+   "paso": 8,
+   "onde": "Ourense, Lugo e Pontevedra",
+   "titulo": "Os outros grandes lumes",
+   "camara": {
+    "centro": [
+     -7.7,
+     42.38
+    ],
+    "zoom": 8.4,
+    "inclinacion": 45.0,
+    "rumbo": -15.0
+   },
+   "capas": [
+    "lumes"
+   ],
+   "marcas": [
+    "Maceda",
+    "Carballeda de Avia",
+    "A Pobra do Brollón",
+    "Agolada"
+   ],
+   "dato": "16 grandes lumes",
+   "dato_l": "de máis de 500 ha forestais que arderon en Galicia en agosto, segundo o Ministerio",
+   "fonte": "MITECO, Avance informativo 2025 , táboa 3 (inclúe os lumes compartidos con León e Zamora)."
+  },
+  {
+   "paso": 9,
+   "onde": "Provincia de Ourense",
+   "titulo": "Ourense, o 85 % do queimado",
+   "camara": {
+    "centro": [
+     -7.55,
+     42.2
+    ],
+    "zoom": 8.4,
+    "inclinacion": 30.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "lumes"
+   ],
+   "marcas": [],
+   "dato": "101.584 ha",
+   "dato_l": "queimadas en Ourense en 2025, de 118.764 en toda Galicia",
+   "fonte": "Xunta, Medio Rural, Lumes 2025 por distrito (118.763,65 ha, 1.475 lumes)."
+  },
+  {
+   "paso": 10,
+   "onde": "Galicia · 2016–2025",
+   "titulo": "Un ano case coma nove",
+   "camara": {
+    "centro": [
+     -7.9,
+     42.75
+    ],
+    "zoom": 7.3,
+    "inclinacion": 35.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "anos",
+    "lumes"
+   ],
+   "marcas": [],
+   "dato": "122.685 ha",
+   "dato_l": "queimadas en Galicia en 2025 segundo o satélite, fronte a 150.235 nos nove anos anteriores xuntos",
+   "fonte": "Cálculo FGS a partir de Copernicus EFFIS (os lumes medianos e grandes que mapea o satélite, recortados ao contorno de Galicia). A Xunta contabiliza 2.644,7 ha en 2024 e 118.763,65 en 2025."
+  },
+  {
+   "paso": 11,
+   "onde": "O monte como sumidoiro",
+   "titulo": "Un ano de absorción en dúas semanas",
+   "camara": {
+    "centro": [
+     -7.75,
+     42.55
+    ],
+    "zoom": 7.2,
+    "inclinacion": 40.0,
+    "rumbo": -10.0
+   },
+   "capas": [
+    "lumes"
+   ],
+   "marcas": [],
+   "dato": "≈9,6 Mt",
+   "dato_l": "de gases de efecto invernadoiro emitidos polos lumes do verán de 2025 en Galicia",
+   "fonte": "Copernicus, citado polo Observatorio Galego de Acción Climática (Ogacli), agosto de 2026. Absorción de 2024: emisións brutas menos netas, Ogacli."
+  }
+ ],
+ "calculos_fgs": {
+  "focos": {
+   "tempada_xuno_outubro": 10767,
+   "agosto": 10427,
+   "agosto_ourense": 8845,
+   "pct_agosto_tempada": 96.8,
+   "pct_ourense_agosto": 84.8,
+   "dias_13_17": 7345,
+   "pct_dias_13_17": 70.4,
+   "dia_maximo": 15,
+   "focos_dia_maximo": 1613,
+   "por_dia": {
+    "1": 6,
+    "2": 91,
+    "3": 72,
+    "4": 18,
+    "5": 26,
+    "6": 28,
+    "7": 12,
+    "8": 25,
+    "9": 82,
+    "10": 179,
+    "11": 156,
+    "12": 269,
+    "13": 1249,
+    "14": 1522,
+    "15": 1613,
+    "16": 1411,
+    "17": 1550,
+    "18": 529,
+    "19": 705,
+    "20": 223,
+    "21": 82,
+    "22": 84,
+    "23": 76,
+    "24": 89,
+    "25": 198,
+    "26": 114,
+    "27": 18
+   },
+   "por_produto": {
+    "MODIS": 2737,
+    "VIIRS S-NPP": 7690
+   },
+   "celas_500m": 5106
+  },
+  "effis_ha_en_galicia_por_ano": {
+   "2016": 18110,
+   "2017": 47864,
+   "2018": 1273,
+   "2019": 4550,
+   "2020": 14533,
+   "2021": 3988,
+   "2022": 51873,
+   "2023": 5850,
+   "2024": 2194,
+   "2025": 122685
+  },
+  "effis_2016_2024_suma": 150235,
+  "effis_2025_vs_suma_previa": 0.82,
+  "grandes_effis_2025": {
+   "278504": {
+    "data": "2025-08-08",
+    "concello_effis": "Manzaneda",
+    "ha_effis": 24583,
+    "ha_effis_en_galicia": 24433,
+    "altura_min": 591,
+    "punto_min": [
+     -7.2179,
+     42.2992
+    ],
+    "altura_max": 1778,
+    "punto_max": [
+     -7.2981,
+     42.2569
+    ],
+    "punto": [
+     -7.3365,
+     42.2142
+    ]
+   },
+   "278347": {
+    "data": "2025-08-12",
+    "concello_effis": "A Mezquita",
+    "ha_effis": 12026,
+    "ha_effis_en_galicia": 11654,
+    "altura_min": 668,
+    "punto_min": [
+     -7.1382,
+     42.1253
+    ],
+    "altura_max": 1468,
+    "punto_max": [
+     -7.0319,
+     42.0659
+    ],
+    "punto": [
+     -7.0666,
+     42.0584
+    ]
+   },
+   "278475": {
+    "data": "2025-08-14",
+    "concello_effis": "A Rúa",
+    "ha_effis": 37179,
+    "ha_effis_en_galicia": 31953,
+    "altura_min": 269,
+    "punto_min": [
+     -7.2152,
+     42.453
+    ],
+    "altura_max": 1605,
+    "punto_max": [
+     -7.0017,
+     42.5053
+    ],
+    "punto": [
+     -7.1202,
+     42.4296
+    ]
+   },
+   "278477": {
+    "data": "2025-08-15",
+    "concello_effis": "A Veiga",
+    "ha_effis": 25953,
+    "ha_effis_en_galicia": 6285,
+    "altura_min": 683,
+    "punto_min": [
+     -6.8157,
+     42.3224
+    ],
+    "altura_max": 2109,
+    "punto_max": [
+     -6.7967,
+     42.2422
+    ],
+    "punto": [
+     -6.8118,
+     42.2721
+    ]
+   },
+   "278348": {
+    "data": "2025-08-13",
+    "concello_effis": "Oímbra",
+    "ha_effis": 24471,
+    "ha_effis_en_galicia": 24308,
+    "altura_min": 372,
+    "punto_min": [
+     -7.4528,
+     41.9141
+    ],
+    "altura_max": 1192,
+    "punto_max": [
+     -7.678,
+     41.9195
+    ],
+    "punto": [
+     -7.541,
+     41.9609
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>As rías que traballan — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Un voo polas rías galegas: os polígonos de bateas, as lonxas e o marisqueo, o estado das augas e a costa que pode inundar o mar.">
+<meta property="og:title" content="As rías que traballan">
+<meta property="og:description" content="Sete de cada dez hectáreas de bateas están en Arousa. Un voo polas rías onde se cultiva, se marisca e se vende o mar.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/rias-que-traballan/og.jpg">
+<meta property="og:url" content="https://divulga.galiciasustentable.org/v/rias-que-traballan/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow+Condensed:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<link rel="stylesheet" href="../../assets/vendor/maplibre-gl-6.14.0/maplibre-gl.css">
+<link rel="stylesheet" href="../../assets/css/voo.css">
+<style>
+/* Voo de cámara: mapa 3D fixo detrás e unha columna de pasos. Motor: assets/js/voo.js */
+:root{
+  --ink:#f2f0e8; --paper:#0e1012; --muted:#a7a59c; --line:#2a2d30;
+  --cadro:rgba(14,16,18,.86); --acento:#f2c14e;
+  --num:var(--gs-font-chart-num);
+}
+body{background:var(--paper);color:var(--ink)}
+.paso a{color:var(--ink)}
+.peche-ligazons{margin:.4rem 0 0;padding-left:1.1rem;line-height:1.7}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+
+<main class="voo">
+  <div class="voo-mapa" aria-hidden="true"></div>
+  <div class="voo-pasos">
+
+    <section class="paso" data-centro="-8.35,43.05" data-zoom="7.3" data-zoom-movil="6.3" data-inclinacion="40" data-rumbo="0" data-capa="zonas,bateas" data-xiro="0">
+      <div>
+        <p class="onde">Costa de Galicia</p>
+        <h1>As rías <em>que traballan</em></h1>
+        <p>Un voo polas rías galegas, onde se cultiva o mexillón, se marisca na area e se vende o peixe. Paramos nas bateas, nas lonxas e nas zonas de marisqueo, e rematamos onde a auga sae do seu sitio.</p>
+        <p class="fonte">Baixa para comezar.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.88,42.48" data-zoom="8.7" data-inclinacion="50" data-rumbo="60" data-capa="zonas">
+      <div>
+        <p class="onde">Costa galega · Rías Baixas na imaxe</p>
+        <h2>O mar tamén ten parcelas</h2>
+        <p class="dato">84<small>zonas</small></p>
+        <p class="dato-l">de produción de moluscos clasificadas na costa: 9 de clase A, 64 de clase B e 11 de clase C</p>
+        <p>Case todo o interior das rías está repartido en zonas onde se poden cultivar ou recoller bivalvos. A clase indica a calidade sanitaria: o marisco dunha zona A pode ir directo ao mercado; o dunha zona B pasa antes por unha depuradora; o dunha C ten que reinstalarse en augas limpas durante un tempo.</p>
+        <p class="lenda"><span><i class="c" style="background:#7cc6a4"></i>Clase A</span><span><i class="c" style="background:#3a8fb7"></i>Clase B</span><span><i class="c" style="background:#d9825b"></i>Clase C</span></p>
+        <p class="fonte">Augas de Galicia, plan hidrolóxico Galicia-Costa 2021–2027 (zonas protexidas), consultado o 1/11/2026.</p>
+      </div>
+    </section>
+
+    <section class="paso alto" data-centro="-8.90,42.56" data-zoom="10.6" data-inclinacion="55" data-rumbo="40" data-capa="bateas"
+             data-marca="-8.7666,42.5960|Vilagarcía;-8.9350,42.6050|A Pobra do Caramiñal;-8.8147,42.5155|Cambados;-8.8650,42.4950|O Grove">
+      <div>
+        <p class="onde">Ría de Arousa · A Coruña e Pontevedra</p>
+        <h2>A ría das bateas</h2>
+        <p class="dato">69<small>%</small></p>
+        <p class="dato-l">da superficie dos polígonos de bateas de Galicia está en Arousa: 43,1 dos 62,7 km²</p>
+        <p>Arousa concentra 26 dos 71 polígonos de bateas da costa. En 2025 as bateas e os parques de cultivo galegos produciron 177.639 toneladas de mexillón, por valor de 124,1 millóns de euros.</p>
+        <p>Ese mexillón case nunca pasa pola lonxa: véndese directamente a depuradoras, cocedoras e conserveiras. Por iso non aparece nas cifras de primeira venda que veremos nas paradas seguintes.</p>
+        <p class="lenda"><span><i class="c" style="background:#f2c14e"></i>Polígonos de bateas</span></p>
+        <p class="fonte">Superficie: cálculo FGS a partir dos polígonos de Augas de Galicia (PHGC 2021–2027). Mexillón: Pesca de Galicia, produción de acuicultura 2025, consultado o 4/11/2026.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.80,42.60" data-zoom="11.3" data-inclinacion="60" data-rumbo="20" data-capa="lonxasb,bateas"
+             data-marca="-8.7776,42.6147|Carril;-8.8266,42.5621|Vilanova;-8.8880,42.6147|Cabo de Cruz;-8.8224,42.6473|Rianxo">
+      <div>
+        <p class="onde">Fondo da ría de Arousa · Vilagarcía</p>
+        <h2>A area que dá ameixa</h2>
+        <p class="dato">6,16<small>M€</small></p>
+        <p class="dato-l">de ameixa xaponesa vendida na lonxa de Carril en 2025, a primeira de Galicia nesta especie</p>
+        <p>No fondo da ría, onde a auga é pouco profunda, o traballo faise a pé ou desde a embarcación, nos bancos marisqueiros. As lonxas da zona de Arousa venderon 25,6 millóns de euros en bivalvos en 2025: o 54 % do que se vendeu en todas as lonxas galegas.</p>
+        <p class="lenda"><span><i style="background:#e8794a"></i>Bivalvos vendidos en cada lonxa (o tamaño, segundo o importe)</span></p>
+        <p class="fonte">Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia, Consellería do Mar).</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.72,42.25" data-zoom="10.9" data-inclinacion="58" data-rumbo="75" data-capa="lonxas,bateas"
+             data-marca="-8.7268,42.2359|Vigo;-8.7804,42.2637|Cangas;-8.6585,42.2878|Rande;-8.7333,42.2872|Moaña">
+      <div>
+        <p class="onde">Ría de Vigo · Pontevedra</p>
+        <h2>A lonxa máis grande</h2>
+        <p class="dato">82,1<small>M€</small></p>
+        <p class="dato-l">de primeira venda na lonxa de Vigo en 2025, a primeira das 60 lonxas galegas</p>
+        <p>En Vigo descarga a frota de altura: só o peixe sapo deixou 23,0 millóns de euros. Na mesma ría hai 12 polígonos de bateas, entre Cangas e Redondela, e as lonxas pequenas de Cangas e Moaña viven do marisco: navalla, percebe e ameixa.</p>
+        <p class="lenda"><span><i style="background:#e8794a"></i>Primeira venda total en cada lonxa</span><span><i class="c" style="background:#f2c14e"></i>Bateas</span></p>
+        <p class="fonte">Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); polígonos de Augas de Galicia.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.76,42.37" data-zoom="11" data-inclinacion="58" data-rumbo="70" data-capa="lonxas,bateas"
+             data-marca="-8.7846,42.3266|Bueu;-8.6990,42.3928|Marín;-8.6863,42.4267|Campelo;-8.8222,42.3945|Portonovo">
+      <div>
+        <p class="onde">Ría de Pontevedra · Bueu, Marín e Poio</p>
+        <h2>O polbo de Bueu</h2>
+        <p class="dato">1,39<small>M€</small></p>
+        <p class="dato-l">de polbo vendido na lonxa de Bueu en 2025, o 44 % de todo o que alí se vendeu</p>
+        <p>Na ría de Pontevedra conviven a pesca de baixura con nasas, oito polígonos de bateas (5,2 km²) e o marisqueo a pé: na lonxa de Campelo, en Poio, a ameixa xaponesa deixou 1,97 millóns de euros.</p>
+        <p class="lenda"><span><i style="background:#e8794a"></i>Primeira venda total en cada lonxa</span><span><i class="c" style="background:#f2c14e"></i>Bateas</span></p>
+        <p class="fonte">Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); polígonos de Augas de Galicia.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.97,42.77" data-zoom="11" data-inclinacion="58" data-rumbo="60" data-capa="lonxasb,bateas,augas"
+             data-marca="-8.8878,42.7852|Noia;-9.0577,42.7743|Muros;-8.9494,42.7571|Portosín">
+      <div>
+        <p class="onde">Ría de Muros e Noia · A Coruña</p>
+        <h2>Berberecho na boca do Tambre</h2>
+        <p class="dato">58<small>%</small></p>
+        <p class="dato-l">do berberecho vendido nas lonxas galegas en 2025 pasou pola de Noia: 1,74 millóns de euros</p>
+        <p>A lonxa de Noia é case só marisco: o 99 % dos seus 5,6 millóns de euros foron bivalvos. Os bancos están no esteiro do Tambre, unha auga de transición que o plan hidrolóxico avalía en estado peor que bo.</p>
+        <p class="lenda"><span><i style="background:#e8794a"></i>Bivalvos por lonxa</span><span><i class="c" style="background:#e4572e"></i>Auga en estado peor que bo</span><span><i class="c" style="background:#4aa3c7"></i>Bo ou mellor</span></p>
+        <p class="fonte">Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); estado: Augas de Galicia, PHGC 2021–2027.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-9.10,43.16" data-zoom="10.9" data-inclinacion="60" data-rumbo="115" data-capa="lonxas,bateas"
+             data-marca="-9.1829,43.1271|Camariñas;-9.0042,43.2173|Laxe;-9.0921,43.1825|Camelle;-9.2168,43.1044|Muxía">
+      <div>
+        <p class="onde">Costa da Morte · Laxe e Camariñas</p>
+        <h2>Onde a costa se abre</h2>
+        <p class="dato">87<small>%</small></p>
+        <p class="dato-l">do que se vendeu na lonxa de Camariñas en 2025 foi peixe: xurelo, bocarte, lirio e sardiña</p>
+        <p>Na Costa da Morte as rías son curtas e abertas ao mar, e as bateas son poucas: catro polígonos pequenos entre Corme e Camariñas. A lonxa de Camariñas vendeu 3,94 millóns de euros, sobre todo da frota de cerco.</p>
+        <p class="lenda"><span><i style="background:#e8794a"></i>Primeira venda total en cada lonxa</span><span><i class="c" style="background:#f2c14e"></i>Bateas</span></p>
+        <p class="fonte">Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); polígonos de Augas de Galicia.</p>
+      </div>
+    </section>
+
+    <section class="paso alto" data-centro="-8.18,43.45" data-zoom="10.3" data-inclinacion="55" data-rumbo="185" data-capa="inundacion,augas,bateas"
+             data-marca="-8.2331,43.4847|Ferrol;-8.1600,43.4990|Neda;-8.2134,43.2862|Betanzos;-8.2495,43.3577|Sada">
+      <div>
+        <p class="onde">Rías de Ferrol, Ares e Betanzos · A Coruña</p>
+        <h2>Onde entra o mar</h2>
+        <p class="dato">5,26<small>km²</small></p>
+        <p class="dato-l">inundables polo mar en Neda nun episodio de período de retorno de 100 anos, o tramo máis extenso de Galicia</p>
+        <p>Os fondos das rías do Golfo Ártabro son baixos e chans. Entre Neda e Betanzos suman 9,2 km² inundables, o 46 % de todo o que o estudo marca na costa galega.</p>
+        <p>As augas costeiras de Ares e da Coruña están, xunto coas de Moaña e Rande en Vigo, entre as catro de Galicia avaliadas en estado peor que bo. Os esteiros do Mandeo e do Grande de Xubia tamén.</p>
+        <p class="lenda"><span><i class="c" style="background:#ff5fa2"></i>Zona inundable (100 anos)</span><span><i class="c" style="background:#e4572e"></i>Auga en estado peor que bo</span></p>
+        <p class="fonte">Augas de Galicia, mapas de zonas inundables costeiras (estudo SNCZI de 2014) e PHGC 2021–2027; superficies: cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.48,43.66" data-zoom="10" data-inclinacion="58" data-rumbo="115" data-capa="lonxas,augas"
+             data-marca="-7.5976,43.6771|Celeiro;-7.3548,43.6575|Burela">
+      <div>
+        <p class="onde">A Mariña lucense · Viveiro e Burela</p>
+        <h2>A pescada do norte</h2>
+        <p class="dato">75<small>%</small></p>
+        <p class="dato-l">da pescada vendida en Galicia en 2025 entrou polas lonxas de Celeiro e Burela: 73,9 millóns de euros</p>
+        <p>Na Mariña case non hai bateas nin marisqueo nas lonxas; manda a frota de altura. Celeiro e Burela venderon xuntas 104,8 millóns de euros, un de cada catro euros da primeira venda galega. As súas augas costeiras están en estado moi bo.</p>
+        <p class="lenda"><span><i style="background:#e8794a"></i>Primeira venda total en cada lonxa</span><span><i class="c" style="background:#4aa3c7"></i>Auga en estado bo ou mellor</span></p>
+        <p class="fonte">Cálculo FGS a partir das notas de primeira venda de 2025 (Pesca de Galicia); estado: Augas de Galicia, PHGC 2021–2027.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.30,43.00" data-zoom="7.6" data-zoom-movil="6.5" data-inclinacion="45" data-rumbo="0" data-capa="augas" data-xiro="0">
+      <div>
+        <p class="onde">Augas costeiras e de transición · Galicia-Costa</p>
+        <h2>Os esteiros, o punto débil</h2>
+        <p class="dato">14<small>de 22</small></p>
+        <p class="dato-l">augas de transición (esteiros) en estado peor que bo; nas costeiras naturais son 4 de 22</p>
+        <p>O mar aberto está, en xeral, ben. Os problemas concéntranse onde os ríos chegan ás rías, xusto onde están os bancos marisqueiros. En todas o estado químico é bo: o que falla é o ecolóxico, que mide a vida da auga.</p>
+        <p class="lenda"><span><i class="c" style="background:#e4572e"></i>Peor que bo</span><span><i class="c" style="background:#4aa3c7"></i>Bo ou mellor</span></p>
+        <p class="fonte">Augas de Galicia, plan hidrolóxico Galicia-Costa 2021–2027 (estado das masas de auga), consultado o 1/11/2026.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.40,42.95" data-zoom="7.5" data-zoom-movil="6.4" data-inclinacion="40" data-rumbo="0" data-capa="bateas,lonxas,inundacion" data-xiro="0">
+      <div>
+        <p class="onde">Peche</p>
+        <h2>Coidar a auga para seguir traballando</h2>
+        <p class="dato">19,8<small>km²</small></p>
+        <p class="dato-l">de costa que o mar pode inundar nun episodio de período de retorno de 100 anos, repartidos en 28 tramos</p>
+        <p class="lenda"><span><i class="c" style="background:#ff5fa2"></i>Zona inundable</span><span><i class="c" style="background:#f2c14e"></i>Bateas</span><span><i style="background:#e8794a"></i>Lonxas</span></p>
+        <p>As rías son territorio produtivo: bateas, lonxas e bancos marisqueiros dependen da mesma auga. Mellorar os esteiros e planificar os fondos das rías que pode cubrir o mar é tamén defender ese traballo.</p>
+        <ul class="peche-ligazons">
+          <li><a href="../mexillon-mundo/">O mexillón do mundo</a></li>
+          <li><a href="../mar-prato/">Do mar ao prato</a></li>
+          <li><a href="../costa-galicia/">A costa de Galicia</a></li>
+          <li><a href="../ondas-atlantico/">As ondas do Atlántico</a></li>
+          <li><a href="https://mapas.galiciasustentable.org/#map=8.00/42.7000/-8.7000&amp;capas=zonas-producion-moluscos,lonxas-2025,estado-masas-auga,inundacion-costeira">Estas capas en Mapas Galicia Sustentable</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="voo-fontes">
+  <h2>Fontes</h2>
+  <ul>
+    <li>Zonas de produción de moluscos e polígonos de bateas: Augas de Galicia, plan hidrolóxico Galicia-Costa 2021–2027, zonas protexidas de nivel europeo (servizo ArcGIS do IDEG), vía Mapas Galicia Sustentable (capa <code>zonas-producion-moluscos</code>, CC BY-SA 4.0), consultado o 1/11/2026. Superficies por ría: cálculo FGS.</li>
+    <li>Lonxas: Consellería do Mar, notas de primeira venda de pesca fresca 2025 (<a href="https://www.pescadegalicia.gal/descargas/pescafresca/pescafresca2025.csv">pescadegalicia.gal</a>), 1/1–31/12/2025, consultado o 4/11/2026; posicións do Nomenclátor Geográfico Básico de España (IGN). Totais por lonxa e especie: cálculo FGS (capa <code>lonxas-2025</code> de Mapas Galicia Sustentable, CC BY-SA 4.0).</li>
+    <li>Mexillón: Consellería do Mar, <a href="https://www.pescadegalicia.gal/descargas/acuicultura/acuicultura.csv">produción de acuicultura 2003–2025</a>, consultado o 4/11/2026.</li>
+    <li>Estado das masas de auga: Augas de Galicia, PHGC 2021–2027 (capa <code>estado-masas-auga</code>, CC BY-SA 4.0), consultado o 1/11/2026.</li>
+    <li>Zonas inundables costeiras: Augas de Galicia, mapas da Directiva 2007/60/CE, ciclo 2015–2021, a partir do estudo do SNCZI (Ministerio, 2014) (capa <code>inundacion-costeira</code>, CC BY-SA 4.0), consultado o 1/11/2026.</li>
+    <li>Relevo e contorno: © Instituto Geográfico Nacional, MDT de 25 m (PNOA-LiDAR), CC BY 4.0.</li>
+    <li>Licenza da peza: CC BY-SA 4.0, porque usa capas de Mapas Galicia Sustentable publicadas con esa licenza.</li>
+  </ul>
+</section>
+
+<footer class="dv-foot">
+  <div class="inner">
+    <span class="simbolo"><svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>Fundación Galicia Sustentable · CIF G70193537 · CC BY-SA 4.0 · Datos: Augas de Galicia e Consellería do Mar (Xunta de Galicia), Mapas Galicia Sustentable · Relevo: © Instituto Geográfico Nacional, MDT (PNOA-LiDAR), CC BY 4.0</span>
+    <nav class="legal" aria-label="Ligazóns legais">
+      <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+      <a href="https://fundaciongaliciasustentable.gal/aviso-legal/">Aviso legal</a>
+      <a href="https://fundaciongaliciasustentable.gal/privacidade/">Privacidade</a>
+      <a href="https://fundaciongaliciasustentable.gal/cookies/">Cookies</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/vendor/pmtiles-4.5.0/pmtiles.js"></script>
+<script type="module">
+import { iniciarVoo } from '../../assets/js/voo.js';
+const radio = (prop, k) => ['interpolate', ['linear'], ['zoom'],
+  7, ['+', 1.5, ['*', ['sqrt', ['get', prop]], k * 0.35]], 11, ['+', 2, ['*', ['sqrt', ['get', prop]], k]]];
+const circulo = (prop, k) => ({ type: 'circle', paint: {
+  'circle-radius': radio(prop, k), 'circle-color': '#e8794a', 'circle-opacity': 0.55,
+  'circle-stroke-color': '#ffd2b8', 'circle-stroke-width': 1.2, 'circle-stroke-opacity': 0.95,
+  'circle-pitch-alignment': 'map' } });
+iniciarVoo({
+  atribucion: 'Augas de Galicia (PHGC 2021–2027, zonas inundables) · Consellería do Mar (primeira venda 2025) · Mapas Galicia Sustentable, CC BY-SA 4.0',
+  capas: [
+    { id: 'zonas', fonte: 'capas/zonas.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': ['match', ['get', 'clase'], 'A', '#7cc6a4', 'C', '#d9825b', '#3a8fb7'], 'fill-opacity': 0.42 } },
+      { type: 'line', paint: { 'line-color': ['match', ['get', 'clase'], 'A', '#a9e3c6', 'C', '#f0a983', '#7cc0e3'], 'line-width': 0.8, 'line-opacity': 0.7 } } ] },
+    { id: 'augas', fonte: 'capas/augas.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': ['match', ['get', 'e'], 0, '#e4572e', '#4aa3c7'],
+        'fill-opacity': ['match', ['get', 'e'], 0, 0.6, 0.25] } },
+      { type: 'line', paint: { 'line-color': ['match', ['get', 'e'], 0, '#ff8a65', '#7cc0e3'], 'line-width': 1, 'line-opacity': 0.75 } } ] },
+    { id: 'inundacion', fonte: 'capas/inundacion.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': '#ff5fa2', 'fill-opacity': 0.8 } },
+      { type: 'line', paint: { 'line-color': '#ffb3d4', 'line-width': 1.2, 'line-opacity': 0.9 } } ] },
+    { id: 'bateas', fonte: 'capas/bateas.geojson', estilos: [
+      { type: 'fill', paint: { 'fill-color': '#f2c14e', 'fill-opacity': 0.8 } },
+      { type: 'line', paint: { 'line-color': '#ffe39a', 'line-width': 1, 'line-opacity': 0.9 } } ] },
+    { id: 'lonxas', fonte: 'capas/lonxas.geojson', estilos: [circulo('t', 5)] },
+    { id: 'lonxasb', fonte: 'capas/lonxas.geojson', estilos: [circulo('b', 8)] },
+  ],
+});
+</script>
+</body>
+</html>

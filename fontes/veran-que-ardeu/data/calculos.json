@@ -1,0 +1,163 @@
+{
+ "focos": {
+  "tempada_xuno_outubro": 10767,
+  "agosto": 10427,
+  "agosto_ourense": 8845,
+  "pct_agosto_tempada": 96.8,
+  "pct_ourense_agosto": 84.8,
+  "dias_13_17": 7345,
+  "pct_dias_13_17": 70.4,
+  "dia_maximo": 15,
+  "focos_dia_maximo": 1613,
+  "por_dia": {
+   "1": 6,
+   "2": 91,
+   "3": 72,
+   "4": 18,
+   "5": 26,
+   "6": 28,
+   "7": 12,
+   "8": 25,
+   "9": 82,
+   "10": 179,
+   "11": 156,
+   "12": 269,
+   "13": 1249,
+   "14": 1522,
+   "15": 1613,
+   "16": 1411,
+   "17": 1550,
+   "18": 529,
+   "19": 705,
+   "20": 223,
+   "21": 82,
+   "22": 84,
+   "23": 76,
+   "24": 89,
+   "25": 198,
+   "26": 114,
+   "27": 18
+  },
+  "por_produto": {
+   "MODIS": 2737,
+   "VIIRS S-NPP": 7690
+  },
+  "celas_500m": 5106
+ },
+ "effis_ha_en_galicia_por_ano": {
+  "2016": 18110,
+  "2017": 47864,
+  "2018": 1273,
+  "2019": 4550,
+  "2020": 14533,
+  "2021": 3988,
+  "2022": 51873,
+  "2023": 5850,
+  "2024": 2194,
+  "2025": 122685
+ },
+ "effis_2016_2024_suma": 150235,
+ "effis_2025_vs_suma_previa": 0.82,
+ "grandes_effis_2025": {
+  "278504": {
+   "data": "2025-08-08",
+   "concello_effis": "Manzaneda",
+   "ha_effis": 24583,
+   "ha_effis_en_galicia": 24433,
+   "altura_min": 591,
+   "punto_min": [
+    -7.2179,
+    42.2992
+   ],
+   "altura_max": 1778,
+   "punto_max": [
+    -7.2981,
+    42.2569
+   ],
+   "punto": [
+    -7.3365,
+    42.2142
+   ]
+  },
+  "278347": {
+   "data": "2025-08-12",
+   "concello_effis": "A Mezquita",
+   "ha_effis": 12026,
+   "ha_effis_en_galicia": 11654,
+   "altura_min": 668,
+   "punto_min": [
+    -7.1382,
+    42.1253
+   ],
+   "altura_max": 1468,
+   "punto_max": [
+    -7.0319,
+    42.0659
+   ],
+   "punto": [
+    -7.0666,
+    42.0584
+   ]
+  },
+  "278475": {
+   "data": "2025-08-14",
+   "concello_effis": "A Rúa",
+   "ha_effis": 37179,
+   "ha_effis_en_galicia": 31953,
+   "altura_min": 269,
+   "punto_min": [
+    -7.2152,
+    42.453
+   ],
+   "altura_max": 1605,
+   "punto_max": [
+    -7.0017,
+    42.5053
+   ],
+   "punto": [
+    -7.1202,
+    42.4296
+   ]
+  },
+  "278477": {
+   "data": "2025-08-15",
+   "concello_effis": "A Veiga",
+   "ha_effis": 25953,
+   "ha_effis_en_galicia": 6285,
+   "altura_min": 683,
+   "punto_min": [
+    -6.8157,
+    42.3224
+   ],
+   "altura_max": 2109,
+   "punto_max": [
+    -6.7967,
+    42.2422
+   ],
+   "punto": [
+    -6.8118,
+    42.2721
+   ]
+  },
+  "278348": {
+   "data": "2025-08-13",
+   "concello_effis": "Oímbra",
+   "ha_effis": 24471,
+   "ha_effis_en_galicia": 24308,
+   "altura_min": 372,
+   "punto_min": [
+    -7.4528,
+    41.9141
+   ],
+   "altura_max": 1192,
+   "punto_max": [
+    -7.678,
+    41.9195
+   ],
+   "punto": [
+    -7.541,
+    41.9609
+   ]
+  }
+ }
+}

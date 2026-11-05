@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>As aldeas que quedaron sen ninguén — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Un voo sobre os lugares de Galicia que pasaron a ter cero habitantes desde 2000: onde están, a que altura, a que distancia dos servizos e que pasou nos seus concellos.">
+<meta property="og:title" content="As aldeas que quedaron sen ninguén">
+<meta property="og:description" content="1.072 lugares de Galicia tiñan veciños en 2000 e ningún en 2025. A maioría non está nas serras do leste, senón no norte de Lugo e en Ortegal.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/aldeas-que-quedaron/og.jpg">
+<meta property="og:url" content="https://divulga.galiciasustentable.org/v/aldeas-que-quedaron/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow+Condensed:wght@600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<link rel="stylesheet" href="../../assets/vendor/maplibre-gl-6.14.0/maplibre-gl.css">
+<link rel="stylesheet" href="../../assets/css/voo.css">
+<style>
+/* Voo de cámara: mapa 3D fixo detrás e unha columna de pasos; cada paso move a cámara.
+   Datos e scripts en fontes/aldeas-que-quedaron/ */
+:root{
+  --ink:#f2f0e8; --paper:#0e1012; --muted:#a7a59c; --line:#2a2d30;
+  --cadro:rgba(14,16,18,.86); --acento:#f0a03c;
+  --num:var(--gs-font-chart-num);
+}
+body{background:var(--paper);color:var(--ink)}
+.lenda i.b{background:#f0a03c}
+.lenda i.a{background:#7d8b95}
+.lenda i.q{background:#6fb7c9}
+.lenda i.c{background:none;border:1px dashed #f2f0e8;border-radius:1px}
+.paso ul.rel{margin:.4rem 0 .6rem;padding-left:1.1rem;line-height:1.6}
+.paso ul.rel a{color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+
+<main class="voo">
+  <div class="voo-mapa" aria-hidden="true"></div>
+  <div class="voo-pasos">
+
+    <section class="paso" data-centro="-7.95,42.78" data-zoom="7.1" data-inclinacion="35" data-rumbo="0" data-capa="baleiras">
+      <div>
+        <h1>As aldeas que quedaron <em>sen ninguén</em></h1>
+        <p>En 2025 había en Galicia 1.960 lugares sen ningún habitante, case o dobre ca en 2000 (1.064). Un voo polos vales onde o padrón chegou a cero e polos que aínda aguantan.</p>
+        <p class="lenda"><span><i class="b"></i>baleiros desde 2000</span><span><i class="a"></i>xa baleiros en 2000</span></p>
+        <p class="fonte">INE, Nomenclátor 2000 e 2025 (entidades singulares de poboación). Baixa para comezar.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.75,43.05" data-zoom="7.6" data-inclinacion="50" data-rumbo="10" data-capa="calor,baleiras">
+      <div>
+        <p class="onde">Galicia · as catro provincias</p>
+        <h2>O cero ten xeografía</h2>
+        <p class="dato">1.072<small>lugares</small></p>
+        <p class="dato-l">tiñan veciños en 2000 e ningún en 2025</p>
+        <p>Máis da metade, 579, están na provincia de Lugo; 314 na da Coruña, 93 na de Ourense e 86 na de Pontevedra. A mancha máis densa non está nas serras do leste, senón no norte: Ortegal, a serra do Xistral e A Mariña.</p>
+        <p>Pesa a forma de poboar. A metade das entidades de Lugo ten 7 habitantes ou menos; en Pontevedra, 31. Onde cada lugar son unha ou dúas casas, o cero chega antes.</p>
+        <p class="lenda"><span><i class="b"></i>baleiros desde 2000</span><span><i class="a"></i>xa baleiros en 2000</span></p>
+        <p class="fonte">Cálculo FGS a partir do INE, Nomenclátor 2000–2025 (capa aldeas-baleiras); 1.030 teñen posición no mapa. Medianas: INE, Nomenclátor 2025.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.85,43.62" data-zoom="10.6" data-inclinacion="60" data-rumbo="-15" data-capa="baleiras,quedan,concellos,aldeas" data-marca="-7.8587,43.5819|Os Campos;-7.8510,43.6860|Ortigueira">
+      <div>
+        <p class="onde">Os Campos · Ortigueira, A Coruña</p>
+        <h2>O concello con máis lugares baleirados</h2>
+        <p class="dato">60<small>lugares</small></p>
+        <p class="dato-l">de Ortigueira pasaron a cero desde 2000; 126 están a cero en total</p>
+        <p>Os Campos, na parroquia de Insua, tiña 7 veciños en 2000 e ningún desde 2013. Está a 342 metros de altitude e a 7,1 km en liña recta do consultorio máis próximo.</p>
+        <p>Ortigueira chegou a 23.845 habitantes en 1940; o censo de 2021 contou 5.629. Entre 2015 e 2024 houbo 194 nacementos e 1.137 defuncións. Outros 141 lugares do concello teñen entre 1 e 5 habitantes.</p>
+        <p class="lenda"><span><i class="b"></i>baleiro desde 2000</span><span><i class="a"></i>xa baleiro en 2000</span><span><i class="q"></i>1–5 habitantes</span><span><i class="c"></i>concello</span></p>
+        <p class="fonte">INE, Nomenclátor; INE, censos 1900–2021 (harmonización FGS); IGE, movemento natural da poboación; altitude: MDT IGN; distancia: cálculo FGS con datos do SERGAS e do IET.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.68,43.49" data-zoom="10.5" data-inclinacion="65" data-rumbo="25" data-capa="baleiras,concellos,aldeas" data-marca="-7.7349,43.5067|Debodas">
+      <div>
+        <p class="onde">Debodas · Muras, Lugo</p>
+        <h2>A serra do Xistral</h2>
+        <p class="dato">615<small>hab.</small></p>
+        <p class="dato-l">en Muras no censo de 2021; eran 3.467 en 1900</p>
+        <p>Debodas, a 565 metros, tiña 11 veciños en 2000; desde 2007 non ten ningún. Muras suma 36 lugares baleirados desde 2000, e os seus veciños Ourol e O Valadouro, 35 e 31: tres concellos da mesma serra entre os cinco de Galicia con máis.</p>
+        <p>En Muras naceron 13 criaturas entre 2015 e 2024 e morreron 135 persoas.</p>
+        <p class="lenda"><span><i class="b"></i>baleiro desde 2000</span><span><i class="a"></i>xa baleiro en 2000</span><span><i class="c"></i>concellos</span></p>
+        <p class="fonte">INE, Nomenclátor e censos (harmonización FGS); IGE, nacementos e defuncións; altitude: MDT IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.07,43.14" data-zoom="10.6" data-inclinacion="62" data-rumbo="-20" data-capa="baleiras,quedan,concellos,aldeas" data-marca="-7.0763,43.1878|Trasouturo;-7.0680,43.1240|A Fonsagrada">
+      <div>
+        <p class="onde">Trasouturo · A Fonsagrada, Lugo</p>
+        <h2>Dez defuncións por cada nacemento</h2>
+        <p class="dato">3.353<small>hab.</small></p>
+        <p class="dato-l">na Fonsagrada no censo de 2021; en 1920 eran 19.861</p>
+        <p>Trasouturo, a 695 metros na parroquia do Trobo, tiña 10 veciños en 2000 e está baleiro desde 2017, a 6,5 km en liña recta do centro de saúde. É un dos 19 lugares do concello que pasaron a cero; outros 118 teñen entre 1 e 5 habitantes.</p>
+        <p>Entre 2015 e 2024 houbo 86 nacementos e 866 defuncións.</p>
+        <p class="lenda"><span><i class="b"></i>baleiro desde 2000</span><span><i class="q"></i>1–5 habitantes</span><span><i class="c"></i>concello</span></p>
+        <p class="fonte">INE, Nomenclátor e censos (harmonización FGS); IGE; altitude: MDT IGN; distancia en liña recta: cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-6.87,42.92" data-zoom="10.9" data-inclinacion="70" data-rumbo="35" data-capa="baleiras,concellos,aldeas" data-marca="-6.8352,42.9420|Peliceira;-6.8923,42.8813|O Mazo">
+      <div>
+        <p class="onde">Peliceira · Navia de Suarna, Lugo</p>
+        <h2>Os Ancares, por riba dos mil metros</h2>
+        <p class="dato">1.154<small>m</small></p>
+        <p class="dato-l">altitude de Peliceira, sen veciños desde 2014</p>
+        <p>Peliceira, na parroquia de Rao, tiña 4 habitantes en 2000. Queda a 14 km en liña recta do centro de saúde de Navia de Suarna; por estrada, máis. Na mesma serra, O Mazo (Donís, Cervantes), a 931 metros e a 13 km do consultorio de Doiras, baleirou en 2008.</p>
+        <p>Navia de Suarna pasou de 8.076 habitantes en 1920 a 1.038 en 2021; Cervantes, de 8.791 en 1930 a 1.288.</p>
+        <p class="lenda"><span><i class="b"></i>baleiro desde 2000</span><span><i class="a"></i>xa baleiro en 2000</span><span><i class="c"></i>concellos</span></p>
+        <p class="fonte">Altitude: MDT IGN; distancia: cálculo FGS; INE, Nomenclátor e censos (harmonización FGS).</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.20,42.60" data-zoom="11" data-inclinacion="60" data-rumbo="140" data-capa="baleiras,concellos,aldeas" data-marca="-7.2390,42.6046|Lousadela">
+      <div>
+        <p class="onde">Lousadela · Folgoso do Courel, Lugo</p>
+        <h2>O Courel: poucos ceros, pouca xente</h2>
+        <p class="dato">2<small>de 47</small></p>
+        <p class="dato-l">lugares de Folgoso do Courel sen habitantes en 2025</p>
+        <p>No Courel hai poucas aldeas e máis grandes: 47 entidades para 924 veciños. Lousadela (Seceda), a 483 metros, é a única que pasou a cero desde 2000: tiña 4 habitantes e está baleira desde 2014.</p>
+        <p>A perda vai por dentro das aldeas que seguen habitadas: o concello tiña 6.749 habitantes en 1940 e 988 en 2021, e entre 2015 e 2024 rexistrou 33 nacementos e 220 defuncións.</p>
+        <p class="lenda"><span><i class="b"></i>baleiro desde 2000</span><span><i class="a"></i>xa baleiro en 2000</span><span><i class="c"></i>concello</span></p>
+        <p class="fonte">INE, Nomenclátor 2025 e censos (harmonización FGS); IGE; altitude: MDT IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.20,42.31" data-zoom="10.8" data-inclinacion="65" data-rumbo="15" data-capa="baleiras,concellos,aldeas" data-marca="-7.2111,42.2853|Tonxil;-7.2560,42.3390|A Pobra de Trives">
+      <div>
+        <p class="onde">Tonxil · Manzaneda, Ourense</p>
+        <h2>A aldea agrupada tarda máis en chegar a cero</h2>
+        <p class="dato">16<small>hab.</small></p>
+        <p class="dato-l">tamaño mediano dunha entidade de poboación en Ourense (7 en Lugo)</p>
+        <p>Tonxil (Placín), a 816 metros, tiña 7 veciños en 2000 e ningún desde 2014. É unha excepción: Manzaneda ten 4 lugares a cero de 32, e a veciña Pobra de Trives, ningún dos seus 21.</p>
+        <p>Iso non quere dicir que haxa máis xente: A Pobra de Trives pasou de 6.662 habitantes en 1940 a 2.019 en 2021. En toda a provincia de Ourense só 93 lugares pasaron a cero desde 2000.</p>
+        <p class="lenda"><span><i class="b"></i>baleiro desde 2000</span><span><i class="a"></i>xa baleiro en 2000</span><span><i class="c"></i>concellos</span></p>
+        <p class="fonte">INE, Nomenclátor 2025 (medianas, cálculo FGS) e censos (harmonización FGS); altitude: MDT IGN.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.98,42.18" data-zoom="10.9" data-inclinacion="58" data-rumbo="10" data-capa="baleiras,concellos,aldeas" data-marca="-8.0300,42.1442|Ademourán;-7.9570,42.1520|Celanova">
+      <div>
+        <p class="onde">Ademourán · Celanova, Ourense</p>
+        <h2>Terra de Celanova: a vila ao lado</h2>
+        <p class="dato">−46<small>%</small></p>
+        <p class="dato-l">poboación de Celanova entre 1940 e 2021, fronte ao −85 % de Folgoso do Courel</p>
+        <p>Ademourán (Milmanda), a 587 metros, tiña 9 veciños en 2000 e está baleiro desde 2021, a 5,2 km do centro de saúde de Quintela de Leirado. É un dos 5 lugares de Celanova que pasaron a cero.</p>
+        <p>Coa vila e os seus servizos preto, a caída foi menor ca na montaña, pero o saldo natural é igual de negativo: 244 nacementos e 847 defuncións entre 2015 e 2024.</p>
+        <p class="lenda"><span><i class="b"></i>baleiro desde 2000</span><span><i class="a"></i>xa baleiro en 2000</span><span><i class="c"></i>concello</span></p>
+        <p class="fonte">INE, censos 1940 e 2021 (harmonización FGS; porcentaxes, cálculo FGS); INE, Nomenclátor; IGE; distancia: cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-8.80,42.42" data-zoom="10.4" data-inclinacion="55" data-rumbo="30" data-capa="baleiras,quedan,concellos" data-marca="-8.8070,42.3990|Sanxenxo">
+      <div>
+        <p class="onde">O Salnés · Sanxenxo, Pontevedra</p>
+        <h2>Na costa, o cero non chega</h2>
+        <p class="dato">0<small>de 118</small></p>
+        <p class="dato-l">lugares de Sanxenxo que pasaron a cero desde 2000</p>
+        <p>Na beira atlántica o poboamento é continuo e a poboación medrou: Sanxenxo tiña 8.076 habitantes en 1900 e 17.622 en 2021. Na provincia de Pontevedra están a cero o 2,7 % das entidades (171 de 6.262); na de Lugo, o 9,4 % (928 de 9.846).</p>
+        <p>Tampouco aquí nacen máis dos que morren: 1.069 nacementos e 1.622 defuncións entre 2015 e 2024. Se a poboación non baixa é porque chega xente a vivir.</p>
+        <p class="lenda"><span><i class="b"></i>baleiro desde 2000</span><span><i class="a"></i>xa baleiro en 2000</span><span><i class="q"></i>1–5 habitantes</span></p>
+        <p class="fonte">INE, Nomenclátor 2000–2025 e censos (harmonización FGS); IGE; porcentaxes: cálculo FGS.</p>
+      </div>
+    </section>
+
+    <section class="paso" data-centro="-7.95,42.80" data-zoom="7.2" data-inclinacion="40" data-rumbo="-10" data-capa="quedan,baleiras">
+      <div>
+        <h2>Os seguintes ceros</h2>
+        <p class="dato">6.159<small>lugares</small></p>
+        <p class="dato-l">de Galicia tiñan entre 1 e 5 habitantes en 2025; 3.041 deles en Lugo</p>
+        <p>O cero é o último paso dun descenso de décadas, feito de menos nacementos e de xente que marchou. Cada lugar sen veciños deixa terras, camiños e monte sen quen os traballe e os vixíe, e servizos pensados para cada vez menos persoas.</p>
+        <p>Saber onde están os lugares de 1 a 5 habitantes serve para chegar a tempo: transporte a demanda, atención sanitaria a domicilio, acceso á terra para quen queira instalarse e traballala.</p>
+        <p class="lenda"><span><i class="q"></i>1–5 habitantes</span><span><i class="b"></i>baleiros desde 2000</span><span><i class="a"></i>xa baleiros en 2000</span></p>
+        <p>Para seguir:</p>
+        <ul class="rel">
+          <li><a href="../casas-baleiras/">As casas baleiras</a></li>
+          <li><a href="../galicia-apagandose/">Galicia apágase</a></li>
+          <li><a href="../fenda-rural/">A fenda rural</a></li>
+          <li><a href="../minutos-hospital/">Canto queda o hospital</a></li>
+          <li><a href="https://mapas.galiciasustentable.org/pulso/ausencias/">Ausencias, en Mapas Galicia Sustentable</a>: cada lugar baleiro, ano a ano</li>
+        </ul>
+        <p class="fonte">INE, Nomenclátor 2025 (cálculo FGS).</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="voo-fontes">
+  <h2>Fontes e método</h2>
+  <ul>
+    <li><strong>Lugares a cero.</strong> INE, <a href="https://www.ine.es/nomen2/index.do">Nomenclátor: poboación do Padrón continuo por unidade poboacional</a>, ficheiros nacionais de 2000 e 2025 (desde 2024, cifras do Censo anual), consultados o 4/11/2026. Cóntanse as entidades singulares de poboación de Galicia (30.518 en 2025). Licenza CC BY 4.0.</li>
+    <li><strong>Ano en que quedaron baleiros.</strong> Capa <a href="https://mapas.galiciasustentable.org/pulso/ausencias/">aldeas-baleiras</a> de Mapas Galicia Sustentable (cálculo FGS sobre os 26 nomenclátores 2000–2025; os lugares dos concellos fusionados síguense polo nome), foto do 3/11/2026, CC BY-SA 4.0. «Baleiro desde» é o primeiro ano da serie de ceros que chega a 2025. Posicións: © Instituto de Estudos do Territorio, Xunta de Galicia (PBA), CC BY-SA 4.0.</li>
+    <li><strong>Poboación dos concellos, 1900–2021.</strong> INE, <a href="https://www.ine.es/intercensal/">Alteracións dos municipios nos censos de poboación desde 1842</a>, harmonizado aos concellos actuais pola FGS (capa poboacion-seculo), CC BY 4.0.</li>
+    <li><strong>Nacementos e defuncións, 2015–2024.</strong> IGE, Movemento natural da poboación, táboas 57 (nacementos por concello de residencia da nai) e 30 (defuncións por concello de residencia), API do IGE, consultadas o 4/11/2026. Este produto emprega a API de datos do IGE, pero non está certificado nin aprobado polo IGE.</li>
+    <li><strong>Distancia ao centro de saúde.</strong> Capa distancia-servizos de Mapas Galicia Sustentable: distancia en liña recta desde o punto de cada lugar ao centro de saúde ou consultorio do SERGAS máis próximo (non é distancia por estrada). Cálculo FGS con datos do SERGAS (abertos.xunta.gal, conxunto 0253) e do IET, CC BY-SA 4.0.</li>
+    <li><strong>Altitude e relevo.</strong> © Instituto Geográfico Nacional, MDT de 25 m (PNOA-LiDAR), CC BY 4.0: valor da cela de 25 m no punto de cada lugar.</li>
+    <li>Datos e scripts para reproducir a peza: <code>fontes/aldeas-que-quedaron/</code>.</li>
+  </ul>
+</section>
+
+<footer class="dv-foot">
+  <div class="inner">
+    <span class="simbolo"><svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>Fundación Galicia Sustentable · CIF G70193537 · CC BY-SA 4.0 · Datos: INE, IGE, © IET Xunta de Galicia (CC BY-SA 4.0) · Relevo: © Instituto Geográfico Nacional, MDT (PNOA-LiDAR), CC BY 4.0</span>
+    <nav class="legal" aria-label="Ligazóns legais">
+      <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+      <a href="https://fundaciongaliciasustentable.gal/aviso-legal/">Aviso legal</a>
+      <a href="https://fundaciongaliciasustentable.gal/privacidade/">Privacidade</a>
+      <a href="https://fundaciongaliciasustentable.gal/cookies/">Cookies</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/vendor/pmtiles-4.5.0/pmtiles.js"></script>
+<script type="module">
+import { iniciarVoo } from '../../assets/js/voo.js';
+// No móbil o cadro de texto tapa ~70 % da pantalla: nas paradas próximas desprázase o
+// centro cara a quen mira (contra o rumbo) para que a aldea quede no terzo de arriba.
+if (innerWidth <= 700) {
+  for (const p of document.querySelectorAll('.paso')) {
+    const d = p.dataset, z = +d.zoom;
+    if (z < 10) continue;
+    const [lon, lat] = d.centro.split(',').map(Number);
+    const px = 105, mpp = 156543 * Math.cos(lat * Math.PI / 180) / 2 ** z;
+    const km = px * mpp / Math.cos((+d.inclinacion) * Math.PI / 180) / 1000;
+    const r = (+d.rumbo + 180) * Math.PI / 180;
+    d.centro = [lon + km * Math.sin(r) / (111.32 * Math.cos(lat * Math.PI / 180)),
+                lat + km * Math.cos(r) / 110.57].map((v) => v.toFixed(4)).join(',');
+  }
+}
+const raio = (a, b, c) => ['interpolate', ['linear'], ['zoom'], 7, a, 10, b, 13, c];
+iniciarVoo({
+  atribucion: 'INE, Nomenclátor 2000–2025 · © IET, Xunta de Galicia (PBA), CC BY-SA 4.0 · IGE · cálculos: Fundación Galicia Sustentable',
+  capas: [
+    { id: 'calor', fonte: 'capas/baleiras.geojson', estilos: [{
+      type: 'heatmap', filter: ['==', ['get', 't'], 'despois'], paint: {
+        'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 6, 10, 9, 22],
+        'heatmap-intensity': 0.9,
+        'heatmap-color': ['interpolate', ['linear'], ['heatmap-density'],
+          0, 'rgba(240,160,60,0)', 0.25, 'rgba(240,160,60,.2)', 0.5, 'rgba(240,160,60,.55)', 1, 'rgba(255,214,150,.85)'],
+        'heatmap-opacity': 0.9 } }] },
+    { id: 'quedan', fonte: 'capas/quedan.geojson', estilos: [{
+      type: 'circle', paint: { 'circle-color': '#6fb7c9', 'circle-radius': raio(1.4, 2.4, 4), 'circle-opacity': 0.7 } }] },
+    { id: 'baleiras', fonte: 'capas/baleiras.geojson', estilos: [{
+      type: 'circle', paint: {
+        'circle-color': ['match', ['get', 't'], 'despois', '#f0a03c', '#7d8b95'],
+        'circle-radius': raio(2.1, 3.6, 6),
+        'circle-stroke-color': '#0e1012', 'circle-stroke-width': raio(0, 0.6, 1),
+        'circle-opacity': 0.95, 'circle-stroke-opacity': 0.9 } }] },
+    { id: 'concellos', fonte: 'capas/concellos.geojson', estilos: [{
+      type: 'line', paint: { 'line-color': '#f2f0e8', 'line-width': 1.3, 'line-dasharray': [2, 2], 'line-opacity': 0.6 } }] },
+    { id: 'aldeas', fonte: 'capas/aldeas.geojson', estilos: [{
+      type: 'circle', paint: { 'circle-radius': 9, 'circle-color': 'rgba(0,0,0,0)', 'circle-opacity': 1,
+        'circle-stroke-color': '#ffffff', 'circle-stroke-width': 2, 'circle-stroke-opacity': 0.95 } }] },
+  ],
+});
+</script>
+</body>
+</html>

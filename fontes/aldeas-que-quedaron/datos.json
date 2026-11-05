@@ -1,0 +1,279 @@
+{
+ "slug": "aldeas-que-quedaron",
+ "palabras_pasos": 1178,
+ "cifras_calculadas": "cifras.json (prep.py)",
+ "paradas": [
+  {
+   "paso": 0,
+   "onde": "",
+   "titulo": "As aldeas que quedaron sen ninguén",
+   "camara": {
+    "centro": [
+     -7.95,
+     42.78
+    ],
+    "zoom": 7.1,
+    "inclinacion": 35.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "baleiras"
+   ],
+   "marcas": [],
+   "dato": "",
+   "dato_l": "",
+   "fonte": "INE, Nomenclátor 2000 e 2025 (entidades singulares de poboación). Baixa para comezar."
+  },
+  {
+   "paso": 1,
+   "onde": "Galicia · as catro provincias",
+   "titulo": "O cero ten xeografía",
+   "camara": {
+    "centro": [
+     -7.75,
+     43.05
+    ],
+    "zoom": 7.6,
+    "inclinacion": 50.0,
+    "rumbo": 10.0
+   },
+   "capas": [
+    "calor",
+    "baleiras"
+   ],
+   "marcas": [],
+   "dato": "1.072lugares",
+   "dato_l": "tiñan veciños en 2000 e ningún en 2025",
+   "fonte": "Cálculo FGS a partir do INE, Nomenclátor 2000–2025 (capa aldeas-baleiras); 1.030 teñen posición no mapa. Medianas: INE, Nomenclátor 2025."
+  },
+  {
+   "paso": 2,
+   "onde": "Os Campos · Ortigueira, A Coruña",
+   "titulo": "O concello con máis lugares baleirados",
+   "camara": {
+    "centro": [
+     -7.85,
+     43.62
+    ],
+    "zoom": 10.6,
+    "inclinacion": 60.0,
+    "rumbo": -15.0
+   },
+   "capas": [
+    "baleiras",
+    "quedan",
+    "concellos",
+    "aldeas"
+   ],
+   "marcas": [
+    "Os Campos",
+    "Ortigueira"
+   ],
+   "dato": "60lugares",
+   "dato_l": "de Ortigueira pasaron a cero desde 2000; 126 están a cero en total",
+   "fonte": "INE, Nomenclátor; INE, censos 1900–2021 (harmonización FGS); IGE, movemento natural da poboación; altitude: MDT IGN; distancia: cálculo FGS con datos do SERGAS e do IET."
+  },
+  {
+   "paso": 3,
+   "onde": "Debodas · Muras, Lugo",
+   "titulo": "A serra do Xistral",
+   "camara": {
+    "centro": [
+     -7.68,
+     43.49
+    ],
+    "zoom": 10.5,
+    "inclinacion": 65.0,
+    "rumbo": 25.0
+   },
+   "capas": [
+    "baleiras",
+    "concellos",
+    "aldeas"
+   ],
+   "marcas": [
+    "Debodas"
+   ],
+   "dato": "615hab.",
+   "dato_l": "en Muras no censo de 2021; eran 3.467 en 1900",
+   "fonte": "INE, Nomenclátor e censos (harmonización FGS); IGE, nacementos e defuncións; altitude: MDT IGN."
+  },
+  {
+   "paso": 4,
+   "onde": "Trasouturo · A Fonsagrada, Lugo",
+   "titulo": "Dez defuncións por cada nacemento",
+   "camara": {
+    "centro": [
+     -7.07,
+     43.14
+    ],
+    "zoom": 10.6,
+    "inclinacion": 62.0,
+    "rumbo": -20.0
+   },
+   "capas": [
+    "baleiras",
+    "quedan",
+    "concellos",
+    "aldeas"
+   ],
+   "marcas": [
+    "Trasouturo",
+    "A Fonsagrada"
+   ],
+   "dato": "3.353hab.",
+   "dato_l": "na Fonsagrada no censo de 2021; en 1920 eran 19.861",
+   "fonte": "INE, Nomenclátor e censos (harmonización FGS); IGE; altitude: MDT IGN; distancia en liña recta: cálculo FGS."
+  },
+  {
+   "paso": 5,
+   "onde": "Peliceira · Navia de Suarna, Lugo",
+   "titulo": "Os Ancares, por riba dos mil metros",
+   "camara": {
+    "centro": [
+     -6.87,
+     42.92
+    ],
+    "zoom": 10.9,
+    "inclinacion": 70.0,
+    "rumbo": 35.0
+   },
+   "capas": [
+    "baleiras",
+    "concellos",
+    "aldeas"
+   ],
+   "marcas": [
+    "Peliceira",
+    "O Mazo"
+   ],
+   "dato": "1.154m",
+   "dato_l": "altitude de Peliceira, sen veciños desde 2014",
+   "fonte": "Altitude: MDT IGN; distancia: cálculo FGS; INE, Nomenclátor e censos (harmonización FGS)."
+  },
+  {
+   "paso": 6,
+   "onde": "Lousadela · Folgoso do Courel, Lugo",
+   "titulo": "O Courel: poucos ceros, pouca xente",
+   "camara": {
+    "centro": [
+     -7.2,
+     42.6
+    ],
+    "zoom": 11.0,
+    "inclinacion": 60.0,
+    "rumbo": 140.0
+   },
+   "capas": [
+    "baleiras",
+    "concellos",
+    "aldeas"
+   ],
+   "marcas": [
+    "Lousadela"
+   ],
+   "dato": "2de 47",
+   "dato_l": "lugares de Folgoso do Courel sen habitantes en 2025",
+   "fonte": "INE, Nomenclátor 2025 e censos (harmonización FGS); IGE; altitude: MDT IGN."
+  },
+  {
+   "paso": 7,
+   "onde": "Tonxil · Manzaneda, Ourense",
+   "titulo": "A aldea agrupada tarda máis en chegar a cero",
+   "camara": {
+    "centro": [
+     -7.2,
+     42.31
+    ],
+    "zoom": 10.8,
+    "inclinacion": 65.0,
+    "rumbo": 15.0
+   },
+   "capas": [
+    "baleiras",
+    "concellos",
+    "aldeas"
+   ],
+   "marcas": [
+    "Tonxil",
+    "A Pobra de Trives"
+   ],
+   "dato": "16hab.",
+   "dato_l": "tamaño mediano dunha entidade de poboación en Ourense (7 en Lugo)",
+   "fonte": "INE, Nomenclátor 2025 (medianas, cálculo FGS) e censos (harmonización FGS); altitude: MDT IGN."
+  },
+  {
+   "paso": 8,
+   "onde": "Ademourán · Celanova, Ourense",
+   "titulo": "Terra de Celanova: a vila ao lado",
+   "camara": {
+    "centro": [
+     -7.98,
+     42.18
+    ],
+    "zoom": 10.9,
+    "inclinacion": 58.0,
+    "rumbo": 10.0
+   },
+   "capas": [
+    "baleiras",
+    "concellos",
+    "aldeas"
+   ],
+   "marcas": [
+    "Ademourán",
+    "Celanova"
+   ],
+   "dato": "−46%",
+   "dato_l": "poboación de Celanova entre 1940 e 2021, fronte ao −85 % de Folgoso do Courel",
+   "fonte": "INE, censos 1940 e 2021 (harmonización FGS; porcentaxes, cálculo FGS); INE, Nomenclátor; IGE; distancia: cálculo FGS."
+  },
+  {
+   "paso": 9,
+   "onde": "O Salnés · Sanxenxo, Pontevedra",
+   "titulo": "Na costa, o cero non chega",
+   "camara": {
+    "centro": [
+     -8.8,
+     42.42
+    ],
+    "zoom": 10.4,
+    "inclinacion": 55.0,
+    "rumbo": 30.0
+   },
+   "capas": [
+    "baleiras",
+    "quedan",
+    "concellos"
+   ],
+   "marcas": [
+    "Sanxenxo"
+   ],
+   "dato": "0de 118",
+   "dato_l": "lugares de Sanxenxo que pasaron a cero desde 2000",
+   "fonte": "INE, Nomenclátor 2000–2025 e censos (harmonización FGS); IGE; porcentaxes: cálculo FGS."
+  },
+  {
+   "paso": 10,
+   "onde": "",
+   "titulo": "Os seguintes ceros",
+   "camara": {
+    "centro": [
+     -7.95,
+     42.8
+    ],
+    "zoom": 7.2,
+    "inclinacion": 40.0,
+    "rumbo": -10.0
+   },
+   "capas": [
+    "quedan",
+    "baleiras"
+   ],
+   "marcas": [],
+   "dato": "6.159lugares",
+   "dato_l": "de Galicia tiñan entre 1 e 5 habitantes en 2025; 3.041 deles en Lugo",
+   "fonte": "INE, Nomenclátor 2025 (cálculo FGS)."
+  }
+ ]
+}

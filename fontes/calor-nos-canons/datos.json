@@ -1,0 +1,292 @@
+{
+ "slug": "calor-nos-canons",
+ "consulta": "2026-11-04",
+ "paradas": [
+  {
+   "paso": 0,
+   "nome": "A calor que baixa aos vales",
+   "onde": "Galicia · verán de 2025",
+   "camara": {
+    "centro": [
+     -7.85,
+     42.55
+    ],
+    "zoom": 7.3,
+    "inclinacion": 45.0,
+    "rumbo": -10.0
+   },
+   "capas": [
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [],
+   "dato": null,
+   "dato_l": null,
+   "fonte": "Baixa para comezar."
+  },
+  {
+   "paso": 1,
+   "nome": "Dous veráns nun mesmo país",
+   "onde": "169 estacións de MeteoGalicia",
+   "camara": {
+    "centro": [
+     -7.9,
+     42.62
+    ],
+    "zoom": 7.6,
+    "inclinacion": 50.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "estacions",
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [],
+   "dato": "33,6°C",
+   "dato_l": "media das máximas de xuño a agosto de 2025 en Ourense, a máis alta da rede",
+   "fonte": "MeteoGalicia, máximas diarias validadas de 2025. Superficie: cálculo FGS (inverso da distancia e 6,5 °C por km de altura)."
+  },
+  {
+   "paso": 2,
+   "nome": "Unha cidade nunha cunca",
+   "onde": "Ourense · val do Miño",
+   "camara": {
+    "centro": [
+     -7.865,
+     42.335
+    ],
+    "zoom": 11.2,
+    "inclinacion": 62.0,
+    "rumbo": 20.0
+   },
+   "capas": [
+    "estacions",
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [
+    "Ourense"
+   ],
+   "dato": "42,9°C",
+   "dato_l": "máxima da estación de Ourense o 29 de xuño de 2025, a 143 m de altitude",
+   "fonte": "MeteoGalicia (estación Ourense); AEMET, avance climatolóxico de Galicia, xuño de 2025. Alturas: MDT do IGN."
+  },
+  {
+   "paso": 3,
+   "nome": "Cincuenta días por riba de 35",
+   "onde": "O Ribeiro · Leiro, Ribadavia e A Arnoia",
+   "camara": {
+    "centro": [
+     -8.13,
+     42.31
+    ],
+    "zoom": 11.4,
+    "inclinacion": 64.0,
+    "rumbo": -30.0
+   },
+   "capas": [
+    "estacions",
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [
+    "Leiro",
+    "Ribadavia",
+    "A Arnoia"
+   ],
+   "dato": "50días",
+   "dato_l": "con máxima de 35 °C ou máis en 2025 na estación EVEGA de Leiro (105 m)",
+   "fonte": "MeteoGalicia; AEMET, avance climatolóxico de Galicia, agosto de 2025 (datos provisionais)."
+  },
+  {
+   "paso": 4,
+   "nome": "Un río 600 metros por debaixo",
+   "onde": "Canón do Sil · Parada de Sil e Nogueira de Ramuín",
+   "camara": {
+    "centro": [
+     -7.56,
+     42.385
+    ],
+    "zoom": 12.3,
+    "inclinacion": 72.0,
+    "rumbo": 80.0
+   },
+   "capas": [
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [],
+   "dato": "586m",
+   "dato_l": "de desnivel entre o Sil (226 m) e o bordo do canón (812 m)",
+   "fonte": "Alturas: MDT de 25 m do IGN, mínimo e máximo nun rectángulo de 5 × 3 km arredor do río (cálculo FGS)."
+  },
+  {
+   "paso": 5,
+   "nome": "O lugar máis quente de 2025",
+   "onde": "San Clodio · Ribas de Sil, Lugo",
+   "camara": {
+    "centro": [
+     -7.295,
+     42.462
+    ],
+    "zoom": 12.6,
+    "inclinacion": 66.0,
+    "rumbo": 75.0
+   },
+   "capas": [
+    "estacions",
+    "perfil",
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [
+    "San Clodio"
+   ],
+   "dato": "43,0°C",
+   "dato_l": "máxima de San Clodio o 10 de agosto de 2025 (42,95 °C medidos), a 257 m",
+   "fonte": "MeteoGalicia, datos diarios validados."
+  },
+  {
+   "paso": 6,
+   "nome": "Subir ao bordo",
+   "onde": "Conchada · Quiroga, Lugo",
+   "camara": {
+    "centro": [
+     -7.28,
+     42.485
+    ],
+    "zoom": 12.2,
+    "inclinacion": 55.0,
+    "rumbo": 200.0
+   },
+   "capas": [
+    "estacions",
+    "perfil",
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [
+    "Conchada",
+    "San Clodio"
+   ],
+   "dato": "−4,0°C",
+   "dato_l": "diferenza o mesmo 10 de agosto entre San Clodio (43,0) e Conchada (39,0), 440 m máis arriba",
+   "fonte": "MeteoGalicia; distancias e alturas, cálculo FGS sobre o MDT do IGN."
+  },
+  {
+   "paso": 7,
+   "nome": "Unha chaira pechada",
+   "onde": "Depresión de Lemos · Monforte e Pantón",
+   "camara": {
+    "centro": [
+     -7.55,
+     42.515
+    ],
+    "zoom": 10.8,
+    "inclinacion": 58.0,
+    "rumbo": -40.0
+   },
+   "capas": [
+    "estacions",
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [
+    "Monforte",
+    "Míllara (Pantón)"
+   ],
+   "dato": "41,0°C",
+   "dato_l": "no CFEA de Monforte o 29 de xuño e en Míllara (Pantón) o 10 de agosto",
+   "fonte": "MeteoGalicia, datos diarios validados de 2025."
+  },
+  {
+   "paso": 8,
+   "nome": "O Sil antes de entrar en Lugo",
+   "onde": "Valdeorras · Vilamartín e Carballeda",
+   "camara": {
+    "centro": [
+     -6.95,
+     42.39
+    ],
+    "zoom": 10.6,
+    "inclinacion": 66.0,
+    "rumbo": 140.0
+   },
+   "capas": [
+    "estacions",
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [
+    "A Portela",
+    "Lardeira"
+   ],
+   "dato": "41,3°C",
+   "dato_l": "en A Portela (Vilamartín de Valdeorras, 408 m) o 9 de agosto de 2025",
+   "fonte": "MeteoGalicia, datos diarios validados de 2025."
+  },
+  {
+   "paso": 9,
+   "nome": "A veiga do Támega",
+   "onde": "Verín · val do Támega",
+   "camara": {
+    "centro": [
+     -7.43,
+     41.95
+    ],
+    "zoom": 11.2,
+    "inclinacion": 60.0,
+    "rumbo": -10.0
+   },
+   "capas": [
+    "estacions",
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [
+    "Verín"
+   ],
+   "dato": "73días",
+   "dato_l": "con máxima de 30 °C ou máis en 2025 na estación Verín-Vilela (392 m)",
+   "fonte": "MeteoGalicia, datos diarios validados de 2025."
+  },
+  {
+   "paso": 10,
+   "nome": "O mesmo día, case 14 graos de diferenza",
+   "onde": "10 de agosto de 2025 · toda a rede",
+   "camara": {
+    "centro": [
+     -7.75,
+     42.75
+    ],
+    "zoom": 7.5,
+    "inclinacion": 40.0,
+    "rumbo": 0.0
+   },
+   "capas": [
+    "dia10"
+   ],
+   "marcas": [
+    "San Clodio 43,0",
+    "Manzaneda 29,1",
+    "Camariñas 27,0"
+   ],
+   "dato": "29,1°C",
+   "dato_l": "en Cabeza de Manzaneda (1.758 m), a 22,5 km de San Clodio, que marcaba 43,0",
+   "fonte": "MeteoGalicia, temperatura máxima do 10/08/2025 en 168 estacións."
+  },
+  {
+   "paso": 11,
+   "nome": "Vivir coa calor dos vales",
+   "onde": "Peche · os vales do interior",
+   "camara": {
+    "centro": [
+     -7.35,
+     42.3
+    ],
+    "zoom": 9.0,
+    "inclinacion": 55.0,
+    "rumbo": -20.0
+   },
+   "capas": [
+    "lumes",
+    "superficie (calor-xja.png)"
+   ],
+   "marcas": [],
+   "dato": "139.735ha",
+   "dato_l": "queimadas na provincia de Ourense en agosto de 2025, segundo os perímetros de EFFIS",
+   "fonte": "Copernicus EFFIS (cálculo FGS); MeteoGalicia; Consellería do Medio Rural (denominacións de orixe)."
+  }
+ ]
+}

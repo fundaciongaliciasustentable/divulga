@@ -1,0 +1,601 @@
+{
+ "ine": {
+  "entidades_2000": 29964,
+  "a_cero_2000": 1064,
+  "entidades_2025": 30518,
+  "a_cero_2025": 1960,
+  "con_xente_2000_a_cero_2025_mesmo_codigo": 1062,
+  "de_1_a_5_hab_2025": 6159,
+  "provincias_2025": {
+   "A Coruña": {
+    "entidades": 10698,
+    "a_cero": 703,
+    "de_1_a_5": 1901,
+    "mediana_hab": 16.0
+   },
+   "Lugo": {
+    "entidades": 9846,
+    "a_cero": 928,
+    "de_1_a_5": 3041,
+    "mediana_hab": 7.0
+   },
+   "Ourense": {
+    "entidades": 3712,
+    "a_cero": 158,
+    "de_1_a_5": 666,
+    "mediana_hab": 16.0
+   },
+   "Pontevedra": {
+    "entidades": 6262,
+    "a_cero": 171,
+    "de_1_a_5": 551,
+    "mediana_hab": 31.0
+   }
+  },
+  "aldeas": {
+   "15061110700": {
+    "2000": [
+     "CAMPOS (OS)",
+     7
+    ],
+    "2025": [
+     "CAMPOS (OS)",
+     0
+    ]
+   },
+   "27033052700": {
+    "2000": [
+     "DEBODAS",
+     11
+    ],
+    "2025": [
+     "DEBODAS",
+     0
+    ]
+   },
+   "27018250800": {
+    "2000": [
+     "TRASOUTURO",
+     10
+    ],
+    "2025": [
+     "TRASOUTURO",
+     0
+    ]
+   },
+   "27034140900": {
+    "2000": [
+     "PELICEIRA",
+     4
+    ],
+    "2025": [
+     "PELICEIRA",
+     0
+    ]
+   },
+   "27012080500": {
+    "2000": [
+     "MAZO (O)",
+     3
+    ],
+    "2025": [
+     "MAZO (O)",
+     0
+    ]
+   },
+   "27017060200": {
+    "2000": [
+     "LOUSADELA",
+     4
+    ],
+    "2025": [
+     "LOUSADELA",
+     0
+    ]
+   },
+   "32044060200": {
+    "2000": [
+     "TONXIL",
+     7
+    ],
+    "2025": [
+     "TONXIL",
+     0
+    ]
+   },
+   "32024120100": {
+    "2000": [
+     "ADEMOURAN",
+     9
+    ],
+    "2025": [
+     "ADEMOURÁN",
+     0
+    ]
+   }
+  }
+ },
+ "capa": {
+  "entidades": 30518,
+  "a_cero_2025": 1960,
+  "baleiradas_desde_2000": 1072,
+  "baleiradas_con_posicion": 1030,
+  "a_cero_con_posicion": 1885,
+  "baleiradas_por_provincia": {
+   "A Coruña": 314,
+   "Lugo": 579,
+   "Ourense": 93,
+   "Pontevedra": 86
+  },
+  "concellos_mais_baleiradas": [
+   [
+    "Ortigueira",
+    60
+   ],
+   [
+    "Muras",
+    36
+   ],
+   [
+    "As Pontes de García Rodríguez",
+    35
+   ],
+   [
+    "Ourol",
+    35
+   ],
+   [
+    "O Valadouro",
+    31
+   ],
+   [
+    "Viveiro",
+    30
+   ],
+   [
+    "O Vicedo",
+    23
+   ],
+   [
+    "Friol",
+    22
+   ],
+   [
+    "Chantada",
+    19
+   ],
+   [
+    "A Fonsagrada",
+    19
+   ]
+  ]
+ },
+ "concellos": {
+  "15061": {
+   "nome": "Ortigueira",
+   "entidades_2025": 321,
+   "a_cero_2025": 126,
+   "baleiradas_desde_2000": 60,
+   "de_1_a_5_hab_2025": 141,
+   "hab_nomenclator_2000": 8533,
+   "hab_nomenclator_2025": 5424,
+   "censo": {
+    "1900": 18975,
+    "1910": 20193,
+    "1920": 21661,
+    "1930": 23147,
+    "1940": 23845,
+    "1950": 22499,
+    "1960": 21638,
+    "1970": 18301,
+    "1981": 16443,
+    "1991": 9925,
+    "2001": 8172,
+    "2011": 6697,
+    "2021": 5629
+   },
+   "nacementos_2015_2024": 194,
+   "defuncions_2015_2024": 1137
+  },
+  "27033": {
+   "nome": "Muras",
+   "entidades_2025": 191,
+   "a_cero_2025": 56,
+   "baleiradas_desde_2000": 36,
+   "de_1_a_5_hab_2025": 110,
+   "hab_nomenclator_2000": 1151,
+   "hab_nomenclator_2025": 576,
+   "censo": {
+    "1900": 3467,
+    "1910": 3522,
+    "1920": 3698,
+    "1930": 3549,
+    "1940": 3628,
+    "1950": 3157,
+    "1960": 2805,
+    "1970": 2433,
+    "1981": 2228,
+    "1991": 1437,
+    "2001": 1044,
+    "2011": 756,
+    "2021": 615
+   },
+   "nacementos_2015_2024": 13,
+   "defuncions_2015_2024": 135
+  },
+  "27038": {
+   "nome": "Ourol",
+   "entidades_2025": 232,
+   "a_cero_2025": 55,
+   "baleiradas_desde_2000": 35,
+   "de_1_a_5_hab_2025": 119,
+   "hab_nomenclator_2000": 1577,
+   "hab_nomenclator_2025": 965,
+   "censo": {
+    "1900": 5968,
+    "1910": 6358,
+    "1920": 6158,
+    "1930": 6103,
+    "1940": 5828,
+    "1950": 5132,
+    "1960": 4446,
+    "1970": 3726,
+    "1981": 2626,
+    "1991": 1959,
+    "2001": 1445,
+    "2011": 1146,
+    "2021": 984
+   },
+   "nacementos_2015_2024": 33,
+   "defuncions_2015_2024": 182
+  },
+  "27063": {
+   "nome": "O Valadouro",
+   "entidades_2025": 183,
+   "a_cero_2025": 38,
+   "baleiradas_desde_2000": 31,
+   "de_1_a_5_hab_2025": 82,
+   "hab_nomenclator_2000": 2445,
+   "hab_nomenclator_2025": 1868,
+   "censo": {
+    "1900": 3921,
+    "1910": 4165,
+    "1920": 4301,
+    "1930": 4300,
+    "1940": 4606,
+    "1950": 4404,
+    "1960": 4356,
+    "1970": 3441,
+    "1981": 3155,
+    "1991": 2815,
+    "2001": 2377,
+    "2011": 2127,
+    "2021": 1957
+   },
+   "nacementos_2015_2024": 111,
+   "defuncions_2015_2024": 405
+  },
+  "27018": {
+   "nome": "A Fonsagrada",
+   "entidades_2025": 282,
+   "a_cero_2025": 32,
+   "baleiradas_desde_2000": 19,
+   "de_1_a_5_hab_2025": 118,
+   "hab_nomenclator_2000": 5448,
+   "hab_nomenclator_2025": 3082,
+   "censo": {
+    "1900": 17448,
+    "1910": 19219,
+    "1920": 19861,
+    "1930": 17896,
+    "1940": 15455,
+    "1950": 14584,
+    "1960": 13090,
+    "1970": 10326,
+    "1981": 9392,
+    "1991": 6986,
+    "2001": 5082,
+    "2011": 4192,
+    "2021": 3353
+   },
+   "nacementos_2015_2024": 86,
+   "defuncions_2015_2024": 866
+  },
+  "27034": {
+   "nome": "Navia de Suarna",
+   "entidades_2025": 103,
+   "a_cero_2025": 9,
+   "baleiradas_desde_2000": 8,
+   "de_1_a_5_hab_2025": 39,
+   "hab_nomenclator_2000": 1974,
+   "hab_nomenclator_2025": 969,
+   "censo": {
+    "1900": 6792,
+    "1910": 7412,
+    "1920": 8076,
+    "1930": 7268,
+    "1940": 7762,
+    "1950": 7168,
+    "1960": 6025,
+    "1970": 5042,
+    "1981": 3773,
+    "1991": 2303,
+    "2001": 1872,
+    "2011": 1341,
+    "2021": 1038
+   },
+   "nacementos_2015_2024": 23,
+   "defuncions_2015_2024": 262
+  },
+  "27012": {
+   "nome": "Cervantes",
+   "entidades_2025": 138,
+   "a_cero_2025": 14,
+   "baleiradas_desde_2000": 8,
+   "de_1_a_5_hab_2025": 46,
+   "hab_nomenclator_2000": 2243,
+   "hab_nomenclator_2025": 1142,
+   "censo": {
+    "1900": 7271,
+    "1910": 7786,
+    "1920": 8759,
+    "1930": 8791,
+    "1940": 7241,
+    "1950": 8164,
+    "1960": 5711,
+    "1970": 4431,
+    "1981": 3218,
+    "1991": 2604,
+    "2001": 2135,
+    "2011": 1598,
+    "2021": 1288
+   },
+   "nacementos_2015_2024": 24,
+   "defuncions_2015_2024": 288
+  },
+  "27017": {
+   "nome": "Folgoso do Courel",
+   "entidades_2025": 47,
+   "a_cero_2025": 2,
+   "baleiradas_desde_2000": 1,
+   "de_1_a_5_hab_2025": 8,
+   "hab_nomenclator_2000": 1593,
+   "hab_nomenclator_2025": 924,
+   "censo": {
+    "1900": 6454,
+    "1910": 6673,
+    "1920": 6706,
+    "1930": 6631,
+    "1940": 6749,
+    "1950": 5659,
+    "1960": 4916,
+    "1970": 3682,
+    "1981": 2457,
+    "1991": 1924,
+    "2001": 1498,
+    "2011": 1170,
+    "2021": 988
+   },
+   "nacementos_2015_2024": 33,
+   "defuncions_2015_2024": 220
+  },
+  "32044": {
+   "nome": "Manzaneda",
+   "entidades_2025": 32,
+   "a_cero_2025": 4,
+   "baleiradas_desde_2000": 2,
+   "de_1_a_5_hab_2025": 7,
+   "hab_nomenclator_2000": 1264,
+   "hab_nomenclator_2025": 767,
+   "censo": {
+    "1900": 3381,
+    "1910": 3722,
+    "1920": 3801,
+    "1930": 4083,
+    "1940": 3540,
+    "1950": 3278,
+    "1960": 3274,
+    "1970": 2692,
+    "1981": 1954,
+    "1991": 1620,
+    "2001": 1198,
+    "2011": 1003,
+    "2021": 843
+   },
+   "nacementos_2015_2024": 30,
+   "defuncions_2015_2024": 216
+  },
+  "32063": {
+   "nome": "A Pobra de Trives",
+   "entidades_2025": 21,
+   "a_cero_2025": 0,
+   "baleiradas_desde_2000": 0,
+   "de_1_a_5_hab_2025": 1,
+   "hab_nomenclator_2000": 2911,
+   "hab_nomenclator_2025": 1925,
+   "censo": {
+    "1900": 5721,
+    "1910": 5975,
+    "1920": 6139,
+    "1930": 6589,
+    "1940": 6662,
+    "1950": 6061,
+    "1960": 5283,
+    "1970": 6107,
+    "1981": 5305,
+    "1991": 3110,
+    "2001": 2756,
+    "2011": 2396,
+    "2021": 2019
+   },
+   "nacementos_2015_2024": 61,
+   "defuncions_2015_2024": 380
+  },
+  "32024": {
+   "nome": "Celanova",
+   "entidades_2025": 133,
+   "a_cero_2025": 5,
+   "baleiradas_desde_2000": 5,
+   "de_1_a_5_hab_2025": 35,
+   "hab_nomenclator_2000": 5960,
+   "hab_nomenclator_2025": 5695,
+   "censo": {
+    "1900": 8748,
+    "1910": 9027,
+    "1920": 9705,
+    "1930": 9782,
+    "1940": 10393,
+    "1950": 9988,
+    "1960": 9947,
+    "1970": 8465,
+    "1981": 8053,
+    "1991": 5983,
+    "2001": 5993,
+    "2011": 5781,
+    "2021": 5646
+   },
+   "nacementos_2015_2024": 244,
+   "defuncions_2015_2024": 847
+  },
+  "36051": {
+   "nome": "Sanxenxo",
+   "entidades_2025": 118,
+   "a_cero_2025": 1,
+   "baleiradas_desde_2000": 0,
+   "de_1_a_5_hab_2025": 2,
+   "hab_nomenclator_2000": 16183,
+   "hab_nomenclator_2025": 17990,
+   "censo": {
+    "1900": 8076,
+    "1910": 9268,
+    "1920": 9499,
+    "1930": 10282,
+    "1940": 10935,
+    "1950": 12548,
+    "1960": 11976,
+    "1970": 12611,
+    "1981": 14358,
+    "1991": 15043,
+    "2001": 16098,
+    "2011": 17560,
+    "2021": 17622
+   },
+   "nacementos_2015_2024": 1069,
+   "defuncions_2015_2024": 1622
+  }
+ },
+ "aldeas": {
+  "15061110700": {
+   "nome": "Os Campos",
+   "parroquia_ine": "INSUA (SAN JUAN)",
+   "concello": "Ortigueira",
+   "lon": -7.8587,
+   "lat": 43.5819,
+   "hab_2000": 7,
+   "hab_2025": 0,
+   "baleira_desde": 2013,
+   "rexurdiu": false,
+   "altitude_m": 342,
+   "km_centro_saude": 7.1,
+   "centro_saude": "CONSULTORIO ABELLA"
+  },
+  "27012080500": {
+   "nome": "O Mazo",
+   "parroquia_ine": "DONÍS (SAN FIZ)",
+   "concello": "Cervantes",
+   "lon": -6.8923,
+   "lat": 42.8813,
+   "hab_2000": 3,
+   "hab_2025": 0,
+   "baleira_desde": 2008,
+   "rexurdiu": false,
+   "altitude_m": 931,
+   "km_centro_saude": 13,
+   "centro_saude": "CONSULTORIO DOIRAS"
+  },
+  "27017060200": {
+   "nome": "Lousadela",
+   "parroquia_ine": "SECEDA (SAN SILVESTRE)",
+   "concello": "Folgoso do Courel",
+   "lon": -7.239,
+   "lat": 42.6046,
+   "hab_2000": 4,
+   "hab_2025": 0,
+   "baleira_desde": 2014,
+   "rexurdiu": false,
+   "altitude_m": 483,
+   "km_centro_saude": 3.8,
+   "centro_saude": "CENTRO SAUDE FOLGOSO DO COUREL"
+  },
+  "27018250800": {
+   "nome": "Trasouturo",
+   "parroquia_ine": "TROBO (O) (SANTA MARÍA)",
+   "concello": "A Fonsagrada",
+   "lon": -7.0763,
+   "lat": 43.1878,
+   "hab_2000": 10,
+   "hab_2025": 0,
+   "baleira_desde": 2017,
+   "rexurdiu": false,
+   "altitude_m": 695,
+   "km_centro_saude": 6.5,
+   "centro_saude": "CENTRO SAUDE A FONSAGRADA"
+  },
+  "27033052700": {
+   "nome": "Debodas",
+   "parroquia_ine": "MURAS (SAN PEDRO)",
+   "concello": "Muras",
+   "lon": -7.7349,
+   "lat": 43.5067,
+   "hab_2000": 11,
+   "hab_2025": 0,
+   "baleira_desde": 2007,
+   "rexurdiu": false,
+   "altitude_m": 565,
+   "km_centro_saude": 4.6,
+   "centro_saude": "CENTRO SAUDE MURAS"
+  },
+  "27034140900": {
+   "nome": "Peliceira",
+   "parroquia_ine": "RAO (SANTA MARÍA)",
+   "concello": "Navia de Suarna",
+   "lon": -6.8352,
+   "lat": 42.942,
+   "hab_2000": 4,
+   "hab_2025": 0,
+   "baleira_desde": 2014,
+   "rexurdiu": false,
+   "altitude_m": 1154,
+   "km_centro_saude": 14,
+   "centro_saude": "CENTRO SAUDE NAVIA DE SUARNA"
+  },
+  "32024120100": {
+   "nome": "Ademourán",
+   "parroquia_ine": "MILMANDA (SANTA EUFEMIA)",
+   "concello": "Celanova",
+   "lon": -8.03,
+   "lat": 42.1442,
+   "hab_2000": 9,
+   "hab_2025": 0,
+   "baleira_desde": 2021,
+   "rexurdiu": false,
+   "altitude_m": 587,
+   "km_centro_saude": 5.2,
+   "centro_saude": "CENTRO SAUDE QUINTELA LEIRADO"
+  },
+  "32044060200": {
+   "nome": "Tonxil",
+   "parroquia_ine": "PLACÍN (SANTIAGO)",
+   "concello": "Manzaneda",
+   "lon": -7.2111,
+   "lat": 42.2853,
+   "hab_2000": 7,
+   "hab_2025": 0,
+   "baleira_desde": 2014,
+   "rexurdiu": false,
+   "altitude_m": 816,
+   "km_centro_saude": 3.4,
+   "centro_saude": "CENTRO SAUDE MANZANEDA"
+  }
+ }
+}

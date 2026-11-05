@@ -1,5 +1,119 @@
 [
   {
+    "slug": "costa-morte-courel",
+    "titulo": "Da Costa da Morte ao Courel",
+    "entradilla": "Un voo de oeste a leste sobre o relevo de Galicia, do cabo de Fisterra ao cumio do Courel, cun dato en cada parada: vento, ríos, aldeas, cidade, gando, calor e lume.",
+    "data": "2026-11-04",
+    "temas": [
+      "Territorio",
+      "Rural",
+      "Poboación",
+      "Clima",
+      "Gandería",
+      "Lumes"
+    ],
+    "formato": "Voo 3D",
+    "fontes": "IGN (MDT 25 m); MeteoGalicia (WRF e estacións); Augas de Galicia; INE (Nomenclátor e censos); IGE (táboa 62, idade); IET, Xunta de Galicia; Copernicus EFFIS"
+  },
+  {
+    "slug": "veran-que-ardeu",
+    "titulo": "O verán que ardeu",
+    "entradilla": "Un voo sobre o relevo de Ourense polos grandes lumes de agosto de 2025: Chandrexa e Vilariño, Larouco, Valdeorras, Oímbra e A Mezquita. Canto ardeu, onde, e que supón para o carbono que absorbe o monte.",
+    "data": "2026-11-04",
+    "temas": [
+      "Lumes",
+      "Monte",
+      "Territorio",
+      "Clima"
+    ],
+    "formato": "Voo 3D",
+    "fontes": "NASA FIRMS (vía Mapas Galicia Sustentable), Copernicus EFFIS, MITECO (Avance informativo de incendios forestais 2025), Xunta de Galicia (Medio Rural), Ogacli, IGN (MDT 25 m)"
+  },
+  {
+    "slug": "aldeas-que-quedaron",
+    "titulo": "As aldeas que quedaron sen ninguén",
+    "entradilla": "1.072 lugares de Galicia tiñan veciños en 2000 e ningún en 2025. Un voo sobre o relevo polos vales onde o padrón chegou a cero, e polos que aguantan: altitude, distancia ao centro de saúde e o que pasou en cada concello.",
+    "data": "2026-11-04",
+    "temas": [
+      "Poboación",
+      "Rural",
+      "Territorio"
+    ],
+    "formato": "Voo 3D",
+    "fontes": "INE, Nomenclátor 2000–2025 e censos 1900–2021; IGE, movemento natural da poboación; Mapas Galicia Sustentable (aldeas-baleiras, distancia-servizos, poboacion-seculo; IET, SERGAS); IGN, MDT 25 m"
+  },
+  {
+    "slug": "vento-galicia",
+    "titulo": "O vento que move Galicia",
+    "entradilla": "Un voo sobre o relevo polas serras dos parques eólicos: os 4.077 aeroxeradores seguen as cristas onde o vento sopra a 8,8 m/s de media, fronte a 6,0 no conxunto de Galicia. Do Xistral ao Suído, coa Rede Natura, a repotenciación e as zonas de eólica mariña do POEM.",
+    "data": "2026-11-04",
+    "temas": [
+      "Enerxía",
+      "Territorio",
+      "Monte",
+      "Sustentabilidade"
+    ],
+    "formato": "Voo 3D",
+    "fontes": "OpenStreetMap (aeroxeradores, ODbL); Global Wind Atlas 3 (DTU/Banco Mundial); INEGA, potencia instalada xuño 2026 e memoria do Plan Sectorial Eólico; MITECO, Rede Natura 2000 e POEM (RD 150/2023, vía EMODnet); Xunta de Galicia (repotenciacións); REE REData; IGN MDT 25 m"
+  },
+  {
+    "slug": "rios-fora-do-leito",
+    "titulo": "Cando os ríos saen do leito",
+    "entradilla": "Un voo sobre o relevo desde a crecida de outubro de 2026 ata os mapas que din ata onde chegaría a auga nunha crecida de 10, 100 ou 500 anos: Eume, Ulla, Sar, Xallas, Miño, Sil e Mandeo.",
+    "data": "2026-11-04",
+    "temas": [
+      "Auga",
+      "Choiva",
+      "Territorio",
+      "Clima"
+    ],
+    "formato": "Voo 3D",
+    "fontes": "Augas de Galicia e MeteoGalicia (caudais de 10 min non validados, choiva diaria, mapas de zonas inundables e risco 2021–2027); SNCZI (MITECO); OpenStreetMap; MDT do IGN; Mapas Galicia Sustentable"
+  },
+  {
+    "slug": "calor-nos-canons",
+    "titulo": "A calor que baixa aos vales",
+    "entradilla": "O 10 de agosto de 2025 o fondo do val do Sil en San Clodio chegou a 43 °C, a máxima de toda a rede de MeteoGalicia. Un voo polo relevo para ver por que os vales do Miño, o Sil e o Támega son os lugares máis quentes de Galicia.",
+    "data": "2026-11-04",
+    "temas": [
+      "Clima",
+      "Territorio",
+      "Lumes",
+      "Saúde"
+    ],
+    "formato": "Voo 3D",
+    "fontes": "MeteoGalicia e Consellería de Medio Ambiente e Cambio Climático (máximas diarias de 2025); AEMET (avances climatolóxicos de xuño e agosto de 2025); Copernicus EFFIS; IGN (MDT 25 m)"
+  },
+  {
+    "slug": "rias-que-traballan",
+    "titulo": "As rías que traballan",
+    "entradilla": "Un voo polas rías galegas: os polígonos de bateas, as lonxas e o marisqueo, o estado das augas e a costa que pode inundar o mar.",
+    "data": "2026-11-04",
+    "temas": [
+      "Mar",
+      "Auga",
+      "Economía",
+      "Alimentación",
+      "Territorio"
+    ],
+    "formato": "Voo 3D",
+    "fontes": "Augas de Galicia (plan hidrolóxico Galicia-Costa 2021–2027: zonas de produción de moluscos, polígonos de bateas e estado das masas de auga; zonas inundables costeiras, SNCZI 2014); Consellería do Mar (primeira venda e acuicultura 2025); Mapas Galicia Sustentable; IGN, MDT 25 m"
+  },
+  {
+    "slug": "rural-sen-transporte",
+    "titulo": "Ata onde chega o bus",
+    "entradilla": "Un mércores de novembro circulan 10.258 viaxes de bus da Xunta e 178 trens; o domingo, 1.705 buses e en 58 concellos non para ningún. Un voo sobre o relevo do eixo atlántico ben servido ata Negueira de Muñiz e o Courel, onde o bus non chega e o hospital queda lonxe.",
+    "data": "2026-11-04",
+    "temas": [
+      "Mobilidade",
+      "Rural",
+      "Territorio",
+      "Saúde"
+    ],
+    "formato": "Voo 3D",
+    "fontes": "Xunta de Galicia, GTFS do transporte público autonómico vía Punto de Acceso Nacional (MITRAMS); Renfe Operadora (GTFS, CC BY 4.0); Mapas Galicia Sustentable (cálculo FGS); IET; INE Padrón 2025; IGN MDT25; Ogacli"
+  },
+  {
     "slug": "pib-rexions",
     "titulo": "Galicia na escaleira europea",
     "entradilla": "En 2000 Galicia era a rexión 157 de 224 da UE en PIB por habitante en poder de compra; en 2024 é a 122, co 84 % da media europea, o seu mellor posto da serie.",
