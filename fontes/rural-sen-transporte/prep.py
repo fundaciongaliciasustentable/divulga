@@ -30,7 +30,11 @@ AQUI = Path(__file__).resolve().parent
 RAIZ = AQUI.parent.parent
 RAW = AQUI / "data" / "raw"
 CAPAS = RAIZ / "v" / "rural-sen-transporte" / "capas"
-MAPAS = Path.home() / "Proxectos" / "mapasgs" / "site" / "public" / "data"
+# mapasgs mudou de ~/Proxectos a ~/Sites; próbanse os dous para que o guión
+# corra nas dúas máquinas.
+MAPAS = next((p for p in (Path.home() / "Sites" / "mapasgs" / "site" / "public" / "data",
+                          Path.home() / "Proxectos" / "mapasgs" / "site" / "public" / "data")
+              if p.is_dir()), Path.home() / "Sites" / "mapasgs" / "site" / "public" / "data")
 WEB = "https://mapas.galiciasustentable.org/data/"
 LAB, DOM = "2026-11-04", "2026-11-08"   # mércores laborable e domingo de referencia
 
