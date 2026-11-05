@@ -118,6 +118,20 @@ sube o zip e descomprímeo alí.
 Non borres `api/datos/` no servidor ao subir: aí viven os votos de
 `habelos-hainos`, que non van no paquete.
 
+### Subida automática
+
+```bash
+cp .dinahosting.env.example .dinahosting.env   # só a primeira vez
+# edita .dinahosting.env coas credenciais FTP/SFTP de Dinahosting
+./scripts/subir.sh              # empaqueta e sobe; non borra nada no servidor
+./scripts/subir.sh --borrar     # ademais borra no servidor o que xa non
+                                 # existe en dist/ (sempre respecta api/datos/)
+```
+
+Precisa `lftp` (`brew install lftp`). `.dinahosting.env` leva as credenciais
+en claro e por iso está en `.gitignore`: nunca se sobe a git. Non existe
+ningunha outra copia fóra desta máquina.
+
 ## Votación (api/)
 
 `api/votos.php` garda os votos «Críaste este mito?» de `v/habelos-hainos/`

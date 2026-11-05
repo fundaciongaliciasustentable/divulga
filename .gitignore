@@ -2,6 +2,7 @@ node_modules/
 .DS_Store
 dist/
 divulga-web.zip
+.dinahosting.env
 api/datos/*.json
 api/datos/.ht-*
 fontes/galicia-apagandose/data/ige/
