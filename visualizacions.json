@@ -865,5 +865,19 @@
     ],
     "formato": "Filmoteca",
     "fontes": "Selección FGS · carteis da Wikipedia"
+  },
+  {
+    "slug": "comparador",
+    "titulo": "313 concellos, un cruce á vez",
+    "entradilla": "Idade, renda, paro, vidro reciclado, vacas, débeda, galego, turismo... 16 indicadores dos concellos galegos para cruzar como queiras, ao estilo Gapminder.",
+    "data": "2026-11-05",
+    "temas": [
+      "Poboación",
+      "Economía",
+      "Vivenda",
+      "Rural"
+    ],
+    "formato": "Dispersión animada",
+    "fontes": "INE, IGE, SEPE, Seguridade Social, Ministerio de Facenda, Ecovidrio, Xunta de Galicia, ADEAC, Rede de bibliotecas de Galicia (cruzados cos datos xa publicados noutras pezas de Divulga)"
   }
 ]
