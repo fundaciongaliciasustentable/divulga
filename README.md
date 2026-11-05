@@ -5,14 +5,27 @@ pensado para `divulga.galiciasustentable.org`. Sen build de framework: o que
 hai na raíz é o que se publica.
 
 A portada (`index.html`) é deliberadamente **allea á estética institucional**
-da web da FGS na grella de pezas: lenzo crema, tipografía editorial, sen
-barra verde nin botóns de cor — deixa falar as propias pezas. A banda de
-enriba (`assets/img/heroe-1200/2400.jpg` con degradado, logo branco, «Divulga»
-e subtítulo) si segue o tratamento institucional, igual ca na vella portada e
-ca `og-divulga.jpg`. A marca FGS queda tamén ben visible no pé, co logotipo
-estendido. A portada non amosa datas de publicación: a
-`data` do manifesto só ordena as tarxetas, para non confundir esa data coa
+da web da FGS: lenzo crema, tipografía editorial, sen barra verde nin botóns
+de cor — deixa falar as propias pezas. A marca FGS queda ben visible no pé,
+co logotipo estendido. A portada non amosa datas de publicación: a `data` do
+manifesto só ordena «Novidades», para non confundir esa data coa
 temporalidade propia de cada peza (que pode cubrir anos ou décadas distintos).
+
+Estrutura inspirada nunha app de streaming (Apple TV sobre todo, non
+Netflix/HBO: sen contas nin personalización, así que non hai fila de
+«continuar vendo» nin «porque viches X») en vez dunha grella fixa: unha
+**destacada** grande arriba (coa súa propia miniatura como ilustración, sen
+foto xenérica) e, debaixo, **filas** horizontais por categoría («Novidades» +
+as 6 categorías de `CATEGORIAS` en `build.py`), con frechas para desprazar.
+Un **catálogo completo** (índice alfabético) pecha a páxina, para quen
+prefire unha listaxe e para que calquera buscador chegue a todas as pezas
+sen depender do JS. O HTML que xera `build.py` é sempre determinista (os
+diffs de git teñen sentido); a variedade do día a día —que peza sae
+destacada, en que orde van as pezas de cada fila— faina o propio navegador
+(`templates/index.tpl.html`), cunha semente baseada na data de hoxe: cambia
+dun día para outro sen ter que reempaquetar nin subir nada. Buscar texto
+(cabeceira) colapsa as filas nunha grella filtrada coa mesma tarxeta.
+
 Cada peza en `v/<slug>/`
 segue si os criterios FGS (cabeceira `.dv-bar`, pé `.dv-foot`) por tratarse de
 documentos propios da fundación — pero `.dv-bar`/`.dv-foot` van **transparentes
@@ -115,22 +128,23 @@ exemplo, coa vista previa local) a páxina funciona e oculta a votación.
 
 ## Imaxe de marca
 
-`assets/img/heroe-1200.jpg`/`heroe-2400.jpg` son a foto da banda da portada
-(srcset responsive): solpor en Cabo Fisterra, de
+`assets/img/heroe-1200.jpg`/`heroe-2400.jpg` xa non aparecen na portada (que
+agora usa a propia miniatura de cada peza, non unha foto): quedan só como
+fondo de `assets/img/og-divulga.jpg`, a imaxe para compartir a portada en
+redes, e como repecho de `scripts/og_pezas.py` para unha peza sen
+`thumb.svg`/`.png` (non debería darse: `build.py` esíxeo). A foto é un
+solpor en Cabo Fisterra, de
 [Arm.arte en Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Fisterra_ocaso_en_el_cabo.jpg),
-licenza CC BY-SA 3.0 — a atribución vai nun pequeno crédito na propia banda
-(`.heroe .credito`). `assets/img/og-divulga.jpg` é a imaxe para compartir en
-redes, xerada con `scripts/og.py` (Pillow + Playfair Display e Lato) a partir
-de `heroe-2400.jpg`, co mesmo tratamento que a portada de
+licenza CC BY-SA 3.0. `og-divulga.jpg` xérase con `scripts/og.py` (Pillow +
+Playfair Display e Lato), co mesmo tratamento que a portada de
 fundaciongaliciasustentable.gal:
 
 ```bash
 python3 scripts/og.py <PlayfairDisplay[wght].ttf> <Lato-Regular.ttf>
 ```
 
-Ao cambiar a foto, actualiza tamén a ligazón e a autoría do crédito en
-`templates/index.tpl.html` (`.heroe .credito`) e en `og.py` se cambia o
-recorte, e rexenera `og-divulga.jpg`.
+Ao cambiar a foto, rexenera `og-divulga.jpg` (e axusta o recorte en `og.py`
+se fai falta).
 
 ## Visualizacións
 

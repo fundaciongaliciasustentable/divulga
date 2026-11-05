@@ -158,7 +158,7 @@
   },
   {
     "slug": "fibra-concellos",
-    "titulo": "A fibra, concello a concello",
+    "titulo": "Onde a fibra aínda non chega",
     "entradilla": "En xuño de 2025, o 94,1 % dos fogares galegos podía contratar 100 Mbps e o 85,2 % 1 Gbps, pero en 11 concellos os 100 Mbps non chegan nin á metade das casas.",
     "data": "2026-10-28",
     "temas": [
@@ -244,7 +244,7 @@
   },
   {
     "slug": "vidro-concellos",
-    "titulo": "O vidro, concello a concello",
+    "titulo": "Santiago recicla o dobre de vidro ca Ourense",
     "entradilla": "En 2025 cada galego levou ao contedor verde 15,6 kg de vidro, menos que os 18,9 de 2022. Santiago chega a 26,0 kg por habitante e Ourense queda en 10,3.",
     "data": "2026-10-28",
     "temas": [
@@ -269,7 +269,7 @@
   },
   {
     "slug": "bandeiras-azuis",
-    "titulo": "As bandeiras azuis",
+    "titulo": "Moitas bandeiras azuis, pouca costa",
     "entradilla": "Galicia ten 118 praias con bandeira azul en 2026, terceira comunidade en número; pero por quilómetro de costa baixa ao posto 7 de 12, con 7,9 por cada 100 km.",
     "data": "2026-10-28",
     "temas": [
@@ -295,7 +295,7 @@
   },
   {
     "slug": "idade-concellos",
-    "titulo": "Do concello máis novo ao máis vello",
+    "titulo": "Ames é novo; Lobeira, vello",
     "entradilla": "A idade media galega é de 48,5 anos (2025), pero vai dos 42,6 de Ames aos 64,5 de Lobeira; en 159 dos 313 concellos hai tres ou máis maiores de 65 por cada menor de 20.",
     "data": "2026-10-28",
     "temas": [
@@ -334,7 +334,7 @@
   },
   {
     "slug": "renda-concellos",
-    "titulo": "Canto se gaña en cada concello",
+    "titulo": "Oleiros gaña o dobre ca Avión",
     "entradilla": "En 2024 a renda neta media en Galicia foi de 15.471 euros por persoa, pero entre concellos vai de 20.827 € en Oleiros a 10.083 € en Avión. E dentro da Coruña, a sección censal máis rica ten 3,5 veces a renda da máis pobre.",
     "data": "2026-10-28",
     "temas": [
@@ -372,7 +372,7 @@
   },
   {
     "slug": "paro-concellos",
-    "titulo": "O paro, concello a concello",
+    "titulo": "O paro baixou case á metade en trece anos",
     "entradilla": "En setembro de 2012 había en Galicia 259.373 persoas no paro rexistrado, o 14,3 % da poboación de 15 a 64 anos; en setembro de 2025 eran 113.085, o 6,7 %. A taxa baixou en 309 dos 313 concellos.",
     "data": "2026-10-28",
     "temas": [
@@ -409,7 +409,7 @@
   },
   {
     "slug": "hexagonos-electorais",
-    "titulo": "Galicia en hexágonos electorais",
+    "titulo": "Vótase o mesmo para todo?",
     "entradilla": "Autonómicas, municipais e xerais dende 2000, concello a concello, nun mapa onde todos pesan igual. Vótase o mesmo para a Xunta, o concello e o Estado? Só en 198 concellos gañou o mesmo partido nas autonómicas de 2024 e nas municipais de 2023.",
     "data": "2026-10-28",
     "temas": [
@@ -421,7 +421,7 @@
   },
   {
     "slug": "centrais-galicia",
-    "titulo": "As centrais de Galicia, en megavatios",
+    "titulo": "Canta enerxía cabe en Galicia",
     "entradilla": "Douscentos parques eólicos, encoros e ciclos combinados, cada un co tamaño dos seus MW, ao xeito de Mega-What?, e as térmicas de carbón que xa pecharon. Con canto cobren dos totais oficiais de REE.",
     "data": "2026-10-28",
     "temas": [
@@ -432,7 +432,7 @@
   },
   {
     "slug": "horas-transporte",
-    "titulo": "Galicia en horas de autobús e tren",
+    "titulo": "Canto tarda en chegar o bus",
     "entradilla": "Un martes pola mañá, saíndo de Santiago en bus ou tren, chégase en menos de dúas horas a 96 dos 313 concellos. O mapa de Galicia medido en horas de transporte público dende as sete cidades, e deformado polo tempo.",
     "data": "2026-10-28",
     "temas": [
@@ -503,7 +503,7 @@
   },
   {
     "slug": "apelidos-galegos",
-    "titulo": "Os apelidos máis galegos",
+    "titulo": "Souto, Costas, Rial: os apelidos que che delatan",
     "entradilla": "Galicia ten o 5,5 % da poboación de España, pero 50 apelidos teñen tres de cada catro portadores aquí: Souto, Costas, Rial, Pose… Un galicianómetro dos 4.410 primeiros apelidos máis comúns e un buscador para o teu.",
     "data": "2026-10-28",
     "temas": [
@@ -563,7 +563,7 @@
   },
   {
     "slug": "fenda-rural",
-    "titulo": "A fenda rural",
+    "titulo": "O rural gaña menos, pero non vive peor",
     "entradilla": "No rural declárase un 31 % menos de renda ca nas cidades, pero o risco de pobreza é o máis baixo e a esperanza de vida, case a mesma. 26 indicadores do IGE para as zonas densamente poboadas, intermedias e pouco poboadas.",
     "data": "2026-10-27",
     "temas": [
@@ -599,7 +599,7 @@
   },
   {
     "slug": "galego-xeracions",
-    "titulo": "O galego por xeracións",
+    "titulo": "Avós falan galego; netos, menos",
     "entradilla": "A pirámide da lingua: só 7 de cada 100 nenos falan sempre en galego, fronte a 40 dos maiores de 65. Como cambiou de 2003 a 2023 e como pasa de nais a fillos.",
     "data": "2026-10-27",
     "temas": [
