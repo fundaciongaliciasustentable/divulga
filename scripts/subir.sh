@@ -6,10 +6,11 @@
 # (`brew install lftp`).
 #
 # Uso:
-#   ./scripts/subir.sh          # sobe e actualiza; NON borra nada no servidor
-#   ./scripts/subir.sh --borrar # ademais borra no servidor o que xa non
-#                                # existe en dist/ — SEMPRE respectando
-#                                # api/datos/ (os votos de habelos-hainos)
+#   ./scripts/subir.sh           # sobe e actualiza; NON borra nada no servidor
+#   ./scripts/subir.sh --probar  # só amosa o que faría, non toca o servidor
+#   ./scripts/subir.sh --borrar  # ademais borra no servidor o que xa non
+#                                 # existe en dist/ — SEMPRE respectando
+#                                 # api/datos/ (os votos de habelos-hainos)
 set -e
 cd "$(dirname "$0")/.."
 
@@ -43,17 +44,30 @@ echo "Empaquetando..."
 ./scripts/empaquetar.sh >/dev/null
 
 MIRROR_OPTS="--reverse --verbose --parallel=3"
-if [ "$1" = "--borrar" ]; then
-  MIRROR_OPTS="$MIRROR_OPTS --delete --exclude-glob api/datos/**"
-  echo "Subindo dist/ a $DINA_HOST$DINA_RUTA_REMOTA (con borrado remoto, agás api/datos/)..."
-else
-  echo "Subindo dist/ a $DINA_HOST$DINA_RUTA_REMOTA (sen borrar nada no servidor)..."
-fi
+for arg in "$@"; do
+  case "$arg" in
+    --borrar) MIRROR_OPTS="$MIRROR_OPTS --delete --exclude-glob api/datos/**" ;;
+    --probar) MIRROR_OPTS="$MIRROR_OPTS --dry-run" ;;
+  esac
+done
+
+case " $* " in
+  *" --borrar "*) BORRADO=" (con borrado remoto, agás api/datos/)" ;;
+  *) BORRADO=" (sen borrar nada no servidor)" ;;
+esac
+case " $* " in
+  *" --probar "*) echo "[probar] non se toca o servidor — só se amosa o que faría." ;;
+esac
+echo "Subindo dist/ a $DINA_HOST$DINA_RUTA_REMOTA$BORRADO..."
 
 VERIFY_SSL=yes
 [ "${DINA_SSL_NO_VERIFY:-0}" = "1" ] && VERIFY_SSL=no
 
-lftp <<EOF
+# lftp (nalgunhas versións) escribe URLs con user:contrasinal embebido nas
+# liñas de progreso/chmod do mirror; redacímolas sempre, por se acaso, para
+# que o contrasinal nunca quede visible nin na terminal nin en ningún log.
+lftp <<EOF 2>&1 | sed -E "s#(//)[^/@[:space:]]+:[^/@[:space:]]+@#\\1[credenciais-ocultas]@#g"
+set ftp:ssl-allow true
 set ssl:verify-certificate $VERIFY_SSL
 open -u "$DINA_USUARIO","$DINA_CONTRASINAL" -p "$DINA_PORT" "$DINA_PROTOCOLO://$DINA_HOST"
 mirror $MIRROR_OPTS dist "$DINA_RUTA_REMOTA"

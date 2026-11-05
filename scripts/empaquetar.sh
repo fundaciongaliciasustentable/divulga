@@ -9,6 +9,7 @@ rsync -a --exclude-from=- ./ dist/ <<'X'
 .git/
 .claude/
 .gitignore
+.dinahosting*
 fontes/
 templates/
 scripts/
