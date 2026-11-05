@@ -34,6 +34,16 @@ body{background:var(--paper);color:var(--ink)}
 .paso .lenda i.tren{background:var(--tren)}
 .paso .lenda i.oco{background:transparent;border:2px solid var(--sen);width:8px;height:8px}
 .paso ul.mais{margin:.2rem 0 .7rem;padding-left:1.1rem;line-height:1.6}
+/* Nota de corrección (política de correccións da FGS, nivel 2): permanente,
+   na cabeceira e antes do contido. Non se retira. */
+.correccion{margin:.9rem 0 .8rem;padding:.7rem .85rem;border-left:3px solid var(--sen);
+  background:rgba(228,87,46,.09);border-radius:0 4px 4px 0}
+.correccion .corr-t{margin:0 0 .35rem;font-weight:700;letter-spacing:.02em;
+  text-transform:uppercase;font-size:.78rem;color:var(--sen)}
+.correccion .corr-p{margin:0 0 .45rem;font-size:.84rem;line-height:1.55;color:var(--muted)}
+.correccion .corr-p:last-child{margin-bottom:0}
+.correccion b{color:var(--ink)}
+.correccion s{color:var(--muted);opacity:.75}
 </style>
 </head>
 <body>
@@ -47,6 +57,12 @@ body{background:var(--paper);color:var(--ink)}
       <div>
         <h1>Ata onde <em>chega o bus</em></h1>
         <p>Todos os autobuses da Xunta e todos os trens de Renfe dun mércores e dun domingo de novembro de 2026, sobre o relevo de Galicia. Onde pasan moitos, onde pasan poucos e que queda lonxe cando non pasa ningún.</p>
+        <aside class="correccion">
+          <p class="corr-t">Corrección · 5 de novembro de 2026</p>
+          <p class="corr-p">A composición da comarca da Fonsagrada estaba mal: incluía A Ribeira de Piquín, que pertence á comarca de Meira, e omitía Baleira. Onde dicía <s>3.858 habitantes e 583 km²</s>, debe dicir <b>4.402 habitantes e 678 km²</b>.</p>
+          <p class="corr-p">As cifras de autobuses e paradas desa comarca —23 viaxes o mércores, 4 o domingo e 114 paradas— <b>non se puideron recalcular</b> e seguen sendo as da composición errada. O recálculo precisa as capas de mapas coas que se constrúe a peza, que non estaban dispoñibles onde se fixo a corrección. O mapa do paso da Fonsagrada tamén segue marcando A Ribeira de Piquín dentro da comarca.</p>
+          <p class="corr-p">O erro viña dunha lista de concellos escrita a man no guión da peza, que non usaba a fonte oficial do IGE.</p>
+        </aside>
         <p class="fonte">Baixa para comezar.</p>
       </div>
     </section>

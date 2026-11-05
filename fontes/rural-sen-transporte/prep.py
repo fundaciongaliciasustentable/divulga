@@ -182,8 +182,18 @@ cifras["estacions_servizos_dia"] = {n: next(f["properties"]["servizos_dia"] for 
                                               "Monforte de Lemos", "Sarria")}
 
 # ---------------------------------------------------------------- comarcas e concellos citados
-COMARCAS = {  # comarcas oficiais (Decreto 65/1997)
-    "A Fonsagrada": ["A Fonsagrada", "Negueira de Muñiz", "A Ribeira de Piquín"],
+# Comarcas oficiais (Decreto 65/1997), comprobadas contra a táboa IGE 2246
+# («Relación de provincias, concellos e comarcas galegas») o 2026-11-05.
+# CORRIXIDO ese día: A Fonsagrada tiña A Ribeira de Piquín, que é da comarca
+# de Meira, e faltáballe Baleira. As cifras de cifras.json e o texto da peza
+# son anteriores á corrección e NON se rexeneraron. Reexecutar este guión
+# cambia, na comarca da Fonsagrada: poboación de 3.858 a 4.402 (fonte da
+# propia peza, INE padrón 2025), superficie de 582,7 a 678,2 km²
+# (perfil-concellos) e tamén viaxes de bus, paradas e tren, que dependen das
+# capas de mapas. A frase do paso da Fonsagrada en peza.tpl.html leva as
+# cifras escritas a man e hai que actualizala no mesmo paso.
+COMARCAS = {
+    "A Fonsagrada": ["A Fonsagrada", "Baleira", "Negueira de Muñiz"],
     "Os Ancares": ["Baralla", "Becerreá", "Cervantes", "Navia de Suarna", "As Nogais", "Pedrafita do Cebreiro"],
     "Quiroga": ["Folgoso do Courel", "Quiroga", "Ribas de Sil"],
 }
