@@ -226,6 +226,7 @@ se fai falta).
 | debeda-concellos | Facenda, débeda viva dos concellos a 31/12/2025 e 31/12/2015 (Excel); INE Padrón 2025 e 2016 (2868, 2880, 2885, 2890) | `cd fontes/debeda-concellos && pip install openpyxl xlrd && python3 prep.py && python3 render.py` (prep.py descarga os ficheiros se faltan) |
 | paro-concellos | SEPE, MUNI_<provincia>_09AA.xls (setembro 2012-2026); IGE táboa 142 (poboación 15-64, Censo 2011 e 1/1/2025) | `cd fontes/paro-concellos && pip install xlrd && python3 prep.py && python3 render.py` (prep.py descarga os 60 Excel do SEPE se faltan) |
 | vivenda-salario | MIVAU 35101000.XLS (valor tasado por provincia, media dos 4 trimestres de 2024); AEAT Mercado de traballo e pensións 2024, salario medio por provincia | `cd fontes/vivenda-salario && pip install xlrd && python3 prep.py && python3 render.py` (prep.py descarga os ficheiros se faltan) |
+| solo-galicia | MAPA, Anuario de Estatística 2025, táboas 3.2 e 3.3 (usos do solo, 2024); IFN4 e IFCG 2024 (memoria do PLADIGA 2026); Xunta, A cadea forestal-madeira de Galicia 2025; AGADER. Datos en `fontes/solo-galicia/datos_oficiais.json` | `pip install shapely && python3 fontes/solo-galicia/adaptar.py` (adapta e corrixe o orixinal de AGADER) |
 
 ### Engadir libros á Biblioteca Sustentable
 

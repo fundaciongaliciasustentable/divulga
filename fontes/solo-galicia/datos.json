@@ -1,0 +1,79 @@
+{
+ "galicia": [
+  {
+   "uso": "Forestal",
+   "valor": "61,9%"
+  },
+  {
+   "uso": "Artificial e auga",
+   "valor": "9,8%"
+  },
+  {
+   "uso": "Pastos e prados",
+   "valor": "14,2%"
+  },
+  {
+   "uso": "Terras de cultivo",
+   "valor": "12,6%"
+  },
+  {
+   "uso": "Agraria non utilizada",
+   "valor": "1,5%"
+  }
+ ],
+ "provincias": {
+  "A Coruña": {
+   "resumo": "7.954 km² · costeira · forestal 56%",
+   "usos": [
+    "Forestal 56%",
+    "Agraria 30%",
+    "Pastos e prados 11,7%",
+    "Cultivos 16,8%",
+    "Non utilizada 1,7%",
+    "Artificial e auga 13,5%"
+   ]
+  },
+  "Lugo": {
+   "resumo": "9.858 km² · a maior, interior · forestal 59%",
+   "usos": [
+    "Forestal 59%",
+    "Agraria 34%",
+    "Pastos e prados 19,6%",
+    "Cultivos 13,7%",
+    "Non utilizada 1,0%",
+    "Artificial e auga 6,7%"
+   ]
+  },
+  "Ourense": {
+   "resumo": "7.275 km² · interior, a máis forestal · forestal 72%",
+   "usos": [
+    "Forestal 72%",
+    "Agraria 20%",
+    "Pastos e prados 10,5%",
+    "Cultivos 7,6%",
+    "Non utilizada 1,9%",
+    "Artificial e auga 7,8%"
+   ]
+  },
+  "Pontevedra": {
+   "resumo": "4.497 km² · a menor, costeira · forestal 61%",
+   "usos": [
+    "Forestal 61%",
+    "Agraria 25%",
+    "Pastos e prados 12,7%",
+    "Cultivos 10,7%",
+    "Non utilizada 1,8%",
+    "Artificial e auga 13,4%"
+   ]
+  }
+ },
+ "fontes_das_graficas": [
+  "MAPA, Anuario de Estatística 2025, táboa 3.3 (datos de 2024).",
+  "MAPA, Anuario de Estatística 2025, táboa 3.3 (datos de 2024).",
+  "MAPA, Anuario de Estatística 2025, táboas 3.2 e 3.3 (datos de 2024).",
+  "Forestal: MAPA, Anuario 2025 (datos de 2024). Cortas 2025: Xunta, A cadea forestal-madeira de Galicia 2025. Cálculo da FGS.",
+  "Xunta, A cadea forestal-madeira de Galicia 2025 (volume total por provincia).",
+  "MAPA, Anuario de Estatística 2025, táboa 3.3 (datos de 2024)."
+ ],
+ "nota": "Cifras tal como as mostra a peza (deseño orixinal de AGADER/web_v1, maio de 2026). Ver README.md: varias están pendentes de verificar."
+}

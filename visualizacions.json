@@ -865,5 +865,18 @@
     ],
     "formato": "Filmoteca",
     "fontes": "Selección FGS · carteis da Wikipedia"
+  },
+  {
+    "slug": "solo-galicia",
+    "titulo": "O solo galego en detalle",
+    "entradilla": "A silueta de Galicia partida segundo o que hai no seu solo: monte, agrario e artificial e auga. E provincia a provincia, onde o verde é actividade e onde é terra que deixou de traballarse.",
+    "data": "2026-11-06",
+    "temas": [
+      "Territorio",
+      "Monte",
+      "Rural"
+    ],
+    "formato": "Cartograma de usos e pequenos múltiplos",
+    "fontes": "MAPA, Anuario de Estatística 2025 (usos do solo, 2024); IFN4 e IFCG 2024 (memoria do PLADIGA 2026, Xunta); Xunta, A cadea forestal-madeira de Galicia 2025; AGADER (Lei 11/2021)"
   }
 ]

@@ -1,0 +1,46 @@
+{
+ "nota": "Datos oficiais cos que se corrixiu a peza o 6 de novembro de 2026. Hectáreas salvo indicación.",
+ "usos": {
+  "fonte": "MAPA, Anuario de Estatística 2025, táboa 3.3: distribución da superficie segundo grandes usos e aproveitamentos do solo (datos de 2024)",
+  "url": "https://www.mapa.gob.es/estadistica/pags/anuario/2025/FORMATO%20PDF/AE25-C03/3.3.pdf",
+  "definicions": {
+   "cultivo": "Total superficie de cultivo: herbáceos, leñosos e barbeitos",
+   "pastos": "Superficies con uso principal pastos: prados, pastizais e eriais",
+   "non_utilizada": "Superficie agraria non utilizada: baldíos e plantacións de cultivos permanentes abandonadas",
+   "forestal": "Superficie forestal arborada, arbustiva e de matogueira",
+   "outras": "Outras superficies: uso urbano, outros usos artificiais (vías, industria, minaría), augas e humidais"
+  },
+  "Galicia":    {"cultivo": 372090, "pastos": 419997, "non_utilizada": 44825, "forestal": 1831038, "outras": 290441, "total": 2958391},
+  "A Coruña":   {"cultivo": 133327, "pastos": 93083,  "non_utilizada": 13356, "forestal": 448346,  "outras": 107278, "total": 795390},
+  "Lugo":       {"cultivo": 135179, "pastos": 193589, "non_utilizada": 9828,  "forestal": 580896,  "outras": 66333,  "total": 985825},
+  "Ourense":    {"cultivo": 55311,  "pastos": 76274,  "non_utilizada": 13754, "forestal": 525427,  "outras": 56715,  "total": 727481},
+  "Pontevedra": {"cultivo": 48273,  "pastos": 57051,  "non_utilizada": 7887,  "forestal": 276369,  "outras": 60115,  "total": 449695}
+ },
+ "espana_agrario": {
+  "fonte": "MAPA, Anuario de Estatística 2025, táboa 3.2 (datos de 2024)",
+  "url": "https://www.mapa.gob.es/estadistica/pags/anuario/2025/FORMATO%20PDF/AE25-C03/3.2.pdf",
+  "cultivo": 16505424, "pastos": 9128674, "non_utilizada": 1100283
+ },
+ "ifn4": {
+  "fonte": "4º Inventario Forestal Nacional, segundo a Memoria do PLADIGA 2026 (Xunta de Galicia), táboa 5, p. 39 do documento (p. 42 do PDF)",
+  "url": "https://mediorural.xunta.gal/sites/default/files/temas/forestal/pladiga/2026/01_Memoria_Pladiga_2026_Gal_min.pdf",
+  "forestal": 2030681.03, "agricola": 822626.86, "artificial": 81520.59, "humidal": 2311.58, "auga": 20307.41, "total": 2957447.47,
+  "arborado_ifcg_2024": 1372209,
+  "arborado_nota": "IFCG 2024: máis do 67 % da superficie forestal é arborada (mesma fonte, p. 39)"
+ },
+ "cortas_2025": {
+  "fonte": "Xunta de Galicia e Universidade de Vigo, A cadea forestal-madeira de Galicia 2025: volume total de aproveitamentos madeireiros por provincia (m³), Sistema de indicadores da Consellería do Medio Rural",
+  "url": "https://xera.xunta.gal/sites/default/files/publicacions/CadenaMadera2025_19052026.pdf",
+  "A Coruña": 4272444, "Lugo": 3805552, "Ourense": 1372495, "Pontevedra": 1316873, "Galicia": 10767364
+ },
+ "sector_forestal_madeira": {
+  "fonte": "Xunta de Galicia, nota do 19/05/2026 sobre o informe da cadea forestal-madeira 2025",
+  "url": "https://www.xunta.gal/notas-de-prensa/-/nova/024631/sector-forestal-madeira-supera-3-300-empresas-representa-1-7-pib-galego",
+  "pib_pct": 1.7, "afiliados": 19400, "empresas": 3300, "ano": 2025
+ },
+ "abandono": {
+  "fonte": "AGADER, presentación xeral da Lei 11/2021 de recuperación da terra agraria de Galicia",
+  "url": "https://agader.xunta.gal/sites/default/files/documentacion/PromocionRural/presentacion_xeral.pdf",
+  "texto": "Máis de 500.000 ha de terra agraria abandonada ou infrautilizada"
+ }
+}
