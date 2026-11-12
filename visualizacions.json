@@ -878,5 +878,31 @@
     ],
     "formato": "Cartograma de usos e pequenos múltiplos",
     "fontes": "MAPA, Anuario de Estatística 2025 (usos do solo, 2024); IFN4 e IFCG 2024 (memoria do PLADIGA 2026, Xunta); Xunta, A cadea forestal-madeira de Galicia 2025; AGADER (Lei 11/2021)"
+  },
+  {
+    "slug": "261112-prato-planetario",
+    "titulo": "O prato planetario",
+    "entradilla": "Nos fogares galegos mércase 5,1 veces a carne vermella da dieta planetaria e o 11 % dos legumes.",
+    "data": "2026-11-12",
+    "temas": [
+      "Alimentación",
+      "Saúde",
+      "Sustentabilidade"
+    ],
+    "formato": "Prato e fenda interactivos",
+    "fontes": "Comisión EAT-Lancet 2025 (dieta de saúde planetaria); MAPA, Panel de consumo alimentario nos fogares (2025)"
+  },
+  {
+    "slug": "261112-tres-pancas",
+    "titulo": "As tres pancas",
+    "entradilla": "Cambiar a dieta baixa as emisións da alimentación un 49 % en 2050, pero non toca a terra nin a auga. Ningunha das tres pancas abonda soa.",
+    "data": "2026-11-12",
+    "temas": [
+      "Sustentabilidade",
+      "Alimentación",
+      "Clima"
+    ],
+    "formato": "Pancas e escaleiras interactivas",
+    "fontes": "Comisión EAT-Lancet / Willett e outros, The Lancet (2019)"
   }
 ]

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O prato planetario — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="A dieta de saúde planetaria da Comisión EAT-Lancet, grupo a grupo, comparada co que mercan os fogares galegos.">
+<meta property="og:title" content="O prato planetario">
+<meta property="og:description" content="Nos fogares galegos mércase 5,1 veces a carne vermella da dieta planetaria e o 11 % dos legumes.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/261112-prato-planetario/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<style>
+/* Dúas vistas. Arriba, o prato: unha coroa repartida en gramos ao día entre os 15 grupos da dieta
+   de saúde planetaria (EAT-Lancet 2025), coas tres familias en tres cores. Abaixo, a fenda: unha
+   fila por grupo, en escala logarítmica arredor do obxectivo (100 %), coa banda do rango que a
+   Comisión dá por bo, o consumo dos fogares galegos (punto cheo), o de España (punto oco) e,
+   se a persoa o engade, o seu propio prato (rombo). As cores van só nas marcas; o texto, en tinta. */
+:root{
+  --paper:#f7f2e8; --card:#fffdf8; --ink:#231f1a; --muted:#6b645a; --line:#e2dacb; --soft:#ebe4d5;
+  --c-v:#3f8a54; --c-a:#a3457f; --c-g:#c79a1e; --ti:#1f5fae;
+  --display:var(--gs-font-chart-display); --num:var(--gs-font-chart-num);
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+h1{font-weight:800;font-size:clamp(1.7rem,4.4vw,2.8rem);line-height:1.05;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font-weight:800;font-size:clamp(1.25rem,3vw,1.7rem);line-height:1.1;text-align:center;margin:0}
+.dek,.sub{margin:0;color:var(--muted);font-size:.97rem;line-height:1.5;text-align:center;max-width:64ch;text-wrap:balance}
+.dek b,.sub b{color:var(--ink)}
+.sub{font-size:.88rem}
+section{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+section + section{margin-top:22px;padding-top:26px;border-top:1px solid var(--line)}
+
+/* Prato */
+.prato-fig{width:100%;max-width:780px;margin:0}
+.prato-fig svg{display:block;width:100%;height:auto;overflow:visible}
+.seg{cursor:pointer;transition:opacity .15s}
+.prato-fig svg.act .seg:not(.on){opacity:.28}
+.seg:focus-visible{outline:none;stroke:var(--ink);stroke-width:2.5}
+.pl{font:600 12.5px var(--display);fill:var(--ink)}
+.pl tspan{font:700 13.5px var(--num);fill:var(--muted)}
+.lead{stroke:var(--muted);stroke-width:1;fill:none;opacity:.6}
+.cn{font:700 46px var(--num);fill:var(--ink);text-anchor:middle}
+.cl{font:600 12.5px var(--display);fill:var(--muted);text-anchor:middle}
+.ct{font:800 14px var(--display);fill:var(--ink);text-anchor:middle}
+.familias{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.familias{grid-template-columns:1fr}}
+.fam{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.fam h3{margin:0 0 8px;font:800 .82rem var(--display);letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.fam h3 i{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.fam h3 span{margin-left:auto;font:700 1.15rem var(--num);letter-spacing:0;color:var(--muted)}
+.fam ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.fam li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 10px;padding:6px 4px;border-top:1px solid var(--line);border-radius:3px;cursor:default}
+.fam li.on{background:var(--soft)}
+.fam li b{font-size:.88rem;font-weight:700}
+.fam li .g{font:700 1.05rem var(--num);text-align:right;white-space:nowrap}
+.fam li small{grid-column:1 / -1;font-size:.78rem;color:var(--muted);line-height:1.35}
+
+/* Cifras */
+.cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;max-width:820px}
+@media (max-width:640px){.cifras{grid-template-columns:1fr}}
+.cifra{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.cifra .v{font-size:2.3rem}
+.cifra .l{font-weight:500;letter-spacing:0;font-size:.82rem;line-height:1.4}
+
+/* Fenda */
+.lenda{justify-content:center}
+.lenda svg{flex-shrink:0}
+.fenda{width:100%}
+.fenda svg{display:block;width:100%;height:auto;overflow:visible}
+.fr{cursor:default}
+.fr:focus-visible{outline:none}
+.fr:focus-visible .hit,.fr:hover .hit{fill:var(--soft);opacity:.55}
+.hit{fill:transparent}
+.fn{font:700 13.5px var(--display);fill:var(--ink)}
+.fs{font:500 11.5px var(--display);fill:var(--muted)}
+.fp{font:700 17px var(--num);fill:var(--ink);text-anchor:end}
+.ax{font:600 11.5px var(--num);fill:var(--muted);text-anchor:middle}
+.axh{font:700 11px var(--display);fill:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.grid{stroke:var(--line);stroke-width:1}
+.obx{stroke:var(--ink);stroke-width:1.5}
+.banda{fill:var(--soft)}
+.tip{position:fixed;transform:translate(-50%,calc(-100% - 14px));z-index:5}
+.tip .big{margin-bottom:2px}
+.tip span{display:block;color:var(--muted)}
+.tip span b{color:var(--ink)}
+
+/* O teu prato */
+.btn{font:700 .92rem var(--display);background:var(--ink);color:var(--paper);border:0;border-radius:4px;padding:10px 18px;cursor:pointer}
+.btn[aria-expanded="true"]{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn:focus-visible,.paso button:focus-visible{outline:2px solid var(--ti);outline-offset:2px}
+.ti{width:100%;max-width:820px;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 18px}
+@media (max-width:760px){.ti{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.ti{grid-template-columns:1fr}}
+.ti[hidden]{display:none}
+.paso{display:flex;flex-direction:column;gap:5px}
+.paso label{font-size:.8rem;font-weight:600;color:var(--muted);line-height:1.3}
+.paso label b{color:var(--ink);display:block;font-size:.86rem}
+.paso div{display:flex;align-items:center;gap:8px}
+.paso button{width:34px;height:34px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:4px;font:700 1.1rem var(--num);cursor:pointer;line-height:1}
+.paso output{font:700 1.5rem var(--num);min-width:2.2ch;text-align:center}
+.titxt{margin:0;font-size:.92rem;line-height:1.5;color:var(--muted);text-align:center;max-width:66ch}
+.titxt b{color:var(--ink)}
+
+details{width:100%;max-width:880px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.98rem;color:var(--ink)}
+th,td{padding:3px 10px;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;font-family:var(--display);font-size:.84rem}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line)}
+.note{color:var(--muted);font-size:.76rem;line-height:1.55;text-align:center;max-width:84ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <div class="ident">
+      <a class="logo" href="https://fundaciongaliciasustentable.gal"><img src="../../assets/logos/logo-fgs-horizontal-branco.png" alt="Fundación Galicia Sustentable" width="129" height="55"></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="seccion" href="../../">Divulga</a>
+    </div>
+    <nav aria-label="Divulga"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>O prato planetario</h1>
+  <p class="dek">A dieta que a Comisión EAT-Lancet propón para comer san dentro dos límites do planeta cabe nun prato de 1.306 gramos ao día: <b>68 % de vexetais</b>, un vaso de leite e carne vermella <b>unha vez á semana</b>. Pasa o cursor ou toca cada porción para ver canto é.</p>
+
+  <section aria-label="A dieta de saúde planetaria">
+    <figure class="prato-fig"><svg id="prato" role="img"></svg></figure>
+    <div class="familias" id="familias"></div>
+  </section>
+
+  <section aria-label="O prato galego">
+    <h2>E o prato galego?</h2>
+    <p class="sub">Cada fila compara o que mercan os fogares, en gramos por persoa e día de 2025, co obxectivo da dieta planetaria. Á esquerda da raia, de menos; á dereita, de máis. A escala é proporcional: a metade do obxectivo queda tan lonxe da raia coma o dobre.</p>
+    <div class="cifras" id="cifras"></div>
+    <ul class="dv-legend lenda" id="lenda"></ul>
+    <div class="fenda"><svg id="fenda" role="img"></svg></div>
+    <button class="btn" id="tibtn" type="button" aria-expanded="false" aria-controls="ti">Engade o teu prato</button>
+    <form class="ti" id="ti" hidden onsubmit="return false"></form>
+    <p class="titxt" id="titxt" hidden></p>
+  </section>
+
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="tbl"></table></div>
+  </details>
+  <p class="note">Dieta: <a href="https://eatforum.org/eat-lancet/summary-report/" target="_blank" rel="noopener">Comisión EAT-Lancet 2025</a>, dieta de saúde planetaria (figura 1 do resumo): gramos ao día e rango por grupo para un adulto medio, unhas 2.400 kcal. É un patrón flexible que parte só dos efectos na saúde; a Comisión estima que adoptalo evitaría uns 15 millóns de mortes ao ano. As equivalencias en racións son orientativas (unha ración de carne ou peixe, uns 100 g; un prato de legumes, uns 70 g en seco; unha presada de froitos secos, 25 g). Consumo: <a href="https://www.mapa.gob.es/es/alimentacion/temas/consumo-tendencias/panel-de-consumo-alimentario/series-anuales" target="_blank" rel="noopener">MAPA, Panel de consumo alimentario nos fogares</a>, datos anuais de 2025 por comunidade autónoma, pasados de quilos por persoa e ano a gramos ao día. <b>Non son magnitudes idénticas:</b> o panel mide o que se merca para a casa, co seu óso, pel, casca ou cuncha, e non o que se come; deixa fóra o que se toma en bares, restaurantes e comedores, e reparte entre toda a poboación, nenos incluídos. Os legumes súmanse en peso de produto (parte deles xa cocidos, que pesan máis ca en seco) e os lácteos tamén, sen pasar o queixo a equivalente en leite. A carne vermella inclúe vacún, porco, ovino e toda a carne transformada, agás os fiambres de ave. Quedan fóra da comparación os cereais integrais (o panel non os separa: só o 10 % do pan que se merca en Galicia é integral) e o azucre, que entra sobre todo dentro de produtos elaborados. Nada do que escribes sae do teu navegador. Fundación Galicia Sustentable. Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="dv-tooltip tip" id="tip" hidden></div>
+
+<script>
+const D={"ano":2025,"kcal":2400,"mortes":15,"mortes_pct":27,"n_ccaa":17,"grupos":[{"k":"verduras","n":"Verduras e hortalizas","fam":"v","obx":300,"min":200,"max":600,"eq":"tres racións ao día"},{"k":"froitas","n":"Froitas","fam":"v","obx":200,"min":100,"max":300,"eq":"dúas pezas ao día"},{"k":"cereais","n":"Cereais integrais","fam":"v","obx":210,"min":null,"max":null,"eq":"pan integral, avea ou arroz integral en cada comida"},{"k":"legumes","n":"Legumes (en seco)","fam":"v","obx":75,"min":0,"max":150,"eq":"un prato ao día"},{"k":"froitos_secos","n":"Froitos secos","fam":"v","obx":50,"min":0,"max":75,"eq":"dúas presadas ao día"},{"k":"patacas","n":"Patacas e outros tubérculos","fam":"v","obx":50,"min":0,"max":100,"eq":"unha pataca mediana cada tres días"},{"k":"lacteos","n":"Lácteos","fam":"a","obx":250,"min":0,"max":500,"eq":"un vaso de leite ao día, ou o equivalente en iogur ou queixo"},{"k":"peixe","n":"Peixe e marisco","fam":"a","obx":30,"min":0,"max":100,"eq":"dúas racións á semana"},{"k":"aves","n":"Polo e outras aves","fam":"a","obx":30,"min":0,"max":60,"eq":"dúas racións á semana"},{"k":"ovos","n":"Ovos","fam":"a","obx":15,"min":0,"max":25,"eq":"dous ovos á semana"},{"k":"vermella","n":"Carne vermella e procesada","fam":"a","obx":15,"min":0,"max":30,"eq":"unha ración á semana"},{"k":"aceites","n":"Aceites vexetais insaturados","fam":"g","obx":40,"min":20,"max":80,"eq":"unhas tres culleradas ao día"},{"k":"azucre","n":"Azucre engadido ou libre","fam":"g","obx":30,"min":0,"max":30,"eq":"é un teito, non un obxectivo"},{"k":"palma","n":"Aceite de palma e de coco","fam":"g","obx":6,"min":0,"max":8,"eq":"é un teito, non un obxectivo"},{"k":"manteiga","n":"Manteiga e graxas animais","fam":"g","obx":5,"min":0,"max":10,"eq":"unha noz de manteiga"}],"consumo":{"aves":{"gal":41.0,"esp":45.5,"posto":15,"primeira":"La Rioja","ultima":"Principado De Asturias"},"ovos":{"gal":22.6,"esp":25.3,"posto":15,"primeira":"Cantabria","ultima":"Extremadura"},"peixe":{"gal":62.9,"esp":48.8,"posto":2,"primeira":"Pais Vasco","ultima":"Canarias"},"lacteos":{"gal":303.8,"esp":260.0,"posto":4,"primeira":"C. Foral De Navarra","ultima":"Andalucía"},"legumes":{"gal":8.0,"esp":9.5,"posto":16,"primeira":"Cantabria","ultima":"Canarias"},"froitos_secos":{"gal":10.2,"esp":9.8,"posto":5,"primeira":"Illes Balears","ultima":"Extremadura"},"froitas":{"gal":251.8,"esp":223.9,"posto":4,"primeira":"C. Foral De Navarra","ultima":"Andalucía"},"verduras":{"gal":147.7,"esp":162.6,"posto":14,"primeira":"C. Foral De Navarra","ultima":"Principado De Asturias"},"patacas":{"gal":79.8,"esp":71.4,"posto":3,"primeira":"Canarias","ultima":"La Rioja"},"aceites":{"gal":35.8,"esp":25.6,"posto":1,"primeira":"Galicia","ultima":"Región De Murcia"},"vermella":{"gal":77.1,"esp":70.6,"posto":5,"primeira":"Castilla Y León","ultima":"Canarias"}},"extra":{"pan_kg":32.0,"pan_integral_pct":10,"pan_posto":5,"azucre_gdia":10.2,"ovos_semana":2.5,"total_kg":598}},NS='http://www.w3.org/2000/svg';
+const G=D.grupos,C=D.consumo,BY=Object.fromEntries(G.map(g=>[g.k,g]));
+const FAM={v:['Vexetais','var(--c-v)'],a:['Orixe animal','var(--c-a)'],g:['Graxas e azucres','var(--c-g)']};
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const dec=(v,n=1)=>v.toFixed(n).replace('.',',');
+const gr=v=>(v<20&&v%1?dec(v):miles(v))+' g';
+const pct=v=>(v<10?dec(v):miles(v))+' %';
+const rango=g=>g.min==null?'sen rango':`${g.min}–${g.max} g`;
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const $=id=>document.getElementById(id);
+const TOTAL=G.reduce((s,g)=>s+g.obx,0);
+const ordinal=n=>n+'ª';
+
+/* ---------- Prato ---------- */
+function arco(cx,cy,r0,r1,a0,a1){
+  const p=(r,a)=>[cx+r*Math.sin(a),cy-r*Math.cos(a)],big=a1-a0>Math.PI?1:0;
+  const [x0,y0]=p(r1,a0),[x1,y1]=p(r1,a1),[x2,y2]=p(r0,a1),[x3,y3]=p(r0,a0);
+  return `M${x0} ${y0}A${r1} ${r1} 0 ${big} 1 ${x1} ${y1}L${x2} ${y2}A${r0} ${r0} 0 ${big} 0 ${x3} ${y3}Z`;
+}
+function prato(){
+  const svg=$('prato');svg.innerHTML='';
+  const ancho=svg.parentNode.clientWidth,ETQ=ancho>=600;
+  const W=ETQ?780:470,H=ETQ?500:470,cx=W/2,cy=ETQ?262:235,R1=190,R0=92,RIM=222;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.setAttribute('aria-label',`Prato repartido en gramos ao día: ${G.map(g=>`${g.n} ${g.obx} g`).join(', ')}.`);
+  el('circle',{cx,cy,r:RIM,fill:'var(--card)',stroke:'var(--line)','stroke-width':1.5},svg);
+  el('circle',{cx,cy,r:R1+12,fill:'none',stroke:'var(--line)','stroke-width':1},svg);
+  const GAP=2/R1;let a=0;const etq=[];
+  for(const g of G){
+    const da=g.obx/TOTAL*2*Math.PI,a0=a,a1=a+da;a=a1;
+    const sep=Math.min(GAP/2,da/4);
+    const s=el('path',{d:arco(cx,cy,R0,R1,a0+sep,a1-sep),fill:FAM[g.fam][1],class:'seg','data-k':g.k,tabindex:0,role:'button','aria-label':`${g.n}: ${g.obx} gramos ao día, ${g.eq}`},svg);
+    s.addEventListener('pointerenter',()=>foco(g.k));s.addEventListener('focus',()=>foco(g.k));
+    s.addEventListener('click',()=>foco(g.k));
+    s.addEventListener('pointerleave',()=>foco(null));s.addEventListener('blur',()=>foco(null));
+    etq.push({g,am:(a0+a1)/2});
+  }
+  if(ETQ){
+    // As dúas graxas máis pequenas comparten etiqueta: non collen dúas liñas no seu arco
+    const fin=etq.splice(-2),xunta={g:{n:'Palma, coco e graxas animais',obx:fin[0].g.obx+fin[1].g.obx},am:(fin[0].am+fin[1].am)/2};
+    etq.push(xunta);
+    for(const lado of [1,-1]){
+      const L=etq.filter(e=>(Math.sin(e.am)>=0?1:-1)===lado).map(e=>({...e,y:cy-(R1+8)*Math.cos(e.am)})).sort((p,q)=>q.y-p.y);
+      for(let i=1;i<L.length;i++)L[i].y=Math.min(L[i].y,L[i-1].y-17);
+      for(const e of L){
+        const ax=cx+(R1+3)*Math.sin(e.am),ay=cy-(R1+3)*Math.cos(e.am),lx=cx+lado*(RIM+20);
+        el('path',{d:`M${ax} ${ay}L${cx+lado*(RIM+6)} ${e.y}H${lx-lado*4}`,class:'lead'},svg);
+        const t=el('text',{x:lx,y:e.y+4,class:'pl','text-anchor':lado>0?'start':'end'},svg);
+        t.textContent=e.g.n.replace(' (en seco)','').replace(' e outros tubérculos','').replace(' e hortalizas','').replace(' vexetais insaturados',' vexetais').replace(' engadido ou libre','')+' ';
+        el('tspan',{},t).textContent=e.g.obx+' g';
+      }
+    }
+  }
+  const c=el('g',{id:'centro','aria-hidden':'true'},svg);
+  el('text',{x:cx,y:cy-18,class:'ct',id:'c1'},c);el('text',{x:cx,y:cy+24,class:'cn',id:'c2'},c);
+  el('text',{x:cx,y:cy+44,class:'cl',id:'c3'},c);el('text',{x:cx,y:cy+60,class:'cl',id:'c4'},c);
+  foco(null);
+}
+function foco(k){
+  const svg=$('prato'),g=k&&BY[k];
+  svg.classList.toggle('act',!!g);
+  for(const s of svg.querySelectorAll('.seg'))s.classList.toggle('on',s.dataset.k===k);
+  for(const li of document.querySelectorAll('.fam li'))li.classList.toggle('on',li.dataset.k===k);
+  if(!$('c1'))return;
+  const corta=t=>t.length>24?t.slice(0,t.lastIndexOf(' ',24))+'…':t;
+  $('c1').textContent=g?corta(g.n.replace(' (en seco)','')):'Cada día';
+  $('c2').textContent=g?g.obx+' g':miles(TOTAL)+' g';
+  $('c3').textContent=g?(g.min==null?'ao día':`ao día · rango ${g.min}–${g.max}`):`unhas ${miles(D.kcal)} kcal`;
+  $('c4').textContent=g?pct(g.obx/TOTAL*100)+' do prato':'por adulto';
+}
+function familias(){
+  $('familias').innerHTML=Object.keys(FAM).map(f=>{
+    const gs=G.filter(g=>g.fam===f),t=gs.reduce((s,g)=>s+g.obx,0);
+    return `<div class="fam"><h3><i style="background:${FAM[f][1]}"></i>${FAM[f][0]}<span>${Math.round(t/TOTAL*100)} %</span></h3><ul>`+
+      gs.map(g=>`<li data-k="${g.k}"><b>${g.n}</b><span class="g">${g.obx} g</span><small>${g.eq[0].toUpperCase()+g.eq.slice(1)}</small></li>`).join('')+`</ul></div>`;
+  }).join('');
+  for(const li of document.querySelectorAll('.fam li')){
+    li.addEventListener('pointerenter',()=>foco(li.dataset.k));li.addEventListener('pointerleave',()=>foco(null));
+  }
+}
+
+/* ---------- Fenda ---------- */
+const FILAS=Object.keys(C).sort((p,q)=>C[q].gal/BY[q].obx-C[p].gal/BY[p].obx);
+const LO=7,HI=700,TICKS=[10,25,50,100,200,400];
+// O teu prato: unidade, gramos por unidade, cada canto, paso
+const TI=[
+  ['vermella','Carne vermella ou embutido','racións á semana',100,7,1],
+  ['aves','Polo ou pavo','racións á semana',100,7,1],
+  ['peixe','Peixe ou marisco','racións á semana',100,7,1],
+  ['ovos','Ovos','á semana',55,7,1],
+  ['legumes','Legumes','pratos á semana',70,7,1],
+  ['froitos_secos','Froitos secos','presadas á semana',25,7,1],
+  ['froitas','Froita','pezas ao día',100,1,.5],
+  ['verduras','Verdura','racións ao día',100,1,.5],
+  ['lacteos','Leite ou iogur','vasos ao día',200,1,.5],
+];
+const ti={};let tiOn=false;
+for(const [k,,,g,c,p] of TI)ti[k]=Math.max(0,Math.round(C[k].gal*c/g/p)*p);
+const tiG=k=>{const t=TI.find(x=>x[0]===k);return t?ti[k]*t[3]/t[4]:null};
+const tip=$('tip');
+function amosa(k,x,y){
+  const g=BY[k],c=C[k],eu=tiOn?tiG(k):null;
+  tip.innerHTML=`<b class="big">${g.n}</b><span>Obxectivo <b>${g.obx} g</b> ao día (${rango(g)})</span><span>Galicia <b>${gr(c.gal)}</b> · ${pct(c.gal/g.obx*100)} do obxectivo</span><span>España <b>${gr(c.esp)}</b></span><span>Galicia é a ${ordinal(c.posto)} de ${D.n_ccaa} comunidades</span>`+(eu!=null?`<span>Ti <b>${gr(eu)}</b> · ${pct(eu/g.obx*100)}</span>`:'');
+  tip.hidden=false;const w=tip.offsetWidth/2+8;
+  tip.style.left=Math.max(w,Math.min(innerWidth-w,x))+'px';tip.style.top=Math.max(tip.offsetHeight+20,y)+'px';
+}
+function fenda(){
+  const svg=$('fenda');svg.innerHTML='';
+  const W=Math.max(320,svg.parentNode.clientWidth),EST=W<620;
+  const ML=EST?6:232,MR=EST?12:66,MT=34,RH=EST?62:44,x0=ML,x1=W-MR;
+  const H=MT+FILAS.length*RH+30;
+  const X=p=>x0+(Math.log(Math.max(LO,Math.min(HI,p)))-Math.log(LO))/(Math.log(HI)-Math.log(LO))*(x1-x0);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.setAttribute('aria-label','Consumo dos fogares galegos como porcentaxe do obxectivo da dieta planetaria: '+FILAS.map(k=>`${BY[k].n} ${pct(C[k].gal/BY[k].obx*100)}`).join(', ')+'.');
+  for(const t of TICKS){
+    el('line',{x1:X(t),x2:X(t),y1:MT-6,y2:H-26,class:t===100?'obx':'grid'},svg);
+    el('text',{x:X(t),y:H-10,class:'ax'},svg).textContent=t===100?'obxectivo':t+' %';
+  }
+  el('text',{x:x0,y:14,class:'axh'},svg).textContent='← de menos';
+  el('text',{x:x1,y:14,class:'axh','text-anchor':'end'},svg).textContent='de máis →';
+  FILAS.forEach((k,i)=>{
+    const g=BY[k],c=C[k],y=MT+i*RH,my=EST?y+RH-18:y+RH/2,pg=c.gal/g.obx*100,pe=c.esp/g.obx*100;
+    const r=el('g',{class:'fr',tabindex:0,role:'img','aria-label':`${g.n}: Galicia ${gr(c.gal)} ao día, ${pct(pg)} do obxectivo de ${g.obx} g; España ${gr(c.esp)}.`},svg);
+    el('rect',{x:0,y:y+1,width:W,height:RH-2,rx:4,class:'hit'},r);
+    el('text',{x:EST?x0:0,y:EST?y+17:my-2,class:'fn'},r).textContent=g.n.replace(' (en seco)','');
+    el('text',{x:EST?x0:0,y:EST?y+32:my+13,class:'fs'},r).textContent=`${gr(c.gal)} ao día · obxectivo ${g.obx} g`;
+    el('text',{x:W-2,y:EST?y+24:my+6,class:'fp'},r).textContent=pct(pg);
+    const b0=g.min?X(g.min/g.obx*100):x0,b1=X(g.max/g.obx*100);
+    el('rect',{x:b0,y:my-7,width:b1-b0,height:14,rx:7,class:'banda'},r);
+    el('line',{x1:X(100),x2:X(pg),y1:my,y2:my,stroke:FAM[g.fam][1],'stroke-width':4,'stroke-linecap':'round'},r);
+    el('line',{x1:X(100),x2:X(100),y1:my-11,y2:my+11,class:'obx'},r);
+    el('circle',{cx:X(pe),cy:my,r:5.5,fill:'var(--paper)',stroke:'var(--muted)','stroke-width':2},r);
+    el('circle',{cx:X(pg),cy:my,r:7.5,fill:'var(--ink)',stroke:'var(--paper)','stroke-width':2},r);
+    const eu=tiOn?tiG(k):null;
+    if(eu!=null){
+      const px=X(eu/g.obx*100),d=7.5;
+      el('path',{d:`M${px} ${my-d}L${px+d} ${my}L${px} ${my+d}L${px-d} ${my}Z`,fill:'var(--ti)',stroke:'var(--paper)','stroke-width':2},r);
+    }
+    r.addEventListener('pointermove',ev=>amosa(k,ev.clientX,ev.clientY));
+    r.addEventListener('pointerleave',()=>{tip.hidden=true});
+    r.addEventListener('focus',()=>{const b=r.getBoundingClientRect();amosa(k,b.left+b.width/2,b.top)});
+    r.addEventListener('blur',()=>{tip.hidden=true});
+  });
+}
+function lenda(){
+  const p=(h)=>`<svg width="18" height="16" viewBox="0 0 18 16" aria-hidden="true">${h}</svg>`;
+  $('lenda').innerHTML=
+    `<li>${p('<circle cx="9" cy="8" r="6.5" fill="var(--ink)"/>')}Galicia</li>`+
+    `<li>${p('<circle cx="9" cy="8" r="5" fill="var(--paper)" stroke="var(--muted)" stroke-width="2"/>')}España</li>`+
+    (tiOn?`<li>${p('<path d="M9 1.5L15.5 8L9 14.5L2.5 8Z" fill="var(--ti)"/>')}Ti</li>`:'')+
+    `<li>${p('<rect x="0" y="2" width="18" height="12" rx="6" fill="var(--soft)" stroke="var(--line)"/>')}rango que a Comisión dá por bo</li>`+
+    `<li>${p('<line x1="9" y1="1" x2="9" y2="15" stroke="var(--ink)" stroke-width="1.5"/>')}obxectivo</li>`;
+}
+function cifras(){
+  const v=C.vermella,l=C.legumes;
+  const fora=FILAS.filter(k=>BY[k].max!=null&&(C[k].gal>BY[k].max||C[k].gal<BY[k].min));
+  const alto=Object.keys(C).filter(k=>C[k].posto<=3).sort((p,q)=>C[p].posto-C[q].posto);
+  const xunta=a=>a.length>1?a.slice(0,-1).join(', ')+' e '+a.at(-1):a[0];
+  $('cifras').innerHTML=[
+    [dec(v.gal/BY.vermella.obx)+' veces',`a carne vermella e procesada do obxectivo: ${gr(v.gal)} ao día por persoa fronte a ${BY.vermella.obx} g.`],
+    [gr(l.gal),`de legumes ao día, fronte aos ${BY.legumes.obx} g do obxectivo. Galicia é a ${ordinal(l.posto)} de ${D.n_ccaa} comunidades en legumes e a ${ordinal(C.verduras.posto)} en verduras.`],
+    [fora.length+' de '+FILAS.length,`grupos fóra do rango que a Comisión dá por bo: ${xunta(fora.map(k=>BY[k].n.toLowerCase()))}. Galicia está entre as tres primeiras comunidades en ${xunta(alto.map(k=>BY[k].n.toLowerCase().replace(' vexetais insaturados','').replace(' e outros tubérculos','')))}.`]
+  ].map(([b,s])=>`<div class="cifra dv-stat"><span class="v">${b}</span><span class="l">${s}</span></div>`).join('');
+}
+function teu(){
+  $('ti').innerHTML=TI.map(([k,n,u])=>`<div class="paso"><label id="l-${k}"><b>${n}</b>${u}</label><div role="group" aria-labelledby="l-${k}"><button type="button" data-k="${k}" data-d="-1" aria-label="Menos">−</button><output id="o-${k}"></output><button type="button" data-k="${k}" data-d="1" aria-label="Máis">+</button></div></div>`).join('');
+  for(const b of $('ti').querySelectorAll('button'))b.addEventListener('click',()=>{
+    const t=TI.find(x=>x[0]===b.dataset.k);ti[t[0]]=Math.max(0,Math.min(40,ti[t[0]]+b.dataset.d*t[5]));pinta();fenda();
+  });
+  $('tibtn').addEventListener('click',()=>{
+    tiOn=!tiOn;$('ti').hidden=!tiOn;$('titxt').hidden=!tiOn;
+    $('tibtn').setAttribute('aria-expanded',tiOn);$('tibtn').textContent=tiOn?'Quitar o meu prato':'Engade o teu prato';
+    lenda();pinta();fenda();
+  });
+}
+function pinta(){
+  for(const [k] of TI)$('o-'+k).textContent=dec(ti[k],ti[k]%1?1:0);
+  const r=TI.map(([k,n])=>({n,p:tiG(k)/BY[k].obx*100})),preto=r.filter(x=>x.p>=75&&x.p<=133).length;
+  const lonxe=r.slice().sort((p,q)=>Math.abs(Math.log(Math.max(q.p,1)/100))-Math.abs(Math.log(Math.max(p.p,1)/100)))[0];
+  $('titxt').innerHTML=`Empeza coa media galega e axústaa ao que comes ti. Agora mesmo quedas preto do obxectivo (entre o 75 % e o 133 %) en <b>${preto} de ${TI.length}</b> grupos. O máis afastado: <b>${lonxe.n.toLowerCase()}</b>, co ${pct(lonxe.p)} do obxectivo.`;
+}
+function taboa(){
+  $('tbl').innerHTML=`<tr><th>Grupo</th><th>Obxectivo (g/día)</th><th>Rango</th><th>Galicia</th><th>España</th><th>Galicia, % do obxectivo</th><th>Posto de Galicia</th></tr>`+
+    G.map(g=>{const c=C[g.k];return `<tr><td>${g.n}</td><td>${g.obx}</td><td>${g.min==null?'—':g.min+'–'+g.max}</td>`+(c?`<td>${dec(c.gal)}</td><td>${dec(c.esp)}</td><td>${pct(c.gal/g.obx*100)}</td><td>${c.posto} de ${D.n_ccaa}</td>`:`<td>—</td><td>—</td><td>—</td><td>—</td>`)+`</tr>`}).join('');
+}
+familias();prato();cifras();lenda();teu();fenda();taboa();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{prato();fenda()},150)});
+</script>
+</body>
+</html>

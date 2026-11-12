@@ -1,0 +1,231 @@
+{
+  "ano": 2025,
+  "kcal": 2400,
+  "mortes": 15,
+  "mortes_pct": 27,
+  "n_ccaa": 17,
+  "grupos": [
+    {
+      "k": "verduras",
+      "n": "Verduras e hortalizas",
+      "fam": "v",
+      "obx": 300,
+      "min": 200,
+      "max": 600,
+      "eq": "tres racións ao día"
+    },
+    {
+      "k": "froitas",
+      "n": "Froitas",
+      "fam": "v",
+      "obx": 200,
+      "min": 100,
+      "max": 300,
+      "eq": "dúas pezas ao día"
+    },
+    {
+      "k": "cereais",
+      "n": "Cereais integrais",
+      "fam": "v",
+      "obx": 210,
+      "min": null,
+      "max": null,
+      "eq": "pan integral, avea ou arroz integral en cada comida"
+    },
+    {
+      "k": "legumes",
+      "n": "Legumes (en seco)",
+      "fam": "v",
+      "obx": 75,
+      "min": 0,
+      "max": 150,
+      "eq": "un prato ao día"
+    },
+    {
+      "k": "froitos_secos",
+      "n": "Froitos secos",
+      "fam": "v",
+      "obx": 50,
+      "min": 0,
+      "max": 75,
+      "eq": "dúas presadas ao día"
+    },
+    {
+      "k": "patacas",
+      "n": "Patacas e outros tubérculos",
+      "fam": "v",
+      "obx": 50,
+      "min": 0,
+      "max": 100,
+      "eq": "unha pataca mediana cada tres días"
+    },
+    {
+      "k": "lacteos",
+      "n": "Lácteos",
+      "fam": "a",
+      "obx": 250,
+      "min": 0,
+      "max": 500,
+      "eq": "un vaso de leite ao día, ou o equivalente en iogur ou queixo"
+    },
+    {
+      "k": "peixe",
+      "n": "Peixe e marisco",
+      "fam": "a",
+      "obx": 30,
+      "min": 0,
+      "max": 100,
+      "eq": "dúas racións á semana"
+    },
+    {
+      "k": "aves",
+      "n": "Polo e outras aves",
+      "fam": "a",
+      "obx": 30,
+      "min": 0,
+      "max": 60,
+      "eq": "dúas racións á semana"
+    },
+    {
+      "k": "ovos",
+      "n": "Ovos",
+      "fam": "a",
+      "obx": 15,
+      "min": 0,
+      "max": 25,
+      "eq": "dous ovos á semana"
+    },
+    {
+      "k": "vermella",
+      "n": "Carne vermella e procesada",
+      "fam": "a",
+      "obx": 15,
+      "min": 0,
+      "max": 30,
+      "eq": "unha ración á semana"
+    },
+    {
+      "k": "aceites",
+      "n": "Aceites vexetais insaturados",
+      "fam": "g",
+      "obx": 40,
+      "min": 20,
+      "max": 80,
+      "eq": "unhas tres culleradas ao día"
+    },
+    {
+      "k": "azucre",
+      "n": "Azucre engadido ou libre",
+      "fam": "g",
+      "obx": 30,
+      "min": 0,
+      "max": 30,
+      "eq": "é un teito, non un obxectivo"
+    },
+    {
+      "k": "palma",
+      "n": "Aceite de palma e de coco",
+      "fam": "g",
+      "obx": 6,
+      "min": 0,
+      "max": 8,
+      "eq": "é un teito, non un obxectivo"
+    },
+    {
+      "k": "manteiga",
+      "n": "Manteiga e graxas animais",
+      "fam": "g",
+      "obx": 5,
+      "min": 0,
+      "max": 10,
+      "eq": "unha noz de manteiga"
+    }
+  ],
+  "consumo": {
+    "aves": {
+      "gal": 41.0,
+      "esp": 45.5,
+      "posto": 15,
+      "primeira": "La Rioja",
+      "ultima": "Principado De Asturias"
+    },
+    "ovos": {
+      "gal": 22.6,
+      "esp": 25.3,
+      "posto": 15,
+      "primeira": "Cantabria",
+      "ultima": "Extremadura"
+    },
+    "peixe": {
+      "gal": 62.9,
+      "esp": 48.8,
+      "posto": 2,
+      "primeira": "Pais Vasco",
+      "ultima": "Canarias"
+    },
+    "lacteos": {
+      "gal": 303.8,
+      "esp": 260.0,
+      "posto": 4,
+      "primeira": "C. Foral De Navarra",
+      "ultima": "Andalucía"
+    },
+    "legumes": {
+      "gal": 8.0,
+      "esp": 9.5,
+      "posto": 16,
+      "primeira": "Cantabria",
+      "ultima": "Canarias"
+    },
+    "froitos_secos": {
+      "gal": 10.2,
+      "esp": 9.8,
+      "posto": 5,
+      "primeira": "Illes Balears",
+      "ultima": "Extremadura"
+    },
+    "froitas": {
+      "gal": 251.8,
+      "esp": 223.9,
+      "posto": 4,
+      "primeira": "C. Foral De Navarra",
+      "ultima": "Andalucía"
+    },
+    "verduras": {
+      "gal": 147.7,
+      "esp": 162.6,
+      "posto": 14,
+      "primeira": "C. Foral De Navarra",
+      "ultima": "Principado De Asturias"
+    },
+    "patacas": {
+      "gal": 79.8,
+      "esp": 71.4,
+      "posto": 3,
+      "primeira": "Canarias",
+      "ultima": "La Rioja"
+    },
+    "aceites": {
+      "gal": 35.8,
+      "esp": 25.6,
+      "posto": 1,
+      "primeira": "Galicia",
+      "ultima": "Región De Murcia"
+    },
+    "vermella": {
+      "gal": 77.1,
+      "esp": 70.6,
+      "posto": 5,
+      "primeira": "Castilla Y León",
+      "ultima": "Canarias"
+    }
+  },
+  "extra": {
+    "pan_kg": 32.0,
+    "pan_integral_pct": 10,
+    "pan_posto": 5,
+    "azucre_gdia": 10.2,
+    "ovos_semana": 2.5,
+    "total_kg": 598
+  }
+}
