@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Os cartos da Xunta, bloque a bloque — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="O proxecto de orzamentos da Xunta de Galicia para 2027, función a función, nun mosaico onde a área de cada bloque son os seus millóns, comparado cos trece orzamentos anteriores.">
+<meta property="og:title" content="Os cartos da Xunta, bloque a bloque">
+<meta property="og:description" content="17.191 millóns de euros en 34 bloques: 54 de cada 100 van a sanidade e educación, e a débeda pública é o terceiro bloque.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/261113-cartos-da-xunta/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<style>
+/* Un mosaico (treemap) ao xeito do «Billion Dollar-o-Gram» de Information is Beautiful: cada bloque
+   é unha función de gasto e a súa área, os seus millóns. Seis cores, unha por grupo de funcións
+   (paleta validada para daltonismo, todos os pares). Dentro de cada bloque, en ton claro e ancorado
+   abaixo á esquerda, o que tiña no ano de comparación á mesma escala: o marco de cor forte é o que
+   medrou; se minguou, o bloque vai raiado. Debaixo, os catorce orzamentos á mesma escala. */
+:root{
+  --paper:#f7f2e8; --card:#fffdf8; --ink:#231f1a; --muted:#6b645a; --line:#e2dacb; --soft:#ebe4d5;
+  --display:var(--gs-font-chart-display); --num:var(--gs-font-chart-num);
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+h1{font-weight:800;font-size:clamp(1.7rem,4.4vw,2.8rem);line-height:1.05;text-align:center;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h2{font-weight:800;font-size:clamp(1.25rem,3vw,1.7rem);line-height:1.1;text-align:center;margin:0;text-wrap:balance}
+.dek,.sub{margin:0;color:var(--muted);font-size:.97rem;line-height:1.5;text-align:center;max-width:64ch;text-wrap:balance}
+.dek b,.sub b{color:var(--ink)}
+.sub{font-size:.88rem}
+section{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+section + section{margin-top:22px;padding-top:26px;border-top:1px solid var(--line)}
+
+.cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;max-width:900px}
+@media (max-width:640px){.cifras{grid-template-columns:1fr}}
+.cifra{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.cifra .v{font-size:2.3rem}
+.cifra .l{font-weight:500;letter-spacing:0;font-size:.82rem;line-height:1.4}
+
+/* Lenda dos seis grupos */
+.grupos{justify-content:center;gap:6px 8px;font-size:.8rem}
+.grupos button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:7px;cursor:pointer;padding:5px 9px;border-radius:4px;border:1px solid transparent;color:var(--ink)}
+.grupos button:hover,.grupos button:focus-visible{border-color:var(--line);background:var(--card)}
+.grupos button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.grupos .sw{width:13px;height:13px}
+.grupos b{font-weight:700}
+.grupos .m{font:600 .95rem var(--num);color:var(--muted)}
+
+/* O mosaico */
+.mos{position:relative;width:100%;contain:layout}
+.b{all:unset;box-sizing:border-box;position:absolute;overflow:hidden;border-radius:3px;background:var(--c);color:var(--tx);cursor:pointer;transition:opacity .18s}
+.b:focus-visible{outline:2.5px solid var(--ink);outline-offset:1px;z-index:2}
+.b .in{position:absolute;left:0;bottom:0;background:var(--t);border-top-right-radius:3px;transition:width .45s cubic-bezier(.3,.7,.2,1),height .45s cubic-bezier(.3,.7,.2,1)}
+.b.baixa .in{background:repeating-linear-gradient(135deg,var(--t) 0 7px,var(--c) 7px 9px)}
+.b .lab{position:absolute;left:0;top:0;right:0;padding:.38em .5em;line-height:1.12;font-size:var(--fs);font-weight:500}
+.b .lab b{font:700 1.45em/1 var(--num);letter-spacing:.005em;margin-right:.3em;white-space:nowrap}
+.b .lab i{font-style:normal;font-size:max(.8em,10.5px);font-weight:500}
+.b .lab small{display:block;margin-top:.25em;font:600 max(.95em,11px)/1.1 var(--num);opacity:.85;white-space:nowrap}
+.mos.hl .b:not(.on){opacity:.28}
+.pe{margin:0;font-size:.76rem;color:var(--muted);text-align:center;max-width:78ch;line-height:1.5}
+.pe a{color:var(--ink)}
+.resumo{margin:0;font-size:.9rem;line-height:1.5;text-align:center;max-width:74ch;color:var(--muted);text-wrap:pretty}
+.resumo b{color:var(--ink)}
+.clave{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;font-size:.8rem;color:var(--muted);margin:0;padding:0;list-style:none}
+.clave li{display:flex;align-items:center;gap:7px}
+.clave .k{width:26px;height:18px;border-radius:2px;position:relative;background:#8880da;flex-shrink:0;overflow:hidden}
+.clave .k::after{content:"";position:absolute;left:0;bottom:0;width:72%;height:72%;background:#c4c0ed;border-top-right-radius:2px}
+.clave .k.r::after{width:100%;height:100%;background:repeating-linear-gradient(135deg,#c4c0ed 0 5px,#8880da 5px 7px)}
+
+/* Os catorce orzamentos á mesma escala */
+.tira{--mw:116px;display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:14px 12px;width:100%}
+@media (max-width:900px){.tira{--mw:104px}}
+@media (max-width:520px){.tira{--mw:98px;gap:12px 8px}}
+.mini{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;padding:5px;border-radius:5px;border:1.5px solid transparent}
+.mini svg{display:block;width:calc(var(--mw) * var(--s));height:auto}
+.mini .a{font:700 1.05rem/1 var(--num)}
+.mini .t{font:500 .82rem/1 var(--num);color:var(--muted)}
+.mini:hover{border-color:var(--line)}
+.mini[aria-pressed="true"]{border-color:var(--ink);background:var(--card)}
+.mini:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.mini.act{cursor:default}
+.mini.act .a::after{content:" · proxecto";font-weight:500;color:var(--muted);font-size:.8rem}
+.mini rect{transition:opacity .15s}
+.tira.hl rect:not(.on){opacity:.22}
+
+.tip{position:fixed;transform:translate(-50%,calc(-100% - 14px));z-index:6;max-width:270px}
+.tip.baixo{transform:translate(-50%,18px)}
+.tip .big{margin-bottom:2px}
+.tip span{display:block;color:var(--muted)}
+.tip span b{color:var(--ink)}
+.tip .nm{color:var(--ink);font-weight:700}
+.tip svg{display:block;margin-top:7px}
+.tip .eixo{display:flex;justify-content:space-between;font:500 .72rem var(--num);color:var(--muted)}
+
+details{width:100%;max-width:880px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px}
+table{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.98rem;color:var(--ink)}
+th,td{padding:3px 10px;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;font-family:var(--display);font-size:.84rem}
+th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line)}
+td .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+.note{color:var(--muted);font-size:.76rem;line-height:1.55;text-align:center;max-width:84ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.b,.b .in,.mini rect{transition:none}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>Os cartos da Xunta, bloque a bloque</h1>
+  <p class="dek">O proxecto de orzamentos da Xunta para 2027 suma <b>17.191 millóns de euros</b> contando a devolución de débeda; os 15.158 millóns dos titulares son o gasto non financeiro. Aquí vai enteiro, repartido nas 34 funcións que fixa a propia lei, e comparado cos trece orzamentos anteriores.</p>
+  <div class="cifras"><div class="cifra dv-stat"><span class="v">17.191 M€</span><span class="l">orzamento consolidado de 2027. Sen operacións financeiras, 15.158 M€: un 6,4 % máis ca en 2026</span></div><div class="cifra dv-stat"><span class="v">54 %</span><span class="l">vai a dúas funcións: Sanidade (5.999 M€) e Educación (3.259 M€)</span></div><div class="cifra dv-stat"><span class="v">1.913 M€</span><span class="l">de débeda pública, o terceiro bloque: 1.676 son devolución de préstamos e 237, xuros</span></div></div>
+
+  <section aria-labelledby="t-mos">
+    <h2 id="t-mos">O proxecto de 2027, en millóns de euros</h2>
+    <p class="sub">Cada bloque é unha función de gasto e a súa área, os seus millóns. Dentro, en ton claro, o que tiña en <b id="cmp-ano">2026</b> á mesma escala: o marco de cor forte é o que medrou. Toca un bloque para ver a súa serie; cambia o ano de comparación na tira de abaixo.</p>
+    <ul class="dv-legend grupos" id="grupos" aria-label="Grupos de funcións"></ul>
+    <div class="mos" id="mos" role="group" aria-label="Mosaico do gasto por funcións en 2027"></div>
+    <ul class="clave" aria-hidden="true">
+      <li><span class="k"></span>en claro, o que tiña no ano comparado</li>
+      <li><span class="k r"></span>raiado: ten menos ca daquela</li>
+    </ul>
+    <p class="resumo" id="resumo"></p>
+  </section>
+
+  <section aria-labelledby="t-tira">
+    <h2 id="t-tira">Catorce orzamentos, á mesma escala</h2>
+    <p class="sub">De 2014 a 2027, cada mosaico ocupa o que suma o seu orzamento, coas mesmas cores. Toca un ano para comparalo co proxecto de 2027.</p>
+    <div class="tira" id="tira"></div>
+  </section>
+
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table id="taboa"></table></div>
+  </details>
+  <p class="note">Orzamentos: <a href="https://orzamentos.xunta.gal/" target="_blank" rel="noopener">Xunta de Galicia, Consellería de Facenda e Administración Pública</a>, proxecto de lei de orzamentos xerais para 2027 e leis de orzamentos de 2014 a 2026 (tomo «Lei I», artigo 2: desagregación dos créditos consolidados por funcións). Euros correntes de cada ano, sen descontar a inflación. De 2014 a 2026, créditos iniciais da lei aprobada; 2027, proxecto de lei en tramitación no Parlamento. O total inclúe a devolución de débeda, que cambia moito dun ano a outro segundo os vencementos: por iso 2015, 2018 e 2022 suman menos ca o ano anterior aínda que o gasto non financeiro medrou. Os seis grupos de cor son unha agrupación propia das 34 funcións oficiais. Forma inspirada no <a href="https://informationisbeautiful.net/visualizations/the-billion-dollar-gram/" target="_blank" rel="noopener">Billion Dollar-o-Gram</a> de Information is Beautiful. Fundación Galicia Sustentable. Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="dv-tooltip tip" id="tip" hidden></div>
+
+<script>
+const D={"anos":[2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027],"total":[10281.35,9790.36,10310.24,10801.15,10723.97,11544.35,11821.58,13396.51,13117.95,14167.17,14815.2,15740.54,16343.49,17191.21],"nf":[8390.5,8435.36,8804.44,9045.31,9487.13,9849.81,10148.94,11562.95,11627.36,12620.32,13256.81,13953.9,14239.66,15157.99],"amort":[1722.77,1182.55,1330.2,1590.18,1054.9,1513.05,1501.24,1574.43,1254.72,1306.61,1324.05,1549.99,1643.77,1676.18],"xuros":[348.34,332.55,268.0,232.08,167.25,162.87,140.86,97.36,71.85,108.14,187.18,213.5,214.81,237.1],"cats":[{"k":"coidar","n":"Coidar","d":"sanidade, servizos sociais e cooperación","c":"#ce6489","t":"#e7b2c4"},{"k":"ensinar","n":"Ensinar e crear","d":"educación, investigación, cultura, deporte, lingua e medios públicos","c":"#6dbbe8","t":"#b6ddf4"},{"k":"deber","n":"Deber","d":"devolución de préstamos e xuros da débeda pública","c":"#55555a","t":"#7b7b80"},{"k":"producir","n":"Producir","d":"emprego, agro, pesca, industria, empresa, comercio e turismo","c":"#87c47a","t":"#c3e2bd"},{"k":"construir","n":"Construír e conservar","d":"infraestruturas, vivenda, territorio, medio ambiente e rede dixital","c":"#c5770f","t":"#e2bb87"},{"k":"gobernar","n":"Gobernar","d":"administración, xustiza, emerxencias e fondos para os concellos","c":"#8880da","t":"#c4c0ed"}],"fun":[{"c":"41","n":"Sanidade","g":"coidar","v":[3397.08,3408.72,3511.53,3611.49,3858.82,3985.5,4107.32,4582.61,4584.08,4967.19,5165.22,5434.96,5640.61,5999.39]},{"c":"42","n":"Educación","g":"ensinar","v":[2046.72,2048.22,2148.16,2209.45,2280.68,2360.16,2466.54,2632.5,2696.31,2796.36,2858.89,2971.67,3020.05,3259.17]},{"c":"91","n":"Débeda pública","g":"deber","v":[2071.12,1515.1,1598.2,1822.26,1222.14,1675.92,1642.1,1671.78,1326.57,1414.75,1511.24,1763.49,1858.59,1913.28]},{"c":"31","n":"Acción social","g":"coidar","of":"Acción social e promoción social","v":[565.29,571.21,642.6,669.33,727.29,774.43,821.45,946.88,987.15,1155.34,1294.59,1406.14,1473.39,1619.08]},{"c":"32","n":"Emprego","g":"producir","of":"Promoción do emprego e institucións do mercado de traballo","v":[182.95,193.11,209.9,241.93,245.86,262.7,274.46,371.34,395.17,443.14,448.35,446.23,444.23,456.65]},{"c":"71","n":"Economía do medio rural","g":"producir","of":"Dinamización económica do medio rural","v":[307.99,308.65,332.05,339.64,311.53,323.87,345.15,356.79,402.46,402.93,422.15,440.02,408.75,415.32]},{"c":"56","n":"I+D+i","g":"ensinar","of":"Investigación, desenvolvemento e innovación","v":[112.55,122.22,130.68,135.37,158.26,180.05,189.59,227.51,266.53,294.4,330.21,343.74,341.51,366.24]},{"c":"51","n":"Infraestruturas","g":"construir","v":[268.81,264.02,276.62,284.53,340.8,357.8,301.53,335.27,336.79,355.37,378.24,362.38,341.21,347.97]},{"c":"45","n":"Vivenda","g":"construir","v":[32.5,41.39,51.35,57.65,69.0,77.83,80.33,85.0,112.76,130.61,166.72,221.3,269.62,292.68]},{"c":"55","n":"Medio rural","g":"construir","of":"Actuacións e valorización do medio rural","v":[115.07,137.09,135.1,137.65,137.42,144.38,148.22,171.72,169.8,187.87,191.02,207.5,250.93,282.4]},{"c":"74","n":"Desenvolvemento empresarial","g":"producir","v":[111.35,103.18,108.75,118.93,149.27,159.95,157.91,308.42,241.36,255.06,262.92,273.78,280.94,278.73]},{"c":"81","n":"Transferencias a entidades locais","g":"gobernar","v":[117.41,117.46,120.63,124.65,130.48,133.69,140.89,129.45,138.11,151.32,160.52,170.69,200.31,220.01]},{"c":"13","n":"Xustiza","g":"gobernar","v":[110.21,114.18,128.24,134.58,146.12,158.7,156.31,161.28,162.52,174.43,180.16,192.89,197.39,210.99]},{"c":"54","n":"Medio ambiente","g":"construir","of":"Actuacións ambientais","v":[97.08,89.83,119.33,121.36,124.87,118.95,132.94,199.11,219.73,227.42,198.12,222.27,204.32,206.03]},{"c":"72","n":"Pesca","g":"producir","v":[78.48,53.9,82.39,93.51,99.34,102.84,108.73,126.18,128.25,146.5,139.41,143.82,150.15,160.66]},{"c":"46","n":"Radio, televisión e comunicación","g":"ensinar","of":"Outros servizos comunitarios e sociais: comunicación social, radiodifusión e TVG","v":[98.54,104.12,100.32,102.06,105.24,108.63,111.68,112.64,123.18,127.74,131.37,135.81,140.68,144.83]},{"c":"62","n":"Actividades financeiras","g":"producir","v":[84.69,93.25,54.42,49.58,55.31,59.7,57.15,243.66,77.66,86.08,83.23,105.21,269.82,142.09]},{"c":"76","n":"Turismo","g":"producir","v":[43.23,42.9,44.03,46.42,58.12,64.18,73.84,112.48,126.03,134.69,144.15,146.35,125.92,132.31]},{"c":"57","n":"Sociedade da información","g":"construir","of":"Sociedade da información e do coñecemento","v":[88.68,85.69,96.4,99.27,102.61,93.38,92.21,155.12,143.3,155.47,152.07,151.95,131.8,129.02]},{"c":"43","n":"Cultura","g":"ensinar","v":[61.27,57.94,62.16,64.06,69.17,72.14,74.88,91.17,96.41,104.61,105.59,110.01,110.2,115.28]},{"c":"12","n":"Administración xeral","g":"gobernar","v":[55.05,63.4,68.11,68.51,75.34,67.34,71.73,77.47,74.23,88.23,91.5,97.22,97.35,101.03]},{"c":"73","n":"Industria, enerxía e minaría","g":"producir","v":[38.21,39.9,62.92,57.19,46.54,52.87,58.67,69.19,89.09,121.15,125.92,125.54,102.6,90.54]},{"c":"11","n":"Alta dirección","g":"gobernar","of":"Alta dirección da Comunidade Autónoma","v":[34.73,34.8,35.59,36.27,37.19,38.2,39.45,39.95,40.3,43.49,45.28,49.65,51.41,53.82]},{"c":"21","n":"Protección civil e seguridade","g":"gobernar","v":[19.56,33.59,24.02,25.54,24.96,29.62,29.01,30.34,29.4,29.09,30.53,40.28,42.96,44.65]},{"c":"44","n":"Deportes","g":"ensinar","v":[18.27,18.55,19.61,19.22,21.95,24.26,25.26,32.47,32.49,44.07,56.23,39.14,41.81,40.94]},{"c":"61","n":"Actuacións económicas xerais","g":"producir","v":[27.93,27.37,29.16,30.91,31.41,32.48,33.17,28.72,30.39,28.89,30.55,33.46,35.78,39.9]},{"c":"14","n":"Administración local","g":"gobernar","v":[4.38,12.35,15.63,13.27,13.8,15.14,17.28,17.26,17.32,20.06,20.09,22.69,26.55,27.05]},{"c":"75","n":"Comercio","g":"producir","v":[15.53,13.41,13.14,16.53,18.24,15.84,15.89,23.74,18.38,25.49,21.89,21.73,22.71,23.5]},{"c":"52","n":"Ordenación do territorio","g":"construir","v":[17.28,16.34,15.6,16.94,19.18,15.78,15.67,16.65,16.47,18.13,18.36,20.01,19.81,22.64]},{"c":"53","n":"Solo empresarial","g":"producir","of":"Promoción de solo para actividades económicas","v":[44.05,43.62,50.57,31.43,23.97,17.88,3.62,11.05,10.82,10.09,11.16,11.16,10.52,20.82]},{"c":"15","n":"Normalización lingüística","g":"ensinar","v":[7.08,6.74,6.76,6.82,7.62,8.08,8.51,13.06,10.11,10.91,11.05,11.96,13.01,14.69]},{"c":"33","n":"Cooperación exterior","g":"coidar","of":"Cooperación exterior e ao desenvolvemento","v":[4.14,4.14,4.19,4.51,5.03,5.61,6.65,7.45,7.83,8.92,8.94,9.86,10.35,10.94]},{"c":"58","n":"Estatística","g":"gobernar","of":"Información estatística básica","v":[4.1,3.97,4.09,4.36,4.42,4.49,4.74,4.85,4.94,5.35,5.41,5.63,5.59,5.97]},{"c":"16","n":"Eleccións e institucións","g":"gobernar","of":"Procesos electorais e órganos de representación política e institucións democráticas","v":[0.0,0.0,8.0,5.95,2.0,2.0,8.68,3.39,2.0,2.0,14.14,2.0,2.6,2.6]}]};
+const $=id=>document.getElementById(id);
+const NS='http://www.w3.org/2000/svg';
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const dec=(v,n=1)=>v.toFixed(n).replace('.',',');
+const me=v=>v>=100?miles(v):dec(v);
+const m1=v=>{const [e,d]=v.toFixed(1).split('.');return e.replace(/\B(?=(\d{3})+(?!\d))/g,'.')+','+d};   // táboa: un decimal, con miles                       // millóns de euros
+const pct=v=>(v>=0?'+':'−')+dec(Math.abs(v))+' %';
+const N=D.anos.length, ULT=N-1;
+const CAT=Object.fromEntries(D.cats.map(c=>[c.k,c]));
+const tinta=c=>c.k==='deber'?'#ffffff':'var(--ink)';
+let cmp=N-2;                                               // ano de comparación: o orzamento vixente
+
+// Treemap «squarified»: filas ao longo do lado curto, pechando cada fila cando empeora a proporción
+function squarify(items,x,y,w,h){
+  const tot=items.reduce((s,i)=>s+i.v,0),k=w*h/tot,a=items.map(i=>i.v*k),out=[];let i=0;
+  while(i<items.length){
+    const sh=Math.min(w,h),peor=(s,mn,mx)=>Math.max(sh*sh*mx/(s*s),s*s/(sh*sh*mn));
+    let s=a[i],mn=a[i],mx=a[i],j=i+1;
+    while(j<items.length){const s2=s+a[j],mn2=Math.min(mn,a[j]),mx2=Math.max(mx,a[j]);
+      if(peor(s2,mn2,mx2)<=peor(s,mn,mx)){s=s2;mn=mn2;mx=mx2;j++}else break}
+    if(w>=h){const rw=s/h;let yy=y;for(let q=i;q<j;q++){const hh=a[q]/rw;out.push({it:items[q],x,y:yy,w:rw,h:hh});yy+=hh}x+=rw;w-=rw}
+    else{const rh=s/w;let xx=x;for(let q=i;q<j;q++){const ww=a[q]/rh;out.push({it:items[q],x:xx,y,w:ww,h:rh});xx+=ww}y+=rh;h-=rh}
+    i=j}
+  return out}
+// Dous niveis: os seis grupos e, dentro de cada un, as súas funcións (orde fixa, a de 2027)
+function mosaico(yi,W,H){
+  const cats=D.cats.map(c=>{const fs=D.fun.filter(f=>f.g===c.k&&f.v[yi]>0);return{c,fs,v:fs.reduce((s,f)=>s+f.v[yi],0)}}).filter(c=>c.v>0);
+  const out=[];
+  for(const t of squarify(cats,0,0,W,H))
+    for(const r of squarify(t.it.fs.map(f=>({f,v:f.v[yi]})),t.x,t.y,t.w,t.h))out.push({f:r.it.f,x:r.x,y:r.y,w:r.w,h:r.h});
+  return out}
+
+// ── Lenda ─────────────────────────────────────────────────────────────────────────────────────
+const mos=$('mos'),tira=$('tira'),tip=$('tip');
+function realza(pred){
+  const on=!!pred;mos.classList.toggle('hl',on);tira.classList.toggle('hl',on);
+  mos.querySelectorAll('.b').forEach(b=>b.classList.toggle('on',on&&pred(b.dataset.c)));
+  tira.querySelectorAll('rect').forEach(r=>r.classList.toggle('on',on&&pred(r.dataset.c)));
+}
+const FUN=Object.fromEntries(D.fun.map(f=>[f.c,f]));
+D.cats.forEach(c=>{
+  const li=document.createElement('li'),b=document.createElement('button');
+  const v=D.fun.filter(f=>f.g===c.k).reduce((s,f)=>s+f.v[ULT],0);
+  b.type='button';b.title=c.d;
+  b.innerHTML=`<span class="sw" style="background:${c.c}"></span><b>${c.n}</b><span class="m">${me(v)}</span>`;
+  b.setAttribute('aria-label',`${c.n}: ${c.d}. ${me(v)} millóns de euros en 2027`);
+  const on=()=>realza(k=>FUN[k].g===c.k),off=()=>realza(null);
+  b.addEventListener('pointerenter',on);b.addEventListener('pointerleave',off);
+  b.addEventListener('focus',on);b.addEventListener('blur',off);
+  li.appendChild(b);$('grupos').appendChild(li);
+});
+
+// ── Tooltip ───────────────────────────────────────────────────────────────────────────────────
+function amosa(h,x,y){
+  tip.innerHTML=h;tip.hidden=false;tip.classList.remove('baixo');
+  const w=tip.offsetWidth/2+8;
+  if(y<tip.offsetHeight+24)tip.classList.add('baixo');
+  tip.style.left=Math.max(w,Math.min(innerWidth-w,x))+'px';tip.style.top=y+'px';
+}
+function serie(f,yi){
+  const mx=Math.max(...f.v),bw=13,g=3,H=38,c=CAT[f.g];
+  let s=`<svg width="${N*(bw+g)-g}" height="${H}" viewBox="0 0 ${N*(bw+g)-g} ${H}" aria-hidden="true">`;
+  f.v.forEach((v,i)=>{const h=Math.max(v>0?1.5:0,v/mx*(H-2));
+    s+=`<rect x="${i*(bw+g)}" y="${H-h}" width="${bw}" height="${h}" rx="1.5" fill="${i===yi||i===ULT?c.c:c.t}"${i===yi||i===ULT?' stroke="#231f1a" stroke-width="1"':''}/>`});
+  return s+`</svg><div class="eixo"><span>${D.anos[0]}</span><span>${D.anos[ULT]}</span></div>`;
+}
+function ficha(f,yi){                                       // yi: ano que se amosa en grande
+  const v=f.v[yi],p=v/D.total[yi]*100,c=CAT[f.g];
+  let h=`<span class="nm">${f.n}</span><b class="big">${me(v)} M€</b><span>${c.n} · ${D.anos[yi]} · <b>${dec(p)} %</b> do total</span>`;
+  if(f.of)h+=`<span>${f.of}</span>`;
+  if(f.c==='91')h+=`<span>${me(D.amort[yi])} M€ de devolución de préstamos e ${me(D.xuros[yi])} M€ de xuros</span>`;
+  const o=yi===ULT?cmp:ULT,vo=f.v[o];
+  if(vo>0&&v>0){const a=yi===ULT?vo:v,b=yi===ULT?v:vo;
+    h+=`<span>${D.anos[Math.min(o,yi)]}: ${me(a)} M€ → ${D.anos[ULT]}: ${me(b)} M€ (<b>${pct((b/a-1)*100)}</b>)</span>`}
+  else if(yi===ULT)h+=`<span>En ${D.anos[o]} non tiña dotación</span>`;
+  return h+serie(f,yi===ULT?cmp:yi);
+}
+
+// ── Mosaico principal ─────────────────────────────────────────────────────────────────────────
+const B={};
+D.fun.forEach(f=>{
+  const c=CAT[f.g],b=document.createElement('button');
+  b.type='button';b.className='b';b.dataset.c=f.c;
+  b.style.setProperty('--c',c.c);b.style.setProperty('--t',c.t);b.style.setProperty('--tx',tinta(c));
+  b.innerHTML='<span class="in"></span><span class="lab"></span>';
+  const on=e=>{realza(k=>k===f.c);const r=b.getBoundingClientRect();
+    amosa(ficha(f,ULT),e&&e.clientX?e.clientX:r.left+r.width/2,e&&e.clientY?e.clientY:r.top+Math.min(r.height/2,60))};
+  const off=()=>{realza(null);tip.hidden=true};
+  b.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')on(e)});
+  b.addEventListener('pointerleave',off);
+  b.addEventListener('click',e=>{e.stopPropagation();on(e.detail?e:null)});
+  b.addEventListener('focus',()=>{if(b.matches(':focus-visible'))on(null)});b.addEventListener('blur',off);
+  mos.appendChild(b);B[f.c]=b;
+});
+function etiqueta(f,b,w,h){
+  const lab=b.querySelector('.lab'),v=f.v[ULT],vo=f.v[cmp];
+  const fs=Math.max(10.5,Math.min(21,Math.sqrt(w*h)/11));
+  b.style.setProperty('--fs',fs+'px');
+  const d=vo>0?`<small>${pct((v/vo-1)*100)} sobre ${D.anos[cmp]}</small>`:`<small>nova fronte a ${D.anos[cmp]}</small>`;
+  const proba=[`<b>${me(v)}</b><i>${f.n}</i>${d}`,`<b>${me(v)}</b><i>${f.n}</i>`,`<b>${me(v)}</b>`,''];   // se unha palabra non entra enteira, desborda e descártase
+  for(const t of proba){
+    lab.innerHTML=t;if(!t)break;
+    if(w<26||h<15)continue;
+    if(lab.scrollHeight<=h+1&&lab.scrollWidth<=w+1)break;
+  }
+}
+function pinta(){
+  const W=mos.clientWidth,H=Math.round(W<560?W*1.55:W<900?W*.8:W*.6),g=1.5;
+  mos.style.height=H+'px';
+  for(const r of mosaico(ULT,W,H)){
+    const f=r.f,b=B[f.c],w=r.w-2*g,h=r.h-2*g,v=f.v[ULT],vo=f.v[cmp];
+    b.style.left=r.x+g+'px';b.style.top=r.y+g+'px';b.style.width=w+'px';b.style.height=h+'px';
+    const s=vo>0?Math.min(1,Math.sqrt(vo/v)):0,inn=b.querySelector('.in');
+    b.classList.toggle('baixa',vo>v);
+    inn.style.width=s*100+'%';inn.style.height=s*100+'%';
+    const p=vo>0?`, ${pct((v/vo-1)*100)} sobre ${D.anos[cmp]}`:'';
+    b.setAttribute('aria-label',`${f.n}: ${me(v)} millóns de euros${p}`);
+    etiqueta(f,b,w,h);
+  }
+}
+
+// ── Resumo do que cambia ──────────────────────────────────────────────────────────────────────
+function resumo(){
+  const a=D.anos[cmp],dif=D.fun.map(f=>({f,d:f.v[ULT]-f.v[cmp]})).sort((x,y)=>y.d-x.d);
+  const lista=xs=>xs.map(x=>`${x.f.n} (${x.d>=0?'+':'−'}${me(Math.abs(x.d))})`).join(', ');
+  const baixan=dif.filter(x=>x.d<-0.05).reverse();
+  const t=(D.total[ULT]/D.total[cmp]-1)*100,nf=(D.nf[ULT]/D.nf[cmp]-1)*100;
+  $('resumo').innerHTML=`Fronte a <b>${a}</b>, o total medra un <b>${dec(t)} %</b> (${me(D.total[cmp])} → ${me(D.total[ULT])} M€) e o gasto non financeiro un <b>${dec(nf)} %</b>. `+
+    `O que máis suma, en millóns: ${lista(dif.slice(0,4))}. `+
+    (baixan.length?`${baixan.length===1?'Baixa':'Baixan'}: ${lista(baixan.slice(0,5))}${baixan.length>5?' e '+(baixan.length-5)+' máis':''}.`:'Ningunha función baixa.');
+  $('cmp-ano').textContent=a;
+}
+
+// ── A tira dos catorce anos ───────────────────────────────────────────────────────────────────
+const MW=160,MH=100;
+D.anos.forEach((a,yi)=>{
+  const m=document.createElement(yi===ULT?'div':'button'),s=Math.sqrt(D.total[yi]/D.total[ULT]);
+  m.className='mini'+(yi===ULT?' act':'');m.style.setProperty('--s',s.toFixed(4));
+  if(yi!==ULT){m.type='button';m.setAttribute('aria-label',`Comparar con ${a}: ${me(D.total[yi])} millóns de euros`)}
+  const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox',`0 0 ${MW} ${MH}`);svg.setAttribute('aria-hidden','true');
+  for(const r of mosaico(yi,MW,MH)){
+    const e=document.createElementNS(NS,'rect'),g=.6/s;
+    e.setAttribute('x',r.x+g);e.setAttribute('y',r.y+g);e.setAttribute('width',Math.max(.3,r.w-2*g));e.setAttribute('height',Math.max(.3,r.h-2*g));
+    e.setAttribute('rx',1/s);e.setAttribute('fill',CAT[r.f.g].c);e.dataset.c=r.f.c;
+    e.addEventListener('pointermove',ev=>{realza(k=>k===r.f.c);amosa(ficha(r.f,yi),ev.clientX,ev.clientY)});
+    e.addEventListener('pointerleave',()=>{realza(null);tip.hidden=true});
+    svg.appendChild(e);
+  }
+  m.appendChild(svg);
+  m.insertAdjacentHTML('beforeend',`<span class="a">${a}</span><span class="t">${me(D.total[yi])} M€</span>`);
+  if(yi!==ULT)m.addEventListener('click',()=>{cmp=yi;actualiza()});
+  tira.appendChild(m);
+});
+
+// ── Táboa ─────────────────────────────────────────────────────────────────────────────────────
+function taboa(){
+  const a=D.anos[cmp];
+  let h=`<thead><tr><th>Función</th><th>${a} (M€)</th><th>2027 (M€)</th><th>Cambio</th><th>Peso en ${a}</th><th>Peso en 2027</th></tr></thead><tbody>`;
+  for(const f of D.fun){const v=f.v[ULT],o=f.v[cmp];
+    h+=`<tr><td><span class="sw" style="background:${CAT[f.g].c}"></span>${f.n}</td><td>${o>0?m1(o):'—'}</td><td>${m1(v)}</td><td>${o>0?pct((v/o-1)*100):'—'}</td><td>${dec(o/D.total[cmp]*100)} %</td><td>${dec(v/D.total[ULT]*100)} %</td></tr>`}
+  h+=`<tr><td><b>Total consolidado</b></td><td>${m1(D.total[cmp])}</td><td>${m1(D.total[ULT])}</td><td>${pct((D.total[ULT]/D.total[cmp]-1)*100)}</td><td>100 %</td><td>100 %</td></tr>`;
+  h+=`<tr><td>Do cal, gasto non financeiro</td><td>${m1(D.nf[cmp])}</td><td>${m1(D.nf[ULT])}</td><td>${pct((D.nf[ULT]/D.nf[cmp]-1)*100)}</td><td>${dec(D.nf[cmp]/D.total[cmp]*100)} %</td><td>${dec(D.nf[ULT]/D.total[ULT]*100)} %</td></tr></tbody>`;
+  $('taboa').innerHTML=h;
+}
+
+function actualiza(){
+  tira.querySelectorAll('button.mini').forEach((m,i)=>m.setAttribute('aria-pressed',i===cmp));
+  pinta();resumo();taboa();
+}
+actualiza();
+new ResizeObserver(()=>pinta()).observe(mos);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(pinta);
+addEventListener('scroll',()=>{tip.hidden=true},{passive:true});
+document.addEventListener('click',()=>{tip.hidden=true;realza(null)});
+</script>
+</body>
+</html>

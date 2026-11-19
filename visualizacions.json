@@ -904,5 +904,65 @@
     ],
     "formato": "Pancas e escaleiras interactivas",
     "fontes": "Comisión EAT-Lancet / Willett e outros, The Lancet (2019)"
+  },
+  {
+    "slug": "261113-cabana-come-de-fora",
+    "titulo": "A cabana come de fóra",
+    "entradilla": "As materias primas dos pensos galegos, quilo a quilo: canto cereal e canta proteína chegan de fóra de España, trimestre a trimestre desde 2018.",
+    "data": "2026-11-13",
+    "temas": [
+      "Gandería",
+      "Alimentación"
+    ],
+    "formato": "Pictograma de quilos",
+    "fontes": "Xunta de Galicia, Consellería do Medio Rural, «Produción de pensos e consumo de materias primas» (datos abertos, 2016-2025)"
+  },
+  {
+    "slug": "261113-cartos-da-xunta",
+    "titulo": "Os cartos da Xunta, bloque a bloque",
+    "entradilla": "O proxecto de orzamentos da Xunta de Galicia para 2027, función a función, nun mosaico onde a área de cada bloque son os seus millóns, comparado cos trece orzamentos anteriores.",
+    "data": "2026-11-13",
+    "temas": [
+      "Economía",
+      "Política"
+    ],
+    "formato": "Mosaico interactivo",
+    "fontes": "Xunta de Galicia, Consellería de Facenda e Administración Pública, orzamentos xerais 2014-2027"
+  },
+  {
+    "slug": "261113-historia-galicia",
+    "titulo": "A historia de Galicia nunha volta",
+    "entradilla": "Trescentos mil anos de historia de Galicia nunha roda: catorce períodos, cinco grandes crebas e sete mapas dun país que foi mudando de tamaño.",
+    "data": "2026-11-13",
+    "temas": [
+      "Patrimonio",
+      "Territorio"
+    ],
+    "formato": "Roda de períodos",
+    "fontes": "Cronoloxía de síntese da Fundación Galicia Sustentable; límites municipais do IET (Xunta de Galicia) e Natural Earth"
+  },
+  {
+    "slug": "261113-teito-concellos",
+    "titulo": "O teito dos concellos",
+    "entradilla": "En que censo tivo cada concello galego máis veciños ca nunca, e canto conserva hoxe dese máximo. Unha estalactita por concello, de 1877 a 2025.",
+    "data": "2026-11-13",
+    "temas": [
+      "Poboación"
+    ],
+    "formato": "Histograma de estalactitas",
+    "fontes": "INE, «Alteraciones de los municipios en los Censos de Población desde 1842» (1877-2021) e Padrón municipal 2025"
+  },
+  {
+    "slug": "261113-fio-concellos",
+    "titulo": "O fío de cada concello",
+    "entradilla": "Os 313 concellos galegos en sete medidas á vez: poboación respecto de 1950, idade, hospital, fibra, renda, paro e lingua. Cada concello é unha liña.",
+    "data": "2026-11-13",
+    "temas": [
+      "Poboación",
+      "Lingua",
+      "Saúde"
+    ],
+    "formato": "Coordenadas paralelas",
+    "fontes": "INE (censo de 1950 e padrón 2025, censo de 2011), IGE, SEPE, Ministerio para a Transformación Dixital, Atlas de Distribución de Renda dos Fogares (cruzados cos datos doutras pezas de Divulga)"
   }
 ]

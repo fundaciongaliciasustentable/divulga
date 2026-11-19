@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A cabana come de fóra — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="As materias primas dos pensos galegos, quilo a quilo: canto cereal e canta proteína chegan de fóra de España, trimestre a trimestre desde 2018.">
+<meta property="og:title" content="A cabana come de fóra">
+<meta property="og:description" content="En 2023, 88 de cada 100 quilos das materias primas dos pensos galegos chegaron de fóra de España. A proteína, case toda.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/261113-cabana-come-de-fora/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<style>
+/* Dúas vistas. O saco: un gofre de 100 cadrados, un por quilo de materia prima, en tres grupos
+   (proteína, cereal, outros); cor chea se vén de fóra de España, cor clara con bordo se é de España.
+   A marea: unha área apilada en chanzos, un por trimestre desde 2018, cos mesmos tres grupos; dentro
+   de cada franxa, a fronteira entre a cor chea e a clara é o que se move. O texto vai sempre en tinta. */
+:root{
+  --paper:#f7f2e8; --card:#fffdf8; --ink:#231f1a; --muted:#6b645a; --line:#e2dacb; --soft:#ebe4d5;
+  --c-p:#3f8a54; --c-pt:#bcd6c2; --c-c:#c79a1e; --c-ct:#ecdcae; --c-o:#a3457f; --c-ot:#e0c3d3;
+  --display:var(--gs-font-chart-display); --num:var(--gs-font-chart-num);
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+h1{font-weight:800;font-size:clamp(1.7rem,4.4vw,2.8rem);line-height:1.05;text-align:center;margin:0;letter-spacing:-.01em}
+h2{font-weight:800;font-size:clamp(1.25rem,3vw,1.7rem);line-height:1.1;text-align:center;margin:0;text-wrap:balance}
+.dek,.sub{margin:0;color:var(--muted);font-size:.97rem;line-height:1.5;text-align:center;max-width:66ch;text-wrap:balance}
+.dek b,.sub b{color:var(--ink)}
+.sub{font-size:.88rem}
+.sub a{color:var(--ink)}
+section{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+section + section{margin-top:22px;padding-top:26px;border-top:1px solid var(--line)}
+
+/* Cifras */
+.cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;max-width:880px}
+@media (max-width:640px){.cifras{grid-template-columns:1fr}}
+.cifra{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.cifra .v{font-size:2.3rem}
+.cifra .l{font-weight:500;letter-spacing:0;font-size:.82rem;line-height:1.4}
+
+/* Anos */
+.anos{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.ano{font:700 1rem var(--num);background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:6px 11px;cursor:pointer;min-width:52px}
+.ano[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.ano:focus-visible,.hitq:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.pe{margin:0;font-size:.76rem;color:var(--muted);text-align:center}
+
+/* O saco */
+.saco{width:100%;max-width:860px;display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:14px 28px;align-items:center}
+@media (max-width:720px){.saco{grid-template-columns:1fr;justify-items:center}}
+.saco figure{margin:0;width:100%;max-width:340px}
+.saco svg{display:block;width:100%;height:auto;overflow:visible}
+.cel{transition:fill .35s ease,stroke .35s ease}
+.sk{font:700 12px var(--display);fill:var(--muted);letter-spacing:.08em;text-anchor:middle}
+.le{display:flex;flex-direction:column;gap:10px;width:100%;max-width:440px}
+.le .gr{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.le .gn{font:700 3.4rem/1 var(--num)}
+.le .gt{font-size:.95rem;font-weight:700;line-height:1.3;flex:1;min-width:12ch}
+.le .tt{margin:0;font-size:.82rem;color:var(--muted);line-height:1.4}
+.le ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.le li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:8px 2px;border-top:1px solid var(--line)}
+.le li .sws{display:flex;gap:3px}
+.sq{display:inline-block;width:14px;height:14px;border-radius:3px;flex-shrink:0;box-sizing:border-box}
+.le li b{font-size:.92rem}
+.le li .kg{font:700 1.35rem var(--num);white-space:nowrap}
+.le li small{grid-column:2 / -1;font-size:.8rem;color:var(--muted);line-height:1.35}
+.le li small b{font-size:inherit;color:var(--ink)}
+
+/* Para quen é o penso */
+.quen{width:100%;max-width:860px;display:flex;flex-direction:column;gap:6px}
+.quen h3{margin:6px 0 0;font:800 .82rem var(--display);letter-spacing:.05em;text-transform:uppercase}
+.quen h3 span{font:600 .82rem var(--display);letter-spacing:0;text-transform:none;color:var(--muted)}
+.tira{display:flex;gap:2px;height:44px;border-radius:5px;overflow:hidden}
+.tira div{display:flex;flex-direction:column;justify-content:center;padding:0 9px;min-width:0;font-size:.78rem;font-weight:700;line-height:1.15;white-space:nowrap;overflow:hidden}
+.tira div span{font:700 1.05rem var(--num)}
+.quen p{margin:0;font-size:.78rem;color:var(--muted)}
+
+/* A marea */
+.lenda{justify-content:center}
+.marea{width:100%}
+.marea svg{display:block;width:100%;height:auto;overflow:visible}
+.gridl{stroke:var(--line);stroke-width:1}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axa{font:700 13px var(--num);fill:var(--muted);text-anchor:middle}
+.axa.on{fill:var(--ink)}
+.axh{font:700 10.5px var(--display);fill:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.pc{font:700 13.5px var(--num);fill:var(--ink);text-anchor:middle}
+.et{font:700 12px var(--display);fill:var(--ink)}
+.et2{font:500 11.5px var(--display);fill:var(--muted)}
+.sp{font:600 11px var(--display);fill:var(--muted);text-anchor:middle}
+.hitq{fill:transparent;cursor:pointer}
+.col{fill:none;stroke:var(--ink);stroke-width:1.5;pointer-events:none}
+.sel{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+.tip{position:fixed;transform:translate(-50%,calc(-100% - 14px));z-index:6}
+.tip .big{margin-bottom:2px}
+.tip span{display:block;color:var(--muted)}
+.tip span b{color:var(--ink)}
+
+details{width:100%;max-width:960px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px}
+.dat{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.98rem;color:var(--ink)}
+.dat th,.dat td{padding:3px 9px;text-align:right;white-space:nowrap}
+.dat th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line);vertical-align:bottom}
+.dat th:first-child,.dat td:first-child{text-align:left}
+.note{color:var(--muted);font-size:.76rem;line-height:1.55;text-align:center;max-width:84ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.cel{transition:none}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>A cabana come de fóra</h1>
+  <p class="dek">As fábricas galegas de penso gastan uns <b>3 millóns de toneladas</b> de cereal, soia e outras materias primas ao ano para dar de comer a vacas, porcos e polos. En 2023, <b>88 de cada 100 quilos chegaron de fóra de España</b>.</p>
+  <div class="cifras" id="cifras"></div>
+
+  <section aria-label="Que leva un saco de penso">
+    <h2>Que leva un saco de penso</h2>
+    <p class="sub">Cada cadrado é un quilo de materia prima. Cor chea, comprado fóra de España; cor clara, en España. Escolle un ano.</p>
+    <div class="anos" id="anos" role="group" aria-label="Ano"></div>
+    <p class="pe" id="pe"></p>
+    <div class="saco">
+      <figure><svg id="saco" viewBox="0 0 340 384" role="img"></svg></figure>
+      <div class="le" id="le" aria-live="polite"></div>
+    </div>
+    <div class="quen" id="quen"></div>
+  </section>
+
+  <section aria-label="Trimestre a trimestre">
+    <h2>O cereal vai e vén; a proteína vén sempre de fóra</h2>
+    <p class="sub">Cada chanzo é un trimestre. A franxa verde, a proteína, vén de fóra case enteira todos os anos. Na do cereal, a parte de fóra moveuse entre o 51 % e o 95 %. En 2023, ano de seca, España colleitou 10,3 millóns de toneladas de trigo, cebada e millo; en 2024, 18,0. Toca un trimestre para ver as súas cifras.</p>
+    <ul class="dv-legend lenda" id="lenda"></ul>
+    <div class="marea"><svg id="marea" role="img"></svg></div>
+    <p class="sub">Da mesma serie: <a href="../261112-prato-planetario/">O prato planetario</a> e <a href="../261112-tres-pancas/">As tres pancas</a>.</p>
+  </section>
+
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table class="dat" id="tbl"></table></div>
+  </details>
+  <p class="note">Fonte: <a href="https://abertos.xunta.gal/catalogo/economia-empresa-emprego/-/dataset/0687/producion-pensos-consumo-materias-primas-2025" target="_blank" rel="noopener">Xunta de Galicia, Consellería do Medio Rural, «Produción de pensos e consumo de materias primas»</a> (datos abertos, edicións de 2016 a 2025): enquisa trimestral ás fábricas de penso, con entre 47 e 49 fábricas colaboradoras segundo o ano. <b>«De fóra» é de fóra de España</b>; o que a enquisa chama «nacional» inclúe o resto de España e Galicia, que en 2023 colleitou 137.800 toneladas de trigo, cebada e millo gran. A orixe é unha porcentaxe aproximada que declara cada fábrica. A enquisa conta só as materias primas do penso composto: deixa fóra a herba e o millo ensilado das propias granxas, que son o groso da ración do vacún, e o que as granxas mercan directamente. Non di de que país vén cada cousa. «Proteína» suma as fariñas de extracción e as sementes oleaxinosas; «outros», os subprodutos de cereais, minerais, tubérculos, aceites, forraxes e demais clases. A parte importada calcúlase clase a clase, ponderando polas toneladas, porque a fila de totais da enquisa vén errada nalgúns trimestres de 2022 e 2023. Cada edición trae só os trimestres pechados cando se publicou: de 2024 hai dous e de 2025, un; a de 2019 non publica o penso por especie. O saco redondea a quilos enteiros. Colleitas de trigo, cebada e millo: MAPA, recollido por <a href="https://www.mercasa.es/" target="_blank" rel="noopener">Mercasa, «Alimentación en España 2025»</a>. Fundación Galicia Sustentable. Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="dv-tooltip tip" id="tip" hidden></div>
+
+<script>
+const D={"fonte":"Xunta de Galicia, Produción de pensos e consumo de materias primas (datos abertos), edicións 2016-2025","clases":[{"k":"cer","n":"Cereais","g":"cereal"},{"k":"sub","n":"Subprodutos de cereais","g":"outros"},{"k":"ole","n":"Sementes oleaxinosas","g":"proteina"},{"k":"ace","n":"Aceites","g":"outros"},{"k":"far","n":"Fariñas de extracción","g":"proteina"},{"k":"leg","n":"Sementes de leguminosas","g":"outros"},{"k":"tub","n":"Tubérculos e raíces","g":"outros"},{"k":"fru","n":"Outras sementes e froitas","g":"outros"},{"k":"for","n":"Forraxes","g":"outros"},{"k":"pla","n":"Outras plantas","g":"outros"},{"k":"lac","n":"Produtos lácteos","g":"outros"},{"k":"ani","n":"Produtos de animais terrestres","g":"outros"},{"k":"pei","n":"Peixes e animais mariños","g":"outros"},{"k":"min","n":"Minerais","g":"outros"},{"k":"div","n":"Produtos diversos","g":"outros"}],"trimestres":[{"t":706844,"imp":604924,"con_orixe":706844,"g":{"cereal":{"t":400555,"imp":378865,"nac":21690,"sd":0},"proteina":{"t":187243,"imp":179733,"nac":7509,"sd":0},"outros":{"t":119046,"imp":46326,"nac":72720,"sd":0}},"cl":{"cer":[400555,0.9458],"sub":[48065,0.3307],"ole":[13110,0.6135],"ace":[2028,0.5213],"far":[174133,0.986],"leg":[626,0.9982],"tub":[21937,0.8418],"fru":[480,0.5054],"for":[7739,0.0041],"pla":[4263,1.0],"lac":[554,0.0099],"ani":[6395,0.0004],"pei":[208,0.0004],"min":[23569,0.2192],"div":[3181,0.1799]},"ano":2018,"tri":1,"penso":{"bov":306657,"por":184337,"ave":183364,"cun":16574,"ovi":1813,"equ":2262,"ven":18763,"tot":713771,"out":1}},{"t":708006,"imp":573938,"con_orixe":708006,"g":{"cereal":{"t":407149,"imp":354545,"nac":52604,"sd":0},"proteina":{"t":190961,"imp":184347,"nac":6615,"sd":0},"outros":{"t":109895,"imp":35046,"nac":74849,"sd":0}},"cl":{"cer":[407149,0.8708],"sub":[47699,0.2765],"ole":[12360,0.6717],"ace":[1964,0.6727],"far":[178601,0.9857],"leg":[640,0.8383],"tub":[13324,0.7143],"fru":[448,0.4455],"for":[7599,0.0114],"pla":[3595,0.0953],"lac":[545,0.025],"ani":[6730,0.0253],"pei":[218,0.0253],"min":[23687,0.381],"div":[3446,0.1853]},"ano":2018,"tri":2,"penso":{"bov":306399,"por":186105,"ave":187954,"cun":15866,"ovi":1907,"equ":2347,"ven":22266,"tot":722844,"out":0}},{"t":708459,"imp":503297,"con_orixe":708459,"g":{"cereal":{"t":413526,"imp":282058,"nac":131468,"sd":0},"proteina":{"t":190040,"imp":182081,"nac":7959,"sd":0},"outros":{"t":104893,"imp":39158,"nac":65735,"sd":0}},"cl":{"cer":[413526,0.6821],"sub":[42970,0.2702],"ole":[10480,0.9398],"ace":[2090,0.7058],"far":[179560,0.9592],"leg":[989,0.8021],"tub":[12926,0.7092],"fru":[260,0.0],"for":[6913,0.058],"pla":[3541,0.0747],"lac":[608,0.737],"ani":[6974,0.0351],"pei":[246,0.0351],"min":[23568,0.5993],"div":[3808,0.1624]},"ano":2018,"tri":3,"penso":{"bov":303494,"por":187918,"ave":192561,"cun":15406,"ovi":1311,"equ":2218,"ven":21160,"tot":724068,"out":0}},{"t":770050,"imp":574039,"con_orixe":770050,"g":{"cereal":{"t":457063,"imp":345108,"nac":111955,"sd":0},"proteina":{"t":203913,"imp":200891,"nac":3022,"sd":0},"outros":{"t":109075,"imp":28040,"nac":81035,"sd":0}},"cl":{"cer":[457063,0.7551],"sub":[47111,0.2559],"ole":[12059,0.9333],"ace":[2322,0.564],"far":[191854,0.9884],"leg":[959,0.6043],"tub":[11928,0.713],"fru":[574,0.0],"for":[6405,0.0094],"pla":[34,0.1156],"lac":[634,0.7494],"ani":[8623,0.0083],"pei":[280,0.0083],"min":[26733,0.1674],"div":[3470,0.1439]},"ano":2018,"tri":4,"penso":{"bov":295693,"por":215413,"ave":237466,"cun":15509,"ovi":948,"equ":2536,"ven":22450,"tot":790014,"out":-1}},{"t":693891,"imp":510780,"con_orixe":693051,"g":{"cereal":{"t":404233,"imp":283781,"nac":120452,"sd":0},"proteina":{"t":189415,"imp":186325,"nac":3090,"sd":0},"outros":{"t":100243,"imp":40674,"nac":58729,"sd":840}},"cl":{"cer":[404233,0.702],"sub":[43939,0.3862],"ole":[9764,0.919],"ace":[2229,0.6507],"far":[179651,0.9872],"leg":[840,null],"tub":[11674,0.6961],"fru":[519,0.5274],"for":[6266,0.0],"pla":[53,0.191],"lac":[576,0.706],"ani":[6299,0.0043],"pei":[187,0.0],"min":[23975,0.5381],"div":[3686,0.1384]},"ano":2019,"tri":1},{"t":695909,"imp":543622,"con_orixe":695909,"g":{"cereal":{"t":403435,"imp":314165,"nac":89270,"sd":0},"proteina":{"t":193339,"imp":189867,"nac":3472,"sd":0},"outros":{"t":99135,"imp":39590,"nac":59545,"sd":0}},"cl":{"cer":[403435,0.7787],"sub":[41888,0.3516],"ole":[11286,0.9256],"ace":[2842,0.5683],"far":[182054,0.9855],"leg":[1073,0.9595],"tub":[11553,0.7308],"fru":[523,0.517],"for":[6296,0.0],"pla":[75,0.0],"lac":[603,0.6441],"ani":[6252,0.0004],"pei":[219,0.0345],"min":[24032,0.5365],"div":[3777,0.0563]},"ano":2019,"tri":2},{"t":709501,"imp":600305,"con_orixe":709501,"g":{"cereal":{"t":420257,"imp":372054,"nac":48204,"sd":0},"proteina":{"t":193826,"imp":189925,"nac":3901,"sd":0},"outros":{"t":95418,"imp":38327,"nac":57091,"sd":0}},"cl":{"cer":[420257,0.8853],"sub":[38239,0.3418],"ole":[10674,0.9159],"ace":[3832,0.3858],"far":[183152,0.9836],"leg":[1381,0.8822],"tub":[11928,0.7674],"fru":[445,0.4819],"for":[5973,0.0],"pla":[65,0.0],"lac":[264,0.0572],"ani":[5103,0.0006],"pei":[182,0.0],"min":[24277,0.5304],"div":[3728,0.0797]},"ano":2019,"tri":3},{"t":741088,"imp":625998,"con_orixe":741088,"g":{"cereal":{"t":439400,"imp":394108,"nac":45291,"sd":0},"proteina":{"t":202468,"imp":198593,"nac":3876,"sd":0},"outros":{"t":99221,"imp":33297,"nac":65923,"sd":0}},"cl":{"cer":[439400,0.8969],"sub":[39943,0.3968],"ole":[18730,0.9337],"ace":[3858,0.3581],"far":[183738,0.9857],"leg":[1753,0.7879],"tub":[12185,0.7778],"fru":[492,0.4139],"for":[5968,0.0],"pla":[74,0.0],"lac":[543,0.0463],"ani":[5205,0.0],"pei":[194,0.0],"min":[25048,0.1854],"div":[3958,0.0841]},"ano":2019,"tri":4},{"t":725574,"imp":571672,"con_orixe":725574,"g":{"cereal":{"t":426592,"imp":336102,"nac":90490,"sd":0},"proteina":{"t":202193,"imp":197299,"nac":4894,"sd":0},"outros":{"t":96789,"imp":38271,"nac":58519,"sd":0}},"cl":{"cer":[426592,0.7879],"sub":[39501,0.3511],"ole":[12762,0.944],"ace":[4174,0.3411],"far":[189431,0.9779],"leg":[1389,0.9918],"tub":[11423,0.7028],"fru":[455,0.6457],"for":[5747,0.0],"pla":[80,0.0],"lac":[584,0.0168],"ani":[4980,0.0008],"pei":[191,0.0],"min":[24663,0.5287],"div":[3604,0.063]},"ano":2020,"tri":1,"penso":{"bov":310800,"por":196095,"ave":194237,"cun":15670,"ovi":1301,"equ":2907,"ven":20005,"tot":741015,"out":0}},{"t":734279,"imp":465483,"con_orixe":734279,"g":{"cereal":{"t":435316,"imp":222395,"nac":212921,"sd":0},"proteina":{"t":204651,"imp":201957,"nac":2694,"sd":0},"outros":{"t":94312,"imp":41130,"nac":53182,"sd":0}},"cl":{"cer":[435316,0.5109],"sub":[37123,0.3184],"ole":[10076,0.9636],"ace":[5049,0.3692],"far":[194575,0.988],"leg":[1224,0.8965],"tub":[10936,0.7249],"fru":[354,0.4648],"for":[5610,0.0],"pla":[60,0.0],"lac":[552,0.0246],"ani":[4764,0.0005],"pei":[184,0.0],"min":[24756,0.7176],"div":[3701,0.1291]},"ano":2020,"tri":2,"penso":{"bov":305562,"por":202000,"ave":204692,"cun":15152,"ovi":919,"equ":2404,"ven":19070,"tot":749798,"out":-1}},{"t":752783,"imp":548673,"con_orixe":752783,"g":{"cereal":{"t":450251,"imp":304435,"nac":145816,"sd":0},"proteina":{"t":206066,"imp":202846,"nac":3220,"sd":0},"outros":{"t":96466,"imp":41392,"nac":55074,"sd":0}},"cl":{"cer":[450251,0.6761],"sub":[38963,0.3255],"ole":[10454,0.9322],"ace":[4861,0.4357],"far":[195612,0.9872],"leg":[1358,0.9032],"tub":[10657,0.7541],"fru":[387,0.4723],"for":[4756,0.0],"pla":[78,0.0],"lac":[477,0.0272],"ani":[4674,0.0004],"pei":[170,0.0],"min":[26025,0.6456],"div":[4059,0.0813]},"ano":2020,"tri":3,"penso":{"bov":326094,"por":205993,"ave":201012,"cun":12127,"ovi":833,"equ":2606,"ven":21407,"tot":770072,"out":0}},{"t":778073,"imp":539269,"con_orixe":773916,"g":{"cereal":{"t":469596,"imp":294498,"nac":175098,"sd":0},"proteina":{"t":210181,"imp":206266,"nac":3915,"sd":0},"outros":{"t":98296,"imp":38505,"nac":55634,"sd":4157}},"cl":{"cer":[469596,0.6271],"sub":[39087,0.2795],"ole":[11099,0.8566],"ace":[4157,null],"far":[199081,0.9883],"leg":[1433,0.8918],"tub":[11211,0.7126],"fru":[244,0.0],"for":[5579,0.0],"pla":[73,0.0],"lac":[555,0.008],"ani":[5228,0.0157],"pei":[180,0.0],"min":[26440,0.6709],"div":[4109,0.1186]},"ano":2020,"tri":4,"penso":{"bov":330519,"por":223047,"ave":200739,"cun":14812,"ovi":826,"equ":2902,"ven":26259,"tot":799104,"out":0}},{"t":742189,"imp":489949,"con_orixe":742189,"g":{"cereal":{"t":441423,"imp":255750,"nac":185673,"sd":0},"proteina":{"t":202721,"imp":198381,"nac":4339,"sd":0},"outros":{"t":98045,"imp":35818,"nac":62227,"sd":0}},"cl":{"cer":[441423,0.5794],"sub":[40219,0.2943],"ole":[10184,0.9127],"ace":[2984,0.6458],"far":[192537,0.9821],"leg":[1042,0.9242],"tub":[11064,0.7453],"fru":[395,0.1088],"for":[6384,0.0],"pla":[40,0.0],"lac":[504,0.0237],"ani":[5915,0.0061],"pei":[156,0.0],"min":[25254,0.4945],"div":[4090,0.0657]},"ano":2021,"tri":1,"penso":{"bov":327172,"por":207215,"ave":186630,"cun":15386,"ovi":1130,"equ":2854,"ven":20039,"tot":760426,"out":0}},{"t":759920,"imp":488642,"con_orixe":759920,"g":{"cereal":{"t":454473,"imp":248974,"nac":205498,"sd":0},"proteina":{"t":209262,"imp":205511,"nac":3751,"sd":0},"outros":{"t":96185,"imp":34157,"nac":62028,"sd":0}},"cl":{"cer":[454473,0.5478],"sub":[38112,0.2774],"ole":[12782,0.9514],"ace":[3546,0.5016],"far":[196480,0.9841],"leg":[1189,0.9354],"tub":[10977,0.7477],"fru":[447,0.1208],"for":[6289,0.0005],"pla":[74,0.0],"lac":[466,0.0062],"ani":[4978,0.0006],"pei":[157,0.0],"min":[25752,0.4543],"div":[4198,0.1722]},"ano":2021,"tri":2,"penso":{"bov":336932,"por":206027,"ave":197092,"cun":14681,"ovi":988,"equ":2553,"ven":18635,"tot":776909,"out":1}},{"t":776720,"imp":547286,"con_orixe":776720,"g":{"cereal":{"t":470624,"imp":303887,"nac":166738,"sd":0},"proteina":{"t":210336,"imp":206245,"nac":4091,"sd":0},"outros":{"t":95760,"imp":37155,"nac":58606,"sd":0}},"cl":{"cer":[470624,0.6457],"sub":[36863,0.3083],"ole":[12668,0.9613],"ace":[4085,0.3189],"far":[197668,0.9818],"leg":[1214,0.9357],"tub":[10864,0.7231],"fru":[443,0.0],"for":[6063,0.0],"pla":[70,0.0],"lac":[500,0.0106],"ani":[4672,0.0008],"pei":[171,0.0],"min":[26704,0.566],"div":[4111,0.0906]},"ano":2021,"tri":3,"penso":{"bov":334617,"por":226708,"ave":198181,"cun":14530,"ovi":708,"equ":2582,"ven":22403,"tot":799729,"out":0}},{"t":786671,"imp":575132,"con_orixe":786671,"g":{"cereal":{"t":470493,"imp":332867,"nac":137626,"sd":0},"proteina":{"t":217656,"imp":213602,"nac":4054,"sd":0},"outros":{"t":98522,"imp":28662,"nac":69860,"sd":0}},"cl":{"cer":[470493,0.7075],"sub":[38498,0.3091],"ole":[12158,0.9527],"ace":[4102,0.206],"far":[205498,0.9831],"leg":[1292,0.9298],"tub":[12157,0.7017],"fru":[491,0.0],"for":[6085,0.0065],"pla":[59,0.0],"lac":[518,0.0112],"ani":[4263,0.0004],"pei":[201,0.0],"min":[27089,0.2131],"div":[3767,0.0974]},"ano":2021,"tri":4,"penso":{"bov":344401,"por":228832,"ave":194518,"cun":14593,"ovi":835,"equ":2866,"ven":23574,"tot":809619,"out":0}},{"t":731208,"imp":559569,"con_orixe":731208,"g":{"cereal":{"t":430079,"imp":328623,"nac":101456,"sd":0},"proteina":{"t":207459,"imp":203587,"nac":3871,"sd":0},"outros":{"t":93670,"imp":27358,"nac":66312,"sd":0}},"cl":{"cer":[430079,0.7641],"sub":[35760,0.3142],"ole":[12802,0.9615],"ace":[3741,0.3448],"far":[194656,0.9826],"leg":[1142,0.9174],"tub":[13060,0.7176],"fru":[615,0.5399],"for":[6387,0.0],"pla":[64,0.0],"lac":[411,0.009],"ani":[3751,0.0004],"pei":[186,0.0],"min":[25252,0.1503],"div":[3303,0.0851]},"ano":2022,"tri":1,"penso":{"bov":322229,"por":203786,"ave":190908,"cun":14135,"ovi":1015,"equ":2874,"ven":17864,"tot":752812,"out":1}},{"t":761115,"imp":513148,"con_orixe":757461,"g":{"cereal":{"t":451263,"imp":276566,"nac":174697,"sd":0},"proteina":{"t":214993,"imp":210033,"nac":4960,"sd":0},"outros":{"t":94860,"imp":26549,"nac":64656,"sd":3655}},"cl":{"cer":[451263,0.6129],"sub":[34052,0.314],"ole":[13659,0.8732],"ace":[3655,null],"far":[201334,0.984],"leg":[1467,0.9175],"tub":[13247,0.7286],"fru":[660,0.6144],"for":[6498,0.0],"pla":[57,0.0],"lac":[373,0.015],"ani":[4309,0.0006],"pei":[175,0.0],"min":[26710,0.152],"div":[3656,0.1047]},"ano":2022,"tri":2,"penso":{"bov":325804,"por":217268,"ave":205286,"cun":13825,"ovi":785,"equ":2568,"ven":15890,"tot":781426,"out":0}},{"t":743941,"imp":547523,"con_orixe":740287,"g":{"cereal":{"t":436865,"imp":311321,"nac":125544,"sd":0},"proteina":{"t":212018,"imp":209124,"nac":2894,"sd":0},"outros":{"t":95058,"imp":27078,"nac":64326,"sd":3654}},"cl":{"cer":[436865,0.7126],"sub":[38088,0.3602],"ole":[12838,0.9896],"ace":[3654,null],"far":[199181,0.9861],"leg":[965,0.8753],"tub":[12093,0.7025],"fru":[555,0.5086],"for":[5246,0.0],"pla":[45,0.0],"lac":[391,0.0677],"ani":[3855,0.0008],"pei":[163,0.0],"min":[26077,0.1258],"div":[3925,0.108]},"ano":2022,"tri":3,"penso":{"bov":330476,"por":201031,"ave":200740,"cun":12105,"ovi":629,"equ":2424,"ven":15795,"tot":763199,"out":-1}},{"t":767054,"imp":626920,"con_orixe":763216,"g":{"cereal":{"t":447895,"imp":379316,"nac":68579,"sd":0},"proteina":{"t":222007,"imp":218512,"nac":3495,"sd":0},"outros":{"t":97152,"imp":29093,"nac":64221,"sd":3838}},"cl":{"cer":[447895,0.8469],"sub":[42110,0.3772],"ole":[13291,0.9912],"ace":[3838,null],"far":[208716,0.9838],"leg":[309,0.0],"tub":[10911,0.7241],"fru":[529,0.703],"for":[5066,0.0],"pla":[34,0.0],"lac":[384,0.0359],"ani":[3769,0.0008],"pei":[182,0.0061],"min":[26735,0.1613],"div":[3284,0.1848]},"ano":2022,"tri":4,"penso":{"bov":345645,"por":212697,"ave":194965,"cun":12679,"ovi":662,"equ":2540,"ven":20967,"tot":790155,"out":0}},{"t":752101,"imp":639107,"con_orixe":747532,"g":{"cereal":{"t":432028,"imp":393562,"nac":38466,"sd":0},"proteina":{"t":220401,"imp":217658,"nac":2743,"sd":0},"outros":{"t":99672,"imp":27887,"nac":67216,"sd":4569}},"cl":{"cer":[432028,0.911],"sub":[45332,0.351],"ole":[11141,0.9962],"ace":[4569,null],"far":[209261,0.9871],"leg":[164,0.0],"tub":[10937,0.7645],"fru":[527,0.4269],"for":[4917,0.0123],"pla":[43,0.0],"lac":[358,0.0421],"ani":[3144,0.001],"pei":[155,0.0073],"min":[26169,0.1134],"div":[3356,0.1023]},"ano":2023,"tri":1,"penso":{"bov":346894,"por":194839,"ave":195046,"cun":13534,"ovi":952,"equ":2648,"ven":18798,"tot":772712,"out":1}},{"t":732858,"imp":637085,"con_orixe":728549,"g":{"cereal":{"t":424096,"imp":391178,"nac":32918,"sd":0},"proteina":{"t":213075,"imp":210375,"nac":2700,"sd":0},"outros":{"t":95687,"imp":35531,"nac":55847,"sd":4308}},"cl":{"cer":[424096,0.9224],"sub":[41811,0.2866],"ole":[11102,0.9906],"ace":[4308,null],"far":[201973,0.9871],"leg":[157,0.0],"tub":[10897,0.7226],"fru":[465,0.4815],"for":[4909,0.0],"pla":[68,0.0],"lac":[393,0.0102],"ani":[3716,0.0033],"pei":[146,0.0086],"min":[25527,0.583],"div":[3288,0.1674]},"ano":2023,"tri":2,"penso":{"bov":330989,"por":195974,"ave":195634,"cun":13524,"ovi":710,"equ":2332,"ven":17468,"tot":756631,"out":0}},{"t":755097,"imp":655170,"con_orixe":746453,"g":{"cereal":{"t":445961,"imp":418483,"nac":27479,"sd":0},"proteina":{"t":214560,"imp":211732,"nac":2828,"sd":0},"outros":{"t":94576,"imp":24955,"nac":60977,"sd":8643}},"cl":{"cer":[445961,0.9384],"sub":[39670,0.3409],"ole":[11860,0.9948],"ace":[3943,null],"far":[202700,0.9864],"leg":[243,0.6046],"tub":[11035,0.7446],"fru":[411,0.6722],"for":[4701,null],"pla":[71,0.0],"lac":[394,0.0389],"ani":[4185,0.0006],"pei":[142,0.0071],"min":[26459,0.0895],"div":[3321,0.1213]},"ano":2023,"tri":3,"penso":{"bov":343333,"por":198334,"ave":199458,"cun":12822,"ovi":558,"equ":2408,"ven":19160,"tot":776072,"out":-1}},{"t":761941,"imp":675749,"con_orixe":752637,"g":{"cereal":{"t":445488,"imp":415251,"nac":30237,"sd":0},"proteina":{"t":218903,"imp":215821,"nac":3081,"sd":0},"outros":{"t":97551,"imp":44677,"nac":43570,"sd":9304}},"cl":{"cer":[445488,0.9321],"sub":[42683,0.3128],"ole":[12965,0.9786],"ace":[4579,null],"far":[205937,0.9864],"leg":[495,0.8726],"tub":[10988,0.7683],"fru":[298,0.2562],"for":[4725,null],"pla":[78,0.0],"lac":[386,0.0414],"ani":[3385,0.0005],"pei":[158,0.006],"min":[26331,0.8059],"div":[3444,0.3295]},"ano":2023,"tri":4,"penso":{"bov":352431,"por":211813,"ave":184065,"cun":12979,"ovi":577,"equ":2626,"ven":19795,"tot":784285,"out":-1}},{"t":739606,"imp":646477,"con_orixe":735774,"g":{"cereal":{"t":428756,"imp":406702,"nac":22054,"sd":0},"proteina":{"t":213780,"imp":210902,"nac":2877,"sd":0},"outros":{"t":97070,"imp":28873,"nac":64366,"sd":3832}},"cl":{"cer":[428756,0.9486],"sub":[42548,0.3604],"ole":[12520,0.999],"ace":[3832,null],"far":[201260,0.9858],"leg":[425,0.8708],"tub":[10923,0.8134],"fru":[263,0.7622],"for":[4980,0.0],"pla":[59,0.0],"lac":[322,0.015],"ani":[4285,0.0006],"pei":[144,0.011],"min":[25678,0.1215],"div":[3611,0.2635]},"ano":2024,"tri":1,"penso":{"bov":342568,"por":191453,"ave":192720,"cun":13346,"ovi":840,"equ":2732,"ven":19178,"tot":762836,"out":-1}},{"t":741373,"imp":649658,"con_orixe":737171,"g":{"cereal":{"t":427109,"imp":395571,"nac":31538,"sd":0},"proteina":{"t":216848,"imp":213946,"nac":2903,"sd":0},"outros":{"t":97415,"imp":40142,"nac":53072,"sd":4202}},"cl":{"cer":[427109,0.9262],"sub":[43013,0.3074],"ole":[14425,0.9774],"ace":[4202,null],"far":[202424,0.9873],"leg":[279,0.0],"tub":[11148,0.7814],"fru":[265,0.4951],"for":[4939,0.0055],"pla":[68,0.0],"lac":[323,0.0493],"ani":[3814,0.0007],"pei":[147,0.0042],"min":[25562,0.6845],"div":[3657,0.1458]},"ano":2024,"tri":2,"penso":{"bov":341573,"por":188153,"ave":198468,"cun":12996,"ovi":771,"equ":2662,"ven":16461,"tot":761082,"out":-2}},{"t":770714,"imp":548938,"con_orixe":766361,"g":{"cereal":{"t":447662,"imp":294813,"nac":152848,"sd":0},"proteina":{"t":222869,"imp":218977,"nac":3892,"sd":0},"outros":{"t":100183,"imp":35147,"nac":60682,"sd":4353}},"cl":{"cer":[447662,0.6586],"sub":[42588,0.2129],"ole":[18263,0.9468],"ace":[4353,null],"far":[204606,0.9857],"leg":[106,0.0],"tub":[12120,0.8305],"fru":[168,0.0],"for":[4943,0.0],"pla":[53,0.0],"lac":[560,0.0311],"ani":[4039,0.0005],"pei":[167,0.0],"min":[26822,0.5519],"div":[4264,0.2792]},"ano":2025,"tri":1,"penso":{"bov":359572,"por":202050,"ave":196074,"cun":12896,"ovi":1005,"equ":2928,"ven":26359,"tot":800885,"out":1}}],"anos":[{"t":2702331,"imp":2126768,"con_orixe":2657950,"g":{"cereal":{"t":1567325,"imp":1349937,"nac":217388,"sd":0},"proteina":{"t":706555,"imp":678931,"nac":27624,"sd":0},"outros":{"t":428451,"imp":97900,"nac":286171,"sd":44380}},"cl":{"cer":[1567325,0.8613],"sub":[178427,0.2692],"ole":[61718,0.7572],"ace":[9349,null],"far":[644837,0.9804],"leg":[5125,null],"tub":[51738,0.7069],"fru":[1516,null],"for":[50741,0.0065],"pla":[43,null],"lac":[2385,0.1527],"ani":[27572,null],"pei":[776,null],"min":[88199,0.1252],"div":[12581,0.1238]},"n_tri":0,"penso":{"bov":1163045,"por":745789,"ave":703099,"cun":79117,"ovi":6162,"equ":7918,"ven":75636,"tot":2780765,"out":-1},"ano":2016},{"t":2731849,"imp":1351854,"con_orixe":1829216,"g":{"cereal":{"t":1595587,"imp":1252057,"nac":343530,"sd":0},"proteina":{"t":703653,"imp":0,"nac":0,"sd":703653},"outros":{"t":432609,"imp":99797,"nac":133832,"sd":198980}},"cl":{"cer":[1595587,0.7847],"sub":[183321,0.3527],"ole":[53786,null],"ace":[8434,null],"far":[649867,null],"leg":[3989,null],"tub":[50308,0.6985],"fru":[1169,null],"for":[45645,null],"pla":[26,null],"lac":[2243,null],"ani":[25299,null],"pei":[783,null],"min":[89767,null],"div":[21624,null]},"n_tri":0,"penso":{"bov":1196013,"por":728252,"ave":697637,"cun":68083,"ovi":6359,"equ":8634,"ven":73110,"tot":2778088,"out":0},"ano":2017},{"t":2893359,"imp":2256198,"con_orixe":2893359,"g":{"cereal":{"t":1678293,"imp":1360576,"nac":317717,"sd":0},"proteina":{"t":772157,"imp":747052,"nac":25105,"sd":0},"outros":{"t":442909,"imp":148570,"nac":294339,"sd":0}},"cl":{"cer":[1678293,0.8107],"sub":[185845,0.2838],"ole":[48009,0.78],"ace":[8404,0.6144],"far":[724148,0.9799],"leg":[3214,0.7885],"tub":[60115,0.7595],"fru":[1762,0.251],"for":[28656,0.0202],"pla":[11433,0.4263],"lac":[2341,0.4025],"ani":[28722,0.017],"pei":[952,0.0174],"min":[97557,0.3361],"div":[13905,0.1675]},"n_tri":4,"penso":{"bov":1212243,"por":773773,"ave":801345,"cun":63355,"ovi":5979,"equ":9363,"ven":84639,"tot":2950697,"out":0},"ano":2018},{"t":2840389,"imp":2280705,"con_orixe":2839549,"g":{"cereal":{"t":1667325,"imp":1364108,"nac":303217,"sd":0},"proteina":{"t":779048,"imp":764710,"nac":14339,"sd":0},"outros":{"t":394017,"imp":151888,"nac":241288,"sd":840}},"cl":{"cer":[1667325,0.8181],"sub":[164009,0.3696],"ole":[50454,0.9253],"ace":[12761,0.4643],"far":[728595,0.9855],"leg":[5047,0.8626],"tub":[47340,0.7436],"fru":[1979,0.4862],"for":[24503,0.0],"pla":[267,0.0379],"lac":[1986,0.4206],"ani":[22859,0.0014],"pei":[782,0.0097],"min":[97332,0.445],"div":[15149,0.0893]},"n_tri":4,"ano":2019},{"t":2990709,"imp":2125097,"con_orixe":2986552,"g":{"cereal":{"t":1781755,"imp":1157430,"nac":624325,"sd":0},"proteina":{"t":823091,"imp":808368,"nac":14723,"sd":0},"outros":{"t":385863,"imp":159298,"nac":222409,"sd":4157}},"cl":{"cer":[1781755,0.6496],"sub":[154674,0.3187],"ole":[44391,0.9238],"ace":[18241,0.3838],"far":[778699,0.9854],"leg":[5404,0.9214],"tub":[44227,0.7231],"fru":[1440,0.4452],"for":[21692,0.0],"pla":[291,0.0],"lac":[2168,0.0188],"ani":[19646,0.0046],"pei":[725,0.0],"min":[101884,0.6414],"div":[15473,0.0984]},"n_tri":4,"penso":{"bov":1272975,"por":827135,"ave":800680,"cun":57761,"ovi":3879,"equ":10819,"ven":86741,"tot":3059989,"out":-1},"ano":2020},{"t":3065500,"imp":2101009,"con_orixe":3065500,"g":{"cereal":{"t":1837013,"imp":1141478,"nac":695535,"sd":0},"proteina":{"t":839975,"imp":823739,"nac":16235,"sd":0},"outros":{"t":388512,"imp":135792,"nac":252721,"sd":0}},"cl":{"cer":[1837013,0.6214],"sub":[153692,0.2972],"ole":[47792,0.9461],"ace":[14717,0.3977],"far":[792183,0.9828],"leg":[4737,0.9315],"tub":[45062,0.7288],"fru":[1776,0.0546],"for":[24821,0.0017],"pla":[243,0.0],"lac":[1988,0.013],"ani":[19828,0.0022],"pei":[685,0.0],"min":[104799,0.4301],"div":[16166,0.1071]},"n_tri":4,"penso":{"bov":1343122,"por":868782,"ave":776421,"cun":59190,"ovi":3661,"equ":10855,"ven":84651,"tot":3146683,"out":1},"ano":2021},{"t":3003318,"imp":2247160,"con_orixe":2992172,"g":{"cereal":{"t":1766102,"imp":1295826,"nac":470276,"sd":0},"proteina":{"t":856477,"imp":841256,"nac":15220,"sd":0},"outros":{"t":380740,"imp":110078,"nac":259515,"sd":11147}},"cl":{"cer":[1766102,0.7337],"sub":[150010,0.3435],"ole":[52590,0.9529],"ace":[14888,0.3448],"far":[803887,0.9841],"leg":[3883,0.834],"tub":[49311,0.7183],"fru":[2359,0.59],"for":[23197,0.0],"pla":[200,0.0],"lac":[1559,0.0318],"ani":[15684,0.0006],"pei":[706,0.0016],"min":[104774,0.1474],"div":[14168,0.1196]},"n_tri":4,"penso":{"bov":1324154,"por":834782,"ave":791899,"cun":52744,"ovi":3091,"equ":10406,"ven":70516,"tot":3087592,"out":0},"ano":2022},{"t":3001997,"imp":2607111,"con_orixe":2975171,"g":{"cereal":{"t":1747573,"imp":1618474,"nac":129100,"sd":0},"proteina":{"t":866939,"imp":855586,"nac":11352,"sd":0},"outros":{"t":387486,"imp":133050,"nac":227610,"sd":26824}},"cl":{"cer":[1747573,0.9261],"sub":[169496,0.3231],"ole":[47068,0.9897],"ace":[17399,null],"far":[819871,0.9868],"leg":[1059,0.5466],"tub":[43857,0.75],"fru":[1701,0.4712],"for":[19252,0.0062],"pla":[260,0.0],"lac":[1531,0.0329],"ani":[14430,0.0014],"pei":[601,0.0072],"min":[104486,0.3966],"div":[13409,0.1813]},"n_tri":4,"penso":{"bov":1373647,"por":800960,"ave":774203,"cun":52859,"ovi":2797,"equ":10014,"ven":75221,"tot":3089700,"out":-1},"ano":2023},{"t":1480979,"imp":1296135,"con_orixe":1472945,"g":{"cereal":{"t":855865,"imp":802273,"nac":53592,"sd":0},"proteina":{"t":430628,"imp":424848,"nac":5780,"sd":0},"outros":{"t":194485,"imp":69015,"nac":117438,"sd":8034}},"cl":{"cer":[855865,0.9374],"sub":[85561,0.3338],"ole":[26945,0.9874],"ace":[8034,null],"far":[403684,0.9866],"leg":[704,0.5257],"tub":[22071,0.7972],"fru":[528,0.6281],"for":[9919,0.0027],"pla":[127,0.0],"lac":[645,0.0322],"ani":[8099,0.0006],"pei":[291,0.0076],"min":[51240,0.4024],"div":[7268,0.2043]},"n_tri":2,"penso":{"bov":684141,"por":379606,"ave":391188,"cun":26342,"ovi":1611,"equ":5394,"ven":35639,"tot":1523918,"out":-3},"ano":2024},{"t":770714,"imp":548938,"con_orixe":766361,"g":{"cereal":{"t":447662,"imp":294813,"nac":152848,"sd":0},"proteina":{"t":222869,"imp":218977,"nac":3892,"sd":0},"outros":{"t":100183,"imp":35147,"nac":60682,"sd":4353}},"cl":{"cer":[447662,0.6586],"sub":[42588,0.2129],"ole":[18263,0.9468],"ace":[4353,null],"far":[204606,0.9857],"leg":[106,0.0],"tub":[12120,0.8305],"fru":[168,0.0],"for":[4943,0.0],"pla":[53,0.0],"lac":[560,0.0311],"ani":[4039,0.0005],"pei":[167,0.0],"min":[26822,0.5519],"div":[4264,0.2792]},"n_tri":1,"penso":{"bov":359572,"por":202050,"ave":196074,"cun":12896,"ovi":1005,"equ":2928,"ven":26359,"tot":800885,"out":1},"ano":2025}],"colleita":{"espana":{"2023":10311300,"2024":18046800},"galicia":{"2023":137800,"2024":180700}}},NS='http://www.w3.org/2000/svg',T=D.trimestres,A=D.anos.filter(a=>a.n_tri>0);
+const $=id=>document.getElementById(id);
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const dec=(v,n=1)=>v.toFixed(n).replace('.',',');
+const mt=v=>dec(v/1e6,2)+' millóns de toneladas';
+// Tres grupos, de abaixo a arriba no saco e na marea
+const G=[
+  {k:'proteina',n:'Proteína',d:'fariñas de extracción e sementes oleaxinosas, sobre todo soia e colza',c:'var(--c-p)',t:'var(--c-pt)'},
+  {k:'cereal',n:'Cereais',d:'o gran: millo, trigo, cebada',c:'var(--c-c)',t:'var(--c-ct)'},
+  {k:'outros',n:'Outros',d:'subprodutos de cereais, minerais, tubérculos, aceites',c:'var(--c-o)',t:'var(--c-ot)'}
+];
+// Parte de fóra de cada grupo, sobre o que declara orixe; aplícase a todo o grupo
+const fora=g=>g.imp+g.nac?g.imp/(g.imp+g.nac):0;
+const foraTot=e=>e.imp/e.con_orixe;
+const capas=e=>G.flatMap(g=>{const x=e.g[g.k],f=fora(x);return [{g,imp:true,v:x.t*f},{g,imp:false,v:x.t*(1-f)}]});
+const ORD=['1º','2º','3º','4º'];
+const completo=A.filter(a=>a.n_tri===4).at(-1);
+let sel=completo.ano;
+const periodo=a=>a.n_tri===4?`en ${a.ano}`:a.n_tri===2?`no primeiro semestre de ${a.ano}`:a.n_tri===1?`no primeiro trimestre de ${a.ano}`:`en ${a.n_tri} trimestres de ${a.ano}`;
+
+/* ---------- Cifras ---------- */
+function cifras(){
+  const a=completo,p=a.g.proteina,pm=Math.min(...A.map(x=>fora(x.g.proteina)));
+  const gal=D.colleita.galicia[a.ano];
+  $('cifras').innerHTML=[
+    [`${Math.round(foraTot(a)*100)} de 100`,`quilos de materia prima chegaron de fóra de España en ${a.ano}. En ${A.reduce((m,x)=>x.n_tri===4&&foraTot(x)<foraTot(m)?x:m,a).ano} foran ${Math.round(Math.min(...A.filter(x=>x.n_tri===4).map(foraTot))*100)}.`],
+    [`${Math.round(fora(p)*100)} %`,`da proteína, as fariñas e sementes de soia e colza, é importada. Desde ${A[0].ano} nunca baixou do ${Math.floor(pm*100)} %.`],
+    [`${Math.round(gal/a.g.cereal.t*100)} %`,`do cereal que usaron as fábricas en ${a.ano}: iso é o que suma todo o trigo, cebada e millo gran colleitado en Galicia, ${miles(gal)} toneladas.`]
+  ].map(([b,s])=>`<div class="cifra dv-stat"><span class="v">${b}</span><span class="l">${s}</span></div>`).join('');
+}
+
+/* ---------- O saco ---------- */
+// Reparte 100 cadrados polo método do maior resto
+function reparte(e){
+  const c=capas(e),tot=c.reduce((s,x)=>s+x.v,0),q=c.map(x=>x.v/tot*100),n=q.map(Math.floor);
+  const r=q.map((x,i)=>[x-n[i],i]).sort((p,s)=>s[0]-p[0]);
+  for(let i=0,f=100-n.reduce((s,x)=>s+x,0);i<f;i++)n[r[i][1]]++;
+  return c.map((x,i)=>({...x,n:n[i]}));
+}
+const tip=$('tip');
+function amosa(h,x,y){
+  tip.innerHTML=h;tip.hidden=false;const w=tip.offsetWidth/2+8;
+  tip.style.left=Math.max(w,Math.min(innerWidth-w,x))+'px';tip.style.top=Math.max(tip.offsetHeight+20,y)+'px';
+}
+function sacoBase(){
+  const svg=$('saco');
+  el('path',{d:'M34 22L14 6V40ZM306 22L326 6V40Z',fill:'var(--soft)',stroke:'var(--line)','stroke-width':1.5,'stroke-linejoin':'round'},svg);
+  el('rect',{x:14,y:22,width:312,height:354,rx:16,fill:'var(--card)',stroke:'var(--line)','stroke-width':2},svg);
+  el('text',{x:170,y:47,class:'sk'},svg).textContent='100 KG DE MATERIAS PRIMAS';
+  for(let i=0;i<100;i++){
+    const r=el('rect',{x:26+(i%10)*29,y:62+(9-Math.floor(i/10))*29,width:26,height:26,rx:4,class:'cel'},svg);
+    r.addEventListener('pointermove',ev=>{if(r._h)amosa(r._h,ev.clientX,ev.clientY)});
+    r.addEventListener('pointerleave',()=>{tip.hidden=true});
+  }
+}
+function saco(){
+  const a=A.find(x=>x.ano===sel),c=reparte(a),cel=$('saco').querySelectorAll('.cel');
+  let i=0;
+  for(const x of c)for(let j=0;j<x.n;j++,i++){
+    const r=cel[i];
+    r.setAttribute('fill',x.imp?x.g.c:x.g.t);r.setAttribute('stroke',x.g.c);r.setAttribute('stroke-width',x.imp?0:1.5);
+    r._h=`<b class="big">${x.g.n}, ${x.imp?'de fóra':'de España'}</b><span><b>${x.n} kg</b> de cada 100</span><span>${miles(x.v)} toneladas ${periodo(a)}</span>`;
+  }
+  const kg=k=>c.filter(x=>x.g.k===k),imp=c.filter(x=>x.imp).reduce((s,x)=>s+x.n,0);
+  $('saco').setAttribute('aria-label',`De cada 100 kg de materias primas ${periodo(a)}: `+G.map(g=>{const [f,n]=kg(g.k);return `${g.n.toLowerCase()} ${f.n+n.n} kg, ${f.n} de fóra`}).join('; ')+`. En total, ${imp} kg de fóra de España.`);
+  $('le').innerHTML=`<div class="gr"><span class="gn">${imp} kg</span><span class="gt">de cada 100 chegaron de fóra de España ${periodo(a)}</span></div>`+
+    `<p class="tt">As fábricas usaron ${mt(a.t)} de materias primas.</p><ul>`+
+    G.slice().reverse().map(g=>{const [f,n]=kg(g.k);
+      return `<li><span class="sws"><i class="sq" style="background:${g.c}"></i><i class="sq" style="background:${g.t};border:1.5px solid ${g.c}"></i></span><b>${g.n}</b><span class="kg">${f.n+n.n} kg</span><small><b>${f.n} de fóra</b> · ${n.n} de España. ${g.d[0].toUpperCase()+g.d.slice(1)}.</small></li>`}).join('')+`</ul>`;
+  const p=a.penso;
+  if(!p){$('quen').innerHTML=`<h3>Para quen é o penso</h3><p>A edición de ${a.ano} da enquisa non publica o penso por especie.</p>`}
+  else{
+    const s=[['Vacún',p.bov,'var(--ink)','var(--paper)'],['Porcino',p.por,'#6b645a','var(--paper)'],['Aves',p.ave,'#b3a998','var(--ink)']];
+    const resto=p.tot-p.bov-p.por-p.ave;
+    $('quen').innerHTML=`<h3>Para quen é o penso <span>· ${mt(p.tot)} fabricadas ${periodo(a)}</span></h3>`+
+      `<div class="tira" role="img" aria-label="${s.map(x=>`${x[0]} ${Math.round(x[1]/p.tot*100)} %`).join(', ')}">`+
+      s.map(x=>`<div style="flex:${x[1]} 1 0;background:${x[2]};color:${x[3]}"><span>${Math.round(x[1]/p.tot*100)} %</span>${x[0]}</div>`).join('')+
+      `<div style="flex:${resto} 1 0;background:var(--soft)"></div></div>`+
+      `<p>O ${dec(resto/p.tot*100)} % restante: coellos (${dec(p.cun/p.tot*100)} %), ovino, cabrún, equino, outras especies e materias vendidas sen mesturar.</p>`;
+  }
+  for(const b of document.querySelectorAll('.ano'))b.setAttribute('aria-pressed',+b.dataset.a===sel);
+}
+function anos(){
+  $('anos').innerHTML=A.map(a=>`<button type="button" class="ano" data-a="${a.ano}" aria-pressed="false">${a.ano}${a.n_tri<4?'*':''}</button>`).join('');
+  for(const b of document.querySelectorAll('.ano'))b.addEventListener('click',()=>{sel=+b.dataset.a;saco();marea()});
+  const inc=A.filter(a=>a.n_tri<4);
+  $('pe').textContent=inc.length?'* Ano incompleto: '+inc.map(a=>`de ${a.ano} hai ${a.n_tri===1?'un trimestre':a.n_tri===2?'dous trimestres':a.n_tri+' trimestres'}`).join(' e ')+'.':'';
+}
+
+/* ---------- A marea ---------- */
+const A0=T[0].ano,idx=t=>(t.ano-A0)*4+t.tri-1,NQ=idx(T.at(-1))+1;
+const TOPE=Math.ceil(Math.max(...T.map(t=>t.t))/2e5)*2e5;
+function lenda(){
+  $('lenda').innerHTML=G.map(g=>`<li><i class="sq" style="background:${g.c}"></i>${g.n}</li>`).join('')+
+    `<li><i class="sq" style="background:var(--ink)"></i>cor chea: de fóra de España</li><li><i class="sq" style="background:var(--soft);border:1.5px solid var(--ink)"></i>cor clara: de España</li>`;
+}
+function marea(){
+  const svg=$('marea');svg.innerHTML='';
+  const W=Math.max(320,svg.parentNode.clientWidth),ANCHO=W>=700;
+  const ML=ANCHO?40:30,MR=ANCHO?150:8,MT=50,MB=36,H=ANCHO?410:340,y0=H-MB;
+  const sw=(W-ML-MR)/NQ,X=i=>ML+i*sw,Y=v=>y0-v/TOPE*(y0-MT);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.setAttribute('aria-label','Materias primas por trimestre e parte chegada de fóra de España. Cereal de fóra por ano: '+A.map(a=>`${a.ano} ${Math.round(fora(a.g.cereal)*100)} %`).join(', ')+'.');
+  const d=el('defs',{},svg),pt=el('pattern',{id:'raias',width:6,height:6,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'},d);
+  el('line',{x1:0,y1:0,x2:0,y2:6,stroke:'var(--line)','stroke-width':3},pt);
+  for(let v=0;v<=TOPE;v+=2e5){
+    el('line',{x1:ML,x2:W-MR,y1:Y(v),y2:Y(v),class:'gridl'},svg);
+    el('text',{x:ML-6,y:Y(v)+4,class:'ax','text-anchor':'end'},svg).textContent=v/1000;
+  }
+  el('text',{x:0,y:MT-34,class:'axh'},svg).textContent='Cereal de fóra, por ano';
+  el('text',{x:0,y:y0+30,class:'axh'},svg).textContent=ANCHO?'Miles de toneladas por trimestre':'Miles de t';
+  // Trimestres sen publicar entre o primeiro e o último
+  const hai=new Set(T.map(idx));
+  for(let i=0;i<NQ;i++)if(!hai.has(i)){
+    el('rect',{x:X(i),y:Y(TOPE),width:sw+.5,height:y0-Y(TOPE),fill:'url(#raias)'},svg);
+    if(!hai.has(i+1)||i===NQ-1){
+      let j=i;while(j>0&&!hai.has(j-1))j--;
+      const cx=(X(j)+X(i+1))/2,cy=(Y(TOPE)+y0)/2;
+      el('text',{x:cx,y:cy,class:'sp',transform:`rotate(-90 ${cx} ${cy})`,dy:4},svg).textContent='sen publicar';
+    }
+  }
+  for(const t of T){
+    let b=0;
+    for(const c of capas(t)){
+      if(c.v>0)el('rect',{x:X(idx(t)),y:Y(b+c.v),width:sw+.5,height:Y(b)-Y(b+c.v),fill:c.imp?c.g.c:c.g.t,'shape-rendering':'crispEdges'},svg);
+      b+=c.v;
+    }
+  }
+  el('line',{x1:ML,x2:W-MR,y1:y0,y2:y0,stroke:'var(--muted)','stroke-width':1},svg);
+  // Anos: etiqueta, % de cereal de fóra e marca do ano escollido
+  for(const a of A){
+    const q=T.filter(t=>t.ano===a.ano).map(idx),x1=X(Math.min(...q)),x2=X(Math.max(...q)+1),cx=Math.max((x1+x2)/2,x1+14);
+    el('text',{x:cx,y:y0+17,class:'axa'+(a.ano===sel?' on':'')},svg).textContent=ANCHO||a.ano%2===0||a.ano===sel?a.ano:"'"+String(a.ano).slice(2);
+    el('text',{x:cx,y:MT-14,class:'pc'},svg).textContent=Math.round(fora(a.g.cereal)*100)+(ANCHO?' %':'');
+    if(a.ano===sel)el('line',{x1:x1+2,x2:x2-2,y1:y0+3,y2:y0+3,class:'sel'},svg);
+    if(a.ano>A0)el('line',{x1,x2:x1,y1:y0,y2:y0+6,stroke:'var(--muted)','stroke-width':1},svg);
+  }
+  if(!ANCHO)el('text',{x:W-MR,y:MT-34,class:'axh','text-anchor':'end'},svg).textContent='en %';
+  // Etiquetas directas á dereita, á altura das franxas do último trimestre
+  if(ANCHO){
+    const u=T.at(-1),xe=X(idx(u)+1)+10;let b=0;const pos=[];
+    for(const c of capas(u)){pos.push({c,m:b+c.v/2,h:Y(b)-Y(b+c.v)});b+=c.v}
+    let ya=y0+6;
+    for(const p of pos){
+      if(p.h<9)continue;
+      const y=Math.min(Y(p.m)+4,ya-15);ya=y;
+      el('text',{x:xe,y,class:'et'},svg).textContent=p.c.g.n+(p.c.imp?' de fóra':' de España');
+    }
+  }
+  // Capa de interacción: unha columna por trimestre
+  const marca=el('rect',{class:'col',visibility:'hidden'},svg);
+  for(const t of T){
+    const i=idx(t),c=capas(t),a=`${ORD[t.tri-1]} trimestre de ${t.ano}`;
+    const h=`<b class="big">${a}</b><span><b>${miles(t.t)} t</b> de materias primas</span><span>De fóra de España: <b>${Math.round(foraTot(t)*100)} %</b></span>`+
+      G.map(g=>`<span>${g.n}: ${miles(t.g[g.k].t)} t · <b>${Math.round(fora(t.g[g.k])*100)} %</b> de fóra</span>`).join('');
+    const r=el('rect',{x:X(i),y:MT,width:sw,height:y0-MT,class:'hitq',tabindex:0,role:'button','aria-label':`${a}: ${miles(t.t)} toneladas, ${Math.round(foraTot(t)*100)} % de fóra de España; cereal ${Math.round(fora(t.g.cereal)*100)} % de fóra. Escoller ${t.ano}.`},svg);
+    const on=(x,y)=>{marca.setAttribute('x',X(i));marca.setAttribute('y',Y(t.t));marca.setAttribute('width',sw);marca.setAttribute('height',y0-Y(t.t));marca.setAttribute('visibility','visible');amosa(h,x,y)};
+    const off=()=>{marca.setAttribute('visibility','hidden');tip.hidden=true};
+    r.addEventListener('pointermove',ev=>on(ev.clientX,ev.clientY));r.addEventListener('pointerleave',off);
+    r.addEventListener('focus',()=>{const b=r.getBoundingClientRect();on(b.left+b.width/2,b.top+b.height*.3)});r.addEventListener('blur',off);
+    const escolle=()=>{sel=t.ano;saco();marea()};
+    r.addEventListener('click',escolle);r.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();escolle()}});
+  }
+}
+
+/* ---------- Táboa ---------- */
+function taboa(){
+  const p=(a,b)=>b?Math.round(a/b*100)+' %':'—';
+  $('tbl').innerHTML=`<tr><th>Ano</th><th>Trimestres</th><th>Materias primas (t)</th><th>De fóra</th>`+G.slice().reverse().map(g=>`<th>${g.n} (t)</th><th>De fóra</th>`).join('')+`<th>Penso fabricado (t)</th><th>Vacún</th><th>Porcino</th><th>Aves</th></tr>`+
+    D.anos.map(a=>`<tr><td>${a.ano}</td><td>${a.n_tri||'só total anual'}</td><td>${miles(a.t)}</td><td>${p(a.imp,a.con_orixe)}</td>`+
+      G.slice().reverse().map(g=>{const x=a.g[g.k];return `<td>${miles(x.t)}</td><td>${x.imp+x.nac>x.t*.9?p(x.imp,x.imp+x.nac):'—'}</td>`}).join('')+
+      (a.penso?`<td>${miles(a.penso.tot)}</td><td>${p(a.penso.bov,a.penso.tot)}</td><td>${p(a.penso.por,a.penso.tot)}</td><td>${p(a.penso.ave,a.penso.tot)}</td>`:`<td>—</td><td>—</td><td>—</td><td>—</td>`)+`</tr>`).join('');
+}
+cifras();anos();sacoBase();saco();lenda();marea();taboa();
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(marea,150)});
+addEventListener('scroll',()=>{tip.hidden=true},{passive:true});
+</script>
+</body>
+</html>
