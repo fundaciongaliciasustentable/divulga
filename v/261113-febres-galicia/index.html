@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>As febres de Galicia — Divulga · Fundación Galicia Sustentable</title>
+<meta name="description" content="Os ciclos económicos de Galicia, da salgadura da sardiña á eólica, estirados á mesma lonxitude: cando chegou o apoxeo de cada un, canto durou e por que decaeu.">
+<meta property="og:title" content="As febres de Galicia">
+<meta property="og:description" content="15 ciclos da economía galega, estirados á mesma lonxitude: cando chegou o apoxeo de cada un, canto durou e por que decaeu.">
+<meta property="og:image" content="https://divulga.galiciasustentable.org/v/261113-febres-galicia/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Raleway:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/divulga.css">
+<script defer src="../../assets/js/compartir.js"></script>
+<link rel="stylesheet" href="../../assets/css/viz-base.css">
+<style>
+/* Un abano: cada raio é un ciclo económico, e todos miden o mesmo, coma se cada un durase cen anos.
+   Sobre o raio, un círculo oco marca onde empeza o apoxeo e un cheo onde empeza o declive; o trazo
+   groso entre os dous son os anos dourados. A barra gris do fondo é a duración real. A cor é a familia
+   (mar, terra e monte, subsolo, enerxía, fábrica); o tamaño do nome, o emprego no apoxeo; a icona do
+   extremo, a causa do declive. En pantallas estreitas o abano pasa a ser unha lista de barras. */
+:root{
+  --paper:#f4efe3; --card:#fffdf8; --ink:#231f1a; --muted:#6b645a; --line:#ddd4c2; --soft:#e9e2d2;
+  --mar:#1b6a86; --terra:#37702f; --subsolo:#8a5a1c; --enerxia:#b8432a; --fabrica:#6b4a94;
+  --display:var(--gs-font-chart-display); --num:var(--gs-font-chart-num);
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+.viz{font-family:var(--display);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+h1{font-weight:800;font-size:clamp(1.8rem,4.6vw,3rem);line-height:1.05;text-align:center;margin:0;letter-spacing:-.01em}
+.lema{margin:-8px 0 0;font:500 clamp(1rem,2.2vw,1.3rem) var(--display);color:var(--muted);text-align:center}
+.dek{margin:0;color:var(--muted);font-size:.97rem;line-height:1.5;text-align:center;max-width:68ch;text-wrap:balance}
+.dek b{color:var(--ink)}
+
+.cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;max-width:880px}
+@media (max-width:640px){.cifras{grid-template-columns:1fr}}
+.cifra{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.cifra .v{font-size:2.3rem}
+.cifra .l{font-weight:500;letter-spacing:0;font-size:.82rem;line-height:1.4;text-transform:none}
+
+/* Controis */
+.ctl{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center;width:100%}
+.ctl label{font-size:.82rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.ctl select{font:600 .9rem var(--display);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:4px;padding:7px 10px;max-width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;list-style:none;margin:0;padding:0}
+.chip{font:700 .78rem var(--display);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 11px 5px 7px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-height:32px}
+.chip .sw{width:11px;height:11px;border-radius:50%;flex-shrink:0;margin-left:3px}
+.chip svg{flex-shrink:0;display:block}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip[aria-pressed="true"] .ic-ch{fill:var(--paper)}
+.chip[aria-pressed="true"] .gl{stroke:var(--ink)}
+.chip[aria-pressed="true"] .gl .gf{fill:var(--ink)}
+.chip:focus-visible,.ctl select:focus-visible,.fila:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.grupo{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+.grupo > span{font:700 .68rem var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Como se le */
+.clave{width:100%;max-width:640px;margin:0}
+.clave svg{display:block;width:100%;height:auto;overflow:visible}
+.k{font:600 11px var(--display);fill:var(--muted)}
+.kl{stroke:var(--muted);stroke-width:.8}
+
+/* Abano */
+.abano{width:100%;margin:0}
+.abano svg{display:block;width:100%;height:auto;overflow:visible}
+.arco{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:2 5}
+.arco.forte{stroke-dasharray:none}
+.ax{font:600 12px var(--num);fill:var(--muted)}
+.axh{font:700 10.5px var(--display);fill:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.raio{cursor:pointer;transition:transform .9s cubic-bezier(.4,0,.2,1),opacity .25s ease;outline:none}
+.raio .dur{fill:var(--ink);opacity:.09}
+.raio .pista{stroke:var(--muted);stroke-width:1;stroke-dasharray:1 4;stroke-linecap:round}
+.raio .ouro{stroke:var(--cor);stroke-width:3.2;stroke-linecap:round}
+.raio .segue{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:2 2}
+.raio .m-pico{fill:var(--paper);stroke:var(--cor);stroke-width:1.7}
+.raio .m-dec{fill:var(--ink)}
+.raio .nome{font-family:var(--display);font-weight:700;fill:var(--cor)}
+.raio .hit{fill:transparent}
+.ic{transition:transform .9s cubic-bezier(.4,0,.2,1)}
+.ic-ch{fill:var(--ink)}
+.ic-ab{fill:var(--paper);stroke:var(--ink);stroke-width:1.3;stroke-dasharray:2.6 2}
+.ic-vivo{fill:var(--paper);stroke:var(--cor,var(--ink));stroke-width:1.7}
+.ic-vivo-p{fill:var(--cor,var(--ink))}
+.gl{stroke:var(--paper);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.gl .gf{fill:var(--paper);stroke:none}
+.gl-ab{stroke:var(--ink)}
+.gl-ab .gf{fill:var(--ink)}
+svg.hov .raio:not(.hv):not(.on),.raio.off{opacity:.2}
+.raio.on .ouro,.raio.hv .ouro{stroke-width:5}
+.raio.on .pista,.raio.hv .pista{stroke:var(--ink);stroke-dasharray:none}
+.raio.on .nome{text-decoration:underline;text-underline-offset:3px}
+.raio:focus-visible .nome{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+
+/* Lista para pantallas estreitas */
+.filas{display:none;flex-direction:column;width:100%;gap:0}
+.fila{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:baseline;padding:11px 2px 13px;border-top:1px solid var(--line);cursor:pointer;width:100%}
+.fila .fn{font:700 1rem var(--display);color:var(--cor)}
+.fila .fa{font:600 .95rem var(--num);color:var(--muted);white-space:nowrap}
+.fila .fb{grid-column:1 / -1;position:relative;height:16px;display:block}
+.fila .fb::before{content:"";position:absolute;left:0;right:0;top:7.5px;border-top:1px dotted var(--muted)}
+.fila .fd{position:absolute;left:0;top:4px;height:8px;border-radius:4px;background:var(--ink);opacity:.09}
+.fila .fo{position:absolute;top:6px;height:4px;border-radius:2px;background:var(--cor)}
+.fila .fp,.fila .fx{position:absolute;top:3.5px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;box-sizing:border-box}
+.fila .fp{background:var(--paper);border:1.7px solid var(--cor)}
+.fila .fx{background:var(--ink)}
+.fila.off{opacity:.3}
+.fila.on .fn{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:820px){.abano,.clave{display:none}.filas{display:flex}}
+
+/* Ficha */
+.ficha{width:100%;max-width:820px;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px 18px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+.ficha h2{margin:0;font:800 1.5rem/1.1 var(--display);color:var(--cor)}
+.ficha .an{margin:0;font:600 1.15rem var(--num);color:var(--muted)}
+.ficha .an b{color:var(--ink)}
+.ficha .cab{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;justify-content:space-between}
+.ficha dl{margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 18px}
+@media (max-width:640px){.ficha dl{grid-template-columns:1fr}}
+.ficha dt{font:700 .68rem var(--display);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.ficha dd{margin:2px 0 0;font-size:.9rem;line-height:1.4}
+.ficha dd b{font:700 1.25rem var(--num)}
+.ficha .ca{display:flex;align-items:center;gap:7px;font-weight:700;font-size:.9rem}
+.ficha .hi{margin:0;font-size:.95rem;line-height:1.55}
+.ficha .fo{margin:0;font-size:.76rem;color:var(--muted);line-height:1.5}
+.ficha .fo a{color:var(--muted)}
+.filas .ficha{margin:0 0 12px}
+
+.tip{position:fixed;transform:translate(-50%,calc(-100% - 14px));z-index:6;max-width:260px}
+.tip span{display:block;color:var(--muted)}
+.tip span b{color:var(--ink)}
+
+details{width:100%;max-width:1100px;font-size:.85rem;color:var(--muted)}
+summary{cursor:pointer;text-align:center}
+.tw{overflow:auto;margin-top:8px}
+.dat{border-collapse:collapse;margin:0 auto;font-family:var(--num);font-size:.98rem;color:var(--ink)}
+.dat th,.dat td{padding:3px 9px;text-align:right;white-space:nowrap}
+.dat th{font-family:var(--display);font-size:.72rem;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line);vertical-align:bottom}
+.dat th:first-child,.dat td:first-child,.dat td:nth-child(2),.dat th:nth-child(2),.dat td:last-child,.dat th:last-child{text-align:left}
+.note{color:var(--muted);font-size:.76rem;line-height:1.55;text-align:center;max-width:84ch;margin:6px 0 0}
+.note a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.raio,.ic{transition:none}}
+</style>
+</head>
+<body>
+<header class="dv-bar">
+  <div class="inner">
+    <a class="marca" href="../../" aria-label="Divulga, portada">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><path d="M709.6,641.8c-17.7-7.2-34.7-17-50.6-29.7l-21.6,48.4c24.2-6.8,48.3-13,72.2-18.6Z"/><path d="M977.6,651.2c-77.2.5-200,11.1-361.3,56.3l-1.6,3.6c27.2,14.5,50.2,24.9,69.4,31.4,109.6-44.9,214.6-72.1,292.1-88.1.4-1.1.9-2.2,1.3-3.3Z"/><path d="M835.7,554.9c14.6,12.9,21.9,29.5,21.9,49.8s-.4,7.7-1,11.2c45.2-5,88.7-6.7,129.7-4.1.4-5.1.7-10.2.7-15.5,0-37.1-10.3-68.8-30.8-95-17.8-22.6-45.3-42.3-82.6-59.1-37.4,20.7-76.3,44.3-116.1,70,38.3,16.3,64.5,30.7,78.3,42.9Z"/><path d="M769.2,755.1c4.4,0,8.6.3,13.3.3,63,0,112.9-14.2,149.5-42.5,3.5-2.7,6.6-5.5,9.7-8.4-62.2,14.4-119.7,31.5-172.5,50.7Z"/><path d="M709.1,489c40.6-24.9,79-47.6,114.2-67.8-29.1-12.5-49.1-22.8-59.8-31.1-14.3-10.9-21.4-23.2-21.4-36.8,0-34.5,21.7-51.7,65.2-51.7s86.2,11.6,113.4,34.8l35.8-96.5c-48.8-24.9-100.8-37.3-156.2-37.3s-99.7,12.9-134.8,38.6c-35.2,25.7-52.7,61.6-52.7,107.7s32.2,104.1,96.4,140.1Z"/><path d="M168.1,890.6c-10.4,5.5-21,11.3-31.5,17.1,2.8,1.6,5.5,3.3,8.3,4.7,7.7-7.3,15.4-14.6,23.2-21.8Z"/><path d="M174.9,785.2l-74.3,91.7c35.3-17.8,75.9-37.6,120.4-58.2-15.9-8.9-31.3-20-46.1-33.5Z"/><path d="M565.5,781.7c0-21.2-3-39.9-8.8-56.4-37.4,11.8-76.4,25.3-117.3,41,2.6,5.5,4.2,11.8,4.2,18.9,0,18.6-11.6,33.2-34.8,43.8-23.2,10.6-52.7,15.9-88.6,15.9s-4.5-.2-6.7-.3c-41.4,34.3-78.7,65.9-109.7,92.5,36.1,11.5,74.1,17.3,113.9,17.3s20-.4,29.7-1.1c65.3-62.8,140.2-113.7,217.1-154.6.6-5.5,1-11.1,1-16.9Z"/><path d="M184.9,566.8c-18.9,8-35.5,20.4-49.8,37.3-14.3,16.9-21.4,34.2-21.4,51.7,0,61.4,42.8,92,128.4,92s34.7-1.7,62.2-5c17.2-2.1,31.5-3.4,43.4-4.2,41-32,82-62.5,122.5-91.5-24.2-7.4-52.9-11.3-86.3-11.3s-38,2.5-62.2,7.5c-24.2,5-41.5,7.5-51.7,7.5-22.9,0-34.3-6.6-34.3-19.9s7.7-15,23.1-22.1c15.4-7.1,24.3-10.7,26.6-10.7l20.4,3c14.9,1.7,26.9,2.5,35.8,2.5,56.4,0,103.1-18.2,140.1-54.5,37-36.3,55.5-84.8,55.5-145.5s-10.3-79.3-30.8-110.5l59.2-43.3-86.1-78.1-48.8,56.7c-32.2-17.9-72.1-26.9-119.9-26.9s-112.4,18.7-154.2,56c-41.8,37.3-62.7,84.5-62.7,141.5s30.3,128.2,91,167.7ZM247.6,330.5c17.9-17.9,41.1-26.9,69.7-26.9s49.3,9.3,66.4,27.9c17.1,18.6,25.6,41.3,25.6,68.2s-8,58-23.9,76.6c-15.9,18.6-38.6,27.9-68.2,27.9s-53-9.5-70.4-28.6c-17.4-19.1-26.1-44.4-26.1-75.9s9-51.2,26.9-69.2Z"/><path d="M524.8,676.7c-15.4,11.7-30.7,23.4-45.7,35.1,19.6-7.1,39.4-14,59.3-20.6-4.1-5.2-8.7-10-13.6-14.4Z"/><path d="M437.7,935.1c19.6-7,38.1-15.8,55.2-26.7,19.9-12.6,35.5-27.3,47.3-43.8-38,23.2-72.2,47-102.4,70.5Z"/></svg>
+      <span>Divulga</span>
+    </a>
+    <nav aria-label="Ligazóns"><a href="../../">← Todas as visualizacións</a></nav>
+  </div>
+</header>
+<main class="viz">
+<div class="wrap">
+  <h1>As febres de Galicia</h1>
+  <p class="lema">Se cada ciclo durase cen anos…</p>
+  <p class="dek"><b>15 ciclos da economía galega</b>, todos estirados á mesma lonxitude para poder comparalos: a febre do wolframio na guerra durou 5 anos e as ferrerías de carbón vexetal, 370. O círculo oco marca onde empeza o apoxeo de cada un; o cheo, onde empeza o declive; a icona do extremo, por que decaeu. <b>5 seguen abertos</b>. Toca un ciclo para ler a súa historia.</p>
+  <div class="cifras" id="cifras"></div>
+
+  <div class="ctl">
+    <label>Ordenar por
+      <select id="orde">
+        <option value="inicio">ano de comezo</option>
+        <option value="dur">duración real</option>
+        <option value="emprego">emprego no apoxeo</option>
+        <option value="pp">o que tarda en chegar o apoxeo</option>
+        <option value="ouro">o que duran os anos dourados</option>
+        <option value="cat">familia</option>
+        <option value="causa">causa do declive</option>
+      </select>
+    </label>
+  </div>
+  <div class="grupo"><span>Familia</span><ul class="chips" id="cats"></ul></div>
+  <div class="grupo"><span>Por que decaeu</span><ul class="chips" id="causas"></ul></div>
+
+  <figure class="clave" aria-hidden="true">
+    <svg viewBox="0 0 640 86">
+      <rect x="60" y="24" width="150" height="7" rx="3.5" fill="var(--ink)" opacity=".09"/>
+      <line x1="60" x2="420" y1="27.5" y2="27.5" stroke="var(--muted)" stroke-dasharray="1 4" stroke-linecap="round"/>
+      <line x1="170" x2="330" y1="27.5" y2="27.5" stroke="var(--mar)" stroke-width="3.2" stroke-linecap="round"/>
+      <circle cx="170" cy="27.5" r="3.4" fill="var(--paper)" stroke="var(--mar)" stroke-width="1.7"/>
+      <circle cx="330" cy="27.5" r="3.4" fill="var(--ink)"/>
+      <g transform="translate(437 27.5)"><circle r="9.5" class="ic-ch"/><g class="gl"><circle r="4.3" fill="none"/><path d="M-5.2 5.2 5.2-5.2"/></g></g>
+      <text x="454" y="34" font-family="var(--display)" font-weight="700" font-size="19" fill="var(--mar)">Nome do ciclo</text>
+      <g class="kl"><path d="M60 36v12M170 36v26M330 36v12M437 41v21M135 22v-8M250 22v-8"/></g>
+      <text class="k" x="60" y="60" text-anchor="middle">inicio</text>
+      <text class="k" x="170" y="74" text-anchor="middle">empeza o apoxeo</text>
+      <text class="k" x="250" y="10" text-anchor="middle">anos dourados</text>
+      <text class="k" x="135" y="10" text-anchor="middle">duración real</text>
+      <text class="k" x="330" y="60" text-anchor="middle">empeza o declive</text>
+      <text class="k" x="437" y="74" text-anchor="middle">por que decaeu</text>
+      <text class="k" x="520" y="52" text-anchor="middle">tamaño: emprego no apoxeo</text>
+    </svg>
+  </figure>
+
+  <figure class="abano"><svg id="abano" role="group" aria-label="Abano dos ciclos económicos de Galicia"></svg></figure>
+  <div class="filas" id="filas"></div>
+  <div id="oco" style="display:contents"><article class="ficha" id="ficha" aria-live="polite"></article></div>
+
+  <details>
+    <summary>Ver os datos</summary>
+    <div class="tw"><table class="dat" id="tbl"></table></div>
+  </details>
+  <p class="note"><b>Como se fixo.</b> Cada ciclo é unha actividade económica ligada a un recurso de Galicia. Non hai unha estatística que diga cando empeza o apoxeo ou o declive dunha actividade: <b>as datas son un xuízo editorial</b> apoiado na historiografía económica e nas series oficiais que existen para cada caso, e outra lectura das mesmas fontes podería movelas uns anos. O inicio é o momento en que a actividade pasa a ter peso económico, non a primeira noticia dela. Nos ciclos que seguen abertos, o raio chega ata 2026. O emprego no apoxeo é emprego directo aproximado e non existe para todos os ciclos: os que non teñen cifra van co nome no tamaño mínimo. Cada ciclo ten unha soa causa principal de declive, aínda que case sempre pesaron varias. As fontes de cada ciclo están na súa ficha. Inspirado en «Age of Empires», de David McCandless (<a href="https://informationisbeautiful.net/visualizations/worlds-largest-empires/" target="_blank" rel="noopener">Information is Beautiful</a>). Fundación Galicia Sustentable. Licenza CC BY-NC-SA 4.0.</p>
+</div>
+</main>
+<footer class="dv-foot">
+  <div class="inner">
+    <span>Fundación Galicia Sustentable · CIF G70193537</span>
+    <a href="https://fundaciongaliciasustentable.gal">fundaciongaliciasustentable.gal</a>
+  </div>
+</footer>
+<div class="dv-tooltip tip" id="tip" hidden></div>
+
+<script>
+const D={"hoxe":2026,"destacado":"volframio-guerra","ciclos":[{"id":"balea-vasca","nome":"Balea (idade moderna)","cat":"mar","inicio":1371,"pico":1600,"declive":1650,"fin":1720,"emprego":null,"emprego_ano":null,"pico_txt":"Caza intensa desde a costa durante máis de dous séculos","hoxe_txt":"Non queda actividade baleeira; só memoria en toponimia e museos locais","causa":"esgotamento","historia":"Baleeiros vascos cazaron baleas francas desde portos galegos durante preto de catro séculos, nunha época en que a especie aínda se achegaba á costa en inverno. A caza esvaeceuse de forma gradual, sen un colapso único, a medida que as baleas se facían máis raras preto da terra.","fontes":[{"u":"https://ailladosratos.org/a-actividade-baleeira-en-galicia-2024/","t":"A actividade baleeira en Galicia — A Illa dos Ratos"},{"u":"https://en.wikipedia.org/wiki/History_of_Basque_whaling","t":"History of Basque whaling — Wikipedia"}],"conf":"baixa"},{"id":"balea-canelinas","nome":"Balea (Caneliñas)","cat":"mar","inicio":1924,"pico":1965,"declive":1978,"fin":1985,"emprego":null,"emprego_ano":null,"pico_txt":"A última estación baleeira de Europa en seguir en activo","hoxe_txt":"A factoría de Caneliñas, en ruínas, é hoxe patrimonio industrial visitable","causa":"regulacion","historia":"A factoría de Caneliñas, en Cee, procesou cachalotes e rorcuais desde 1924 case sen interrupción ata 1985, cando pechou como a última estación baleeira de Europa, tras a moratoria da Comisión Baleeira Internacional. Non houbo esgotamento local: foi unha decisión internacional a que a parou.","fontes":[{"u":"https://memoriaindustrialengalicia.wordpress.com/2018/01/19/factoria-ballenera-de-canelinas/","t":"Factoría ballenera de Caneliñas — Memoria Industrial en Galicia"}],"conf":"media"},{"id":"salga-sardina","nome":"Salga da sardiña","cat":"mar","inicio":1750,"pico":1800,"declive":1860,"fin":1890,"emprego":null,"emprego_ano":null,"pico_txt":"Preto de 400 fábricas de salga na costa galega cara a 1800, oito de cada dez en mans catalás","hoxe_txt":"As fábricas de salga foron convertidas en conserveiras a partir de 1880","causa":"tecnoloxia","historia":"Comerciantes cataláns montaron centos de fábricas de salga de sardiña na costa galega desde mediados do século XVIII, nun negocio que chegou a sumar preto de catro centos factorías cara a 1800. A partir de 1880, as mesmas familias foron recompoñendo os seus negocios cara á conserva en lata, máis rendible, que acabou por substituír a salga por completo.","fontes":[{"u":"https://concellodeares.com/es/fabrica-de-salazon/","t":"Fábricas de salazón — Concello de Ares"},{"u":"https://bluscus.es/la-historia-de-la-conserva-en-galicia/","t":"La historia de la conserva en Galicia — Bluscus"}],"conf":"baixa"},{"id":"conserva-nacemento","nome":"Conserva (1861-1936)","cat":"fabrica","inicio":1861,"pico":1920,"declive":1931,"fin":1936,"emprego":null,"emprego_ano":null,"pico_txt":"Máis de 100 fábricas de conserva en Vigo cara a 1907","hoxe_txt":null,"causa":"mixto","historia":"A primeira fábrica de conserva de Vigo abriu en 1861; en catro décadas a cidade pasou a ter máis de cen. Unha primeira crise da sardiña en 1910, seguida doutra nos anos vinte e da depresión dos trinta, debilitou o sector antes de que a Guerra Civil case o parase por completo.","fontes":[{"u":"https://hoxe.vigo.org/historia/hv_idade_contemporanea_mar.php?lang=cas","t":"O desenvolvemento da industria do mar: a conserva — Concello de Vigo"},{"u":"https://www.atlantico.net/articulo/economia/sector-conservas-germen-vigo-actual/20141108022107445295.html","t":"El sector de las conservas, germen del Vigo actual — Atlántico"}],"conf":"media"},{"id":"conserva-idade-ouro","nome":"Conserva (idade de ouro)","cat":"fabrica","inicio":1940,"pico":1960,"declive":1975,"fin":null,"emprego":null,"emprego_ano":null,"pico_txt":"Máis de 50 fábricas de conserva na ría de Vigo nos anos 50 e 60","hoxe_txt":"Hoxe sobreviven só dúas conserveiras centenarias en Vigo: Cerqueira e Valcárcel","causa":"mixto","historia":"Coa chegada da pesca de cerco, o sector recuperouse despois da guerra ata sumar máis de cincuenta fábricas na ría de Vigo nos anos cincuenta e sesenta. Desde entón, a sobreexplotación da sardiña e a concentración do sector foron pechando factorías unha a unha; hoxe só quedan dúas conserveiras centenarias na ría.","fontes":[{"u":"https://www.rbtribuna.com/2022/07/conservas-aquel-tiempo-dorado-de-las.html","t":"Aquel tempo dourado das factorías — RB Tribuna"},{"u":"https://www.atlantico.net/economia/conservera-cerqueira-cumple-135-anos_1_20251021-4024305.html","t":"A conserveira Cerqueira cumpre 135 anos — Atlántico"}],"conf":"media"},{"id":"leite-cota","nome":"Leite","cat":"fabrica","inicio":1960,"pico":1985,"declive":1986,"fin":null,"emprego":null,"emprego_ano":null,"pico_txt":"Leyma, Larsa, Lagasa e Feiraco xuntas recollían máis dun terzo do leite oficial de España","hoxe_txt":"O número de explotacións leiteiras galegas segue a caer cada ano","causa":"mixto","historia":"Entre os anos sesenta e oitenta, cooperativas e empresas como Leyma ou Larsa industrializaron a recollida de leite en Galicia, ata controlar máis dun terzo da recollida oficial española. A cota láctea europea de 1986 marcou un punto de inflexión: desde entón, as explotacións pequenas pechan ano tras ano fronte aos prezos baixos e a concentración do sector.","fontes":[{"u":"https://www.idepa.es/documents/20147/96212/sectorlacteo.pdf/e0199a71-e85d-5e12-fa8f-89a70fe6299b","t":"Estudo ambiental do sector lácteo — IDEPA"},{"u":"http://mundodelaempresa.blogspot.com/2019/03/empresas-la-historia-de-larsa-la-leche.html","t":"A historia de Larsa — Mundo de la Empresa"}],"conf":"baixa"},{"id":"lino-panos","nome":"Liño e lenzos","cat":"terra","inicio":1750,"pico":1800,"declive":1850,"fin":1960,"emprego":null,"emprego_ano":null,"pico_txt":"Os «panos galegos» tecidos con liño báltico chegaban a Castela e ata América","hoxe_txt":"O cultivo case desapareceu no século XX; desde os anos 80 hai intentos illados de recuperalo, coma un novo proxecto en 2026","causa":"tecnoloxia","historia":"Durante os séculos XVIII e XIX, Galicia importaba liño báltico polos seus portos e tecía panos de lenzo que chegaban a Castela e ao outro lado do Atlántico. A competencia do algodón industrial, moito máis barato de producir, foi esmorecendo o cultivo e o tear ao longo de todo o século XX, ata case desaparecer.","fontes":[{"u":"https://www.edu.xunta.gal/espazoAbalar/sites/espazoAbalar/files/datos/1456229842/contido/aldea/o_lio_e_os_teares.html","t":"O liño e os tears — Xunta de Galicia"},{"u":"https://www.elcorreogallego.es/galicia/2026/06/22/lino-gallego-renace-cientos-anos-131652269.html","t":"El lino gallego renace tras cientos de años — El Correo Gallego"}],"conf":"baixa"},{"id":"ferrerias-antigas","nome":"Ferrerías","cat":"subsolo","inicio":1500,"pico":1750,"declive":1800,"fin":1870,"emprego":null,"emprego_ano":null,"pico_txt":"Máis de 20 grandes ferrerías documentadas en Galicia a mediados do século XVIII","hoxe_txt":"Quedan restos arqueolóxicos, coma os da ferrería do Vilar da Cuíña","causa":"esgotamento","historia":"Galicia tivo ferrerías de carbón vexetal desde a Idade Media, cun auxe maior entre os séculos XVI e XVIII, cando había máis de vinte grandes instalacións. A desforestación necesaria para alimentalas foi esgotando o recurso que as sustentaba, e a competencia dos altos fornos doutras rexións rematou por desprazalas.","fontes":[{"u":"https://minariasostible.gal/es/la-ferreria-de-vilar-da-cuina-una-de-las-mas-grandes-del-noroeste-peninsular/","t":"A ferrería do Vilar da Cuíña — Minaría Sostible de Galicia"}],"conf":"baixa"},{"id":"ferroaliaxes","nome":"Ferroaliaxes","cat":"subsolo","inicio":1972,"pico":1995,"declive":2012,"fin":null,"emprego":200,"emprego_ano":"ERTE 2019-20","pico_txt":null,"hoxe_txt":"Un ERTE afectou a preto de 200 traballadores en 2019-2020 polo prezo da enerxía","causa":"mixto","historia":"As plantas de ferroaliaxes de Cee-Dumbría, herdeiras industriais das vellas ferrerías, levan producindo desde 1972. O encarecemento da electricidade e a caída da demanda da construción e do automóbil provocaron un expediente de regulación de emprego a finais da década de 2010 que afectou a preto de 200 traballadores.","fontes":[{"u":"https://www.publico.es/economia/industria-gallega-nacio-franquismo-derrumba.html","t":"A industria galega nada no franquismo derrúbase — Público"}],"conf":"media"},{"id":"gando-inglaterra","nome":"Gando a Inglaterra","cat":"terra","inicio":1842,"pico":1882,"declive":1883,"fin":1897,"emprego":null,"emprego_ano":null,"pico_txt":"Catro décadas embarcando boi galego vivo cara a Inglaterra","hoxe_txt":"O comercio rematou definitivamente en 1897","causa":"mixto","historia":"Durante case medio século, Galicia exportou gando vacún vivo a Inglaterra, un negocio que beneficiaba sobre todo aos compradores británicos. A competencia da carne conxelada americana e arxentina, máis barata, e as novas liñas de ferrocarril cara a Madrid e Barcelona, que desviaron o gando cara ao interior, acabaron co comercio en 1897.","fontes":[{"u":"https://gl.wikipedia.org/wiki/Vaca_rubia_galega","t":"Vaca rubia galega — Galipedia"},{"u":"https://www.mapa.gob.es/ministerio/pags/biblioteca/fondo/pdf/20044_3.pdf","t":"Perspectiva histórica da gandería galega — MAPA (Alberte Martínez López)"}],"conf":"media"},{"id":"lignito-aspontes","nome":"Lignito","cat":"subsolo","inicio":1972,"pico":1990,"declive":2007,"fin":2020,"emprego":null,"emprego_ano":null,"pico_txt":"Unha das maiores minas a ceo aberto de España, abastecendo ata un 7% da electricidade do Estado","hoxe_txt":"A central pechou en 2020 pola política europea de descarbonización","causa":"mixto","historia":"A mina de lignito das Pontes, aberta por Endesa en 1972, alimentou unha das centrais térmicas máis grandes de España, que chegou a producir ata un 7% da electricidade do país. A extracción parou en 2007, cando a central pasou a queimar carbón importado, e a propia central pechou en 2020 ante a política europea de redución de emisións.","fontes":[{"u":"https://listaroja.hispanianostra.org/ficha/central-termica-de-as-pontes/","t":"Central térmica das Pontes — Hispania Nostra"},{"u":"https://amigosdeaspontes.org/endesa-confirma-el-cierre-de-la-central-termica-de-as-pontes-tras-certificar-su-inviabilidad/","t":"Endesa confirma o peche — Amigos de As Pontes"}],"conf":"media"},{"id":"volframio-guerra","nome":"Volframio (guerra)","cat":"subsolo","inicio":1939,"pico":1943,"declive":1944,"fin":1944,"emprego":20000,"emprego_ano":"1943-44","pico_txt":"Máis de 20.000 persoas escavando wolframio en 1943-44, con Alemaña pagando prezos desorbitados","hoxe_txt":null,"causa":"fora","historia":"Coa Alemaña nazi pagando prezos desorbitados polo wolframio para munición perforante, mobilizáronse máis de vinte mil persoas nos montes galegos entre 1939 e 1944, nunha minaría moitas veces ilegal e caótica. O negocio rematou de golpe a mediados de 1944, cando os Aliados forzaron a España a cortar as exportacións.","fontes":[{"u":"https://galiciaartabra.es/archivos/137258","t":"Galicia na Segunda Guerra Mundial — Galicia Ártabra Digital"}],"conf":"media"},{"id":"volframio-sanfinx","nome":"Volframio (San Finx)","cat":"subsolo","inicio":1945,"pico":1960,"declive":1975,"fin":1990,"emprego":null,"emprego_ano":null,"pico_txt":null,"hoxe_txt":"A mina de San Finx pechou cara a 1990","causa":"mercado","historia":"Despois da guerra, a mina de San Finx, en Lousame, seguiu en funcionamento de forma intermitente, xa sen os prezos artificiais da guerra, ata pechar cara a 1990 cando o prezo do wolframio deixou de cubrir os custos.","fontes":[{"u":"https://web.igme.es/PanoramaMinero/Historico/2016/WOLFRAMIO_14.pdf","t":"Panorama Minero 2016, Wolframio — IGME"},{"u":"https://minariasostible.gal/es/san-finx-6-000-anos-de-mineria-en-el-barbanza/","t":"San Finx, 6.000 anos de minaría no Barbanza — Minaría Sostible de Galicia"}],"conf":"baixa"},{"id":"volframio-reapertura","nome":"Volframio (reapertura)","cat":"subsolo","inicio":2011,"pico":2012,"declive":2013,"fin":null,"emprego":null,"emprego_ano":null,"pico_txt":"Produción breve en 2011-2012 antes de parar por problemas de financiamento","hoxe_txt":"En 2024 a concesión pasou á australiana Rafaella Resources, que segue a tentar reabrila","causa":"mercado","historia":"Varios intentos de reabrir San Finx no século XXI chocaron sempre co mesmo problema: financiar unha mina pequena cun prezo do wolframio que sobe e baixa. Houbo produción breve en 2011-2012, liquidación en 2014 e un novo investimento en 2015; en 2024 a concesión pasou a mans dunha empresa australiana que, a día de hoxe, segue a intentar poñela en marcha.","fontes":[{"u":"https://minariasostible.gal/es/san-finx-6-000-anos-de-mineria-en-el-barbanza/","t":"San Finx, 6.000 anos de minaría no Barbanza — Minaría Sostible de Galicia"}],"conf":"media"},{"id":"eolica","nome":"Eólica","cat":"enerxia","inicio":1997,"pico":2008,"declive":2013,"fin":null,"emprego":null,"emprego_ano":null,"pico_txt":null,"hoxe_txt":"Un programa da Xunta busca substituír preto de 1.047 aeroxeradores vellos por uns 150 novos","causa":"mixto","historia":"Os primeiros parques eólicos galegos entraron en funcionamento a finais dos anos noventa. O recorte estatal das axudas ás renovables arredor de 2013 freou novos proxectos, pero o sector está agora noutra fase: un programa da Xunta busca substituír case 1.050 aeroxeradores vellos, algúns con máis de 25 anos, por uns 150 novos e moito máis potentes.","fontes":[{"u":"https://economia.xunta.gal/es/enerxia/repotenciacion-parques-eolicos","t":"Repotenciación de parques eólicos — Xunta de Galicia"},{"u":"https://reve.aeeolica.org/2025/02/18/la-xunta-pone-en-marcha-la-repotenciacion-de-los-25-parques-eolicos-mas-antiguos-de-galicia-que-permitira-la-retirada-de-800-aerogeneradores/","t":"A Xunta pon en marcha a repotenciación dos 25 parques máis antigos — REVE/AEE"}],"conf":"baixa"}]},NS='http://www.w3.org/2000/svg',HOXE=D.hoxe;
+const $=id=>document.getElementById(id);
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const miles=v=>String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const CATS={mar:['Mar','--mar'],terra:['Terra e monte','--terra'],subsolo:['Subsolo','--subsolo'],enerxia:['Enerxía','--enerxia'],fabrica:['Fábrica','--fabrica']};
+const CAUSAS={esgotamento:'Esgotamento do recurso',mercado:'Mercado e prezos',regulacion:'Regulación ou prohibición',tecnoloxia:'Tecnoloxía ou substitución',fora:'Decisión de fóra',mixto:'Varias causas'};
+const GL={
+  esgotamento:'<circle r="4.3" fill="none"/><path d="M-5.2 5.2 5.2-5.2"/>',
+  mercado:'<path d="M-5.5-3.2-1.6.6 1-1.6 5.2 3.4M5.2.3v3.1H2.1"/>',
+  regulacion:'<path d="M-4.6 0h9.2" stroke-width="2.8"/>',
+  tecnoloxia:'<path d="M-5-2.2h9.4M2-4.6 4.4-2.2 2 .2M5 2.2h-9.4M-2-.2-4.4 2.2-2 4.6"/>',
+  fora:'<path d="M-3.8 3.8 3.8-3.8M-1.2-3.8h5v5"/>',
+  mixto:'<circle cx="-4.2" r="1.3" class="gf"/><circle r="1.3" class="gf"/><circle cx="4.2" r="1.3" class="gf"/>'
+};
+// Icona do extremo: disco cheo se o ciclo rematou, anel descontinuo se segue en declive, anel coa cor da familia se segue vivo
+const icona=(causa,aberta)=>causa?`<circle r="9.5" class="${aberta?'ic-ab':'ic-ch'}"/><g class="gl${aberta?' gl-ab':''}">${GL[causa]}</g>`
+  :'<circle r="6.5" class="ic-vivo"/><circle r="2.4" class="ic-vivo-p"/>';
+const icoHTML=(causa,aberta,cor)=>`<svg viewBox="-11 -11 22 22" width="20" height="20" aria-hidden="true"${cor?` style="--cor:var(${cor})"`:''}>${icona(causa,aberta)}</svg>`;
+
+const C=D.ciclos.map(c=>{
+  const fim=c.fin??HOXE,dur=fim-c.inicio;
+  return {...c,fim,dur,pp:(c.pico-c.inicio)/dur,pd:c.declive!=null?(c.declive-c.inicio)/dur:1};
+});
+const ano=y=>y<0?`${-y} a. C.`:String(y);
+const anos=c=>`${ano(c.inicio)} – ${c.fin!=null?ano(c.fin):'hoxe'}`;
+const durTxt=c=>`${c.fin!=null?'':'xa '}${miles(c.dur)} anos`;
+const DM=Math.ceil(Math.max(...C.map(c=>c.dur))/100)*100;
+const EM=Math.max(...C.map(c=>c.emprego||0));
+const corpo=c=>c.emprego?11.5+15*Math.sqrt(c.emprego/EM):11.5;
+
+/* ---------- Cifras ---------- */
+(function(){
+  const fin=C.filter(c=>c.fin!=null),dec=C.filter(c=>c.fin==null&&c.declive!=null),viv=C.filter(c=>c.declive==null);
+  const med=a=>{const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
+  const cnt={};C.forEach(c=>{if(c.causa)cnt[c.causa]=(cnt[c.causa]||0)+1});
+  const top=Object.entries(cnt).sort((a,b)=>b[1]-a[1])[0];
+  const conDec=C.filter(c=>c.declive!=null);
+  const cs=[
+    [C.length,`ciclos: <b>${fin.length}</b> xa remataron, <b>${dec.length}</b> están en declive e <b>${viv.length}</b> aínda non empezaron a caer`],
+    [Math.round(med(fin.map(c=>c.dur)))+' anos',`durou o ciclo mediano dos que xa remataron; o máis curto, ${Math.min(...fin.map(c=>c.dur))} anos`],
+    [`${top[1]} de ${conDec.length}`,`decaeron sobre todo por <b>${CAUSAS[top[0]].toLowerCase()}</b>, a causa máis repetida`]
+  ];
+  $('cifras').innerHTML=cs.map(([v,l])=>`<div class="dv-stat cifra"><span class="v">${v}</span><span class="l">${l}</span></div>`).join('');
+})();
+
+/* ---------- Abano ---------- */
+const CX=0,CY=0,R0=112,R1=404,RI=R1+18,RL=R1+34;
+const xr=p=>R0+(R1-R0)*p;
+const S=$('abano');
+(function(){
+  const g=el('g',{'aria-hidden':'true'},S);
+  [0,.25,.5,.75,1].forEach(p=>{
+    const r=xr(p);
+    el('path',{d:`M${CX-r} ${CY}A${r} ${r} 0 0 1 ${CX+r} ${CY}`,class:p%1?'arco':'arco forte'},g);
+    const t=el('text',{x:CX-r,y:CY+19,class:'ax','text-anchor':'middle'},g);
+    t.textContent=p===0?'inicio':p===1?'fin ou hoxe':p*100+' %';
+  });
+  el('text',{x:CX-xr(.5),y:CY+37,class:'axh','text-anchor':'middle'},g).textContent='da vida de cada ciclo';
+  const paso=DM>400?200:100;
+  for(let y=0;y<=DM;y+=paso){
+    const x=CX+R0+(R1-R0)*y/DM;
+    el('line',{x1:x,x2:x,y1:CY+3,y2:CY+8,stroke:'var(--muted)'},g);
+    el('text',{x,y:CY+21,class:'ax','text-anchor':'middle'},g).textContent=y;
+  }
+  el('rect',{x:CX+R0,y:CY+26,width:(R1-R0),height:7,rx:3.5,fill:'var(--ink)',opacity:.09},g);
+  el('text',{x:CX+R0+(R1-R0)/2,y:CY+47,class:'axh','text-anchor':'middle'},g).textContent='duración real, en anos (barra gris)';
+})();
+const tip=$('tip');
+C.forEach(c=>{
+  const cor=`var(${CATS[c.cat][1]})`;
+  const g=el('g',{class:'raio',tabindex:0,role:'button','aria-label':`${c.nome}, ${anos(c)}`},S);
+  g.style.setProperty('--cor',cor);
+  el('rect',{x:R0,y:-3.5,width:(R1-R0)*c.dur/DM,height:7,rx:3.5,class:'dur'},g);
+  el('line',{x1:R0,x2:R1,class:'pista'},g);
+  el('line',{x1:xr(c.pp),x2:xr(c.pd),class:'ouro'},g);
+  if(c.fin==null)el('line',{x1:R1+1,x2:R1+8,class:'segue'},g);
+  el('circle',{cx:xr(c.pp),r:3.4,class:'m-pico'},g);
+  if(c.declive!=null)el('circle',{cx:xr(c.pd),r:3.4,class:'m-dec'},g);
+  const ic=el('g',{class:'ic'},g);ic.innerHTML=icona(c.causa,c.fin==null);
+  const f=corpo(c),t=el('text',{class:'nome',dy:'.35em','font-size':f.toFixed(1)},g);t.textContent=c.nome;
+  c.lonx=c.nome.length*f*.6;   // estimación; axústase coa medida real cando cargan as fontes
+  c.hit=el('rect',{class:'hit',x:R0-6,y:-9,width:RL-R0+c.lonx+12,height:18},g);
+  c.g=g;c.ic=ic;c.t=t;
+  g.addEventListener('pointerenter',e=>{if(e.pointerType==='touch')return;S.classList.add('hov');g.classList.add('hv');amosaTip(c,e)});
+  g.addEventListener('pointermove',e=>{if(e.pointerType!=='touch')moveTip(e)});
+  g.addEventListener('pointerleave',()=>{S.classList.remove('hov');g.classList.remove('hv');tip.hidden=true});
+  g.addEventListener('click',()=>escolle(c));
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();escolle(c)}});
+  // Fila para pantallas estreitas
+  const b=document.createElement('button');b.type='button';b.className='fila';b.style.setProperty('--cor',cor);
+  b.innerHTML=`<span class="fn">${esc(c.nome)}</span><span class="fa">${anos(c)} · ${miles(c.dur)} anos</span>`+
+    `<span class="fb"><i class="fd" style="width:${(c.dur/DM*100).toFixed(1)}%"></i><i class="fo" style="left:${(c.pp*100).toFixed(1)}%;width:${((c.pd-c.pp)*100).toFixed(1)}%"></i>`+
+    `<i class="fp" style="left:${(c.pp*100).toFixed(1)}%"></i>${c.declive!=null?`<i class="fx" style="left:${(c.pd*100).toFixed(1)}%"></i>`:''}</span>`;
+  b.addEventListener('click',()=>escolle(c,true));
+  c.row=b;
+});
+// O cadro do abano axústase ao nome máis longo, estea no ángulo que estea: así ningunha orde o corta
+function cadro(){
+  C.forEach(c=>{
+    let w=0;try{w=c.t.getComputedTextLength()}catch(e){}
+    if(w>0)c.lonx=w;
+    c.hit.setAttribute('width',RL-R0+c.lonx+12);
+  });
+  const E=Math.ceil(RL+Math.max(...C.map(c=>c.lonx))+10);
+  S.setAttribute('viewBox',`${-E} ${-E} ${2*E} ${E+56}`);
+}
+cadro();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(cadro);
+function amosaTip(c,e){
+  tip.innerHTML=`<b class="big" style="color:var(${CATS[c.cat][1]})">${esc(c.nome)}</b><span><b>${anos(c)}</b> · ${durTxt(c)}</span>`+
+    `<span>Anos dourados: <b>${ano(c.pico)} – ${c.declive!=null?ano(c.declive):'hoxe'}</b></span>`+
+    (c.causa?`<span>${c.fin!=null?'Decaeu':'Decae'} por: <b>${CAUSAS[c.causa].toLowerCase()}</b></span>`:'<span>Aínda non empezou a decaer</span>');
+  tip.hidden=false;moveTip(e);
+}
+function moveTip(e){
+  const w=tip.offsetWidth/2+8;
+  tip.style.left=Math.min(innerWidth-w,Math.max(w,e.clientX))+'px';
+  tip.style.top=Math.max(tip.offsetHeight+22,e.clientY)+'px';
+}
+
+/* ---------- Orde e filtros ---------- */
+const ORD_CAT=Object.keys(CATS),ORD_CAU=[...Object.keys(CAUSAS),null];
+const CRIT={
+  inicio:(a,b)=>a.inicio-b.inicio,
+  dur:(a,b)=>a.dur-b.dur||a.inicio-b.inicio,
+  emprego:(a,b)=>(a.emprego||0)-(b.emprego||0)||a.inicio-b.inicio,
+  pp:(a,b)=>a.pp-b.pp||a.inicio-b.inicio,
+  ouro:(a,b)=>(a.pd-a.pp)-(b.pd-b.pp)||a.inicio-b.inicio,
+  cat:(a,b)=>ORD_CAT.indexOf(a.cat)-ORD_CAT.indexOf(b.cat)||a.inicio-b.inicio,
+  causa:(a,b)=>ORD_CAU.indexOf(a.causa??null)-ORD_CAU.indexOf(b.causa??null)||a.inicio-b.inicio
+};
+function coloca(){
+  const o=[...C].sort(CRIT[$('orde').value]),n=o.length,a0=176,a1=4;
+  o.forEach((c,i)=>{
+    const th=n>1?a0-(a0-a1)*i/(n-1):90,esq=th>90;
+    c.g.style.transform=`translate(${CX}px,${CY}px) rotate(${(-th).toFixed(2)}deg)`;
+    c.ic.style.transform=`translate(${RI}px,0px) rotate(${th.toFixed(2)}deg)`;
+    c.t.setAttribute('transform',esq?'rotate(180)':'');
+    c.t.setAttribute('x',esq?-RL:RL);
+    c.t.setAttribute('text-anchor',esq?'end':'start');
+    $('filas').appendChild(c.row);
+  });
+  if(sel&&$('ficha').parentNode===$('filas'))sel.row.after($('ficha'));
+}
+let filtro=null,sel=null;
+function chips(id,itens,tipo){
+  $(id).innerHTML=itens.map(([k,h])=>`<li><button type="button" class="chip" data-k="${k}" aria-pressed="false">${h}</button></li>`).join('');
+  $(id).addEventListener('click',e=>{
+    const b=e.target.closest('.chip');if(!b)return;
+    const on=b.getAttribute('aria-pressed')==='true';
+    document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));
+    filtro=on?null:{tipo,k:b.dataset.k};
+    if(!on)b.setAttribute('aria-pressed','true');
+    aplica();
+  });
+}
+const pasa=c=>!filtro||(filtro.tipo==='cat'?c.cat===filtro.k:filtro.k==='vivo'?!c.causa:c.causa===filtro.k);
+function aplica(){C.forEach(c=>{const o=!pasa(c);c.g.classList.toggle('off',o);c.row.classList.toggle('off',o)})}
+chips('cats',Object.entries(CATS).filter(([k])=>C.some(c=>c.cat===k)).map(([k,[n,v]])=>[k,`<span class="sw" style="background:var(${v})"></span>${n}`]),'cat');
+chips('causas',[...Object.entries(CAUSAS).filter(([k])=>C.some(c=>c.causa===k)).map(([k,n])=>[k,icoHTML(k,false)+n]),
+  ...(C.some(c=>!c.causa)?[['vivo',icoHTML(null,false)+'Aínda non decaeu']]:[])],'causa');
+$('orde').addEventListener('change',coloca);
+
+/* ---------- Ficha ---------- */
+function escolle(c,enFila){
+  sel=c;
+  C.forEach(x=>{x.g.classList.toggle('on',x===c);x.row.classList.toggle('on',x===c)});
+  const cor=CATS[c.cat][1],f=$('ficha');
+  f.style.setProperty('--cor',`var(${cor})`);
+  const ouro=(c.declive??HOXE)-c.pico;
+  f.innerHTML=`<div class="cab"><h2>${esc(c.nome)}</h2><p class="an"><b>${anos(c)}</b> · ${durTxt(c)} · ${CATS[c.cat][0].toLowerCase()}</p></div>`+
+    `<dl><div><dt>Anos dourados</dt><dd><b>${ano(c.pico)} – ${c.declive!=null?ano(c.declive):'hoxe'}</b><br>${miles(ouro)} anos, o ${Math.round(ouro/c.dur*100)} % da súa vida</dd></div>`+
+    `<div><dt>No apoxeo</dt><dd>${c.emprego?`<b>${miles(c.emprego)}</b> empregos${c.emprego_ano?` (${esc(c.emprego_ano)})`:''}<br>`:''}${esc(c.pico_txt||'')}</dd></div>`+
+    `<div><dt>Hoxe</dt><dd>${esc(c.hoxe_txt||'—')}</dd></div></dl>`+
+    `<div class="ca">${icoHTML(c.causa,c.fin==null,cor)}<span>${c.causa?`${c.fin!=null?'Decaeu':'Decae'} por: ${CAUSAS[c.causa].toLowerCase()}`:'Aínda non empezou a decaer'}</span></div>`+
+    `<p class="hi">${esc(c.historia)}</p>`+
+    `<p class="fo">${c.conf==='baixa'?'Datas orientativas: as fontes non coinciden ou son escasas. ':''}Fontes: ${c.fontes.map(s=>`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(' · ')}</p>`;
+  if(enFila)c.row.after(f);else $('oco').appendChild(f);
+}
+
+/* ---------- Táboa ---------- */
+$('tbl').innerHTML='<thead><tr><th>Ciclo</th><th>Familia</th><th>Inicio</th><th>Apoxeo</th><th>Declive</th><th>Fin</th><th>Anos</th><th>Emprego<br>no apoxeo</th><th>Causa do declive</th></tr></thead><tbody>'+
+  C.map(c=>`<tr><td>${esc(c.nome)}</td><td>${CATS[c.cat][0]}</td><td>${ano(c.inicio)}</td><td>${ano(c.pico)}</td><td>${c.declive!=null?ano(c.declive):'—'}</td><td>${c.fin!=null?ano(c.fin):'—'}</td><td>${miles(c.dur)}</td><td>${c.emprego?miles(c.emprego):'—'}</td><td>${c.causa?CAUSAS[c.causa]:'—'}</td></tr>`).join('')+'</tbody>';
+
+coloca();
+escolle(C.find(c=>c.id===D.destacado)||C[0]);
+</script>
+</body>
+</html>

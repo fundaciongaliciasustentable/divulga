@@ -964,5 +964,17 @@
     ],
     "formato": "Coordenadas paralelas",
     "fontes": "INE (censo de 1950 e padrón 2025, censo de 2011), IGE, SEPE, Ministerio para a Transformación Dixital, Atlas de Distribución de Renda dos Fogares (cruzados cos datos doutras pezas de Divulga)"
+  },
+  {
+    "slug": "261113-febres-galicia",
+    "titulo": "As febres de Galicia",
+    "entradilla": "Quince ciclos da economía galega, da caza da balea ao wolframio e á eólica, estirados á mesma lonxitude para poder comparalos: cando chegou o apoxeo de cada un e por que decaeu.",
+    "data": "2026-11-13",
+    "temas": [
+      "Economía",
+      "Patrimonio"
+    ],
+    "formato": "Abano cronolóxico",
+    "fontes": "Historiografía económica galega e fontes diversas por ciclo (Consello da Cultura Galega, museos e arquivos de memoria industrial, IGME, MAPA, prensa e Galipedia); detalladas en cada ficha"
   }
 ]
